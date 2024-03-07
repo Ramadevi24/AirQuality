@@ -1,0 +1,771 @@
+
+@media (min-width: 320px) and (max-width: 365px){
+    #measureSlider1 .carousel-item img{
+        height: 785px!important;
+    }
+    .pollutants-legend-text{
+        font-size: 11px!important;
+    }
+}
+@media (min-width: 320px) and (max-width: 767px){
+    .station-data-col .metero-dropdown {
+        width: 93%;
+    }
+    header .search-block .search-collapse{
+        top: 61px;
+    }
+    .sticky-top{
+        top: -1px!important;
+    }
+    .air-map-container .station-data-col .header button.link .ago{
+        text-align: left;
+    }
+    .pollutants-legend-text{
+        font-size: 11px!important;
+    }
+    .air-analytics-section .box .head .title{
+        padding-left: 1px;
+    }
+    .air-analytics-section .res-air-mt{
+        margin-top: -15px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools li button{
+        line-height: 25px;
+    }
+    .back-to-top{
+        bottom: 35px;
+    }
+    .carosel-w-20{
+        width: 100%;
+    }
+    .graph-note{
+        bottom: -3px;padding-right: 8px;
+    }
+    .measure-section-center{
+        bottom: 15px;
+    }
+    #measureSlider1 .carousel-item img{
+        height: 730px;
+    }
+    .measure-pollutant-list{
+        display: block;
+    }
+    .ht-card .card-body{
+        height: auto;
+    }
+    .mb15{
+        margin-bottom: 35px;
+    }
+    /* .coming-soonresponsive{
+        height: 80px!important;
+    } */
+    .gmnoprint .gm-bundled-control {
+        display: none !important;
+      }
+    /* .map-hori-tools{
+        display: none;
+    } */
+    .scroll_tabs_theme_light .scroll_tab_left_button{
+        left: -11px!important;
+    }
+    .coming-soon{font-size: 22px;}
+    .pollutants-legend-heading{
+        bottom: 13px;padding: 0 1px 
+    }
+    .contact-form-section .msg-sent i{
+        font-size: 20px;
+        margin-left: 3px;
+    }
+    .panel {
+        height: auto !important;
+    }
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .air-map-container .air-map-col{
+        padding-right: 0px;
+    }
+    .inner-height{
+        height: auto;margin-top: 20px;
+    }
+    .safety-section, .health-rec-section, .imp-of-air-section, .responsive-mb40, .interesting-facts-section{
+        margin-bottom: 40px;
+    }
+    .air-analytics-section{
+        margin-bottom: 5px;
+    }
+    .about-aqi-section, .ad-city-ranking-section, .measure-section{
+        margin-bottom: 10px;
+    }
+    #radarChart {
+        width: 100%!important;
+        height: 400px!important;
+        margin-top: -30px;
+    }
+    .ad-station-aqi-pollu-section .box {
+        height: 550px;
+        margin-bottom: 30px;
+    }
+    .d-graph-bottom{
+        bottom: 55px;
+    }
+    .ad-station-aqi-pollu-section .graph-duration-filters{
+        display: inline-block;
+    }
+    .apexcharts-text tspan{
+        font-size: 7px;
+    }
+    .h2{
+        font-size: 17px;
+    }
+    .station-aqi-pollu-section{
+        margin-bottom: 30px;
+    }
+    .faq-section{
+        margin-bottom: 30px;
+    }
+    #aboutBanner .carousel-inner .carousel-caption{
+        right: 0;left: 0; margin: 40px auto 0% auto;
+    }
+    #aboutBanner .carousel-inner .carousel-caption h5, .banner-section .carousel .carousel-inner .carousel-caption h5{
+        font-size: 35px;
+    }
+    #aboutBanner .carousel-inner .carousel-caption p.para{
+        font-size: 15px;
+    }
+    #monitoringAchievement{
+        margin-top: 15px; margin-bottom: 25px;
+    }
+    #monitoringAchievement .achievment-section, #monitoringProjects .project-section{
+        position: relative; bottom: 0;
+    }
+    .filter-group ul{
+        display: inline-block;
+    }
+    .filter-group ul li{
+        margin-bottom: 10px;
+    }
+    .about-division .links-sec ul.download-links li{
+        flex: 0 0 100% !important; max-width: 100% !important; padding-left: 0;
+    }
+    .about-division .links-sec ul.download-links li .links a{
+        font-size: 16px;
+    }
+    .about-division .links-sec ul.download-links li .links{
+        padding: 0px 0px 15px 0px;
+    }
+    .contact-info-section .contact-boxes .box{
+        width: 150px;
+    }
+    .contact-info-section .contact-boxes{
+        margin-right: 0px; justify-content: space-around;
+    }
+    .contact-info-section .contact-boxes .box a{
+        font-size: 10px;
+    }
+    .contact-form-section .msg-sent{
+        width: 100%;margin-top: 0px; font-size: 14px;
+    }
+   .responsve-slider #home-banner .h5{
+        font-size: 30px;
+   }
+   .responsve-slider #home-banner .mb-0{
+        font-size: 17px;
+   }
+   .responsive-mapping-section .inner-height{
+        display: inline-block!important;
+   }
+   .responsive-mapping-section .inner-height .res-top-mt{
+        margin-top: 40px;margin-bottom: 10px;width: 100%;
+   }
+   /* .responsive-mapping-section .level-legends{
+        right: 10px!important; bottom: 5px!important;
+   } */
+   .web-top-legends{
+    right: 10px; bottom: 5px;
+   }
+   .responsive-mapping-section ul.map-hori-tools{
+        top: 50px!important;right: 0px!important;
+   }
+   .responsive-mapping-section ul.map-vert-tools{
+        top: 10px!important;
+        right: 0!important;
+        display: flex;
+   }
+   header .search-block{
+        width: auto;
+        justify-content: flex-start;
+        padding: 6px 0px 0 0px;
+        order: 1;
+        /* position: absolute;
+        top: 8px;
+        right: 37px; */
+   }
+   header .search-block .btn-nobg{
+        position: absolute;
+        top: 11px;
+        right: 40px 
+   }
+   header .search-block i{
+    font-size: 17px;
+   }
+    header .search-block .search-collapse .card-body .container-fluid {
+         padding: 0 !important;
+    
+    }
+   header .search-block .search-collapse .card-body .container-fluid .close{
+     right: 0px; bottom: 0px; z-index: 0;
+   }
+   .res-pt0{
+    padding: 0!important;
+   }
+   header .headerpt-10{
+    padding-left: 10px;padding-right: 10px;
+   }
+   header .navbar-toggler-icon{
+        width: 27px;
+        height: 27px;
+        filter: invert(1);
+        background-image: url(./images/navigation-bar.png);
+        background-position: center;
+   }
+   .headerpt-10 .navbar-toggler{
+        border: transparent;
+        padding-right: 10px;
+        order: 2;
+        position: absolute;
+        right: 5px;
+        top: 6px;
+   }
+   .header-responsive-flex{
+        display: block;overflow: visible;
+   }
+   .headerpt-10 .navbar-collapse {
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        right: 0%;
+        width: 100%;
+        max-width: 400px;
+        border-left: 1px solid #666;
+        bottom: 0;
+        z-index: 1;
+        transform: translateY(-100%);
+        transition: all 0.5s ease-in-out;
+   }
+   /* #mainMenu.orro{
+    transform: translateY(0%);
+   } */
+   header nav.navbar .navbar-nav li a, header nav.navbar .navbar-nav li a.active{
+    color: #0f77d0;
+   }
+   #myVideo{
+        height: 100vh!important;object-fit: cover;
+   }
+   #home-0 .carousel .carousel-inner .carousel-caption{
+        margin: 70px auto 10% auto;
+        right: 0;
+        left: 0;
+   }
+   #home-0 .carousel .carousel-inner .carousel-item::before{
+        background: transparent;
+   }
+   .responsive-mapping-section .map-block iframe{
+        height: 550px;
+    }
+    .headerpt-10 .navbar-collapse ul {
+        position: absolute;
+        inset: 0;
+        padding: 50px 0 10px 0;
+        margin: 0;
+        /* background: rgba(255, 255, 255, 0.9); */
+        overflow-y: auto;
+        transition: 0.3s;
+        z-index: 9998;
+    }
+    .headerpt-10 .header-close-icon{
+        float: right;
+        border: transparent;
+        background: transparent;
+        padding-right: 20px;
+        font-size: 35px;
+        color: #0f77d0;
+        z-index: 111111;
+        position: relative;
+    }
+    .banner-section .carousel .live-update{
+        bottom: 3%;
+        background: #80808091;
+        padding: 10px;
+    }
+    .air-map-container .station-data-col .map-data-body .text3{
+        font-size: 16px;
+    }
+    .air-map-container .station-data-col .map-data-body .text4{
+        margin-bottom: 17px;
+        margin-top: 17px;
+    }
+    .air-map-container .station-data-col .map-data-body .text2{
+        margin-bottom: 0px;
+    }
+    .safety-section .box1 .status-text h3{
+        margin-top: 6px;
+        margin-bottom: 5px;
+    }
+    .safety-section .box1 .status-icon{
+        margin-top: 0px;
+    }
+    .safety-section .box1 .pollutant{
+        padding: 5px 8px;margin-top: 0px; margin-bottom: 20px;
+    }
+    .activities-tabs {
+        margin-top: 0px;
+    }
+    .ad-city-ranking-section .table .text-center{
+        text-align: right!important;
+    }
+    .health-rec-section .box2 .content-scroll{
+        height: 325px;
+    }
+    .measure-section .carousel-item {
+        height: 100%;
+    }
+    .air-map-container .station-data-col .map-data-body .text1{
+        font-size: 18px;
+    }
+    .graph-show{
+        display: none!important;
+    }
+    .pollutant-dropdown-show{
+        display: flex;
+    }
+    .pollutant-dropdown-show input[type="date"]{
+        padding-left: 0px!important;
+        margin-left: -18px !important;
+        max-width: 122px!important;
+    }
+    .pollu-graph{
+        justify-content: space-between;
+    }
+    .scroll-resp{
+        overflow: scroll; height: 250px;margin-bottom: 1rem;
+    }
+    /* .station-aqi-pollu-section .box .table-responsive{
+        height: 450px;
+    } */
+    .ad-city-ranking-section .city-rank-table tbody{
+        height: auto;
+    }
+    .responsive-contact, .mobile-footer-mb-15 {
+        margin-bottom: 15px;
+    }
+    header.fadeout {
+        background-color: white!important;
+    }
+    .air-map-container.full-screen .station-data-col{
+        width: 330px !important;
+        margin-bottom: 0;
+    }
+    .response-achievement{
+        display: inline-block!important;
+    }
+    .response-achievement .h2{
+        width: 100%; margin-bottom: 20px!important; 
+    }
+    .about-division .head .filter-group{
+        width: 335px!important;
+    }
+    footer .copy-rights{
+        display: block;
+    }
+    footer .copy-rights ul{
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    footer .copy-rights ul li a{
+        padding: 0px 0px;
+    }
+    .montimg{
+        margin-bottom: 15px 
+    }
+    .mont-close, .marine-close, .air-close{
+        bottom: -28px; top: 0;
+    }
+    .mont-carousel .carousel-control-prev{
+        left: -6px;
+    }
+    .mont-carousel .carousel-control-next{
+        right: -6px;
+    }
+    .newcutom-btn{z-index: 0;}
+   
+}
+@media (min-width: 768px) and (max-width: 1199px){
+    .panel {
+        height: auto !important;
+    }
+    .inner-height{
+        height: auto;
+    }
+    .measure-section .carousel-item {
+        height: 100%;
+    }
+    .safety-section .box1 .pollutant{
+        margin-bottom: 20px;
+    }
+    .monitoringpro-100{
+        height: auto!important;
+    }
+    .carosel-w-20{
+        width: 50%;
+    }
+    .air-map-container .air-map-col ul.map-vert-tools, .air-map-container .air-map-col ul.map-hori-tools{
+        right: 15px;
+    }
+    .measure-section-center{
+        bottom: 21px;
+    }
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .response-achievement{
+        margin-top: 30px;
+    }
+    .h2{
+        font-size: 16px;
+    }
+    /* .health-rec-section .box2 ul{
+        display: inline;
+    } */
+    .ad-station-aqi-pollu-section .graph-head .graph-duration-filters .btn{
+        padding: 5px 7px;
+    }
+    #radarChart {
+        height: 420px!important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .station-aqi-pollu-section table tbody{
+        overflow-y: hidden;
+    }
+    #aboutBanner .carousel-inner .carousel-caption p.para {
+        font-size: 17px;
+    }
+    #myVideo{
+        height: 100vh!important;object-fit: cover;
+   }
+   header .search-block{
+        width: auto;
+   }
+   header nav.navbar .navbar-brand{
+    padding-right: 0;
+   }
+   .banner-section .carousel .live-update {
+        bottom: 7%;
+        background: #80808091;
+        padding: 10px;
+    }
+    .responsive-mapping-section .inner-height .res-top-mt {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .air-map-container .air-map-col {
+        padding-right: 0px;
+        width: 100%;
+    }
+    .responsive-mapping-section .map-block iframe {
+        height: 353px;
+    }
+    .responsive-mapping-section .inner-height {
+        display: inline-block!important;
+    }
+    .air-map-container .station-data-col .map-data-body .text2{
+        margin-bottom: 0px; 
+    }
+    .wind-direction-resp p{
+        display: inline-block!important;
+    }
+    .air-map-container .station-data-col .header button.link{
+        float: right;
+    }
+    .ad-station-aqi-pollu-section .box {
+        height: auto;
+    }
+    .contact-info-section:before{
+        width: 100%;
+    }
+    .remove-panel .inner-height{
+        height: auto;
+        /* margin-top: 100px; */
+    }
+    .air-analytics-section, .health-rec-section, .about-aqi-section{
+        margin-top: 35px;
+    }
+    .ad-city-ranking-section, .measure-section, .interesting-facts-section{
+        margin-top: 25px;
+    }
+    .ad-city-ranking-section .box{
+        height: 278px;
+    }
+    .contri-mt{
+        margin-top: 25px!important;
+    }
+    .safety-section .box1 .status-icon .icon {
+        justify-content: center!important;
+    }
+    header .search-block .search-collapse .card-body .container-fluid {
+        padding: 10px!important;
+    }
+    .air-map-container.full-screen .station-data-col{
+        width: 96%;
+    }
+    .air-map-container.full-screen .station-data-col.off{
+        left: -739px;
+    }
+    
+}
+
+
+
+@media (min-width: 1200px) and (max-width: 1320px){
+    .banner-section .carousel .live-update{
+        bottom: 15%;
+    }
+    
+}
+@media (min-width: 1350px) and (max-width: 1369px){
+    /* .interesting-facts-section .contri-box{
+        height: calc(50% - 34px);
+    } */
+}
+@media (min-width: 1200px) and (max-width: 1402px){
+    .apexcharts-text tspan {font-size: 10px;}
+    #radarChart {
+        width: 100%!important; margin-left: auto; margin-right: auto;
+    }
+    /* .ad-city-ranking-section .city-rank-table tr th:first-child{
+        width: 80px;
+    } */
+    #five .ad-city-ranking-section .box .table-responsive {
+        overflow-x: hidden;
+    }
+    .importance-air img{
+        height: 225px;
+    }
+    .imp-of-air-section .box{
+        text-align: justify;
+    }
+    .safety-section .box1 .icon p{
+        font-size: 13px;
+    }
+    .interesting-facts-section .contri-box{
+        overflow: auto;
+    }
+}
+
+@media (min-width: 1403px) and (max-width: 1450px){
+    .res-mb-10{
+        margin-bottom: 10px!important;
+    }
+    .air-map-container .station-data-col .map-data-body .text4{
+        margin-bottom: 0px;
+    }
+    .safety-section .box1 .status-icon{
+        margin-top: 0;
+    }
+    .station-aqi-pollu-section .box, .ad-city-ranking-section .box{
+        height: calc(100% - 41px);
+    }
+    .interesting-facts-section .contri-box{
+        height: calc(50% - 56px);
+    }
+}
+
+@media (min-width: 1700px) and (max-width: 1750px){
+    #myVideo{
+        height: 100vh!important; object-fit: cover;
+    }
+    .windspeed-section, .health-rec-section, .safety-section{
+        position: relative;
+    }
+    .windspeed-section .footer{
+        position: absolute; bottom: 22px;
+    }
+    .health-rec-section .btns-sec{
+        position: absolute; width: 93%; bottom: 25px;
+    }
+    .safety-section .activities-tabs {
+        position: absolute; width: 88%; bottom: 85px;
+    }
+    .windspeed-section .map-data-body .col-lg-12{
+        margin-bottom: 10%; margin-top: 10%;
+    }
+    .windspeed-section .map-data-body .mb-3{
+        margin-top: 20%;
+    }
+    #measureSlider1 .carousel-item img{
+        height: 100vh;
+    }
+}
+
+
+@media screen and (min-width: 1355px) and (max-width: 1368px) and (min-height: 600px) and (max-height: 765px) {
+    /* .windspeed-section .btn-group, .windspeed-section .refresh-column, .windspeed-section .map-data-body .col-lg-12{
+        width: 50%;
+    } */
+    body{
+        font-size: 15px;
+    }
+    .scroll-resp {
+        max-height: calc(100% - 226px);
+
+    }
+    .windspeed-section .refresh-column{
+        margin-top: 7px!important;
+    }
+    .windspeed-section .map-data-body .wind-direction-resp{
+        width: 100%;
+    }
+    .air-map-container .station-data-col .map-data-body .text3{
+        font-size: 16px;
+    }
+    .air-map-container .station-data-col .header{
+        margin-bottom: 0px;
+    }
+    .safety-section .box1 .icon p{
+        font-size: 14px;
+    }
+    .safety-section .school-heading, .pollu-graph {
+        margin-bottom: 0!important;
+    }
+    .safety-section .box1 .status-icon{
+        margin-top: 15px;
+    }
+    .activities-tabs .activities-p {
+        margin-bottom: 15px;
+    }
+    .safety-section .box1 .status-text .per{
+        font-size: 60px; line-height: 45px;
+    }
+    /* .safety-section .box1 .icon i{
+        font-size: 65px;
+    } */
+    .safety-section .box1 .status-text p{
+        margin-bottom: 5px;
+    }
+    .h5-pollutant, .activities-tabs {
+        margin-top: 17px;
+    }
+    .safety-section .box1 .pollutant{
+        padding: 5px 8px; margin-bottom: 0;
+    }
+    #radarChart{
+        width: 100%!important;
+        height: 100%!important;
+        margin-top: -35px!important;
+    }
+    .ad-station-aqi-pollu-section .box{
+        height: calc(100% - 20px);
+    }
+    .air-analytics-section .box{
+        height: calc(100% - 21px);
+    }
+    .pollutants-legend-heading{
+        bottom: 10px 
+    }
+    .d-graph-bottom{
+        bottom: 27px;
+    }
+    /* .mont-carousel .carousel-item .card-body img{
+        height: 188px;
+    } */
+    .elinking-scroll {
+        height: 148px;
+        overflow: auto;
+    }
+    .montimg{
+        height: 191px!important;
+    }
+    .measure-section .measure-content{
+        height: 100%!important;
+    }
+    .measure-section .measure-content table tr td ul li{
+        display: inline-flex;
+    }
+    .interesting-facts-section .contri-box {
+        /* height: calc(50% - 97px); */
+        overflow: scroll;
+    }
+    .contact-info-section .contact-boxes .box{
+        height: 150px;
+    }
+    .contact-form-section .py-5{
+        padding-bottom: 10px!important;
+    }
+    #measureSlider1 {
+        height: calc(60% - 9px) !important;
+    }
+    .measure-section-center{
+        bottom: -4px;
+    }
+    .measure-section-center .margin-seven{
+        margin-bottom: 7px !important;
+    }
+    .ht-card .card-body {
+        height: 100px;
+    }
+    .round-mb-0{
+        margin-bottom: 0!important;
+    }
+
+}
+
+@media screen and (min-width: 1365px) and (max-width: 1367px) and (min-height: 767px) and (max-height: 768px) {
+    body{
+        font-size: 15px;
+    }
+    .h5-pollutant {
+        margin-top: 25px!important;
+    }
+    .air-map-container .station-data-col .map-data-body .text1{
+        margin-bottom: 25px;
+    }
+    .air-map-container .station-data-col .map-data-body .text2{
+        margin-bottom: 10px;
+    }
+    .air-map-container .station-data-col .map-data-body .text3{
+        margin-bottom: 20px
+    }
+    .air-map-container .station-data-col .map-data-body .text4{
+        margin-bottom: 20px;
+    }
+    .air-map-container .station-data-col .footer {
+        margin-top: 15px;
+    }
+    .safety-section .box1 .status-text h3, .safety-section .box1 .status-icon{
+        margin-top: 30px
+    }
+    .h5-pollutant {
+        margin-top: 46px;
+    }
+    /* #measureSlider1 {
+        height: calc(60% - 9px) !important;
+    } */
+    .measure-section-center{
+        bottom: 1px;
+    }
+    .measure-section-center .margin-seven{
+        margin-bottom: 7px !important;
+    }
+    .ht-card .card-body {
+        height: 100px;
+    }
+    #measureSlider1 .carousel-item img{
+        height: 100vh;
+    }
+}
