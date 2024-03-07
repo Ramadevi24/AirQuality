@@ -5618,7 +5618,8 @@ hourlyChartData.filter(t => t.stationName == 'Abu Dhabi').forEach(item => {
   if (!customLegendData.includes(item.aqiIndex)) {
     customLegendData.push(item.aqiIndex);
   }
-  categoriesData.push(item.hour);
+  var parts = item.hour.split(' ');
+  categoriesData.push(parts);
   lineGraphData.push(item.aqi);
 });
 
@@ -5626,7 +5627,7 @@ var options = {
   series:hourlyDataSeries,
   chart: {
   type: 'bar',
-  height: 330,
+  height: 300,
   animations: {
     enabled: true,
     easing: 'linear',
@@ -5646,7 +5647,7 @@ plotOptions: {
     horizontal: false,
     columnWidth: '60%',
     endingShape: 'rounded',
-    borderRadius: 4,
+    // borderRadius: 4,
   },
 },
 dataLabels: {
@@ -7715,7 +7716,7 @@ var yearlyDataForStationAqiAndPollutants = [
   }
 ];
 var seriesData = [];
-var aqiData = [];
+// var aqiData = [];
 var pm10Data = [];
 var so2Data = [];
 var coData = []; 
@@ -7723,7 +7724,7 @@ var o3Data = [];
 var no2Data = [];
 var xCategories = [];
 yearlyDataForStationAqiAndPollutants.filter(t=> t.stationName == 'Abu Dhabi').forEach(item => {
-  aqiData.push(item.aqi);
+  // aqiData.push(item.aqi);
   pm10Data.push(item.pM10);
   so2Data.push(item.sO2);
   coData.push(item.co);
@@ -7733,7 +7734,7 @@ yearlyDataForStationAqiAndPollutants.filter(t=> t.stationName == 'Abu Dhabi').fo
     xCategories.push(item.year);
   }
 });
-seriesData.push({name: 'AQI', data: aqiData});
+// seriesData.push({name: 'AQI', data: aqiData});
 seriesData.push({name: 'PM10', data: pm10Data});
 seriesData.push({name: 'SO2', data: so2Data});
 seriesData.push({name: 'CO', data: coData});
@@ -7759,13 +7760,15 @@ var options = {
     enabled: false
   }
 },
-colors: ['#9cd84e', '#facf39', '#f99049', '#f65e5f', '#a070b6', '#a06a7b'],
+
+// colors: ['#9cd84e', '#facf39', '#f99049', '#f65e5f', '#a070b6', '#a06a7b'],
+colors: ['#004B87', '#6693B7', '#99B7CF', '#B3C9DB', '#E6EDF3'],
 dataLabels: {
   enabled: false
 },
 stroke: {
   width: [3,3,3,3,3,3],
-  curve: 'straight'
+  curve: 'smooth'
 },
 title: {
   text: '',
@@ -7794,7 +7797,27 @@ tooltip: {
   
   
   
-}
+},
+grid: {
+  show: false, // hide grid
+},
+responsive: [
+  {
+    breakpoint: 1350,
+    options: {
+      chart: {
+        height: 250 
+      }
+    },
+    breakpoint: 1400,
+    options: {
+      chart: {
+        height: 250  
+      }
+    },
+ 
+  }
+]
 };
 
 var chart = new ApexCharts(document.querySelector("#newchartTrend"), options);
@@ -7907,161 +7930,28 @@ function updateChart(interval) {
   }]);
 }
 
-
-var options = {
-  series: [{
-    name: 'Sales',
-    data: [
-      { x: '9PM', y: 80 },
-      { x: '8PM', y: 20 },
-      { x: '7PM', y: 25 },
-      { x: '6PM', y: 18 },
-      { x: '5PM', y: 42 },
-      { x: '4PM', y: 12 },
-      { x: '3PM', y: 60 },
-      { x: '2PM', y: 70 },
-      { x: '1PM', y: 30 },
-      { x: '12PM', y: 10 },
-      { x: '11AM', y: 67 },
-      { x: '9PM', y: 23 },
-      { x: '8PM', y: 100 },
-      { x: '7PM', y: 23 },
-      { x: '6PM', y: 67 },
-      { x: '5PM', y: 43 },
-      { x: '4PM', y: 78 },
-      { x: '3PM', y: 10 },
-      { x: '2PM', y: 70 },
-      { x: '1PM', y: 54 },
-      { x: '12PM', y: 23 },
-      { x: '11AM', y:65 },
-      { x: '9PM', y: 22 },
-      { x: '8PM', y: 36 },
-      { x: '7PM', y: 78 },
-      { x: '6PM', y: 32 },
-      { x: '5PM', y: 67 },
-      { x: '4PM', y: 11 },
-      { x: '3PM', y: 43 },
-      { x: '2PM', y: 11 },
-      { x: '1PM', y: 80 },  
-  ]
-  }],
-  chart: {
-    type: 'bar',
-    height: 330
-  },
-  plotOptions: {
-    bar: {
-      barHeight: '100%',
-      distributed: true,
-      horizontal: false,
-      borderRadius: 4,
-      width: 10,
-      dataLabels: {
-        position: 'bottom'
-      }
-    }
-  },
-  colors: [
-    function({ value, seriesIndex, w }) {
-      if (value > 70) {
-        return '#9CD84E'
-      } else if(value>60){
-        return '#FFDE59'
-      }
-      else if(value>50){
-       return '#F99049'
-      } else if(value>40){
-               return '#F65E5F';
-      }else if(value>30){
-        return '#A070B6'
-      } else{
-        return '#A06A7B'
-      }
-    }
-  ],
-  dataLabels: {
-    enabled: false,
-    textAnchor: 'start',
-    style: {
-      colors: ['#fff']
-    },
-    formatter: function (val, opt) {
-      return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
-    },
-    offsetX: 0,
-    dropShadow: {
-      enabled: false
-    }
-  },
-  stroke: {
-    width: 1,
-    colors: ['#fff']
-  },
-  xaxis: {
-    // categories: ['1PM', '2PM', '3PM', '4PM', '5PM', '6PM','8px'],
-    labels: {
-      rotate: 0,
-      style: {
-        fontSize: '12px'
-      }
-    }
-  },
-  yaxis: {
-    labels: {
-      show: true
-    }
-  },
-  legend: {
-    show: false,
-    position: 'bottom',
-    horizontalAlign: 'center',
-    fontSize: '14px',
-    markers: {
-      radius: 12,
-      width: 12,
-      height: 12
-    },
-    itemMargin: {
-      horizontal: 10,
-      vertical: 10
-    },
-  },
-  tooltip: {
-    theme: 'dark',
-    x: {
-      show: false
-    },
-    y: {
-      title: {
-        formatter: function () {
-          return '';
-        }
-      }
-    }
-  }
-};
-
-var chart = new ApexCharts(document.querySelector("#AiqBar"), options);
-chart.render();
-
+// =====================================Chart By Sachin========================
 
       
 var options_polutent = {
   series: [{
       name: 'Acceptable value',
-      data: [44, 55, 41, 67, 22, 43,11,44, 55, 41, 67, 22, 43,11,55, 41, 67, 22, 43,11]
+      data: [44, 55, 41, 67, 22, 43,11,44, 55, 41, 67, 22, 43,11,55, 41, 67, 22, 43,11,22,45,56,78]
     }, {
       name: 'Above acceptable value ',
-      data: [0, 23, 20, 8, 0, 27,22,0, 23, 0, 8, 13, 0,22,23, 0, 8, 13, 0,22]
+      data: [0, 23, 20, 8, 0, 27,22,0, 23, 0, 8, 13, 0,22,23, 0, 8, 13, 0,22,76,34,23,11]
     }],
   chart: {
   type: 'bar',
-  height: 330,
+  height: 300,
   stacked: true,
 },
 plotOptions: {
   bar: {
     horizontal: false,
+    borderRadius: 0,
+    borderRadiusApplication: 'around',
+    borderRadiusWhenStacked: 'last',
     dataLabels: {
       total: {
         enabled: false,
@@ -8078,12 +7968,10 @@ stroke: {
   width: 1,
   colors: ['#fff']
 },
-// title: {
-//   text: 'Fiction Books Sales'
-// },
+
 colors: ['#004B87','#F65E5F'],
 xaxis: {
-  categories: ['1PM', '2PM', '3PM', '4PM','6PM', '7PM','1PM', '2PM', '3PM', '4PM','6PM', '7PM','1PM', '2PM', '3PM', '4PM','6PM', '7PM','6PM', '7PM'],
+  categories: categoriesData,
 },
 yaxis: {
   title: {
@@ -8114,12 +8002,16 @@ chart.render();
 
 var options_aiq_line = {
   series: [{
-  name: 'Sales',
-  data: [0,10,20,30,40,50,30,28,20,10,20,46,23,78,80,]
+  name: 'AQI',
+  data: [0,10,20,30,40,50,30,28,20,10,20,46,23,78,80,100]
 }],
   chart: {
-  height: 330,
+  height: 300,
+  width: '90%',
   type: 'area',
+  toolbar: {
+    show: false
+  },
 },
 dataLabels: {
   enabled: false
@@ -8136,6 +8028,10 @@ xaxis: {
       return opts.dateFormatter(new Date(timestamp), 'MMM')
     }
   }
+  
+},
+grid: {
+  show: false, // hide grid
 },
 fill: {
   type: 'gradient',
@@ -8152,7 +8048,24 @@ fill: {
 yaxis: {
   min: 0,
   max: 100
-}
+},
+responsive: [
+  {
+    breakpoint: 1350,
+    options: {
+      chart: {
+        height: 250 
+      }
+    },
+    breakpoint: 1400,
+    options: {
+      chart: {
+        height: 250  
+      }
+    },
+ 
+  }
+]
 };
 
 var chart = new ApexCharts(document.querySelector("#options_aiq_line"), options_aiq_line);
@@ -8160,92 +8073,75 @@ chart.render();
 
 
 
-var options_line_polutent = {
-  series: [
-  {
-    name: "High - 2013",
-    data: [28, 29, 33, 36, 32, 32, 33]
-  },
-  {
-    name: "Low - 2013",
-    data: [12, 11, 14, 18, 17, 13, 13]
-  }
-],
-  chart: {
-  height: 330,
-  type: 'line',
-  dropShadow: {
-    enabled: false,
-    color: '#000',
-    top: 18,
-    left: 7,
-    blur: 10,
-    opacity: 0.2
-  },
-  toolbar: {
-    show: false
-  }
-},
-colors: ['#77B6EA', '#545454'],
-dataLabels: {
-  enabled: false,
-},
-stroke: {
-  curve: 'smooth'
-},
-grid: {
-  row: {
-    colors: ['#f3f3f3', 'transparent'],
-    opacity: 0.5
-  },
-},
-markers: {
-  size: 1
-},
-xaxis: {
-  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-},
+// var options_line_polutent = {
+//   series: [
+//   {
+//     name: "High - 2013",
+//     data: [28, 29, 33, 36, 32, 32, 33]
+//   },
+//   {
+//     name: "Low - 2013",
+//     data: [12, 11, 14, 18, 17, 13, 13]
+//   }
+// ],
 
-yaxis: {
-  min: 0,
-  max: 100
-},
- legend: {
-  show:true,
-    position: 'top',
-    horizontalAlign: 'right',
-    floating: true,
-    offsetY: -25,
-    offsetX: -5
-  }
-};
+//   chart: {
+//   height: 300,
+//   type: 'line',
+//   dropShadow: {
+//     enabled: false,
+//     color: '#000',
+//     top: 18,
+//     left: 7,
+//     blur: 10,
+//     opacity: 0.2
+//   },
+//   toolbar: {
+//     show: false
+//   }
+// },
+// colors: ['#77B6EA', '#545454'],
+// dataLabels: {
+//   enabled: false,
+// },
+// stroke: {
+//   curve: 'smooth'
+// },
+// grid: {
+//   row: {
+//     colors: ['#f3f3f3', 'transparent'],
+//     opacity: 0.5
+//   },
+// },
+// markers: {
+//   size: 1
+// },
+// xaxis: {
+//   categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+//   lines: {
+//     show: false,
+//   }
+// },
 
-var chart = new ApexCharts(document.querySelector("#options_line_polutent"), options_line_polutent);
-chart.render();
+// yaxis: {
+//   min: 0,
+//   max: 100,
+//   lines: {
+//     show: false,
+//   }
+// },
+//  legend: {
+//   show:true,
+//     position: 'top',
+//     horizontalAlign: 'right',
+//     floating: true,
+//     offsetY: -25,
+//     offsetX: -5
+//   }
+// };
+
+// var chart = new ApexCharts(document.querySelector("#options_line_polutent"), options_line_polutent);
+// chart.render();
 
 
-var options_radar = {
-  series: [{
-  name: 'Series 1',
-  data: [80, 50, 30, 40, 100, 20,10,70,60,75,66,80],
-}],
-  chart: {
-  height: 330,
-  type: 'radar',
-},
-stroke: {
-  curve: 'smooth'
-},
-plotOptions: {
-  radar: {
-    colors: ['#FF5733'], 
-  }
-},
 
-xaxis: {
-  categories: ['Jan', 'Feb', 'March', 'April', 'May', 'June','July','Aug','Sep','Oct','Nov','Dec']
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#options_radar"), options_radar);
-chart.render();

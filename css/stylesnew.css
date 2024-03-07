@@ -101,6 +101,10 @@ a{
 .small-13{
     font-size: 13px;
 }
+.text-uppercase{
+    text-transform: uppercase;
+}
+
 /* ----------------End Common CSS */
 /*-------------------- Page loader Css */
 .page-loader {
@@ -296,7 +300,9 @@ header.fadeout nav.navbar .navbar-nav li a.active {
     font-family: 'Gothammedium';
     font-weight: 600;
 }
-
+header.fadeout nav.navbar .search-block span{
+    color: var(--blue)!important;
+}
 header .search-block .search-collapse {
     position: absolute;
     left: 0;
@@ -564,8 +570,8 @@ video {
 }
 
 .overlay {
-    background-color: var(--blue);
-    opacity: .6;
+    background-color: #5b6770b3;
+    /* opacity: .6; */
     position: absolute;
     bottom: 0;
     left: 0;
@@ -578,7 +584,7 @@ video {
 .banner-section .carousel-caption {
     position: absolute;
     right: 4%;
-    top: 10%;
+    top: 15%;
     left: 4%;
     color: #fff;
     text-align: center;
@@ -591,9 +597,11 @@ video {
 .banner-section .carousel-caption .h5
 {
     text-transform: uppercase;
-    font-size: 45px;
+    font-size: 42px;
     font-family: 'Gothambold';
-    margin-bottom: 30px;
+    margin-top: 6px;
+    position: absolute;
+    top: 50px;
 }
 
 .banner-section .carousel-caption p {
@@ -604,44 +612,96 @@ video {
 }
 .banner-section .carousel-caption .h6{
     font-family: 'GothamMedium';
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
 }
 .circular-width{
-    width: 260px; 
+    width: 250px; 
     height: 250px;
 }
 .weather-card {
-   text-align: center;
+    text-align: center;
     position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    top: 93px;
+    /* left: 0; */
+    /* transform: translate(-50%, -50%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 12px;
+}
+.weather-card .date-shift{
+    margin-left: 10px;
 }
 
-.weather-card h2 {
+.weather-card h2, .weather-card-map h2 {
     font-size: 13px;
     color: var(--yellow);;
     font-family: 'GothamMedium';
 }
 
-.weather-card h5 {
+.weather-card h5, .weather-card-map h5 {
     font-size: 30px;
     color: var(--yellow);
     font-family: 'Gothamblack';
 }
-.weather-card h6 {
+.weather-card h6, .weather-card-map h6{
     font-size: 13px;
     font-family: 'GothamMedium';
     color: #fff;
 }
 
-.weather-card .date {
-    font-size: 7px;
+.weather-card .date, .weather-card-map .date {
+    font-size: 9px;
     font-family: 'GothamMedium';
     color: #fff;
-   
+    text-align: left;
 }
+.home-slider-animation .welcome-text{
+    visibility: inherit;
+    overflow: hidden;
+    /* border-right: 0.15em solid orange; */
+    white-space: nowrap;
+    margin: 0 auto;
+    -webkit-animation: typing 3s steps(70, end), blink-caret .75s step-end infinite;
+    animation: typing 3s steps(70, end), blink-caret .75s step-end infinite;
+    width: 0;
+    display: block;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+.home-slider-animation .emirates-text{
+    font-size: 28px;
+    visibility: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    -webkit-animation: typing 2s steps(50, end), pushDown 2s;
+    animation: typing 2s steps(50, end), pushDown 2s;
+    width: 0;
+    display: block;
+    animation-delay: 2s, 3s;
+    animation-fill-mode: forwards;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+  @keyframes pushDown {
+    0% { margin-top: 0; }
+    100% { margin-top: 55px; }
+  }
+
+  .quotes {display: none; margin-bottom: 0;}
 /* End Video Slider Section--------------------- */
 
 
@@ -651,47 +711,70 @@ video {
 }
 
 .drop-arrow-icon{
-    width: 2em;
+    /* width: 2em;
     height: 2em; 
-    background-color: transparent; z-index: 80; 
-    bottom: 45px; 
+    background-color: transparent;  */
+    z-index: 80; 
+    bottom: 35px; 
     position: absolute; 
-    border-width: 0 0.25em 0.25em 0; 
+    /* border-width: 0 0.25em 0.25em 0; 
     border-style: solid; 
-    border-color: #fff; 
-    animation: scrolldown-arrow 1.2s ease-in-out infinite 0.15s;
-    left: 50%;
-    transform: translateY(0%) rotate(45deg);
-    opacity: 0;
+    border-color: #fff;  */
+    /*  */
+    left: 49%;
+    animation: bounce 2s infinite;
+    /* animation: scrolldown-arrow 1.2s ease-in-out infinite 0.15s;
+    transform: translateY(0%) rotate(1deg); */
+    /*  */
+    /* 
+    opacity: 0; */
 }
 .drop-arrow-icon1{
-    width: 2em; 
+    /* width: 2em; 
     height: 2em; 
-    background-color: transparent; z-index: 80; 
-    bottom: 65px; 
+    background-color: transparent;  */
+    z-index: 80; 
+    bottom: 57px; 
     position: absolute; 
-    border-width: 0 0.25em 0.25em 0; 
+    animation: bounce 2s infinite;
+    /* animation: scrolldown-arrow 1.2s ease-in-out infinite;
+    transform: translateY(0%) rotate(1deg); */
+    /* border-width: 0 0.25em 0.25em 0; 
     border-style: solid; 
     border-color: #fff; 
-    animation: scrolldown-arrow 1.2s ease-in-out infinite;
-    left: 50%;
-    transform: translateY(0%) rotate(45deg);
-    opacity: 0;
+     */
+    left: 49%;
+    /*  */
+    /* 
+    opacity: 0; */
 }
 
 @keyframes scrolldown-arrow {
+    
     0%{
-        transform: translateY(20%) rotate(45deg);
+        transform: translateY(20%) rotate(1deg);
         opacity: 0.7;
     }
     50%{
-        transform: translateY(0%) rotate(45deg);
+        transform: translateY(20%) rotate(1deg);
         opacity: 0.2;
     }
     100%{
-        transform: translateY(20%) rotate(45deg);
+        transform: translateY(20%) rotate(1deg);
         opacity: 0.7;
     }
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+	40% {
+    transform: translateY(-20px);
+  }
+	60% {
+    transform: translateY(-15px);
+  }
 }
 /*------------- End Down Arrow Icon----------------- */
 
@@ -723,6 +806,13 @@ video {
     padding: 20px;
     box-sizing: border-box;
 } */
+.weather-card-map {
+    text-align: center;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .fp-viewing-slide1 header{
     display: none;
 }
@@ -945,43 +1035,48 @@ video {
 .wheather-widget .map-bg-opacity img{
     width: 230px; height: 230px;
 }
-
-.wheather-list {
-    /* display: flex;
-    flex-wrap: wrap;
+.weather-box {
+    text-align: center;
+}
+.weather-box .weather-data {
+    display: flex;
     justify-content: space-between;
-    width: 80%; */
-    margin: 0 auto;
-    text-align: justify;
+    margin-bottom: 10px;
+    margin-top: 14px;
 }
-.wheather-widget .under-wheather-list:nth-child(5){
-    margin-left: 30px;
+
+.weather-box .data-item {
+    flex: 1;
 }
-.wheather-widget h6{
+
+.weather-box .data-item h4 {
+    margin-bottom: 0px;
+    font-family: 'Gothamlight';
     font-size: 13px;
-}
-.under-wheather-list{
     color: #fff;
-    display: inline-block;
-    padding: 8px;
 }
-.under-wheather-list p, .under-wheather-list span sup,  .under-wheather-list span sub{
-    font-family: 'Gothamlight';
-}
-.under-wheather-list span sup,  .under-wheather-list span sub{
-    font-family: 'Gothamlight';
-    font-size: 10px;
-}
-.under-wheather-list span{
+.weather-box .data-item p{
     font-family: 'Gothambold';
     font-size: 25px;
+    color: #fff;
 }
-.under-wheather-list span sub{
-    bottom: 0.2em;
+.weather-box .data-item sub {
+    bottom: 0.2em; font-size: 10px;
 }
-.under-wheather-list span sup {
-    top: -1.5em;
+.weather-box .data-item sup {
+    top: -1.5em; font-size: 10px;
 }
+.weather-line::before{
+    content: '';
+    position: absolute;
+    height: 68%;
+    width: 1px;
+    right: 0px;
+    bottom: -4px;
+    transform: translateY(-50%);
+    background: #fff;
+}
+
 .insight-btn{
     border: 1px solid #fff;
     color: var(--yellow);
@@ -991,6 +1086,16 @@ video {
  background-color: transparent;
  border: 1px solid #fff;
 }
+/* .weather-line::before{
+    content: '';
+    position: absolute;
+    height: 63%;
+    width: 1px;
+    right: 45px;
+    top: 35%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.1);
+} */
 /* ------------End Our Air Quality MAP section Start Css----------------*/
 
 /* ------------Start Insight section Css----------------*/
@@ -1142,8 +1247,8 @@ video {
     font-family: 'GothamMedium';
 }
 .insight .red-c {
-    background: #FFB549;
-    width: 80%;
+    background: var(--lightorange);
+    width: 75%;
 }
 .insight .red-bg {
     display: flex;
@@ -1195,6 +1300,7 @@ video {
 }
 .insight{
     background-color: #fff !important;
+    /* display: none; */
 }
 .insight .slide-content ul{
     padding: 0px;
@@ -1433,9 +1539,9 @@ video {
     background-color: #d7ebf7;
 } */
 
-.insight #radarChart{
-    width: 400px!important;
-    /* height: 530px!important; */
+.insight #radarChart {
+    width: 360px !important;
+    height: 330px !important;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
@@ -1470,21 +1576,17 @@ video {
 .insight .graph-duration-filters .btn{
     border: 0 !important;
     background: #e6edf3;
-    color: #004b87;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 18px;
-    letter-spacing: 0em;
+    color: var(--blue);
     width: 135px;
-    text-align: left;
     padding: 10px;
+    font-size: 16px;
+    text-align: left;
+    font-family: 'Gothambold'
 }
+.in
 .insight .graph-duration-filters >.btn-check:checked+.btn{
-   color: #004b87;
+   color: var(--blue);
    font-size: 16px;
-   font-weight: 700;
-   line-height: 18px;
-   letter-spacing: 0em;
    text-align: left;
 
 }
@@ -1519,38 +1621,38 @@ video {
     color: #9c9c9c;
 }
 .insight .ad-station-aqi-pollu-section .bottom-graph-aqi-filters >.btn-check:checked+.btn{
-    color: #0f77d0;
+    color: var(--blue);
  }
  .insight .graph-duration-filters .date-btn{
     font-size: 20px;
     color: #888;
 }
-.insight .graph-duration-filters {
+/* .insight .graph-duration-filters {
     display: flex;
     list-style: none;
     gap: 10px;
     justify-content: flex-end;
     position: absolute;
-    right: 0%;
-    top: -15%;
-}
+    right: 2%;
+    top: 10px;
+} */
 .insight .dropdown-toggle:after { content: none }
 .insight .date-box {
     position: relative;
-  }
+}
  
-  .insight .calendar-icon {
+.insight .calendar-icon {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-  }
-  .insight #datepicker {
+    }
+    .insight #datepicker {
     display: none;
-  }
-  .insight ul.legend li span.marker_pol_ac:before {
-    background: #004B87;
+    }
+    .insight ul.legend li span.marker_pol_ac:before {
+    background: var(--blue);
     height: 10px;
     width: 10px;
     content: '';
@@ -1577,14 +1679,20 @@ video {
     line-height: 48px;
  
 }
-.insight .hour_box ul {
-    margin: 0px;
-}
+
+
 .insight .hour_box ul li {
-    height: 120px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    max-width: 45%;
+    max-height: 130px;
 }
 .insight .quality-index-wrapper {
     min-height: 79px;
+    
 }
 .insight ul.legend_radar li span.marker_good:before {
     background: #9CD84E;
@@ -1899,8 +2007,11 @@ color: var(--green);
     border-radius: 12px !important;
 }
 .insight .nav-pills .nav-link.active {
-    background: #004B87;
+    background: var(--blue);
     border-radius: 0;
+    min-width: 70px;
+    text-align: center;
+    color: var(--white);
 }
 .insight #pills-tab {
     box-shadow: 0px 6px 16.399999618530273px 0px #01123514;
@@ -1927,18 +2038,17 @@ color: var(--green);
     justify-content: center;
 }
 .insight ul#myTabs li a {
-    background: #004b876b;
+    background: #E6EDF3;
     margin: 0px 2px;
     padding: 1px 10px;
-    color: #333;
-    opacity: .4;
+    color: #a3a3a3;
     font-size: 15px;
     border-radius: 4px;
 }
-.insight a.nav-link.active {
-    color: #004B87 !important;
+.insight #myTabs a.nav-link.active {
+    color: var(--blue) !important;
     opacity: 1 !important;
-    font-weight: 500;
+    font-family: 'GothamMedium';
 }
 
 .insight .hour_box ul {
@@ -1949,6 +2059,7 @@ color: var(--green);
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 .insight .hour_box ul li {
     flex: 50%;
@@ -1963,11 +2074,11 @@ color: var(--green);
 
 .insight .hour_box ul li p {
     font-size: 16px;
-    font-weight: 400;
-    line-height: 15px;
-    letter-spacing: 0.01em;
+    font-family: 'GothamMedium';
     text-align: center;
-    color: #004B87;
+    color: var(--blue);
+    margin: 0;
+    text-transform: capitalize;
 }
 .insight .hour_box ul li span {
     font-size: 16px;
@@ -1975,7 +2086,7 @@ color: var(--green);
     line-height: 15px;
     letter-spacing: 0.01em;
     text-align: center;
-    color: #004B87;
+    color: var(--blue);
 }
 .insight .red_content p {
     font-size: 16px;
@@ -2026,6 +2137,7 @@ color: var(--green);
     align-items: center;
     justify-content: center;
     position: relative;
+    margin: 0;
 }
 .insight span.marker_legend {
     position: relative;
@@ -2223,6 +2335,351 @@ color: var(--green);
 }
 
 
+/* new css */
+.insight .quality-index-wrapper-h2 h3 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: left;
+    font-family: 'GothamMedium';
+    text-transform: capitalize;
+}
+.insight .quality-index-wrapper-h2 h2 {
+       font-size: 21px;
+       text-align: left;
+       padding-bottom: 15px;
+       text-transform: uppercase;
+       font-family: 'GothamMedium';
+}
+/* .insight #radarChart{
+    width: 350px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    height: 350px !important;
+} */
+.insight .hour_box ul li {
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+.insight .hour_box ul li span {
+    font-family: 'GothamMedium';
+    color: #004B87;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+}
+/* .insight .hour_box ul li p {
+    font-family: 'GothamMedium';
+} */
+.insight .hour_box ul li {
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 165px;
+    justify-content: center;
+    width: 45%;
+    max-width: 45%;
+}
+.insight .hour_box ul {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    margin: auto;
+    width: 60%;
+}
+.insight .hour_box li h3 {
+    font-family: 'Gothambold';
+}
+.insight ul#pills-tab li a img {
+    width: 24px;
+    height: 20px;
+}
+.insight #pills-tab .nav-item .nav-link.active #inactiveImg {
+    display: none;
+}
+.insight #pills-tab .nav-item .nav-link.active #activeImg {
+    display: block;
+}
+.insight #activeImg {
+    display: none;
+}
+.insight .quality-index-wrapper {
+    margin-bottom: 10px;
+}
+
+.insight .hour_box li h3 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #004B87;
+}
+
+
+/* ================4 March 2024============= */
+.insight .tab_shado {
+    box-shadow: 0px 9px 20px 0px #0112350D;
+    padding: 30px 10px;
+    position: relative;
+}
+.insight .calendar-icon{
+    z-index: 99;
+}
+.insight ul.dropdown-menu.dropdown-change.dropdown-menu-start.metero-dropdown.show {
+    border-radius: 0px;
+    padding: 2px;
+    border: 1px solid rgba(137, 141, 141, 0.2);
+}
+.insight ul.dropdown-menu.dropdown-change.dropdown-menu-start.metero-dropdown.show li a {
+    color: rgba(17, 17, 17, 1);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+.insight #carouselExampleControls .carousel-item{
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.insight .radar_section .quality-index-wrapper-h2 h2 {
+    min-height: 65px;
+}
+.insight .apexcharts-bar-series.apexcharts-plot-series  .apexcharts-series path {
+    clip-path: inset(0% 0% -1% 0% round 4px);
+  }
+  
+.insight .quality-index-wrapper-h2 h3 {
+    padding-left: 22px;
+}
+.insight .grid-value {
+    display: flex;
+    width: 560px;
+    margin: auto;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    padding-top: 10px;
+}
+.insight .grid-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    grid-area: 50px;
+}
+.insight .mult-value {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between;
+}
+.insight .mult-value strong {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    font-family: 'GothamMedium';
+}
+.insight .mult-value p {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    margin: 0px;
+    font-family: 'GothamMedium';
+    color: #33333366;
+}
+.insight .grid-upper p {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    margin: 0px;
+    font-family: 'GothamMedium';
+    color: #000;
+}
+.insight .mult-value-tab {
+    display: flex;
+    padding: 2px 12px;
+    border: 1px solid rgba(137, 141, 141, 1);
+    align-items: center;
+    gap: 8px;
+    border-radius: 3px ;
+}
+.insight .mult-value-tab p{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    text-align: left;
+    color: #9CD84E;
+    margin: 0px;
+}
+.insight .mult-value-tab hr{
+    width: 2px ;
+    background-color: #898D8D;
+    height: 60%;
+}
+.insight .mult-value-tab strong {
+    font-size: 12px;
+    font-weight: 350;
+    line-height: 13px;
+    text-align: left;
+    font-family: 'GothamMedium';
+}
+
+.insight .Pollutant-aqi-tabs button{
+    border: 0px;
+    background: rgba(0, 75, 135, 1 / 12%);
+    padding: 5px 10px;
+    width: 135px;
+    text-align: center;
+    
+}
+.insight .Pollutant-aqi-tabs{
+    display: flex;
+    gap: 2px;
+    width: 400px;
+}
+.insight .Pollutant-aqi-tabs button.active {
+    background: rgba(0, 75, 135, 1);
+    color: #fff;
+}
+.insight .aqi-content {
+    top: -10.7%;
+    border: 1px solid rgba(137, 141, 141, 1);
+    border-radius: 3px;
+    padding: 2px 10px;
+}
+.insight .aqi-content.mult-value-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    top: -14%;
+}
+.insight ul.dropdown-menu.dropdown-change.dropdown-menu-start.metero-dropdown.show li a.active{
+    background-color: #fff !important;
+    color: rgba(0, 75, 135, 1);;
+}
+.insight .nav-pills .nav-link {
+    color: #000;
+    font-size: 12px;
+    font-weight: 350;
+    line-height: 13px;
+    text-align: left;
+    font-family: 'GothamMedium';
+    padding: 12px 12px;
+}
+.insight #pills-tab {
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.insight .data-list {
+    max-height: 90vh;
+    overflow: scroll;
+}
+.insight div#carouselExampleControls .fp-overflow {
+    overflow: hidden;
+}
+.insight .slide-content ul .modal-dialog {
+    max-width: 100%;
+    height: 100% !important;
+}
+.insight .slide-content ul .modal-content {
+    background: rgba(0, 75, 135, 0.8);
+    height: 71vh;
+}
+.insight .slide-content ul .modal-body p {
+    color: #fff;
+}
+.modal-backdrop.show {
+    opacity: 0;
+    position: relative;
+}
+.insight button.carousel-control-prev:disabled {
+    opacity: 0.2 !important;
+}
+.insight button.carousel-control-next:disabled {
+    opacity: 0.2 !important;
+}
+.insight .chart-f-content p {
+    padding-top: 10px;
+}
+.insight .ug_content p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #004B87;
+    margin-left: 20px;
+}
+.insight .search-box.d-flex .d-flex {
+    justify-content: end;
+}
+.insight .sorttoggle button.btn-close {
+    margin-left: 33%;
+}
+.insight .search-box.d-flex .d-flex h6 {
+    font-size: 16px;
+    font-weight: 350;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: left;
+    font-family: 'GothamMedium';
+}
+
+.insight .search-box .dropdown-toggle:hover {
+    opacity: 0.2;
+}
+.insight .data-list label.list-group-item:hover {
+    background: #004B870D;
+}
+.insight ul.legend li span {
+    color: #333;
+    font-family: Gotham;
+    font-size: 14px;
+    opacity: 1;
+}
+
+/*---------------- 6th March ----------------------- */
+.insightStation{
+    font-size: 13px;
+    text-align: left;
+    font-family: 'Gothamlight';
+    padding: 0 25px;
+    font-weight: 600;
+}
+
+.insight .white-bg {
+    width: 30%;
+}
+.insight .hour_box {
+    height: 100%;
+}
+.insight .polutenat_bar .tab_shado .graph-duration-filters {
+    display: inline-block;
+    float: right;
+}
+.insight #aiq_line .row.pollutant-dropdown-show.graph-duration-filters {
+    display: inline-block;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: -12%;
+}
+.insight #ADstationAqiBarGraph {
+    margin-bottom: 15px;
+}
+
+
 /* ------------End  Insight section Css----------------*/
 
 /* ------------Start PROJECTS section Start Css----------------*/
@@ -2248,6 +2705,9 @@ color: var(--green);
     border-radius: 4px;
     font-family: 'GothamMedium';
     margin-left: 0;
+}
+.ead-monitoring-project .nav-pills .nav-link:hover{
+    background-color: #004b87a3;
 }
 .ead-monitoring-project .nav-link:hover, .send-btn:hover{
     background: #d0d8de;
@@ -2297,24 +2757,21 @@ color: var(--green);
     cursor: pointer;
     /* position: absolute; */
 }
-.project-slider #prev {
+.project-slider #prev{
     opacity: 0.3;
 }
 .project-slider #next {
     margin-left: 15px;
 }
-/* 
 
-#next {
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
-} */
 
 .project-slider #content {
-    display: grid;
+    /* display: grid;
     grid-gap: 16px;
-    grid-auto-flow: column;
+    grid-auto-flow: column; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     margin: auto;
     box-sizing: border-box;
 }
@@ -2338,6 +2795,11 @@ color: var(--green);
     height: 100vh;
     background-color: #000000a6;
 }
+.project-modal .h-200-scroll{
+    height: 200px;
+    overflow: scroll;
+    padding-right: 15px;
+}
 /* Custom styles for sidebar and modal */
 .sidebar {
     height: 100%;
@@ -2352,14 +2814,18 @@ color: var(--green);
 }
 
 .sidebar button {
-    padding: 0px 9px;
-    font-size: 25px;
+    padding: 0px 0px;
+    font-size: 20px;
     color: #111111;
+    background-color: transparent;
     transition: 0.3s;
     border: 1px solid #111111;
-    width: 36px;
+    width: 30px;
     border-radius: 50px;
-    height: 37px;
+    height: 30px;
+}
+.sidebar button:hover{
+    background-color: #f0f0f0;
 }
 
 /* .sidebar a:hover {
@@ -2380,7 +2846,7 @@ color: var(--green);
     height: 350px;
 }
 .p12{
-    padding: 22px;
+    padding: 7px 22px 22px 22px;
 }
 .slideDown {
     animation-name: slideDown;
@@ -2410,6 +2876,10 @@ color: var(--green);
       transform: translateY(0%);
     }
   }
+
+.project-slider #content .position-relative{
+    margin-right: 15px;
+}
 /* ------------End PROJECTS section Css----------------*/
 
 /* ------------Start FAQ section Css----------------*/
@@ -2467,6 +2937,11 @@ color: var(--green);
     padding-left: 0;
     padding-right: 0;
 }
+.faqscrolling{
+    height: 545px;
+    overflow: auto;
+    padding-right: 20px;
+}
 /* ------------End  FAQ section Css----------------*/
 
 /* ------------Start Contact us section Css----------------*/
@@ -2505,6 +2980,7 @@ color: var(--green);
     font-size: 1em;
     margin-bottom: 0;
     font-family: 'Gothamlight';
+    font-weight: 600;
 }
 
 .contact-section .left-side::before {
@@ -2615,15 +3091,16 @@ color: var(--green);
 /* ------------Start Footer section Css----------------*/
 .myContentHeight{
     height: 230px;
-    background-image: url('../images/new-images/shutterstock_footernew.png');
-    background-position: center;
-    background-size: cover;
+    
 }
 .footer-container{
     padding-right: 85px;
     padding-left: 40px;
 }
 footer {
+    background-image: url('../images/new-images/shutterstock_footernew.png');
+    background-position: center;
+    background-size: cover;
     padding: 25px 15px 0 15px;
     color: #fff;
     height: auto !important;
@@ -2688,94 +3165,41 @@ footer .copy-rights ul li {
 footer .copy-rights ul li a {
     padding: 1px 18px;
 }
-.footer-container h6{
+.footer-container h6 , .privacy-policy h6{
     font-family: 'GothamMedium';
 }
 /* ------------End Footer section Css----------------*/
-/* new css */
-.insight .quality-index-wrapper-h2 h3 {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 15px;
-    text-align: left;
-    font-family: 'GothamMedium';
-    text-transform: capitalize;
-}
-.insight .quality-index-wrapper-h2 h2 {
-       font-size: 21px;
-       text-align: left;
-       padding-bottom: 15px;
-       text-transform: uppercase;
-       font-family: 'GothamMedium';
-}
-/* .insight #radarChart{
-    width: 350px !important;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    height: 350px !important;
+
+/* ------------Start Privacy Policy section Css----------------*/
+
+/* #privacy-policy-section {
+    background-image: url(../images/new-images/bottom-CircularShape.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 400px;
 } */
-.insight .hour_box ul li {
-    margin-bottom: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
+.privacy-img{
+    position: absolute;
+    width: 350px;
+    top: 17%;
 }
-.insight .hour_box ul li span {
-    font-family: 'GothamMedium';
-    color: #004B87;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 21px;
-    text-align: center;
-}
-.insight .hour_box ul li p {
-    font-family: 'GothamMedium';
-}
-.insight .hour_box ul li {
-    margin-bottom: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 165px;
-    justify-content: center;
-    width: 45%;
-    max-width: 45%;
-}
-.insight .hour_box ul {
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-}
-.insight .hour_box li h3 {
-    font-family: 'Gothambold';
-}
-.insight ul#pills-tab li a img {
-    width: 24px;
-    height: 20px;
-}
-.insight #pills-tab .nav-item .nav-link.active #inactiveImg {
-    display: none;
-}
-.insight #pills-tab .nav-item .nav-link.active #activeImg {
+.privacy-fadeout .navbar-brand.black {
     display: block;
 }
-.insight #activeImg {
-    display: none;
-}
-.insight .quality-index-wrapper {
-    margin-bottom: 10px;
-}
-
-.insight .hour_box li h3 {
-    font-size: 40px;
+.privacy-fadeout nav.navbar .navbar-nav li a {
+    color: var(--blue);
+    padding: 10px 10px !important;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 2s;
+    font-size: 13px;
     font-weight: 700;
-    line-height: 25px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #004B87;
 }
-.insight .hour_box ul li{
-    max-height: 130px;
+.privacy-fadeout nav.navbar .search-block span {
+    color: var(--blue)!important;
 }
+.privacy-fadeout nav.navbar {
+    background-color: #fff;
+    width: 100%;
+}
+/* ------------End Privacy Policy section Css----------------*/

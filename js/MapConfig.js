@@ -1,6 +1,6 @@
 ﻿var portalUrl = "https://maps.smartgeoapps.com/portal"
 var TrustedDomains = ["enviroportal.ead.ae", "localhost", "atlas.smartgeoapps.com"];
-var WebMapID = "4e0d2a1f471248e3a0467efb922667bf"//"56ea590cd2dd4a5590e52740dd98251b";//"dea822cbc7b94439aeb83248cfb9cf5c";
+var WebMapID = "d1649c5b42be4e5085db2afd634226ff";
 var MonitoringStationsAPI = "https://atlas.smartgeoapps.com/server/rest/services/AIrQuality/MonitoringStations/MapServer/0";
 var AirQualityService1 = "https://atlas.smartgeoapps.com/AirQualityWS/AQMS.asmx";
 var AirQualityService = "https://adairqualityapi.ead.ae/";

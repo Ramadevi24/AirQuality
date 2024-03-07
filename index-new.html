@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +18,7 @@
 	 <link rel="stylesheet" href="./css/material-icon.css" />
 	 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
 	 <link href="./css/stylesnew.css" rel="stylesheet">
+	 <link href="./css/responsive.css" rel="stylesheet">
 	 <!-- Google tag (gtag.js) -->
 	 <script async src="https://www.googletagmanager.com/gtag/js?id=G-529G4HVEPS"></script>
 	 <script>
@@ -132,29 +132,43 @@
 			<div class="carousel-inner">
 			<div class="carousel-item active">
 				<div class="video-wrapper video-container">
-					<video loop muted data-autoplay id="myVideo">
+					<img src="./images/new-images/BG.png">
+					<!-- <video loop muted data-autoplay id="myVideo">
 						<source src="./images/banner.mp4" type="video/mp4">
-					</video>
+					</video> -->
 				</div>
-				<div class="overlay"></div>
-				<div class="carousel-caption d-none-0 d-md-block-0 ">
-					<p class="h5 mb-1 quotes">
-						
-						<span  class="txt-rotate"  data-period="2000" data-rotate='[  "Air Quality" ]'></span>
-					</p>
-					<p class="mb-3 mt-4">
+				<!-- <div class="overlay"></div> -->
+				<div class="carousel-caption home-slider-animation d-none-0 d-md-block-0 ">
+					<h3 class="text-uppercase welcome-text">WELCOME TO</h3>
+					<!-- <p class="h5 mb-1 quotes">
+						Air Quality -->
+						<!-- <span  class="txt-rotate"  data-period="2000" data-rotate='[  "Air Quality" ]'></span> -->
+					<!-- </p> -->
+					<p class="h5 quotes">Air Quality</p>
+					<p class="h5 quotes">Air Quality</p>
+					<p class="h5 quotes">Air Quality</p>
+					<p class="h5 quotes">Air Quality</p>
+					<p class="h5 quotes">Air Quality</p>
+					<p class="h5 quotes">Air Quality</p>
+					<h4 class="text-uppercase emirates-text">Abu Dhabi Emirate</h4>
+					<!-- <p class="mb-3 mt-4">
 						Air quality, critical for both human and environmental health, is influenced by industrial, vehicular, agricultural, and natural sources. Monitoring systems, including the Air Quality Index (AQI), play a crucial role in informing pollution control strategies and health-related interventions. Ensuring high air quality is fundamental to the well-being of ecosystems and populations.
+					</p> -->
+					<p class="mb-2 mt-5 h6 six-resolution-mt30">
+						Nearest Station: Khalifa City
 					</p>
-					<p class="mb-2 mt-4 h6">
-						Average AQI value for Abu Dhabi
-					</p>
-					<div class="mb-2 mt-2 position-relative">
+					<div class="mb-2 mt-4 position-relative six-resolution-mt10">
 						<img src="./images/new-images/Circular-Shape.png" class="img-fluid circular-width">
 						<div class="weather-card">
-							<h2 class="mb-0">Moderate</h2>
-							<h5 class="mb-0" id="averageAqi"></h5>
-							<h6 class="mb-1">AQI</h6>
-							<h4 class="mb-0 date" id="currentDate"></h4>
+							<div>
+								<h2 class="mb-0" id="averageAqiStatus"></h2>
+								<h5 class="mb-0" id="averageAqi"></h5>
+								<h6 class="mb-1">AQI</h6>
+							</div>
+							<div class="date-shift">
+								<h4 class="mb-0 date" id="currentDate"></h4>
+							</div>
+							
 						</div>
 					</div>
 					
@@ -163,15 +177,19 @@
 			</div>
 		</div>
 		<div class="down-arrow">
-			<div class="drop-arrow-icon down-arrow-bg"></div>
-			<div class="drop-arrow-icon1 down-arrow-bg"></div>
+			<div class="drop-arrow-icon down-arrow-bg">
+				<img src="./images/new-images/arrow-down.png" width="30">
+			</div>
+			<div class="drop-arrow-icon1 down-arrow-bg">
+				<img src="./images/new-images/arrow-down2.png" width="30">
+			</div>
 		</div>
 	</div>
 	<div class="section air-map-container" id="section1">
 	    <div class="air-map-col col-md-12">
-			<div class="map-block position-relative">
+			<div class="map-block position-relative" id="mapBlock">
 			  <!-- 30-Jan-2024 -- hide iframe and added image only -->
-			  <img src="./images/new-images/MapBackground.png" class="img-fluid" width="100%" height="570">
+			  <!-- <img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution" width="100%" height="570"> -->
 			  <!-- <iframe
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2214653.7652781364!2d53.874778068933466!3d24.266467525377156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1698083632515!5m2!1sen!2sin"
 				width="100%" height="556" style="border:0;" allowfullscreen="" loading="lazy"
@@ -191,26 +209,46 @@
 				<div class="wheather-widget">
 					<h6 class="text-white text-center"> Nearest station: Khalifa City </h6>
 					<div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
-						<img src="./images/new-images/Circular-Shape.png" class="img-fluid">
-						<div class="weather-card">
+						<img src="./images/new-images/mapCircular.png" class="img-fluid">
+						<div class="weather-card-map">
 							<h2 class="mb-0">Moderate</h2>
 							<h5 class="mb-0">70</h5>
 							<h6 class="mb-1">AQI</h6>
 						</div>
 					</div>
-					<div class="wheather-list">
-						<div class="under-wheather-list">
+					<div class="weather-box">
+						<div class="weather-data">
+							<div class="data-item weather-line position-relative">
+								<h4>Wind Speed</h4>
+								<p class="mb-0">10<sub>km/h</sub></p>
+							</div>
+							<div class="data-item">
+								<h4>Wind Direction</h4>
+								<p class="mb-0">NE</p>
+							</div>
+						</div>
+						<div class="weather-data">
+							<div class="data-item weather-line position-relative">
+								<h4>Humidity</h4>
+								<p class="mb-0">55<sub>%</sub></p>
+							</div>
+							<div class="data-item">
+								<h4>Temperature</h4>
+								<p class="mb-0">35<sup>o</sup><sub>C</sub></p>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="wheather-list">
+						<div class="under-wheather-list weather-line">
 							<p class="mb-0">Wind Speed</p>
 							<span>10<sub>km/h</sub></span>
 						</div>
 						<div class="under-wheather-list">
 							<p class="mb-0">Wind Direction</p>
-							<span>NE</span>
-						</div>
-						<div class="under-wheather-list">
-							<p class="mb-0">Wind Direction</p>
 							<span>35<sup>o</sup><sub>C</sub></span>
 						</div>
+					</div>
+					<div class="wheather-list">
 						<div class="under-wheather-list">
 							<p class="mb-0">Humidity</p>
 							<span>55<sub>%</sub></span>
@@ -219,7 +257,7 @@
 							<p class="mb-0">Air Pressure</p>
 							<span>1000<sub>mb</sub></span>
 						</div>
-					</div>
+					</div> -->
 					<div class="text-center">
 						<button class="button insight-btn">More Insights</button>
 					</div>
@@ -321,706 +359,831 @@
 		</div>
 	</div>
 	<div class="section insight" id="section2">
-		<div class="row align-items-flexstart insight_section">
-			<div class="col-lg-3 col-md-12">
-				<div class="data-sort_sidebar">
-					<h2>Choose a city to access insights on the
-						Air Quality Index</h2>
-					<div class="search-box d-flex">
-						<div class="p-input position-relative">
-							<input type="text" placeholder="Search..."><span><img
-									src="./images/new-images/search_icon.png" alt=""></span>
-						</div>
-						<img class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" src="./images/new-images/sort-icon.png" width="30" alt="sort icon">
-						<ul class="dropdown-menu sorttoggle" aria-labelledby="dropdownMenuButton1">
-							<div class="d-flex">
-								<h6>Sort</h6><button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<li><input type="checkbox">
-								<p class="dropdown-item">Nearest to me</p>
-							</li>
-							<li><input type="checkbox" name="" id="">
-								<p class="dropdown-item">AQI Ranking
-									action</p>
-							</li>
-							<li><input type="checkbox" name="" id="">
-								<p class="dropdown-item">Alphabetical Order</p>
-							</li>
-						</ul>
-					</div>
-					<!-- <div class="check-content d-flex">
-						<input type="checkbox">
-						<p>Overall air quality in Abu Dhabi</p>
-					</div> -->
-					<div class="data-list">
-						<div class="list-group">
-							<label class="list-group-item">
-								<span class="numbers number"> <strong>1</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number2"> <strong>2</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number3"> <strong>3</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number4"> <strong>4</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number5"> <strong>5</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number6"> <strong>6</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number7"> <strong>7</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-							<label class="list-group-item">
-								<span class="numbers number8"> <strong>8</strong> </span>
-								<div class="list-content">
-									<div class="inner_list-content">
-										<p>Downtown Abu Dhabi</p>
-										<span>AQI 50</span>
-									</div>
-									<div class="dis-content">
-										<span>~ 10 km</span>
-									</div>
-								</div><input type="radio" name="options" id="option1" autocomplete="off"
-									class="float-end">
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-9 col-md-12">
-				<div class="row">
-					<div class="col-lg-12 col-md-12">
-						<div class="silde-dv">
-							<div id="carouselExampleControls" class="carousel slide " data-bs-touch="false" data-bs-interval="false">
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<div class="row equal-height-row d-flex flex-wrap">
-											<div class="col-lg-5 d-flex  
-											flex-column  
-											justify-content-between">
-												<div class="quality-index-wrapper-h2">
-													<h3>Station: Khalifa City</h3>
-													<h2>aIR quality INDEX</h2>
-												</div>
-												<div class="main-box">
-
-													<div class="index-content d-flex">
-														<div class="number-index">
-															<p><strong>70</strong></p>
-															<p>Unhealthy for Sensitive Groups</p>
-															<h6 class="text-center color-yellow small-13">
-																<span>Babies And Sensitive Persons Should Stay Indoors</span>
-															</h6>
-														</div>
-														<div class="pollutant_dv">
-															<h3>Main pollutant </h3>
-															<div class="red-bg">
-																<div class="red-c">
-																	<p>Sulphur Dioxide, SO2</p>
-																</div>
-																<div class="white-bg">
-																	<p class="color-yellow">55ug/m3</p>
-																</div>
-															</div>
-														</div>
-														<div class="Causes-wrapper">
-															<h3>Causes</h3>
-															<div class="Causes-img mt-3">
-																<div class="text-center">
-																	<img src="./images/new-images/Causes1.png" alt="">
-																	<p class="mt-2">
-																		Sand Storm
-																	</p>
-																</div>
-																<div class="text-center">
-																	<img src="./images/new-images/Causes2.png" alt="">
-																	<p class="mt-2">
-																		High Traffic
-																	</p>
-																</div>
-																
-															</div>
-														</div>
-														<div class="activities-wrapper">
-															<h3>Activities</h3>
-															<div class="activities-imgs mt-3">
-																<div class="text-center"> 
-																	<img src="./images/new-images/Activities1.png" alt="">
-																	<p class="mt-2">
-																		Enjoy Some Indoor Fun
-																	</p>
-																</div>
-																<div class="text-center"> 
-																	<img src="./images/new-images/Activities2.png" alt="">
-																	<p class="mt-2">
-																		Being Indoor is the Best option
-																	</p>
-																</div>
-																<div class="text-center"> 
-																	<img src="./images/new-images/Activities3.png" alt="">
-																	<p class="mt-2">
-																		Being Indoor is the Best option
-																	</p>
-																</div>
-																<div class="text-center"> 
-																	<img src="./images/new-images/Activities4.png" alt="">
-																	<p class="mt-2">
-																		Being Indoor is the Best option
-																	</p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-											</div>
-											<div class="col-lg-7 d-flex  
-											flex-column  
-											justify-content-between">
-												<div class="quality-index-wrapper-h2">
-													<h2>HEALTH RECOMMENDATIONS</23>
-												</div>
-												<div class="slide-content main-box  ">
-													<p>When the air quality index (AQI) hits orange, red, purple, or
-														maroon levels, it's essential to take proactive measures to
-														safeguard your well-being. Follow these guidelines to
-														minimize the
-														impact of elevated air pollution levels on your health.</p>
-													<ul class="position-relative">
-														<li data-bs-toggle="modal" data-bs-target="#exampleModal">
-															<div class="bg-gray">
-																<img src="./images/new-images/mask1.png"
-																	alt="health-icon">
-															</div>
-															<p>Mask Usage</p><span><img
-																	src="./images/new-images/Exclamation.png"
-																	alt="img"></span>
-														</li>
-														<!-- Modal -->
-														<!-- <div class="modal fade " id="exampleModal" tabindex="-1"
-															aria-labelledby="exampleModalLabel" aria-hidden="true">
-															<div class="modal-dialog">
-																<div class="modal-content">
-																	<div>
-																		<button type="button" class="btn-close"
-																			data-bs-dismiss="modal"
-																			aria-label="Close"><i
-																				class="fa fa-times"
-																				aria-hidden="true"></i></button>
-																	</div>
-																	<div class="modal-body">
-
-																		<img src="./images/new-images/Exaclamation-w.png"
-																			alt="health-icon">
-																		<p><strong>Mask Usage</strong></p>
-																		<p>If outdoor exposure is
-																			unavoidable,consider wearing a mask.
-																			Note that not all masks provide equal
-																			protectionagainst particle pollution.
-																		</p>
-																		<p>Cloth or dust masks may fall short, but
-																			well-fittedN95 or KN95 masks offer
-																			better filtration capabilities and can
-																			be beneficial onhigh AQI days.</p>
-
-																	</div>
-																</div>
-															</div>
-														</div> -->
-														<li>
-															<div class="bg-gray">
-																<img src="./images/new-images/health_kit2.png"
-																	alt="health-icon">
-															</div>
-															<p>Indoor Air Quality Maintenance</p><span><img
-																	src="./images/new-images/Exclamation.png"
-																	alt="img"></span>
-														</li>
-														<li>
-															<div class="bg-gray">
-																<img src="./images/new-images/health_kit3.png"
-																	alt="health-icon">
-															</div>
-															<p>Switching on your Air Purifier</p><span><img
-																	src="./images/new-images/Exclamation.png"
-																	alt="img"></span>
-														</li>
-													</ul>
-
-
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<div class="row equal-height-row d-flex flex-wrap">
-											<div class="col-lg-12 d-flex flex-column  justify-content-between">
-												
-												<div>
-													<div class="container">
-														
-													  
-														<div id="aiqTab" class="tab-content mt-3">
-														  <div>
-															<div class="quality-index-wrapper-h2">
-																<h3>Station: Khalifa City</h3>
-																<h2>aIR quality INDEX</h2>
-																<p>Last refreshed: 1:00 PM (UTC +4)</p>
-															</div>
-															
-															<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-																<li class="nav-item" role="presentation">
-																	<a class="nav-link active"
-																		id="pills-home-tab" data-bs-toggle="pill"
-																		data-bs-target="#pills-home" type="button" role="tab"
-																		aria-controls="pills-home" aria-selected="true">
-																		<img src="./images/new-images/bar_icon.png" alt="" id="activeImg">
-																		<img src="./images/new-images/icon_bar_inactive.png" alt="" id="inactiveImg">
-																	</a>
-																</li>
-																<li class="nav-item" role="presentation">
-																	<a  class="nav-link"
-																		id="pills-pro ile-tab" data-bs-toggle="pill"
-																		data-bs-target="#pills-profile" type="button" role="tab"
-																		aria-controls="pills-profile" aria-selected="false">
-																	<img src="./images/new-images/icon_line_active.png" alt=""  id="activeImg">
-																	<img src="./images/new-images/line_icon.png" alt="" id="inactiveImg">
-																	
-																	</a>
-																</li>
-															</ul>
-															<div class="tab-content" id="pills-tabContent">
-																<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-																	<div class=" row pollutant-dropdown-show graph-duration-filters">
-																				<div class="btn-group me-auto">
-																					<button
-																						class="btn btn-light btn-sm dropdown-toggle"
-																						type="button"
-																						data-bs-toggle="dropdown"
-																						aria-expanded="false"> Hourly
-																					</button>
-																					<div class="date-box">
-																						<input type="date"
-																							class="form-control"
-																							id="datepicker">
-																						<span class="calendar-icon"
-																							id="calendar-icon">
-																							<img src="images/calendar.png"
-																								width="16" height="16" border="0"
-																								id="datePickerImage">
-																						</span>
-																					</div>
-																					<ul
-																						class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
-																						<li>
-																							<a
-																								class="dropdown-item">Hourly</a>
-																						</li>
-																						<li>
-																							<a
-																								class="dropdown-item">Daily</a>
-																						</li>
-																						<!-- <li>
-																					  <a class="dropdown-item">Weekly</a>
-																					</li> -->
-																						<li>
-																							<a
-																								class="dropdown-item">Monthly</a>
-																						</li>
-																						<li>
-																							<a
-																								class="dropdown-item">Yearly</a>
-																						</li>
-
-																					</ul>
-																				</div>
-																				<!-- <div class="col-6 date-box">
-																				  <input type="date">
-																				</div> -->
-																			</div>
-																			<div id="ADstationAqiBarGraph"></div>
-																	<div class="date_row">
-																		<ul>
-																			<li><p>Fab 15 2024</p></li>
-																			<li><p>Fab 16 2024</p></li>
-																		</ul>
-																	</div>
-																	<ul class="legend">
-																		<li><span class="marker_good marker_legend"></span>Good</li>
-																		<li><span class="marker_mod marker_legend"></span>Moderate </li>
-																		<li><span class="marker_unh marker_legend"></span>Unhealthy for sensitive groups</li>
-																		<li><span class="marker_unhh marker_legend"></span>Unhealthy </li>
-																		<li><span class="marker_vunh marker_legend"></span>Very unhealthy </li>
-																		<li><span class="marker_h marker_legend"></span>Hazardous</li>
-																	</ul>
-																</div>
-																
-																<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-																	<div class="aqi-content">
-																		<li><span>AQI</span><p>145 UNHEALTHY FOR
-																			SENSITIVE GROUPS</p></li>
-																	</div>
-																	<ul id="intervalList">
-																		
-																		<li onclick="updateChart('hourly')">Hourly</li>
-																		<li onclick="updateChart('daily')">Daily</li>
-																		<li onclick="updateChart('weekly')">Weekly</li>
-																		<li onclick="updateChart('monthly')">Monthly</li>
-																		<li onclick="updateChart('yearly')">Yearly</li>
-																		<li>
-																			<img src="images/calendar.png" width="16" height="16" border="0" id="datePickerImage" ></a>
-																		</li>
-																	</ul>
-																	<div id="options_aiq_line"></div>
-																	<ul class="legend">
-																		<li><span class="marker_good marker_legend"></span>Good</li>
-																		<li><span class="marker_mod marker_legend"></span>Moderate </li>
-																		<li><span class="marker_unh marker_legend"></span>Unhealthy for sensitive groups</li>
-																		<li><span class="marker_unhh marker_legend"></span>Unhealthy </li>
-																		<li><span class="marker_vunh marker_legend"></span>Very unhealthy </li>
-																		<li><span class="marker_h marker_legend"></span>Hazardous</li>
-																	</ul>
-																</div>
-															</div>
-
-															
-														  </div>
-														</div>
-													  
-														<div id="pm10Tab" class="tab-content mt-3" style="display: none;">
-														  <div>
-															<div class="quality-index-wrapper-h2">
-																<h3>Station: Khalifa City</h3>
-																<h2>aIR quality INDEX</h2>
-																<p>Last refreshed: 1:00 PM (UTC +4)</p>
-															</div>
-															<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-																<li class="nav-item" role="presentation">
-																	<a  class="nav-link active"
-																		id="pills-home-tab1" data-bs-toggle="pill"
-																		data-bs-target="#pills-home1" type="button" role="tab"
-																		aria-controls="pills-home1" aria-selected="true">
-																		<img src="./images/new-images/bar_icon.png" alt="" id="activeImg">
-																		<img src="./images/new-images/icon_bar_inactive.png" alt="" id="inactiveImg">
-																	</a>
-																</li>
-																<li class="nav-item" role="presentation">
-																	<a  class="nav-link"
-																		id="pills-pro ile-tab1" data-bs-toggle="pill"
-																		data-bs-target="#pills-profile1" type="button" role="tab"
-																		aria-controls="pills-profile1" aria-selected="false">
-																		<img src="./images/new-images/icon_line_active.png" alt=""  id="activeImg">
-																		<img src="./images/new-images/line_icon.png" alt="" id="inactiveImg">
-																	</a>
-																</li>
-		
-															</ul>
-															<!-- Content specific to PM10 -->
-															<div class="tab-content" id="pills-tabContent">
-																<div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab1">
-																	<div
-																				class=" row pollutant-dropdown-show graph-duration-filters">
-																				<div class="btn-group me-auto">
-																					<button
-																						class="btn btn-light btn-sm dropdown-toggle"
-																						type="button"
-																						data-bs-toggle="dropdown"
-																						aria-expanded="false"> Hourly
-																					</button>
-																					<div class="date-box">
-																						<input type="date"
-																							class="form-control"
-																							id="datepicker">
-																						<span class="calendar-icon"
-																							id="calendar-icon">
-																							<img
-																								src="images/calendar.png"
-																								width="16" height="16"
-																								border="0"
-																								id="datePickerImage">
-																						</span>
-																					</div>
-																					<ul
-																						class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
-																						<li>
-																							<a
-																								class="dropdown-item">Hourly</a>
-																						</li>
-																						<li>
-																							<a
-																								class="dropdown-item">Daily</a>
-																						</li>
-																						<!-- <li>
-																					  <a class="dropdown-item">Weekly</a>
-																					</li> -->
-																						<li>
-																							<a
-																								class="dropdown-item">Monthly</a>
-																						</li>
-																						<li>
-																							<a
-																								class="dropdown-item">Yearly</a>
-																						</li>
-
-																					</ul>
-																				</div>
-																				<!-- <div class="col-6 date-box">
-																				  <input type="date">
-																				</div> -->
-																			</div>
-																	<div id="chart_polutent"></div>
-																	<ul class="legend">
-																		<li><span
-																				class="marker_pol_ac marker_legend"></span>
-																			Acceptable Value
-																		</li>
-																		<li><span
-																				class="marker_pol_ab_ac marker_legend"></span>Above
-																			Acceptable Value
-																		</li>
-																	</ul>
-																</div>
-																<div class="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile-tab1">
-																	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-																		<li class="nav-item" role="presentation">
-																			<button src="./images/bar_icon.png" class="nav-link active"
-																				id="pills-home-tab1" data-bs-toggle="pill"
-																				data-bs-target="#pills-home1" type="button" role="tab"
-																				aria-controls="pills-home1" aria-selected="true"></button>
-																		</li>
-																		<li class="nav-item" role="presentation">
-																			<button src="./images/line_icon.png" class="nav-link"
-																				id="pills-pro ile-tab1" data-bs-toggle="pill"
-																				data-bs-target="#pills-profile1" type="button" role="tab"
-																				aria-controls="pills-profile1" aria-selected="false"></button>
-																		</li>
-				
-																	</ul>
-																	<div id="options_line_polutent"></div>
-																</div>
-															</div>
-															
-														  </div>
-														</div>
-													  
-														<div id="so2Tab" class="tab-content mt-3" style="display: none;">
-														  <div>
-															<!-- Content specific to SO2 -->
-															SO2 Content
-														  </div>
-														</div>
-													  
-														<div id="coTab" class="tab-content mt-3" style="display: none;">
-														  <div>
-															<!-- Content specific to CO -->
-															CO Content
-														  </div>
-														</div>
-													  
-														<div id="o3Tab" class="tab-content mt-3" style="display: none;">
-														  <div>
-															<!-- Content specific to O3 -->
-															O3 Content
-														  </div>
-														</div>
-													  
-														<div id="no2Tab" class="tab-content mt-3" style="display: none;">
-														  <div>
-															<!-- Content specific to NO2 -->
-															NO2 Content
-														  </div>
-														</div>
-														<ul class="nav " id="myTabs">
-															<li class="nav-item">
-															  <a class="nav-link active"  onclick="toggleDiv('aiqTab')">AIQ</a>
-															</li>
-															<li class="nav-item">
-															  <a class="nav-link"  onclick="toggleDiv('pm10Tab')">PM10</a>
-															</li>
-															<li class="nav-item">
-															  <a class="nav-link"  onclick="toggleDiv('so2Tab')">SO2</a>
-															</li>
-															<li class="nav-item">
-															  <a class="nav-link"  onclick="toggleDiv('coTab')">CO</a>
-															</li>
-															<li class="nav-item">
-															  <a class="nav-link"onclick="toggleDiv('o3Tab')">O3</a>
-															</li>
-															<li class="nav-item">
-															  <a class="nav-link"  onclick="toggleDiv('no2Tab')">NO2</a>
-															</li>
-														  </ul>
-														  <div class="chart-f-content">
-															<p>AQI measures air quality; pollutant trends track changes in air pollution over time.</p>
-														  </div>
-													  </div>
-												</div>
-
-
-
-											</div>
-
-										</div>
-									</div>
-									<div class="carousel-item">
-										<div class="row equal-height-row d-flex flex-wrap">
-											<div class="col-lg-6 d-flex  
-											flex-column  
-											justify-content-between">
-												<div class="quality-index-wrapper-h2">
-													<h3>Station: Khalifa City</h3>
-													<h2>number of hours <br> exceedance per year</h2>
-												</div>
-												<div class="main-box">
-													  <div class="hour_box">
-														<ul>
-															<li>
-																<span>CO</span>
-																<h3>2.1K</h3>
-																<p>hours</p>
-															</li>
-															<li>
-																<span>SO2</span>
-																<h3>5</h3>
-																<p>SO2</p>
-															</li>
-															<li>
-																<span>PM10</span>
-																<h3>6</h3>
-																<p>PM10</p>
-															</li>
-															<li>
-																<span>NO2</span>
-																<h3>110</h3>
-																<p>NO2</p>
-															</li>
-															<li>
-																<span>O3</span>
-																<h3>0</h3>
-																<p>O3</p>
-															</li>
-														</ul>
-													  </div>
-													
-												</div>
-												<!-- <div class="red_content">
-													<p>Exceeding the yearly allotted hours can strain resources and individuals. Monitoring and managing these instances are vital for efficiency and well-being. Optimization strategies can help maintain balance and sustainability.</p>
-												</div> -->
-
-											</div>
-											<div class="col-lg-6 d-flex  
-											flex-column  
-											justify-content-between">
-												<div class="quality-index-wrapper-h2">
-													<h2>our air analytics</h2>
-												</div>
-												
-											<div class="main-box">
-												<canvas id="radarChart" width="300" height="300"
-															class=""></canvas>
-											</div>
-											<!-- <div class="red_content">
-												<p>Exceeding the yearly allotted hours can strain resources and individuals. Monitoring and managing these instances are vital for efficiency and well-being. Optimization strategies can help maintain balance and sustainability.</p>
-											</div> -->
-											</div>
-										</div>
-									</div>
-									<button class="carousel-control-prev" type="button"
-										data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"><i
-												class="fa fa-angle-left" aria-hidden="true"></i></span>
-										<span class="visually-hidden">Previous</span>
-									</button>
-									<button class="carousel-control-next active" type="button"
-										data-bs-target="#carouselExampleControls" data-bs-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"><i
-												class="fa fa-angle-right" aria-hidden="true"></i></span>
-										<span class="visually-hidden">Next</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row align-items-flexstart insight_section">
+      <div class="col-lg-3 col-md-12">
+        <div class="data-sort_sidebar">
+          <h2>Choose a city to access insights on the Air Quality Index </h2>
+          <div class="search-box d-flex">
+            <div class="p-input position-relative">
+              <input type="text" placeholder="Search...">
+              <span>
+                <img src="./images/new-images/search_icon.png" alt="">
+              </span>
+            </div>
+            <img class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" src="./images/new-images/sort-icon.png" width="30" alt="sort icon">
+            <ul class="dropdown-menu sorttoggle" aria-labelledby="dropdownMenuButton1">
+              <div class="d-flex">
+                <h6>Sort</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <li>
+                <input type="checkbox">
+                <p class="dropdown-item">Nearest to me</p>
+              </li>
+              <li>
+                <input type="checkbox" name="" id="">
+                <p class="dropdown-item">AQI Ranking action </p>
+              </li>
+              <li>
+                <input type="checkbox" name="" id="">
+                <p class="dropdown-item">Alphabetical Order</p>
+              </li>
+            </ul>
+          </div>
+          <div class="data-list">
+            <div class="list-group">
+              <label class="list-group-item">
+                <span class="numbers number">
+                  <strong>1</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number2">
+                  <strong>2</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number3">
+                  <strong>3</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number4">
+                  <strong>4</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number5">
+                  <strong>5</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number6">
+                  <strong>6</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number7">
+                  <strong>7</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+              <label class="list-group-item">
+                <span class="numbers number8">
+                  <strong>8</strong>
+                </span>
+                <div class="list-content">
+                  <div class="inner_list-content">
+                    <p>Downtown Abu Dhabi</p>
+                    <span>AQI 50</span>
+                  </div>
+                  <div class="dis-content">
+                    <span>~ 10 km</span>
+                  </div>
+                </div>
+                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="silde-dv">
+              <div id="carouselExampleControls" class="carousel slide " data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                  <div class="quality-index-wrapper-h2">
+                    <h3 class="insightStation">Station: Khalifa City</h3>
+                  </div>
+                  <div class="carousel-item active">
+                    <div class="container">
+                       <div class="row equal-height-row d-flex flex-wrap">
+                          <div class="col-lg-5 d-flex  flex-column  justify-content-between">
+                            <div class="quality-index-wrapper-h2">
+                              <h2>aIR quality Safety level</h2>
+                            </div>
+                            <div class="main-box">
+                              <div class="index-content d-flex">
+                                <div class="number-index">
+                                  <p>
+                                    <strong>70</strong>
+                                  </p>
+                                  <p>Unhealthy for Sensitive Groups</p>
+                                  <h6 class="text-center color-yellow small-13">
+                                    <span>Babies And Sensitive Persons Should Stay Indoors</span>
+                                  </h6>
+                                </div>
+                                <div class="pollutant_dv">
+                                  <h3>Main pollutant </h3>
+                                  <div class="red-bg">
+                                    <div class="red-c">
+                                      <p>Sulphur Dioxide, SO<sub>2</sub></p>
+                                    </div>
+                                    <div class="white-bg">
+                                      <p class="color-yellow">55ug/m<sup>3</sup></p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="Causes-wrapper">
+                                  <h3>Causes</h3>
+                                  <div class="Causes-img mt-3">
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Causes1.png" alt="">
+                                      <p class="mt-2"> Sand Storm </p>
+                                    </div>
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Causes2.png" alt="">
+                                      <p class="mt-2"> High Traffic </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="activities-wrapper">
+                                  <h3>Activities</h3>
+                                  <div class="activities-imgs mt-3">
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Activities1.png" alt="">
+                                      <p class="mt-2"> Enjoy Some Indoor Fun </p>
+                                    </div>
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Activities2.png" alt="">
+                                      <p class="mt-2"> Being Indoor is the Best option </p>
+                                    </div>
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Activities3.png" alt="">
+                                      <p class="mt-2"> Being Indoor is the Best option </p>
+                                    </div>
+                                    <div class="text-center">
+                                      <img src="./images/new-images/Activities4.png" alt="">
+                                      <p class="mt-2"> Being Indoor is the Best option </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-7 d-flex  
+                                          flex-column  
+                                          justify-content-between">
+                            <div class="quality-index-wrapper-h2">
+                              <h2> HEALTH RECOMMENDATIONS </23>
+                            </div>
+                            <div class="slide-content main-box  position-relative">
+                              <p>When the air quality index (AQI) hits orange, red, purple, or maroon levels, it's essential to take proactive measures to safeguard your well-being. Follow these guidelines to minimize the impact of elevated air pollution levels on your health. </p>
+                              <ul>
+                                <li data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="false">
+                                  <div class="bg-gray">
+                                    <img src="./images/new-images/mask1.png" alt="health-icon">
+                                  </div>
+                                  <p>Mask Usage</p>
+                                  <span>
+                                    <img src="./images/new-images/Exclamation.png" alt="img">
+                                  </span>
+                                  
+                                  <div class="modal fade " id="exampleModal" tabindex="-1"
+                                      aria-labelledby="exampleModalLabel" aria-hidden="true"  data-mdb-backdrop="false" data-mdb-keyboard="true">
+                                      <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div>
+                                                <button type="button" class="btn-close"
+                                                  data-bs-dismiss="modal"
+                                                  aria-label="Close"><i
+                                                  class="fa fa-times"
+                                                  aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="./images/new-images/Exaclamation-w.png"
+                                                  alt="health-icon">
+                                                <p><strong>Mask Usage</strong></p>
+                                                <p>If outdoor exposure is
+                                                  unavoidable,consider wearing a mask.
+                                                  Note that not all masks provide equal
+                                                  protectionagainst particle pollution.
+                                                </p>
+                                                <p>Cloth or dust masks may fall short, but
+                                                  well-fittedN95 or KN95 masks offer
+                                                  better filtration capabilities and can
+                                                  be beneficial onhigh AQI days.
+                                                </p>
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </li>
+                                <li>
+                                  <div class="bg-gray">
+                                    <img src="./images/new-images/health_kit2.png" alt="health-icon">
+                                  </div>
+                                  <p>Indoor Air Quality Maintenance</p>
+                                  <span>
+                                    <img src="./images/new-images/Exclamation.png" alt="img">
+                                  </span>
+                                </li>
+                                <li>
+                                  <div class="bg-gray">
+                                    <img src="./images/new-images/health_kit3.png" alt="health-icon">
+                                  </div>
+                                  <p>Switching on your Air Purifier</p>
+                                  <span>
+                                    <img src="./images/new-images/Exclamation.png" alt="img">
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                       <div class="row equal-height-row d-flex flex-wrap">
+                          <div class="col-lg-12 d-flex flex-column  justify-content-between">
+                            <div class="bar_section">
+                              
+                                <div id="aiqTab" class="tab-content mt-0">
+                                  <div>
+                                    <div class="air_p">
+                                      <div class="quality-index-wrapper-h2">
+                                        <h2>AIR quality INDEX</h2>
+                                        <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                      </div>
+                                      <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0" id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div id="ADstationAqiBarGraph"></div>
+                                        <div class="date_row">
+                                          <ul>
+                                            <li>
+                                              <p>Feb 15 2024</p>
+                                            </li>
+                                            <li>
+                                              <p>Feb 16 2024</p>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_good marker_legend"></span>Good
+                                          </li>
+                                          <li>
+                                            <span class="marker_mod marker_legend"></span>Moderate
+                                          </li>
+                                          <li>
+                                            <span class="marker_unh marker_legend"></span>Unhealthy for sensitive groups
+                                          </li>
+                                          <li>
+                                            <span class="marker_unhh marker_legend"></span>Unhealthy
+                                          </li>
+                                          <li>
+                                            <span class="marker_vunh marker_legend"></span>Very unhealthy
+                                          </li>
+                                          <li>
+                                            <span class="marker_h marker_legend"></span>Hazardous
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      </div>
+                                      <div class="chart-f-content">
+                                        <p>AQI measures air quality; pollutant trends track changes in air pollution over time. </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                             
+                              <div id="pm10Tab" class="tab-content mt-0" style="display: none;">
+                                <div>
+                                  <div class="Polutant_bar" id="pills-tabContent">
+                                    <div class="quality-index-wrapper-h2">
+                                      <h2>POLLUTANT TRENDS</h2>
+                                      <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                    </div>
+                                    <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0" id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="ug_content">
+                                          <p>ug/m3</p>
+                                        </div>
+                                        <div id="chart_polutent"></div>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_pol_ac marker_legend"></span> Acceptable Value
+                                          </li>
+                                          <li>
+                                            <span class="marker_pol_ab_ac marker_legend"></span>Above Acceptable Value
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="so2Tab" class="tab-content mt-0" style="display: none;">
+                                <div>
+                                  <!-- Content specific to SO2 --> SO2 Content
+                                </div>
+                              </div>
+                              <div id="coTab" class="tab-content mt-0" style="display: none;">
+                                <div>
+                                  <!-- Content specific to CO --> CO Content
+                                </div>
+                              </div>
+                              <div id="o3Tab" class="tab-content mt-0" style="display: none;">
+                                <div>
+                                  <!-- Content specific to O3 --> O3 Content
+                                </div>
+                              </div>
+                              <div id="no2Tab" class="tab-content mt-0" style="display: none;">
+                                <div>
+                                  <!-- Content specific to NO2 --> NO2 Content
+                                </div>
+                              </div>
+                              <ul class="nav " id="myTabs">
+                                <li class="nav-item">
+                                  <a class="nav-link active" onclick="toggleDiv('aiqTab')">AQI</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" onclick="toggleDiv('pm10Tab')">PM10</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" onclick="toggleDiv('so2Tab')" style="pointer-events: none;">SO2</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" onclick="toggleDiv('coTab')" style="pointer-events: none;">CO</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" onclick="toggleDiv('o3Tab')" style="pointer-events: none;">O3</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" onclick="toggleDiv('no2Tab')" style="pointer-events: none;">NO2</a>
+                                </li>
+                              </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="row equal-height-row d-flex flex-wrap">
+                      <div class="col-lg-12 d-flex flex-column  justify-content-between">
+                        <div>
+                          <div class="container">
+                          <div id="aiq_line">
+                            <div class="quality-index-wrapper-h2">
+                              <h2>Station AQI and Pollutants Trends</h2>
+                              <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                            </div>
+                            <div>
+                              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <a class="nav-link active" id="pills-aqi_lin-tab" data-bs-toggle="pill" data-bs-target="#pills-aqi_lin" type="button" role="tab" aria-controls="pills-aqi_lin" aria-selected="true"> AQI </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <a class="nav-link" id="pills-pro ile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> Pollutant </a>
+                                </li>
+                              </ul>
+                              <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-aqi_lin" role="tabpanel" aria-labelledby="pills-aqi_lin-tab">
+                                  <div class="tab_shado">
+                                    <!-- <div class="quality-index-wrapper-h2"><h2>station aqi and pollutants tends</h2></div> -->
+                                    <!-- /////modify/////// -->
+                                    <div class="aqi-content">
+                                      <li>
+                                        <span>AQI</span>
+                                        <hr>
+                                        <p>145 UNHEALTHY FOR <br>
+                                          SENSITIVE GROUPS</p>
+                                      </li>
+                                    </div>
+                                    <div class="grid-value">
+                                      <div class="grid-upper">
+                                        <p>ug/m3</p>
+                                      </div>
+                                      <div class="grid-bottom">
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>So <sub>2</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>70</strong>
+                                          <p>No <sub>2</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>Co</p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>PM <sub>10</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>o <sub>3</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>H <sub>2</sub>S </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- ////modify///// -->
+                                    <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                      <div class="btn-group me-auto">
+                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                        <div class="date-box">
+                                          <input type="date" class="form-control" id="datepicker">
+                                          <span class="calendar-icon" id="calendar-icon">
+                                            <img src="images/calendar.png" width="16" height="16" border="0" id="datePickerImage">
+                                          </span>
+                                        </div>
+                                        <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                          <li>
+                                            <a class="dropdown-item active">Hourly</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Daily</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Monthly</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Yearly</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div id="options_aiq_line"></div>
+                                    <div class="date_row">
+                                      <ul>
+                                        <li>
+                                          <p>Feb 15 2024</p>
+                                        </li>
+                                        <li>
+                                          <p>Feb 16 2024</p>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <ul class="legend">
+                                      <li>
+                                        <span class="marker_good marker_legend"></span>Good
+                                      </li>
+                                      <li>
+                                        <span class="marker_mod marker_legend"></span>Moderate
+                                      </li>
+                                      <li>
+                                        <span class="marker_unh marker_legend"></span>Unhealthy for sensitive groups
+                                      </li>
+                                      <li>
+                                        <span class="marker_unhh marker_legend"></span>Unhealthy
+                                      </li>
+                                      <li>
+                                        <span class="marker_vunh marker_legend"></span>Very unhealthy
+                                      </li>
+                                      <li>
+                                        <span class="marker_h marker_legend"></span>Hazardous
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                  <div class="tab_shado">
+                                    <!-- /////modify//// -->
+                                    <div class="aqi-content mult-value-tab">
+                                      <strong>AQI</strong>
+                                      <hr>
+                                      <p>88 GOOD</p>
+                                    </div>
+                                    <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
+                                SENSITIVE GROUPS
+                               </p></li></div> -->
+                                    <!-- /////modify/////// -->
+                                    <div class="grid-value">
+                                      <div class="grid-upper">
+                                        <p>ug/m3</p>
+                                      </div>
+                                      <div class="grid-bottom">
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>So <sub>2</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>70</strong>
+                                          <p>No <sub>2</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>Co</p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>PM <sub>10</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>o <sub>3</sub>
+                                          </p>
+                                        </div>
+                                        <div class="mult-value">
+                                          <strong>80</strong>
+                                          <p>H <sub>2</sub>S </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- ////modify///// -->
+                                    <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                      <div class="btn-group me-auto">
+                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                        <div class="date-box">
+                                          <input type="date" class="form-control" id="datepicker">
+                                          <span class="calendar-icon" id="calendar-icon">
+                                            <img src="images/calendar.png" width="16" height="16" border="0" id="datePickerImage">
+                                          </span>
+                                        </div>
+                                        <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                          <li>
+                                            <a class="dropdown-item active">Hourly</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Daily</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Monthly</a>
+                                          </li>
+                                          <li>
+                                            <a class="dropdown-item">Yearly</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                      <li>
+                                        <a class="dropdown-item active">Hourly</a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item">Daily</a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item">Monthly</a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item">Yearly</a>
+                                      </li>
+                                    </ul>
+                                    <div id="newchartTrend"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                       <div class="row equal-height-row d-flex flex-wrap radar_section">
+                          <div class="col-lg-6 d-flex  
+                                          flex-column  
+                                          justify-content-between">
+                            <div class="quality-index-wrapper-h2">
+                              <!-- <h3>Station: Khalifa City</h3> -->
+                              <h2>number of hours <br> exceedance per year </h2>
+                            </div>
+                            <div class="main-box">
+                              <div class="hour_box">
+                                <ul style="width: fit-content;">
+                                  <li>
+                                    <span>CO</span>
+                                    <h3 id="numberOfHoursExceedsThresholdCO"></h3>
+                                    <p>Hours</p>
+                                  </li>
+                                  <li>
+                                    <span>SO2</span>
+                                    <h3 id="numberOfHoursExceedsThresholdSO2"></h3>
+                                    <p>Hours</p>
+                                  </li>
+                                  <li>
+                                    <span>PM10</span>
+                                    <h3 id="numberOfHoursExceedsThresholdPM10"></h3>
+                                    <p>Hours</p>
+                                  </li>
+                                  <li>
+                                    <span>NO2</span>
+                                    <h3 id="numberOfHoursExceedsThresholdNO2"></h3>
+                                    <p>Hours</p>
+                                  </li>
+                                  <li>
+                                    <span>O3</span>
+                                    <h3 id="numberOfHoursExceedsThresholdO3"></h3>
+                                    <p>Hours</p>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="contact-content">
+                              <p>Exceeding the yearly allotted hours can strain resources and individuals. Monitoring and managing these instances are vital for efficiency and well-being. Optimization strategies can help maintain balance and sustainability. </p>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 d-flex  
+                                          flex-column  
+                                          justify-content-between">
+                            <div class="quality-index-wrapper-h2">
+                              <h2>our air analytics</h2>
+                            </div>
+                            <div class="main-box">
+                              <div class="head d-flex justify-content-end align-items-center">
+                              <div class="btn-group res-air-mt">
+                                <button type="button" class="btn btn-sm dropdown-toggle" data-popper-placement="end"
+                                  data-bs-toggle="dropdown" aria-expanded="false"> 2023 </button>
+                                <ul class="dropdown-menu dropdown-change dropdown-menu-end">
+                                  <li>
+                                    <a class="dropdown-item" href="javascript: void(0)">2021</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" href="javascript: void(0)">2022</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" href="javascript: void(0)">2023</a>
+                                  </li>
+                                </ul>
+                              </div>
+                              </div>
+                            <div>                        
+                              <canvas id="radarChart" width="300" height="300" class=""></canvas>
+                              <ul class="legend_radar">
+                                <li>
+                                  <span class="marker_good marker_legend"></span>Good
+                                </li>
+                                <li>
+                                  <span class="marker_mod marker_legend"></span>Moderate
+                                </li>
+                                <li>
+                                  <span class="marker_unh marker_legend"></span>Unhealthy for sensitive groups
+                                </li>
+                                <li>
+                                  <span class="marker_unhh marker_legend"></span>Unhealthy
+                                </li>
+                                <li>
+                                  <span class="marker_vunh marker_legend"></span>Very unhealthy
+                                </li>
+                                <li>
+                                  <span class="marker_h marker_legend"></span>Hazardous
+                                </li>
+                              </ul>
+                              </div>
+                            </div>
+                            <div class="contact-content">
+                              <p>When the air quality index (AQI) hits orange, red, purple, or maroon levels, it's essential to take proactive measures to safeguard your well-being. Follow these guidelines to minimize the impact of elevated air pollution levels on your health. </p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" disabled="true">
+                    <span>
+                      <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next active" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span>
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+   </div>
+    
 	<div class="section" id="section3">
 		<div class="ead-monitoring-project">
 			<div class="monitoring-heading">
@@ -1161,7 +1324,7 @@
 							<h6 class="mb-3">
 								Lorem ipsum dolor sit amet consectetur. Velit for all of scelerisque
 							</h6>
-							<p class="text-justify">
+							<p class="text-justify h-200-scroll">
 								Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures, and ensure environmental issues remain one of the top priorities of our national agenda.
 	
 								Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities.
@@ -1181,7 +1344,7 @@
 					<h4 class="me-4">Your Questions, <br> Answered.</h4>
 				</div>
 				<div class="col-md-8">
-					<div class="accordion" id="myAccordion">
+					<div class="accordion faqscrolling" id="myAccordion">
 						<!-- <div class="accordion-item">
 							<h2 class="accordion-header" id="headingTwo">
 								<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">2. What is Bootstrap?</button>
@@ -1194,11 +1357,11 @@
 						</div> -->
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="headingOne">
-								<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+								<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
 									Who is considered in a sensitive group?
 								</button>									
 							</h2>
-							<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+							<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#myAccordion">
 								<div class="accordion-body">
 									<p> 
 										Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures.
@@ -1455,43 +1618,43 @@
 					  <div class="row">
 						<div class="col-lg-2 col-sm-12 col-md-4">
 						  <div class="d-inline-block text-sm-start">
-							<h6><a href="#">Our Air Quality</a>
+							<h6><a href="#slide0">Our Air Quality</a>
 							</h6>
 						  </div>
 						</div>
 						<!-- 05-JAN-24 -->
 						<div class="col-lg-3 col-sm-12 col-md-4">
 						  <div class="d-inline-block text-sm-start">
-							<h6 class=""><a href="#">Insights</a></h6>
+							<h6 class=""><a href="#slide2">Insights</a></h6>
 							<ul class="links">
 							  <li>
-								<a href="#">Health Recommendation</a>
+								<a href="#slide2">Health Recommendation</a>
 							  </li>
 							  <li class="">
-								<a href="#">AQI and Pollutant Trends</a>
+								<a href="#slide2">AQI and Pollutant Trends</a>
 							  </li>
 							  <li class="">
-								<a href="#">Our Air Analytics</a>
+								<a href="#slide2">Our Air Analytics</a>
 							  </li>
 							  <li class="">
-								<a href="#">Station AQI and Pollutants Trends</a>
+								<a href="#slide2">Station AQI and Pollutants Trends</a>
 							  </li>
 							</ul>
 						  </div>
 						</div>
 						<div class="col-lg-3 col-sm-12 col-md-4">
 							<div class="d-inline-block text-sm-start">
-							  <h6><a href="#"> Projects</a></h6>
+							  <h6><a href="#slide3"> Projects</a></h6>
 							</div>
 						</div>
 						<div class="col-lg-2 col-sm-12 col-md-4">
 							<div class="d-inline-block text-sm-start">
-								<h6><a href="#">FAQ</a></h6>
+								<h6><a href="#slide4">FAQ</a></h6>
 							</div>
 						</div>
 						<div class="col-lg-2 col-sm-12 col-md-4">
 						  <div class="d-inline-block text-sm-start">
-							<h6 class="">Contact Us</h6>
+							<h6 class=""><a href="#slide6">Contact Us</a></h6>
 							<ul class="links">
 								<li>
 									<a href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
@@ -1507,10 +1670,10 @@
 				  </div>
 				  <div class="footer-2-sec">
 				 	<div class="copy-rights">
-					  <p>&#xa9 Abu Dhabi All Rights Reserved 2023</p>
+					  <p>&#xa9 Abu Dhabi All Rights Reserved 2024</p>
 					  <ul>
 						<li>
-						  <a href="#">Privacy Policy</a>
+						  <a href="privacy-policy.html">Privacy Policy</a>
 						</li>
 						<li>
 						  <a href="#">Terms of Use</a>
@@ -1535,33 +1698,79 @@
 <script src="./js/popper.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/apexcharts.js"></script>
-<script src="./js/chart.js"></script> 
+<script src="./js/chart.js"></script>
+<script src="https://js.arcgis.com/4.28/"></script>
 <script src="./chart.js"></script>
 <script type="text/javascript" src="./graphs.js"></script>
-<script src="./js/index-script.js"></script> 
-<script type="text/javascript" src="./scolling-script/fullpage.js"></script>
+<script src="./js/index-script.js"></script>
+<script src="./js/Map.js"></script>
+<script src="./js/MapConfig.js"></script>
+<!-- <script type="text/javascript" src="./scolling-script/fullpage.js"></script> -->
 <script type="text/javascript">
-    var myFullpage = new fullpage('#fullpage', {
-        anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
-        sectionsColor: ['#C63D0F', '#fff', '#7E8F7C', '#fff', '#fff', '#fff'],
-        navigation: true,
-        navigationPosition: 'right',
-		menu: '#menu',
-        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
-		scrollBar: true,
-    });
+    // var myFullpage = new fullpage('#fullpage', {
+    //     anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
+    //     sectionsColor: ['#C63D0F', '#fff', '#7E8F7C', '#fff', '#fff', '#fff'],
+    //     navigation: true,
+    //     navigationPosition: 'right',
+	// 	menu: '#menu',
+    //     //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+	// 	scrollBar: true,
+	// 	normalScrollElements: '.project-modal, .faqscrolling'
+    // });
 </script>
 <script type="text/javascript">
-//     $(document).ready(function(){
-//     function adjustDivHeight() {
-//         var windowHeight = $(window).height();
-//         $('.container-flex').height(windowHeight);
-//     }
+	$(document).ready(function() {
+		
+		function isMobile() {
+			return window.innerWidth < 990;
+		}
 
-//     // Call the function on document ready and window resize
-//     adjustDivHeight();
-//     $(window).resize(adjustDivHeight);
+		if (!isMobile()) {
+			// Check if FullPage.js is already loaded
+			if (typeof fullpage === 'function') {
+				initializeFullPage();
+			} else {
+				// Load FullPage.js script dynamically
+				loadExternalScript();
+			}
+		}
+});
+
+function initializeFullPage() {
+    var myFullpage = new fullpage('#fullpage', {
+        anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
+        sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
+        navigation: true,
+        navigationPosition: 'right',
+        menu: '#menu',
+        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+        scrollBar: true,
+        normalScrollElements: '.project-modal, .faqscrolling'
+    });
+}
+
+function loadExternalScript() {
+    // Load FullPage.js script only if window width is greater than 990px
+    if (window.innerWidth > 990) {
+		var scriptTag = document.createElement('script');
+        scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
+        scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
+        document.head.appendChild(scriptTag);
+    }
+}
+    
+    // $(document).ready(function(){
+	// function adjustDivHeight() {
+    //     var windowHeight = $(window).height();
+    //     $('.container-flex').height(windowHeight);
+    // }
+
+    // // Call the function on document ready and window resize
+    // adjustDivHeight();
+    // $(window).resize(adjustDivHeight);
 // });
+
+	
 </script>
 
 </body>
