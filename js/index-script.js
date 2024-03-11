@@ -236,6 +236,17 @@ var stationsWithLocations = [{
   longitude: 53.8853
 }];
 
+const colorClass = {
+  GoodColorClass: "text-good",
+  ModrateColorClass: "text-moderate",
+  Unhealthy4peopleColorClass: "text-unhealthy4people",
+  UnhealthyColorClass: "text-unhealthy",
+  VeryUnhealthyColorClass: "text-very-unhealthy",
+  HazardousClass: "text-hazardous"
+}
+
+var stationNameforChart = "";
+
 $(document).ready(function () {
   var stationId = getCurrentLocation();
   $('#currentDate').text(getFormattedDate(new Date()));
@@ -270,9 +281,6 @@ $(document).ready(function () {
     showNextQuote();
   }, 4000);
   // Bannner text fadeout function End--------
-
-
-
 });
 
 // Project Section modal End--------------
@@ -289,7 +297,6 @@ function toggleDiv(tabId) {
   });
   document.getElementById(tabId).style.display = 'block';
 }
-
 
 
 // Map Search icon script Start--------------   
@@ -346,6 +353,7 @@ function createChartButtonClickHandler(chartType) {
     }
   };
 }
+
 $("#hourly").click(createChartButtonClickHandler("Hourly"));
 $("#Daily").click(createChartButtonClickHandler("Daily"));
 $("#Weekly").click(createChartButtonClickHandler("Weekly"));
@@ -432,7 +440,6 @@ function getCurrentLocation() {
   return stationId;
 }
 
-var stationNameforChart = "";
 function LoadStationData(inputParam) {
   const apiUrl = 'https://adairqualityapi.ead.ae/GetAirQualityStation?input=' + inputParam;
   stationNameforChart = inputParam;
@@ -469,6 +476,9 @@ function LoadStationData(inputParam) {
       }
       $('.page-loader').fadeOut('slow');
       getYearlyStationPollutantsThreshold(inputParam);
+      getAirAnalytics($("#selectedyear").text(), inputParam);
+      PopulateLiveCityRanking();
+      getYearlyStationChartApi();
     },
     error: handleApiError
   });
@@ -496,7 +506,7 @@ function getYearlyStationPollutantsThreshold(inputParam) {
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      var stationData = data.find(x=> x.stationName == (inputParam ? inputParam : 'Abu Dhabi'));
+      var stationData = data.find(x => x.stationName == (inputParam ? inputParam : 'Abu Dhabi'));
       $("#numberOfHoursExceedsThresholdCO").text(stationData.co);
       $("#numberOfHoursExceedsThresholdSO2").text(stationData.sO2);
       $("#numberOfHoursExceedsThresholdPM10").text(stationData.pM10);
@@ -505,4 +515,362 @@ function getYearlyStationPollutantsThreshold(inputParam) {
     },
     error: handleApiError
   });
+}
+
+function onClickYearOfAirAnalytics(year) {
+  getAirAnalytics(year, stationNameforChart);
+}
+
+var labelsData = [];
+var pollutantLevels = [];
+var colorCodes = [];
+
+var radarOptions = {
+  scales: {
+    r: {
+      pointLabels: {
+        fontSize: 14,
+      },
+      suggestedMin: 0.5,
+      suggestedMax: 100,
+    }
+  },
+  plugins: {
+    filler: {
+      propagate: false,
+    },
+    legend: {
+      display: false,
+    },
+  },
+  maintainAspectRatio: false, // Disable aspect ratio maintenance
+  animation: {
+    duration: 2000, // Animation duration in milliseconds
+  },
+};
+
+var radarCtx = document.getElementById('radarChart').getContext('2d');
+var myRadarChart = new Chart(radarCtx, {
+  type: 'radar',
+  data: createRadarData(),
+  options: radarOptions,
+});
+
+function getAirAnalytics(year, stationName) {
+  if (!stationName) {
+    stationName = "";
+  }
+  const apiUrl = 'https://adairqualityapi.ead.ae/GetAirAnalytics?year=' + year + '&stationName=' + stationName;
+  $.ajax({
+    url: apiUrl,
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      labelsData = [];
+      pollutantLevels = [];
+      colorCodes = [];
+      data.filter(t => t.stationName == (stationName ? stationName : 'Abu Dhabi')).forEach(item => {
+        labelsData.push(item.month);
+        pollutantLevels.push(item.aqi);
+        colorCodes.push(item.colorCode);
+      });
+      //console.log(colorCodes);
+      myRadarChart.data = createRadarData();
+      myRadarChart.update();
+      // Print the resulting object for EAD_AlMaqta
+    },
+    error: handleApiError
+  });
+}
+
+function createRadarData() {
+  return {
+    labels: labelsData,
+    fill: false,
+    datasets: [{
+      label: '',
+      //borderColor: 'rgba(250, 207, 57, 1)',
+      //pointBackgroundColor: getColors(pollutantLevels),
+      backgroundColor: function (context) {
+        return createRadialGradient3(context);
+      },
+      lineTension: 0.2,
+      data: pollutantLevels,
+    }]
+  };
+}
+
+function createRadialGradient3(context) {
+  const chartArea = context.chart.chartArea;
+  if (!chartArea) {
+    // This case happens on initial chart load
+    return;
+  }
+  const chartWidth = chartArea.right - chartArea.left;
+  const chartHeight = chartArea.bottom - chartArea.top;
+
+  width = chartWidth;
+  height = chartHeight;
+  const centerX = (chartArea.left + chartArea.right) / 2;
+  const centerY = (chartArea.top + chartArea.bottom) / 2;
+
+  const ctx = context.chart.ctx;
+
+  var gradient = ctx.createConicGradient(-1.479, centerX, centerY);
+
+  // The pattern is 30 degrees of blend between quadrants
+  // 60 degrees of pure color in the quadrant
+  var gradientStop = colorCodes.length / 12 * 0.1;
+  var colorGradient = 0
+  colorCodes.forEach(item => {
+    gradient.addColorStop(colorGradient, item);
+    if (colorGradient + gradientStop < 1) {
+      colorGradient += gradientStop;
+    }
+  });
+
+  // Set the fill style and draw a rectangle
+  ctx.fillStyle = gradient;
+  ctx.fillRect(chartArea.left, chartArea.top, chartWidth, chartHeight);
+
+  return gradient;
+}
+
+var liveCityData;
+function PopulateLiveCityRanking() {
+  const apiUrl = "https://adairqualityapi.ead.ae/GetStationRanking";
+  $.ajax({
+    url: apiUrl,
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      liveCityData = data;
+      // Clear existing rows
+      var stationRankingListDiv = $('#stationRankingList');
+      stationRankingListDiv.empty();
+      // Sort the data based on station ID
+      liveCityData.sort(function (a, b) {
+        return a.stationID - b.stationID;
+      });
+      $.each(liveCityData, function (index, station) {
+        var colorClass = getColorClassForAqi(station.aqi);
+        var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
+        var row = `<label class="list-group-item">
+                          <span class="numbers number">
+                            <strong>`+ station.rank + `</strong>
+                          </span>
+                          <div class="list-content">
+                            <div class="inner_list-content">
+                              <p>`+ station.stationName + `</p>
+                              <span>AQI `+ station.aqi + `</span>
+                            </div>
+                            <div class="dis-content">
+                              <span>~ `+ 10 + ` km</span>
+                            </div>
+                          </div>
+                          <input type="radio" name="options" id="option`+ station.rank + `" autocomplete="off" class="float-end" onClick="selectedStation('` + (stationDetails ? stationDetails.stationId : "") + `')">
+                        </label>`;
+
+        stationRankingListDiv.append(row);
+      });
+    },
+    error: handleApiError
+  });
+}
+
+function getColorClassForAqi(aqi) {
+  if (aqi >= 0 && aqi <= 50) {
+    return colorClass.GoodColorClass;
+  } else if (aqi > 50 && aqi <= 100) {
+    return colorClass.ModrateColorClass;
+  } else if (aqi > 100 && aqi <= 150) {
+    return colorClass.Unhealthy4peopleColorClass;
+  } else if (aqi > 150 && aqi <= 200) {
+    return colorClass.UnhealthyColorClass;
+  } else if (aqi > 200 && aqi <= 300) {
+    return colorClass.VeryUnhealthyColorClass;
+  } else {
+    return colorClass.HazardousClass;
+  }
+}
+
+var sortingOrder = 'asc'; // Initial sorting order
+
+// Attach click event to the <i> element
+$('#sortIcon').on('click', function () {
+  sortingOrder = sortingOrder === 'asc' ? 'desc' : 'asc'; // Toggle sorting order
+  populateSort(liveCityData, sortingOrder);
+
+  // Toggle sorting icon class
+  var sortIcon = $('#sortIcon');
+  sortIcon.toggleClass('icon-sort5-asc', sortingOrder === 'asc');
+  sortIcon.toggleClass('icon-sort5-des', sortingOrder === 'desc');
+});
+
+function populateSort(stationData, sortingOrder) {
+  var stationRankingListDiv = $('#stationRankingList');
+  // Clear existing rows
+  stationRankingListDiv.empty();
+
+  // Sort the data based on station ID
+  stationData.sort(function (a, b) {
+    var aqiA = a.aqi;
+    var aqiB = b.aqi;
+    if (sortingOrder === 'asc') {
+      return aqiA - aqiB;
+    } else {
+      return aqiB - aqiA;
+    }
+  });
+
+  liveCityData = stationData;
+
+  $.each(liveCityData, function (index, station) {
+    var colorClass = getColorClassForAqi(station.aqi);
+    var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
+    var row = `<label class="list-group-item">
+                  <span class="numbers number">
+                    <strong>`+ station.rank + `</strong>
+                  </span>
+                  <div class="list-content">
+                    <div class="inner_list-content">
+                      <p>`+ station.stationName + `</p>
+                      <span>AQI `+ station.aqi + `</span>
+                    </div>
+                    <div class="dis-content">
+                      <span>~ `+ station.wind + ` km</span>
+                    </div>
+                  </div>
+                  <input type="radio" name="options" id="option`+ station.rank + `" value="` + (stationDetails ? stationDetails.stationId : "") + `" autocomplete="off" class="float-end" onClick="selectedStation('` + station.rank +`')">
+                </label>`;
+
+    stationRankingListDiv.append(row);
+  });
+}
+
+var seriesData = [];
+// var aqiData = [];
+var pm10Data = [];
+var so2Data = [];
+var coData = [];
+var o3Data = [];
+var no2Data = [];
+var xCategories = [];
+var yearlyStationChartData = [];
+
+function getYearlyStationChartApi(stationName){
+  const apiUrl = 'https://adairqualityapi.ead.ae/GetYearlyStationChart?stationName=' + (stationName ? stationName : "");
+  $.ajax({
+    url: apiUrl,
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      stationName = stationName ? stationName : "Abu Dhabi";
+      yearlyStationChartData = data;
+      getYearlyStationChart(stationName);
+    },
+    error: handleApiError
+  });
+}
+
+function getYearlyStationChart(stationName) {
+  yearlyStationChartData.filter(t => t.stationName == stationName).forEach(item => {
+    // aqiData.push(item.aqi);
+    pm10Data.push(item.pM10);
+    so2Data.push(item.sO2);
+    coData.push(item.co);
+    o3Data.push(item.o3);
+    no2Data.push(item.nO2);
+    if (!xCategories.includes(item.year)) {
+      xCategories.push(item.year);
+    }
+  });
+  // seriesData.push({name: 'AQI', data: aqiData});
+  seriesData.push({ name: 'PM10', data: pm10Data });
+  seriesData.push({ name: 'SO2', data: so2Data });
+  seriesData.push({ name: 'CO', data: coData });
+  seriesData.push({ name: 'O3', data: o3Data });
+  seriesData.push({ name: 'NO2', data: no2Data });
+
+  var options = {
+    series: seriesData,
+    chart: {
+      height: 350,
+      type: 'line',
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 1000
+        }
+      },
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      }
+    },
+
+    // colors: ['#9cd84e', '#facf39', '#f99049', '#f65e5f', '#a070b6', '#a06a7b'],
+    colors: ['#004B87', '#6693B7', '#99B7CF', '#B3C9DB', '#E6EDF3'],
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      width: [3, 3, 3, 3, 3, 3],
+      curve: 'smooth'
+    },
+    title: {
+      text: '',
+      align: 'left'
+    },
+    markers: {
+      size: 0
+    },
+    xaxis: {
+      categories: xCategories,
+      labels: {
+        rotateAlways: false,
+      }
+    },
+    legend: {
+      show: true,
+      position: 'bottom'
+    },
+    tooltip: {
+      enabled: true,
+      shared: false,
+      x: {
+        show: false,
+      },
+    },
+    grid: {
+      show: false, // hide grid
+    },
+    responsive: [
+      {
+        breakpoint: 1350,
+        options: {
+          chart: {
+            height: 250
+          }
+        },
+        breakpoint: 1400,
+        options: {
+          chart: {
+            height: 250
+          }
+        },
+      }
+    ]
+  };
+
+  var chart = new ApexCharts(document.querySelector("#newchartTrend"), options);
+  chart.render();
+}
+
+function selectedStation(stationName){
+  getYearlyStationChart(stationName);
+  getAirAnalytics($("#selectedyear").text(), stationName);
 }

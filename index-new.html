@@ -391,127 +391,7 @@
             </ul>
           </div>
           <div class="data-list">
-            <div class="list-group">
-              <label class="list-group-item">
-                <span class="numbers number">
-                  <strong>1</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number2">
-                  <strong>2</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number3">
-                  <strong>3</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number4">
-                  <strong>4</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number5">
-                  <strong>5</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number6">
-                  <strong>6</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number7">
-                  <strong>7</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
-              <label class="list-group-item">
-                <span class="numbers number8">
-                  <strong>8</strong>
-                </span>
-                <div class="list-content">
-                  <div class="inner_list-content">
-                    <p>Downtown Abu Dhabi</p>
-                    <span>AQI 50</span>
-                  </div>
-                  <div class="dis-content">
-                    <span>~ 10 km</span>
-                  </div>
-                </div>
-                <input type="radio" name="options" id="option1" autocomplete="off" class="float-end">
-              </label>
+            <div class="list-group" id="stationRankingList">
             </div>
           </div>
         </div>
@@ -1119,16 +999,16 @@
                               <div class="head d-flex justify-content-end align-items-center">
                               <div class="btn-group res-air-mt">
                                 <button type="button" class="btn btn-sm dropdown-toggle" data-popper-placement="end"
-                                  data-bs-toggle="dropdown" aria-expanded="false"> 2023 </button>
+                                  data-bs-toggle="dropdown" aria-expanded="false" id="selectedyear">2023</button>
                                 <ul class="dropdown-menu dropdown-change dropdown-menu-end">
                                   <li>
-                                    <a class="dropdown-item" href="javascript: void(0)">2021</a>
+                                    <a class="dropdown-item" href="javascript: void(0)" onclick="onClickYearOfAirAnalytics(2021)">2021</a>
                                   </li>
                                   <li>
-                                    <a class="dropdown-item" href="javascript: void(0)">2022</a>
+                                    <a class="dropdown-item" href="javascript: void(0)" onclick="onClickYearOfAirAnalytics(2022)">2022</a>
                                   </li>
                                   <li>
-                                    <a class="dropdown-item" href="javascript: void(0)">2023</a>
+                                    <a class="dropdown-item" href="javascript: void(0)" onclick="onClickYearOfAirAnalytics(2023)">2023</a>
                                   </li>
                                 </ul>
                               </div>
@@ -1700,7 +1580,6 @@
 <script src="./js/apexcharts.js"></script>
 <script src="./js/chart.js"></script>
 <script src="https://js.arcgis.com/4.28/"></script>
-<script src="./chart.js"></script>
 <script type="text/javascript" src="./graphs.js"></script>
 <script src="./js/index-script.js"></script>
 <script src="./js/Map.js"></script>
