@@ -1356,7 +1356,7 @@ var barChartOptions = {
 
 };
 
-var barChart = new ApexCharts(document.querySelector("#ADstationAqiBarGraph"), barChartOptions);
+// var barChart = new ApexCharts(document.querySelector("#ADstationAqiBarGraph"), barChartOptions);
 
 
 

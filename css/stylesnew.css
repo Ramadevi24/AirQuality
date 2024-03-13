@@ -1247,7 +1247,7 @@ video {
     font-family: 'GothamMedium';
 }
 .insight .red-c {
-    background: var(--lightorange);
+    /* background: var(--lightorange); */
     width: 75%;
 }
 .insight .red-bg {

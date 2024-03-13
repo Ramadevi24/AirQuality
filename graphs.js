@@ -5666,11 +5666,6 @@ xaxis: {
    
   }
 },
-//   yaxis: {
-//     title: {
-//       text: '$ (thousands)'
-//     }
-//   },
 fill: {
   opacity: 0.8
 },
@@ -5695,13 +5690,11 @@ colors: [
       return '#A06A7B'
     }
   }
-
 ],
 tooltip: {
   enabled: true,
    x: {
       show: false,
-      
   },
   y: {
     formatter: function(val) {
@@ -5713,14 +5706,11 @@ tooltip: {
       }
     }
   }
-  
-  
 }
-
 };
 
-var chart = new ApexCharts(document.querySelector("#ADstationAqiBarGraph"), options);
-chart.render();
+// var chart = new ApexCharts(document.querySelector("#ADstationAqiBarGraph"), options);
+// chart.render();
 
 
 // Abu DHabi Station AQI and Pllutants Trends -LINE GRAPH
@@ -8063,13 +8053,12 @@ responsive: [
         height: 250  
       }
     },
- 
   }
 ]
 };
 
-var chart = new ApexCharts(document.querySelector("#options_aiq_line"), options_aiq_line);
-chart.render();
+// var chart = new ApexCharts(document.querySelector("#options_aiq_line"), options_aiq_line);
+// chart.render();
 
 
 

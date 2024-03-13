@@ -158,7 +158,6 @@
 						Air quality, critical for both human and environmental health, is influenced by industrial, vehicular, agricultural, and natural sources. Monitoring systems, including the Air Quality Index (AQI), play a crucial role in informing pollution control strategies and health-related interventions. Ensuring high air quality is fundamental to the well-being of ecosystems and populations.
 					</p> -->
               <p class="mb-2 mt-5 h6 six-resolution-mt30" id="aqiNearestStation">
-                Nearest Station: Khalifa City
               </p>
               <div class="mb-2 mt-4 position-relative six-resolution-mt10">
                 <img src="./images/new-images/Circular-Shape.png" class="img-fluid circular-width">
@@ -210,7 +209,7 @@
             <p class="mb-0 uppercase">Air Quality Index</p>
           </div>
           <div class="wheather-widget">
-            <h6 class="text-white text-center" id="insightNearestStation"> Nearest station: Khalifa City </h6>
+            <h6 class="text-white text-center" id="insightNearestStation"></h6>
             <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
               <img src="./images/new-images/mapCircular.png" class="img-fluid">
               <div class="weather-card-map">
@@ -331,7 +330,6 @@
           </li>
         </ul>
         <div class="overview-heading mt-3" id="yearlyAirQualityOverview">
-          Khalifa City Yearly Air Quality Overview for 2024
         </div>
         <div class="list-container" id="aqiStatusDiv">
           <!-- <div class="list-item green">
@@ -410,7 +408,7 @@
                   data-bs-interval="false">
                   <div class="carousel-inner">
                     <div class="quality-index-wrapper-h2">
-                      <h3 class="insightStation">Station: Khalifa City</h3>
+                      <h3 class="insightStation" id="airQualitySafetyLevelStation">Station: Khalifa City</h3>
                     </div>
                     <div class="carousel-item active">
                       <div class="container">
@@ -422,8 +420,8 @@
                             <div class="main-box">
                               <div class="index-content d-flex">
                                 <div class="number-index">
-                                  <p id="airQualitySafetyLevelAqi">
-                                    <strong></strong>
+                                  <p>
+                                    <strong id="airQualitySafetyLevelAqi"></strong>
                                   </p>
                                   <p id="airQualitySafetyLevelAqiStatus"></p>
                                   <h6 class="text-center color-yellow small-13">
@@ -434,7 +432,7 @@
                                   <h3>Main pollutant </h3>
                                   <div class="red-bg">
                                     <div class="red-c">
-                                      <p id="mainPollutantName"></p>
+                                      <p id="mainPollutantName" style="color: white;"></p>
                                     </div>
                                     <div class="white-bg">
                                       <p class="color-yellow" id="mainPollutantValue"></p>
@@ -835,7 +833,7 @@
                                           </ul>
                                         </div>
                                       </div>
-                                      <div id="options_aiq_line"></div>
+                                      <div id="aqiLineChart"></div>
                                       <div class="date_row">
                                         <ul>
                                           <li>
