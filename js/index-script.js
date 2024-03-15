@@ -1,137 +1,13 @@
-$(window).on('load', function () {
-  setTimeout(function () { // allowing 3 secs to fade out loader
-    $('.page-loader').fadeOut('slow');
-  }, 3500);
-});
-
-//  05-Feb-2024 Banner Arrrow animation script Start-------------- 
-$('.down-arrow-bg').click(function () {
-  let currentSectionIndex = 0;
-  var nextSection = $(this).closest('.down-arrow').next('div');
-  if (nextSection.length > 0) {
-    nextSection[currentSectionIndex].scrollIntoView({ block: "start", behavior: "smooth" });
-  }
-});
-// Banner Arrrow animation script End-------------- 
-// Hiding Nav some page scroll
-$(window).scroll(function () {
-  var scroll = $(window).scrollTop();
-  if (scroll >= 600) {
-    $('header').addClass('fadeout');
-
-  } else {
-    $('header').removeClass('fadeout');
-  }
-});
-
-//  05-Feb-2024 Map Search icon script Start--------------   
-$('.listSearch li').on("click", function () {
-  $(".listSearch li").css("background-color", "");
-  $(this).css("background-color", "rgb(57 56 56)");
-  var value = $(this).text();
-  //alert(value);
-  $(".show-mapSearchList").show();
-  $(".show-mapSearchList").html(value);
-  $('.Newsearch-box').hide();
-});
-
-$('.show-mapSearchList').click(function () {
-  $('.Newsearch-box').show();
-  $(".show-mapSearchList").hide();
-});
-// Map Search icon script Start--------------   
-
-//  05-Feb-2024 Breath text heading animation script Start--------------
-
-var TxtRotate = function (el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
-
-TxtRotate.prototype.tick = function () {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
-
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-  }
-
-  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-  var that = this;
-  var delta = 300 - Math.random() * 100;
-
-  if (this.isDeleting) { delta /= 2; }
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-  }
-
-  setTimeout(function () {
-    that.tick();
-  }, delta);
-};
-
-window.onload = function () {
-  var elements = document.getElementsByClassName('txt-rotate');
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-rotate');
-    var period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new TxtRotate(elements[i], JSON.parse(toRotate), period);
-    }
-  }
-  // INJECT CSS
-  var css = document.createElement("style");
-  css.type = "text/css";
-  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.05em solid #fff }";
-  document.body.appendChild(css);
-};
-// Breath text heading animation script End--------------
-// Project Section Slider &  modal start--------------
-
-const gap = 10;
-
-const carousel = document.getElementById("carousel"),
-  content = document.getElementById("content"),
-  next = document.getElementById("next"),
-  prev = document.getElementById("prev");
-
-next.addEventListener("click", e => {
-  carousel.scrollBy(width + gap, 0);
-  if (carousel.scrollWidth !== 0) {
-    prev.style.opacity = 0.8;
-  }
-  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
-    next.style.display = "inline-block";
-    next.style.opacity = 0.3
-  }
-});
-prev.addEventListener("click", e => {
-  carousel.scrollBy(-(width + gap), 0);
-  if (carousel.scrollLeft - width - gap <= 0) {
-    prev.style.display = "inline-block";
-  }
-  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
-    next.style.display = "inline-block";
-    next.style.opacity = 0.8;
-  }
-});
-
-let width = carousel.offsetWidth;
-window.addEventListener("resize", e => (width = carousel.offsetWidth));
+var currentStationDetails;
+var liveCityData = [];
+var labelsData = [];
+var pollutantLevels = [];
+var colorCodesForAirAnalytics = [];
+var sortingOrder = 'asc'; // Initial sorting order
+var chartData = [];
+var aqiLineChart;
+var pollutantLineChart;
+var activePollutant;
 
 const stationsWithLocations = [{
   stationId: "EAD_HamdanStreet",
@@ -268,22 +144,23 @@ const statusClass = {
   Hazardous: "Hazardous",
 }
 
-var currentStationDetails;
-var liveCityData = [];
-var labelsData = [];
-var pollutantLevels = [];
-var colorCodesForYearlyStationChartData = [];
-var sortingOrder = 'asc'; // Initial sorting order
-var seriesData = [];
-// var aqiData = [];
-var pm10Data = [];
-var so2Data = [];
-var coData = [];
-var o3Data = [];
-var no2Data = [];
-var xCategories = [];
-var yearlyStationChartData = [];
-var aqiLineChart;
+const chartFilter = {
+  Hourly: 'Hourly',
+  Daily: 'Daily',
+  Monthly: 'Monthly',
+  Yearly: 'Yearly',
+}
+
+const pollutantNames = {
+  AQI: "AQI",
+  PM10: "PM10",
+  SO2: "SO2",
+  CO: "CO",
+  O3: "O3",
+  NO2: "NO2"
+}
+
+
 var radarOptions = {
   scales: {
     r: {
@@ -308,7 +185,7 @@ var radarOptions = {
   },
 };
 
-var lineChartOptions = {
+var aqiLineChartOptions = {
   series: [{
     name: 'AQI',
     data: []
@@ -330,12 +207,14 @@ var lineChartOptions = {
   xaxis: {
     // type: 'datetime',
     categories: [], //['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
-    // tickAmount: 10,
-    labels: {
-      // formatter: function(value, timestamp, opts) {
-      //   return opts.dateFormatter(new Date(timestamp), 'MMM')
-      // }
-    }
+    tickAmount: 10,
+    // labels: {
+    //   format: function(value, opts) {
+    //     console.log(value);
+    //     console.log(opts);
+    //     // return opts.dateFormatter(new Date(timestamp), 'MMM')
+    //   }
+    // }
   },
   grid: {
     show: false, // hide grid
@@ -354,7 +233,7 @@ var lineChartOptions = {
   },
   yaxis: {
     min: 0,
-    max: 100
+    // max: 100
   },
   responsive: [
     {
@@ -371,60 +250,250 @@ var lineChartOptions = {
         }
       },
     }
-  ]
+  ],
+  tooltip: {
+    shared: true,
+    intersect: false,
+    y: {
+      formatter: function (value, options) {
+        $("#lineChartAqiSo2Value").text(chartData[options.dataPointIndex].sO2);
+        $("#lineChartAqiNo2Value").text(chartData[options.dataPointIndex].nO2);
+        $("#lineChartAqiCoValue").text(chartData[options.dataPointIndex].co);
+        $("#lineChartAqiPm10Value").text(chartData[options.dataPointIndex].pM10);
+        $("#lineChartAqiO3Value").text(chartData[options.dataPointIndex].o3);
+        var aqiStatusAndColor = getAqiStatusAndColorCode(chartData[options.dataPointIndex].aqi);
+        $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(chartData[options.dataPointIndex].aqi + ' ' + aqiStatusAndColor.status).css('color', aqiStatusAndColor.color);
+        return value;
+      }
+    }
+  }
 };
 
-$(document).ready(function () {
-  aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), lineChartOptions);
-  aqiLineChart.render();
-  getCurrentLocation();
-  $('#currentDate').text(getFormattedDate(new Date()));
-  // Open Sidebar
-  $(".openSidebar").click(function () {
-    $(".sidebar").css("width", "40%");
-    $('.modal-background').addClass('project-modal');
-    // $(".main-content").css("margin-right", "250px");
-  });
+var pollutantLineChartOptions = {
+  series: [],
+  chart: {
+    height: 300,
+    width: '90%',
+    type: 'area',
+    toolbar: {
+      show: false
+    },
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'smooth'
+  },
+  xaxis: {
+    categories: [],
+    // tickAmount: 10,
+  },
+  grid: {
+    show: false, // hide grid
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shade: 'dark',
+      gradientToColors: ['#FACF39', '#F99049'],
+      shadeIntensity: 1,
+      type: 'horizontal',
+      opacityFrom: .3,
+      opacityTo: .3,
+      stops: [0, 100, 100, 100]
+    },
+  },
+  yaxis: {
+    min: 0,
+    // max: 100
+  },
+  responsive: [
+    {
+      // breakpoint: 1350,
+      options: {
+        chart: {
+          height: 250
+        }
+      },
+      // breakpoint: 1400,
+      options: {
+        chart: {
+          height: 250
+        }
+      },
+    }
+  ],
+  tooltip: {
+    shared: true,
+    intersect: false,
+    y: {
+      formatter: function (value, options) {
+        var aqiStatusAndColor = getAqiStatusAndColorCode(chartData[options.dataPointIndex].aqi);
+        $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(chartData[options.dataPointIndex].aqi + ' ' + aqiStatusAndColor.status).css('color', aqiStatusAndColor.color);
+        return value;
+      }
+    }
+  }
+};
 
-  // Close Sidebar
-  $(".close-btn").click(function () {
-    $(".sidebar").css("width", "0");
-    $(".main-content").css("margin-right", "0");
-    $('.modal-background').removeClass('project-modal');
-  });
+$(window).on('load', function () {
+  setTimeout(function () { // allowing 3 secs to fade out loader
+    $('.page-loader').fadeOut('slow');
+  }, 3500);
+});
 
-  // 05-Feb-2024 Bannner text fadeout function start------
+//  05-Feb-2024 Banner Arrrow animation script Start-------------- 
+$('.down-arrow-bg').click(function () {
+  let currentSectionIndex = 0;
+  var nextSection = $(this).closest('.down-arrow').next('div');
+  if (nextSection.length > 0) {
+    nextSection[currentSectionIndex].scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+});
+// Banner Arrrow animation script End-------------- 
+// Hiding Nav some page scroll
+$(window).scroll(function () {
+  var scroll = $(window).scrollTop();
+  if (scroll >= 600) {
+    $('header').addClass('fadeout');
 
-  var quotes = $(".quotes");
-  var quoteIndex = -1;
+  } else {
+    $('header').removeClass('fadeout');
+  }
+});
 
-  function showNextQuote() {
-    ++quoteIndex;
-    quotes.eq(quoteIndex % quotes.length)
-      .fadeIn(2000)
-      .delay(2000)
-      .fadeOut(2000, showNextQuote);
+//  05-Feb-2024 Map Search icon script Start--------------   
+$('.listSearch li').on("click", function () {
+  $(".listSearch li").css("background-color", "");
+  $(this).css("background-color", "rgb(57 56 56)");
+  var value = $(this).text();
+  //alert(value);
+  $(".show-mapSearchList").show();
+  $(".show-mapSearchList").html(value);
+  $('.Newsearch-box').hide();
+});
+
+$('.show-mapSearchList').click(function () {
+  $('.Newsearch-box').show();
+  $(".show-mapSearchList").hide();
+});
+// Map Search icon script Start--------------   
+
+//  05-Feb-2024 Breath text heading animation script Start--------------
+
+var TxtRotate = function (el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function () {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
   }
 
   setTimeout(function () {
-    showNextQuote();
-  }, 4000);
-  // Bannner text fadeout function End--------
+    that.tick();
+  }, delta);
+};
+
+window.onload = function () {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i = 0; i < elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.05em solid #fff }";
+  document.body.appendChild(css);
+};
+// Breath text heading animation script End--------------
+// Project Section Slider &  modal start--------------
+
+const gap = 10;
+
+const carousel = document.getElementById("carousel"),
+  content = document.getElementById("content"),
+  next = document.getElementById("next"),
+  prev = document.getElementById("prev");
+
+next.addEventListener("click", e => {
+  carousel.scrollBy(width + gap, 0);
+  if (carousel.scrollWidth !== 0) {
+    prev.style.opacity = 0.8;
+  }
+  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "inline-block";
+    next.style.opacity = 0.3
+  }
+});
+prev.addEventListener("click", e => {
+  carousel.scrollBy(-(width + gap), 0);
+  if (carousel.scrollLeft - width - gap <= 0) {
+    prev.style.display = "inline-block";
+  }
+  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "inline-block";
+    next.style.opacity = 0.8;
+  }
 });
 
-// Project Section modal End--------------
+function initializeDropdown(dropdownMenu) {
+  if (dropdownMenu.id = "stationsDropdownMap") {
+    //Added these 4 lines in this method to add search textbox in the stations dropdown -- prasanna
+    var inputTextBox = document.createElement('input');
+    inputTextBox.setAttribute('id', dropdownMenu.id + "Search");
+    inputTextBox.setAttribute('onkeyup', "selectedCity(" + dropdownMenu.id + "," + dropdownMenu.id + "Search" + ")");
+    dropdownMenu.appendChild(inputTextBox);
+    // end changes
+  }
+  var defaultListItem = document.createElement('li');
+  var defaultLink = document.createElement('a');
+  defaultLink.className = 'dropdown-item abudhabiitem';
+  defaultLink.href = 'javascript:void(0);';
+  defaultLink.textContent = $('#abudhabi').val();
+  defaultListItem.appendChild(defaultLink);
+  dropdownMenu.appendChild(defaultListItem);
+}
 
-// Insight Section Script by Sachin---------
-// var myCarousel = document.querySelector('#carouselExampleControls1')
-// 		var carousel = new bootstrap.Carousel(myCarousel, {
-// 			interval: 2000000000,
-// 			wrap: false
-// 		})
-function toggleDiv(tabId) {
+function toggleDiv(tabId, pollutant) {
   document.querySelectorAll('.tab-content.mt-0').forEach(function (div) {
     div.style.display = 'none';
   });
   document.getElementById(tabId).style.display = 'block';
+  activePollutant = pollutant;
+  bindStationDataToBarChart($("#barChartFilter").text());
 }
 
 // Map Search icon script Start--------------   
@@ -433,82 +502,7 @@ $(".dropdown-change li a").click(function () {
   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText);
 });
 
-function createChartButtonClickHandler(chartType) {
-  return function () {
-    switch (chartType) {
-      case "Hourly":
-        GetHourlyStationChart(stationNameforChart);
-        break;
-      case "Daily":
-        GetDailyStationChart(stationNameforChart);
-        break;
-      case "Weekly":
-        GetWeeklyStationChart(stationNameforChart);
-        break;
-      case "Monthly":
-        GetMonthlyStationChart(stationNameforChart);
-        break;
-      case "Yearly":
-        GetYearlyStationChart(stationNameforChart);
-        break;
-      case "Yearly1":
-        GetYearlyNewLineChart(stationNameforChart);
-        break;
-      case "Monthly1":
-        GetMonthlyNewLineChart(stationNameforChart);
-        break;
-      case "AQI1":
-        LoadAQIChart();
-        break;
-      case "PM10":
-        LoadPM10Chart();
-        break;
-      case "SO2":
-        LoadSO2Chart();
-        break;
-      case "CO":
-        LoadCOChart();
-        break;
-      case "O3":
-        LoadO3Chart();
-        break;
-      case "NO2":
-        LoadNO2Chart();
-        break;
-      default:
-        // Handle unknown chart types if needed
-        break;
-    }
-  };
-}
-
-$("#hourly").click(createChartButtonClickHandler("Hourly"));
-$("#Daily").click(createChartButtonClickHandler("Daily"));
-$("#Weekly").click(createChartButtonClickHandler("Weekly"));
-$("#Monthly").click(createChartButtonClickHandler("Monthly"));
-$("#Yearly").click(createChartButtonClickHandler("Yearly"));
-$("#AQI1").click(createChartButtonClickHandler("AQI1"));
-$("#PM10").click(createChartButtonClickHandler("PM10"));
-$("#SO2").click(createChartButtonClickHandler("SO2"));
-$("#CO").click(createChartButtonClickHandler("CO"));
-$("#03").click(createChartButtonClickHandler("O3"));
-$("#NO2").click(createChartButtonClickHandler("NO2"));
-$("#NO2").click(createChartButtonClickHandler("NO2"));
-$("#Monthly1").click(createChartButtonClickHandler("Monthly1"));
-$("#Yearly1").click(createChartButtonClickHandler("Yearly1"));
-
-
 $("#myTabs").insertBefore(".bar_section .legend");
-$(function () {
-  $('#myTabs .nav-item .nav-link').click(function () {
-    if ($(this).hasClass("active")) {
-      $(this).removeClass("active");
-    } else {
-      $('#myTabs .nav-item .nav-link').removeClass("active");
-      $(this).addClass("active");
-    }
-  });
-});
 
 //  05-Feb-2024 Banner Arrrow animation script Start-------------- 
 $('.down-arrow').on('click', function () {
@@ -600,17 +594,90 @@ function populateSort(stationData, sortingOrder) {
   });
 }
 
+let width = carousel.offsetWidth;
+window.addEventListener("resize", e => (width = carousel.offsetWidth));
+
+$(document).ready(function () {
+  aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
+  pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
+  aqiLineChart.render();
+  pollutantLineChart.render();
+  activePollutant = pollutantNames.AQI;
+  getCurrentLocation();
+  $('#currentDate').text(getFormattedDate(new Date()));
+  // Open Sidebar
+  $(".openSidebar").click(function () {
+    $(".sidebar").css("width", "40%");
+    $('.modal-background').addClass('project-modal');
+    // $(".main-content").css("margin-right", "250px");
+  });
+
+  // Close Sidebar
+  $(".close-btn").click(function () {
+    $(".sidebar").css("width", "0");
+    $(".main-content").css("margin-right", "0");
+    $('.modal-background').removeClass('project-modal');
+  });
+
+  var quotes = $(".quotes");
+  var quoteIndex = -1;
+
+  function showNextQuote() {
+    ++quoteIndex;
+    quotes.eq(quoteIndex % quotes.length)
+      .fadeIn(2000)
+      .delay(2000)
+      .fadeOut(2000, showNextQuote);
+  }
+
+  setTimeout(function () {
+    showNextQuote();
+  }, 4000);
+  // Bannner text fadeout function End--------
+
+  $('#myTabs .nav-item .nav-link').click(function () {
+    if ($(this).hasClass("active")) {
+      $(this).removeClass("active");
+    } else {
+      $('#myTabs .nav-item .nav-link').removeClass("active");
+      $(this).addClass("active");
+    }
+  });
+
+  $(".lineChartAqiFilterClass").on('click', function () {
+    $("#lineChartPollutantFilter").text(this.innerText);
+    getStationChartApi(this.innerText, false, true);
+    $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+  });
+
+  $(".lineChartPollutantFilterClass").on('click', function () {
+    $("#lineChartAqiFilter").text(this.innerText);
+    getStationChartApi(this.innerText, false, true);
+    $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+  });
+
+  $(".barChartFilterClass").on('click', function () {
+    var filter = this.innerText;
+    $("button#barChartFilter").each(function (index, item) {
+      item.innerText = filter;
+    });
+    getStationChartApi(this.innerText, true, false);
+  });
+});
+
+// Project Section modal End--------------
+
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(function success(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     currentStationDetails = findNearestStation(latitude, longitude);
     if (currentStationDetails) {
-      loadStationData(currentStationDetails.stationId, currentStationDetails.stationName);
+      loadStationData();
     }
   }, function error() {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
-    loadStationData(currentStationDetails.stationId, currentStationDetails.stationName);
+    loadStationData();
   }, options);
 }
 
@@ -656,6 +723,40 @@ function getAqiStatus(value) {
     return statusClass.VeryUnHealthly;
   } else {
     return statusClass.Hazardous;
+  }
+}
+
+function getAqiStatusAndColorCode(value) {
+  if (value >= 0 && value <= 50) {
+    return {
+      status: statusClass.Good,
+      color: colorCodes.green
+    };
+  } else if (value >= 51 && value <= 100) {
+    return {
+      status: statusClass.Moderate,
+      color: colorCodes.lightorange
+    };
+  } else if (value >= 101 && value <= 150) {
+    return {
+      status: statusClass.UnHealthlySensitiveGroups,
+      color: colorCodes.darkorange
+    };
+  } else if (value >= 151 && value <= 200) {
+    return {
+      status: statusClass.UnHealthly,
+      color: colorCodes.peach
+    };
+  } else if (value >= 201 && value <= 300) {
+    return {
+      status: statusClass.VeryUnHealthly,
+      color: colorCodes.purple
+    };
+  } else {
+    return {
+      status: statusClass.Hazardous,
+      color: colorCodes.hazar
+    };
   }
 }
 
@@ -723,9 +824,9 @@ function loadStationData() {
       getYearlyStationPollutantsThreshold();
       getAirAnalytics($("#selectedyear").text());
       getLiveCityRankingApi();
-      getYearlyStationChartApi();
       getAirQualitySafetyLevel();
-      airQualityIndexBarChartApi();
+      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text('');
+      getStationChartApi($('#lineChartPollutantFilter').text(), true, true);
     },
     error: handleApiError
   });
@@ -777,11 +878,11 @@ function getAirAnalytics(year) {
     success: function (data) {
       labelsData = [];
       pollutantLevels = [];
-      colorCodesForYearlyStationChartData = [];
+      colorCodesForAirAnalytics = [];
       data.filter(t => t.stationName == currentStationDetails.stationId).forEach(item => {
         labelsData.push(item.month);
         pollutantLevels.push(item.aqi);
-        colorCodesForYearlyStationChartData.push(item.colorCode);
+        colorCodesForAirAnalytics.push(item.colorCode);
       });
 
       let chartStatus = Chart.getChart("radarChart"); // <canvas> id
@@ -794,9 +895,7 @@ function getAirAnalytics(year) {
         data: createRadarData(),
         options: radarOptions,
       });
-      myRadarChart.data = createRadarData();
       myRadarChart.update();
-      // Print the resulting object for EAD_AlMaqta
     },
     error: handleApiError
   });
@@ -839,9 +938,9 @@ function createRadialGradient3(context) {
 
   // The pattern is 30 degrees of blend between quadrants
   // 60 degrees of pure color in the quadrant
-  var gradientStop = colorCodesForYearlyStationChartData.length / 12 * 0.1;
+  var gradientStop = colorCodesForAirAnalytics.length / 12 * 0.1;
   var colorGradient = 0
-  colorCodesForYearlyStationChartData.forEach(item => {
+  colorCodesForAirAnalytics.forEach(item => {
     gradient.addColorStop(colorGradient, item);
     if (colorGradient + gradientStop < 1) {
       colorGradient += gradientStop;
@@ -905,119 +1004,9 @@ function bindLiveCityRanking() {
   });
 }
 
-function getYearlyStationChartApi() {
-  $.ajax({
-    url: 'https://adairqualityapi.ead.ae/GetYearlyStationChart?stationName=' + currentStationDetails.stationId,
-    method: 'GET',
-    dataType: 'json',
-    success: function (data) {
-      yearlyStationChartData = data;
-      bindYearlyStationChart();
-    },
-    error: handleApiError
-  });
-}
-
-function bindYearlyStationChart() {
-  yearlyStationChartData.filter(t => t.stationName == currentStationDetails.stationId).forEach(item => {
-    // aqiData.push(item.aqi);
-    pm10Data.push(item.pM10);
-    so2Data.push(item.sO2);
-    coData.push(item.co);
-    o3Data.push(item.o3);
-    no2Data.push(item.nO2);
-    if (!xCategories.includes(item.year)) {
-      xCategories.push(item.year);
-    }
-  });
-  // seriesData.push({name: 'AQI', data: aqiData});
-  seriesData.push({ name: 'PM10', data: pm10Data });
-  seriesData.push({ name: 'SO2', data: so2Data });
-  seriesData.push({ name: 'CO', data: coData });
-  seriesData.push({ name: 'O3', data: o3Data });
-  seriesData.push({ name: 'NO2', data: no2Data });
-
-  var options = {
-    series: seriesData,
-    chart: {
-      height: 350,
-      type: 'line',
-      animations: {
-        enabled: true,
-        easing: 'linear',
-        dynamicAnimation: {
-          speed: 1000
-        }
-      },
-      toolbar: {
-        show: false
-      },
-      zoom: {
-        enabled: false
-      }
-    },
-
-    // colors: ['#9cd84e', '#facf39', '#f99049', '#f65e5f', '#a070b6', '#a06a7b'],
-    colors: ['#004B87', '#6693B7', '#99B7CF', '#B3C9DB', '#E6EDF3'],
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      width: [3, 3, 3, 3, 3, 3],
-      curve: 'smooth'
-    },
-    title: {
-      text: '',
-      align: 'left'
-    },
-    markers: {
-      size: 0
-    },
-    xaxis: {
-      categories: xCategories,
-      labels: {
-        rotateAlways: false,
-      }
-    },
-    legend: {
-      show: true,
-      position: 'bottom'
-    },
-    tooltip: {
-      enabled: true,
-      shared: false,
-      x: {
-        show: false,
-      },
-    },
-    grid: {
-      show: false, // hide grid
-    },
-    responsive: [
-      {
-        breakpoint: 1350,
-        options: {
-          chart: {
-            height: 250
-          }
-        },
-        breakpoint: 1400,
-        options: {
-          chart: {
-            height: 250
-          }
-        },
-      }
-    ]
-  };
-
-  var chart = new ApexCharts(document.querySelector("#newchartTrend"), options);
-  chart.render();
-}
-
-function selectedStation(stationId, stationName) {
+function selectedStation(stationId) {
   currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
-  loadStationData(stationId, stationName);
+  loadStationData();
 }
 
 function getAirQualitySafetyLevel() {
@@ -1046,108 +1035,237 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
           </div>`;
 }
 
-function airQualityIndexBarChartApi() {
+function getStationChartApi(filter, isBarChart, isLineChart) {
+  var url;
+  switch (filter) {
+    case chartFilter.Daily:
+      url = 'https://adairqualityapi.ead.ae/GetDailyStationChart?stationName=' + currentStationDetails.stationId;
+      break;
+    case chartFilter.Monthly:
+      url = 'https://adairqualityapi.ead.ae/GetMonthlyStationChart?stationName=' + currentStationDetails.stationId;
+      break;
+    case chartFilter.Yearly:
+      url = 'https://adairqualityapi.ead.ae/GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
+      break;
+    default:
+      url = 'https://adairqualityapi.ead.ae/GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
+      break;
+  }
   $.ajax({
-    url: 'https://adairqualityapi.ead.ae/GetHourlyStationChart?stationName=' + currentStationDetails.stationId,
+    url: url,
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      var hourlyAqiBarDataSeries = [];
-      var categoriesData = [];
-      var hourlyAqiLineData = [];
-      data.filter(t => t.stationName == currentStationDetails.stationId).forEach(item => {
-        if (hourlyAqiBarDataSeries.length) {
-          hourlyAqiBarDataSeries[0].data.push(item.aqi);
-        } else {
-          hourlyAqiBarDataSeries.push({ name: item.aqiIndex, data: [item.aqi] });
-        }
-        hourlyAqiLineData.push(item.aqi);
-        var parts = item.hour.split(' ');
-        categoriesData.push(parts);
-      });
-      $("#ADstationAqiBarGraph").empty();
-      var barChartOptions = {
-        series: hourlyAqiBarDataSeries,
-        chart: {
-          type: 'bar',
-          height: 300,
-          animations: {
-            enabled: true,
-            easing: 'linear',
-          },
-          toolbar: {
-            show: false,
-            // offsetX: 0,
-            // offsetY: 0,
-            tools: {
-              download: false,
-            }
-          },
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '60%',
-            endingShape: 'rounded',
-            // borderRadius: 4,
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 0,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: categoriesData,
-          radius: 12,
-          labels: {
-            rotateAlways: false,
-          }
-        },
-        fill: {
-          opacity: 0.8
-        },
-        legend: {
-          show: false,
-        },
-        colors: [
-          function ({ value, seriesIndex, w }) {
-            return colorCodes[getColorClassForAqi(value)];
-          }
-        ],
-        tooltip: {
-          enabled: true,
-          x: {
-            show: false,
-          },
-          y: {
-            formatter: function (val) {
-              return val;
-            },
-            title: {
-              formatter: function (seriesName) {
-                return ''
-              }
-            }
-          }
-        }
-      };
-      var barChart = new ApexCharts(document.querySelector("#ADstationAqiBarGraph"), barChartOptions);
-      barChart.render();
-      aqiLineChart.updateSeries(
-        [{
-          name: 'AQI',
-          data: hourlyAqiLineData
-        }],);
-      aqiLineChart.updateOptions({
-        xaxis: {
-          categories: categoriesData,
-        }
-      });
+      chartData = data.filter(t => t.stationName == currentStationDetails.stationId);
+      if (isBarChart) {
+        bindStationDataToBarChart(filter);
+      }
+      if (isLineChart) {
+        bindStationDataToLineChart(filter);
+      }
     },
     error: handleApiError
   });
+}
+
+function bindStationDataToLineChart(filter) {
+  var aqiData = [];
+  var pm10Data = [];
+  var so2Data = [];
+  var coData = [];
+  var o3Data = [];
+  var no2Data = [];
+  chartData.forEach(item => {
+    aqiData.push(item.aqi);
+    pm10Data.push(item.pM10);
+    so2Data.push(item.sO2);
+    coData.push(item.co);
+    o3Data.push(item.o3);
+    no2Data.push(item.nO2);
+  });
+  var categoriesData;
+  switch (filter) {
+    case "Daily":
+      categoriesData = chartData.map(t => { return t.day.split(' '); });
+      break;
+    case "Monthly":
+      categoriesData = chartData.map(t => { return t.month; });
+      break;
+    case "Yearly":
+      categoriesData = chartData.map(t => { return t.year; });
+      break;
+    default:
+      categoriesData = chartData.map(t => { return t.hour.split(' '); });
+      break;
+  }
+  aqiLineChart.updateOptions({
+    series: [{
+      name: 'AQI',
+      data: aqiData
+    }],
+    xaxis: {
+      categories: categoriesData,
+      tickAmount: 10,
+    }
+  });
+  pollutantLineChart.updateOptions({
+    series: [{
+      name: 'PM10',
+      data: pm10Data
+    },
+    {
+      name: 'SO2',
+      data: so2Data
+    },
+    {
+      name: 'CO',
+      data: coData
+    },
+    {
+      name: 'O3',
+      data: o3Data
+    },
+    {
+      name: 'NO2',
+      data: no2Data
+    }],
+    xaxis: {
+      categories: categoriesData,
+      tickAmount: 10,
+    }
+  });
+}
+
+function bindStationDataToBarChart(filter) {
+  var aqiData = [];
+  var pm10Data = [];
+  var so2Data = [];
+  var coData = [];
+  var o3Data = [];
+  var no2Data = [];
+  var categoriesData = [];
+  var barChartData = [];
+  switch (filter) {
+    case "Daily":
+      chartData.forEach(item => {
+        aqiData.push(item.aqi);
+        pm10Data.push(item.pM10);
+        so2Data.push(item.sO2);
+        coData.push(item.co);
+        o3Data.push(item.o3);
+        no2Data.push(item.nO2);
+        categoriesData.push(item.day.split(' '));
+      });
+      break;
+    case "Monthly":
+      chartData.forEach(item => {
+        aqiData.push(item.aqi);
+        pm10Data.push(item.pM10);
+        so2Data.push(item.sO2);
+        coData.push(item.co);
+        o3Data.push(item.o3);
+        no2Data.push(item.nO2);
+        categoriesData.push(item.month);
+      });
+      break;
+    case "Yearly":
+      chartData.forEach(item => {
+        aqiData.push(item.aqi);
+        pm10Data.push(item.pM10);
+        so2Data.push(item.sO2);
+        coData.push(item.co);
+        o3Data.push(item.o3);
+        no2Data.push(item.nO2);
+        categoriesData.push(item.year);
+      });
+      break;
+    default:
+      chartData.forEach(item => {
+        aqiData.push(item.aqi);
+        pm10Data.push(item.pM10);
+        so2Data.push(item.sO2);
+        coData.push(item.co);
+        o3Data.push(item.o3);
+        no2Data.push(item.nO2);
+        categoriesData.push(item.hour.split(' '));
+      });
+      break;
+  }
+  var pollutantBarChartId;
+  switch (activePollutant) {
+    case pollutantNames.PM10:
+      barChartData = pm10Data;
+      pollutantBarChartId = "ADstationPm10BarGraph";
+      break;
+    case pollutantNames.SO2:
+      barChartData = so2Data;
+      pollutantBarChartId = "ADstationSo2BarGraph";
+      break;
+    case pollutantNames.CO:
+      barChartData = coData;
+      pollutantBarChartId = "ADstationCoBarGraph";
+      break;
+    case pollutantNames.O3:
+      barChartData = o3Data;
+      pollutantBarChartId = "ADstationO3BarGraph";
+      break;
+    case pollutantNames.NO2:
+      barChartData = no2Data;
+      pollutantBarChartId = "ADstationNo2BarGraph";
+      break;
+    default:
+      barChartData = aqiData;
+      pollutantBarChartId = "ADstationAqiBarGraph";
+      break;
+  }
+
+  const options = {
+    type: 'bar',
+    data: categoriesData,
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          // text: 'Chart.js Bar Chart - Stacked'
+        },
+      },
+      responsive: true,
+      interaction: {
+        intersect: false,
+      },
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true
+        }
+      }
+    }
+  };
+
+  var chartStatus = Chart.getChart(pollutantBarChartId); // <canvas> id
+  if (chartStatus != undefined) {
+    chartStatus.destroy();
+  }
+  var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
+  var constructBarChart = new Chart(barChart, {
+    type: 'bar',
+    data: {
+      labels: categoriesData,
+      fill: false,
+      datasets: [{
+        label: '',
+        //borderColor: 'rgba(250, 207, 57, 1)',
+        //pointBackgroundColor: getColors(pollutantLevels),
+        // backgroundColor: function (context) {
+        //   return createRadialGradient3(context);
+        // },
+        lineTension: 0.2,
+        data: barChartData,
+      }]
+    },
+    options: options,
+  });
+  constructBarChart.update();
 }

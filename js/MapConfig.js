@@ -4,7 +4,7 @@ var WebMapID = "d1649c5b42be4e5085db2afd634226ff";
 var MonitoringStationsAPI = "https://atlas.smartgeoapps.com/server/rest/services/AIrQuality/MonitoringStations/MapServer/0";
 var AirQualityService1 = "https://atlas.smartgeoapps.com/AirQualityWS/AQMS.asmx";
 var AirQualityService = "https://adairqualityapi.ead.ae/";
-var ImagesPath = "./assets/AQI/Images/AirQualityProject/AirQuality/Map/";
+var ImagesPath = "./images/new-images/";
 var stationsIDs= [
     {
         "Hamdan Street": "EAD_HamdanStreet",
@@ -40,42 +40,42 @@ var IndexRange = [
         minVal: 0,
         maxVal: 50,
         //color: "#00ca00",
-        ImageUrl:ImagesPath + "green.png"
+        ImageUrl:ImagesPath + "Animation -green.gif"
     },
     {
         pollutantLevel: "Moderate",
         minVal: 51,
         maxVal: 100,
         //color: "#fff200",
-        ImageUrl: ImagesPath + "yellow.png"
+        ImageUrl: ImagesPath + "Animation - lightorange.gif"
     },
     {
         pollutantLevel: "Unhealthy for sensitive groups",
         minVal: 101,
         maxVal: 150,
         //color: "#f7901e",
-        ImageUrl: ImagesPath + "orange.png"
+        ImageUrl: ImagesPath + "Animation - darkorange.gif"
     },
     {
         pollutantLevel: "Unhealthy",
         minVal: 151,
         maxVal: 200,
         //color: "#e9373e",
-        ImageUrl: ImagesPath + "red1.png"
+        ImageUrl: ImagesPath + "Animation -red.gif"
     },
     {
         pollutantLevel: "Very unhealthy",
         minVal: 201,
         maxVal: 300,
         //color: "#ac225d",
-        ImageUrl: ImagesPath + "purple.png"
+        ImageUrl: ImagesPath + "Animation - purple.gif"
     },
     {
         pollutantLevel: "Hazardous",
         minVal: 301,
         maxVal: 500,
         //color: "#891a1c",
-        ImageUrl: ImagesPath + "p1.png"
+        ImageUrl: ImagesPath + "Animation - hazar.gif"
     }
 ]
 var Indexunder50 = {

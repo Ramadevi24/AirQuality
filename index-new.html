@@ -189,7 +189,7 @@
     </div>
     <div class="section air-map-container" id="section1">
       <div class="air-map-col col-md-12">
-        <div class="map-block position-relative" id="mapBlock">
+        <div class="map-block position-relative" id="mapBlock" style="height: 500px;">
           <!-- 30-Jan-2024 -- hide iframe and added image only -->
           <!-- <img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution" width="100%" height="570"> -->
           <!-- <iframe
@@ -270,8 +270,8 @@
           <li class="">
             <span class="btn show-mapSearchList text-white">xxxxxxxxxx</span>
             <div class="Newsearch-box">
-              <input class="search-txt" type="text" name="" placeholder="Search Station">
-              <ul class="listSearch">
+              <input class="search-txt" id="stationsDropdownMapSearch" type="text" name="" placeholder="Search Station">
+              <ul class="listSearch" id="stationsDropdownMap">
                 <li>
                   <span class="mapSearchlist-text">Abu Dhabi</span>
                 </li>
@@ -317,14 +317,14 @@
         </ul>
         <ul class="map-hori-tools">
           <li>
-            <button class="btn">
+            <button class="btn" id="zoomplus">
               <span class="material-symbols-outlined">
                 add
               </span>
             </button>
           </li>
           <li>
-            <button class="btn">
+            <button class="btn" id="zoomMinus">
               <span class="material-symbols-outlined">remove</span>
             </button>
           </li>
@@ -565,7 +565,8 @@
                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                           <div class="btn-group me-auto">
                                             <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                              data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                              data-bs-toggle="dropdown" aria-expanded="false"
+                                              id="barChartFilter">Hourly</button>
                                             <div class="date-box">
                                               <input type="date" class="form-control" id="datepicker">
                                               <span class="calendar-icon" id="calendar-icon">
@@ -576,31 +577,21 @@
                                             <ul
                                               class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                               <li>
-                                                <a class="dropdown-item active">Hourly</a>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Daily</a>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Monthly</a>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Yearly</a>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
                                               </li>
                                             </ul>
                                           </div>
                                         </div>
-                                        <div id="ADstationAqiBarGraph"></div>
-                                        <div class="date_row">
-                                          <ul>
-                                            <li>
-                                              <p>Feb 15 2024</p>
-                                            </li>
-                                            <li>
-                                              <p>Feb 16 2024</p>
-                                            </li>
-                                          </ul>
-                                        </div>
+                                        <canvas id="ADstationAqiBarGraph"></canvas>
                                         <ul class="legend">
                                           <li>
                                             <span class="marker_good marker_legend"></span>Good
@@ -643,7 +634,8 @@
                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                           <div class="btn-group me-auto">
                                             <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                              data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                              data-bs-toggle="dropdown" aria-expanded="false" id="barChartFilter">
+                                              Hourly </button>
                                             <div class="date-box">
                                               <input type="date" class="form-control" id="datepicker">
                                               <span class="calendar-icon" id="calendar-icon">
@@ -654,16 +646,16 @@
                                             <ul
                                               class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                               <li>
-                                                <a class="dropdown-item active">Hourly</a>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Daily</a>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Monthly</a>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
                                               </li>
                                               <li>
-                                                <a class="dropdown-item">Yearly</a>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
                                               </li>
                                             </ul>
                                           </div>
@@ -671,7 +663,7 @@
                                         <div class="ug_content">
                                           <p>ug/m3</p>
                                         </div>
-                                        <div id="chart_polutent"></div>
+                                        <canvas id="ADstationPm10BarGraph"></canvas>
                                         <ul class="legend">
                                           <li>
                                             <span class="marker_pol_ac marker_legend"></span> Acceptable Value
@@ -687,44 +679,242 @@
                               </div>
                               <div id="so2Tab" class="tab-content mt-0" style="display: none;">
                                 <div>
-                                  <!-- Content specific to SO2 --> SO2 Content
+                                  <div class="Polutant_bar" id="pills-tabContent">
+                                    <div class="quality-index-wrapper-h2">
+                                      <h2>POLLUTANT TRENDS</h2>
+                                      <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                    </div>
+                                    <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                              data-bs-toggle="dropdown" aria-expanded="false" id="barChartFilter">
+                                              Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0"
+                                                  id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul
+                                              class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="ug_content">
+                                          <p>ug/m3</p>
+                                        </div>
+                                        <canvas id="ADstationSo2BarGraph"></canvas>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_pol_ac marker_legend"></span> Acceptable Value
+                                          </li>
+                                          <li>
+                                            <span class="marker_pol_ab_ac marker_legend"></span>Above Acceptable Value
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div id="coTab" class="tab-content mt-0" style="display: none;">
                                 <div>
-                                  <!-- Content specific to CO --> CO Content
+                                  <div class="Polutant_bar" id="pills-tabContent">
+                                    <div class="quality-index-wrapper-h2">
+                                      <h2>POLLUTANT TRENDS</h2>
+                                      <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                    </div>
+                                    <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                              data-bs-toggle="dropdown" aria-expanded="false" id="barChartFilter">
+                                              Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0"
+                                                  id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul
+                                              class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="ug_content">
+                                          <p>ug/m3</p>
+                                        </div>
+                                        <canvas id="ADstationCoBarGraph"></canvas>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_pol_ac marker_legend"></span> Acceptable Value
+                                          </li>
+                                          <li>
+                                            <span class="marker_pol_ab_ac marker_legend"></span>Above Acceptable Value
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div id="o3Tab" class="tab-content mt-0" style="display: none;">
                                 <div>
-                                  <!-- Content specific to O3 --> O3 Content
+                                  <div class="Polutant_bar" id="pills-tabContent">
+                                    <div class="quality-index-wrapper-h2">
+                                      <h2>POLLUTANT TRENDS</h2>
+                                      <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                    </div>
+                                    <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                              data-bs-toggle="dropdown" aria-expanded="false" id="barChartFilter">
+                                              Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0"
+                                                  id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul
+                                              class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="ug_content">
+                                          <p>ug/m3</p>
+                                        </div>
+                                        <canvas id="ADstationO3BarGraph"></canvas>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_pol_ac marker_legend"></span> Acceptable Value
+                                          </li>
+                                          <li>
+                                            <span class="marker_pol_ab_ac marker_legend"></span>Above Acceptable Value
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div id="no2Tab" class="tab-content mt-0" style="display: none;">
                                 <div>
-                                  <!-- Content specific to NO2 --> NO2 Content
+                                  <div class="Polutant_bar" id="pills-tabContent">
+                                    <div class="quality-index-wrapper-h2">
+                                      <h2>POLLUTANT TRENDS</h2>
+                                      <p>Last refreshed: 1:00 PM (UTC +4)</p>
+                                    </div>
+                                    <div class="polutenat_bar">
+                                      <div class="tab_shado">
+                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                          <div class="btn-group me-auto">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                              data-bs-toggle="dropdown" aria-expanded="false" id="barChartFilter">
+                                              Hourly </button>
+                                            <div class="date-box">
+                                              <input type="date" class="form-control" id="datepicker">
+                                              <span class="calendar-icon" id="calendar-icon">
+                                                <img src="images/calendar.png" width="16" height="16" border="0"
+                                                  id="datePickerImage">
+                                              </span>
+                                            </div>
+                                            <ul
+                                              class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                              <li>
+                                                <a class="dropdown-item active barChartFilterClass">Hourly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Daily</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Monthly</a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item barChartFilterClass">Yearly</a>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="ug_content">
+                                          <p>ug/m3</p>
+                                        </div>
+                                        <canvas id="ADstationNo2BarGraph"></canvas>
+                                        <ul class="legend">
+                                          <li>
+                                            <span class="marker_pol_ac marker_legend"></span> Acceptable Value
+                                          </li>
+                                          <li>
+                                            <span class="marker_pol_ab_ac marker_legend"></span>Above Acceptable Value
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <ul class="nav " id="myTabs">
+                              <ul class="nav" id="myTabs">
                                 <li class="nav-item">
-                                  <a class="nav-link active" onclick="toggleDiv('aiqTab')">AQI</a>
+                                  <a class="nav-link active" onclick="toggleDiv('aiqTab', 'AQI')" style="cursor: pointer;"></a>AQI
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" onclick="toggleDiv('pm10Tab')">PM10</a>
+                                  <a class="nav-link" onclick="toggleDiv('pm10Tab', 'PM10')" style="cursor: pointer;">PM10</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" onclick="toggleDiv('so2Tab')"
-                                    style="pointer-events: none;">SO2</a>
+                                  <a class="nav-link" onclick="toggleDiv('so2Tab', 'SO2')" style="cursor: pointer;">SO2</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" onclick="toggleDiv('coTab')" style="pointer-events: none;">CO</a>
+                                  <a class="nav-link" onclick="toggleDiv('coTab', 'CO')" style="cursor: pointer;">CO</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" onclick="toggleDiv('o3Tab')" style="pointer-events: none;">O3</a>
+                                  <a class="nav-link" onclick="toggleDiv('o3Tab', 'O3')" style="cursor: pointer;">O3</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" onclick="toggleDiv('no2Tab')"
-                                    style="pointer-events: none;">NO2</a>
+                                  <a class="nav-link" onclick="toggleDiv('no2Tab', 'NO2')" style="cursor: pointer;">NO2</a>
                                 </li>
                               </ul>
                             </div>
@@ -764,44 +954,39 @@
                                       <!-- /////modify/////// -->
                                       <div class="aqi-content">
                                         <li>
-                                          <span>AQI</span>
+                                          <strong>AQI</strong>
                                           <hr>
-                                          <p>145 UNHEALTHY FOR <br>
-                                            SENSITIVE GROUPS</p>
+                                          <p id="lineChartAqiValueStatus"></p>
                                         </li>
                                       </div>
                                       <div class="grid-value">
                                         <div class="grid-upper">
-                                          <p>ug/m3</p>
+                                          <p>ug/m<sup>3</sup></p>
                                         </div>
                                         <div class="grid-bottom">
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>So <sub>2</sub>
+                                            <strong id="lineChartAqiSo2Value"></strong>
+                                            <p>SO <sub>2</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>70</strong>
-                                            <p>No <sub>2</sub>
+                                            <strong id="lineChartAqiNo2Value"></strong>
+                                            <p>NO <sub>2</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>Co</p>
+                                            <strong id="lineChartAqiCoValue"></strong>
+                                            <p>CO</p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
+                                            <strong id="lineChartAqiPm10Value"></strong>
                                             <p>PM <sub>10</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>o <sub>3</sub>
+                                            <strong id="lineChartAqiO3Value"></strong>
+                                            <p>O <sub>3</sub>
                                             </p>
-                                          </div>
-                                          <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>H <sub>2</sub>S </p>
                                           </div>
                                         </div>
                                       </div>
@@ -809,7 +994,8 @@
                                       <div class=" row pollutant-dropdown-show graph-duration-filters">
                                         <div class="btn-group me-auto">
                                           <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                            data-bs-toggle="dropdown" aria-expanded="false" id="lineChartAqiFilter">
+                                            Hourly </button>
                                           <div class="date-box">
                                             <input type="date" class="form-control" id="datepicker">
                                             <span class="calendar-icon" id="calendar-icon">
@@ -819,16 +1005,16 @@
                                           </div>
                                           <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                             <li>
-                                              <a class="dropdown-item active">Hourly</a>
+                                              <a class="dropdown-item active lineChartAqiFilterClass">Hourly</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Daily</a>
+                                              <a class="dropdown-item lineChartAqiFilterClass">Daily</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Monthly</a>
+                                              <a class="dropdown-item lineChartAqiFilterClass">Monthly</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Yearly</a>
+                                              <a class="dropdown-item lineChartAqiFilterClass">Yearly</a>
                                             </li>
                                           </ul>
                                         </div>
@@ -873,7 +1059,7 @@
                                       <div class="aqi-content mult-value-tab">
                                         <strong>AQI</strong>
                                         <hr>
-                                        <p>88 GOOD</p>
+                                        <p id="lineChartPollutantValueStatus"></p>
                                       </div>
                                       <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
                                 SENSITIVE GROUPS
@@ -881,36 +1067,32 @@
                                       <!-- /////modify/////// -->
                                       <div class="grid-value">
                                         <div class="grid-upper">
-                                          <p>ug/m3</p>
+                                          <p>ug/m<sup>3</sup></p>
                                         </div>
                                         <div class="grid-bottom">
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>So <sub>2</sub>
+                                            <strong id="lineChartPollutantSo2Value"></strong>
+                                            <p>SO <sub>2</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>70</strong>
-                                            <p>No <sub>2</sub>
+                                            <strong id="lineChartPollutantNo2Value"></strong>
+                                            <p>NO <sub>2</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>Co</p>
+                                            <strong id="lineChartPollutantCoValue"></strong>
+                                            <p>CO</p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
+                                            <strong id="lineChartAqiPm10Value"></strong>
                                             <p>PM <sub>10</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>o <sub>3</sub>
+                                            <strong id="lineChartAqiO3Value"></strong>
+                                            <p>O <sub>3</sub>
                                             </p>
-                                          </div>
-                                          <div class="mult-value">
-                                            <strong>80</strong>
-                                            <p>H <sub>2</sub>S </p>
                                           </div>
                                         </div>
                                       </div>
@@ -918,7 +1100,8 @@
                                       <div class=" row pollutant-dropdown-show graph-duration-filters">
                                         <div class="btn-group me-auto">
                                           <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false"> Hourly </button>
+                                            data-bs-toggle="dropdown" aria-expanded="false"
+                                            id="lineChartPollutantFilter"> Hourly </button>
                                           <div class="date-box">
                                             <input type="date" class="form-control" id="datepicker">
                                             <span class="calendar-icon" id="calendar-icon">
@@ -928,35 +1111,35 @@
                                           </div>
                                           <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                             <li>
-                                              <a class="dropdown-item active">Hourly</a>
+                                              <a class="dropdown-item active lineChartPollutantFilterClass">Hourly</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Daily</a>
+                                              <a class="dropdown-item lineChartPollutantFilterClass">Daily</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Monthly</a>
+                                              <a class="dropdown-item lineChartPollutantFilterClass">Monthly</a>
                                             </li>
                                             <li>
-                                              <a class="dropdown-item">Yearly</a>
+                                              <a class="dropdown-item lineChartPollutantFilterClass">Yearly</a>
                                             </li>
                                           </ul>
                                         </div>
                                       </div>
-                                      <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                      <!-- <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                         <li>
                                           <a class="dropdown-item active">Hourly</a>
                                         </li>
                                         <li>
-                                          <a class="dropdown-item">Daily</a>
+                                          <a class="dropdown-item ">Daily</a>
                                         </li>
                                         <li>
-                                          <a class="dropdown-item">Monthly</a>
+                                          <a class="dropdown-item ">Monthly</a>
                                         </li>
                                         <li>
-                                          <a class="dropdown-item">Yearly</a>
+                                          <a class="dropdown-item ">Yearly</a>
                                         </li>
-                                      </ul>
-                                      <div id="newchartTrend"></div>
+                                      </ul> -->
+                                      <div id="pollutantLineChart"></div>
                                     </div>
                                   </div>
                                 </div>
@@ -1643,11 +1826,11 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/apexcharts.js"></script>
   <script src="./js/chart.js"></script>
-  <script src="https://js.arcgis.com/4.28/"></script>
+  <!-- <script src="https://js.arcgis.com/4.28/"></script> -->
   <script type="text/javascript" src="./graphs.js"></script>
   <script src="./js/index-script.js"></script>
-  <script src="./js/Map.js"></script>
-  <script src="./js/MapConfig.js"></script>
+  <!-- <script src="./js/Map.js"></script>
+  <script src="./js/MapConfig.js"></script> -->
   <!-- <script type="text/javascript" src="./scolling-script/fullpage.js"></script> -->
   <script type="text/javascript">
     // var myFullpage = new fullpage('#fullpage', {
@@ -1661,6 +1844,9 @@
     // 	normalScrollElements: '.project-modal, .faqscrolling'
     // });
   </script>
+  <script src="https://js.arcgis.com/4.28/"></script>
+  <script src="./js/Map.js"></script>
+  <script src="./js/MapConfig.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
 
@@ -1671,36 +1857,36 @@
       if (!isMobile()) {
         // Check if FullPage.js is already loaded
         if (typeof fullpage === 'function') {
-          initializeFullPage();
+          // initializeFullPage();
         } else {
           // Load FullPage.js script dynamically
-          loadExternalScript();
+          // loadExternalScript();
         }
       }
     });
 
-    function initializeFullPage() {
-      var myFullpage = new fullpage('#fullpage', {
-        anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
-        sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
-        navigation: true,
-        navigationPosition: 'right',
-        menu: '#menu',
-        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
-        scrollBar: true,
-        normalScrollElements: '.project-modal, .faqscrolling'
-      });
-    }
+    // function initializeFullPage() {
+    //   var myFullpage = new fullpage('#fullpage', {
+    //     anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
+    //     sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
+    //     navigation: true,
+    //     navigationPosition: 'right',
+    //     menu: '#menu',
+    //     //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+    //     scrollBar: true,
+    //     normalScrollElements: '.project-modal, .faqscrolling'
+    //   });
+    // }
 
-    function loadExternalScript() {
-      // Load FullPage.js script only if window width is greater than 990px
-      if (window.innerWidth > 990) {
-        var scriptTag = document.createElement('script');
-        scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
-        scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
-        document.head.appendChild(scriptTag);
-      }
-    }
+    // function loadExternalScript() {
+    //   // Load FullPage.js script only if window width is greater than 990px
+    //   if (window.innerWidth > 990) {
+    //     var scriptTag = document.createElement('script');
+    //     scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
+    //     scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
+    //     document.head.appendChild(scriptTag);
+    //   }
+    // }
 
     // $(document).ready(function(){
     // function adjustDivHeight() {

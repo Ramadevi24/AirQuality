@@ -7923,139 +7923,72 @@ function updateChart(interval) {
 // =====================================Chart By Sachin========================
 
       
-var options_polutent = {
-  series: [{
-      name: 'Acceptable value',
-      data: [44, 55, 41, 67, 22, 43,11,44, 55, 41, 67, 22, 43,11,55, 41, 67, 22, 43,11,22,45,56,78]
-    }, {
-      name: 'Above acceptable value ',
-      data: [0, 23, 20, 8, 0, 27,22,0, 23, 0, 8, 13, 0,22,23, 0, 8, 13, 0,22,76,34,23,11]
-    }],
-  chart: {
-  type: 'bar',
-  height: 300,
-  stacked: true,
-},
-plotOptions: {
-  bar: {
-    horizontal: false,
-    borderRadius: 0,
-    borderRadiusApplication: 'around',
-    borderRadiusWhenStacked: 'last',
-    dataLabels: {
-      total: {
-        enabled: false,
-        offsetX: 0,
-        style: {
-          fontSize: '13px',
-          fontWeight: 900
-        }
-      }
-    }
-  },
-},
-stroke: {
-  width: 1,
-  colors: ['#fff']
-},
-
-colors: ['#004B87','#F65E5F'],
-xaxis: {
-  categories: categoriesData,
-},
-yaxis: {
-  title: {
-    text: undefined
-  },
-},
-tooltip: {
-  y: {
-    formatter: function (val) {
-      return val + "K"
-    }
-  }
-},
-fill: {
-  opacity: 1
-},
-legend: {
-  show:false,
-  position: 'bottom',
-  horizontalAlign: 'center',
-  offsetX: 40
-}
-};
-var chart = new ApexCharts(document.querySelector("#chart_polutent"), options_polutent);
-chart.render();
-
-
-
-var options_aiq_line = {
-  series: [{
-  name: 'AQI',
-  data: [0,10,20,30,40,50,30,28,20,10,20,46,23,78,80,100]
-}],
-  chart: {
-  height: 300,
-  width: '90%',
-  type: 'area',
-  toolbar: {
-    show: false
-  },
-},
-dataLabels: {
-  enabled: false
-},
-stroke: {
-  curve: 'smooth'
-},
-xaxis: {
-  type: 'datetime',
-  categories: ['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
-  tickAmount: 10,
-  labels: {
-    formatter: function(value, timestamp, opts) {
-      return opts.dateFormatter(new Date(timestamp), 'MMM')
-    }
-  }
+// var options_aiq_line = {
+//   series: [{
+//   name: 'AQI',
+//   data: [0,10,20,30,40,50,30,28,20,10,20,46,23,78,80,100]
+// }],
+//   chart: {
+//   height: 300,
+//   width: '90%',
+//   type: 'area',
+//   toolbar: {
+//     show: false
+//   },
+// },
+// dataLabels: {
+//   enabled: false
+// },
+// stroke: {
+//   curve: 'smooth'
+// },
+// xaxis: {
+//   type: 'datetime',
+//   categories: ['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
+//   tickAmount: 10,
+//   labels: {
+//     formatter: function(value, timestamp, opts) {
+//       return opts.dateFormatter(new Date(timestamp), 'MMM')
+//     }
+//   }
   
-},
-grid: {
-  show: false, // hide grid
-},
-fill: {
-  type: 'gradient',
-  gradient: {
-    shade: 'dark',
-    gradientToColors: [ '#FACF39','#F99049'],
-    shadeIntensity: 1,
-    type: 'horizontal',
-    opacityFrom: .3,
-    opacityTo: .3,
-    stops: [0, 100, 100, 100]
-  },
-},
-yaxis: {
-  min: 0,
-  max: 100
-},
-responsive: [
-  {
-    breakpoint: 1350,
-    options: {
-      chart: {
-        height: 250 
-      }
-    },
-    breakpoint: 1400,
-    options: {
-      chart: {
-        height: 250  
-      }
-    },
-  }
-]
-};
+// },
+// grid: {
+//   show: false, // hide grid
+// },
+// fill: {
+//   type: 'gradient',
+//   gradient: {
+//     shade: 'dark',
+//     gradientToColors: [ '#FACF39','#F99049'],
+//     shadeIntensity: 1,
+//     type: 'horizontal',
+//     opacityFrom: .3,
+//     opacityTo: .3,
+//     stops: [0, 100, 100, 100]
+//   },
+// },
+// yaxis: {
+//   min: 0,
+//   max: 100
+// },
+// responsive: [
+//   {
+//     breakpoint: 1350,
+//     options: {
+//       chart: {
+//         height: 250 
+//       }
+//     },
+//     breakpoint: 1400,
+//     options: {
+//       chart: {
+//         height: 250  
+//       }
+//     },
+//   }
+// ]
+// };
 
 // var chart = new ApexCharts(document.querySelector("#options_aiq_line"), options_aiq_line);
 // chart.render();
