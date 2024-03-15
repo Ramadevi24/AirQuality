@@ -382,15 +382,15 @@
                 </div>
                 <li>
                   <input type="checkbox">
-                  <p class="dropdown-item">Nearest to me</p>
+                  <p class="dropdown-item sortIcon">Nearest to me</p>
                 </li>
                 <li>
                   <input type="checkbox" name="" id="">
-                  <p class="dropdown-item">AQI Ranking action </p>
+                  <p class="dropdown-item sortIcon">AQI Ranking action </p>
                 </li>
                 <li>
                   <input type="checkbox" name="" id="">
-                  <p class="dropdown-item">Alphabetical Order</p>
+                  <p class="dropdown-item sortIcon">Alphabetical Order</p>
                 </li>
               </ul>
             </div>
@@ -612,16 +612,15 @@
                                             <span class="marker_h marker_legend"></span>Hazardous
                                           </li>
                                         </ul>
+                                        <div class="chart-f-content">
+                                          <p>AQI measures air quality; pollutant trends track changes in air pollution over
+                                            time. </p>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="chart-f-content">
-                                      <p>AQI measures air quality; pollutant trends track changes in air pollution over
-                                        time. </p>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
                               <div id="pm10Tab" class="tab-content mt-0" style="display: none;">
                                 <div>
                                   <div class="Polutant_bar" id="pills-tabContent">
@@ -899,7 +898,7 @@
                               </div>
                               <ul class="nav" id="myTabs">
                                 <li class="nav-item">
-                                  <a class="nav-link active" onclick="toggleDiv('aiqTab', 'AQI')" style="cursor: pointer;"></a>AQI
+                                  <a class="nav-link active" onclick="toggleDiv('aiqTab', 'AQI')" style="cursor: pointer;">AQI</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" onclick="toggleDiv('pm10Tab', 'PM10')" style="cursor: pointer;">PM10</a>
@@ -1085,12 +1084,12 @@
                                             <p>CO</p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong id="lineChartAqiPm10Value"></strong>
+                                            <strong id="lineChartPollutantPm10Value"></strong>
                                             <p>PM <sub>10</sub>
                                             </p>
                                           </div>
                                           <div class="mult-value">
-                                            <strong id="lineChartAqiO3Value"></strong>
+                                            <strong id="lineChartPollutantO3Value"></strong>
                                             <p>O <sub>3</sub>
                                             </p>
                                           </div>
@@ -1826,12 +1825,7 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/apexcharts.js"></script>
   <script src="./js/chart.js"></script>
-  <!-- <script src="https://js.arcgis.com/4.28/"></script> -->
-  <script type="text/javascript" src="./graphs.js"></script>
   <script src="./js/index-script.js"></script>
-  <!-- <script src="./js/Map.js"></script>
-  <script src="./js/MapConfig.js"></script> -->
-  <!-- <script type="text/javascript" src="./scolling-script/fullpage.js"></script> -->
   <script type="text/javascript">
     // var myFullpage = new fullpage('#fullpage', {
     //     anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],

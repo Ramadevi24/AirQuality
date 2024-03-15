@@ -38,7 +38,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 url: "https://maps.smartgeoapps.com/server/rest/services/AQI_UAE/ImageServer",
 				opacity:0.5				
             });
-        webmap.basemap = "streets-navigation-vector"//"oceans"//"topo"//"streets-vector"; 
+        webmap.basemap = "dark-gray-vector"//"oceans"//"topo"//"streets-vector"; 
 
         view = new MapView({
             map: webmap,
