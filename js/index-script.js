@@ -44,12 +44,14 @@ const stationsWithLocations = [{
   stationName: "Khalifa City A",
   latitude: 24.4199,
   longitude: 54.5782
-}, {
-  stationId: "EAD_AlMafraq",
-  stationName: "Al Mafraq",
-  latitude: 24.2863,
-  longitude: 54.5889
-}, {
+},
+// {
+//   stationId: "EAD_AlMafraq",
+//   stationName: "Al Mafraq",
+//   latitude: 24.2863,
+//   longitude: 54.5889
+// }, 
+{
   stationId: "EAD_AlAinSchool",
   stationName: "Al Ain Islamic Institute",
   latitude: 24.2191,
@@ -582,33 +584,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // End Carousel Insight Section by Sachin-------------------
 
-// Attach click event to the <i> element
-$('.sortIcon').on('click', function () {
+function sortStations(el) {
+  var isCurrentElementChecked = el.checked;
   sortingOrder = sortingOrder === 'asc' ? 'desc' : 'asc'; // Toggle sorting order
-  populateSort(sortingOrder);
+  $(".sortIcon").each(function (index, item) {
+    $(item).removeAttr('checked');
+  });
+  if (isCurrentElementChecked) {
+    el.checked = true;
+  }
+  populateSort(sortingOrder, $(el).val());
+}
 
-  // Toggle sorting icon class
-  var sortIcon = $('#sortIcon');
-  sortIcon.toggleClass('icon-sort5-asc', sortingOrder === 'asc');
-  sortIcon.toggleClass('icon-sort5-des', sortingOrder === 'desc');
-});
-
-function populateSort(sortingOrder) {
+function populateSort(sortingOrder, sortBy) {
   if (liveCityData.length > 0) {
     var stationRankingListDiv = $('#stationRankingList');
     // Clear existing rows
     stationRankingListDiv.empty();
-
-    // Sort the data based on station ID
-    liveCityData.sort(function (a, b) {
-      var aqiA = a.aqi;
-      var aqiB = b.aqi;
-      if (sortingOrder === 'asc') {
-        return aqiA - aqiB;
-      } else {
-        return aqiB - aqiA;
-      }
-    });
+    if (sortBy == "name") {
+      // liveCityData.sort(function (a, b) {
+      //   a[sortBy].localeCompare(b[sortBy])
+      // });
+    } else {
+      liveCityData.sort(function (a, b) {
+        var aSortValue = a[sortBy];
+        var bSortValue = b[sortBy];
+        if (sortingOrder === 'asc') {
+          return aSortValue - bSortValue;
+        } else {
+          return bSortValue - aSortValue;
+        }
+      });
+    }
 
     $.each(liveCityData, function (index, station) {
       var colorClass = getColorClassForAqi(station.aqi);
@@ -621,14 +628,14 @@ function populateSort(sortingOrder) {
                   </span>
                   <div class="list-content">
                     <div class="inner_list-content">
-                      <p>`+ station.stationName + `</p>
+                      <p>`+ station.name + `</p>
                       <span>AQI `+ station.aqi + `</span>
                     </div>
                     <div class="dis-content">
                       <span>~ `+ station.distance + ` km</span>
                     </div>
                   </div>
-                  <input type="radio" name="options" id="option`+ station.rank + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `')">
+                  <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
                 </label>`;
         stationRankingListDiv.append(row);
       }
@@ -1034,6 +1041,7 @@ function bindLiveCityRanking() {
     var colorClass = getColorClassForAqi(station.aqi);
     var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
     if (stationDetails) {
+      station.name = stationDetails.stationName;
       station.distance = Math.round(calculateDistance(currentStationDetails.latitude, currentStationDetails.longitude, stationDetails.latitude, stationDetails.longitude));
       var row = `<label class="list-group-item">
                     <span class="numbers number">
@@ -1041,7 +1049,7 @@ function bindLiveCityRanking() {
                     </span>
                     <div class="list-content">
                       <div class="inner_list-content">
-                        <p>`+ station.stationName + `</p>
+                        <p>`+ station.name + `</p>
                         <span>AQI `+ station.aqi + `</span>
                       </div>
                       <div class="dis-content">

@@ -381,16 +381,16 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <li>
-                  <input type="checkbox">
-                  <p class="dropdown-item sortIcon">Nearest to me</p>
+                  <input type="checkbox" name="nearestBasedSort" id="nearestBasedSort" value="distance" class="sortIcon" onchange="sortStations(this)">
+                  <label for="nearestBasedSort" class="dropdown-item">Nearest to me</label>
                 </li>
                 <li>
-                  <input type="checkbox" name="" id="">
-                  <p class="dropdown-item sortIcon">AQI Ranking action </p>
+                  <input type="checkbox" name="aqiBasedSort" id="aqiBasedSort"  value="aqi" class="sortIcon" onchange="sortStations(this)">
+                  <label for="aqiBasedSort" class="dropdown-item">AQI Ranking action </label>
                 </li>
                 <li>
-                  <input type="checkbox" name="" id="">
-                  <p class="dropdown-item sortIcon">Alphabetical Order</p>
+                  <input type="checkbox" name="stationNameBasedSort" id="stationNameBasedSort" value="name" class="sortIcon" onchange="sortStations(this)">
+                  <label for="stationNameBasedSort" class="dropdown-item">Alphabetical Order</label>
                 </li>
               </ul>
             </div>

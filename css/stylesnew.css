@@ -1851,7 +1851,7 @@ font-size: 13px;
     float: right;
     margin-left: auto;
 }
-.insight ul.sorttoggle.show li p {
+.insight ul.sorttoggle.show li label {
     margin: 0px;
     font-size: 14px;
     font-weight: 400;
