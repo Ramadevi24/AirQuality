@@ -12,15 +12,15 @@ var stationsData = [];
 var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo;
 var view;
 var featureLayer;
-require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", "esri/views/MapView", "esri/WebMap", "esri/rest/query","esri/layers/MapImageLayer",
-    "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer", "esri/symbols/SimpleMarkerSymbol","esri/symbols/PictureMarkerSymbol",
-      "esri/symbols/TextSymbol","esri/widgets/Zoom", "esri/widgets/Fullscreen", "esri/widgets/BasemapToggle", "esri/widgets/Locate", "esri/widgets/Home",
-    "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent","esri/widgets/Popup","esri/core/reactiveUtils",
+require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
+    "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/PictureMarkerSymbol",
+    "esri/symbols/TextSymbol", "esri/widgets/Zoom", "esri/widgets/Fullscreen", "esri/widgets/BasemapToggle", "esri/widgets/Locate", "esri/widgets/Home",
+    "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent", "esri/widgets/Popup", "esri/core/reactiveUtils", "esri/geometry/projection", "esri/geometry/SpatialReference",
 ],
 
     (esriConfig, ClassBreaksRenderer, esriLang, MapView, WebMap, query, MapImageLayer, Query,
-        GraphicsLayer, Graphic, FeatureLayer, SimpleMarkerSymbol,PictureMarkerSymbol,TextSymbol, 
-		Zoom, Fullscreen, BasemapToggle, Locate, Home, Search, Expand, Extent,Popup,reactiveUtils
+        GraphicsLayer, Graphic, FeatureLayer, SimpleMarkerSymbol, PictureMarkerSymbol, TextSymbol,
+        Zoom, Fullscreen, BasemapToggle, Locate, Home, Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference
     ) => {
         esriConfig.request.httpsDomains.push("enviroportal.ead.ae");
         esriConfig.portalUrl = portalUrl;
@@ -28,37 +28,96 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
 
             esriConfig.request.trustedServers.push(TrustedDomains[i]);
         }
+        var uaeExtent = new Extent({
+            xmin: 51.583328, // Westernmost longitude
+            ymin: 22.633329, // Southernmost latitude
+            xmax: 56.383329, // Easternmost longitude
+            ymax: 26.083329, // Northernmost latitude
+            spatialReference: { wkid: 4326 } // WGS84 spatial reference
+        });
         const webmap = new WebMap({
             portalItem: {
                 id: WebMapID
             }
         });
-		console.log(webmap);
-		var dynamicMapServiceLayer = new MapImageLayer({
-                url: "https://maps.smartgeoapps.com/server/rest/services/AQI_UAE/ImageServer",
-				opacity:0.5				
-            });
+        console.log(webmap);
+        var dynamicMapServiceLayer = new MapImageLayer({
+            url: "https://maps.smartgeoapps.com/server/rest/services/AQI_UAE/ImageServer",
+            opacity: 0.5
+        });
         webmap.basemap = "dark-gray-vector"//"oceans"//"topo"//"streets-vector"; 
 
         view = new MapView({
             map: webmap,
+            //center : [54.3773438,23.424076],// Centered on UAE
+            extent: uaeExtent,
+            zoom: 7,
+            constraints: { minZoom: 7 },
             container: "mapBlock",
-			popup: new Popup({
-            dockEnabled: true,
-            dockOptions: {
-              // Disables the dock button from the popup
-              buttonEnabled: true,
-              // Ignore the default sizes that trigger responsive docking
-              breakpoint: true
-            }
-			})
+            popup: new Popup({
+                dockEnabled: true,
+                dockOptions: {
+                    // Disables the dock button from the popup
+                    buttonEnabled: true,
+                    // Ignore the default sizes that trigger responsive docking
+                    breakpoint: true
+                }
+            })
         });
+        /*view.watch("extent", function(newValue) {
+           if (!uaeExtent.contains(newValue)) {
+           view.goTo({
+               target: uaeExtent,
+               center: uaeExtent.center,
+               duration: 500 // Duration of animation in milliseconds
+           }).catch(function(error){
+               if (error.name != "AbortError"){
+                   console.error(error);
+               }
+           });
+       }
+   });*/
+        projection.load().then(function () {
+            var uaeExtent3857 = projection.project(uaeExtent, new SpatialReference({ wkid: 3857 }));
+            view.watch("extent", function (newValue) {
+                //	if (!uaeExtent3857.contains(newValue)) {
+                if (!uaeExtent3857.contains(newValue) && significantDifference(uaeExtent3857, newValue)) {
+                    view.goTo({
+
+                        target: uaeExtent3857,
+
+                        center: uaeExtent3857.center,
+
+                        duration: 500 // Duration of animation in milliseconds
+
+                    }).catch(function (error) {
+
+                        if (error.name != "AbortError") {
+
+                            console.error(error);
+
+                        }
+
+                    });
+
+                }
+            });
+        });
+        function significantDifference(uaeExtent, newExtent) {
+
+            // Example check: significant if the center of the new extent is outside the UAE extent
+
+            var newCenter = newExtent.center;
+
+            return !uaeExtent.contains(newCenter);
+
+        }
 
         // Remove the default zoom buttons
         view.ui.components = [];
-		view.on("mouse-wheel", (event) => {
-		  event.stopPropagation();
-		});
+        view.on("mouse-wheel", (event) => {
+            event.stopPropagation();
+        });
         //console.log(view.ui.components);
         LoadDefaultWidgets();
 
@@ -84,30 +143,30 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             title: "Label_Region"
         });
         //webmap.addMany([dynamicMapServiceLayer, pollutantGrpLyr_EmirateLvl, pollutantTextGrpLyr, pollutantGrpLyr_RegionLvl, pollutantTextGrpLyr_Region]);
-		webmap.layers.push(pollutantTextGrpLyr,pollutantGrpLyr_EmirateLvl,pollutantGrpLyr_RegionLvl,pollutantTextGrpLyr_Region);
+        webmap.layers.push(pollutantTextGrpLyr, pollutantGrpLyr_EmirateLvl, pollutantGrpLyr_RegionLvl, pollutantTextGrpLyr_Region);
         // view.watch('extent', function () {// Scale change Event
-            // //  console.log("Watch for the current scale: ", view.scale);
-            // OnScaleChange(view.scale);
+        // //  console.log("Watch for the current scale: ", view.scale);
+        // OnScaleChange(view.scale);
         // // });
-		
-		var previousZoomLevel = view.zoom;
-	reactiveUtils.watch(
-        () => [view.stationary, view.zoom],
-        ([stationary, zoom]) => {
-          // Only print the new zoom value when the view is stationary
-          if(stationary){
-            const newZoom = zoom
-            if (newZoom !== previousZoomLevel) {
-              console.log(`Zoom level changed to: ${newZoom}`);
-			  previousZoomLevel = newZoom;
-			  OnScaleChange(newZoom);
+
+        var previousZoomLevel = view.zoom;
+        reactiveUtils.watch(
+            () => [view.stationary, view.zoom],
+            ([stationary, zoom]) => {
+                // Only print the new zoom value when the view is stationary
+                if (stationary) {
+                    const newZoom = zoom
+                    if (newZoom !== previousZoomLevel) {
+                        console.log(`Zoom level changed to: ${newZoom}`);
+                        previousZoomLevel = newZoom;
+                        OnScaleChange(newZoom);
+                    }
+                }
             }
-          }
-        }
- );
+        );
         function LoadDefaultWidgets() {
             view.when(function () {
-				
+
 
                 //Initialize Search Widget
                 const featureLayerDistricts = new FeatureLayer({
@@ -173,107 +232,105 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     expandTooltip: "Expand Search",
                     collapseTooltip: "Minimize Search"
                 });
-				
+
 
                 //view.ui.add(searchWidget, "top-right");	
 
 
                 // const zoom = new Zoom({
-                    // view: view
+                // view: view
                 // });
 
                 // // Add the Zoom widget to the UI with a custom position
                 // view.ui.add(zoom, {
-                     // position: {
-						// top: 184,
-						// right: 40
-					  // } // Change to the desired position
+                // position: {
+                // top: 184,
+                // right: 40
+                // } // Change to the desired position
                 // // });
-				var toggleBaseMap;
+                var toggleBaseMap;
                 //Initiate the Basemap Toggle Widget
                 toggleBaseMap = new BasemapToggle({
                     view: view,
                     nextBasemap: "satellite"
                 });
-				 toggleBaseMap.watch('activeBasemap', function (basemap) {
-            console.log("current basemap title: ", basemap.title);
-            //if (basemap.title != "BaseMapEng_LightGray_WM") {
-            //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
-            //}
-        });
+                toggleBaseMap.watch('activeBasemap', function (basemap) {
+                    console.log("current basemap title: ", basemap.title);
+                    //if (basemap.title != "BaseMapEng_LightGray_WM") {
+                    //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
+                    //}
+                });
                 view.ui.add(toggleBaseMap, "bottom-left");
-				
-               // var dropdownMenu = document.getElementById('stationsDropdown');
+
+                // var dropdownMenu = document.getElementById('stationsDropdown');
                 var dropdownMap = document.getElementById('stationsDropdownMap');
                 var selectedCityButton = document.getElementById('selectedCity');
                 // Set the default city
                 //selectedCityButton.innerText = $('#abudhabi').val();
 
-               //initializeDropdown(dropdownMenu);
+                //initializeDropdown(dropdownMenu);
                 initializeDropdown(dropdownMap);
-				
-				//view.ui.add (document.getElementById('stationsDropdownMap'), "bottom-right");
+
+                //view.ui.add (document.getElementById('stationsDropdownMap'), "bottom-right");
 
             });
         }
-		// added for mp zoom controls --prasanna
-		$("#zoomplus").click(function (event) {			
-			let zm = view.zoom + 1;
-			view.goTo({
-			target: view.center,
-			zoom: zm
-			});
-		});
-		$("#zoomMinus").click(function (event) {
-			let zm = view.zoom - 1;
-			  view.goTo({
-				target: view.center,
-				zoom: zm
-			  });
-		});
-		
-		$("#airPurifier").click(function (event) {	
-			
-			var layer = webmap.findLayerById("18d30ddfba7-layer-3");
-			if(!layer.visible)
-			{
-				layer.visible = true;
-			}
-			else{
-				layer.visible = false;
-			}
-			
-		});
-		
-		$("#wind").click(function (event) {			
-			var layer = webmap.findLayerById("18c9125f8e5-layer-2");
-			if(!layer.visible)
-			{
-				layer.visible = true;
-			}
-			else{
-				layer.visible = false;
-			}
-		});
-		// end changes
+        // added for mp zoom controls --prasanna
+        $("#zoomplus").click(function (event) {
+            let zm = view.zoom + 1;
+            view.goTo({
+                target: view.center,
+                zoom: zm
+            });
+        });
+        $("#zoomMinus").click(function (event) {
+            let zm = view.zoom - 1;
+            view.goTo({
+                target: view.center,
+                zoom: zm
+            });
+        });
+
+        $("#airPurifier").click(function (event) {
+
+            var layer = webmap.findLayerById("18d30ddfba7-layer-3");
+            if (!layer.visible) {
+                layer.visible = true;
+            }
+            else {
+                layer.visible = false;
+            }
+
+        });
+
+        $("#wind").click(function (event) {
+            var layer = webmap.findLayerById("18c9125f8e5-layer-2");
+            if (!layer.visible) {
+                layer.visible = true;
+            }
+            else {
+                layer.visible = false;
+            }
+        });
+        // end changes
 
         $("#stationsDropdownMap").click(function (event) {
-			if(!event.target.id.includes('Search')){
-				if (event.target.classList.contains("abudhabiitem")) {
-					LoadAirQualityData();
-					var stationName = $('#abudhabi').val();
-					$("#selectedCity").text(stationName);
-					LoadProgressBar();
-					displayStationInfo("EAD_HamdanStreet");
-					LoadPollutantsTrends("EAD_HamdanStreet");
-					var year = selectedyearButton.innerText;
-					GetAirAnalytics(year, "");
-					$("#stationsDropdown").val("");
-				} else {
-					// Call your JavaScript function for dynamically created elements
-					updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());
-				}
-			}
+            if (!event.target.id.includes('Search')) {
+                if (event.target.classList.contains("abudhabiitem")) {
+                    LoadAirQualityData();
+                    var stationName = $('#abudhabi').val();
+                    $("#selectedCity").text(stationName);
+                    LoadProgressBar();
+                    displayStationInfo("EAD_HamdanStreet");
+                    LoadPollutantsTrends("EAD_HamdanStreet");
+                    var year = selectedyearButton.innerText;
+                    GetAirAnalytics(year, "");
+                    $("#stationsDropdown").val("");
+                } else {
+                    // Call your JavaScript function for dynamically created elements
+                    updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());
+                }
+            }
         });
         $("#stationsDropdown").click(function (event) {
             if (event.target.classList.contains("abudhabiitem")) {
@@ -380,7 +437,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     FeatureCollectionlyr.visible = false;
                 }
             }
-            else if (Math.round(scale) == 8 ) { //show graphic layers mid scale
+            else if (Math.round(scale) == 8) { //show graphic layers mid scale
                 pollutantGrpLyr_RegionLvl.visible = true;
                 pollutantTextGrpLyr_Region.visible = true;
                 pollutantGrpLyr_EmirateLvl.visible = false;
@@ -389,7 +446,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     FeatureCollectionlyr.visible = false;
                 }
             }
-            else if (Math.round(scale) > 8 ){//show only stations infor mation at low scale level
+            else if (Math.round(scale) > 8) {//show only stations infor mation at low scale level
                 pollutantGrpLyr_EmirateLvl.visible = false;
                 pollutantTextGrpLyr.visible = false;
                 pollutantGrpLyr_RegionLvl.visible = false;
@@ -410,7 +467,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
 
         function LoadAirQualityData() {
             const apiUrl = AirQualityService + "GetAirQualityStation";
-          
+
 
             $.ajax({
                 url: apiUrl,
@@ -491,15 +548,15 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     Createpollutants();
                     //getAirAnalytics(new Date().getFullYear());
                     // GetHourlyStationChart();
-					// GetMonthlyNewLineChart();
-					//getLiveCityRankingApi();
+                    // GetMonthlyNewLineChart();
+                    //getLiveCityRankingApi();
                     $('.page-loader').fadeOut('slow');
                 },
                 error: handleApiError
             });
         }
 
-        function Createpollutants_EmirateLvl(AQIValue) { 
+        function Createpollutants_EmirateLvl(AQIValue) {
             // Display avaerage of lastest one hour AQI Index Value at Emirate Level
             var AbuDhabi_Point = {
                 type: "point", // autocasts as new Point()
@@ -507,19 +564,19 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 latitude: AD_Lat
             };
 
-           // var pointGraphic1 = CreateGraphicSymbol(AbuDhabi_Point, AQIValue, pollutantGrpLyr_EmirateLvl)
-		   var textSymbol = new TextSymbol({
-                    text: AQIValue
-                });				
-				var symbol = GetColourValue(AQIValue)
-				  var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl,width: 100, height: 100});
-				var picgraphic=new Graphic({ geometry: AbuDhabi_Point, symbol: picSymbol });
-                var textgraphic=new Graphic({ geometry: AbuDhabi_Point, symbol: textSymbol });
+            // var pointGraphic1 = CreateGraphicSymbol(AbuDhabi_Point, AQIValue, pollutantGrpLyr_EmirateLvl)
+            var textSymbol = new TextSymbol({
+                text: AQIValue
+            });
+            var symbol = GetColourValue(AQIValue)
+            var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl, width: 100, height: 100 });
+            var picgraphic = new Graphic({ geometry: AbuDhabi_Point, symbol: picSymbol });
+            var textgraphic = new Graphic({ geometry: AbuDhabi_Point, symbol: textSymbol });
             //Add Text symbol to graphic Layer
-			pollutantTextGrpLyr.addMany([picgraphic, textgraphic]);
+            pollutantTextGrpLyr.addMany([picgraphic, textgraphic]);
 
             //Add Text symbol to graphic Layer
-           // pollutantTextGrpLyr.add(pointGraphic1);
+            // pollutantTextGrpLyr.add(pointGraphic1);
 
         }
         function Createpollutants_RegionLvl() { // Display avaerage of lastest one hour AQI Index Value at Emirate Level
@@ -553,21 +610,21 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     };
                     Region_Loc.latitude = locCoordinates[0].Lat;
                     Region_Loc.longitude = locCoordinates[0].Long
-					 var Region_Point = {
-						type: "point", // autocasts as new Point()
-						longitude: Region_Loc.longitude,
-						latitude: Region_Loc.latitude
-					};	
-                   // var pointGraphic1 = CreateGraphicSymbol(Region_Loc, RegionArr[j].AQI, pollutantGrpLyr_RegionLvl);
-				    var textSymbol = new TextSymbol({
-                    text: RegionArr[j].AQI
-                });
-					var symbol = GetColourValue(RegionArr[j].AQI)
-				   var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl,width: 60, height: 60 });
-					var picgraphic=new Graphic({ geometry: Region_Point, symbol: picSymbol });
-					var textgraphic=new Graphic({ geometry: Region_Point, symbol: textSymbol });
-					//Add Text symbol to graphic Layer
-					pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
+                    var Region_Point = {
+                        type: "point", // autocasts as new Point()
+                        longitude: Region_Loc.longitude,
+                        latitude: Region_Loc.latitude
+                    };
+                    // var pointGraphic1 = CreateGraphicSymbol(Region_Loc, RegionArr[j].AQI, pollutantGrpLyr_RegionLvl);
+                    var textSymbol = new TextSymbol({
+                        text: RegionArr[j].AQI
+                    });
+                    var symbol = GetColourValue(RegionArr[j].AQI)
+                    var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl, width: 60, height: 60 });
+                    var picgraphic = new Graphic({ geometry: Region_Point, symbol: picSymbol });
+                    var textgraphic = new Graphic({ geometry: Region_Point, symbol: textSymbol });
+                    //Add Text symbol to graphic Layer
+                    pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
                     //pollutantTextGrpLyr_Region.add(pointGraphic1);
                 }
 
@@ -579,10 +636,10 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             pollutantTextGrpLyr_Region.visible = false;
         }
         function CreateGraphicSymbol(Region_Loc, AQI, graphiclayer) {
-			 // symbol: {
-					// type: "picture-marker",
-					// url: 'CoSchools.svg'
-				  // }
+            // symbol: {
+            // type: "picture-marker",
+            // url: 'CoSchools.svg'
+            // }
             let symbol = {
                 type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
                 style: "circle",
@@ -790,7 +847,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                         // autocast as new Font()
                         family: "Cairo",
                         size: 10,
-                        weight: "bold"	
+                        weight: "bold"
                     }
                 },
                 labelPlacement: "above-center",
@@ -800,7 +857,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             };
             var renderer = new ClassBreaksRenderer({
                 field: "AQI",
-				sizeOptimizationEnabled: true,
+                sizeOptimizationEnabled: true,
                 classBreakInfos: [
                     {
                         minValue: 1,
@@ -881,51 +938,51 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 title: "Air Quality Index",
                 objectIdField: "OBJECTID",
                 fields: Fieldsarr,
-				popupEnabled: false,
+                popupEnabled: false,
                 // popupTemplate: {
-                    // // autocasts as new PopupTemplate()
-                    // title: "Station:" + "{Name}",
-                    // content: [
-                        // {
-                            // type: "fields",
-                            // fieldInfos: [
-                                // {
-                                    // fieldName: "AQI",
-                                    // label: "AQI"
-                                // },
-                                // {
-                                    // fieldName: "SO2",
-                                    // label: "SO<sub>2</sub>"
-                                // },
-                                // {
-                                    // fieldName: "NO2",
-                                    // label: "NO<sub>2</sub>"
-                                // },
-                                // {
-                                    // fieldName: "CO",
-                                    // label: "CO"
-                                // },
-                                // {
-                                    // fieldName: "O3",
-                                    // label: "O<sub>3</sub>"
-                                // },
-                                // {
-                                    // fieldName: "PM10",
-                                    // label: "PM<sub>10</sub>"
-                                // }
-                            // ]
-                        // }
-                    // ]
+                // // autocasts as new PopupTemplate()
+                // title: "Station:" + "{Name}",
+                // content: [
+                // {
+                // type: "fields",
+                // fieldInfos: [
+                // {
+                // fieldName: "AQI",
+                // label: "AQI"
+                // },
+                // {
+                // fieldName: "SO2",
+                // label: "SO<sub>2</sub>"
+                // },
+                // {
+                // fieldName: "NO2",
+                // label: "NO<sub>2</sub>"
+                // },
+                // {
+                // fieldName: "CO",
+                // label: "CO"
+                // },
+                // {
+                // fieldName: "O3",
+                // label: "O<sub>3</sub>"
+                // },
+                // {
+                // fieldName: "PM10",
+                // label: "PM<sub>10</sub>"
+                // }
+                // ]
+                // }
+                // ]
                 // },
                 outFields: ["*"],
                 labelingInfo: [labelClass],
                 renderer: renderer
             });
             view.map.add(FeatureCollectionlyr);
-			view.popup.set("dockOptions", {
-              breakpoint: false,
-              buttonEnabled: false,
-              position: "top-left"
+            view.popup.set("dockOptions", {
+                breakpoint: false,
+                buttonEnabled: false,
+                position: "top-left"
             });
             FeatureCollectionlyr.visible = false;
             view.on("click", function (evt) {
@@ -975,15 +1032,14 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             //Add Text symbol to graphic Layer
             pollutantTextGrpLyr_Region.add(pointGraphic1);
         }
-		
-		function createsymbol(data)
-		{
-			var symbol = GetColourValue(data);
-			return Symbol.ImageUrl;
-			// var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl,width: 60, height: 60 });
-			// var picgraphic=new Graphic({ geometry: Region_Point, symbol: picSymbol });
-			// var textgraphic=new Graphic({ geometry: Region_Point, symbol: textSymbol });
-			// //Add Text symbol to graphic Layer
-			// pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
-		}
+
+        function createsymbol(data) {
+            var symbol = GetColourValue(data);
+            return Symbol.ImageUrl;
+            // var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl,width: 60, height: 60 });
+            // var picgraphic=new Graphic({ geometry: Region_Point, symbol: picSymbol });
+            // var textgraphic=new Graphic({ geometry: Region_Point, symbol: textSymbol });
+            // //Add Text symbol to graphic Layer
+            // pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
+        }
     });

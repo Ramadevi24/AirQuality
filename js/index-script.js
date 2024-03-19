@@ -1,4 +1,4 @@
-var baseUrl = "http://localhost:7047/"; //https://adairqualityapi.ead.ae/";
+var baseUrl = "https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -607,53 +607,61 @@ function sortStations(el) {
 }
 
 function populateSort(sortingOrder, sortBy) {
-  if (liveCityData.length > 0) {
-    var stationRankingListDiv = $('#stationRankingList');
-    // Clear existing rows
-    stationRankingListDiv.empty();
-    if (sortBy == "name") {
-      // liveCityData.sort(function (a, b) {
-      //   a[sortBy].localeCompare(b[sortBy])
-      // });
-    } else {
-      liveCityData.sort(function (a, b) {
-        var aSortValue = a[sortBy];
-        var bSortValue = b[sortBy];
-        if (sortingOrder === 'asc') {
-          return aSortValue - bSortValue;
-        } else {
-          return bSortValue - aSortValue;
-        }
-      });
-    }
+    if (liveCityData.length > 0) {
+        var stationRankingListDiv = $('#stationRankingList');
+        // Clear existing rows
+        stationRankingListDiv.empty();
 
-    $.each(liveCityData, function (index, station) {
-      var colorClass = getColorClassForAqi(station.aqi);
-      var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
-      if (stationDetails) {
-        station.rank = index + 1;
-        var row = `<label class="list-group-item">
-        <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
-        <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
-      </span>
-      <div class="list-content">
-        <div class="inner_list-content">
-          <p>`+ station.name + `</p>
-          <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
-        </div>
+        if (sortBy === "name") {
+            liveCityData.sort(function (a, b) {
+                // Ensure both properties exist and are strings
+                var nameA = a[sortBy] ? String(a[sortBy]) : '';
+                var nameB = b[sortBy] ? String(b[sortBy]) : '';
+
+                // Descending order comparison
+                return nameA.localeCompare(nameB);
+            });
+        } else {
+            liveCityData.sort(function (a, b) {
+                var aSortValue = a[sortBy] !== undefined ? a[sortBy] : 0;
+                var bSortValue = b[sortBy] !== undefined ? b[sortBy] : 0;
+
+                // Assuming you still want to support descending order for numerical values
+                return aSortValue - bSortValue;
+            });
+        }
+
+        // Here you can proceed to re-render or update the UI with sorted data
+
+
+
+        $.each(liveCityData, function (index, station) {
+            var colorClass = getColorClassForAqi(station.aqi);
+            var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
+            if (stationDetails) {
+                station.rank = index + 1;
+                var row = `<label class="list-group-item">
+                  <span class="numbers number">
+                    <strong>`+ station.rank + `</strong>
+                  </span>
+                  <div class="list-content">
+                    <div class="inner_list-content">
+                      <p>`+ station.name + `</p>
+                      <span>AQI `+ station.aqi + `</span>
+                    </div>
                     <div class="dis-content">
                       <span>~ `+ station.distance + ` km</span>
                     </div>
                   </div>
                   <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
                 </label>`;
-        stationRankingListDiv.append(row);
-      }
-    });
-    if (currentStationDetails.stationId) {
-      $("#" + currentStationDetails.stationId).attr('checked', 'checked');
+                stationRankingListDiv.append(row);
+            }
+        });
+        if (currentStationDetails.stationId) {
+            $("#" + currentStationDetails.stationId).attr('checked', 'checked');
+        }
     }
-  }
 }
 
 let width = carousel.offsetWidth;
