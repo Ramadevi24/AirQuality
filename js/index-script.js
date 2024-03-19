@@ -1,3 +1,4 @@
+var baseUrl = "http://localhost:7047/"; //https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -144,6 +145,15 @@ const statusClass = {
   UnHealthly: "UnHealthly",
   VeryUnHealthly: "Very UnHealthly",
   Hazardous: "Hazardous",
+}
+
+const aqiContent = {
+  Good: "Enjoy the Fresh Air",
+  Moderate: "Babies And Sensitive Persons Should Stay Indoors",
+  UnHealthlySensitiveGroups: "Babies And Sensitive Persons Should Stay Indoors",
+  UnHealthly: "Babies And Sensitive Persons Should Stay Indoors",
+  VeryUnHealthly: "Babies And Sensitive Persons Should Stay Indoors",
+  Hazardous: "Babies And Sensitive Persons Should Stay Indoors",
 }
 
 const chartFilter = {
@@ -623,14 +633,14 @@ function populateSort(sortingOrder, sortBy) {
       if (stationDetails) {
         station.rank = index + 1;
         var row = `<label class="list-group-item">
-                  <span class="numbers number">
-                    <strong>`+ station.rank + `</strong>
-                  </span>
-                  <div class="list-content">
-                    <div class="inner_list-content">
-                      <p>`+ station.name + `</p>
-                      <span>AQI `+ station.aqi + `</span>
-                    </div>
+        <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
+        <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
+      </span>
+      <div class="list-content">
+        <div class="inner_list-content">
+          <p>`+ station.name + `</p>
+          <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
+        </div>
                     <div class="dis-content">
                       <span>~ `+ station.distance + ` km</span>
                     </div>
@@ -788,32 +798,38 @@ function getAqiStatusAndColorCode(value) {
   if (value >= 0 && value <= 50) {
     return {
       status: statusClass.Good,
-      color: colorCodes.green
+      color: colorCodes.green,
+      Content: aqiContent.Good
     };
   } else if (value >= 51 && value <= 100) {
     return {
       status: statusClass.Moderate,
-      color: colorCodes.lightorange
+      color: colorCodes.lightorange,
+      Content: aqiContent.Moderate
     };
   } else if (value >= 101 && value <= 150) {
     return {
       status: statusClass.UnHealthlySensitiveGroups,
-      color: colorCodes.darkorange
+      color: colorCodes.darkorange,
+      Content: aqiContent.UnHealthlySensitiveGroups
     };
   } else if (value >= 151 && value <= 200) {
     return {
       status: statusClass.UnHealthly,
-      color: colorCodes.peach
+      color: colorCodes.peach,
+      Content: aqiContent.UnHealthly
     };
   } else if (value >= 201 && value <= 300) {
     return {
       status: statusClass.VeryUnHealthly,
-      color: colorCodes.purple
+      color: colorCodes.purple,
+      Content: aqiContent.VeryUnHealthly
     };
   } else {
     return {
       status: statusClass.Hazardous,
-      color: colorCodes.hazar
+      color: colorCodes.hazar,
+      Content: aqiContent.Hazardous
     };
   }
 }
@@ -835,7 +851,7 @@ function getColorClassForAqi(aqi) {
 }
 
 function loadStationData() {
-  const apiUrl = 'https://adairqualityapi.ead.ae/GetAirQualityStation?input=' + currentStationDetails.stationId;
+  const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
   var data = $("#datafield").val();
   // var category = $.parseJSON(data);
   $.ajax({
@@ -850,13 +866,14 @@ function loadStationData() {
         stationsList: data.stationsList
       };
       const aqi = Math.round(selectedStationObj.averageAQI);
-      var aqiStatusAndColor = getAqiStatusAndColorCode(aqi);
-      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiStatusAndColor.status).css('color', aqiStatusAndColor.color);
-      $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi").text(aqi).css('color', aqiStatusAndColor.color);
-      $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus").text(aqiStatusAndColor.status).css('color', aqiStatusAndColor.color);
+      var aqiDetails = getAqiStatusAndColorCode(aqi);
+      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
+      $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi").text(aqi).css('color', aqiDetails.color);
+      $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
       $("#aqiNearestStation, #insightNearestStation").text('Nearest Station: ' + currentStationDetails.stationName);
       $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
       $("#yearlyAirQualityOverview").text(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + new Date().getFullYear());
+      $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
       var mainPollutantNameContent;
       switch (selectedStationObj.pollutantName) {
         case "PM10":
@@ -908,16 +925,19 @@ function getFormattedDate(dateValue) {
 
 function getYearlyStationPollutantsThreshold() {
   $.ajax({
-    url: 'https://adairqualityapi.ead.ae/GetYearlyStationPollutantsThreshold?input=' + currentStationDetails.stationId,
+    url: baseUrl + 'GetYearlyStationPollutantsThreshold?input=' + currentStationDetails.stationId,
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      var stationData = data.find(x => x.stationName == currentStationDetails.stationId);
-      $("#numberOfHoursExceedsThresholdCO").text(stationData.co);
-      $("#numberOfHoursExceedsThresholdSO2").text(stationData.sO2);
-      $("#numberOfHoursExceedsThresholdPM10").text(stationData.pM10);
-      $("#numberOfHoursExceedsThresholdNO2").text(stationData.nO2);
-      $("#numberOfHoursExceedsThresholdO3").text(stationData.o3);
+      if (data[0]) {
+        $("#numberOfHoursExceedsThresholdCO").text(data[0].co);
+        $("#numberOfHoursExceedsThresholdSO2").text(data[0].sO2);
+        $("#numberOfHoursExceedsThresholdPM10").text(data[0].pM10);
+        $("#numberOfHoursExceedsThresholdNO2").text(data[0].nO2);
+        $("#numberOfHoursExceedsThresholdO3").text(data[0].o3);
+      } else {
+        $("#numberOfHoursExceedsThresholdCO, #numberOfHoursExceedsThresholdSO2, #numberOfHoursExceedsThresholdPM10, #numberOfHoursExceedsThresholdNO2, #numberOfHoursExceedsThresholdO3").text('');
+      }
     },
     error: handleApiError
   });
@@ -928,7 +948,7 @@ function onClickYearOfAirAnalytics(year) {
 }
 
 function getAirAnalytics(year) {
-  const apiUrl = 'https://adairqualityapi.ead.ae/GetAirAnalytics?year=' + year + '&stationName=' + currentStationDetails.stationId;
+  const apiUrl = baseUrl + 'GetAirAnalytics?year=' + year + '&stationName=' + currentStationDetails.stationId;
   $.ajax({
     url: apiUrl,
     method: 'GET',
@@ -937,7 +957,7 @@ function getAirAnalytics(year) {
       labelsData = [];
       pollutantLevels = [];
       colorCodesForAirAnalytics = [];
-      data.filter(t => t.stationName == currentStationDetails.stationId).forEach(item => {
+      data.forEach(item => {
         labelsData.push(item.month);
         pollutantLevels.push(item.aqi);
         colorCodesForAirAnalytics.push(item.colorCode);
@@ -1015,7 +1035,7 @@ function createRadialGradient3(context) {
 function getLiveCityRankingApi() {
   if (liveCityData.length == 0) {
     $.ajax({
-      url: "https://adairqualityapi.ead.ae/GetStationRanking",
+      url: baseUrl + 'GetStationRanking',
       method: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -1033,24 +1053,21 @@ function bindLiveCityRanking() {
   // Clear existing rows
   var stationRankingListDiv = $('#stationRankingList');
   stationRankingListDiv.empty();
-  // Sort the data based on station ID
-  liveCityData.sort(function (a, b) {
-    return a.stationID - b.stationID;
-  });
+  var stationDetails;
   $.each(liveCityData, function (index, station) {
-    var colorClass = getColorClassForAqi(station.aqi);
-    var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
+    stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
     if (stationDetails) {
+      var colorCode = colorCodes[getColorClassForAqi(station.aqi)];
       station.name = stationDetails.stationName;
       station.distance = Math.round(calculateDistance(currentStationDetails.latitude, currentStationDetails.longitude, stationDetails.latitude, stationDetails.longitude));
       var row = `<label class="list-group-item">
-                    <span class="numbers number">
-                      <strong>`+ station.rank + `</strong>
+                    <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
+                      <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
                     </span>
                     <div class="list-content">
                       <div class="inner_list-content">
                         <p>`+ station.name + `</p>
-                        <span>AQI `+ station.aqi + `</span>
+                        <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
                       </div>
                       <div class="dis-content">
                         <span>~ `+ station.distance + ` km</span>
@@ -1073,7 +1090,7 @@ function selectedStation(stationId) {
 
 function getAirQualitySafetyLevel() {
   $.ajax({
-    url: 'https://adairqualityapi.ead.ae/GetDailyCountsAirQualityStation?input=' + currentStationDetails.stationId,
+    url: baseUrl + 'GetDailyCountsAirQualityStation?input=' + currentStationDetails.stationId,
     method: 'GET',
     dataType: 'json',
     success: function (data) {
@@ -1101,16 +1118,16 @@ function getStationChartApi(filter) {
   var url;
   switch (filter) {
     case chartFilter.Daily:
-      url = 'https://adairqualityapi.ead.ae/GetDailyStationChart?stationName=' + currentStationDetails.stationId;
+      url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
       break;
     case chartFilter.Monthly:
-      url = 'https://adairqualityapi.ead.ae/GetMonthlyStationChart?stationName=' + currentStationDetails.stationId;
+      url = baseUrl + 'GetMonthlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
     case chartFilter.Yearly:
-      url = 'https://adairqualityapi.ead.ae/GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
+      url = baseUrl + 'GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
     default:
-      url = 'https://adairqualityapi.ead.ae/GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
+      url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
   }
   $.ajax({
@@ -1118,7 +1135,7 @@ function getStationChartApi(filter) {
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      chartData = data.filter(t => t.stationName == currentStationDetails.stationId);
+      chartData = data;
       bindStationDataToBarChart(filter);
       bindStationDataToLineChart(filter);
     },
@@ -1142,6 +1159,7 @@ function bindStationDataToLineChart(filter) {
     no2Data.push(item.nO2);
   });
   var categoriesData;
+  $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates").empty();
   switch (filter) {
     case "Daily":
       categoriesData = chartData.map(t => { return t.day.split(' '); });
@@ -1154,6 +1172,12 @@ function bindStationDataToLineChart(filter) {
       break;
     default:
       categoriesData = chartData.map(t => { return t.hour.split(' '); });
+      var recordedDates = Array.from(new Set(chartData.map(t=> {return t.recordedDate;})));
+      recordedDates.forEach(item => {
+        $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates").append(`<li>
+        <p>`+ item + `</p>
+      </li>`);
+      });
       break;
   }
   aqiLineChart.updateOptions({
