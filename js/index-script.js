@@ -4,7 +4,6 @@ var liveCityData = [];
 var labelsData = [];
 var pollutantLevels = [];
 var colorCodesForAirAnalytics = [];
-var sortingOrder = 'asc'; // Initial sorting order
 var chartData = [];
 var aqiLineChart;
 var pollutantLineChart;
@@ -491,54 +490,100 @@ window.onload = function () {
   document.body.appendChild(css);
 };
 // Breath text heading animation script End--------------
+
+//// --Mobile Menu---------------------------
+$('.navmobile-new').click(function () {
+  $('#hamburger').toggleClass('open');
+  $('#mobile-overlay').toggleClass('menu');
+});
+
+//// --Mobile Menu-------------------------
+$('.mobile-menu a').click(function () {
+  $('.mobile-menu a').removeClass("active");
+  $(this).addClass("active");
+  $('#hamburger').removeClass('open');
+  $('#mobile-overlay').removeClass('menu');
+});
+
 // Project Section Slider &  modal start--------------
 
-const gap = 10;
-
-const carousel = document.getElementById("carousel"),
-  content = document.getElementById("content"),
-  next = document.getElementById("next"),
-  prev = document.getElementById("prev");
-
-next.addEventListener("click", e => {
-  carousel.scrollBy(width + gap, 0);
-  if (carousel.scrollWidth !== 0) {
-    prev.style.opacity = 0.8;
+$(document).ready(function () {
+  if (window.innerWidth < 1030) {
+    // Open Sidebar
+    $(".openSidebar").click(function () {
+      $(".sidebar").css("width", "97%");
+      $('.modal-background').addClass('project-modal');
+      // $(".main-content").css("margin-right", "250px");
+    });
   }
-  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
-    next.style.display = "inline-block";
-    next.style.opacity = 0.3
+  else {
+    // Open Sidebar
+    $(".openSidebar").click(function () {
+      $(".sidebar").css("width", "40%");
+      $('.modal-background').addClass('project-modal');
+      // $(".main-content").css("margin-right", "250px");
+    });
   }
+
+  // Close Sidebar
+  $(".close-btn").click(function () {
+    $(".sidebar").css("width", "0");
+    //$(".main-content").css("margin-right", "0");
+    $('.modal-background').removeClass('project-modal');
+  });
+
+  // 05-Feb-2024 Bannner text fadeout function start------
+
+  var quotes = $(".quotes");
+  var quoteIndex = -1;
+
+  function showNextQuote() {
+    ++quoteIndex;
+    quotes.eq(quoteIndex % quotes.length)
+      .fadeIn(2000)
+      .delay(2000)
+      .fadeOut(2000, showNextQuote);
+  }
+
+  setTimeout(function () {
+    showNextQuote();
+  }, 4000);
+  // Bannner text fadeout function End--------
+
+  // Do not remove below code starts---------------------------------
+    aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
+    pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
+    aqiLineChart.render();
+    pollutantLineChart.render();
+    activePollutant = pollutantNames.AQI;
+    getCurrentLocation();
+  
+    $(".lineChartAqiFilterClass").on('click', function () {
+      $("#lineChartPollutantFilter").text(this.innerText);
+      updateBarChartFilter(this.innerText);
+      getStationChartApi(this.innerText);
+      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+    });
+  
+    $(".lineChartPollutantFilterClass").on('click', function () {
+      $("#lineChartAqiFilter").text(this.innerText);
+      updateBarChartFilter(this.innerText);
+      getStationChartApi(this.innerText);
+      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+    });
+  
+    $(".barChartFilterClass").on('click', function () {
+      updateBarChartFilter(this.innerText);
+      $("#lineChartPollutantFilter, #lineChartAqiFilter").text(this.innerText);
+      getStationChartApi(this.innerText);
+    });
+    $('#currentDate').text(getFormattedDate(new Date()));
+  // Do not remove below code ends---------------------------------
 });
-prev.addEventListener("click", e => {
-  carousel.scrollBy(-(width + gap), 0);
-  if (carousel.scrollLeft - width - gap <= 0) {
-    prev.style.display = "inline-block";
-  }
-  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
-    next.style.display = "inline-block";
-    next.style.opacity = 0.8;
-  }
-});
 
-function initializeDropdown(dropdownMenu) {
-  if (dropdownMenu.id = "stationsDropdownMap") {
-    //Added these 4 lines in this method to add search textbox in the stations dropdown -- prasanna
-    var inputTextBox = document.createElement('input');
-    inputTextBox.setAttribute('id', dropdownMenu.id + "Search");
-    inputTextBox.setAttribute('onkeyup', "selectedCity(" + dropdownMenu.id + "," + dropdownMenu.id + "Search" + ")");
-    dropdownMenu.appendChild(inputTextBox);
-    // end changes
-  }
-  var defaultListItem = document.createElement('li');
-  var defaultLink = document.createElement('a');
-  defaultLink.className = 'dropdown-item abudhabiitem';
-  defaultLink.href = 'javascript:void(0);';
-  defaultLink.textContent = $('#abudhabi').val();
-  defaultListItem.appendChild(defaultLink);
-  dropdownMenu.appendChild(defaultListItem);
-}
+// Project Section modal End--------------
 
+// Insight Section Script by Sachin---------
 function toggleDiv(tabId, pollutant) {
   document.querySelectorAll('.tab-content.mt-0').forEach(function (div) {
     div.style.display = 'none';
@@ -555,6 +600,14 @@ $(".dropdown-change li a").click(function () {
 });
 
 // $("#myTabs").insertBefore(".bar_section .legend");
+$(function () {
+  $('#myTabs .nav-item .nav-link').click(function () {
+    if (!$(this).hasClass("active")) {
+      $('#myTabs .nav-item .nav-link').removeClass("active");
+      $(this).addClass("active");
+    }
+  });
+});
 
 //  05-Feb-2024 Banner Arrrow animation script Start-------------- 
 $('.down-arrow').on('click', function () {
@@ -564,6 +617,13 @@ $('.down-arrow').on('click', function () {
 $('.insight-btn').on('click', function () {
   fullpage_api.moveTo('slide2');
 });
+
+$('.insight-btn-tab').on('click', function () {
+  $('html, body').animate({
+    scrollTop: $('#section2').offset().top
+  }, 700);
+});
+
 // Banner Arrrow animation script End-------------- 
 
 // Carousel Insight Section by Sachin-------------------
@@ -594,198 +654,134 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // End Carousel Insight Section by Sachin-------------------
 
-function sortStations(el) {
-  var isCurrentElementChecked = el.checked;
-  sortingOrder = sortingOrder === 'asc' ? 'desc' : 'asc'; // Toggle sorting order
-  $(".sortIcon").each(function (index, item) {
-    $(item).removeAttr('checked');
-  });
-  if (isCurrentElementChecked) {
-    el.checked = true;
-  }
-  populateSort(sortingOrder, $(el).val());
-}
-
-function populateSort(sortingOrder, sortBy) {
-    if (liveCityData.length > 0) {
-        var stationRankingListDiv = $('#stationRankingList');
-        // Clear existing rows
-        stationRankingListDiv.empty();
-
-        if (sortBy === "name") {
-            liveCityData.sort(function (a, b) {
-                // Ensure both properties exist and are strings
-                var nameA = a[sortBy] ? String(a[sortBy]) : '';
-                var nameB = b[sortBy] ? String(b[sortBy]) : '';
-
-                // Descending order comparison
-                return nameA.localeCompare(nameB);
-            });
-        } else {
-            liveCityData.sort(function (a, b) {
-                var aSortValue = a[sortBy] !== undefined ? a[sortBy] : 0;
-                var bSortValue = b[sortBy] !== undefined ? b[sortBy] : 0;
-
-                // Assuming you still want to support descending order for numerical values
-                return aSortValue - bSortValue;
-            });
-        }
-
-        // Here you can proceed to re-render or update the UI with sorted data
-
-
-
-        $.each(liveCityData, function (index, station) {
-            var colorClass = getColorClassForAqi(station.aqi);
-            var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
-            if (stationDetails) {
-                station.rank = index + 1;
-                var row = `<label class="list-group-item">
-                  <span class="numbers number">
-                    <strong>`+ station.rank + `</strong>
-                  </span>
-                  <div class="list-content">
-                    <div class="inner_list-content">
-                      <p>`+ station.name + `</p>
-                      <span>AQI `+ station.aqi + `</span>
-                    </div>
-                    <div class="dis-content">
-                      <span>~ `+ station.distance + ` km</span>
-                    </div>
-                  </div>
-                  <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
-                </label>`;
-                stationRankingListDiv.append(row);
-            }
-        });
-        if (currentStationDetails.stationId) {
-            $("#" + currentStationDetails.stationId).attr('checked', 'checked');
-        }
-    }
-}
-
-let width = carousel.offsetWidth;
-window.addEventListener("resize", e => (width = carousel.offsetWidth));
-
+document.getElementById('expandTrigger').addEventListener('click', function () {
+  document.getElementById('sidebar').classList.toggle('expanded');
+});
 $(document).ready(function () {
-  aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
-  pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
-  aqiLineChart.render();
-  pollutantLineChart.render();
-  activePollutant = pollutantNames.AQI;
-  getCurrentLocation();
-  $('#currentDate').text(getFormattedDate(new Date()));
-  // Open Sidebar
-  $(".openSidebar").click(function () {
-    $(".sidebar").css("width", "40%");
-    $('.modal-background').addClass('project-modal');
-    // $(".main-content").css("margin-right", "250px");
-  });
+  var thirdSection = $('#section2');
+  var classToAdd = 'highlight';
 
-  // Close Sidebar
-  $(".close-btn").click(function () {
-    $(".sidebar").css("width", "0");
-    $(".main-content").css("margin-right", "0");
-    $('.modal-background').removeClass('project-modal');
-  });
+  $(window).scroll(function () {
+    var scrollPosition = $(window).scrollTop();
 
-  var quotes = $(".quotes");
-  var quoteIndex = -1;
+    // Adjust the offset value as needed
+    var thirdSectionOffset = thirdSection.offset().top;
+    var thirdSectionHeight = thirdSection.height();
 
-  function showNextQuote() {
-    ++quoteIndex;
-    quotes.eq(quoteIndex % quotes.length)
-      .fadeIn(2000)
-      .delay(2000)
-      .fadeOut(2000, showNextQuote);
-  }
-
-  setTimeout(function () {
-    showNextQuote();
-  }, 4000);
-  // Bannner text fadeout function End--------
-
-  $('#myTabs .nav-item .nav-link').click(function () {
-    if ($(this).hasClass("active")) {
-      $(this).removeClass("active");
+    // Check if the scroll position is within the range of the third section
+    if (scrollPosition >= thirdSectionOffset && scrollPosition < thirdSectionOffset + thirdSectionHeight) {
+      thirdSection.addClass(classToAdd);
     } else {
-      $('#myTabs .nav-item .nav-link').removeClass("active");
-      $(this).addClass("active");
+      thirdSection.removeClass(classToAdd);
     }
-  });
 
-  $(".lineChartAqiFilterClass").on('click', function () {
-    $("#lineChartPollutantFilter").text(this.innerText);
-    updateBarChartFilter(this.innerText);
-    getStationChartApi(this.innerText);
-    $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-  });
-
-  $(".lineChartPollutantFilterClass").on('click', function () {
-    $("#lineChartAqiFilter").text(this.innerText);
-    updateBarChartFilter(this.innerText);
-    getStationChartApi(this.innerText);
-    $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-  });
-
-  $(".barChartFilterClass").on('click', function () {
-    updateBarChartFilter(this.innerText);
-    $("#lineChartPollutantFilter, #lineChartAqiFilter").text(this.innerText);
-    getStationChartApi(this.innerText);
+    // Check if the scroll position is beyond the start of section 3
+    var section3Offset = $('#section3').offset().top;
+    if (scrollPosition >= section3Offset) {
+      thirdSection.removeClass(classToAdd);
+    }
   });
 });
 
-function updateBarChartFilter(filter) {
-  $("button#barChartFilter").each(function (index, item) {
-    item.innerText = filter;
+$(document).ready(function () {
+  $('#sidebar-btn').on('click', function () {
+    $('#sidebar').toggleClass('visible');
   });
-}
 
-// Project Section modal End--------------
 
-function getCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(function success(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    currentStationDetails = findNearestStation(latitude, longitude);
-    if (currentStationDetails) {
-      loadStationData();
-    }
-  }, function error() {
-    currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
-    loadStationData();
+  $('.iconimg').on('click', function () {
+    $('.info-popup').show();
   });
-}
 
-// Function to calculate distance between two points (in kilometers)
-function calculateDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371; // Earth's radius in kilometers
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-}
+  $('.crossicon').on('click', function () {
+    $('.info-popup').hide();
+  });
 
-// Function to find the nearest station
-function findNearestStation(currentLat, currentLong) {
-  let nearestStation;
-  let shortestDistance = Infinity;
 
-  stationsWithLocations.forEach(station => {
-    const distance = calculateDistance(currentLat, currentLong, station.latitude, station.longitude);
-    if (distance < shortestDistance) {
-      shortestDistance = distance;
-      nearestStation = station;
+  $('.dropdown-item').click(function () {
+
+    if ($(this).text() === 'Custom') {
+      // alert('hi');
+      $('.date-box').removeClass('calen-box-hide');
+      $('.dropdown-toggle').hide();
+    } else {
+      $('.date-box').addClass('calen-box-hide');
+      $('.dropdown-toggle').show();
     }
   });
 
-  return nearestStation;
+  $('#datePickImage').click(function () {
+    $('.dropdown-toggle').text('Hourly');
+    $('.dropdown-toggle').show();
+    $('.date-box').addClass('calen-box-hide');
+  });
+
+});
+
+// Info Icon cross button script----------------------
+
+// Project slider JS ---------------------------------
+let items = document.querySelectorAll('.slide-carol .carol-item');
+let prevButton = document.getElementById('prev');
+let nextButton = document.getElementById('next');
+
+items.forEach((el, index) => {
+  let minPerSlide = 5; // Default value for larger screens
+  if (window.innerWidth < 768) {
+    minPerSlide = 1;
+  }
+  let next = el.nextElementSibling;
+  for (let i = 1; i < minPerSlide; i++) {
+    if (!next) {
+      // Wrap carousel by using first child
+      next = items[0];
+    }
+    let cloneChild = next.cloneNode(true);
+    el.appendChild(cloneChild.children[0]);
+    next = next.nextElementSibling;
+  }
+});
+
+// Function to check if last slide is active
+function isLastSlideActive() {
+  let activeSlide = document.querySelector('.carol-item.active');
+  let lastSlide = items[items.length - 1];
+  return activeSlide === lastSlide;
 }
 
+// Function to check if first slide is active
+function isFirstSlideActive() {
+  let activeSlide = document.querySelector('.carol-item.active');
+  let firstSlide = items[0];
+  return activeSlide === firstSlide;
+}
+
+// Add event listener to the carousel for slide change
+document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', function () {
+  // Check if last slide is active
+  if (isLastSlideActive()) {
+    // Add opacity to next button
+    nextButton.style.opacity = '0.5';
+    nextButton.disabled = true;
+  } else {
+    // Remove opacity from next button
+    nextButton.style.opacity = '1';
+    nextButton.disabled = false;
+  }
+
+  // Check if first slide is active
+  if (isFirstSlideActive()) {
+    // Add opacity to previous button
+    prevButton.style.opacity = '0.5';
+    prevButton.disabled = true;
+  } else {
+    // Remove opacity from previous button
+    prevButton.style.opacity = '1';
+    prevButton.disabled = false;
+  }
+});
+
+// Do not remove below code starts---------------------------------
 function getAqiStatus(value) {
   if (value >= 0 && value <= 50) {
     return statusClass.Good;
@@ -855,6 +851,166 @@ function getColorClassForAqi(aqi) {
     return colorClass.VeryUnhealthyColorClass;
   } else {
     return colorClass.HazardousClass;
+  }
+}
+
+// Function to calculate distance between two points (in kilometers)
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Earth's radius in kilometers
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+// Function to find the nearest station
+function findNearestStation(currentLat, currentLong) {
+  let nearestStation;
+  let shortestDistance = Infinity;
+
+  stationsWithLocations.forEach(station => {
+    const distance = calculateDistance(currentLat, currentLong, station.latitude, station.longitude);
+    if (distance < shortestDistance) {
+      shortestDistance = distance;
+      nearestStation = station;
+    }
+  });
+
+  return nearestStation;
+}
+
+function createRadarData() {
+  return {
+    labels: labelsData,
+    fill: false,
+    datasets: [{
+      label: '',
+      //borderColor: 'rgba(250, 207, 57, 1)',
+      //pointBackgroundColor: getColors(pollutantLevels),
+      backgroundColor: function (context) {
+        return createRadialGradient3(context);
+      },
+      lineTension: 0.2,
+      data: pollutantLevels,
+    }]
+  };
+}
+
+function createRadialGradient3(context) {
+  const chartArea = context.chart.chartArea;
+  if (!chartArea) {
+    // This case happens on initial chart load
+    return;
+  }
+  const chartWidth = chartArea.right - chartArea.left;
+  const chartHeight = chartArea.bottom - chartArea.top;
+
+  width = chartWidth;
+  height = chartHeight;
+  const centerX = (chartArea.left + chartArea.right) / 2;
+  const centerY = (chartArea.top + chartArea.bottom) / 2;
+
+  const ctx = context.chart.ctx;
+
+  var gradient = ctx.createConicGradient(-1.479, centerX, centerY);
+
+  // The pattern is 30 degrees of blend between quadrants
+  // 60 degrees of pure color in the quadrant
+  var gradientStop = colorCodesForAirAnalytics.length / 12 * 0.1;
+  var colorGradient = 0
+  colorCodesForAirAnalytics.forEach(item => {
+    gradient.addColorStop(colorGradient, item);
+    if (colorGradient + gradientStop < 1) {
+      colorGradient += gradientStop;
+    }
+  });
+
+  // Set the fill style and draw a rectangle
+  ctx.fillStyle = gradient;
+  ctx.fillRect(chartArea.left, chartArea.top, chartWidth, chartHeight);
+
+  return gradient;
+}
+
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    currentStationDetails = findNearestStation(latitude, longitude);
+    if (currentStationDetails) {
+      loadStationData();
+    }
+  }, function error() {
+    currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
+    loadStationData();
+  });
+}
+
+function sortStations(el) {
+  var isCurrentElementChecked = el.checked;
+  $(".sortIcon").each(function (index, item) {
+    $(item).removeAttr('checked');
+  });
+  if (isCurrentElementChecked) {
+    el.checked = true;
+  }
+  populateSort($(el).val());
+}
+
+function populateSort(sortBy) {
+  if (liveCityData.length > 0) {
+    var stationRankingListDiv = $('#stationRankingList');
+    // Clear existing rows
+    stationRankingListDiv.empty();
+    if (sortBy === "name") {
+      liveCityData.sort(function (a, b) {
+        // Ensure both properties exist and are strings
+        var nameA = a[sortBy] ? String(a[sortBy]) : '';
+        var nameB = b[sortBy] ? String(b[sortBy]) : '';
+
+        // Descending order comparison
+        return nameA.localeCompare(nameB);
+      });
+    } else {
+      liveCityData.sort(function (a, b) {
+        var aSortValue = a[sortBy] !== undefined ? a[sortBy] : 0;
+        var bSortValue = b[sortBy] !== undefined ? b[sortBy] : 0;
+
+        // Assuming you still want to support descending order for numerical values
+        return aSortValue - bSortValue;
+      });
+    }
+
+    $.each(liveCityData, function (index, station) {
+      var stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
+      if (stationDetails) {
+        var colorCode = colorCodes[getColorClassForAqi(station.aqi)];
+        station.rank = index + 1;
+        var row = `<label class="list-group-item">
+                    <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
+                      <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
+                    </span>
+                    <div class="list-content">
+                      <div class="inner_list-content">
+                        <p>`+ station.name + `</p>
+                        <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
+                      </div>
+                      <div class="dis-content">
+                        <span>~ `+ station.distance + ` km</span>
+                      </div>
+                    </div>
+                    <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
+                  </label>`;
+        stationRankingListDiv.append(row);
+      }
+    });
+    if (currentStationDetails.stationId) {
+      $("#" + currentStationDetails.stationId).attr('checked', 'checked');
+    }
   }
 }
 
@@ -987,59 +1143,6 @@ function getAirAnalytics(year) {
   });
 }
 
-function createRadarData() {
-  return {
-    labels: labelsData,
-    fill: false,
-    datasets: [{
-      label: '',
-      //borderColor: 'rgba(250, 207, 57, 1)',
-      //pointBackgroundColor: getColors(pollutantLevels),
-      backgroundColor: function (context) {
-        return createRadialGradient3(context);
-      },
-      lineTension: 0.2,
-      data: pollutantLevels,
-    }]
-  };
-}
-
-function createRadialGradient3(context) {
-  const chartArea = context.chart.chartArea;
-  if (!chartArea) {
-    // This case happens on initial chart load
-    return;
-  }
-  const chartWidth = chartArea.right - chartArea.left;
-  const chartHeight = chartArea.bottom - chartArea.top;
-
-  width = chartWidth;
-  height = chartHeight;
-  const centerX = (chartArea.left + chartArea.right) / 2;
-  const centerY = (chartArea.top + chartArea.bottom) / 2;
-
-  const ctx = context.chart.ctx;
-
-  var gradient = ctx.createConicGradient(-1.479, centerX, centerY);
-
-  // The pattern is 30 degrees of blend between quadrants
-  // 60 degrees of pure color in the quadrant
-  var gradientStop = colorCodesForAirAnalytics.length / 12 * 0.1;
-  var colorGradient = 0
-  colorCodesForAirAnalytics.forEach(item => {
-    gradient.addColorStop(colorGradient, item);
-    if (colorGradient + gradientStop < 1) {
-      colorGradient += gradientStop;
-    }
-  });
-
-  // Set the fill style and draw a rectangle
-  ctx.fillStyle = gradient;
-  ctx.fillRect(chartArea.left, chartArea.top, chartWidth, chartHeight);
-
-  return gradient;
-}
-
 function getLiveCityRankingApi() {
   if (liveCityData.length == 0) {
     $.ajax({
@@ -1069,20 +1172,20 @@ function bindLiveCityRanking() {
       station.name = stationDetails.stationName;
       station.distance = Math.round(calculateDistance(currentStationDetails.latitude, currentStationDetails.longitude, stationDetails.latitude, stationDetails.longitude));
       var row = `<label class="list-group-item">
-                    <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
-                      <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
-                    </span>
-                    <div class="list-content">
-                      <div class="inner_list-content">
-                        <p>`+ station.name + `</p>
-                        <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
+                      <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
+                        <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
+                      </span>
+                      <div class="list-content">
+                        <div class="inner_list-content">
+                          <p>`+ station.name + `</p>
+                          <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
+                        </div>
+                        <div class="dis-content">
+                          <span>~ `+ station.distance + ` km</span>
+                        </div>
                       </div>
-                      <div class="dis-content">
-                        <span>~ `+ station.distance + ` km</span>
-                      </div>
-                    </div>
-                    <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
-                  </label>`;
+                      <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
+                    </label>`;
       stationRankingListDiv.append(row);
     }
   });
@@ -1117,9 +1220,9 @@ function getAirQualitySafetyLevel() {
 
 function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
   return `<div class="list-item ` + aqiColorStatus + `">
-            <p>` + aqiValue + `</p>
-            <span>` + aqiStatus + `</span>
-          </div>`;
+              <p>` + aqiValue + `</p>
+              <span>` + aqiStatus + `</span>
+            </div>`;
 }
 
 function getStationChartApi(filter) {
@@ -1151,7 +1254,7 @@ function getStationChartApi(filter) {
   });
 }
 
-function bindStationDataToLineChart(filter) {
+  function bindStationDataToLineChart(filter) {
   var aqiData = [];
   var pm10Data = [];
   var so2Data = [];
@@ -1180,11 +1283,11 @@ function bindStationDataToLineChart(filter) {
       break;
     default:
       categoriesData = chartData.map(t => { return t.hour.split(' '); });
-      var recordedDates = Array.from(new Set(chartData.map(t=> {return t.recordedDate;})));
+      var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
       recordedDates.forEach(item => {
         $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates").append(`<li>
-        <p>`+ item + `</p>
-      </li>`);
+          <p>`+ item + `</p>
+        </li>`);
       });
       break;
   }
@@ -1641,3 +1744,10 @@ function bindStationDataToBarChart(filter) {
   });
   constructBarChart.update();
 }
+
+function updateBarChartFilter(filter) {
+  $("button#barChartFilter").each(function (index, item) {
+    item.innerText = filter;
+  });
+}
+// Do not remove below code ends---------------------------------

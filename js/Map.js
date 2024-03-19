@@ -269,7 +269,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 //selectedCityButton.innerText = $('#abudhabi').val();
 
                 //initializeDropdown(dropdownMenu);
-                initializeDropdown(dropdownMap);
+                // initializeDropdown(dropdownMap);
 
                 //view.ui.add (document.getElementById('stationsDropdownMap'), "bottom-right");
 

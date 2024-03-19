@@ -1,16 +1,62 @@
 
-@media (min-width: 320px) and (max-width: 576px){
-    .air-map-container .air-map-col ul.map-vert-tools , .air-map-container .air-map-col ul.map-hori-tools{
+@media (min-width: 400px) and (max-width: 435px){
+    .highlight #sidebar{
+        bottom: -25px!important;
+    }
+    .insight .data-sort_sidebar h2{
+        font-size: 13px;
+    }
+    .nearest-section .station-details .station-box .between-gap {
+        gap: 45px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 766px){
+    /* .full-screen #wrapper{
+        display: block!important;
+    } */
+    .res-mb0{margin-bottom: 0;}
+    .res-padding15{padding-left: 10px; padding-right: 10px;}
+    .mb-23 {margin-bottom: 23px;}
+    .location-popup-start{
+        padding: 10px 10px;
+    }
+    .insight .number-exceedance .number-exceedance-heading{
+        font-size: 23px;
+    }
+    .privacy-img{
         display: none;
     }
-    .banner-section .carousel-caption{
-        top: 13%;
+    .project-slider #recipeCarousel .carol-item .col-md-3{
+        width: 100%;
+    }
+    .banner-section .carousel-caption-banner{
+        top: 20%;
+    }
+    .mapsearch-img{
+        height: 20px!important;
+    }
+    .search-btn1{
+        height: 40px;
+    }
+    .pollutant-toggleBar .info-popup{
+        width: 90%;
+    }
+    .down-arrow, .wheather-widget{
+        display: none;
+    }
+    .web-top-legends {
+        right: 27px;
+        top: 35px;
+    }
+    .ead-monitoring-project{
+        position: relative;
     }
     .home-slider-animation .emirates-text{
         font-size: 24px;
     }
-    .banner-section .carousel-caption .h5{
-        font-size: 35px; top: 54px;
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 35px; top: 35px;
     }
     .weather-card{
         top: 83px; right: 5px;
@@ -19,17 +65,41 @@
         width: 230px;
         height: 230px;
     }
+    .air-map-container .air-map-col ul.map-vert-tools{
+        bottom: 0;
+        top: auto;
+        left: 0;
+        right: 0;
+        justify-content: center;
+    }
+    .air-map-container.full-screen ul.map-vert-tools{
+        bottom: 55px;
+    }
+
+    .air-map-container .air-map-col ul.map-vert-tools li i{
+        font-size: 25px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools{
+        right: 10px;
+        top: unset;
+        bottom: 56px;
+    }
+    .Newsearch-box{
+        display: flex;
+        justify-content: flex-start;
+        pointer-events: none;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools li .btn span{
+        font-size: 30px;
+    }
     .air-map-container .overview-heading{
-        padding: 5px 10px;
+        padding: 5px 45px;
+        font-size: 16px;
     }
     .air-map-container .list-container{
-        display: block; width: 85%;
+       display: none;
     }
-    .air-map-container .list-item{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        border: 1px solid #e7e5e5;
-    }
+    
     .air-map-container .air-map-col{
         margin-bottom: 10px;
     }
@@ -41,39 +111,47 @@
     .air-map-container .list-item p{
         position: relative;
     }
-    .air-map-container .list-item p::before{
-        content: '';
-        position: absolute;
-        height: 68%;
-        width: 1px;
-        right: 0px;
-        bottom: -8px;
-        transform: translateY(-50%);
-        background: #bdbdbd;
+    
+    .air-map-container .air-map-col .mapmobile-ht{
+        height: unset;
     }
-    .ead-monitoring-project, .contact-section {
-        padding-left: 25px;
-        padding-right: 25px;
-        margin-top: 8%;
+    .ead-monitoring-project, .contact-section, .faq-section {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 10%;
+    }
+    #section3, #section5{
+        background-image: none;
     }
     .sticky-top{
         top: -2px;
     }
-    .project-slider .item{
-        width: 300px;
+    .project-slider .carousel-inner .carousel-item.active, .project-slider .carousel-inner .carousel-item-next, 
+    .project-slider .carousel-inner .carousel-item-prev {
+        display: block; 
+    }
+
+    /* .project-slider .item{
+        width: 330px;
+    } */
+    .project-slider .project-slide-content{
+        font-size: 15px;
     }
     .sidebar{
         overflow: auto;
     }
+    .modal-background img{
+        height: 250px;
+    }
+    
     .faq-section h4{
-        font-size: 20px;
+        font-size: 25px;
         float: unset;
-        text-align: center;
         margin-right: 0 !important;
     }
     .faqscrolling{
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 2px;
+        padding-right: 2px;
         height: auto;
     }
     .contact-section .left-side::before{
@@ -83,23 +161,234 @@
         width: 100%;
     }
     .myContentHeight{
-        margin-top: 10%;
+        margin-top: 10%; height: auto;
+    }
+    .contact-section h6{
+        font-family: 'GothamMedium';
+    }
+    .contact-section .contact-form .form-group{
+        margin-bottom: 10px;
+    }
+    .contact-section .contact-form{
+        padding-left: 10px; padding-right: 10px; margin-top: -15px 
+    }
+    .contact-section .contact-form .send-btn{
+        margin-top: 15px !important;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    .contact-form input::placeholder {
+        font-size: 15px;
+    }
+    .contact-form textarea::placeholder {
+        
+        font-size: 15px;
     }
     .footer-container{
-        padding-right: 25px; padding-left: 25px;
+        padding-right: 10px; padding-left: 10px;
     }
-    footer .social-small-links .left ul.social-media{
+    footer .brand-logo{
+        max-width: 200px; margin-bottom: 20px; 
+    }
+    .footer-container h6{
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .footer-container .dropdown button{
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-family: 'GothamMedium';
+        padding: 0;
+    }
+    .footer-container .dropdown button:active, .footer-container .dropdown ul li a:active{
+        background-color: transparent;
+    }
+    /* footer .social-small-links .left ul.social-media{
         display: none;
+    } */
+    footer .social-small-links{
+        order: 2; position: relative;
+    }
+    footer .copy-rights p{
+        order: 3;
     }
     footer .copy-rights{
-        display: unset;
+        display: grid;
     }
     footer .copy-rights ul{
         padding-left: 0;
+        display: flex;
+        list-style: none;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    footer .copy-rights ul li a {
+        padding: 1px 9px;
+    }
+    footer .social-small-links .left ul.social-media{
+        justify-content: flex-start; margin-bottom: 20px;
+    }
+    footer .social-small-links .left ul.social-media li{
+        margin-right: 10px;
+    }
+    footer .social-small-links .left ul.social-media li a{
+        font-size: 30px;
+    }
+   /* =======================Sachin 11 March================ */
+    .highlight #sidebar {
+        height: 10%;
+        position: fixed;
+        bottom: 1px;
+        left: 0;
+        right: 0;
+        transition: height 0.5s ease;
+        z-index: 1024;
+        display: block !important;
+    }
+
+    .highlight #sidebar.expanded {
+        height: 100%;
+    }
+    #sidebar{
+        display: none;
+    }
+    .data-sort_sidebar.hidden h2:before {
+        position: absolute;
+        content: ' ';
+        width: 32px;
+        height: 5px;
+        z-index: 9999;
+        background: #9aa1a9;
+        text-align: center;
+        border-radius: 20px;
+        top: 9px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .data-sort_sidebar.hidden {
+        position: relative;
+        text-align: center;
+        box-shadow: 0px -4px 6px 0px #A3A3A44F;
+        border-radius: 20px 20px 0px 0px;
+        border: none;
+        background: #fff;
+        padding: 20px 15px;
+        width: 100%;
+        text-align: center;
+    }
+    /* ======================Close 11 March==================== */
+    .small-device-legend-list{
+        margin-bottom: 30px;
+    }
+    .insightStation h3{
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .insight .search-box .p-input input{
+        background-color: #e4e4e4;
+    }
+    .sidebar-dataScroll{
+        height: 490px 
+    }
+    .privacy-policy {
+        margin-top: 25% !important;
+    }
+    .nearest-section .station-details .legend-text, .nearest-section .station-details .legend-value{
+        padding-left: 3px;
+    }
+    /* -----For Mobile header ------------*/
+    header.formobile-fading #hamburger.open div {
+        background: transparent;
+    }
+    header.formobile-fading .navbar-brand.white{
+        display: none;
+    }
+    header.formobile-fading .navbar-brand.black{
+        display: block;
+    }
+    
+    header.formobile-fading nav.navbar {
+        background-color: #fff;
+        width: 100%;
+    }
+    header.formobile-fading nav.navbar .navbar-nav li a {
+        color: var(--blue);
+        padding: 10px 10px !important;
+        text-transform: uppercase;
+        position: relative;
+        transition: all 2s;
+        font-size: 13px;
+        font-weight: 700;
+    }
+    header.formobile-fading nav.navbar .navbar-nav li a.active {
+        color: var(--blue);
+        font-family: 'Gothammedium';
+        font-weight: 600;
+    }
+    header.formobile-fading nav.navbar .search-block span{
+        color: var(--blue)!important;
+    }
+    .formobile-fading #hamburger div:before, .formobile-fading #hamburger div:after, .formobile-fading #hamburger div{
+        background-color: var(--blue)
+    }
+    .formobile-fading .whitesearch-hide {
+        display: none;
+    }
+    .formobile-fading .blue-hide {
+        display: block;
     }
 }
 @media (min-width: 320px) and (max-width: 767px){
-    .banner-section .carousel-caption .h5{
+    .footermobile-none{
+        display: none;
+    }
+    .insight ul#myTabs li a{
+        margin:0px 2px;
+    }
+    .newcutom-btn{
+        width: 120px 
+    }
+    header .search-block .search-collapse .card-body .container-fluid .close{
+        bottom: 7px;
+    }
+    header .search-block .search-collapse .card-body{
+        padding: 10px 5px;
+    }
+    .footermobile-show{
+        display: block;
+    }
+    .index-mb-0{
+        margin-bottom: 0!important;
+    }
+    .exceed-height{
+        margin-top: 30px;
+        margin-bottom: 18px !important;
+    }
+    .exceeded-box .main-box{
+        margin-bottom: 20px!important; 
+    }
+    .exceeded-box .contact-content p{
+        font-size: 17px;
+    }
+    .date_row {
+        padding: 1px;
+        padding-bottom: 70px;
+    }
+    .insight .chart-f-content p {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 0px;
+        text-align: left;
+        color: var(--grey);
+        margin-bottom: 30px;
+        margin-top: 20px;
+        min-height: 90px;
+    }
+    #newchartTrend .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+        justify-content: flex-start;
+    }
+    .banner-section .carousel-caption-banner .h5{
         margin-top: 0;
     }
     header .headerpt-10 {
@@ -109,43 +398,826 @@
     header .search-block {
         width: auto;
         justify-content: flex-start;
-        padding: 6px 0px 0 0px;
+        padding: 0px 0px 0 0px;
         order: 1;
+        margin-right: 29px 
     }
-    .banner-section .carousel-caption p{
+    .banner-section .carousel-caption-banner p{
         width: 100%;
     }
+    /* =====================Sachin 7 March ================= */
+   
+    .insight .silde-dv {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0;
+    }
+    .insight .main-box {
+        padding: 0.8rem;
+        margin-bottom: 35px;
+    }
+    .insight ul#myTabs {
+        gap: 5px;
+    }
+    .insight ul.legend {
+        gap: 5px 18px;
+        flex-wrap: wrap;
+        min-height: 85px;
+    }
+    .insight .Causes-img p, .insight .activities-imgs p {
+        font-size: 10px;
+    }
+    .insight .quality-index-wrapper-h2 h3 {
+        padding-left: 12px;
+        font-size: 12px;
+    }
+    .insight .quality-index-wrapper-h2 h2 {
+        font-size: 19px;
+        padding-bottom: 5px;
+        margin-bottom: 20px ;
+        min-height: 25px !important;
+    
+    }
+    .insight .number-index p strong {
+        font-size: 80px;
+    }
+    .insight .number-index p {
+        font-size: 18px;
+    }
+    .insight .number-index .small-13 {
+        font-size: 16px;
+    }
+    .insight .pollutant_dv h3, .insight .Causes-wrapper h3, .insight .activities-wrapper h3 {
+        font-size: 14px;
+    }
+    .insight .activities-imgs {
+        gap: 2px;
+    }
+    .insight .grid-value {
+        width: 100%;
+        gap: 10px;
+        padding: 15px 0px;
+        padding-top: 50px;
+    }    
+    .insight .hour_box ul {
+        width: 100%;
+    }
+    .insight #radarChart {
+        width: 320px !important;
+        /* height: 340px !important; */
+    }
+    .insight ul.legend_radar{
+        margin-bottom: 15px;
+    }
+    .insight .aqi-content {
+        top: 0;
+        width: 100%;
+        left: 0px;
+        width: max-content;
+    }
+    .insight .align-items-flexstart {
+        padding: 1rem 0px;
+        width: 100%;
+    }
+    .insight .slide-content p {
+        margin-top: 30px;
+    }
+    .insight .polutenat_bar .tab_shado .graph-duration-filters {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .insight .aqi-content.mult-value-tab {
+        top: 0;
+        left: 0;
+        width: max-content;
+    }
+    .insight .contact-content {
+        width: 100%;
+        padding-top: 10px;
+    }
+    #ADstationAqiBarGraph {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    #chart_polutent {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    #options_aiq_line{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    #newchartTrend{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    .pad_r {
+        padding-right: 0px !important;
+    }
+    /* ------------ add new res css -------------- */
+    .insight .ug_content {
+        top: 0;
+    }
+    .insight ul.nav.twobar-tabs {
+        top: 63%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+    .insight .graph-duration-filters .btn {
+        top: -7px;
+    }
+   
 }
 
 @media (min-width: 768px) and (max-width: 1199px){
+    /* Arisha Start */
+    body{
+        font-size: 18px;
+    }
+    .insight .pollutant-toggleBar .pollutantbar-title{
+        font-size: 22px;
+    }
+    #locationModal .modal-body p{
+        font-size: 14px;
+    }
+    .large-webmenu, .footermobile-none{
+        display: none;
+    }
+    .tablet-menu, .footermobile-show{
+        display: block;
+    }
+    .full-screen .web-top-legends{
+        bottom: 100px   
+    }
+    
+    .header-responsive-flex .container-fluid{
+        justify-content:center;
+        padding-left: 10px;
+        padding-right: 10px 
+    }
+    header nav.navbar .navbar-nav li {
+        padding: 0px 3px !important;
+    }
+    header nav.navbar .navbar-nav li a, header.fadeout nav.navbar .navbar-nav li a{
+        padding: 8px!important;
+    }
+    .banner-section .carousel-caption-banner .h6{
+       font-size: 20px;
+    }
+    .home-slider-animation .emirates-text{
+        font-size: 35px;
+    }
+    .home-slider-animation .welcome-text{
+        font-size: 32px;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 49px;
+    }
+    .circular-width{
+        width: 350px; height: 350px;
+    }
+    header .search-block{
+        width: auto;
+    }
+    .weather-card{
+        top: 37%; right: -7%;
+    }
+    .weather-card h2{
+        font-size: 23px;
+    }
+    .weather-card h5{
+        font-size: 32px;
+    }
+    .weather-card h6{
+        font-size: 18px;
+    }
+    .weather-card .date-shift{
+        margin-left: 17px 
+    }
+    .weather-card .date{
+        font-size: 17px;
+    }
+    .down-arrow{
+        display: none;
+    }
+    .air-map-container .overview-heading{
+        font-size: 22px;
+    }
+    .air-map-container .list-container{
+        align-items: flex-start;
+        width: 95%;
+        gap: 19px;
+        padding: 25px 0;
+    }
+    .air-map-container .list-item span{
+        font-size: 15px;
+    }
+    .air-map-container .air-map-col .iframeimg, .air-map-container .air-map-col iframe {
+        height: 670px;
+    }
+    .air-map-container .air-map-col ul.map-vert-tools{
+        top: 45px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools{
+        top: 90px;
+    }
+    .air-map-container .air-map-col{
+        margin-bottom: 0;
+    }
+    .insight .align-items-flexstart{
+        padding: 2rem 0rem 
+    }
+    .insightStation h3{
+        font-size: 20px;
+    }
+    .insight .main-box {
+        margin-bottom: 35px;
+    }
+    .insight .tab-padding-50{
+        padding: 10px 50px 
+    }
+    .health-recommand-tab .paratab{
+        padding-top: 15px!important;
+    }
+    .health-recommand-tab ul li{
+        margin-bottom: 0;
+    }
+    .insight .slide-content ul .modal-content{
+        height: 663px;
+    }
+    .insight #exampleModal .mask-use{
+        font-size: 26px;
+    }
+    .insight .calendar-icon{
+        top: 2px;
+    }
+    .tab-top-pd40{
+        margin-top: 40px!important;
+    }
+    .insight .aqi-content{
+        padding: 3px 12px;
+    }
+    .insight .hour_box ul li span{
+        font-size: 23px;
+    }
+    .insight .hour_box ul li p{
+        font-size: 19px;
+    }
+    .insight .contact-content{
+        width: 100%;
+    }
+    .ead-monitoring-project{
+        position: relative;
+    }
+    .ead-monitoring-project #recipeCarousel .carousel-item .col-md-3{
+        width: 50%;
+    }
+    .project-modal .h-200-scroll{
+        height: 400px
+    }
+    .faq-section h4{
+        float: left;
+        font-size: 33px;
+        margin-bottom: 40px;
+    }
+    .faq-section .accordion-button{
+        font-size: 18px;
+    }
+    .contact-section .contact-content{
+        width: 100%; 
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .footer-container{
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+    footer .brand-logo{
+        max-width: 200px; margin-bottom: 20px; 
+    }
+    .footer-container h6{
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .footer-container .dropdown button{
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-family: 'GothamMedium';
+        padding: 0;
+    }
+    .footer-container .dropdown button:active, .footer-container .dropdown ul li a:active{
+        background-color: transparent;
+    }
+    /* footer .social-small-links .left ul.social-media{
+        display: none;
+    } */
+    footer .social-small-links{
+        order: 2; position: relative;
+    }
+    footer .copy-rights p{
+        order: 3;
+    }
+    footer .copy-rights{
+        display: grid;
+    }
+    footer .copy-rights ul{
+        padding-left: 0;
+        display: flex;
+        list-style: none;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    footer .copy-rights ul li a {
+        padding: 1px 11px;
+    }
+    footer .social-small-links .left ul.social-media{
+        justify-content: flex-start; margin-bottom: 20px;margin-top: 15px;
+    }
+    footer .social-small-links .left ul.social-media li{
+        margin-right: 10px;
+    }
+    footer .social-small-links .left ul.social-media li a{
+        font-size: 30px;
+    }
+    .mb-23 {
+        margin-bottom: 23px;
+    }
+    .tab-privacy-section ul{
+        padding-left: 0;
+        padding-bottom: 20px;
+    }
+    .tab-privacy-section li{
+        list-style: none;
+        display: inline-block;
+        padding: 10px 10px;
+    }
+    .highlight #sidebar {
+        display: block;
+    }
+    #sidebar {
+        display: none;
+    }
+    .expand-panel{
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(270deg);
+        top: 35%;
+        position: absolute;
+        font-family: 'GothamMedium';
+        color: var(--blue);
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    .insight .search-box .p-input input {
+        background-color: #e4e4e4;
+    }
+    .insight .inner_list-content p{
+        font-size: 16px;
+    }
+    .insight .inner_list-content span{
+        font-size: 15px;
+    }
+    .pollutant-toggleBar .info-popup{
+        width: 80%;
+    }
+    .privacy-policy {
+        margin-top: 15%;
+    }
+    .private-scroll-hide .contact-content {
+        width: 100%; font-size: 20px;
+    }
+    .privacy-fadeout nav.navbar .navbar-nav li a{
+        padding: 8px!important;
+    }
+    .privacy-img{
+        display: none;
+    }
+    .scrollPolicyShow h6{
+        font-size: 22px;
+    }
+    .sidebar-dataScroll{
+        height: 720px;
+    }
+    .scrollPolicyShow {
+        height: auto;
+        overflow: auto;
+    }
+    .insight-btn{
+        display: none;
+    }
+    .insight-btn-tab{
+        display: block;
+        border: 1px solid #fff;
+        color: var(--yellow);
+        padding: 3px 10px;
+        margin-left: auto;
+    margin-right: auto;
+    }
+    /*------------------------- Arisha End------------------------------ */
+    .insight .silde-dv {
+        padding-right: 0px;
+    }
+    .insight .quality-index-wrapper-h2 h2 {
+        padding-top: 25px;
+        margin: 0px;
+        padding-bottom: 20px;
+        font-size: 28px;
+    }
+    .insight .number-index p {
+        font-size: 21px;
+    }
+    .insight .number-index .small-13 span{
+        font-size: 23px;
+    }
+    .insight .number-index p strong {
+        font-size: 95px;
+        line-height: 90px;
+    }
+    .number-index h6.small-13 {
+        font-size: 16px;
+    }
+    
+    .insight .Causes-img img {
+        max-width: 70px;
+        margin-right: 15px;
+    }
+    .insight .Causes-img p, .insight .activities-imgs p {
+        font-size: 15px;
+    }
+    .insight .activities-imgs {
+        gap: 16px;
+    }
+    .insight .slide-content p {
+        margin: 0px;
+        padding: 40px 0px;
+    }
+    .slide-content.main-box.position-relative {
+        padding: 40px;
+    }
+    .insight .slide-content ul li .bg-gray img {
+        width: 70px;
+        height: 70px;
+    }
+    .insight .slide-content ul li {
+        gap: 20px;
+    }
+    .insight .quality-index-wrapper-h2 p {
+        padding-bottom: 25px;
+        margin: 0px;
+    }
+    .insight #ADstationAqiBarGraph {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    .insight #ADstationAqiBarGraph{
+        margin-bottom: 0px;
+    }
+    .insight .red-c p {
+        font-size: 18px;
+    }
+    .insight .white-bg p {
+        font-size: 18px;
+    }
+    .insight .pollutant_dv h3, .insight .Causes-wrapper h3, .insight .activities-wrapper h3 {
+        font-size: 20px;
+    }
+    .insight .activities-imgs img {
+        max-width: 70px;
+        height: 70px;
+    }
+    .insight .slide-content ul li p {
+        font-size: 22px;
+    }
+    .insight .polutenat_bar .tab_shado .graph-duration-filters {
+        position: absolute;
+        right: 0px;
+        top: -4%;
+    }
+    .insight ul#myTabs {
+        gap: 18px;
+        width: 100%;
+    }
+    .insight ul.legend {
+        gap: 8px 50px;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        min-height: 80px;
+    }
+    .insight .chart-f-content p {
+        padding-top: 30px;
+        font-size: 17px;
+        color: var(--grey);
+    }
+    .insight .grid-upper p {
+        font-size: 11px;
+    }
+    .insight .mult-value strong {
+        font-size: 12px;
+    }
+    .insight .mult-value p {
+        font-size: 12px;
+    }
+    .insight .grid-value {
+        width: 400px;
+        margin-bottom: 10px;
+    }
+    .insight .radar_section .quality-index-wrapper-h2 h2 br{
+        display: none;
+    }
+    .insight .hour_box ul {
+        gap: 30px;
+        width: 100%;
+    }
+    .insight .hour_box ul li {
+        max-width: 180px;
+        max-height: 180px;
+    }
+    .insight .contact-content p {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 10px 0px !important;
+    }
+    .insight #radarChart {
+        width: 100% !important;
+        height: 550px !important;
+    }    
+    .insight #sidebar {
+        width: 100%;
+        position: fixed;
+        height: 100%;
+        top: 0px;
+        right: 100%;
+        transition: right 0.5s ease;
+        z-index: 11111;
+      }
+      .insight #sidebar.visible {
+        right: 0px;
+        transition: right 0.7s ease;
+      }
+      .insight #sidebar-btn {
+        display: block;
+        /* vertical-align: middle; */
+        width: 25px;
+        height: 100px;
+        cursor: pointer;
+        position: fixed;
+        top: 0px;
+        z-index: 99;
+        left: 0px;
+      }
+    
+      .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0;
+        text-align: center;
+        /* border: 1px solid #ccc; */
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100vh;
+      }
+      .insight .coll-icon img {
+        width: 90px;
+        position: absolute;
+        /* left: -28px; */
+        /* top: 44px; */
+        /* transform: rotate(90deg); */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        top: 50%;
+        /* height: 80px; */
+        height: 7px;
+      }
+      .insight #sidebar.visible #sidebar-btn {
+        transition: right 0.9s ease;
+        top: 0px;
+        position: absolute;
+        left: 50%;
+    }
+    
+    .insight .data-sort_sidebar {
+        position: relative;
+        width: 50%;
+    }
+    .insight ul.nav.twobar-tabs {
+        top: 75%;
+    }
+    .chart-f-content {
+        min-height: 55px;
+    }
+    
+        
 
-}
 
-
-
-@media (min-width: 1200px) and (max-width: 1320px){
     
 }
-@media (min-width: 1350px) and (max-width: 1369px){
+
+@media (min-width: 799px) and (max-width: 900px){
+    .video-wrapper {
+        height: fit-content;
+        
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px){
+    .footermobile-show{
+        display: block;
+    }
+    .footermobile-none{
+        display: none;
+    }
+    .insight .coll-icon img {
+        width: 90px;
+        position: absolute;
+        /* left: -28px; */
+        /* top: 44px; */
+        /* transform: rotate(90deg); */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        top: 50%;
+        /* height: 80px; */
+        height: 7px;
+    }
+    .expand-panel {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(270deg);
+        top: 39%;
+        position: absolute;
+        font-family: 'GothamMedium';
+        color: var(--blue);
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0;
+        text-align: center;
+        /* border: 1px solid #ccc; */
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100vh;
+    }
+    .video-wrapper{
+        height: 100%;
+    }  
+    .lgtab-hide .contact-content{
+        display: none;
+    }
+    .insightStation h3{
+        padding-left: 40px;
+    }
+    .pollutant-toggleBar .info-popup{
+        width: 65%;
+    }
+    .insight .pollutant-toggleBar .pollutantbar-title{
+        font-size: 22px;
+    }
+    /* ---------------------------end 18 march */
+    div#section2 .col-lg-9.col-md-12 {
+        width: 100%;
+    }
+    .insight .silde-dv {
+        padding-left: 10px;
+        padding-right: 0;
+        margin-top: 2%;
+    }
+        
+     /* collapse css here */
+    
+     .insight #sidebar {
+        width: 100%;
+        position: fixed;
+        height: 100%;
+        top: 65px;
+        right: 100%;
+        transition: right 0.5s ease;
+        z-index: 9;
+      }
+      .insight #sidebar.visible {
+        right: 0px;
+        transition: right 0.7s ease;
+      }
+      .insight #sidebar-btn {
+        display: block;
+        /* vertical-align: middle; */
+        width: 25px;
+        height: 100px;
+        cursor: pointer;
+        position: fixed;
+        top: 72px;
+        z-index: 99;
+        left: 0px;
+      }
+    
+      /* .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0px 6px 6px 0px;
+        text-align: center;
+        border: 1px solid #ccc;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      } */
+      /* .insight .coll-icon img {
+        width: 80px;
+        position: absolute;
+        left: -28px;
+        top: 44px;
+        transform: rotate(90deg);
+      } */
+      .insight  #sidebar.visible #sidebar-btn {
+        transition: right 0.9s ease;
+        top: 0px;
+        position: absolute;
+        left: 40%;
+    }
+    
+      .insight .data-sort_sidebar {
+        position: relative;
+        width: 40%;
+    }
+    .date_row {
+        padding-bottom: 70px;
+    }    
+    .insight ul.nav.twobar-tabs {
+        bottom: 16%;
+    }
+    
+    
+    
+
+}
+
+@media (min-width: 1200px) and (max-width: 1320px){
+    .myContentHeight {
+        height: 275px;
+    }
+}
+@media (min-width: 1321px) and (max-width: 1369px){
     /* .interesting-facts-section .contri-box{
         height: calc(50% - 34px);
     } */
+    
+  
 }
 @media (min-width: 1200px) and (max-width: 1402px){
+    
 
 }
 
 @media (min-width: 1403px) and (max-width: 1450px){
-   
+    .myContentHeight {
+        height: 275px;
+    }
+    
 }
-
+@media (min-width: 1451px) and (max-width: 1699px){
+ 
+}
 @media (min-width: 1700px) and (max-width: 1750px){
-
+ 
 }
 
 
 @media screen and (min-width: 1355px) and (max-width: 1368px) and (min-height: 600px) and (max-height: 765px) {
-    .banner-section .carousel-caption .h6{
+    .insight .pollutant-toggleBar .iconimg{
+        width: 27px;
+        height: 27px;
+    }
+    .insight .res-airanalytic{
+        margin-top: 5px;width: 100px;
+    }
+    .insight .slide-content ul .modal-content{
+        height: 419px
+    }
+    .enjoy-mb-8{
+        margin-bottom: 8px!important;
+    }
+    .levelmb25{
+        margin-bottom: 25px!important;
+    }
+    .exceed-height{
+        min-height: 55px!important;
+    }
+    .med-datenow{
+        padding: 0px;
+        padding-bottom: 7px;  
+    }
+    .insight .calendar-icon{
+        top: 4px;
+    }
+    .banner-section .carousel-caption-banner .h6{
         font-size: 14px;
     }
     .banner-section .home-slider-animation .six-resolution-mt30{
@@ -163,16 +1235,19 @@
     .air-map-container .air-map-col .mp-resolution, .air-map-container .air-map-col iframe {
         height: 500px;
     }
-    .air-map-container .list-container{
+    /* .air-map-container .list-container{
         padding: 0px 0;
-    }
+    } */
     .air-map-container .overview-heading{
         margin-top: 8px !important;
     }
     .air-map-container .list-item p {
         font-size: 32px;
     }
-    .ead-monitoring-project, .contact-section{
+    .ead-monitoring-project{
+        top: 12%;
+    }
+    .contact-section{
         margin-top: 6%;
     }
     .modal-background img{
@@ -181,9 +1256,9 @@
     .project-modal .h-200-scroll{
         height: 185px;
     }
-    .project-slider .item{
+    /* .project-slider .item{
         width: 300px;
-    }
+    } */
     #section3, #section5{
         background-size: 350px;
     }
@@ -194,6 +1269,7 @@
     }
     .myContentHeight{
         height: 258px;
+        overflow: hidden;
     }
       /* =====================Sachin Responsive CSS===================== */
       .insight .data-sort_sidebar h2 {
@@ -216,14 +1292,14 @@
         font-size: 18px;
         padding-bottom: 5px;
         margin: 0px;
-        min-height: 48px !important;
+        /* min-height: 48px !important; */
     }
     .insight .number-index p strong {
-        font-size: 48px;
-        line-height: 48px;
+        font-size: 55px;
+        /* line-height: 48px; */
     }
     .insight .main-box {
-        padding: 0.5rem 1rem;
+        padding: 0rem 1rem;
     }
     .insight .index-content {
         gap: 10px;
@@ -242,7 +1318,7 @@
         gap: 5px;
     }
     .insight .graph-duration-filters .btn {
-        width: 115px;
+        /* width: 115px; */
         padding: 6px;
         font-size: 12px;
     }
@@ -263,9 +1339,9 @@
     .insight #radarChart {
         width: 340px !important;
         height: 300px !important;
+        margin-top: -30px;
     }
     .insight .hour_box ul li {
-        gap: 6px;
         height: 100px;
     }
     .insight .hour_box ul li span {
@@ -280,14 +1356,11 @@
         line-height: 18px;
         margin-top: 9px;
     }
-    .contact-content p {
+    /* .contact-content p {
         font-size: 14px;
         line-height: 18px;
-    }
-    .insight .aqi-content {
-        top: -12.7%;
-        left: 18%;
-    }
+    } */
+  
     .insight .data-list {
         max-height: 64vh;
     }
@@ -297,6 +1370,17 @@
     }
     .insight .silde-dv{
         margin-top: 1%;
+    }
+   .insight .contact-content{
+    padding-top: 0 !important;
+   }
+
+    #wrapper .sidebar-nav .overview-heading {
+         padding: 5px 20px;
+         margin: 0 !important;
+    }
+    #wrapper .sidebar-nav .small-device-legend-list .row{
+        margin-bottom: 0px;
     }
 }
 

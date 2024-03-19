@@ -300,7 +300,11 @@ Not supports in Firefox and IE */
     overflow: hidden;
 }
 
-.fp-viewing-slide0-0 #fp-nav ul li a span,
-.fp-viewing-slide0-0 .fp-slidesNav ul li a span{
+.fp-viewing-slide0 #fp-nav ul li a span,
+.fp-viewing-slide0 .fp-slidesNav ul li a span{
     background:#fff;
+}
+
+.fp-viewing-slide1 #fp-nav{
+    display: none;
 }
