@@ -1768,11 +1768,11 @@
     * Enables the Youtube videos API so we can control their flow if necessary.
     */
 
-    function enableYoutubeAPI() {
-      $('iframe[src*="youtube.com/embed/"]', getContainer()).forEach(function (item) {
-        addURLParam(item, 'enablejsapi=1');
-      });
-    }
+    //function enableYoutubeAPI() {
+    //  $('iframe[src*="youtube.com/embed/"]', getContainer()).forEach(function (item) {
+    //    addURLParam(item, 'enablejsapi=1');
+    //  });
+    //}
     /**
     * Adds a new parameter and its value to the `src` of a given element
     */

@@ -1,4 +1,4 @@
-const baseUrl = "https://adairqualityapi.ead.ae/";
+const baseUrl = "http://localhost:5282/" //"https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -958,11 +958,11 @@ function getCurrentLocation() {
     var longitude = position.coords.longitude;
     currentStationDetails = findNearestStation(latitude, longitude);
     if (currentStationDetails) {
-      loadStationData();
+        loadStationData(currentStationDetails.stationId);
     }
   }, function error() {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
-    loadStationData();
+      loadStationData(currentStationDetails.stationId);
   });
 }
 
@@ -1030,8 +1030,9 @@ function populateSort(sortBy) {
   }
 }
 
-function loadStationData() {
-  const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
+function loadStationData(stationid) {
+   //alert(stationid);
+  const apiUrl = baseUrl + 'GetAirQualityStation?input=' + stationid;
   var data = $("#datafield").val();
   // var category = $.parseJSON(data);
   $.ajax({
@@ -1212,7 +1213,7 @@ function bindLiveCityRanking() {
 
 function selectedStation(stationId) {
   currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
-  loadStationData();
+    loadStationData(currentStationDetails.stationId);
 }
 
 function getAirQualitySafetyLevel() {

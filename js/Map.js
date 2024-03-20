@@ -734,8 +734,12 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             });
         }
 
+
+     
+
         function SelectedStation(response) {
-            // console.log(response);
+            debugger;
+            //alert(response);
             if (response.results.length > 0) {
                 var res = response.results;
                 for (var j = 0; j < res.length; j++) {
@@ -743,12 +747,12 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                         var attrInfo = response.results[0].graphic.attributes;
                         for (var i = 0; i < StationsObject.length; i++) {
                             if (StationsObject[i].attributes.Name == attrInfo.Name) {
-                                SelectedstationInfo = StationsObject[i];
-                                LoadStationData(SelectedstationInfo.KeyName);
+                                SelectedstationInfo = StationsObject[i];                               
+                               loadStationData(SelectedstationInfo.KeyName);
                                 break
                             }
                         }
-                        PreparePollutantSeriesData();
+                       // PreparePollutantSeriesData();
                         break;
                     }
 
@@ -979,11 +983,11 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 renderer: renderer
             });
             view.map.add(FeatureCollectionlyr);
-            view.popup.set("dockOptions", {
-                breakpoint: false,
-                buttonEnabled: false,
-                position: "top-left"
-            });
+            //view.popup.set("dockOptions", {
+            //    breakpoint: false,
+            //    buttonEnabled: false,
+            //    position: "top-left"
+            //});
             FeatureCollectionlyr.visible = false;
             view.on("click", function (evt) {
                 var screenPoint = evt.screenPoint;
@@ -1000,6 +1004,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             });
         }
 
+        
         function GetAverage(pollutantsarr) {
             var total = 0;
             var count = 0;
