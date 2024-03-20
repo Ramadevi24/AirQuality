@@ -714,24 +714,26 @@ $(document).ready(function () {
   });
 
 
-  $('.dropdown-item').click(function () {
+    $('.quality-index-dropItem').click(function () {
+        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
+        var dateBox = parentContainer.find('.date-box'); // Find the date-box within the parent container
 
-    if ($(this).text() === 'Custom') {
-      // alert('hi');
-      $('.date-box').removeClass('calen-box-hide');
-      $('.dropdown-toggle-chart').hide();
-    } else {
-      $('.date-box').addClass('calen-box-hide');
-      $('.dropdown-toggle-chart').show();
-    }
-  });
+        if ($(this).text() === 'Custom') {
+            dateBox.removeClass('calen-box-hide');
+            parentContainer.find('.quality-button-dropdown').hide();
+        } else {
+            dateBox.addClass('calen-box-hide');
+            parentContainer.find('.quality-button-dropdown').show();
+        }
+    });
 
-  $('#datePickImage').click(function () {
-    $('.dropdown-toggle-chart').text('Hourly');
-    $('.dropdown-toggle-chart').show();
-    $('.date-box').addClass('calen-box-hide');
-  });
+    $('.datePickImage').click(function () {
 
+        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
+        parentContainer.find('.quality-button-dropdown').text('Hourly');
+        parentContainer.find('.quality-button-dropdown').show();
+        parentContainer.find('.date-box').addClass('calen-box-hide');
+    });
 });
 
 // Info Icon cross button script----------------------

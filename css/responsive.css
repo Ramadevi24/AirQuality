@@ -346,6 +346,28 @@
     .insight ul#myTabs li a{
         margin:0px 2px;
     }
+    .insight .graph-duration-filters .hourly-3{
+        right: 0!important;
+    }
+    .insight .graph-duration-filters .hourly-4-screen .btn{
+        right: 0!important;
+        top: -7px!important;
+    }
+    .insight .graph-duration-filters .hourly-4-screen .date-box{
+        right: 0!important;
+        margin-top: -7px!important;
+        margin: 0;
+    }
+    .insight .sm-screen-mtb{
+        margin-top: 35px;
+        margin-bottom: 30px;
+    }
+    .insight .hourly-3datebox{
+        margin: 0!important;
+    }
+    .insight .graph-duration-filters .two-one-top {
+        top: 10px;
+    }
     .newcutom-btn{
         width: 120px 
     }
@@ -384,6 +406,7 @@
         margin-bottom: 30px;
         margin-top: 20px;
         min-height: 90px;
+        display: none;
     }
     #newchartTrend .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
         justify-content: flex-start;
@@ -499,10 +522,13 @@
     #ADstationAqiBarGraph {
         overflow: hidden;
         overflow-x: scroll;
+        margin-top: 40px;
+        margin-bottom: 0px !important; 
     }
     #chart_polutent {
         overflow: hidden;
         overflow-x: scroll;
+        margin-top: 31px;
     }
     #options_aiq_line{
         overflow: hidden;
@@ -517,18 +543,23 @@
     }
     /* ------------ add new res css -------------- */
     .insight .ug_content {
-        top: 0;
+        top: 40px;
     }
     .insight ul.nav.twobar-tabs {
-        top: 63%;
+        top: 80%;
         left: 50%;
         width: 100%;
         transform: translate(-50%, -50%);
     }
-    .insight .graph-duration-filters .btn {
+    /* .insight .graph-duration-filters .btn {
         top: -7px;
+    } */
+    .insight .date_row ul li p {
+        margin-bottom: 30px;
     }
-   
+    .insight .date-box{
+        margin: 10px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1199px){
@@ -538,6 +569,9 @@
     }
     .insight .pollutant-toggleBar .pollutantbar-title{
         font-size: 22px;
+    }
+    .banner-section .carousel-caption-banner{
+        gap: 20px;
     }
     #locationModal .modal-body p{
         font-size: 14px;
@@ -551,7 +585,22 @@
     .full-screen .web-top-legends{
         bottom: 100px   
     }
-    
+    .insight .graph-duration-filters .tab-screen-mt .btn, .insight .graph-duration-filters .tab-screen-mt .date-box{
+        top: 30px;
+        right: 10px;
+    }
+    #chart_polutent{
+        margin-top: 30px;
+    }
+    .insight .ug_content {
+        top: 37px;
+    }
+    .insight .graph-duration-filters .tabscreen-3-mt .btn, .insight .graph-duration-filters .tabscreen-3-mt .date-box{
+        top: -5px!important 
+    }
+    .insight .graph-duration-filters .hourly-4-screen .btn, .insight .graph-duration-filters .hourly-4-screen .date-box{
+        top: -15px!important 
+    }
     .header-responsive-flex .container-fluid{
         justify-content:center;
         padding-left: 10px;
@@ -573,7 +622,7 @@
         font-size: 32px;
     }
     .banner-section .carousel-caption-banner .h5{
-        font-size: 49px;
+        font-size: 49px; top: 42px;
     }
     .circular-width{
         width: 350px; height: 350px;
@@ -644,9 +693,7 @@
     .health-recommand-tab ul li{
         margin-bottom: 0;
     }
-    .insight .slide-content ul .modal-content{
-        height: 663px;
-    }
+    
     .insight #exampleModal .mask-use{
         font-size: 26px;
     }
@@ -871,6 +918,7 @@
     .insight #ADstationAqiBarGraph {
         overflow: hidden;
         overflow-x: scroll;
+        margin-top: 25px;
     }
     .insight #ADstationAqiBarGraph{
         margin-bottom: 0px;
@@ -1005,10 +1053,11 @@
         width: 50%;
     }
     .insight ul.nav.twobar-tabs {
-        top: 75%;
+        top: 83%;
     }
     .chart-f-content {
         min-height: 55px;
+        display: none;
     }
     
         
@@ -1017,12 +1066,12 @@
     
 }
 
-@media (min-width: 799px) and (max-width: 900px){
+/* @media (min-width: 799px) and (max-width: 900px){
     .video-wrapper {
         height: fit-content;
         
     }
-}
+} */
 
 @media (min-width: 1024px) and (max-width: 1199px){
     .footermobile-show{
@@ -1186,7 +1235,56 @@
  
 }
 @media (min-width: 1700px) and (max-width: 1750px){
- 
+    body, header nav.navbar .navbar-nav li a, header.fadeout nav.navbar .navbar-nav li a, .air-map-container .list-item span{
+        font-size: 17px;
+    }
+    .home-slider-animation .welcome-text, .home-slider-animation .emirates-text{
+        font-size: 50px;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 60px; top: 46px; 
+    }
+    .banner-section .carousel-caption-banner .h6{
+        font-size: 22px;
+    }
+    .circular-width {
+        width: 380px;
+        height: 380px;
+    }
+    .weather-card h2{
+        font-size: 25px;
+    }
+    .weather-card h5{
+        font-size: 45px;
+    }
+    .weather-card h6, .weather-card .date{
+        font-size: 18px;
+    }
+    .weather-card{
+        top: 139px; right: -25px;
+    }
+    .air-map-container{
+        justify-content: flex-start;
+    }
+    .air-map-container .overview-heading{
+        font-size: 20px;
+    }
+    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe{
+        height: 815px;
+    }
+    .wheather-widget .map-bg-opacity img {
+        width: 230px;
+        height: 230px !important;
+    }
+    .project-slider .item{
+        height: 450px;
+    }
+    .myContentHeight {
+        height: 270px;
+    }
+    .insight .align-items-flexstart{
+        padding: 6rem 0rem;
+    }
 }
 
 
@@ -1195,18 +1293,20 @@
         width: 27px;
         height: 27px;
     }
+    .insight .slide-content ul .modal.fade button.btn-close img{
+        width: 13px !important;
+        height: 13px;
+    }
     .insight .res-airanalytic{
         margin-top: 5px;width: 100px;
     }
-    .insight .slide-content ul .modal-content{
-        height: 419px
-    }
+    
     .enjoy-mb-8{
         margin-bottom: 8px!important;
     }
-    .levelmb25{
+    /* .levelmb25{
         margin-bottom: 25px!important;
-    }
+    } */
     .exceed-height{
         min-height: 55px!important;
     }
@@ -1317,13 +1417,13 @@
     .insight .activities-imgs {
         gap: 5px;
     }
-    .insight .graph-duration-filters .btn {
-        /* width: 115px; */
+    /* .insight .graph-duration-filters .btn {
+        width: 115px;
         padding: 6px;
         font-size: 12px;
-    }
+    } */
     .insight .tab_shado {
-        padding: 15px 10px;
+        padding: 5px 10px;
     }
     .insight .chart-f-content p {
         font-size: 14px;
@@ -1381,6 +1481,27 @@
     }
     #wrapper .sidebar-nav .small-device-legend-list .row{
         margin-bottom: 0px;
+    }
+    .insight .slide-content ul .modal.fade button.btn-close{
+        width: 30px; height: 30px;
+    }
+    .insight .graph-duration-filters .btn, .insight .graph-duration-filters .date-box{
+        top: 4px; right: 4px;
+    }
+    .insight .graph-duration-filters .tabscreen-3-mt .btn, .insight .graph-duration-filters .tabscreen-3-mt .date-box,
+    .insight .graph-duration-filters .hourly-4-screen .btn, .insight .graph-duration-filters .hourly-4-screen .date-box
+    {
+        top: -5px; right: -2px;
+    }
+    .pollutant-toggleBar .info-popup{
+        padding: 30px 30px 40px 30px;
+    }
+    .insight .mtb-mdscreens{
+        margin-top: 20px; margin-bottom: 30px;
+    }
+    .insight .ug_content {
+        position: relative;
+        top: 30px;
     }
 }
 

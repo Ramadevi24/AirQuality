@@ -699,7 +699,7 @@ video {
 }
 
 .overlay {
-    background-color: #5b6770b3;
+    background-color: #5b677063;
     /* opacity: .6; */
     position: absolute;
     bottom: 0;
@@ -1533,10 +1533,10 @@ body.map-viwer-enabled{
 /* .insight{
     display: none;
 } */
-#section2{
-    background-image: url("../images/new-images/CircularShape1.png"),  url("../images/new-images/CircularShape-bottom.png");;
+#section2 {
+    background-image: url("../images/new-images/CircularShape-bottom.png");    
     background-repeat: no-repeat, no-repeat;
-    background-position: top right, bottom right;
+    background-position: bottom right;
     background-size: 400px;
 }
 .insight .search-box {
@@ -1744,15 +1744,15 @@ body.map-viwer-enabled{
 }
 .insight .slide-content ul{
     padding: 0px;
-} 
-.insight .main-box {
-    border: 1px solid #898D8D14;
-    padding: 1rem 2rem;
-    box-shadow: 0px 9px 20px 0px rgb(1 18 53 / 12%);
-    height: 100%;
-    clear: both;
-    background: #fff;
 }
+    .insight .main-box {
+        border: 1px solid #898D8D14;
+        padding: 1rem 2rem;
+        box-shadow: 0px 3px 12px -1px rgb(1 18 53 / 12%);
+        height: 100%;
+        clear: both;
+        background: #fff;
+    }
 .insight .health-slider-wrapper h3 {
     font-size: 21px;
     font-family: 'GothamMedium';
@@ -2300,7 +2300,7 @@ font-size: 13px;
 .insight ul.sorttoggle.show li {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 6px 5px;
 }
 .insight .sorttoggle button.btn-close {
     float: right;
@@ -2691,13 +2691,14 @@ color: var(--green);
     align-items: center;
     gap: 16px;
 }
-.insight .aqi-content li span {
-    font-size: 12px;
-    font-weight: 350;
-    line-height: 13px;
-    letter-spacing: 0em;
-    text-align: left;
-}
+    .insight .aqi-content li span {
+        font-size: 12px;
+        font-weight: 350;
+        line-height: 13px;
+        letter-spacing: 0em;
+        text-align: left;
+        font-family: 'GothamMedium';
+    }
 .insight .aqi-content li p{
     font-size: 12px;
     font-weight: 700;
@@ -3213,8 +3214,9 @@ color: var(--green);
     line-height: 35px;
     padding: 0px 10px 10px 11px;
 }
-.fp-arrow.fp-controlArrow.fp-prev.disabled {
+.fp-arrow.fp-controlArrow.fp-next.disabled, .fp-arrow.fp-controlArrow.fp-prev.disabled {
     opacity: 0.3;
+    pointer-events: none;
 }
 .fp-arrow.fp-controlArrow.fp-next.disabled {
     opacity: 0.3;

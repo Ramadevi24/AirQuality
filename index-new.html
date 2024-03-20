@@ -33,7 +33,7 @@
 
 <body class="trysection">
     <header class="sticky-top position-fixed w-100 panel header-responsive-flex formobile-fading"
-        data-section-name="header">
+            data-section-name="header">
         <nav class="navbar navbar-expand-md py-0">
             <div class="container-fluid headerpt-10">
                 <a class="navbar-brand white pointer-event" href="https://www.ead.gov.ae/" target="_blank">
@@ -80,13 +80,13 @@
 
                     </ul>
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
-                        aria-label="Close">
+                            aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="search-block">
                     <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
+                            data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
                         <img src="./images/new-images/search.png" class="whitesearch-hide" width="16">
                         <img src="./images/new-images/search-blue.png" class="blue-hide" width="16">
                     </button>
@@ -94,7 +94,7 @@
                         <div class="card card-body">
                             <div class="container-fluid p-2">
                                 <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
-                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+                                        class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
                                     Close
                                 </button>
 
@@ -103,7 +103,7 @@
                                         <img src="./images/new-images/search.png" width="16" class="filter1">
                                     </button>
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search">
+                                           aria-label="Search">
                                     <input type="reset" value="x">
                                     <i class="icon-circle-xmark-regular"></i>
                                 </form>
@@ -141,16 +141,19 @@
             <div id="demo" class="banner-section">
                 <!-- The slideshow/carousel -->
                 <div class="video-wrapper video-container">
-                    <img src="./images/new-images/BG.png">
-                    <!-- <video loop muted data-autoplay id="myVideo">
-                      <source src="./images/banner.mp4" type="video/mp4">
-                    </video> -->
+                    <!-- <img src="./images/new-images/BG.png"> -->
+                    <video loop muted data-autoplay playsinline id="myVideo" class="w-100 d-none d-sm-none d-md-none d-lg-block">
+                        <source src="./images/new-images/ead4.mp4" type="video/mp4">
+                    </video>
+                    <video autoplay muted loop id="myVideo" class="w-100 d-block d-sm-block d-md-block d-lg-none">
+                        <source src="./images/new-images/ead4.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <!-- <div class="overlay"></div> -->
+                <div class="overlay"></div>
                 <div class="carousel-caption-banner home-slider-animation d-none-0 d-md-block-0 ">
                     <h3 class="text-uppercase welcome-text">WELCOME TO</h3>
                     <!-- <p class="h5 mb-1 quotes">
-                      Air Quality -->
+                    Air Quality -->
                     <!-- <span  class="txt-rotate"  data-period="2000" data-rotate='[  "Air Quality" ]'></span> -->
                     <!-- </p> -->
                     <p class="h5 quotes">Air Quality</p>
@@ -277,7 +280,7 @@
                             <span class="btn show-mapSearchList text-white">xxxxxxxxxx</span>
                             <div class="Newsearch-box">
                                 <input class="search-txt" id="stationsDropdownMapSearch" type="text" name=""
-                                    placeholder="Search Station">
+                                       placeholder="Search Station">
                                 <ul class="listSearch" id="stationsDropdownMap">
                                     <li>
                                         <span class="mapSearchlist-text">Abu Dhabi</span>
@@ -297,7 +300,7 @@
                                 </ul>
                                 <span class="search-btn1">
                                     <img src="./images/new-images/search.png" class="whitesearch-hide mapsearch-img"
-                                        width="16">
+                                         width="16">
                                 </span>
                             </div>
                         </li>
@@ -518,35 +521,37 @@
                             <div id="side_bar_content">
                                 <div class="search-box d-flex">
                                     <div class="p-input position-relative">
-                                        <input type="text" placeholder="Search...">
+                                        <input type="text" id="searchInput" placeholder="Search...">
                                         <span>
                                             <img src="./images/new-images/search_icon.png" alt="">
                                         </span>
                                     </div>
                                     <img class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                        aria-expanded="false" src="./images/new-images/sort-icon.png" width="30"
-                                        alt="sort icon">
+                                         aria-expanded="false" src="./images/new-images/sort-icon.png" width="30"
+                                         alt="sort icon">
                                     <ul class="dropdown-menu sorttoggle" aria-labelledby="dropdownMenuButton1">
                                         <div class="d-flex">
                                             <h6>Sort</h6>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                                    aria-label="Close"></button>
                                         </div>
                                         <li>
                                             <input type="checkbox" name="nearestBasedSort" id="nearestBasedSort"
-                                                value="distance" class="sortIcon" onchange="sortStations(this)">
+                                                   value="distance" class="sortIcon" onchange="sortStations(this)">
                                             <label for="nearestBasedSort" class="dropdown-item">Nearest to me</label>
                                         </li>
                                         <li>
                                             <input type="checkbox" name="aqiBasedSort" id="aqiBasedSort" value="aqi"
-                                                class="sortIcon" onchange="sortStations(this)">
+                                                   class="sortIcon" onchange="sortStations(this)">
                                             <label for="aqiBasedSort" class="dropdown-item">AQI Ranking action </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" name="stationNameBasedSort" id="stationNameBasedSort"
-                                                value="name" class="sortIcon" onchange="sortStations(this)">
-                                            <label for="stationNameBasedSort" class="dropdown-item">Alphabetical
-                                                Order</label>
+                                                   value="name" class="sortIcon" onchange="sortStations(this)">
+                                            <label for="stationNameBasedSort" class="dropdown-item">
+                                                Alphabetical
+                                                Order
+                                            </label>
                                         </li>
                                     </ul>
                                 </div>
@@ -617,27 +622,34 @@
                                                             <div class="activities-imgs mt-3">
                                                                 <div class="text-center">
                                                                     <img src="./images/new-images/Activities1.png"
-                                                                        alt="">
-                                                                    <p class="mt-2 enjoy-mb-8"> Enjoy Some Indoor Fun
+                                                                         alt="">
+                                                                    <p class="mt-2 enjoy-mb-8">
+                                                                        Enjoy Some Indoor Fun
                                                                     </p>
                                                                 </div>
                                                                 <div class="text-center">
                                                                     <img src="./images/new-images/Activities2.png"
-                                                                        alt="">
-                                                                    <p class="mt-2 enjoy-mb-8"> Being Indoor is the Best
-                                                                        option </p>
+                                                                         alt="">
+                                                                    <p class="mt-2 enjoy-mb-8">
+                                                                        Being Indoor is the Best
+                                                                        option
+                                                                    </p>
                                                                 </div>
                                                                 <div class="text-center">
                                                                     <img src="./images/new-images/Activities3.png"
-                                                                        alt="">
-                                                                    <p class="mt-2 enjoy-mb-8"> Being Indoor is the Best
-                                                                        option </p>
+                                                                         alt="">
+                                                                    <p class="mt-2 enjoy-mb-8">
+                                                                        Being Indoor is the Best
+                                                                        option
+                                                                    </p>
                                                                 </div>
                                                                 <div class="text-center">
                                                                     <img src="./images/new-images/Activities4.png"
-                                                                        alt="">
-                                                                    <p class="mt-2 enjoy-mb-8"> Being Indoor is the Best
-                                                                        option </p>
+                                                                         alt="">
+                                                                    <p class="mt-2 enjoy-mb-8">
+                                                                        Being Indoor is the Best
+                                                                        option
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -645,13 +657,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 d-flex flex-column justify-content-between"
-                                                id="footerhealth">
+                                                 id="footerhealth">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25"> HEALTH RECOMMENDATIONS </h2>
                                                     <p class="refresh-hide1 mb-0">Last refreshed: 1:00 PM (UTC +4)</p>
                                                 </div>
-                                                <div
-                                                    class="slide-content main-box  position-relative health-recommand-tab">
+                                                <div class="slide-content main-box  position-relative health-recommand-tab">
                                                     <p class="paratab">
                                                         When the air quality index (AQI) hits orange, red, purple, or
                                                         maroon levels, it's
@@ -665,30 +676,30 @@
                                                             data-backdrop="false">
                                                             <div class="bg-gray">
                                                                 <img src="./images/new-images/mask1.png"
-                                                                    alt="health-icon">
+                                                                     alt="health-icon">
                                                             </div>
                                                             <p class="mask-hoverEffect">Mask Usage</p>
                                                             <span>
                                                                 <img src="./images/new-images/Exclamation.png"
-                                                                    alt="img">
+                                                                     alt="img">
                                                             </span>
 
                                                             <div class="modal fade " id="exampleModal" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                                                data-mdb-backdrop="false" data-mdb-keyboard="true">
+                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                                 data-mdb-backdrop="false" data-mdb-keyboard="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div>
                                                                             <button type="button" class="btn-close "
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close">
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close">
                                                                                 <img src="./images/new-images/modal_close.png"
-                                                                                    alt="">
+                                                                                     alt="">
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
-                                                                                alt="health-icon">
+                                                                                 alt="health-icon">
                                                                             <p class="mask-use">Mask Usage</p>
                                                                             <p>
                                                                                 If outdoor exposure is
@@ -711,32 +722,35 @@
                                                             data-backdrop="false">
                                                             <div class="bg-gray">
                                                                 <img src="./images/new-images/health_kit2.png"
-                                                                    alt="health-icon">
+                                                                     alt="health-icon">
                                                             </div>
-                                                            <p class="mask-hoverEffect">Indoor Air Quality Maintenance
+                                                            <p class="mask-hoverEffect">
+                                                                Indoor Air Quality Maintenance
                                                             </p>
                                                             <span>
                                                                 <img src="./images/new-images/Exclamation.png"
-                                                                    alt="img">
+                                                                     alt="img">
                                                             </span>
                                                             <div class="modal fade " id="exampleModal2" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                                                data-mdb-backdrop="false" data-mdb-keyboard="true">
+                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                                 data-mdb-backdrop="false" data-mdb-keyboard="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div>
                                                                             <button type="button" class="btn-close "
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close">
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close">
                                                                                 <img src="./images/new-images/modal_close.png"
-                                                                                    alt="">
+                                                                                     alt="">
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
-                                                                                alt="health-icon">
-                                                                            <p class="mask-use">Indoor Air Quality
-                                                                                Maintenance</p>
+                                                                                 alt="health-icon">
+                                                                            <p class="mask-use">
+                                                                                Indoor Air Quality
+                                                                                Maintenance
+                                                                            </p>
                                                                             <p>
                                                                                 If outdoor exposure is
                                                                                 unavoidable,consider wearing a mask.
@@ -758,32 +772,35 @@
                                                             data-backdrop="false">
                                                             <div class="bg-gray">
                                                                 <img src="./images/new-images/health_kit3.png"
-                                                                    alt="health-icon">
+                                                                     alt="health-icon">
                                                             </div>
-                                                            <p class="mask-hoverEffect">Switching on your Air Purifier
+                                                            <p class="mask-hoverEffect">
+                                                                Switching on your Air Purifier
                                                             </p>
                                                             <span>
                                                                 <img src="./images/new-images/Exclamation.png"
-                                                                    alt="img">
+                                                                     alt="img">
                                                             </span>
                                                             <div class="modal fade " id="exampleModal3" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                                                data-mdb-backdrop="false" data-mdb-keyboard="true">
+                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                                 data-mdb-backdrop="false" data-mdb-keyboard="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div>
                                                                             <button type="button" class="btn-close "
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close">
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close">
                                                                                 <img src="./images/new-images/modal_close.png"
-                                                                                    alt="">
+                                                                                     alt="">
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
-                                                                                alt="health-icon">
-                                                                            <p class="mask-use">Switching on your Air
-                                                                                Purifier</p>
+                                                                                 alt="health-icon">
+                                                                            <p class="mask-use">
+                                                                                Switching on your Air
+                                                                                Purifier
+                                                                            </p>
                                                                             <p>
                                                                                 If outdoor exposure is
                                                                                 unavoidable,consider wearing a mask.
@@ -811,71 +828,65 @@
                                     <div class="container">
                                         <div class="row equal-height-row d-flex flex-wrap">
                                             <div class="col-lg-12 d-flex flex-column  justify-content-between"
-                                                id="footer-trends">
+                                                 id="footer-trends">
                                                 <div class="bar_section">
                                                     <div id="aiqTab" class="tab-content mt-0">
                                                         <div>
                                                             <div class="air_p">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">AIR quality INDEX</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
-                                                                            <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                            <div class="btn-group me-auto tab-screen-mt">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                class="chartDatepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   class="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2 datePickImage">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
                                                                         <canvas id="ADstationAqiBarGraph"
-                                                                            height="80"></canvas>
+                                                                                height="80"></canvas>
                                                                         <div class="date_row">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -888,48 +899,43 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_good marker_legend"></span>Good
+                                                                                <span class="marker_good marker_legend"></span>Good
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_mod marker_legend"></span>Moderate
+                                                                                <span class="marker_mod marker_legend"></span>Moderate
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_unh marker_legend"></span>Unhealthy
+                                                                                <span class="marker_unh marker_legend"></span>Unhealthy
                                                                                 for sensitive groups
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_unhh marker_legend"></span>Unhealthy
+                                                                                <span class="marker_unhh marker_legend"></span>Unhealthy
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_vunh marker_legend"></span>Very
+                                                                                <span class="marker_vunh marker_legend"></span>Very
                                                                                 unhealthy
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_h marker_legend"></span>Hazardous
+                                                                                <span class="marker_h marker_legend"></span>Hazardous
                                                                             </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div class="pollutant-toggleBar position-relative">
                                                                     <img src="./images/new-images/info-icon.png"
-                                                                        class="iconimg">
+                                                                         class="iconimg">
                                                                     <div class="info-popup">
                                                                         <div class="mb-2 text-right crossicon">
                                                                             <img src="./images/new-images/Arrow-right.png"
-                                                                                width="35" height="35">
+                                                                                 width="35" height="35">
                                                                         </div>
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
-                                                                                class="mb-3" width="22" height="22"
-                                                                                alt="health-icon">
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
                                                                         </div>
-                                                                        <p class="pollutantbar-title mb-0">Khalifa City
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
                                                                         </p>
                                                                         <p class="mb-0">
                                                                             Address Goes Here Lorem Ipsum XYz
@@ -940,33 +946,41 @@
                                                                         </p>
                                                                         <div class="info-popup-content">
                                                                             <ul class="ps-0">
-                                                                                <li>Particulate Matter less than 10
-                                                                                    microns <span class="blue-bold">(PM
-                                                                                        10)</span></li>
-                                                                                <li>Nitrogen Dioxide <span
-                                                                                        class="blue-bold">(NO2)</span>
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
                                                                                 </li>
-                                                                                <li> Hydrogen Sulphide <span
-                                                                                        class="blue-bold">(H2S)</span>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
                                                                                 </li>
-                                                                                <li> Carbon Monoxide <span
-                                                                                        class="blue-bold">(CO)</span>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
                                                                                 </li>
-                                                                                <li> Meteorology <span
-                                                                                        class="blue-bold">(MET)</span>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
                                                                                 </li>
-                                                                                <li>Particulate Matter less than 2.5
-                                                                                    microns <span class="blue-bold">(PM
-                                                                                        2.5)</span></li>
-                                                                                <li>Sulphur Dioxide <span
-                                                                                        class="blue-bold">(SO2)</span>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
                                                                                 </li>
-                                                                                <li>Total hydrocarbons <span
-                                                                                        class="blue-bold">(THC)</span>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
                                                                                 </li>
-                                                                                <li>Benzene, Toluene, Ethylbenzene &amp;
-                                                                                    Xylene <span
-                                                                                        class="blue-bold">(BTEX)</span>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
                                                                                 </li>
                                                                                 <li>Noise</li>
                                                                             </ul>
@@ -992,58 +1006,52 @@
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
-                                                                            <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                            <div class="tab-screen-mt btn-group me-auto">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                class="chartDatepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   class="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1052,8 +1060,8 @@
                                                                             <p>ug/m3</p>
                                                                         </div>
                                                                         <canvas id="ADstationPm10BarGraph"
-                                                                            height="90"></canvas>
-                                                                        <div class="date_row med-datenow">
+                                                                                height="90"></canvas>
+                                                                        <div class="date_row med-datenow mtb-mdscreens">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
                                                                                     <p>Feb 15 2024</p>
@@ -1065,17 +1073,15 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ac marker_legend"></span>
+                                                                                <span class="marker_pol_ac marker_legend"></span>
                                                                                 Acceptable Value
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ab_ac marker_legend"></span>Above
+                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
                                                                                 Acceptable Value
                                                                             </li>
                                                                         </ul>
-                                                                        <div class="chart-f-content">
+                                                                        <div class="chart-f-content pm10-f-content">
                                                                             <p></p>
                                                                         </div>
                                                                     </div>
@@ -1088,57 +1094,51 @@
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1147,7 +1147,7 @@
                                                                             <p>ug/m3</p>
                                                                         </div>
                                                                         <canvas id="ADstationSo2BarGraph"
-                                                                            height="90"></canvas>
+                                                                                height="90"></canvas>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1160,13 +1160,11 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ac marker_legend"></span>
+                                                                                <span class="marker_pol_ac marker_legend"></span>
                                                                                 Acceptable Value
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ab_ac marker_legend"></span>Above
+                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
                                                                                 Acceptable Value
                                                                             </li>
                                                                         </ul>
@@ -1183,57 +1181,51 @@
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item active quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1242,7 +1234,7 @@
                                                                             <p>ug/m3</p>
                                                                         </div>
                                                                         <canvas id="ADstationCoBarGraph"
-                                                                            height="90"></canvas>
+                                                                                height="90"></canvas>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1255,13 +1247,11 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ac marker_legend"></span>
+                                                                                <span class="marker_pol_ac marker_legend"></span>
                                                                                 Acceptable Value
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ab_ac marker_legend"></span>Above
+                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
                                                                                 Acceptable Value
                                                                             </li>
                                                                         </ul>
@@ -1278,57 +1268,51 @@
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item active quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1337,7 +1321,7 @@
                                                                             <p>ug/m3</p>
                                                                         </div>
                                                                         <canvas id="ADstationO3BarGraph"
-                                                                            height="90"></canvas>
+                                                                                height="90"></canvas>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1350,13 +1334,11 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ac marker_legend"></span>
+                                                                                <span class="marker_pol_ac marker_legend"></span>
                                                                                 Acceptable Value
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ab_ac marker_legend"></span>Above
+                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
                                                                                 Acceptable Value
                                                                             </li>
                                                                         </ul>
@@ -1373,57 +1355,51 @@
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
-                                                                    <p class="last-refersh-color">Last refreshed: 1:00
-                                                                        PM (UTC +4)</p>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: 1:00
+                                                                        PM (UTC +4)
+                                                                    </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
                                                                     <div class="tab_shado">
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="barChartFilter">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box calen-box-hide">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
-                                                                                                id="datepicker"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Custom">
+                                                                                                   id="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
                                                                                         </label>
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            id="datePickImage"
-                                                                                            class="me-2">
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item active barChartFilterClass">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item barChartFilterClass">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item barChartFilterClass">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item barChartFilterClass">Yearly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item barChartFilterClass">Custom</a>
+                                                                                        <a class="dropdown-item barChartFilterClass">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1432,7 +1408,7 @@
                                                                             <p>ug/m3</p>
                                                                         </div>
                                                                         <canvas id="ADstationNo2BarGraph"
-                                                                            height="90"></canvas>
+                                                                                height="90"></canvas>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1445,13 +1421,11 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ac marker_legend"></span>
+                                                                                <span class="marker_pol_ac marker_legend"></span>
                                                                                 Acceptable Value
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_pol_ab_ac marker_legend"></span>Above
+                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
                                                                                 Acceptable Value
                                                                             </li>
                                                                         </ul>
@@ -1466,28 +1440,28 @@
                                                     <ul class="nav twobar-tabs" id="myTabs">
                                                         <li class="nav-item">
                                                             <a class="nav-link active"
-                                                                onclick="toggleDiv('aiqTab', 'AQI')"
-                                                                style="cursor: pointer;">AQI</a>
+                                                               onclick="toggleDiv('aiqTab', 'AQI')"
+                                                               style="cursor: pointer;">AQI</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="toggleDiv('pm10Tab', 'PM10')"
-                                                                style="cursor: pointer;">PM10</a>
+                                                               style="cursor: pointer;">PM10</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="toggleDiv('so2Tab', 'SO2')"
-                                                                style="cursor: pointer;">SO2</a>
+                                                               style="cursor: pointer;">SO2</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="toggleDiv('coTab', 'CO')"
-                                                                style="cursor: pointer;">CO</a>
+                                                               style="cursor: pointer;">CO</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="toggleDiv('o3Tab', 'O3')"
-                                                                style="cursor: pointer;">O3</a>
+                                                               style="cursor: pointer;">O3</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="toggleDiv('no2Tab', 'NO2')"
-                                                                style="cursor: pointer;">NO2</a>
+                                                               style="cursor: pointer;">NO2</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1499,38 +1473,42 @@
                                 <div class="slide">
                                     <div class="row equal-height-row d-flex flex-wrap">
                                         <div class="col-lg-12 d-flex flex-column  justify-content-between"
-                                            id="footerStation-trends">
+                                             id="footerStation-trends">
                                             <div>
                                                 <div class="container">
                                                     <div id="aiq_line">
-                                                        <div class="quality-index-wrapper-h2">
-                                                            <h2 class="index-mb-0 tab-top-pd40 mb-0">Station AQI and
-                                                                Pollutants Trends</h2>
-                                                            <p class="last-refersh-color">Last refreshed: 1:00 PM (UTC
-                                                                +4)</p>
+                                                        <div class="quality-index-wrapper-h2 sm-screen-mtb">
+                                                            <h2 class="index-mb-0 tab-top-pd40 mb-0">
+                                                                Station AQI and
+                                                                Pollutants Trends
+                                                            </h2>
+                                                            <p class="last-refersh-color">
+                                                                Last refreshed: 1:00 PM (UTC
+                                                                +4)
+                                                            </p>
                                                         </div>
                                                         <div class="tab_shado">
                                                             <ul class="nav nav-pills mb-3" id="pills-tab"
                                                                 role="tablist">
                                                                 <li class="nav-item" role="presentation">
                                                                     <a class="nav-link active" id="pills-aqi_lin-tab"
-                                                                        data-bs-toggle="pill"
-                                                                        data-bs-target="#pills-aqi_lin" type="button"
-                                                                        role="tab" aria-controls="pills-aqi_lin"
-                                                                        aria-selected="true"> AQI </a>
+                                                                       data-bs-toggle="pill"
+                                                                       data-bs-target="#pills-aqi_lin" type="button"
+                                                                       role="tab" aria-controls="pills-aqi_lin"
+                                                                       aria-selected="true"> AQI </a>
                                                                 </li>
                                                                 <li class="nav-item" role="presentation">
                                                                     <a class="nav-link" id="pills-pro ile-tab"
-                                                                        data-bs-toggle="pill"
-                                                                        data-bs-target="#pills-profile" type="button"
-                                                                        role="tab" aria-controls="pills-profile"
-                                                                        aria-selected="false"> Pollutant </a>
+                                                                       data-bs-toggle="pill"
+                                                                       data-bs-target="#pills-profile" type="button"
+                                                                       role="tab" aria-controls="pills-profile"
+                                                                       aria-selected="false"> Pollutant </a>
                                                                 </li>
                                                             </ul>
                                                             <div class="tab-content" id="pills-tabContent">
                                                                 <div class="tab-pane fade show active"
-                                                                    id="pills-aqi_lin" role="tabpanel"
-                                                                    aria-labelledby="pills-aqi_lin-tab">
+                                                                     id="pills-aqi_lin" role="tabpanel"
+                                                                     aria-labelledby="pills-aqi_lin-tab">
                                                                     <div class="tab_shados">
                                                                         <!-- <div class="quality-index-wrapper-h2"><h2>station aqi and pollutants tends</h2></div> -->
                                                                         <!-- /////modify/////// -->
@@ -1546,34 +1524,29 @@
                                                                             </div>
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiSo2Value"></strong>
+                                                                                    <strong id="lineChartAqiSo2Value"></strong>
                                                                                     <p>
                                                                                         SO <sub>2</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiNo2Value"></strong>
+                                                                                    <strong id="lineChartAqiNo2Value"></strong>
                                                                                     <p>
                                                                                         NO <sub>2</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiCoValue"></strong>
+                                                                                    <strong id="lineChartAqiCoValue"></strong>
                                                                                     <p>CO</p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiPm10Value"></strong>
+                                                                                    <strong id="lineChartAqiPm10Value"></strong>
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiO3Value"></strong>
+                                                                                    <strong id="lineChartAqiO3Value"></strong>
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
@@ -1587,46 +1560,38 @@
                                                                             </li>
                                                                         </div>
                                                                         <!-- ////modify///// -->
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters d-none d-sm-none d-md-block">
-                                                                            <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="lineChartAqiFilter">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters d-none d-sm-none d-md-block">
+                                                                            <div class="tabscreen-3-mt btn-group me-auto">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="lineChartAqiFilter">
                                                                                     Hourly
                                                                                 </button>
-                                                                                <div class="date-box">
-                                                                                    <input type="date"
-                                                                                        class="form-control"
-                                                                                        id="datepicker">
-                                                                                    <span class="calendar-icon"
-                                                                                        id="calendar-icon">
-                                                                                        <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            border="0"
-                                                                                            id="datePickerImage">
-                                                                                    </span>
+                                                                                <div class="date-box calen-box-hide hourly-3datebox">
+                                                                                    <div class="cal-div">
+                                                                                        <label for="datepicker">
+                                                                                            <input type="text" id="datepicker" class="datepicker" autocomplete="off" placeholder="Custom">
+                                                                                        </label>
+                                                                                        <img src="images/calendar.png" width="16" height="16" class="me-2 datePickImage">
+                                                                                    </div>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active lineChartAqiFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item  quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartAqiFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartAqiFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartAqiFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1638,36 +1603,30 @@
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_good marker_legend"></span>Good
+                                                                                <span class="marker_good marker_legend"></span>Good
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_mod marker_legend"></span>Moderate
+                                                                                <span class="marker_mod marker_legend"></span>Moderate
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_unh marker_legend"></span>Unhealthy
+                                                                                <span class="marker_unh marker_legend"></span>Unhealthy
                                                                                 for sensitive groups
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_unhh marker_legend"></span>Unhealthy
+                                                                                <span class="marker_unhh marker_legend"></span>Unhealthy
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_vunh marker_legend"></span>Very
+                                                                                <span class="marker_vunh marker_legend"></span>Very
                                                                                 unhealthy
                                                                             </li>
                                                                             <li>
-                                                                                <span
-                                                                                    class="marker_h marker_legend"></span>Hazardous
+                                                                                <span class="marker_h marker_legend"></span>Hazardous
                                                                             </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="pills-profile"
-                                                                    role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                                     role="tabpanel" aria-labelledby="pills-profile-tab">
                                                                     <div class="tab_shados">
                                                                         <!-- /////modify//// -->
                                                                         <!-- <div class="aqi-content mult-value-tab">
@@ -1684,34 +1643,29 @@
                                                                             </div>
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantSo2Value"></strong>
+                                                                                    <strong id="lineChartPollutantSo2Value"></strong>
                                                                                     <p>
                                                                                         SO <sub>2</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantNo2Value"></strong>
+                                                                                    <strong id="lineChartPollutantNo2Value"></strong>
                                                                                     <p>
                                                                                         NO <sub>2</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantCoValue"></strong>
+                                                                                    <strong id="lineChartPollutantCoValue"></strong>
                                                                                     <p>CO</p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantPm10Value"></strong>
+                                                                                    <strong id="lineChartPollutantPm10Value"></strong>
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantO3Value"></strong>
+                                                                                    <strong id="lineChartPollutantO3Value"></strong>
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
@@ -1723,46 +1677,42 @@
                                                                             <p id="lineChartPollutantValueStatus"></p>
                                                                         </div>
                                                                         <!-- ////modify///// -->
-                                                                        <div
-                                                                            class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button
-                                                                                    class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
-                                                                                    type="button"
-                                                                                    data-bs-toggle="dropdown"
-                                                                                    aria-expanded="false"
-                                                                                    id="lineChartPollutantFilter">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-chart"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="lineChartPollutantFilter">
                                                                                     Hourly
                                                                                 </button>
                                                                                 <div class="date-box">
                                                                                     <input type="date"
-                                                                                        class="form-control"
-                                                                                        id="datepicker">
+                                                                                           class="form-control"
+                                                                                           id="datepicker">
                                                                                     <span class="calendar-icon"
-                                                                                        id="calendar-icon">
+                                                                                          id="calendar-icon">
                                                                                         <img src="images/calendar.png"
-                                                                                            width="16" height="16"
-                                                                                            border="0"
-                                                                                            id="datePickerImage">
+                                                                                             width="16" height="16"
+                                                                                             border="0"
+                                                                                             id="datePickerImage">
                                                                                     </span>
                                                                                 </div>
-                                                                                <ul
-                                                                                    class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item active lineChartPollutantFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item  quality-index-dropItem">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartPollutantFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartPollutantFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a
-                                                                                            class="dropdown-item lineChartPollutantFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -1788,44 +1738,41 @@
                                             <div class="col-xl-5 d-flex flex-column justify-content-between">
                                                 <div class="quality-index-wrapper-h2">
                                                     <!-- <h3>Station: Khalifa City</h3> -->
-                                                    <h2 class="mb-0 exceed-height tab-top-pd40">number of hours <br>
-                                                        exceedance per year </h2>
+                                                    <h2 class="mb-0 exceed-height tab-top-pd40">
+                                                        number of hours <br>
+                                                        exceedance per year
+                                                    </h2>
                                                 </div>
                                                 <div class="main-box">
                                                     <div class="hour_box">
                                                         <div class="number-exceedance">
                                                             <label class="number-exceedance-heading">CO</label>
                                                             <label class="number-exceedance-content"
-                                                                id="numberOfHoursExceedsThresholdCO"></label>
+                                                                   id="numberOfHoursExceedsThresholdCO"></label>
                                                         </div>
                                                         <div class="number-exceedance">
-                                                            <label
-                                                                class="number-exceedance-heading">SO<sub>2</sub></label>
+                                                            <label class="number-exceedance-heading">SO<sub>2</sub></label>
                                                             <label class="number-exceedance-content"
-                                                                id="numberOfHoursExceedsThresholdSO2"></label>
+                                                                   id="numberOfHoursExceedsThresholdSO2"></label>
                                                         </div>
                                                         <div class="number-exceedance">
-                                                            <label
-                                                                class="number-exceedance-heading">PM<sub>10</sub></label>
+                                                            <label class="number-exceedance-heading">PM<sub>10</sub></label>
                                                             <label class="number-exceedance-content"
-                                                                id="numberOfHoursExceedsThresholdPM10"></label>
+                                                                   id="numberOfHoursExceedsThresholdPM10"></label>
                                                         </div>
                                                         <div class="number-exceedance">
-                                                            <label
-                                                                class="number-exceedance-heading">NO<sub>10</sub></label>
+                                                            <label class="number-exceedance-heading">NO<sub>10</sub></label>
                                                             <label class="number-exceedance-content"
-                                                                id="numberOfHoursExceedsThresholdNO2"></label>
+                                                                   id="numberOfHoursExceedsThresholdNO2"></label>
                                                         </div>
                                                         <div class="number-exceedance mb-0">
-                                                            <label
-                                                                class="number-exceedance-heading">O<sub>3</sub></label>
+                                                            <label class="number-exceedance-heading">O<sub>3</sub></label>
                                                             <label class="number-exceedance-content"
-                                                                id="numberOfHoursExceedsThresholdO3"></label>
+                                                                   id="numberOfHoursExceedsThresholdO3"></label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                                <div class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                                     <p class="mb-0">
                                                         Exceeding the yearly allotted hours can strain resources and
                                                         individuals. Monitoring and
@@ -1836,7 +1783,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 d-flex flex-column justify-content-between"
-                                                id="footerradar-analytic">
+                                                 id="footerradar-analytic">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="mb-0 exceed-height">our air analytics</h2>
                                                 </div>
@@ -1844,34 +1791,36 @@
                                                     <div class="head d-flex justify-content-end align-items-center">
                                                         <div class="btn-group res-airanalytic">
                                                             <button type="button" class="btn btn-sm dropdown-toggle"
-                                                                data-popper-placement="end" data-bs-toggle="dropdown"
-                                                                aria-expanded="false" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false"
-                                                                id="selectedyear">
+                                                                    data-popper-placement="end" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"
+                                                                    id="selectedyear">
                                                                 2023
                                                             </button>
-                                                            <span><i class="fa fa-sort-desc"
-                                                                    aria-hidden="true"></i></span>
+                                                            <span>
+                                                                <i class="fa fa-sort-desc"
+                                                                   aria-hidden="true"></i>
+                                                            </span>
                                                             <ul class="dropdown-menu dropdown-change dropdown-menu-end"
                                                                 aria-labelledby="selectedyear">
                                                                 <li>
                                                                     <a class="dropdown-item" href="javascript: void(0)"
-                                                                        onclick="onClickYearOfAirAnalytics(2021)">2021</a>
+                                                                       onclick="onClickYearOfAirAnalytics(2021)">2021</a>
                                                                 </li>
                                                                 <li>
                                                                     <a class="dropdown-item" href="javascript: void(0)"
-                                                                        onclick="onClickYearOfAirAnalytics(2022)">2022</a>
+                                                                       onclick="onClickYearOfAirAnalytics(2022)">2022</a>
                                                                 </li>
                                                                 <li>
                                                                     <a class="dropdown-item" href="javascript: void(0)"
-                                                                        onclick="onClickYearOfAirAnalytics(2023)">2023</a>
+                                                                       onclick="onClickYearOfAirAnalytics(2023)">2023</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <canvas id="radarChart" width="300" height="300"
-                                                            class=""></canvas>
+                                                                class=""></canvas>
 
                                                     </div>
                                                     <ul class="legend_radar">
@@ -1897,8 +1846,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div
-                                                    class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                                <div class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                                     <p class="mb-0">
                                                         When the air quality index (AQI) hits orange, red, purple, or
                                                         maroon levels, it's
@@ -1906,16 +1854,17 @@
                                                         well-being. Follow these guidelines
                                                         to minimize the impact of elevated air pollution levels on your
                                                         health.
-                                                        <label class="maintain-height-visible">levels on your
-                                                            health</label>
+                                                        <label class="maintain-height-visible">
+                                                            levels on your
+                                                            health
+                                                        </label>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-none d-sm-none d-md-none d-lg-block">
                                             <div class="row equal-height-row flex-wrap">
-                                                <div
-                                                    class="col-lg-5 d-flex flex-column justify-content-between lgtab-hide">
+                                                <div class="col-lg-5 d-flex flex-column justify-content-between lgtab-hide">
                                                     <div class="contact-content">
                                                         <p class="mb-0">
                                                             Exceeding the yearly allotted hours can strain resources and
@@ -1926,8 +1875,7 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="col-lg-7 d-flex flex-column justify-content-between lgtab-hide">
+                                                <div class="col-lg-7 d-flex flex-column justify-content-between lgtab-hide">
                                                     <div class="contact-content">
                                                         <p class="mb-0">
                                                             When the air quality index (AQI) hits orange, red, purple,
@@ -1936,8 +1884,10 @@
                                                             well-being. Follow these guidelines
                                                             to minimize the impact of elevated air pollution levels on
                                                             your health.
-                                                            <label class="maintain-height-visible">levels on your
-                                                                health</label>
+                                                            <label class="maintain-height-visible">
+                                                                levels on your
+                                                                health
+                                                            </label>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -2062,7 +2012,7 @@
                                         <div class="position-relative">
                                             <div class="">
                                                 <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
-                                                    class="item">
+                                                     class="item">
                                             </div>
                                             <div class="project-slide-content">
                                                 Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
@@ -2254,12 +2204,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne">
+                                            data-bs-target="#collapseOne">
                                         Who is considered in a sensitive group?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
-                                    data-bs-parent="#myAccordion">
+                                     data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
                                             Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed
@@ -2276,12 +2226,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree">
+                                            data-bs-target="#collapseThree">
                                         How can I check the air quality in my area?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#myAccordion">
+                                     data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
                                             You can check the air quality in your area by choosing the nearest
@@ -2294,7 +2244,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading4">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse4">
+                                            data-bs-target="#collapse4">
                                         Why is LP Dolor used?
                                     </button>
                                 </h2>
@@ -2317,7 +2267,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading5">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse5">
+                                            data-bs-target="#collapse5">
                                         What is the most used version?
                                     </button>
                                 </h2>
@@ -2340,7 +2290,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading6">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse6">
+                                            data-bs-target="#collapse6">
                                         What are the origins of LP Dolor Sit?
                                     </button>
                                 </h2>
@@ -2363,7 +2313,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading7">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse7">
+                                            data-bs-target="#collapse7">
                                         What is the original text of LP Dolor Sit Amet?
                                     </button>
                                 </h2>
@@ -2386,7 +2336,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading8">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse8">
+                                            data-bs-target="#collapse8">
                                         How long should LP pages be?
                                     </button>
                                 </h2>
@@ -2409,7 +2359,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading9">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse9">
+                                            data-bs-target="#collapse9">
                                         How can you automatically print ‘LP’ text?
                                     </button>
                                 </h2>
@@ -2467,12 +2417,16 @@
                                     <img src="./images/new-images/Pin.png" alt="address">
                                 </div>
                                 <div class="contact-info-content">
-                                    <p class="d-none d-sm-none d-md-block">Headquarters Al Mamoura, Building A, Building
+                                    <p class="d-none d-sm-none d-md-block">
+                                        Headquarters Al Mamoura, Building A, Building
                                         62, <br>Al Mamoura St, Al Nayhan, Abu Dhabi, United Arab<br> Emirates, Postal
-                                        Code: 22221, P.O Box: 4553</p>
-                                    <p class="d-block d-sm-block d-md-none">Headquarters Al Mamoura, Building A,
+                                        Code: 22221, P.O Box: 4553
+                                    </p>
+                                    <p class="d-block d-sm-block d-md-none">
+                                        Headquarters Al Mamoura, Building A,
                                         Building 62, Al Mamoura St, Al Nayhan, Abu Dhabi, United Arab Emirates, Postal
-                                        Code: 22221, P.O Box: 4553</p>
+                                        Code: 22221, P.O Box: 4553
+                                    </p>
 
 
                                 </div>
@@ -2518,7 +2472,7 @@
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
                                             <textarea rows="4" name="message" class="form-control"
-                                                placeholder="Message"></textarea>
+                                                      placeholder="Message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
@@ -2530,8 +2484,7 @@
                             </form>
                         </div>
                         <!-- This is for mobile device only -->
-                        <p
-                            class="contact-content d-block d-sm-block d-md-block d-lg-block d-xl-none res-mb0 res-padding15">
+                        <p class="contact-content d-block d-sm-block d-md-block d-lg-block d-xl-none res-mb0 res-padding15">
                             Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and
                             enhancing air quality, groundwater as well as the biodiversity of our desert and marine
                             ecosystem. By partnering with other government entities, the private sector, NGOs, and
@@ -2581,7 +2534,7 @@
                                             </li>
                                             <li>
                                                 <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
-                                                    target="_blank">
+                                                   target="_blank">
                                                     <i class="icon-linkin"></i>
                                                 </a>
                                             </li>
@@ -2610,8 +2563,7 @@
                                         </div>
                                     </div>
                                     <!-- 05-JAN-24 -->
-                                    <div
-                                        class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                    <div class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                                         <div class="d-inline-block text-sm-start">
                                             <h6 class=""><a href="#slide2">Insights</a></h6>
                                             <ul class="links">
@@ -2635,18 +2587,34 @@
                                         <div class="d-inline-block text-sm-start w-100">
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-primary dropdown-toggle mb-23"
-                                                    data-bs-toggle="dropdown">
+                                                        data-bs-toggle="dropdown">
                                                     Insight <img src="./images/new-images/drop-arrow.png" class="ms-2">
                                                 </button>
                                                 <ul class="dropdown-menu w-100">
-                                                    <li><a class="dropdown-item" href="#footerhealth">Health
-                                                            Recommendation</a></li>
-                                                    <li><a class="dropdown-item" href="#footer-trends">AQI and Pollutant
-                                                            Trends</a></li>
-                                                    <li><a class="dropdown-item" href="#footerradar-analytic">Our Air
-                                                            Analytics</a></li>
-                                                    <li><a class="dropdown-item" href="#footerStation-trends">Station
-                                                            AQI and Pollutants Trends</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#footerhealth">
+                                                            Health
+                                                            Recommendation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#footer-trends">
+                                                            AQI and Pollutant
+                                                            Trends
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#footerradar-analytic">
+                                                            Our Air
+                                                            Analytics
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#footerStation-trends">
+                                                            Station
+                                                            AQI and Pollutants Trends
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -2668,14 +2636,12 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <div
-                                        class="col-lg-2 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                    <div class="col-lg-2 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                                         <div class="d-inline-block text-sm-start">
                                             <h6 class=""><a href="#slide6">Contact Us</a></h6>
                                             <ul class="links">
                                                 <li>
-                                                    <a
-                                                        href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
+                                                    <a href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
                                                 </li>
                                                 <li>
                                                     <a href="tel:+97126934444">+97126934444</a>
@@ -2688,16 +2654,19 @@
                                         <div class="d-inline-block text-sm-start w-100">
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-primary dropdown-toggle"
-                                                    data-bs-toggle="dropdown">
+                                                        data-bs-toggle="dropdown">
                                                     Contact Us <img src="./images/new-images/drop-arrow.png"
-                                                        class="ms-2 minus-four">
+                                                                    class="ms-2 minus-four">
                                                 </button>
                                                 <ul class="dropdown-menu w-100">
-                                                    <li><a class="dropdown-item"
-                                                            href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
                                                     </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="tel:+97126934444">+97126934444</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="tel:+97126934444">+97126934444</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -2737,7 +2706,7 @@
                                             </li>
                                             <li>
                                                 <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
-                                                    target="_blank">
+                                                   target="_blank">
                                                     <i class="icon-linkin"></i>
                                                 </a>
                                             </li>
@@ -2779,7 +2748,7 @@
     </div>
 
     <div class="modal fade modal-sm" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog location-popup-start">
             <div class="modal-content">
                 <!-- <div class="modal-header">
@@ -2918,10 +2887,23 @@
 
     <script>
         $(function () {
-            $(".chartDatepicker").each(function (index, el) {
-                $(el).datepicker({
-                    dateFormat: "mm/dd/yy"
-                    , duration: "fast"
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy"
+                , duration: "fast"
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('keyup', function () {
+                var searchText = $(this).val().toLowerCase();
+                $('.list-group-item').each(function () {
+                    var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
+                    if (listItemText.indexOf(searchText) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
                 });
             });
         });
