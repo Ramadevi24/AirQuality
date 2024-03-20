@@ -1,4 +1,4 @@
-var baseUrl = "https://adairqualityapi.ead.ae/";
+const baseUrl = "https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -160,6 +160,7 @@ const chartFilter = {
   Daily: 'Daily',
   Monthly: 'Monthly',
   Yearly: 'Yearly',
+  Custom: 'Custom'
 }
 
 const pollutantNames = {
@@ -551,33 +552,44 @@ $(document).ready(function () {
   // Bannner text fadeout function End--------
 
   // Do not remove below code starts---------------------------------
-    aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
-    pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
-    aqiLineChart.render();
-    pollutantLineChart.render();
-    activePollutant = pollutantNames.AQI;
-    getCurrentLocation();
-  
-    $(".lineChartAqiFilterClass").on('click', function () {
-      $("#lineChartPollutantFilter").text(this.innerText);
-      updateBarChartFilter(this.innerText);
+  $('#currentDate').text(getFormattedDate(new Date()));
+  aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
+  pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
+  aqiLineChart.render();
+  pollutantLineChart.render();
+  activePollutant = pollutantNames.AQI;
+  getCurrentLocation();
+
+  $(".lineChartAqiFilterClass").on('click', function () {
+    $("#lineChartPollutantFilter").text(this.innerText);
+    updateBarChartFilter(this.innerText);
+    if (this.innerText != chartFilter.Custom) {
       getStationChartApi(this.innerText);
-      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-    });
-  
-    $(".lineChartPollutantFilterClass").on('click', function () {
-      $("#lineChartAqiFilter").text(this.innerText);
-      updateBarChartFilter(this.innerText);
+    }
+    $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+  });
+
+  $(".lineChartPollutantFilterClass").on('click', function () {
+    $("#lineChartAqiFilter").text(this.innerText);
+    updateBarChartFilter(this.innerText);
+    if (this.innerText != chartFilter.Custom) {
       getStationChartApi(this.innerText);
-      $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus, #lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-    });
-  
-    $(".barChartFilterClass").on('click', function () {
-      updateBarChartFilter(this.innerText);
-      $("#lineChartPollutantFilter, #lineChartAqiFilter").text(this.innerText);
+    }
+    $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+  });
+
+  $(".barChartFilterClass").on('click', function () {
+    updateBarChartFilter(this.innerText);
+    $("#lineChartPollutantFilter, #lineChartAqiFilter").text(this.innerText);
+    if (this.innerText != chartFilter.Custom) {
       getStationChartApi(this.innerText);
-    });
-    $('#currentDate').text(getFormattedDate(new Date()));
+    }
+  });
+
+  $('.chartDatepicker').on('change', function () {
+    getStationChartApi(chartFilter.Custom);
+  });
+
   // Do not remove below code ends---------------------------------
 });
 
@@ -596,7 +608,11 @@ function toggleDiv(tabId, pollutant) {
 // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
   var selText = $(this).text();
-  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText);
+  $(this).parents('.btn-group').find('.dropdown-toggle-chart').html(selText);
+  if (!$(this).hasClass("active")) {
+    $('.dropdown-change li a').removeClass("active");
+    $(this).addClass("active");
+  }
 });
 
 // $("#myTabs").insertBefore(".bar_section .legend");
@@ -703,16 +719,16 @@ $(document).ready(function () {
     if ($(this).text() === 'Custom') {
       // alert('hi');
       $('.date-box').removeClass('calen-box-hide');
-      $('.dropdown-toggle').hide();
+      $('.dropdown-toggle-chart').hide();
     } else {
       $('.date-box').addClass('calen-box-hide');
-      $('.dropdown-toggle').show();
+      $('.dropdown-toggle-chart').show();
     }
   });
 
   $('#datePickImage').click(function () {
-    $('.dropdown-toggle').text('Hourly');
-    $('.dropdown-toggle').show();
+    $('.dropdown-toggle-chart').text('Hourly');
+    $('.dropdown-toggle-chart').show();
     $('.date-box').addClass('calen-box-hide');
   });
 
@@ -1003,7 +1019,7 @@ function populateSort(sortBy) {
                         <span>~ `+ station.distance + ` km</span>
                       </div>
                     </div>
-                    <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
+                    <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `')">
                   </label>`;
         stationRankingListDiv.append(row);
       }
@@ -1184,7 +1200,7 @@ function bindLiveCityRanking() {
                           <span>~ `+ station.distance + ` km</span>
                         </div>
                       </div>
-                      <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `', '` + stationDetails.stationName + `')">
+                      <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId +`')">
                     </label>`;
       stationRankingListDiv.append(row);
     }
@@ -1237,6 +1253,9 @@ function getStationChartApi(filter) {
     case chartFilter.Yearly:
       url = baseUrl + 'GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
+    case chartFilter.Custom:
+      url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + $('#datepicker').val() + '&stationName=' + currentStationDetails.stationId;
+      break;
     default:
       url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
@@ -1254,7 +1273,7 @@ function getStationChartApi(filter) {
   });
 }
 
-  function bindStationDataToLineChart(filter) {
+function bindStationDataToLineChart(filter) {
   var aqiData = [];
   var pm10Data = [];
   var so2Data = [];
@@ -1270,22 +1289,22 @@ function getStationChartApi(filter) {
     no2Data.push(item.nO2);
   });
   var categoriesData;
-  $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates").empty();
+  $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates,#pollutantHourlyBarChartDates").empty();
   switch (filter) {
-    case "Daily":
+    case chartFilter.Daily:
       categoriesData = chartData.map(t => { return t.day.split(' '); });
       break;
-    case "Monthly":
+    case chartFilter.Monthly:
       categoriesData = chartData.map(t => { return t.month; });
       break;
-    case "Yearly":
+    case chartFilter.Yearly:
       categoriesData = chartData.map(t => { return t.year; });
       break;
     default:
       categoriesData = chartData.map(t => { return t.hour.split(' '); });
       var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
       recordedDates.forEach(item => {
-        $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates").append(`<li>
+        $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates, #pollutantHourlyBarChartDates").append(`<li>
           <p>`+ item + `</p>
         </li>`);
       });
