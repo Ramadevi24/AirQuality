@@ -963,7 +963,7 @@ video {
     display: inline-block;
     margin: 2px;
 }
-.air-map-container .air-map-col img, .air-map-container .air-map-col iframe{
+.air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg {
     height: 559px;
 } 
 .bg-opacity {

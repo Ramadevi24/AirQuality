@@ -187,10 +187,11 @@
         </div>
         <div class="section air-map-container" id="section1">
             <div class="air-map-col col-md-12">
-                <div class="map-block position-relative" id="mapBlock" style="height: 500px;">
+                <div class="map-block position-relative">
+                    <div id="mapBlock" class="mapimg"></div>
                     <!-- 30-Jan-2024 -- hide iframe and added image only -->
-                    <img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
-                    <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">
+                    <!--<img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
+                    <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">-->
                     <!-- <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2214653.7652781364!2d53.874778068933466!3d24.266467525377156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1698083632515!5m2!1sen!2sin"
                       width="100%" height="556" style="border:0;" allowfullscreen="" loading="lazy"
@@ -371,10 +372,9 @@
                 </div>
 
                 <!-- End This section will show only in small devices -->
-                <div class="overview-heading mt-3 firstshow-section">
-                    Khalifa City Yearly Air Quality Overview for 2024
+                <div class="overview-heading mt-3 firstshow-section" id="yearlyAirQualityOverview">
                 </div>
-                <div class="list-container firstshow-section" id="yearlyAirQualityOverview">
+                <div class="list-container firstshow-section" id="aqiStatusDiv">
                 </div>
                 <!-- This section will show only in small devices -->
                 <div class="small-device-legend-list d-block d-sm-block d-md-none">
@@ -763,7 +763,6 @@
                                         <div class="row equal-height-row d-flex flex-wrap">
                                             <div class="col-lg-12 d-flex flex-column  justify-content-between" id="footer-trends">
                                                 <div class="bar_section">
-
                                                     <div id="aiqTab" class="tab-content mt-0">
                                                         <div>
                                                             <div class="air_p">
@@ -789,16 +788,16 @@
                                                                                 </div>
                                                                                 <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
                                                                                     <li>
-                                                                                        <a class="dropdown-item active barChartFilterClass">Hourly</a>
+                                                                                        <a class="dropdown-item active">Hourly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a class="dropdown-item barChartFilterClass">Daily</a>
+                                                                                        <a class="dropdown-item">Daily</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a class="dropdown-item barChartFilterClass">Monthly</a>
+                                                                                        <a class="dropdown-item">Monthly</a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a class="dropdown-item barChartFilterClass">Yearly</a>
+                                                                                        <a class="dropdown-item">Yearly</a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a class="dropdown-item">Custom</a>
@@ -806,7 +805,7 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <canvas id="ADstationAqiBarGraph"></canvas>
+                                                                        <canvas id="ADstationAqiBarGraph" height="80"></canvas>
                                                                         <div class="date_row">
                                                                             <ul>
                                                                                 <li>
@@ -926,7 +925,7 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationPm10BarGraph"></canvas>
+                                                                        <canvas id="ADstationPm10BarGraph" height="90"></canvas>
                                                                         <div class="date_row med-datenow">
                                                                             <ul>
                                                                                 <li>
@@ -1107,8 +1106,8 @@
                                                                         </div>
                                                                         <div id="aqiLineChart"></div>
                                                                         <div class="date_row">
-                                                                          <ul id="aqiHourlyLineChartDates">
-                                                                          </ul>
+                                                                            <ul id="aqiHourlyLineChartDates">
+                                                                            </ul>
                                                                         </div>
                                                                         <ul class="legend">
                                                                             <li>
@@ -2132,16 +2131,14 @@
 
 
     <!-------------------------------- Script Sections------------------->
-    <script src="./js/jquery-2.2.4.min.js"></script>
+    
+    <script src="./js/jquery-2.2.4.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>   
     <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>  
     <script src="./js/apexcharts.js"></script>
-    <script src="./js/chart.js"></script>
+    <script src="./js/chart.js"></script>   
     <script src="./js/index-script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://js.arcgis.com/4.28/"></script>
-    <script src="./js/Map.js"></script>
-    <script src="./js/MapConfig.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -2215,7 +2212,9 @@
         }
 
     </script>
-    
+
+
+
     <script>
         $('.mobile-menu a').click(function () {
             $('.mobile-menu a').removeClass("active");
@@ -2250,5 +2249,10 @@
             });
         });
     </script>
+
+    <!--<script src="https://js.arcgis.com/4.28/"></script>-->
+    <script src="./js/Map.js"></script>
+    <script src="./js/MapConfig.js"></script>
+
 </body>
 </html>
