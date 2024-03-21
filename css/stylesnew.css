@@ -105,14 +105,14 @@ a{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #869CAE;
+    background: #d2d3d3;
     /* width: 6px; */
     border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #869CAE;
+    background: #d2d3d3;
 }
 .color-yellow{
     color: var(--yellow);
@@ -963,7 +963,7 @@ video {
     display: inline-block;
     margin: 2px;
 }
-.air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg {
+.air-map-container .air-map-col img, .air-map-container .air-map-col iframe{
     height: 559px;
 } 
 .bg-opacity {
@@ -1533,8 +1533,8 @@ body.map-viwer-enabled{
 /* .insight{
     display: none;
 } */
-#section2 {
-    background-image: url("../images/new-images/CircularShape-bottom.png");    
+#section2{
+    background-image: url("../images/new-images/CircularShape-bottom.png");;
     background-repeat: no-repeat, no-repeat;
     background-position: bottom right;
     background-size: 400px;
@@ -1744,15 +1744,15 @@ body.map-viwer-enabled{
 }
 .insight .slide-content ul{
     padding: 0px;
+} 
+.insight .main-box {
+    border: 1px solid #898D8D14;
+    padding: 1rem 2rem;
+    box-shadow: 0px 3px 12px -1px rgb(1 18 53 / 12%);
+    height: 100%;
+    clear: both;
+    background: #fff;
 }
-    .insight .main-box {
-        border: 1px solid #898D8D14;
-        padding: 1rem 2rem;
-        box-shadow: 0px 3px 12px -1px rgb(1 18 53 / 12%);
-        height: 100%;
-        clear: both;
-        background: #fff;
-    }
 .insight .health-slider-wrapper h3 {
     font-size: 21px;
     font-family: 'GothamMedium';
@@ -2317,6 +2317,7 @@ font-size: 13px;
 .insight ul.sorttoggle.show li input{
     width: 17px;
     height: 17px;
+    accent-color: var(--blue);
 }
 .insight ul.sorttoggle.show li:hover{
     cursor: pointer;
@@ -2691,14 +2692,14 @@ color: var(--green);
     align-items: center;
     gap: 16px;
 }
-    .insight .aqi-content li span {
-        font-size: 12px;
-        font-weight: 350;
-        line-height: 13px;
-        letter-spacing: 0em;
-        text-align: left;
-        font-family: 'GothamMedium';
-    }
+.insight .aqi-content li span {
+    font-size: 12px;
+    font-weight: 350;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: left;
+    font-family: 'GothamMedium';
+}
 .insight .aqi-content li p{
     font-size: 12px;
     font-weight: 700;
@@ -3093,7 +3094,7 @@ color: var(--green);
 
 .insight .ug_content{
     position: relative;
-    top: 0px 
+    top: 30px 
 }
 .insight .ug_content p {
     font-size: 11px;
@@ -3214,12 +3215,10 @@ color: var(--green);
     line-height: 35px;
     padding: 0px 10px 10px 11px;
 }
+
 .fp-arrow.fp-controlArrow.fp-next.disabled, .fp-arrow.fp-controlArrow.fp-prev.disabled {
     opacity: 0.3;
     pointer-events: none;
-}
-.fp-arrow.fp-controlArrow.fp-next.disabled {
-    opacity: 0.3;
 }
 .insight button.btn.btn-light.btn-sm.dropdown-toggle {
     z-index: 99;

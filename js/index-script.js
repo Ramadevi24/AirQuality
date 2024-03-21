@@ -560,33 +560,9 @@ $(document).ready(function () {
   activePollutant = pollutantNames.AQI;
   getCurrentLocation();
 
-  $(".lineChartAqiFilterClass").on('click', function () {
-    $("#lineChartPollutantFilter").text(this.innerText);
-    updateBarChartFilter(this.innerText);
-    if (this.innerText != chartFilter.Custom) {
-      getStationChartApi(this.innerText);
-    }
-    $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-  });
-
-  $(".lineChartPollutantFilterClass").on('click', function () {
-    $("#lineChartAqiFilter").text(this.innerText);
-    updateBarChartFilter(this.innerText);
-    if (this.innerText != chartFilter.Custom) {
-      getStationChartApi(this.innerText);
-    }
-    $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
-  });
-
-  $(".barChartFilterClass").on('click', function () {
-    updateBarChartFilter(this.innerText);
-    $("#lineChartPollutantFilter, #lineChartAqiFilter").text(this.innerText);
-    if (this.innerText != chartFilter.Custom) {
-      getStationChartApi(this.innerText);
-    }
-  });
-
   $('.datepicker').on('change', function () {
+    $('.datepicker').val($(this).val());
+    $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
     getStationChartApi(chartFilter.Custom);
   });
 
@@ -605,7 +581,7 @@ function toggleDiv(tabId, pollutant) {
   bindStationDataToBarChart($("#barChartFilter").text());
 }
 
-// Map Search icon script Start--------------   
+// // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
   var selText = $(this).text();
   $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
@@ -713,27 +689,30 @@ $(document).ready(function () {
     $('.info-popup').hide();
   });
 
+  $('.quality-index-dropItem').click(function () {
+      var parentContainer = $(this).closest('.btn-group'); // Find the parent container
+      var dateBox = parentContainer.find('.date-box'); // Find the date-box within the parent container
 
-    $('.quality-index-dropItem').click(function () {
-        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
-        var dateBox = parentContainer.find('.date-box'); // Find the date-box within the parent container
+      if ($(this).text() === 'Custom') {
+          dateBox.removeClass('calen-box-hide');
+          parentContainer.find('.quality-button-dropdown').hide();
+      } else {
+          dateBox.addClass('calen-box-hide');
+          parentContainer.find('.quality-button-dropdown').show();
+      }
+      updateCharts($(this).text());
+  });
 
-        if ($(this).text() === 'Custom') {
-            dateBox.removeClass('calen-box-hide');
-            parentContainer.find('.quality-button-dropdown').hide();
-        } else {
-            dateBox.addClass('calen-box-hide');
-            parentContainer.find('.quality-button-dropdown').show();
-        }
-    });
-
-    $('.datePickImage').click(function () {
-
-        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
-        parentContainer.find('.quality-button-dropdown').text('Hourly');
-        parentContainer.find('.quality-button-dropdown').show();
-        parentContainer.find('.date-box').addClass('calen-box-hide');
-    });
+  $('.datePickImage').click(function () {
+      var parentContainer = $(this).closest('.btn-group'); // Find the parent container
+      parentContainer.find('.quality-button-dropdown').text(chartFilter.Hourly);
+      parentContainer.find('.quality-button-dropdown').show();
+      parentContainer.find('.date-box').addClass('calen-box-hide');
+      $('.dropdown-change li a').removeClass("active");
+      parentContainer.find('.quality-index-dropItem:first').addClass("active");
+      $('.datepicker').val('');
+      updateCharts(chartFilter.Hourly);
+  });
 });
 
 // Info Icon cross button script----------------------
@@ -1257,7 +1236,7 @@ function getStationChartApi(filter) {
       url = baseUrl + 'GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
     case chartFilter.Custom:
-      var selectedDate = $('#datepicker').val();
+      var selectedDate = $('.datepicker').val();
       var splitDateArray = selectedDate.split('-');
       var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
       url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' + currentStationDetails.stationId;
@@ -1770,9 +1749,13 @@ function bindStationDataToBarChart(filter) {
   constructBarChart.update();
 }
 
-function updateBarChartFilter(filter) {
-  $("button#barChartFilter").each(function (index, item) {
-    item.innerText = filter;
-  });
+function updateCharts(selectedFilter){
+  // Do not remove below code starts---------------------------------
+  $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+  $('button.quality-button-dropdown').text(selectedFilter);
+  if (selectedFilter != chartFilter.Custom) {
+    getStationChartApi(selectedFilter);
+  }
+  // Do not remove below code ends---------------------------------
 }
 // Do not remove below code ends---------------------------------

@@ -1293,6 +1293,9 @@
         width: 27px;
         height: 27px;
     }
+    .scrollPolicyShow {
+        height: 355px;
+    }
     .insight .slide-content ul .modal.fade button.btn-close img{
         width: 13px !important;
         height: 13px;
