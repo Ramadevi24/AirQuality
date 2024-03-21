@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5282/" //"https://adairqualityapi.ead.ae/";
+const baseUrl = "https://atlas.smartgeoapps.com/adairqualityapi/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -586,7 +586,7 @@ $(document).ready(function () {
     }
   });
 
-  $('.chartDatepicker').on('change', function () {
+  $('.datepicker').on('change', function () {
     getStationChartApi(chartFilter.Custom);
   });
 
@@ -608,7 +608,7 @@ function toggleDiv(tabId, pollutant) {
 // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
   var selText = $(this).text();
-  $(this).parents('.btn-group').find('.dropdown-toggle-chart').html(selText);
+  $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
   if (!$(this).hasClass("active")) {
     $('.dropdown-change li a').removeClass("active");
     $(this).addClass("active");
@@ -1257,7 +1257,10 @@ function getStationChartApi(filter) {
       url = baseUrl + 'GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
       break;
     case chartFilter.Custom:
-      url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + $('#datepicker').val() + '&stationName=' + currentStationDetails.stationId;
+      var selectedDate = $('#datepicker').val();
+      var splitDateArray = selectedDate.split('-');
+      var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
+      url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' + currentStationDetails.stationId;
       break;
     default:
       url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
