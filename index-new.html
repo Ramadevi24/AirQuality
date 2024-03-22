@@ -136,7 +136,7 @@
     </header>
 
 
-    <div id="fullpage">
+    <div id="fullpagediv">
         <div class="section" id="section0">
             <div id="demo" class="banner-section">
                 <!-- The slideshow/carousel -->
@@ -2783,76 +2783,76 @@
     <script src="./js/apexcharts.js"></script>
     <script src="./js/chart.js"></script>
     <script src="./js/index-script.js"></script>
-
+    <script src="./scolling-script/fullpage.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
-            function isMobile() {
-                return window.innerWidth < 1199;
-            }
+        function isMobile() {
+        return window.innerWidth < 1199;
+        }
 
-            if (!isMobile()) {
-                // Check if FullPage.js is already loaded
-                if (typeof fullpage === 'function') {
-                    initializeFullPage();
-                } else {
-                    // Load FullPage.js script dynamically
-                    loadExternalScript();
-                }
-            }
+        if (!isMobile()) {
+        // Check if FullPage.js is already loaded
+        if (typeof fullpage === 'function') {
+        initializeFullPage();
+        } else {
+        // Load FullPage.js script dynamically
+        loadExternalScript();
+        }
+        }
         });
 
         function initializeFullPage() {
-            var slideIndexS = 0,
-                sliding = false;
-            var myFullpage = new fullpage('#fullpage', {
-                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
-                sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
-                navigation: true,
-                navigationPosition: 'right',
-                menu: '#menu',
-                //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
-                scrollBar: true,
-                normalScrollElements: '.project-modal, .faqscrolling, .sidebar-dataScroll',
-                onLeave: function (origin, destination, direction) {
-                    console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
-                    if (origin.index === 2 && !sliding) {
-                        if (direction === 'down' && slideIndexS < 3) {
-                            slideIndexS++
-                            myFullpage.moveSlideRight();
-                            return false;
-                        } else if (direction === 'up' && slideIndexS > 0) {
-                            slideIndexS--
-                            myFullpage.moveSlideLeft();
-                            return false;
-                        }
-                    } else if (sliding) {
-                        return false;
-                    }
-                },
-                onSlideLeave: function (section, origin, destination, direction) {
-                    if (destination.index === 0) {
-                        $('.fp-prev').addClass('disabled');
-                        $('.fp-next').removeClass('disabled');
-                    } else if (destination.index === 3) {
-                        $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').addClass('disabled');
-                    } else {
-                        $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').removeClass('disabled');
-                    }
-                }
-            });
+        var slideIndexS = 0,
+        sliding = false;
+        var myFullpage = new fullpage('#fullpagediv', {
+        anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
+        sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
+        navigation: true,
+        navigationPosition: 'right',
+        menu: '#menu',
+        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+        scrollBar: true,
+        normalScrollElements: '.project-modal, .faqscrolling, .sidebar-dataScroll',
+        onLeave: function (origin, destination, direction) {
+        console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
+        if (origin.index === 2 && !sliding) {
+        if (direction === 'down' && slideIndexS < 3) {
+        slideIndexS++
+        myFullpage.moveSlideRight();
+        return false;
+        } else if (direction === 'up' && slideIndexS > 0) {
+        slideIndexS--
+        myFullpage.moveSlideLeft();
+        return false;
+        }
+        } else if (sliding) {
+        return false;
+        }
+        },
+        onSlideLeave: function (section, origin, destination, direction) {
+        if (destination.index === 0) {
+        $('.fp-prev').addClass('disabled');
+        $('.fp-next').removeClass('disabled');
+        } else if (destination.index === 3) {
+        $('.fp-prev').removeClass('disabled');
+        $('.fp-next').addClass('disabled');
+        } else {
+        $('.fp-prev').removeClass('disabled');
+        $('.fp-next').removeClass('disabled');
+        }
+        }
+        });
         }
 
         function loadExternalScript() {
-            // Load FullPage.js script only if window width is greater than 990px
-            if (window.innerWidth > 1100) {
-                var scriptTag = document.createElement('script');
-                scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
-                scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
-                document.head.appendChild(scriptTag);
-            }
+        // Load FullPage.js script only if window width is greater than 990px
+        if (window.innerWidth > 1100) {
+        var scriptTag = document.createElement('script');
+        scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
+        scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
+        document.head.appendChild(scriptTag);
+        }
         }
 
     </script>
@@ -2861,12 +2861,12 @@
 
     <script>
         $('.mobile-menu a').click(function () {
-            $('.mobile-menu a').removeClass("active");
-            $(this).addClass("active");
+        $('.mobile-menu a').removeClass("active");
+        $(this).addClass("active");
         });
         $('.web-menu .tablet-menu').click(function () {
-            $('.web-menu .tablet-menu').removeClass("active");
-            $(this).addClass("active");
+        $('.web-menu .tablet-menu').removeClass("active");
+        $(this).addClass("active");
         });
 
     </script>
@@ -2874,43 +2874,43 @@
     <script>
         // Map minimiz/maximize
         $(".map-mini-max").click(function () {
-            $(".air-map-container").toggleClass("full-screen");
-            $("body").toggleClass("map-viwer-enabled");
-            $('#wrapper').toggle();
+        $(".air-map-container").toggleClass("full-screen");
+        $("body").toggleClass("map-viwer-enabled");
+        $('#wrapper').toggle();
         });
 
         $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
         });
     </script>
 
     <script>
         $(function () {
-            $(".datepicker").datepicker({
-                dateFormat: "dd-mm-yy"
-                , duration: "fast"
-            });
+        $(".datepicker").datepicker({
+        dateFormat: "dd-mm-yy"
+        , duration: "fast"
+        });
         });
     </script>
     <script>
         $(document).ready(function () {
-            $('#searchInput').on('keyup', function () {
-                var searchText = $(this).val().toLowerCase();
-                $('.list-group-item').each(function () {
-                    var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
-                    if (listItemText.indexOf(searchText) === -1) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                });
-            });
+        $('#searchInput').on('keyup', function () {
+        var searchText = $(this).val().toLowerCase();
+        $('.list-group-item').each(function () {
+        var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
+        if (listItemText.indexOf(searchText) === -1) {
+        $(this).hide();
+        } else {
+        $(this).show();
+        }
+        });
+        });
         });
     </script>
 
-    <!-- <script src="https://js.arcgis.com/4.28/"></script> -->
-    <script src="./js/Map.js"></script>
+    <script src="https://js.arcgis.com/4.28/"></script>
+     <script src="./js/Map.js"></script>
     <script src="./js/MapConfig.js"></script>
 
 </body>

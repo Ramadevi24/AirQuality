@@ -475,21 +475,21 @@ TxtRotate.prototype.tick = function () {
   }, delta);
 };
 
-window.onload = function () {
-  var elements = document.getElementsByClassName('txt-rotate');
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-rotate');
-    var period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new TxtRotate(elements[i], JSON.parse(toRotate), period);
-    }
-  }
-  // INJECT CSS
-  var css = document.createElement("style");
-  css.type = "text/css";
-  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.05em solid #fff }";
-  document.body.appendChild(css);
-};
+//window.onload = function () {
+//  var elements = document.getElementsByClassName('txt-rotate');
+//  for (var i = 0; i < elements.length; i++) {
+//    var toRotate = elements[i].getAttribute('data-rotate');
+//    var period = elements[i].getAttribute('data-period');
+//    if (toRotate) {
+//      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+//    }
+//  }
+//  // INJECT CSS
+//  var css = document.createElement("style");
+//  css.type = "text/css";
+//  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.05em solid #fff }";
+//  document.body.appendChild(css);
+//};
 // Breath text heading animation script End--------------
 
 //// --Mobile Menu---------------------------
@@ -619,31 +619,31 @@ $('.insight-btn-tab').on('click', function () {
 // Banner Arrrow animation script End-------------- 
 
 // Carousel Insight Section by Sachin-------------------
-document.addEventListener('DOMContentLoaded', function () {
-  var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleControls'));
-  var totalItems = 4;
-  var currentIndex = 0;
-  document.querySelector('.carousel-control-prev').setAttribute('disabled', true);
+//document.addEventListener('DOMContentLoaded', function () {
+//  var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleControls'));
+//  var totalItems = 4;
+//  var currentIndex = 0;
+//  document.querySelector('.carousel-control-prev').setAttribute('disabled', true);
 
-  document.getElementById('carouselExampleControls').addEventListener('slide.bs.carousel', function (event) {
-    currentIndex = event.to;
-    if (currentIndex === 0) {
-      document.querySelector('.carousel-control-prev').setAttribute('disabled', true);
-    } else {
-      document.querySelector('.carousel-control-prev').removeAttribute('disabled');
-    }
-    if (currentIndex === totalItems - 1) {
-      document.querySelector('.carousel-control-next').setAttribute('disabled', true);
-    } else {
-      document.querySelector('.carousel-control-next').removeAttribute('disabled');
-    }
-  });
-  document.querySelector('.carousel-control-next').addEventListener('click', function () {
-    if (currentIndex === totalItems - 2) {
-      document.querySelector('.carousel-control-prev').removeAttribute('disabled');
-    }
-  });
-});
+//  document.getElementById('carouselExampleControls').addEventListener('slide.bs.carousel', function (event) {
+//    currentIndex = event.to;
+//    if (currentIndex === 0) {
+//      document.querySelector('.carousel-control-prev').setAttribute('disabled', true);
+//    } else {
+//      document.querySelector('.carousel-control-prev').removeAttribute('disabled');
+//    }
+//    if (currentIndex === totalItems - 1) {
+//      document.querySelector('.carousel-control-next').setAttribute('disabled', true);
+//    } else {
+//      document.querySelector('.carousel-control-next').removeAttribute('disabled');
+//    }
+//  });
+//  document.querySelector('.carousel-control-next').addEventListener('click', function () {
+//    if (currentIndex === totalItems - 2) {
+//      document.querySelector('.carousel-control-prev').removeAttribute('disabled');
+//    }
+//  });
+//});
 // End Carousel Insight Section by Sachin-------------------
 
 document.getElementById('expandTrigger').addEventListener('click', function () {
@@ -1701,7 +1701,8 @@ function bindStationDataToBarChart(filter) {
         label: 'AQI',
         backgroundColor: backgroundColors,
         lineTension: 0.2,
-        data: barChartData,
+          data: barChartData,
+          borderRadius: 20
       }];
       pollutantBarChartId = "ADstationAqiBarGraph";
       break;
@@ -1743,7 +1744,14 @@ function bindStationDataToBarChart(filter) {
         y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
           stacked: true, // Assuming you want the Y-axis stacked as well
         }
-      }
+        },
+        animations: {
+            tension: {
+                duration: 2000,
+                easing: 'easeInCubic'
+               
+            }
+        }
     }
   });
   constructBarChart.update();
