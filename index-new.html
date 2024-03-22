@@ -14,8 +14,8 @@
     <!-- Custom Air Icons -->
     <link href="./fonts/air-icons/air-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/material-icon.css" />
     <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
@@ -174,8 +174,10 @@
                             <div>
                                 <h2 class="mb-0" id="averageAqiStatus"></h2>
                                 <h5 class="mb-0" id="averageAqi"></h5>
-                                <h6 class="mb-1">AQI</h6>
+                                <h6 class="mb-0">AQI</h6>
                             </div>
+                        </div>
+                        <div class="section1-dateshift">
                             <div class="date-shift">
                                 <h4 class="mb-0 date" id="currentDate"></h4>
                             </div>
@@ -197,7 +199,7 @@
         <div class="section air-map-container" id="section1">
             <div class="air-map-col col-md-12">
                 <div class="map-block position-relative">
-                    <div id="mapBlock" class="mapimg" style="height:800px;"></div>
+                    <div id="mapBlock" class="mapimg" style="height:500px;"></div>
                     <!-- 30-Jan-2024 -- hide iframe and added image only -->
                     <!--<img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
                     <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">-->
@@ -597,7 +599,7 @@
                                                             <h3>Main pollutant </h3>
                                                             <div class="red-bg">
                                                                 <div class="red-c">
-                                                                    <p id="mainPollutantName" style="color: white;"></p>
+                                                                    <p id="mainPollutantName"></p>
                                                                 </div>
                                                                 <div class="white-bg">
                                                                     <p class="color-yellow" id="mainPollutantValue"></p>
@@ -605,7 +607,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="Causes-wrapper">
-                                                            <h3>Causes</h3>
+                                                            <h3>Possible Causes</h3>
                                                             <div class="Causes-img mt-3">
                                                                 <div class="text-center">
                                                                     <img src="./images/new-images/Causes1.png" alt="">
@@ -841,7 +843,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto tab-screen-mt">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -885,8 +887,9 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <canvas id="ADstationAqiBarGraph"
-                                                                                height="80"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationAqiBarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -897,28 +900,33 @@
                                                                                 </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_good marker_legend"></span>Good
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_mod marker_legend"></span>Moderate
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_unh marker_legend"></span>Unhealthy
-                                                                                for sensitive groups
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_unhh marker_legend"></span>Unhealthy
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_vunh marker_legend"></span>Very
-                                                                                unhealthy
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_h marker_legend"></span>Hazardous
-                                                                            </li>
-                                                                        </ul>
+                                                                        <div class="pollutants-legend-heading">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker good-span"></span>
+                                                                                <span class="pollutants-legend-text">Good1</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker moderate-span"></span>
+                                                                                <span class="pollutants-legend-text">Moderate</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker sensitive-span"></span>
+                                                                                <span class="pollutants-legend-text">Unhealthy for Sensitive Groups</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker unhealth-span"></span>
+                                                                                <span class="pollutants-legend-text">Unhealthy</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker veryunhealth-span"></span>
+                                                                                <span class="pollutants-legend-text">Very Unhealthy</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker hazar-span"></span>
+                                                                                <span class="pollutants-legend-text">Hazardous</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Start 22-March-2024 -->
                                                                     </div>
                                                                 </div>
                                                                 <div class="pollutant-toggleBar position-relative">
@@ -1012,7 +1020,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="tab-screen-mt btn-group me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -1059,32 +1067,27 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationPm10BarGraph"
-                                                                                height="90"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationPm10BarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row med-datenow mtb-mdscreens">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_pol_ac marker_legend"></span>
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="chart-f-content pm10-f-content">
-                                                                            <p></p>
+                                                                        <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Acceptable Value</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker above-acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Above Acceptable Value</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="chart-f-content">
+                                                                    <p></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1100,7 +1103,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -1147,8 +1150,9 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationSo2BarGraph"
-                                                                                height="90"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationSo2BarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1159,20 +1163,20 @@
                                                                                 </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_pol_ac marker_legend"></span>
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="chart-f-content">
-                                                                            <p></p>
+                                                                        <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Acceptable Value</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker above-acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Above Acceptable Value</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="chart-f-content">
+                                                                    <p></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1188,7 +1192,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -1235,8 +1239,9 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationCoBarGraph"
-                                                                                height="90"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationCoBarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1247,20 +1252,20 @@
                                                                                 </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_pol_ac marker_legend"></span>
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="chart-f-content">
-                                                                            <p></p>
+                                                                        <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Acceptable Value</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker above-acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Above Acceptable Value</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="chart-f-content">
+                                                                    <p></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1276,7 +1281,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -1323,8 +1328,9 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationO3BarGraph"
-                                                                                height="90"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationO3BarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1335,20 +1341,20 @@
                                                                                 </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_pol_ac marker_legend"></span>
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="chart-f-content">
-                                                                            <p></p>
+                                                                        <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Acceptable Value</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker above-acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Above Acceptable Value</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="chart-f-content">
+                                                                    <p></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1364,7 +1370,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="polutenat_bar">
-                                                                    <div class="tab_shado">
+                                                                    <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
@@ -1411,8 +1417,9 @@
                                                                         <div class="ug_content">
                                                                             <p>ug/m3</p>
                                                                         </div>
-                                                                        <canvas id="ADstationNo2BarGraph"
-                                                                                height="90"></canvas>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="ADstationNo2BarGraph"></canvas>
+                                                                        </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
@@ -1423,21 +1430,23 @@
                                                                                 </li> -->
                                                                             </ul>
                                                                         </div>
-                                                                        <ul class="legend">
-                                                                            <li>
-                                                                                <span class="marker_pol_ac marker_legend"></span>
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="marker_pol_ab_ac marker_legend"></span>Above
-                                                                                Acceptable Value
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="chart-f-content">
-                                                                            <p></p>
+                                                                        <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Acceptable Value</span>
+                                                                            </div>
+                                                                            <div class="pollutants-legend-series">
+                                                                                <span class="pollutants-legend-marker above-acceptable-span"></span>
+                                                                                <span class="pollutants-legend-text">Above Acceptable Value</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <!-- Start 22-March-2024 -->
+                                                                <div class="chart-f-content">
+                                                                    <p></p>
+                                                                </div>
+                                                                <!-- End 22-March-2024 -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1491,7 +1500,7 @@
                                                                 +4)
                                                             </p>
                                                         </div>
-                                                        <div class="tab_shado">
+                                                        <div class="tab_shado equal-station-box-height">
                                                             <ul class="nav nav-pills mb-3" id="pills-tab"
                                                                 role="tablist">
                                                                 <li class="nav-item" role="presentation">
@@ -1557,7 +1566,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="aqi-content">
+                                                                        <div class="aqi-content mult-value-tab">
                                                                             <li class="position-relative">
                                                                                 <span class="linebefore">AQI</span>
                                                                                 <p id="lineChartAqiValueStatus"></p>
@@ -1601,10 +1610,10 @@
                                                                             </div>
                                                                         </div>
                                                                         <div id="aqiLineChart"></div>
-                                                                        <div class="date_row">
+                                                                        <!--<div class="date_row">
                                                                             <ul id="aqiHourlyLineChartDates">
                                                                             </ul>
-                                                                        </div>
+                                                                        </div>-->
                                                                         <ul class="legend">
                                                                             <li>
                                                                                 <span class="marker_good marker_legend"></span>Good
@@ -1718,10 +1727,10 @@
                                                                             </div>
                                                                         </div>
                                                                         <div id="pollutantLineChart"></div>
-                                                                        <div class="date_row">
+                                                                        <!--<div class="date_row">
                                                                             <ul id="pollutantHourlyLineChartDates">
                                                                             </ul>
-                                                                        </div>
+                                                                        </div>-->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2675,60 +2684,12 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="d-block d-sm-block d-md-none">
-                        <div class="footer-2-sec">
-                            <div class="copy-rights">
-                                <p>&#xa9 Abu Dhabi All Rights Reserved 2024</p>
-                                <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block">
-                                    <li>
-                                        <a href="privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Terms of Use</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Copyrights</a>
-                                    </li>
-                                </ul>
-                                <!-- This will show only in small devices -->
-                                <div class="social-small-links d-block d-sm-block d-md-block d-lg-block d-xl-none">
-                                    <div class="left">
-                                        <ul class="social-media">
-                                            <li>
-                                                <a href="http://www.facebook.com/EnvironmentAbuDhabi" target="_blank">
-                                                    <i class="icon-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.instagram.com/Environmentabudhabi" target="_blank">
-                                                    <i class="icon-insta"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
-                                                   target="_blank">
-                                                    <i class="icon-linkin"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.twitter.com/EADTweets" target="_blank">
-                                                    <i class="icon-twitter-x"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.threads.net/@environmentabudhabi" target="_blank">
-                                                    <i class="icon-threads"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- This will show only in small devices -->
-                            </div>
-                        </div>
-                        <hr class="opacity-1">
-                        <div class="tab-privacy-section text-center">
-                            <ul class="d-none d-sm-none d-md-block d-lg-block d-xl-none">
+                    </div>
+                    <hr class="d-block d-sm-block d-md-none">
+                    <div class="footer-2-sec">
+                        <div class="copy-rights">
+                            <p>&#xa9 Abu Dhabi All Rights Reserved 2024</p>
+                            <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block">
                                 <li>
                                     <a href="privacy-policy.html">Privacy Policy</a>
                                 </li>
@@ -2739,11 +2700,59 @@
                                     <a href="#">Copyrights</a>
                                 </li>
                             </ul>
+                            <!-- This will show only in small devices -->
+                            <div class="social-small-links d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                <div class="left">
+                                    <ul class="social-media">
+                                        <li>
+                                            <a href="http://www.facebook.com/EnvironmentAbuDhabi" target="_blank">
+                                                <i class="icon-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.instagram.com/Environmentabudhabi" target="_blank">
+                                                <i class="icon-insta"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
+                                               target="_blank">
+                                                <i class="icon-linkin"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.twitter.com/EADTweets" target="_blank">
+                                                <i class="icon-twitter-x"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.threads.net/@environmentabudhabi" target="_blank">
+                                                <i class="icon-threads"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- This will show only in small devices -->
                         </div>
                     </div>
-                </footer>
-            </div>
+                    <hr class="opacity-1">
+                    <div class="tab-privacy-section text-center">
+                        <ul class="d-none d-sm-none d-md-block d-lg-block d-xl-none">
+                            <li>
+                                <a href="privacy-policy.html">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms of Use</a>
+                            </li>
+                            <li>
+                                <a href="#">Copyrights</a>
+                            </li>
+                        </ul>
+                    </div>            
+            </footer>
         </div>
+    </div>
 
     </div>
 
@@ -2787,72 +2796,72 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-        function isMobile() {
-        return window.innerWidth < 1199;
-        }
+            function isMobile() {
+                return window.innerWidth < 1199;
+            }
 
-        if (!isMobile()) {
-        // Check if FullPage.js is already loaded
-        if (typeof fullpage === 'function') {
-        initializeFullPage();
-        } else {
-        // Load FullPage.js script dynamically
-        loadExternalScript();
-        }
-        }
+            if (!isMobile()) {
+                // Check if FullPage.js is already loaded
+                if (typeof fullpage === 'function') {
+                    initializeFullPage();
+                } else {
+                    // Load FullPage.js script dynamically
+                    loadExternalScript();
+                }
+            }
         });
 
         function initializeFullPage() {
-        var slideIndexS = 0,
-        sliding = false;
-        var myFullpage = new fullpage('#fullpagediv', {
-        anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
-        sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
-        navigation: true,
-        navigationPosition: 'right',
-        menu: '#menu',
-        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
-        scrollBar: true,
-        normalScrollElements: '.project-modal, .faqscrolling, .sidebar-dataScroll',
-        onLeave: function (origin, destination, direction) {
-        console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
-        if (origin.index === 2 && !sliding) {
-        if (direction === 'down' && slideIndexS < 3) {
-        slideIndexS++
-        myFullpage.moveSlideRight();
-        return false;
-        } else if (direction === 'up' && slideIndexS > 0) {
-        slideIndexS--
-        myFullpage.moveSlideLeft();
-        return false;
-        }
-        } else if (sliding) {
-        return false;
-        }
-        },
-        onSlideLeave: function (section, origin, destination, direction) {
-        if (destination.index === 0) {
-        $('.fp-prev').addClass('disabled');
-        $('.fp-next').removeClass('disabled');
-        } else if (destination.index === 3) {
-        $('.fp-prev').removeClass('disabled');
-        $('.fp-next').addClass('disabled');
-        } else {
-        $('.fp-prev').removeClass('disabled');
-        $('.fp-next').removeClass('disabled');
-        }
-        }
-        });
+            var slideIndexS = 0,
+                sliding = false;
+            var myFullpage = new fullpage('#fullpagediv', {
+                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
+                sectionsColor: ['#C63D0F', '#fff', '#fff', '#fff', '#fff', '#fff'],
+                navigation: true,
+                navigationPosition: 'right',
+                menu: '#menu',
+                //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+                scrollBar: true,
+                normalScrollElements: '.project-modal, .faqscrolling, .sidebar-dataScroll',
+                onLeave: function (origin, destination, direction) {
+                    console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
+                    if (origin.index === 2 && !sliding) {
+                        if (direction === 'down' && slideIndexS < 3) {
+                            slideIndexS++
+                            myFullpage.moveSlideRight();
+                            return false;
+                        } else if (direction === 'up' && slideIndexS > 0) {
+                            slideIndexS--
+                            myFullpage.moveSlideLeft();
+                            return false;
+                        }
+                    } else if (sliding) {
+                        return false;
+                    }
+                },
+                onSlideLeave: function (section, origin, destination, direction) {
+                    if (destination.index === 0) {
+                        $('.fp-prev').addClass('disabled');
+                        $('.fp-next').removeClass('disabled');
+                    } else if (destination.index === 3) {
+                        $('.fp-prev').removeClass('disabled');
+                        $('.fp-next').addClass('disabled');
+                    } else {
+                        $('.fp-prev').removeClass('disabled');
+                        $('.fp-next').removeClass('disabled');
+                    }
+                }
+            });
         }
 
         function loadExternalScript() {
-        // Load FullPage.js script only if window width is greater than 990px
-        if (window.innerWidth > 1100) {
-        var scriptTag = document.createElement('script');
-        scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
-        scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
-        document.head.appendChild(scriptTag);
-        }
+            // Load FullPage.js script only if window width is greater than 990px
+            if (window.innerWidth > 1100) {
+                var scriptTag = document.createElement('script');
+                scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
+                scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
+                document.head.appendChild(scriptTag);
+            }
         }
 
     </script>
@@ -2861,12 +2870,12 @@
 
     <script>
         $('.mobile-menu a').click(function () {
-        $('.mobile-menu a').removeClass("active");
-        $(this).addClass("active");
+            $('.mobile-menu a').removeClass("active");
+            $(this).addClass("active");
         });
         $('.web-menu .tablet-menu').click(function () {
-        $('.web-menu .tablet-menu').removeClass("active");
-        $(this).addClass("active");
+            $('.web-menu .tablet-menu').removeClass("active");
+            $(this).addClass("active");
         });
 
     </script>
@@ -2874,43 +2883,43 @@
     <script>
         // Map minimiz/maximize
         $(".map-mini-max").click(function () {
-        $(".air-map-container").toggleClass("full-screen");
-        $("body").toggleClass("map-viwer-enabled");
-        $('#wrapper').toggle();
+            $(".air-map-container").toggleClass("full-screen");
+            $("body").toggleClass("map-viwer-enabled");
+            $('#wrapper').toggle();
         });
 
         $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
         });
     </script>
 
     <script>
         $(function () {
-        $(".datepicker").datepicker({
-        dateFormat: "dd-mm-yy"
-        , duration: "fast"
-        });
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy"
+                , duration: "fast"
+            });
         });
     </script>
     <script>
         $(document).ready(function () {
-        $('#searchInput').on('keyup', function () {
-        var searchText = $(this).val().toLowerCase();
-        $('.list-group-item').each(function () {
-        var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
-        if (listItemText.indexOf(searchText) === -1) {
-        $(this).hide();
-        } else {
-        $(this).show();
-        }
-        });
-        });
+            $('#searchInput').on('keyup', function () {
+                var searchText = $(this).val().toLowerCase();
+                $('.list-group-item').each(function () {
+                    var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
+                    if (listItemText.indexOf(searchText) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
         });
     </script>
 
     <script src="https://js.arcgis.com/4.28/"></script>
-     <script src="./js/Map.js"></script>
+    <script src="./js/Map.js"></script>
     <script src="./js/MapConfig.js"></script>
 
 </body>

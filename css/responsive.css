@@ -1313,10 +1313,10 @@
     .exceed-height{
         min-height: 55px!important;
     }
-    .med-datenow{
+    /* .med-datenow{
         padding: 0px;
         padding-bottom: 7px;  
-    }
+    } */
     .insight .calendar-icon{
         top: 4px;
     }
@@ -1499,9 +1499,9 @@
     .pollutant-toggleBar .info-popup{
         padding: 30px 30px 40px 30px;
     }
-    .insight .mtb-mdscreens{
+    /* .insight .mtb-mdscreens{
         margin-top: 20px; margin-bottom: 30px;
-    }
+    } */
     .insight .ug_content {
         position: relative;
         top: 30px;

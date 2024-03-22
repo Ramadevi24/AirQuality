@@ -35,7 +35,7 @@ const stationsWithLocations = [{
   latitude: 24.3213,
   longitude: 54.6359
 }, {
-  stationId: "EAD_AlMaqta",
+    stationId: "EAD_AlMafraq",
   stationName: "Al Maqta",
   latitude: 24.4035,
   longitude: 54.5161
@@ -45,12 +45,12 @@ const stationsWithLocations = [{
   latitude: 24.4199,
   longitude: 54.5782
 },
- {
-   stationId: "EAD_AlMafraq",
-   stationName: "Al Mafraq",
-   latitude: 24.2863,
-   longitude: 54.5889
- }, 
+ //{
+ //  stationId: "EAD_AlMafraq",
+ //  stationName: "Al Mafraq",
+ //  latitude: 24.2863,
+ //  longitude: 54.5889
+ //}, 
 {
   stationId: "EAD_AlAinSchool",
   stationName: "Al Ain Islamic Institute",
@@ -221,12 +221,12 @@ var radarOptions = {
 
 var aqiLineChartOptions = {
   series: [{
-    name: 'AQI',
+    name: '',
     data: []
   }],
   chart: {
     height: 300,
-    width: '90%',
+    width: '100%',
     type: 'area',
     toolbar: {
       show: false
@@ -235,36 +235,73 @@ var aqiLineChartOptions = {
   dataLabels: {
     enabled: false
   },
-  stroke: {
-    curve: 'smooth'
-  },
+    stroke: {
+        curve: 'smooth',
+        fill: {
+            type: "gradient",
+            gradient: {
+                type: "horizontal",
+                colorStops: [
+                    [
+                        {
+                            offset: 0,
+                            color: "#9CD84E",
+                            opacity: 1
+                        },
+                        {
+                            offset: 50,
+                            color: "yellow",
+                            opacity: 1
+                        },
+                        {
+                            offset: 80,
+                            color: "#F99049",
+                            opacity: 1
+                        }
+                    ]
+                ]
+            }
+        }
+    },
   xaxis: {
     // type: 'datetime',
     categories: [], //['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
     tickAmount: 10,
-    // labels: {
-    //   format: function(value, opts) {
-    //     console.log(value);
-    //     console.log(opts);
-    //     // return opts.dateFormatter(new Date(timestamp), 'MMM')
-    //   }
-    // }
+      labels: {
+          rotateAlways: false,
+          rotate: 0
+      }
   },
   grid: {
     show: false, // hide grid
-  },
-  fill: {
-    type: 'gradient',
-    gradient: {
-      shade: 'dark',
-      gradientToColors: ['#FACF39', '#F99049'],
-      shadeIntensity: 1,
-      type: 'horizontal',
-      opacityFrom: .3,
-      opacityTo: .3,
-      stops: [0, 100, 100, 100]
     },
-  },
+    colors: ['#9CD84E','#facf3978', '#F99049'],
+  fill: {
+    type: "gradient",
+        gradient: {
+            shadeIntensity: 1,
+            type: "horizontal",
+            colorStops: [
+                [
+                    {
+                        offset: 0,
+                        color: "#9cd84e6b",
+                        opacity: 0.2
+                    },
+                    {
+                        offset: 50,
+                        color: "#facf3978",
+                        opacity: 0.2
+                    },
+                    {
+                        offset: 80,
+                        color: "#f9904957",
+                        opacity: 0.2
+                    }
+                ]
+            ]
+        }
+    },  
   yaxis: {
     min: 0,
     // max: 100
@@ -287,7 +324,10 @@ var aqiLineChartOptions = {
   ],
   tooltip: {
     shared: true,
-    intersect: false,
+      intersect: false,
+      x: {
+          show: false,
+      },
     y: {
       formatter: function (value, options) {
         $("#lineChartAqiSo2Value").text(chartData[options.dataPointIndex].sO2);
@@ -305,8 +345,8 @@ var pollutantLineChartOptions = {
   series: [],
   chart: {
     height: 300,
-    width: '90%',
-    type: 'area',
+    width: '100%',
+    type: 'line',
     toolbar: {
       show: false
     },
@@ -314,50 +354,54 @@ var pollutantLineChartOptions = {
   dataLabels: {
     enabled: false
   },
-  stroke: {
+    stroke: {
+    width: [3,3,3,3,3,3],
     curve: 'smooth'
   },
   xaxis: {
-    categories: [],
+      categories: [],
+      labels: {
+          rotateAlways: false,
+          rotate: 0
+      }
     // tickAmount: 10,
   },
   grid: {
     show: false, // hide grid
   },
-  fill: {
-    type: 'gradient',
-    gradient: {
-      shade: 'dark',
-      gradientToColors: ['#FACF39', '#F99049'],
-      shadeIntensity: 1,
-      type: 'horizontal',
-      opacityFrom: .3,
-      opacityTo: .3,
-      stops: [0, 100, 100, 100]
-    },
-  },
+  
   yaxis: {
     min: 0,
     // max: 100
   },
   responsive: [
     {
-      // breakpoint: 1350,
+      breakpoint: 767,
+      options: {
+              chart: {
+                  width:600
+              }
+          }
+      }, {
+          breakpoint: 1350,
+          options: {
+              chart: {
+                  height: 250
+              }
+          }
+      },
+      {
+          breakpoint: 1400,
       options: {
         chart: {
           height: 250
-        }
-      },
-      // breakpoint: 1400,
-      options: {
-        chart: {
-          height: 250
-        }
-      },
-    }
-  ],
-  tooltip: {
-    shared: true,
+                }
+            }
+        },
+    ],
+    tooltip: {
+        enabled: true,
+        shared: true,
     intersect: false,
     y: {
       formatter: function (value, options) {
@@ -379,7 +423,8 @@ var pollutantLineChartOptions = {
               case 4:
                 $("#lineChartPollutantNo2Value").text(item.length > 0 ? chartData[options.dataPointIndex].nO2 : '');
                 break;
-            }
+              }
+              return value;
           });
         } else {
           $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
@@ -475,23 +520,6 @@ TxtRotate.prototype.tick = function () {
   }, delta);
 };
 
-//window.onload = function () {
-//  var elements = document.getElementsByClassName('txt-rotate');
-//  for (var i = 0; i < elements.length; i++) {
-//    var toRotate = elements[i].getAttribute('data-rotate');
-//    var period = elements[i].getAttribute('data-period');
-//    if (toRotate) {
-//      new TxtRotate(elements[i], JSON.parse(toRotate), period);
-//    }
-//  }
-//  // INJECT CSS
-//  var css = document.createElement("style");
-//  css.type = "text/css";
-//  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.05em solid #fff }";
-//  document.body.appendChild(css);
-//};
-// Breath text heading animation script End--------------
-
 //// --Mobile Menu---------------------------
 $('.navmobile-new').click(function () {
   $('#hamburger').toggleClass('open');
@@ -552,7 +580,7 @@ $(document).ready(function () {
   // Bannner text fadeout function End--------
 
   // Do not remove below code starts---------------------------------
-  $('#currentDate').text(getFormattedDate(new Date()));
+    $('#currentDate').html(getFormattedDate(new Date()));
   aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
   pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
   aqiLineChart.render();
@@ -583,6 +611,8 @@ function toggleDiv(tabId, pollutant) {
 
 // // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
+    var selText = $(this).text();
+    $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
   if (!$(this).hasClass("active")) {
     $('.dropdown-change li a').removeClass("active");
     $(this).addClass("active");
@@ -1080,7 +1110,7 @@ function getFormattedDate(dateValue) {
   var hours = dateValue.getHours();
   var hoursFormat = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12;
-  return weekDays[dateValue.getDay()] + ' ' + (day > 10 ? day : '0' + day) + '/' + (month > 10 ? month : '0' + month) + '/' + dateValue.getFullYear().toString().substring(-2) + ', ' + (hours = hours ? hours : 12) + ' ' + hoursFormat;
+    return weekDays[dateValue.getDay()] + ' ' + (day > 10 ? day : '0' + day) + '/' + (month > 10 ? month : '0' + month) + '/' + dateValue.getFullYear().toString().substring(-2) + ',<br>'  + (hours = hours ? hours : 12) + ' ' + hoursFormat;
 }
 
 function getYearlyStationPollutantsThreshold() {
@@ -1295,12 +1325,16 @@ function bindStationDataToLineChart(filter) {
   }
   aqiLineChart.updateOptions({
     series: [{
-      name: 'AQI',
+      name: '',
       data: aqiData
     }],
     xaxis: {
       categories: categoriesData,
-      tickAmount: 10,
+        tickAmount: 10,
+        labels: {
+            rotateAlways: false,
+
+        }
     }
   });
   pollutantLineChart.updateOptions({
@@ -1696,11 +1730,11 @@ function bindStationDataToBarChart(filter) {
           break;
       }
       barChartDataSet = [{
-        label: 'AQI',
+        label: '',
         backgroundColor: backgroundColors,
         lineTension: 0.2,
           data: barChartData,
-          borderRadius: 20
+          borderRadius: 3
       }];
       pollutantBarChartId = "ADstationAqiBarGraph";
       break;
@@ -1717,7 +1751,19 @@ function bindStationDataToBarChart(filter) {
       fill: false,
       datasets: barChartDataSet
     },
-    options: {
+      options: {
+          responsive: true,
+          maintainAspectRatio: false, // Set to false to allow custom sizing
+          // aspectRatio: 3, // Aspect ratio (width/height), adjust as needed
+          // canvas: {
+          //   height: 100, // Set the canvas height explicitly
+          // },
+          toolbar: {
+              show: false,
+              tools: {
+                  download: false,
+              }
+          },
       plugins: {
         legend: {
           display: false // This hides the legend
@@ -1727,12 +1773,16 @@ function bindStationDataToBarChart(filter) {
           // text: 'Chart.js Bar Chart - Stacked'
         },
       },
-      responsive: true,
+      //responsive: true,
       interaction: {
         intersect: false,
       },
       scales: {
-        x: {
+          x: {
+              ticks: {
+                  maxRotation: 0,
+                  minRotation: 0
+              },
           grid: {
             display: false, // This will remove the Y-axis grid lines
             drawBorder: false, // Optional: if you also want to remove the axis border
