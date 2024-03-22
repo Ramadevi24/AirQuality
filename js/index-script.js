@@ -939,11 +939,11 @@ function getCurrentLocation() {
     var longitude = position.coords.longitude;
     currentStationDetails = findNearestStation(latitude, longitude);
     if (currentStationDetails) {
-        loadStationData(currentStationDetails.stationId);
+        loadStationData();
     }
   }, function error() {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
-      loadStationData(currentStationDetails.stationId);
+      loadStationData();
   });
 }
 
@@ -1011,9 +1011,9 @@ function populateSort(sortBy) {
   }
 }
 
-function loadStationData(stationid) {
+function loadStationData() {
    //alert(stationid);
-  const apiUrl = baseUrl + 'GetAirQualityStation?input=' + stationid;
+    const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
   var data = $("#datafield").val();
   // var category = $.parseJSON(data);
   $.ajax({
@@ -1194,7 +1194,7 @@ function bindLiveCityRanking() {
 
 function selectedStation(stationId) {
   currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
-    loadStationData(currentStationDetails.stationId);
+    loadStationData();
 }
 
 function getAirQualitySafetyLevel() {

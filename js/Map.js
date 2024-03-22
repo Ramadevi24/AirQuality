@@ -352,26 +352,26 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
 
         });
 
-        $("#Refreshbtn").click(function (event) {
-            if ($("#selectedCity").text() == $('#abudhabi').val()) {
-                LoadAirQualityData();
-                var stationName = $('#abudhabi').val();
-                $("#selectedCity").text(stationName);
-                LoadProgressBar();
-                displayStationInfo("EAD_HamdanStreet");
-                LoadPollutantsTrends("EAD_HamdanStreet");
-                var year = selectedyearButton.innerText;
-                GetAirAnalytics(year, "");
-                $("#stationsDropdown").val("");
-            } else {
-                var station = $("#stationsDropdown").val();
-                LoadStationData(station)
-                    ;
-            }
-            var currentDate = new Date();
-            var formattedDate = moment(currentDate).format("h:mm A, MMM DD");
-            $("#LastUpdatedDateTime").html("<strong>Last Update at</strong> " + formattedDate);
-        });
+        //$("#Refreshbtn").click(function (event) {
+        //    if ($("#selectedCity").text() == $('#abudhabi').val()) {
+        //        LoadAirQualityData();
+        //        var stationName = $('#abudhabi').val();
+        //        $("#selectedCity").text(stationName);
+        //        LoadProgressBar();
+        //        displayStationInfo("EAD_HamdanStreet");
+        //        LoadPollutantsTrends("EAD_HamdanStreet");
+        //        var year = selectedyearButton.innerText;
+        //        GetAirAnalytics(year, "");
+        //        $("#stationsDropdown").val("");
+        //    } else {
+        //        var station = $("#stationsDropdown").val();
+        //        LoadStationData(station)
+        //            ;
+        //    }
+        //    var currentDate = new Date();
+        //    var formattedDate = moment(currentDate).format("h:mm A, MMM DD");
+        //    $("#LastUpdatedDateTime").html("<strong>Last Update at</strong> " + formattedDate);
+        //});
 
         function updateSelectedCity1(cityKey, Value) {
             ZoomToLocation(Value);
@@ -487,69 +487,10 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                             StationsObject[x].data = stationobj;
                         }
                     }
-                    const aqi = Math.round(selectedStationObj.averageAQI);
-                    // $("#BannerAverageAQI, #SafetyLevelsAQI").text(aqi);
-                    // var data = $("#datafield").val();
-                    // var category = $.parseJSON(data);
-                    // const { aqiCategory, aqiMessage, typeClass, textClass, WearMaskmessage, StayindoorMessage, UsePurifierMessage, OutdoorActivitiesMessage, CyclingMessage, BabiesSensitivePersonsMessage, EatingOutdoorsMessage } = getAqiCategoryInfo(aqi);
-                    // $("#BannerEnvironmentType, #SafetyLevelsEnvironmentType, #SMLEnvironmentType").text(aqiCategory);
-                    // $("#BannerEnvironmentMessage, #SafetyLevelsEnvironmentMessage").text(aqiMessage);
-                    // $(".live-update, .safety-section, .health-rec-section").addClass(typeClass);
-                    // $("#SMLEnvironmentType").addClass(textClass)
-                    // $("#PM10Station").text(selectedStationObj.pollutantValue);
-                    // setmessages(WearMaskmessage, StayindoorMessage, UsePurifierMessage, OutdoorActivitiesMessage, CyclingMessage, BabiesSensitivePersonsMessage, EatingOutdoorsMessage);
-                    // var stationName = $('#abudhabi').val() + ", " + $('#uae').val();
-                    // $("#stationName").text(stationName);
-                    // $("#pollutionStation").text(stationName);
-                    // $("#analiticsStation").text(stationName);
-                    // $("#stationAQI").text(stationName);
-                    // $("#sefetyLevelStation").text(stationName);
-                    // $("#pollution_title").text($('#abudhabi').val());
-
-                    // $("#pollutantName").empty();
-                    // $("#mainpollutants").empty();
-                    // $("#mainpollutantsText").empty();
-                    // if (selectedStationObj.pollutantName == "PM10") {
-                    //     var text = "PM<sub>10</sub>"
-                    //     var mainpollutant = "<strong>PM<sub>10</sub></strong>"
-                    //     $("#pollutantName").append(text);
-                    //     $("#mainpollutants").append(mainpollutant);
-                    //     $("#mainpollutantsText").html(category.main.fullforms.PM10);
-                    // } else if (selectedStationObj.pollutantName == "SO2") {
-                    //     var text = "SO<sub>2</sub>"
-                    //     var mainpollutant = "<strong>SO<sub>2</sub></strong>"
-                    //     $("#pollutantName").append(text);
-                    //     $("#mainpollutants").append(mainpollutant);
-                    //     $("#mainpollutantsText").html(category.main.fullforms.SO2);
-                    // } else if (selectedStationObj.pollutantName == "CO") {
-                    //     var text = "CO"
-                    //     var mainpollutant = "<strong>CO</strong>"
-                    //     $("#pollutantName").append(text);
-                    //     $("#mainpollutants").append(mainpollutant);
-                    //     $("#mainpollutantsText").html(category.main.fullforms.CO);
-                    // } else if (selectedStationObj.pollutantName == "O3") {
-                    //     var text = "O<sub>3</sub>"
-                    //     var mainpollutant = "<strong>O<sub>3</sub></strong>"
-                    //     $("#pollutantName").append(text);
-                    //     $("#mainpollutants").append(mainpollutant);
-                    //     $("#mainpollutantsText").html(category.main.fullforms.O3);
-                    // } else if (selectedStationObj.pollutantName == "NO2") {
-                    //     var text = "NO<sub>2</sub>"
-                    //     var mainpollutant = "<strong>NO<sub>2</sub></strong>"
-                    //     $("#pollutantName").append(text);
-                    //     $("#mainpollutants").append(mainpollutant);
-                    //     $("#mainpollutantsText").html(category.main.fullforms.NO2);
-                    // }
-
-                    //GenrateStationMetroLogicalChart(selectedStationObj);
-                    //populateTable(selectedStationObj);
+                    const aqi = Math.round(selectedStationObj.averageAQI);                   
                     Createpollutants_EmirateLvl(aqi);
                     Createpollutants_RegionLvl();
-                    Createpollutants();
-                    //getAirAnalytics(new Date().getFullYear());
-                    // GetHourlyStationChart();
-                    // GetMonthlyNewLineChart();
-                    //getLiveCityRankingApi();
+                    Createpollutants();                    
                     $('.page-loader').fadeOut('slow');
                 },
                 error: handleApiError
@@ -747,8 +688,9 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                         var attrInfo = response.results[0].graphic.attributes;
                         for (var i = 0; i < StationsObject.length; i++) {
                             if (StationsObject[i].attributes.Name == attrInfo.Name) {
-                                SelectedstationInfo = StationsObject[i];                               
-                               loadStationData(SelectedstationInfo.KeyName);
+                                SelectedstationInfo = StationsObject[i];
+                                currentStationDetails = stationsWithLocations.find(x => x.stationId == SelectedstationInfo.KeyName)
+                               loadStationData();
                                 break
                             }
                         }
