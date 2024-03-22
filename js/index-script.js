@@ -35,7 +35,7 @@ const stationsWithLocations = [{
   latitude: 24.3213,
   longitude: 54.6359
 }, {
-  stationId: "EAD_AlMafraq",
+  stationId: "EAD_AlMaqta",
   stationName: "Al Maqta",
   latitude: 24.4035,
   longitude: 54.5161
@@ -45,12 +45,12 @@ const stationsWithLocations = [{
   latitude: 24.4199,
   longitude: 54.5782
 },
-// {
-//   stationId: "EAD_AlMafraq",
-//   stationName: "Al Mafraq",
-//   latitude: 24.2863,
-//   longitude: 54.5889
-// }, 
+ {
+   stationId: "EAD_AlMafraq",
+   stationName: "Al Mafraq",
+   latitude: 24.2863,
+   longitude: 54.5889
+ }, 
 {
   stationId: "EAD_AlAinSchool",
   stationName: "Al Ain Islamic Institute",
@@ -148,11 +148,11 @@ const statusClass = {
 
 const aqiContent = {
   Good: "Enjoy the Fresh Air",
-  Moderate: "Babies And Sensitive Persons Should Stay Indoors",
+  Moderate: "Enjoy Your Day Outdoors!",
   UnHealthlySensitiveGroups: "Babies And Sensitive Persons Should Stay Indoors",
-  UnHealthly: "Babies And Sensitive Persons Should Stay Indoors",
-  VeryUnHealthly: "Babies And Sensitive Persons Should Stay Indoors",
-  Hazardous: "Babies And Sensitive Persons Should Stay Indoors",
+  UnHealthly: "Best to Stay Indoors",
+  VeryUnHealthly: "Not a Good Time to be Outdoors, Spend Your Day Indoors",
+  Hazardous: "You should avoid outdoor activities",
 }
 
 const chartFilter = {
@@ -583,8 +583,6 @@ function toggleDiv(tabId, pollutant) {
 
 // // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
-  var selText = $(this).text();
-  $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
   if (!$(this).hasClass("active")) {
     $('.dropdown-change li a').removeClass("active");
     $(this).addClass("active");
