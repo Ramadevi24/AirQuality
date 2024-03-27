@@ -512,7 +512,7 @@ $(window).scroll(function () {
 //  05-Feb-2024 Map Search icon script Start--------------   
 $('.listSearch li').on("click", function () {
     $(".listSearch li").css("background-color", "");
-    $(this).css("background-color", "rgb(57 56 56)");
+    $(this).css("background-color", "rgb(213 213 213)");
     var value = $(this).text();
     //alert(value);
     $(".show-mapSearchList").show();
@@ -1106,12 +1106,13 @@ function loadStationData() {
             };
             const aqi = Math.round(selectedStationObj.averageAQI);
             var aqiDetails = getAqiStatusAndColorCode(aqi);
+            var currentYearOverview = new Date().getFullYear();
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
             $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi").text(aqi).css('color', aqiDetails.color);
             $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
             $("#aqiNearestStation, #insightNearestStation").text('Nearest Station: ' + currentStationDetails.stationName);
             $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
-            $("#yearlyAirQualityOverview").text(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + new Date().getFullYear());
+            $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality' + '<br>Overview for ' + currentYearOverview);
             $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
             var mainPollutantNameContent;
             switch (selectedStationObj.pollutantName) {
@@ -1389,13 +1390,21 @@ function bindStationDataToLineChart(filter) {
             categoriesData = chartData.map(t => { return t.year; });
             break;
         default:
-            categoriesData = chartData.map(t => { return t.hour.split(' '); });
-            var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
-            recordedDates.forEach(item => {
-                $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates, #pollutantHourlyBarChartDates").append(`<li>
-          <p>`+ item + `</p>
-        </li>`);
+            /*categoriesData = chartData.map(t => { return t.hour.split(' '); });*/
+            categoriesData = chartData.map(item => {
+                // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
+                const dateParts = item.recordedDate.split('/');
+                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                // Combine the formatted date with the hour, separated by a semicolon
+                return `${formattedDate};${item.hour}`;
             });
+            var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
+            //    recordedDates.forEach(item => {
+            //        $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates, #pollutantHourlyBarChartDates").append(`<li>
+            //  <p>`+ item + `</p>
+            //</li>`);
+            //    });
             break;
     }
     aqiLineChart.updateOptions({
@@ -1495,7 +1504,12 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(0);
                             thresholdData.push(item.pM10);
                         }
-                        categoriesData.push(item.hour.split(' '));
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
                     });
                     break;
             }
@@ -1560,7 +1574,12 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(0);
                             thresholdData.push(item.sO2);
                         }
-                        categoriesData.push(item.hour.split(' '));
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
                     });
                     break;
             }
@@ -1625,7 +1644,12 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(0);
                             thresholdData.push(item.co);
                         }
-                        categoriesData.push(item.hour.split(' '));
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
                     });
                     break;
             }
@@ -1690,7 +1714,12 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(0);
                             thresholdData.push(item.o3);
                         }
-                        categoriesData.push(item.hour.split(' '));
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
                     });
                     break;
             }
@@ -1755,7 +1784,12 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(0);
                             thresholdData.push(item.nO2);
                         }
-                        categoriesData.push(item.hour.split(' '));
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
                     });
                     break;
             }
@@ -1798,8 +1832,14 @@ function bindStationDataToBarChart(filter) {
                     break;
                 default:
                     chartData.forEach(item => {
+                        // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
                         barChartData.push(item.aqi);
-                        categoriesData.push(item.hour.split(' '));
+                        categoriesData.push(formattedString);
                         backgroundColors.push(colorCodes[getColorClassForAqi(item.aqi)]);
                     });
                     break;
@@ -1819,67 +1859,186 @@ function bindStationDataToBarChart(filter) {
         chartStatus.destroy();
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
-    var constructBarChart = new Chart(barChart, {
-        type: 'bar',
-        data: {
-            labels: categoriesData,
-            fill: false,
-            datasets: barChartDataSet
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false, // Set to false to allow custom sizing
-            // aspectRatio: 3, // Aspect ratio (width/height), adjust as needed
-            // canvas: {
-            //   height: 100, // Set the canvas height explicitly
-            // },
-            toolbar: {
-                show: false,
-                tools: {
-                    download: false,
+    // console.log(categoriesData);
+
+
+
+
+    //const extractDate = isoDateString => isoDateString.split('T')[0];
+
+    //// Reduce the iso8601Dates to find where dates change
+    //let uniqueDates = iso8601Dates.reduce((acc, current, index, array) => {
+    //    const currentDate = extractDate(current);
+    //    // For the first item or when the date changes...
+    //    if (index === 0 || currentDate !== extractDate(array[index - 1])) {
+    //        acc.push(currentDate);
+    //    }
+    //    return acc;
+    //}, []);
+
+    if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
+        const iso8601Dates = convertToISO8601(categoriesData);
+        var constructBarChart = new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: iso8601Dates,
+                fill: false,
+                datasets: barChartDataSet
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // This hides the legend
+                    },
+                    title: {
+                        display: true,
+                        // text: 'Chart.js Bar Chart - Stacked'
+                    },
+                },
+                interaction: {
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'hour',
+                        },
+                        ticks: {
+                            // Auto-skip prevents label overlapping.
+                            autoSkip: true,
+                            // Max 20 ticks, adjust as needed.
+                            maxTicksLimit: 20
+                        },
+                        position: 'bottom', // Primary x-axis
+                    },
+                    x2: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'MMM D',
+                            displayFormats: {
+                                day: 'MMM D'
+                            }
+                        },
+                        position: 'bottom',
+                        ticks: {
+                            // Auto-skip prevents label overlapping.
+                            autoSkip: true,
+                            // Max 20 ticks, adjust as needed.
+                            maxTicksLimit: 20
+                        },
+
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        // Ensure alignment with x-axis range
+                        min: '2023-12-22',
+                        max: '2023-12-25'
+                    }
                 }
             },
-            plugins: {
-                legend: {
-                    display: false // This hides the legend
-                },
-                title: {
-                    display: true,
-                    // text: 'Chart.js Bar Chart - Stacked'
-                },
-            },
-            //responsive: true,
-            interaction: {
-                intersect: false,
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        maxRotation: 0,
-                        minRotation: 0
-                    },
-                    grid: {
-                        display: false, // This will remove the Y-axis grid lines
-                        drawBorder: false, // Optional: if you also want to remove the axis border
-                    },
-                    stacked: true,
-                },
-                y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                    stacked: true, // Assuming you want the Y-axis stacked as well
-                }
-            },
+
             animations: {
                 tension: {
                     duration: 2000,
                     easing: 'easeInCubic'
-
                 }
             }
-        }
-    });
+
+        });
+    }
+    else {
+        var constructBarChart = new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: categoriesData,
+                fill: false,
+                datasets: barChartDataSet
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // This hides the legend
+                    },
+                    title: {
+                        display: true,
+                        // text: 'Chart.js Bar Chart - Stacked'
+                    },
+                },
+                interaction: {
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0
+                        },
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },
+                        stacked: true,
+                    },
+                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
+                        stacked: true, // Assuming you want the Y-axis stacked as well
+                    }
+                },
+
+                animations: {
+                    tension: {
+                        duration: 2000,
+                        easing: 'easeInCubic'
+                    }
+                }
+            }
+
+            });
+    }
     constructBarChart.update();
+
 }
 
+
+function convertToISO8601(dateTimeStrings) {
+    return dateTimeStrings.map(dateTime => {
+        const [date, timePart] = dateTime.split(';');
+        let [time, ampm] = timePart.split(' ');
+        let [hours, minutes] = time.split(':');
+
+        // Adding minutes if they are missing (for whole hours)
+        minutes = minutes || '00';
+
+        // Convert hours to 24-hour format
+        if (ampm === 'PM' && hours !== '12') {
+            hours = (parseInt(hours, 10) + 12).toString();
+        } else if (ampm === 'AM' && hours === '12') {
+            hours = '00';
+        }
+
+        // Construct ISO8601 format
+        return `${date}T${hours}:${minutes}:00`;
+    });
+}
 function updateCharts(selectedFilter) {
     // Do not remove below code starts---------------------------------
     $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');

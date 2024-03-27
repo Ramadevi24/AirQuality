@@ -1,3 +1,19 @@
+@media (min-width: 320px) and (max-width: 365px){
+    .pollutant-toggleBar .info-popup{
+        width: 90%; padding: 15px 30px 17px 30px!important;
+    }
+}
+
+@media (min-width: 370px) and (max-width: 399px){
+    .data-sort_sidebar.hidden{
+        padding: 30px 15px!important;
+    }
+}
+@media (min-width: 420px) and (max-width: 430px){
+    .data-sort_sidebar.hidden{
+        padding: 28px 15px!important;
+    }
+}
 
 @media (min-width: 400px) and (max-width: 435px){
     .highlight #sidebar{
@@ -21,6 +37,9 @@
     .location-popup-start{
         padding: 10px 10px;
     }
+    .insight ul.dropdown-menu.sorttoggle.show{
+        left: auto!important;
+    }
     .insight .number-exceedance .number-exceedance-heading{
         font-size: 23px;
     }
@@ -40,7 +59,7 @@
         height: 40px;
     }
     .pollutant-toggleBar .info-popup{
-        width: 90%;
+        width: 90%; padding: 29px 30px 22px 30px;
     }
     .down-arrow, .wheather-widget{
         display: none;
@@ -58,9 +77,9 @@
     .banner-section .carousel-caption-banner .h5{
         font-size: 35px; top: 35px;
     }
-    .weather-card{
+    /* .weather-card{
         top: 83px; right: 5px;
-    }
+    } */
     .circular-width{
         width: 230px;
         height: 230px;
@@ -230,7 +249,7 @@
         justify-content: flex-start; margin-bottom: 20px;
     }
     footer .social-small-links .left ul.social-media li{
-        margin-right: 10px;
+        margin-right: -9px;
     }
     footer .social-small-links .left ul.social-media li a{
         font-size: 30px;
@@ -343,6 +362,9 @@
     .footermobile-none{
         display: none;
     }
+    .footer-2-sec {
+        padding-left: 0px;
+    }
     .insight ul#myTabs li a{
         margin:0px 2px;
     }
@@ -366,7 +388,10 @@
         margin: 0!important;
     }
     .insight .graph-duration-filters .two-one-top {
-        top: 10px;
+        top: 10px; right: 10px;
+    }
+    .canvas-graphs-height{
+        margin-bottom: 0px;
     }
     .newcutom-btn{
         width: 120px 
@@ -400,13 +425,13 @@
     .insight .chart-f-content p {
         font-size: 18px;
         font-weight: 400;
-        margin: 0px;
+        /* margin: 0px; */
         text-align: left;
         color: var(--grey);
-        margin-bottom: 30px;
+        /* margin-bottom: 30px;
         margin-top: 20px;
         min-height: 90px;
-        display: none;
+        display: none; */
     }
     #newchartTrend .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
         justify-content: flex-start;
@@ -522,7 +547,7 @@
     #ADstationAqiBarGraph {
         overflow: hidden;
         overflow-x: scroll;
-        margin-top: 40px;
+        margin-top: 30px;
         margin-bottom: 0px !important; 
     }
     #chart_polutent {
@@ -570,8 +595,14 @@
     .insight .pollutant-toggleBar .pollutantbar-title{
         font-size: 22px;
     }
+    .insight ul.dropdown-menu.sorttoggle.show{
+        left: -45%!important;
+    }
     .banner-section .carousel-caption-banner{
         gap: 20px;
+    }
+    .pollutant-toggleBar .info-popup{
+        width: 90%; padding: 25px 30px 37px 30px;
     }
     #locationModal .modal-body p{
         font-size: 14px;
@@ -630,8 +661,11 @@
     header .search-block{
         width: auto;
     }
-    .weather-card{
+    /* .weather-card{
         top: 37%; right: -7%;
+    } */
+    .section1-dateshift .date{
+        font-size: 13px;
     }
     .weather-card h2{
         font-size: 23px;
@@ -784,7 +818,7 @@
         justify-content: flex-start; margin-bottom: 20px;margin-top: 15px;
     }
     footer .social-small-links .left ul.social-media li{
-        margin-right: 10px;
+        margin-right: -6px;
     }
     footer .social-small-links .left ul.social-media li a{
         font-size: 30px;
@@ -1055,10 +1089,10 @@
     .insight ul.nav.twobar-tabs {
         top: 83%;
     }
-    .chart-f-content {
+    /* .chart-f-content {
         min-height: 55px;
         display: none;
-    }
+    } */
     
         
 
@@ -1269,7 +1303,7 @@
     .air-map-container .overview-heading{
         font-size: 20px;
     }
-    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe{
+    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
         height: 815px;
     }
     .wheather-widget .map-bg-opacity img {
@@ -1301,11 +1335,16 @@
         height: 13px;
     }
     .insight .res-airanalytic{
-        margin-top: 5px;width: 100px;
+        margin-top: 9px;width: 100px;
     }
-    
+    .insight ul.legend_radar{
+        margin-top: 10px
+    }
     .enjoy-mb-8{
         margin-bottom: 8px!important;
+    }
+    .insight ul.dropdown-menu.sorttoggle.show {
+        left: -13% !important;
     }
     /* .levelmb25{
         margin-bottom: 25px!important;
@@ -1335,14 +1374,32 @@
     .drop-arrow-icon1{
         bottom: 35px;
     }
-    .air-map-container .air-map-col .mp-resolution, .air-map-container .air-map-col iframe {
+    .air-map-container .air-map-col .mp-resolution, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg {
         height: 500px;
+    }
+    #wrapper .sidebar-nav .wheather-widget{
+        padding: 0px 40px;
+    }
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image{
+        height: 220px !important
+    }
+    .weather-box .weather-data{
+        margin-top: 11px;
     }
     /* .air-map-container .list-container{
         padding: 0px 0;
     } */
     .air-map-container .overview-heading{
-        margin-top: 8px !important;
+        margin-top: 5px !important;
+    }
+    .air-map-container .list-container{
+        padding: 0px 0 0 0; margin-top: -5px;
+    }
+    .air-map-container .list-container .darkorange span{
+        line-height: 15px;
+    }
+    .air-map-container .list-item span{
+        line-height: 10px;
     }
     .air-map-container .list-item p {
         font-size: 32px;
@@ -1401,6 +1458,9 @@
         font-size: 55px;
         /* line-height: 48px; */
     }
+    .insight .pd-main-box {
+        padding: 6px 2rem!important;
+    }
     .insight .main-box {
         padding: 0rem 1rem;
     }
@@ -1430,7 +1490,7 @@
     }
     .insight .chart-f-content p {
         font-size: 14px;
-        padding-top: 7px;
+        padding-top: 1px;
     }
     .insight .date_row ul li p {
         font-size: 13px;
@@ -1502,9 +1562,40 @@
     /* .insight .mtb-mdscreens{
         margin-top: 20px; margin-bottom: 30px;
     } */
-    .insight .ug_content {
+    /* .insight .ug_content {
         position: relative;
         top: 30px;
+    } */
+    .equal-air-box-height {
+        height: 435px;
+        margin-bottom: 7px;
+        padding: 9px 15px !important;
+    }
+    .equal-station-box-height {
+        height: 435px;
+        margin-bottom: 10px;
+        padding: 15px 15px !important;
+    }
+    .insight .pollutants-legend-heading{
+        bottom: 9px;
+    }
+    .insight ul.nav.twobar-tabs {
+        bottom: 65px;
+    }
+    .canvas-graphs-height{
+        margin-bottom: 33px;
+    }
+    .canvas-pollutant-resHt{
+        height: 285px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top {
+        top: -10px !important;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: -14px !important;
+    }
+    .insight .hour_box{
+        padding-top: 1rem;
     }
 }
 
