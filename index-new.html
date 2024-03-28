@@ -102,14 +102,14 @@
                                     <button class="btn search-icon" type="button">
                                         <img src="./images/new-images/search.png" width="16" class="filter1">
                                     </button>
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="headerSearchInput"
                                            aria-label="Search">
                                     <input type="reset" value="x">
                                     <i class="icon-circle-xmark-regular"></i>
                                 </form>
                                 <div class="search-result">
                                     <p class="opacity-1 ms-0">Suggestions</p>
-                                    <ul>
+                                    <ul class="searchItem">
                                         <li>
                                             <i class="icon-long-right-arrow"></i> Air
                                         </li>
@@ -125,7 +125,7 @@
                                         <li>
                                             <i class="icon-long-right-arrow"></i> Chart
                                         </li>
-                                    </ul>
+                                    </ulclass="searchItem">
                                 </div>
                             </div>
                         </div>
@@ -630,7 +630,7 @@
                                                                     </p>
                                                                 </div>
                                                                 <div class="text-center">
-                                                                    <img src="./images/new-images/Activities2.png"
+                                                                    <img src="./images/new-images/heart-green.png"
                                                                          alt="">
                                                                     <p class="mt-2 enjoy-mb-8">
                                                                         Being Indoor is the Best
@@ -673,7 +673,7 @@
                                                         guidelines to minimize the impact of elevated air pollution
                                                         levels on your health.
                                                     </p>
-                                                    <ul>
+                                                    <ul class="healthCommendation-content">
                                                         <li data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                             data-backdrop="false">
                                                             <div class="bg-gray">
@@ -1106,7 +1106,7 @@
                                                                     <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top md-top-tablet"
                                                                                         type="button"
                                                                                         data-bs-toggle="dropdown"
                                                                                         aria-expanded="false"
@@ -1195,7 +1195,7 @@
                                                                     <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top md-top-tablet"
                                                                                         type="button"
                                                                                         data-bs-toggle="dropdown"
                                                                                         aria-expanded="false"
@@ -1284,7 +1284,7 @@
                                                                     <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top md-top-tablet"
                                                                                         type="button"
                                                                                         data-bs-toggle="dropdown"
                                                                                         aria-expanded="false"
@@ -1373,7 +1373,7 @@
                                                                     <div class="tab_shado equal-air-box-height">
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group me-auto">
-                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top md-top-tablet"
                                                                                         type="button"
                                                                                         data-bs-toggle="dropdown"
                                                                                         aria-expanded="false"
@@ -1456,23 +1456,23 @@
                                                                onclick="toggleDiv('aiqTab', 'AQI')"
                                                                style="cursor: pointer;">AQI</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" id="legend-PM10">
                                                             <a class="nav-link" onclick="toggleDiv('pm10Tab', 'PM10')"
                                                                style="cursor: pointer;">PM10</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" id="legend-SO2">
                                                             <a class="nav-link" onclick="toggleDiv('so2Tab', 'SO2')"
                                                                style="cursor: pointer;">SO2</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" id="legend-CO">
                                                             <a class="nav-link" onclick="toggleDiv('coTab', 'CO')"
                                                                style="cursor: pointer;">CO</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" id="legend-O3">
                                                             <a class="nav-link" onclick="toggleDiv('o3Tab', 'O3')"
                                                                style="cursor: pointer;">O3</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" id="legend-NO2">
                                                             <a class="nav-link" onclick="toggleDiv('no2Tab', 'NO2')"
                                                                style="cursor: pointer;">NO2</a>
                                                         </li>
@@ -1614,7 +1614,7 @@
                                                                             <ul id="aqiHourlyLineChartDates">
                                                                             </ul>
                                                                         </div>-->
-                                                                        <ul class="legend">
+                                                                        <ul class="legend aqi-legend-pd-0">
                                                                             <li>
                                                                                 <span class="marker_good marker_legend"></span>Good
                                                                             </li>
@@ -1699,7 +1699,7 @@
                                                                                         id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
-                                                                                <div class="date-box calen-box-hide">
+                                                                                <div class="date-box calen-box-hide margin-top-0">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text" id="datepicker" class="datepicker" autocomplete="off" placeholder="Custom">
@@ -2919,6 +2919,17 @@
                         $(this).hide();
                     } else {
                         $(this).show();
+                    }
+                });
+            });
+            $('#headerSearchInput').on('keyup', function () {
+                var searchText = $(this).val().toLowerCase(); // Get the value of the input field and convert it to lowercase
+                $('.search-result').each(function () { // Loop through each list item
+                    var listItemText = $(this).find('.searchItem li').text().toLowerCase(); // Get the text content of the list item and convert it to lowercase
+                    if (listItemText.indexOf(searchText) === -1) { // Check if the list item text contains the search text
+                        $(this).hide(); // If yes, show the list item
+                    } else {
+                        $(this).show(); // If not, hide the list item
                     }
                 });
             });

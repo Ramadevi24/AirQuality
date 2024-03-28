@@ -368,8 +368,24 @@
     .insight ul#myTabs li a{
         margin:0px 2px;
     }
+    .insight .pollutant-hour-top7{
+        top: -9px !important;
+    right: -9px !important;
+    }
+    .insight .margin-top-0{
+        margin: 0!important;
+    top: -9px !important;
+    right: -7px !important;
+    }
     .insight .graph-duration-filters .hourly-3{
         right: 0!important;
+    }
+    .insight ul.aqi-legend-pd-0{
+        padding-left: 0;
+    }
+    .equal-station-box-height {
+        height: 570px;
+        margin-bottom: 5px;
     }
     .insight .graph-duration-filters .hourly-4-screen .btn{
         right: 0!important;
@@ -418,10 +434,10 @@
     .exceeded-box .contact-content p{
         font-size: 17px;
     }
-    .date_row {
+    /* .date_row {
         padding: 1px;
         padding-bottom: 70px;
-    }
+    } */
     .insight .chart-f-content p {
         font-size: 18px;
         font-weight: 400;
@@ -568,13 +584,13 @@
     }
     /* ------------ add new res css -------------- */
     .insight .ug_content {
-        top: 40px;
+        top: 20px;
     }
     .insight ul.nav.twobar-tabs {
-        top: 80%;
-        left: 50%;
-        width: 100%;
-        transform: translate(-50%, -50%);
+        bottom: 27%;
+    }
+    .insight ul.nav.upperTop{
+        bottom: 15%!important;
     }
     /* .insight .graph-duration-filters .btn {
         top: -7px;
@@ -624,7 +640,10 @@
         margin-top: 30px;
     }
     .insight .ug_content {
-        top: 37px;
+        top: 18px;
+    }
+    .insight .md-top-tablet{
+        top: 30px!important; right: 10px!important;
     }
     .insight .graph-duration-filters .tabscreen-3-mt .btn, .insight .graph-duration-filters .tabscreen-3-mt .date-box{
         top: -5px!important 
@@ -1087,7 +1106,13 @@
         width: 50%;
     }
     .insight ul.nav.twobar-tabs {
-        top: 83%;
+        bottom: 123px;
+    }
+    .insight ul.nav.upperTop {
+        bottom: 90px!important;
+    }
+    .canvas-graphs-height{
+        height: 350px;
     }
     /* .chart-f-content {
         min-height: 55px;

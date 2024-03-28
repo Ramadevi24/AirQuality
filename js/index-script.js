@@ -56,6 +56,265 @@ const causeStationData = {
             { 'cause': 'Secondary Pollutant', 'image': 'urban_traffic.png' }
         ]
     },
+    'Khalifa School': {
+        'PM10': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Mussafah': {
+        'PM10': [
+            { 'cause': 'Industrial Traffic', 'image': 'industrial_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Industrial Traffic', 'image': 'industrial_traffic.png' },
+            { 'cause': 'Industrial Emissions', 'image': 'industrial_emission.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Industrial Emissions', 'image': 'industrial_emission.png' }
+        ]
+    },
+    'Baniyas School': {
+        'PM10': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Al Maqta': {
+        'PM10': [
+            { 'cause': 'Traffic', 'image': 'traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'highway traffic', 'image': 'highway_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'highway traffic', 'image': 'highway_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'highway traffic', 'image': 'highway_traffic.png' }
+        ]
+    },
+    'Khalifa City A': {
+        'PM10': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Al Mafraq': {
+        'PM10': [
+            { 'cause': 'Highway Traffic', 'image': 'highway_traffic.png' },
+            { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Highway Traffic', 'image': 'highway_traffic.png' },
+            { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Highway Traffic', 'image': 'highway_traffic.png' },
+            { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
+        ]
+    },
+    'Al Ain Islamic Institute': {
+        'PM10': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Sweihan': {
+        'PM10': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Al Tawia': {
+        'PM10': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ]
+    },
+    'Zakher': {
+        'PM10': [
+            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Al Quaa': {
+        'PM10': [
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'No identified sources in the vicinity', 'image': 'null.png' }
+        ],
+        'SO2': [
+            { 'cause': 'No identified sources in the vicinity', 'image': 'null.png' }
+        ],
+        'CO': [
+            { 'cause': 'No identified sources in the vicinity', 'image': 'null.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Bida Zayed': {
+        'PM10': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Gayathi School': {
+        'PM10': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Liwa Oasis': {
+        'PM10': [
+            { 'cause': 'Rural Traffic', 'image': 'rural_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Ruwais': {
+        'PM10': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'Habshan South': {
+        'PM10': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'E11 Road': {
+        'PM10': [
+            { 'cause': 'Highway Traffic', 'image': 'highway_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+        ]
+    },
 };
 
 const stationsWithLocations = [{
@@ -650,6 +909,12 @@ $(document).ready(function () {
 
 // Insight Section Script by Sachin---------
 function toggleDiv(tabId, pollutant) {
+    if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
+        document.getElementById('myTabs').classList.add('upperTop');
+    } else {
+        // Remove the class 'upperTop' from the ul if another tab is clicked
+        document.getElementById('myTabs').classList.remove('upperTop');
+    }
     document.querySelectorAll('.tab-content.mt-0').forEach(function (div) {
         div.style.display = 'none';
     });
@@ -1133,6 +1398,9 @@ function loadStationData() {
                     break;
             }
             updateCauses(currentStationDetails.stationName, selectedStationObj.pollutantName);
+            updateLegendVisibility(currentStationDetails.stationName);
+            updateActivities(selectedStationObj.pollutantValue); 
+            updateHeathReccommendation(selectedStationObj.pollutantValue); 
             var pollutantColorClass = getColorClassForAqi(selectedStationObj.pollutantValue);
             $("#mainPollutantName, #mainPollutantValue").empty();
             $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
@@ -1148,7 +1416,83 @@ function loadStationData() {
     });
     // LoadProgressBar(inputParam)
 }
+// start Arisha pending to complete the content values
 
+function getAQILevel(value) {
+    if (value >= 0 && value <= 50) return 'good';
+    if (value >= 51 && value <= 100) return 'moderate';
+    if (value >= 101 && value <= 150) return 'unhealthyForSensitiveGroups';
+    if (value >= 151 && value <= 200) return 'unhealthy';
+    if (value >= 201 && value <= 300) return 'veryUnhealthy';
+    return 'hazardous';
+}
+
+function getActivityContent(aqiLevel) {
+    const activities = {
+        good: [
+            { img: "Activities1.png", text: "Have Fun Outdoors" },
+            { img: "Activities3.png", text: "Enjoy Outdoor Cycling" },
+            { img: "heart-green.png", text: "Babies & Sensitive Persons can have fun outdoor" },
+            { img: "Activities4.png", text: "Enjoy Your Meal Outdoors" },
+        ],
+        moderate: [
+            { img: "Activities1.png", text: "Have Fun Outdoors" },
+            { img: "Activities3.png", text: "Enjoy Outdoor Cycling" },
+            { img: "heart-orange.png", text: "Babies & Sensitive individuals Should be careful" },
+            { img: "Activities4.png", text: "Enjoy Your Meal Outdoors" },
+        ],
+        // Add definitions for other AQI levels...
+    };
+
+    return activities[aqiLevel].map(activity => `
+        <div class="text-center">
+            <img src="./images/new-images/${activity.img}" alt="">
+            <p class="mt-2 enjoy-mb-8">${activity.text}</p>
+        </div>
+    `).join('');
+}
+
+function getHealthRecommendationContent(aqiLevel) {
+    const recommendations = {
+        good: [
+            { img: "mask1.png", title: "Mask Usage", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Maintain indoor air quality by using air purifiers and keeping the windows closed on days with high AQI." },
+            // Add other recommendations...
+        ],
+        moderate: [
+            // Define moderate AQI health recommendations...
+        ],
+        // Add definitions for other AQI levels...
+    };
+
+    return recommendations[aqiLevel].map(recommendation => `
+        <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(/\s+/g, '')}">
+            <div class="bg-gray">
+                <img src="./images/new-images/${recommendation.img}" alt="health-icon">
+            </div>
+            <p class="mask-hoverEffect">${recommendation.title}</p>
+            <span>
+                <img src="./images/new-images/Exclamation.png" alt="img">
+            </span>
+            <!-- Modal structure here -->
+        </li>
+    `).join('');
+}
+
+function updateActivities(value) {
+    const aqiLevel = getAQILevel(value);
+    const content = getActivityContent(aqiLevel);
+    $('.activities-imgs').empty().append(content);
+}
+
+function updateHeathReccommendation(value) {
+    const aqiLevel = getAQILevel(value);
+    const content = getHealthRecommendationContent(aqiLevel);
+    $('.healthCommendation-content').empty().append(content);
+}
+
+
+// End Arisha pending to complete the content values
 function updateCauses(station, pollutant) {
     const causesContainer = document.querySelector('.Causes-img');
     causesContainer.innerHTML = ''; // Clear existing causes
@@ -1174,6 +1518,19 @@ function updateCauses(station, pollutant) {
     });
 }
 
+function updateLegendVisibility(selectedStation) {
+    const pollutants = ['PM10', 'NO2', 'SO2', 'CO', 'O3']; // All possible pollutants
+    pollutants.forEach(pollutant => {
+        // Check if the selected station monitors this pollutant
+        const isMonitored = causeStationData[selectedStation] && causeStationData[selectedStation].hasOwnProperty(pollutant);
+        console.log(pollutant, isMonitored); // This will now log true/false based on whether the station has the pollutant
+
+        const legendDiv = document.getElementById(`legend-${pollutant}`);       
+        if (legendDiv) {
+            legendDiv.style.display = isMonitored ? '' : 'none'; // Show if monitored, hide otherwise
+        }
+    });
+}
 function handleApiError(error) {
     $('.page-loader').fadeOut('slow');
     console.error('Error fetching data:', error);
@@ -1390,16 +1747,16 @@ function bindStationDataToLineChart(filter) {
             categoriesData = chartData.map(t => { return t.year; });
             break;
         default:
-            /*categoriesData = chartData.map(t => { return t.hour.split(' '); });*/
-            categoriesData = chartData.map(item => {
-                // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
-                const dateParts = item.recordedDate.split('/');
-                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+            categoriesData = chartData.map(t => { return t.hour.split(' '); });
+            //categoriesData = chartData.map(item => {
+            //    // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
+            //    const dateParts = item.recordedDate.split('/');
+            //    const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
-                // Combine the formatted date with the hour, separated by a semicolon
-                return `${formattedDate};${item.hour}`;
-            });
-            var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
+            //    // Combine the formatted date with the hour, separated by a semicolon
+            //    return `${formattedDate};${item.hour}`;
+            //});
+            //var recordedDates = Array.from(new Set(chartData.map(t => { return t.recordedDate; })));
             //    recordedDates.forEach(item => {
             //        $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates, #pollutantHourlyBarChartDates").append(`<li>
             //  <p>`+ item + `</p>
@@ -1518,6 +1875,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: '#004B87',
                 lineTension: 0.2,
                 data: thresholdData,
+                borderRadius: 3
             },
             {
                 label: '',
@@ -1588,6 +1946,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: '#004B87',
                 lineTension: 0.2,
                 data: thresholdData,
+                borderRadius: 3
             },
             {
                 label: '',
@@ -1658,6 +2017,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: '#004B87',
                 lineTension: 0.2,
                 data: thresholdData,
+                borderRadius: 3
             },
             {
                 label: '',
@@ -1728,6 +2088,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: '#004B87',
                 lineTension: 0.2,
                 data: thresholdData,
+                borderRadius: 3
             },
             {
                 label: '',
@@ -1798,6 +2159,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: '#004B87',
                 lineTension: 0.2,
                 data: thresholdData,
+                borderRadius: 3
             },
             {
                 label: '',
@@ -1859,31 +2221,29 @@ function bindStationDataToBarChart(filter) {
         chartStatus.destroy();
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
-    // console.log(categoriesData);
+  
 
-
-
-
-    //const extractDate = isoDateString => isoDateString.split('T')[0];
-
-    //// Reduce the iso8601Dates to find where dates change
-    //let uniqueDates = iso8601Dates.reduce((acc, current, index, array) => {
-    //    const currentDate = extractDate(current);
-    //    // For the first item or when the date changes...
-    //    if (index === 0 || currentDate !== extractDate(array[index - 1])) {
-    //        acc.push(currentDate);
-    //    }
-    //    return acc;
-    //}, []);
+    // Getting min and max dates from the dataset
+    
 
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
+        const dateTimes = iso8601Dates.map(entry => new Date(entry));
+        const minDate = new Date(Math.min(...dateTimes));
+        const maxDate = new Date(Math.max(...dateTimes));
+        const minDateString = minDate.toISOString().split('T')[0];
+        const maxDateString = maxDate.toISOString().split('T')[0];
+
+        
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
                 labels: iso8601Dates,
                 fill: false,
-                datasets: barChartDataSet
+                datasets: barChartDataSet.map(dataset => ({
+                    ...dataset,
+                    barThickness: 10, // This sets the thickness of each bar to 50 pixels
+                })),
             },
 
             options: {
@@ -1919,7 +2279,11 @@ function bindStationDataToBarChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        position: 'bottom', // Primary x-axis
+                        position: 'bottom',
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },// Primary x-axis
                     },
                     x2: {
                         type: 'time',
@@ -1942,9 +2306,16 @@ function bindStationDataToBarChart(filter) {
                             drawOnChartArea: false
                         },
                         // Ensure alignment with x-axis range
-                        min: '2023-12-22',
-                        max: '2023-12-25'
-                    }
+                        min: minDateString, // Set dynamically
+                        max: maxDateString  // Set dynamically
+                    },
+                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
+                        stacked: true,
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },// Assuming you want the Y-axis stacked as well
+                    },
                 }
             },
 
@@ -2000,8 +2371,13 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
                     },
                     y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true, // Assuming you want the Y-axis stacked as well
-                    }
+                        stacked: true,
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },// Assuming you want the Y-axis stacked as well
+                    },
+
                 },
 
                 animations: {
@@ -2012,13 +2388,31 @@ function bindStationDataToBarChart(filter) {
                 }
             }
 
-            });
+        });
     }
     constructBarChart.update();
 
 }
 
+function findMinMaxDates(dataset) {
+    const dateTimes = dataset.map(entry => {
+        // Splitting the entry into date and time parts
+        const [datePart, timePart] = entry.split(';');
+        // Parsing the date and time into a Date object
+        return new Date(`${datePart} ${timePart}`);
+    });
 
+    // Finding the minimum and maximum dates
+    const minDate = new Date(Math.min(...dateTimes));
+    const maxDate = new Date(Math.max(...dateTimes));
+
+    // Formatting dates back to the required string format, if necessary
+    // For this example, we're assuming the Chart.js needs the input in 'YYYY-MM-DD' format
+    const minDateString = minDate.toISOString().split('T')[0];
+    const maxDateString = maxDate.toISOString().split('T')[0];
+
+    return { minDateString, maxDateString };
+}
 function convertToISO8601(dateTimeStrings) {
     return dateTimeStrings.map(dateTime => {
         const [date, timePart] = dateTime.split(';');
@@ -2039,6 +2433,8 @@ function convertToISO8601(dateTimeStrings) {
         return `${date}T${hours}:${minutes}:00`;
     });
 }
+
+
 function updateCharts(selectedFilter) {
     // Do not remove below code starts---------------------------------
     $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');

@@ -2455,7 +2455,7 @@ color: var(--green);
 }
 .insight .Causes-img img {
     max-width: 48px;
-    margin-right: 10px;
+    
 }
 .insight .Causes-img p, .insight .activities-imgs p{
     font-weight: 600; font-size: 10px;margin-bottom: 0;
