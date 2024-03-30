@@ -125,7 +125,7 @@
                                         <li>
                                             <i class="icon-long-right-arrow"></i> Chart
                                         </li>
-                                    </ulclass="searchItem">
+                                        </ulclass="searchItem">
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
         <div class="section air-map-container" id="section1">
             <div class="air-map-col col-md-12">
                 <div class="map-block position-relative">
-                    <div id="mapBlock" class="mapimg" style="height:500px;"></div>
+                    <div id="mapBlock" class="mapimg"></div>
                     <!-- 30-Jan-2024 -- hide iframe and added image only -->
                     <!--<img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
                     <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">-->
@@ -1609,7 +1609,9 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <div id="aqiLineChart"></div>
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="aqiLineChart"></canvas>
+                                                                        </div>
                                                                         <!--<div class="date_row">
                                                                             <ul id="aqiHourlyLineChartDates">
                                                                             </ul>
@@ -1726,11 +1728,10 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <div id="pollutantLineChart"></div>
-                                                                        <!--<div class="date_row">
-                                                                            <ul id="pollutantHourlyLineChartDates">
-                                                                            </ul>
-                                                                        </div>-->
+                                                                        <div class="canvas-graphs-height">
+                                                                            <canvas id="pollutantLineChart"></canvas>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -4373,3 +4373,8 @@ footer .copy-rights ul li a {
 #aqiLineChart .apexcharts-xaxistooltip, #pollutantLineChart .apexcharts-xaxistooltip {
     display: none !important;
 }
+
+.legend-item-hidden {
+    color: #aaa; /* gray out text */
+    font-style: italic; /* italicize text */
+}
