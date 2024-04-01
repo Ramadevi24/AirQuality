@@ -13,16 +13,14 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Air Icons -->
     <link href="./fonts/air-icons/air-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
           integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="./css/material-icon.css" />
-    <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
-    <link href="./css/stylesnew.css" rel="stylesheet">
+   <link href="./css/stylesnew.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-529G4HVEPS"></script>
+    <script async src="./js/graphs-js/googlejs.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -36,10 +34,10 @@
             data-section-name="header">
         <nav class="navbar navbar-expand-md py-0">
             <div class="container-fluid headerpt-10">
-                <a class="navbar-brand white pointer-event" href="https://www.ead.gov.ae/" target="_blank">
+                <a class="navbar-brand white pointer-event" target="_blank">
                     <img src="./images/ead-logo.png" alt="">
                 </a>
-                <a class="navbar-brand black pointer-event" href="https://www.ead.gov.ae/" target="_blank">
+                <a class="navbar-brand black pointer-event" target="_blank">
                     <img src="./images/ead-logo-b.svg" alt="">
                 </a>
                 <div class="navmobile-new d-md-none">
@@ -156,13 +154,13 @@
                     Air Quality -->
                     <!-- <span  class="txt-rotate"  data-period="2000" data-rotate='[  "Air Quality" ]'></span> -->
                     <!-- </p> -->
-                    <p class="h5 quotes">Air Quality</p>
-                    <p class="h5 quotes">Air Quality</p>
-                    <p class="h5 quotes">Air Quality</p>
-                    <p class="h5 quotes">Air Quality</p>
-                    <p class="h5 quotes">Air Quality</p>
-                    <p class="h5 quotes">Air Quality</p>
-                    <h4 class="text-uppercase emirates-text">Abu Dhabi Emirate</h4>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <h4 class="text-uppercase emirates-text">In Abu Dhabi</h4>
                     <!-- <p class="mb-3 mt-4">
                       Air quality, critical for both human and environmental health, is influenced by industrial, vehicular, agricultural, and natural sources. Monitoring systems, including the Air Quality Index (AQI), play a crucial role in informing pollution control strategies and health-related interventions. Ensuring high air quality is fundamental to the well-being of ecosystems and populations.
                     </p> -->
@@ -433,9 +431,8 @@
                                 </div>
 
                             </div>
-                            <div class="overview-heading mt-3 mb-3">
-                                <strong>Khalifa City Yearly Air Quality <br> Overview for 2024 </strong>
-                            </div>
+                            <div class="overview-heading mt-3 mb-3" id="SidebaryearlyAirQualityOverview">
+                           </div>
                             <div class="small-device-legend-list">
                                 <div class="row" id="aqiDailyCountsDiv">
                                 </div>
@@ -1748,12 +1745,11 @@
                                                                     aria-expanded="false" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false"
                                                                     id="selectedyear">
-                                                                2023
+                                                                2023  <span>
+                                                                    <i class="fa fa-sort-desc"
+                                                                       aria-hidden="true"></i>
+                                                                </span>
                                                             </button>
-                                                            <span>
-                                                                <i class="fa fa-sort-desc"
-                                                                   aria-hidden="true"></i>
-                                                            </span>
                                                             <ul class="dropdown-menu dropdown-change dropdown-menu-end"
                                                                 aria-labelledby="selectedyear">
                                                                 <li>
@@ -1872,7 +1868,13 @@
         <div class="section position-relative" id="section3">
             <div class="ead-monitoring-project">
                 <div class="monitoring-heading">
-                    <h5 class="mb-4">Our Initiatives to Protect AQ</h5>
+                    <!-- start 01-April-24 -->
+                    <h5 class="mb-1">Our Initiatives to Protect AQ</h5>
+                    <p class="initiative-heading-content">
+                        Join us in the fight for cleaner skies and healthier communities. Become a <br>
+                        guardian of our atmosphere and safeguard our future.
+                    </p>
+                    <!-- end 01-April-24 -->
                 </div>
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
@@ -1880,14 +1882,14 @@
                         <a class="nav-link active" data-bs-toggle="pill" href="#home">Air Quality</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu1">Category 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu2">Category 3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu4">Category 4</a>
-                    </li> -->
+            <a class="nav-link" data-bs-toggle="pill" href="#menu1">Category 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="pill" href="#menu2">Category 3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="pill" href="#menu4">Category 4</a>
+        </li> -->
                 </ul>
 
                 <!-- Tab panes -->
@@ -1896,79 +1898,79 @@
                         <div id="recipeCarousel" class="carousel slide slide-carol mt-4" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <!-- <div class="carousel-item carol-item active">
-                                    <div class="col-md-3">
-                                        <div class="position-relative main-content openSidebar">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik1.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-md-3">
+                            <div class="position-relative main-content openSidebar">
+                                <div class="">
+                                    <img src="./images/new-images/Freepik1.png" class="item">
                                 </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative main-content openSidebar">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Sample
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="project-slide-content">
+                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
+                                    scelerisque
                                 </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik2.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item carol-item">
+                        <div class="col-md-3">
+                            <div class="position-relative main-content openSidebar">
+                                <div class="">
+                                    <img src="./images/new-images/Freepik.png" class="item">
                                 </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik3.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing2
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="project-slide-content">
+                                    Sample
                                 </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/achievments/a5.jpg" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing3
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item carol-item">
+                        <div class="col-md-3">
+                            <div class="position-relative">
+                                <div class="">
+                                    <img src="./images/new-images/Freepik2.png" class="item">
                                 </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
-                                                     class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing5
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <div class="project-slide-content">
+                                    Testing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item carol-item">
+                        <div class="col-md-3">
+                            <div class="position-relative">
+                                <div class="">
+                                    <img src="./images/new-images/Freepik3.png" class="item">
+                                </div>
+                                <div class="project-slide-content">
+                                    Testing2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item carol-item">
+                        <div class="col-md-3">
+                            <div class="position-relative">
+                                <div class="">
+                                    <img src="./images/achievments/a5.jpg" class="item">
+                                </div>
+                                <div class="project-slide-content">
+                                    Testing3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item carol-item">
+                        <div class="col-md-3">
+                            <div class="position-relative">
+                                <div class="">
+                                    <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
+                                         class="item">
+                                </div>
+                                <div class="project-slide-content">
+                                    Testing5
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                             </div>
                         </div>
                         <button id="prev" class="mt-4" href="#recipeCarousel" role="button" data-bs-slide="prev">
