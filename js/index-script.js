@@ -1,4 +1,4 @@
-const baseUrl = "https://atlas.smartgeoapps.com/adairqualityapi/";
+const baseUrl = "https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -1354,7 +1354,8 @@ function loadStationData(initialCall = false) {
             $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus, #sideBarAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
             $("#aqiNearestStation, #insightNearestStation").text('Nearest Station: ' + currentStationDetails.stationName);
             $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
-            $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality' + '<br>Overview for ' + currentYearOverview);
+            $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+            $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
             $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
             var mainPollutantNameContent;
             switch (selectedStationObj.pollutantName) {
@@ -3278,6 +3279,8 @@ var imageData = [
 
 ];
 
+var items1 = document.querySelectorAll('.slide-carol .carol-item');
+
 $.each(imageData, function (index, item) {
     var carouselItem = $('<div>').addClass('carousel-item carol-item');
     if (index === 0) {
@@ -3318,28 +3321,61 @@ $('.main-content').on('click', function () {
 });
 
 
-$('#recipeCarousel').on('slid.bs.carousel', function () {
+let prevButton1 = document.getElementById('prev');
 
-    var currentIndex = $('.carousel-item.active').index();
-    var totalItems = $('.carousel-item').length - 1; // subtracting 1 because index starts from 0
-    if (currentIndex === totalItems) {
-        $('#next').css('opacity', '0.5');
+
+// Check if first slide is active on page load
+if (isFirstSlideActive()) {
+    // Add opacity to previous button
+    prevButton1.style.opacity = '0.5';
+    prevButton1.disabled = true;
+} else {
+    // Remove opacity from previous button
+    prevButton1.style.opacity = '1';
+    prevButton1.disabled = false;
+}
+
+document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', function () {
+    let prevButton = document.getElementById('prev');
+    let nextButton = document.getElementById('next');
+    // Check if last slide is active
+    if (isLastSlideActive()) {
+        // Add opacity to next button
+        nextButton.style.opacity = '0.5';
+        nextButton.disabled = true;
     } else {
-        $('#next').css('opacity', '1');
+        // Remove opacity from next button
+        nextButton.style.opacity = '1';
+        nextButton.disabled = false;
+    }
+
+    // Check if first slide is active
+    if (isFirstSlideActive()) {
+        // Add opacity to previous button
+        prevButton.style.opacity = '0.5';
+        prevButton.disabled = true;
+    } else {
+        // Remove opacity from previous button
+        prevButton.style.opacity = '1';
+        prevButton.disabled = false;
     }
 });
 
-// Add opacity to previous button if first slide is active
-$('#recipeCarousel').on('slid.bs.carousel', function () {
-    var currentIndex = $('.carousel-item.active').index();
-    if (currentIndex === 0) {
-        $('#prev').css('opacity', '0.5');
-    } else {
-        $('#prev').css('opacity', '1');
-    }
-});
+function isLastSlideActive() {
 
-// end 29-march-24 added this code for project section
+    var items1 = document.querySelectorAll('.slide-carol .carol-item');
+    let activeSlide = document.querySelector('.carol-item.active'); https://atlas.smartgeoapps.com/adairqualityapi/
+    let lastSlide = items1[items1.length - 1];
+    return activeSlide === lastSlide;
+}
+
+// Function to check if first slide is active
+function isFirstSlideActive() {
+    var items1 = document.querySelectorAll('.slide-carol .carol-item');
+    let activeSlide = document.querySelector('.carol-item.active');
+    let firstSlide = items1[0];
+    return activeSlide === firstSlide;
+}
 $('#myForm').submit(function (e) {
     e.preventDefault();
     var name = $('#inputField').val();
@@ -3433,8 +3469,11 @@ $('#emailField').on('input', function () {
 
 $('#phoneField').on('input', function () {
     var phone = $(this).val();
-    var phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(phone)) {
+    // Remove any non-digit characters from the phone number
+    var cleanedPhone = phone.replace(/\D/g, '');
+    var phoneRegex = /^\+?\d{0,3}\d{10}$/;
+    var undesiredFormatRegex = /^1234567890$/;
+    if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
         $('#phoneError').text('Please enter a valid 10-digit phone number');
     } else {
         $('#phoneError').text('');

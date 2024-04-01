@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @font-face {
     font-family: 'GothamMedium';
     src: url('../fonts/Gotham-Font/GothamMedium.ttf') format('truetype');
@@ -267,7 +268,7 @@ header nav.navbar .navbar-nav li a {
     padding: 10px 10px !important;
     text-transform: uppercase;
     position: relative;
-    transition: all 2s;
+    /* transition: all 2s; */
     font-size: 13px;
 }
 header nav.navbar .navbar-nav li.active {
@@ -726,11 +727,11 @@ video {
 .banner-section .carousel-caption-banner .h5
 {
     text-transform: uppercase;
-    font-size: 42px;
+    font-size: 40px;
     font-family: 'Gothambold';
     margin-top: 6px;
     position: absolute;
-    top: 30px;
+    top: 31px;
 }
 
 .banner-section .carousel-caption-banner p {
@@ -1129,7 +1130,7 @@ video {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 10px 0 0 0;
     border-radius: 5px;
@@ -1176,7 +1177,8 @@ video {
     left: 40px;
     background: #11111145;
     backdrop-filter: blur(10px);
-    max-width: 385px;
+    width: 350px;
+    /* max-width: 385px; */
     padding: 20px 50px;
 }
 .wheather-widget .map-bg-opacity img{
@@ -1418,6 +1420,10 @@ body.map-viwer-enabled{
 #wrapper #page-content-wrapper .icon-arrow-left{
     color: var(--blue);
     font-size: 18px;
+}
+.air-map-container.full-screen .toggled #page-content-wrapper .icon-arrow-left:before {
+    content: "\e912";
+    font-family: 'air-icons' !important;
 }
 /* Toggle Styles */
 #wrapper {
@@ -1727,9 +1733,20 @@ body.map-viwer-enabled{
 }
 .insight .activities-imgs {
     display: flex;
-    gap: 8px;
-    align-items: center;
+    gap: 2px;
+    margin-left: -15px;
+    margin-right: -2px;
+    /* align-items: center; */
 }
+.insight .activities-imgs .text-center:nth-child(3){
+    display: block;
+    flex: 3;
+}
+.insight .activities-imgs .text-center:nth-child(2), .insight .activities-imgs .text-center:nth-child(1), .insight .activities-imgs .text-center:nth-child(4){
+    display: block;
+    flex: 2;
+}
+
 .insight .slide-content ul li {
     list-style: none;
     display: flex;
@@ -2789,7 +2806,7 @@ color: var(--green);
         max-width: 60px;
     }
     .insight .activities-imgs {
-        gap: 20px;
+        gap: 2px;
     }
     .insight .Causes-img img {
         max-width: 60px;
@@ -2820,7 +2837,7 @@ color: var(--green);
         font-size: 13px;
     }
     .insight .activities-imgs {
-        gap: 12px;
+        gap: 2px;
         justify-content: space-around;
     }
     .insight .activities-imgs img {
@@ -3300,7 +3317,7 @@ color: var(--green);
 .insight .res-airanalytic span {
     position: absolute;
     right: 11px;
-    top: 0px;
+    top: 4px;
     font-size: 19px;
     color: #004b87;
     z-index: 99;
@@ -3399,7 +3416,6 @@ color: var(--green);
     color: var(--grey);
 }
 .insight .number-exceedance .number-exceedance-content{
-    float: right;
     font-family: 'Gothamlight';
     color: var(--blue);
     font-size: 19px;
@@ -3412,6 +3428,9 @@ color: var(--green);
 }
 .insight .number-exceedance{
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .insight .maintain-height-visible, .refresh-hide1{
     visibility: hidden;
@@ -3676,6 +3695,10 @@ table {
     font-size: 13px;
     cursor: pointer;
 }
+.project-slider .project-slide-content:hover{
+    text-decoration: underline;
+}
+
 .project-slider #wrapper {
    width: 100%;
    position: relative;
@@ -3706,9 +3729,9 @@ table {
     /* position: absolute; */
 }
 
-.project-slider #prev{
+/* .project-slider #prev{
     opacity: 0.5;
-}
+} */
 .project-slider #next {
     margin-left: 15px;
 }
@@ -3907,6 +3930,11 @@ table {
 
 .project-slider #recipeCarousel .carol-item .col-md-3{
     width: 20%;
+}
+
+.ead-monitoring-project .initiative-heading-content{
+    color: var(--grey);
+    font-family: 'Gothamlight';
 }
 /* ------------End PROJECTS section Css----------------*/
 
@@ -4300,7 +4328,7 @@ footer .copy-rights ul li a {
     padding: 10px 10px !important;
     text-transform: uppercase;
     position: relative;
-    transition: all 2s;
+    /* transition: all 2s; */
     font-size: 13px;
     font-weight: 700;
 }
