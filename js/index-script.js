@@ -3364,7 +3364,7 @@ document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', f
 function isLastSlideActive() {
 
     var items1 = document.querySelectorAll('.slide-carol .carol-item');
-    let activeSlide = document.querySelector('.carol-item.active'); https://atlas.smartgeoapps.com/adairqualityapi/
+    let activeSlide = document.querySelector('.carol-item.active'); 
     let lastSlide = items1[items1.length - 1];
     return activeSlide === lastSlide;
 }
