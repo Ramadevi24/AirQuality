@@ -315,6 +315,24 @@ const causeStationData = {
             { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
         ]
     },
+    'Abu Dhabi': {
+        'PM10': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
+        ],
+        'SO2': [
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
+        ],
+        'O3': [
+            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+        ]
+    }
 };
 
 const stationsWithLocations = [{
@@ -343,7 +361,7 @@ const stationsWithLocations = [{
     latitude: 24.3213,
     longitude: 54.6359
 }, {
-    stationId: "EAD_AlMafraq",
+    stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
     latitude: 24.4035,
     longitude: 54.5161
@@ -353,12 +371,12 @@ const stationsWithLocations = [{
     latitude: 24.4199,
     longitude: 54.5782
 },
-//{
-//  stationId: "EAD_AlMafraq",
-//  stationName: "Al Mafraq",
-//  latitude: 24.2863,
-//  longitude: 54.5889
-//}, 
+{
+    stationId: "EAD_AlMafraq",
+    stationName: "Al Mafraq",
+    latitude: 24.2863,
+    longitude: 54.5889
+},
 {
     stationId: "EAD_AlAinSchool",
     stationName: "Al Ain Islamic Institute",
@@ -481,26 +499,14 @@ const pollutantNames = {
 }
 
 const pollutantThresholdLimits = {
-    PM10Hourly: 100,
     PM10Daily: 150,
-    PM10Monthly: 100,
-    PM10Yearly: 150,
     SO2Hourly: 350,
     SO2Daily: 150,
-    SO2Monthly: 100,
     SO2Yearly: 60,
     COHourly: 30,
-    CODaily: 8,
-    COMonthly: 15,
-    COYearly: 5,
     O3Hourly: 200,
-    O3Daily: 120,
-    O3Monthly: 100,
-    O3Yearly: 150,
     NO2Hourly: 400,
-    NO2Daily: 100,
-    NO2Monthly: 100,
-    NO2Yearly: 150,
+    NO2Daily: 150
 }
 
 var radarOptions = {
@@ -895,7 +901,9 @@ $(document).ready(function () {
     //aqiLineChart.render();
     //pollutantLineChart.render();   
     activePollutant = pollutantNames.AQI;
-    getCurrentLocation();
+    currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
+    $('#aqiBasedSort').attr('checked', 'checked');
+    loadStationData(true);
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
@@ -1095,13 +1103,13 @@ items.forEach((el, index) => {
 function getAqiStatus(value) {
     if (value >= 0 && value <= 50) {
         return statusClass.Good;
-    } else if (value >= 51 && value <= 100) {
+    } else if (value > 50 && value <= 100) {
         return statusClass.Moderate;
-    } else if (value >= 101 && value <= 150) {
+    } else if (value > 100 && value <= 150) {
         return statusClass.UnHealthlySensitiveGroups;
-    } else if (value >= 151 && value <= 200) {
+    } else if (value > 150 && value <= 200) {
         return statusClass.UnHealthly;
-    } else if (value >= 201 && value <= 300) {
+    } else if (value > 200 && value <= 300) {
         return statusClass.VeryUnHealthly;
     } else {
         return statusClass.Hazardous;
@@ -1115,25 +1123,25 @@ function getAqiStatusAndColorCode(value) {
             color: colorCodes.green,
             Content: aqiContent.Good
         };
-    } else if (value >= 51 && value <= 100) {
+    } else if (value > 50 && value <= 100) {
         return {
             status: statusClass.Moderate,
             color: colorCodes.lightorange,
             Content: aqiContent.Moderate
         };
-    } else if (value >= 101 && value <= 150) {
+    } else if (value > 100 && value <= 150) {
         return {
             status: statusClass.UnHealthlySensitiveGroups,
             color: colorCodes.darkorange,
             Content: aqiContent.UnHealthlySensitiveGroups
         };
-    } else if (value >= 151 && value <= 200) {
+    } else if (value > 150 && value <= 200) {
         return {
             status: statusClass.UnHealthly,
             color: colorCodes.peach,
             Content: aqiContent.UnHealthly
         };
-    } else if (value >= 201 && value <= 300) {
+    } else if (value > 200 && value <= 300) {
         return {
             status: statusClass.VeryUnHealthly,
             color: colorCodes.purple,
@@ -1151,13 +1159,13 @@ function getAqiStatusAndColorCode(value) {
 function getColorClassForAqi(aqi) {
     if (aqi >= 0 && aqi <= 50) {
         return colorClass.GoodColorClass;
-    } else if (aqi > 51 && aqi <= 100) {
+    } else if (aqi > 50 && aqi <= 100) {
         return colorClass.ModrateColorClass;
-    } else if (aqi > 101 && aqi <= 150) {
+    } else if (aqi > 100 && aqi <= 150) {
         return colorClass.Unhealthy4peopleColorClass;
-    } else if (aqi > 151 && aqi <= 200) {
+    } else if (aqi > 150 && aqi <= 200) {
         return colorClass.UnhealthyColorClass;
-    } else if (aqi > 201 && aqi <= 300) {
+    } else if (aqi > 200 && aqi <= 300) {
         return colorClass.VeryUnhealthyColorClass;
     } else {
         return colorClass.HazardousClass;
@@ -1255,8 +1263,6 @@ function getCurrentLocation() {
             loadStationData();
         }
     }, function error() {
-        currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
-        loadStationData();
     });
 }
 
@@ -1324,7 +1330,7 @@ function populateSort(sortBy) {
     }
 }
 
-function loadStationData() {
+function loadStationData(initialCall = false) {
     //alert(stationid);
     const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
     var data = $("#datafield").val();
@@ -1370,18 +1376,18 @@ function loadStationData() {
             }
             updateCauses(currentStationDetails.stationName, selectedStationObj.pollutantName);
             updateLegendVisibility(currentStationDetails.stationName);
-            updateActivities(selectedStationObj.pollutantValue);
-            updateHeathReccommendation(selectedStationObj.pollutantValue);
-            var pollutantColorClass = getColorClassForAqi(selectedStationObj.pollutantValue);
+            updateActivities(aqi);
+            updateHeathReccommendation(aqi);
+            var pollutantColorClass = getColorClassForAqi(aqi);
             $("#mainPollutantName, #mainPollutantValue").empty();
             $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
-            $("#mainPollutantValue").append(selectedStationObj.pollutantValue + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
+            $("#mainPollutantValue").append(aqi + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
             getLiveCityRankingApi();
             getAirQualitySafetyLevel();
-            getStationChartApi($('#lineChartPollutantFilter').text());
+            getStationChartApi($('#lineChartPollutantFilter').text(), initialCall);
         },
         error: handleApiError
     });
@@ -1435,7 +1441,7 @@ function getActivityContent(aqiLevel) {
             { img: "cycle_brown.png", text: "Avoid Outdoor Cycling" },
             { img: "heart_brown.png", text: "Avoid the Outdoors for babies and sensitive individuals" },
             { img: "dinner_brown.png", text: "Enjoy Your Meal Indoors" },
-        ],       
+        ],
     };
 
     return activities[aqiLevel].map(activity => `
@@ -1613,7 +1619,6 @@ function updateSideBarAQIImage(aqiLevel) {
     $('#sideBarAQIImage').attr('src', imageSrc);
 }
 
-
 // End Arisha pending to complete the content values
 function updateCauses(station, pollutant) {
     const causesContainer = document.querySelector('.Causes-img');
@@ -1689,6 +1694,7 @@ function getYearlyStationPollutantsThreshold() {
 }
 
 function onClickYearOfAirAnalytics(year) {
+    $('#selectedyear').html(year);
     getAirAnalytics(year);
 }
 
@@ -1830,7 +1836,8 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
               <span>` + aqiStatus + `</span>
             </div>`;
 }
-function getStationChartApi(filter) {
+
+function getStationChartApi(filter, initialCall = false) {
     var url;
     switch (filter) {
         case chartFilter.Daily:
@@ -1860,6 +1867,9 @@ function getStationChartApi(filter) {
             chartData = data;
             bindStationDataToBarChart(filter);
             bindStationDataToLineChart(filter);
+            if (initialCall) {
+                getCurrentLocation();
+            }
         },
         error: handleApiError
     });
@@ -2092,14 +2102,14 @@ function bindStationDataToLineChart(filter) {
             data: {
                 labels: categoriesData,
                 datasets: [{
-                    label: '', 
-                    data: aqiData, 
+                    label: '',
+                    data: aqiData,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
                         const { ctx, chartArea } = chart;
 
-                        if (!chartArea) {                          
+                        if (!chartArea) {
                             return null;
                         }
                         var gradientStroke = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
@@ -2129,7 +2139,7 @@ function bindStationDataToLineChart(filter) {
                         display: false // This hides the legend
                     },
                     title: {
-                        display: true,                       
+                        display: true,
                     },
                     tooltip: {
                         // Enable shared tooltips
@@ -2196,7 +2206,7 @@ function bindStationDataToLineChart(filter) {
 
         });
     }
-    myChart.update();  
+    myChart.update();
     var pollutantsLineChartId = "pollutantLineChart";
     var chartStatus = Chart.getChart(pollutantsLineChartId); // <canvas> id
     if (chartStatus != undefined) {
@@ -2212,7 +2222,7 @@ function bindStationDataToLineChart(filter) {
         const minDateString = minDate.toISOString().split('T')[0];
         const maxDateString = maxDate.toISOString().split('T')[0];
         const myPollutantChart = new Chart(pollutantLineChart, {
-            type: 'line', 
+            type: 'line',
             data: {
                 labels: iso8601Dates,
                 datasets: [
@@ -2267,13 +2277,13 @@ function bindStationDataToLineChart(filter) {
                         position: 'bottom',
                         labels: {
                             usePointStyle: true,
-                            padding: 20, 
-                            boxWidth: 12, 
-                            boxHeight: 12,                           
+                            padding: 20,
+                            boxWidth: 12,
+                            boxHeight: 12,
                             generateLabels: function (chart) {
                                 const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {                                    
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                    
+                                return labels.map(label => {
+                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
                                     label.textStyle = isHidden ? 'disabled' : 'normal';
                                     return label;
                                 });
@@ -2290,10 +2300,10 @@ function bindStationDataToLineChart(filter) {
                             var legendItems = chart.legend.legendItems;
                             for (var i = 0; i < legendItems.length; i++) {
                                 if (i === index) {
-                                    if (meta.hidden) {                                       
-                                        legend.legendItems[i].hidden = true; 
-                                    } else {                                        
-                                        legend.legendItems[i].hidden = false; 
+                                    if (meta.hidden) {
+                                        legend.legendItems[i].hidden = true;
+                                    } else {
+                                        legend.legendItems[i].hidden = false;
                                     }
                                 }
                             }
@@ -2303,24 +2313,24 @@ function bindStationDataToLineChart(filter) {
                         enabled: true,
                         mode: 'index',
                         intersect: false,
-                        callbacks: {                           
-                            title: function (tooltipItems) {                             
-                                const time = tooltipItems[0].label;                                
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const time = tooltipItems[0].label;
                                 return time;
                             },
-                            label: function () {                                
+                            label: function () {
                                 return null;
                             },
                             afterBody: (tooltipItems) => {
                                 $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
 
-                               
+
                                 tooltipItems.forEach(tooltipItem => {
                                     const dataIndex = tooltipItem.dataIndex;
                                     const datasetIndex = tooltipItem.datasetIndex;
-                                   
+
                                     const dataPoint = chartData[dataIndex];
-                                   
+
                                     switch (datasetIndex) {
                                         case 0:
                                             $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
@@ -2566,7 +2576,7 @@ function bindStationDataToLineChart(filter) {
             }
         });
         myPollutantChart.update();
-    }   
+    }
 
 }
 
@@ -2590,80 +2600,50 @@ function bindStationDataToBarChart(filter) {
                             thresholdData.push(item.pM10);
                         }
                         categoriesData.push(item.day.split(' '));
+
+                    });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
                     });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
-                        if (item.pM10 > pollutantThresholdLimits.PM10Monthly) {
-                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Monthly);
-                            thresholdData.push(pollutantThresholdLimits.PM10Monthly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.pM10);
-                        }
+                        barChartData.push(item.pM10);
                         categoriesData.push(item.month);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
-                        if (item.pM10 > pollutantThresholdLimits.PM10Yearly) {
-                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Yearly);
-                            thresholdData.push(pollutantThresholdLimits.PM10Yearly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.pM10);
-                        }
+                        barChartData.push(item.pM10);
                         categoriesData.push(item.year);
-                    });
-                    break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        if (item.pM10 > pollutantThresholdLimits.PM10Hourly) {
-                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Hourly);
-                            thresholdData.push(pollutantThresholdLimits.PM10Hourly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.pM10);
-                        }
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
                     break;
                 default:
                     chartData.forEach(item => {
-                        if (item.pM10 > pollutantThresholdLimits.PM10Hourly) {
-                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Hourly);
-                            thresholdData.push(pollutantThresholdLimits.PM10Hourly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.pM10);
-                        }
+                        barChartData.push(item.pM10);
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
                     break;
             }
-            barChartDataSet = [{
+            barChartDataSet.push({
                 label: '',
-                backgroundColor: '#004B87',
-                lineTension: 0.2,
-                data: thresholdData,
-                borderRadius: 3
-            },
-            {
-                label: '',
-                backgroundColor: '#F65E5F',
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-            }];
+            });
             pollutantBarChartId = "ADstationPm10BarGraph";
             break;
         case pollutantNames.SO2:
@@ -2679,17 +2659,20 @@ function bindStationDataToBarChart(filter) {
                         }
                         categoriesData.push(item.day.split(' '));
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
-                        if (item.sO2 > pollutantThresholdLimits.SO2Monthly) {
-                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Monthly);
-                            thresholdData.push(pollutantThresholdLimits.SO2Monthly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.sO2);
-                        }
+                        barChartData.push(item.sO2);
                         categoriesData.push(item.month);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.sO2)]);
                     });
                     break;
                 case "Yearly":
@@ -2703,22 +2686,25 @@ function bindStationDataToBarChart(filter) {
                         }
                         categoriesData.push(item.year);
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
                 case "Custom":
                     chartData.forEach(item => {
-                        if (item.sO2 > pollutantThresholdLimits.SO2Hourly) {
-                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Hourly);
-                            thresholdData.push(pollutantThresholdLimits.SO2Hourly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.sO2);
-                        }
+                        barChartData.push(item.sO2);
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.sO2)]);
                     });
                     break;
                 default:
@@ -2737,59 +2723,57 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-            barChartDataSet = [{
+            barChartDataSet.push({
                 label: '',
-                backgroundColor: '#004B87',
-                lineTension: 0.2,
-                data: thresholdData,
-                borderRadius: 3
-            },
-            {
-                label: '',
-                backgroundColor: '#F65E5F',
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-            }];
+            });
             pollutantBarChartId = "ADstationSo2BarGraph";
             break;
         case pollutantNames.CO:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
-                        if (item.co > pollutantThresholdLimits.CODaily) {
-                            barChartData.push(item.co - pollutantThresholdLimits.CODaily);
-                            thresholdData.push(pollutantThresholdLimits.CODaily);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.co);
-                        }
+                        barChartData.push(item.co);
                         categoriesData.push(item.day.split(' '));
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
-                        if (item.co > pollutantThresholdLimits.COMonthly) {
-                            barChartData.push(item.co - pollutantThresholdLimits.COMonthly);
-                            thresholdData.push(pollutantThresholdLimits.COMonthly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.co);
-                        }
+                        barChartData.push(item.co);
                         categoriesData.push(item.month);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
-                        if (item.co > pollutantThresholdLimits.COYearly) {
-                            barChartData.push(item.co - pollutantThresholdLimits.COYearly);
-                            thresholdData.push(pollutantThresholdLimits.COYearly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.co);
-                        }
+                        barChartData.push(item.co);
                         categoriesData.push(item.year);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
+                    });
+                    break;
+                case "Custom":
+                    chartData.forEach(item => {
+                        barChartData.push(item.co);
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
                     break;
                 default:
@@ -2808,59 +2792,57 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-            barChartDataSet = [{
+            barChartDataSet.push({
                 label: '',
-                backgroundColor: '#004B87',
-                lineTension: 0.2,
-                data: thresholdData,
-                borderRadius: 3
-            },
-            {
-                label: '',
-                backgroundColor: '#F65E5F',
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-            }];
+            });
             pollutantBarChartId = "ADstationCoBarGraph";
             break;
         case pollutantNames.O3:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
-                        if (item.o3 > pollutantThresholdLimits.O3Daily) {
-                            barChartData.push(item.o3 - pollutantThresholdLimits.O3Daily);
-                            thresholdData.push(pollutantThresholdLimits.O3Daily);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.o3);
-                        }
+                        barChartData.push(item.o3);
                         categoriesData.push(item.day.split(' '));
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
-                        if (item.o3 > pollutantThresholdLimits.O3Monthly) {
-                            barChartData.push(item.o3 - pollutantThresholdLimits.O3Monthly);
-                            thresholdData.push(pollutantThresholdLimits.O3Monthly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.o3);
-                        }
+                        barChartData.push(item.o3);
                         categoriesData.push(item.month);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
-                        if (item.o3 > pollutantThresholdLimits.O3Yearly) {
-                            barChartData.push(item.o3 - pollutantThresholdLimits.O3Yearly);
-                            thresholdData.push(pollutantThresholdLimits.O3Yearly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.o3);
-                        }
+                        barChartData.push(item.o3);
                         categoriesData.push(item.year);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
+                    });
+                    break;
+                case "Custom":
+                    chartData.forEach(item => {
+                        barChartData.push(item.o3);
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
                     break;
                 default:
@@ -2879,21 +2861,22 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-            barChartDataSet = [{
+            barChartDataSet.push({
                 label: '',
-                backgroundColor: '#004B87',
-                lineTension: 0.2,
-                data: thresholdData,
-                borderRadius: 3
-            },
-            {
-                label: '',
-                backgroundColor: '#F65E5F',
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-            }];
+            });
             pollutantBarChartId = "ADstationO3BarGraph";
             break;
         case pollutantNames.NO2:
@@ -2909,31 +2892,40 @@ function bindStationDataToBarChart(filter) {
                         }
                         categoriesData.push(item.day.split(' '));
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
-                        if (item.nO2 > pollutantThresholdLimits.NO2Monthly) {
-                            barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Monthly);
-                            thresholdData.push(pollutantThresholdLimits.NO2Monthly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.nO2);
-                        }
+                        barChartData.push(item.nO2);
                         categoriesData.push(item.month);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
                     });
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
-                        if (item.nO2 > pollutantThresholdLimits.NO2Yearly) {
-                            barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Yearly);
-                            thresholdData.push(pollutantThresholdLimits.NO2Yearly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.nO2);
-                        }
+                        barChartData.push(item.nO2);
                         categoriesData.push(item.year);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
                     });
                     break;
+                case "Custom":
+                    chartData.forEach(item => {
+                        barChartData.push(item.nO2);
+                        const dateParts = item.recordedDate.split('/');
+                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+
+                        // Combine the formatted date with the hour, separated by a semicolon
+                        const formattedString = `${formattedDate};${item.hour}`;
+                        categoriesData.push(formattedString);
+                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
+                    });
                 default:
                     chartData.forEach(item => {
                         if (item.nO2 > pollutantThresholdLimits.NO2Hourly) {
@@ -2950,21 +2942,22 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-            barChartDataSet = [{
+            barChartDataSet.push({
                 label: '',
-                backgroundColor: '#004B87',
-                lineTension: 0.2,
-                data: thresholdData,
-                borderRadius: 3
-            },
-            {
-                label: '',
-                backgroundColor: '#F65E5F',
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-            }];
+            });
             pollutantBarChartId = "ADstationNo2BarGraph";
             break;
         default:
@@ -3074,6 +3067,16 @@ function bindStationDataToBarChart(filter) {
                         display: true,
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                if (!(context.raw > 0)) {
+                                    context.formattedValue = '';
+                                    context.label = '';
+                                }
+                            }
+                        }
+                    }
                 },
                 interaction: {
                     intersect: false,
@@ -3165,6 +3168,16 @@ function bindStationDataToBarChart(filter) {
                         display: true,
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                if (!(context.raw > 0)) {
+                                    context.formattedValue = '';
+                                    context.label = '';
+                                }
+                            }
+                        }
+                    }
                 },
                 interaction: {
                     intersect: false,
@@ -3245,7 +3258,6 @@ function convertToISO8601(dateTimeStrings) {
     });
 }
 
-
 function updateCharts(selectedFilter) {
     // Do not remove below code starts---------------------------------
     $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
@@ -3265,8 +3277,6 @@ var imageData = [
     { imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Testing4retrt" },
 
 ];
-
-
 
 $.each(imageData, function (index, item) {
     var carouselItem = $('<div>').addClass('carousel-item carol-item');
@@ -3341,11 +3351,14 @@ $('#myForm').submit(function (e) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var phoneRegex = /^\d{10}$/;
 
+    var isValidForm = true;
     // Name validation
     if (name.trim() === '') {
         $('#nameError').text('Name is required');
+        isValidForm = false;
     } else if (!nameRegex.test(name)) {
         $('#nameError').text('Please enter a valid name (only letters and spaces)');
+        isValidForm = false;
     } else {
         $('#nameError').text('');
     }
@@ -3353,8 +3366,10 @@ $('#myForm').submit(function (e) {
     // Email validation
     if (email.trim() === '') {
         $('#emailError').text('Email is required');
+        isValidForm = false;
     } else if (!emailRegex.test(email)) {
         $('#emailError').text('Please enter a valid email address');
+        isValidForm = false;
     } else {
         $('#emailError').text('');
     }
@@ -3362,10 +3377,36 @@ $('#myForm').submit(function (e) {
     // Phone validation
     if (phone.trim() === '') {
         $('#phoneError').text('Phone is required');
+        isValidForm = false;
     } else if (!phoneRegex.test(phone)) {
         $('#phoneError').text('Please enter a valid 10-digit phone number');
+        isValidForm = false;
     } else {
         $('#phoneError').text('');
+    }
+
+    if (isValidForm) {
+        var inputData = {};
+        $(this).find('input, textarea').each(function (index, item) {
+            inputData[item.name] = item.value;
+        });
+
+        $.ajax({
+            url: baseUrl + 'Submit',
+            method: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(inputData),
+            success: function (result) {
+                if (result.mailSent) {
+                    $(this).find('input, textarea').val('');
+                    $('#submitError').html('');
+                } else {
+                    $('#submitError').html('Please try after sometime.');
+                }
+            },
+            error: handleApiError
+        });
     }
 });
 
