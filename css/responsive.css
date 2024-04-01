@@ -365,6 +365,9 @@
     .footermobile-none{
         display: none;
     }
+    .sm-pd-left3{
+        padding-left: 11px;
+    }
     .footer-2-sec {
         padding-left: 0px;
     }
@@ -1368,6 +1371,9 @@
     }
     .project-slider .item{
         height: 317px;
+    }
+    .linechart-height-res{
+        height: 230px;
     }
     .scrollPolicyShow {
         height: 355px;
