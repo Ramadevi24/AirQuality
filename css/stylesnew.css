@@ -985,6 +985,7 @@ video {
 .show-mapSearchList {
     display: none;
     vertical-align: -webkit-baseline-middle;
+    border: 1px solid #fff;
 }
 .Newsearch-box {
     height: 40px;
@@ -1297,14 +1298,14 @@ video {
 .small-device-legend-list{
     padding-right: 10px;
 }
-.small-device-legend-list .row {
+/* .small-device-legend-list .row {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 12px;
-}
+} */
 
 .small-device-legend-list .column {
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
 }
 .small-device-legend-list .column p{
@@ -1451,20 +1452,17 @@ body.map-viwer-enabled{
   #page-content-wrapper {
     position: absolute;
     padding: 5px 5px;
-    
     display: block;
-   
     height: 60px;
-    background: #fff;
-    
+    background: #11111185;
     border: 0;
     border-radius: 0 5px 5px 0;
     -webkit-transform: perspective(40px) rotateY(25deg);
     transform: perspective(40px) rotateY(25deg);
-    color: #0f77d0;
+    color: #fff;
     outline: none;
     transition: 0.5s all ease;
-    box-shadow: 3px 0px 40px 1px rgba(0,0,0,0.2) !important;
+    /* box-shadow: 3px 0px 40px 1px rgba(0,0,0,0.2) !important; */
   }
   
   #wrapper.toggled #page-content-wrapper {
@@ -1522,7 +1520,7 @@ body.map-viwer-enabled{
     #page-content-wrapper {
       /* padding: 60px 40px; */
       position: absolute;
-      top: 6px;
+      top: 5px;
     }
     #wrapper.toggled #page-content-wrapper {
       position: absolute;
@@ -3182,8 +3180,10 @@ color: var(--green);
     width: 30%;
 }
 .insight .hour_box {
-    height: 100%;
+    /* padding-top: 11%; */
+    /* height: 100%; */
 }
+
 .insight .polutenat_bar .tab_shado .graph-duration-filters {
     display: inline-block;
     float: right;
@@ -3674,6 +3674,7 @@ table {
     padding-right: 15px;
     font-family: 'GothamMedium';
     font-size: 13px;
+    cursor: pointer;
 }
 .project-slider #wrapper {
    width: 100%;
@@ -3796,6 +3797,7 @@ table {
 .modal-background img{
     width: 100%;
     height: 350px;
+    object-fit: cover;
 }
 .p12{
     padding: 7px 22px 22px 22px;
@@ -4146,6 +4148,10 @@ table {
     transition: top 0.3s, font-size 0.3s, color 0.3s;
   }
   
+.error-message{
+    color: red;
+}
+
 
 /*---- Contact Thankyou Form----- */
 .thankyou-form h6{
@@ -4374,7 +4380,3 @@ footer .copy-rights ul li a {
     display: none !important;
 }
 
-.legend-item-hidden {
-    color: #aaa; /* gray out text */
-    font-style: italic; /* italicize text */
-}

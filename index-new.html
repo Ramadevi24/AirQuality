@@ -169,7 +169,7 @@
                     <p class="mb-2 mt-5 h6 six-resolution-mt30" id="aqiNearestStation">
                     </p>
                     <div class="mb-2 mt-4 position-relative six-resolution-mt10">
-                        <img src="./images/new-images/Circular-Shape.png" class="img-fluid circular-width">
+                        <img src="./images/new-images/AQ-pattern_lightorange.png" class="img-fluid circular-width" id="aqiImage">
                         <div class="weather-card">
                             <div>
                                 <h2 class="mb-0" id="averageAqiStatus"></h2>
@@ -204,9 +204,9 @@
                     <!--<img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
                     <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">-->
                     <!-- <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2214653.7652781364!2d53.874778068933466!3d24.266467525377156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1698083632515!5m2!1sen!2sin"
-                      width="100%" height="556" style="border:0;" allowfullscreen="" loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2214653.7652781364!2d53.874778068933466!3d24.266467525377156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1698083632515!5m2!1sen!2sin"
+                    width="100%" height="556" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                     <div class="level-legends web-top-legends">
                         <div class="levels">
                             <span><em>0</em></span>
@@ -222,7 +222,7 @@
                     <div class="wheather-widget firstshow-section">
                         <h6 class="text-white text-center" id="insightNearestStation"></h6>
                         <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
-                            <img src="./images/new-images/mapCircular.png" class="img-fluid">
+                            <img src="./images/new-images/map/mapCircular_lightorange.png" class="img-fluid" id="InsightaqiImage">
                             <div class="weather-card-map">
                                 <h2 class="mb-0" id="insightsAqiStatus"></h2>
                                 <h5 class="mb-0" id="insightsAqi"></h5>
@@ -384,54 +384,24 @@
                     </div>
                 </div>
 
-                <!-- End This section will show only in small devices -->
                 <div class="overview-heading mt-3 firstshow-section" id="yearlyAirQualityOverview">
                 </div>
                 <div class="list-container firstshow-section" id="aqiStatusDiv">
                 </div>
-                <!-- This section will show only in small devices -->
                 <div class="small-device-legend-list d-block d-sm-block d-md-none">
-                    <div class="row">
-                        <div class="column green">
-                            <p>2</p>
-                            <span>Good Days</span>
-                        </div>
-                        <div class="column lightorange">
-                            <p>5</p>
-                            <span>Moderate Days</span>
-                        </div>
-                        <div class="column darkorange">
-                            <p>90</p>
-                            <span>Unhealthy for <br> Sensitive Groups</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column peach">
-                            <p>110</p>
-                            <span>Unhealthy <br> Days</span>
-                        </div>
-                        <div class="column purple">
-                            <p>0</p>
-                            <span>Very Unhealthy Days</span>
-                        </div>
-                        <div class="column hazar">
-                            <p>0</p>
-                            <span>Good Days</span>
-                        </div>
+                    <div class="row" id="aqiSmallScreenDailyCounts">
                     </div>
                 </div>
-                <!-- End This section will show only in small devices -->
-                <!-- Click on MapICon Sidebar will show -->
                 <div id="wrapper">
                     <div id="sidebar-wrapper">
                         <div class="sidebar-nav">
                             <div class="wheather-widget">
                                 <h6 class="text-white text-center"> Nearest station: Khalifa City </h6>
                                 <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
-                                    <img src="./images/new-images/mapCircular.png" class="img-fluid sidebar-Image">
+                                    <img src="./images/new-images/mapCircular.png" class="img-fluid sidebar-Image" id="sideBarAQIImage">
                                     <div class="weather-card-map">
-                                        <h2 class="mb-0">Moderate</h2>
-                                        <h5 class="mb-0">70</h5>
+                                        <h2 class="mb-0" id="sideBarAqiStatus">Moderate</h2>
+                                        <h5 class="mb-0" id="sideBarAqi">70</h5>
                                         <h6 class="mb-1">AQI</h6>
                                     </div>
                                 </div>
@@ -467,33 +437,7 @@
                                 <strong>Khalifa City Yearly Air Quality <br> Overview for 2024 </strong>
                             </div>
                             <div class="small-device-legend-list">
-                                <div class="row">
-                                    <div class="column green">
-                                        <p>2</p>
-                                        <span>Good Days</span>
-                                    </div>
-                                    <div class="column lightorange">
-                                        <p>5</p>
-                                        <span>Moderate Days</span>
-                                    </div>
-                                    <div class="column darkorange">
-                                        <p>90</p>
-                                        <span>Unhealthy for <br> Sensitive Groups</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="column peach">
-                                        <p>110</p>
-                                        <span>Unhealthy <br> Days</span>
-                                    </div>
-                                    <div class="column purple">
-                                        <p>0</p>
-                                        <span>Very Unhealthy Days</span>
-                                    </div>
-                                    <div class="column hazar">
-                                        <p>0</p>
-                                        <span>Good Days</span>
-                                    </div>
+                                <div class="row" id="aqiDailyCountsDiv">
                                 </div>
                             </div>
                         </div>
@@ -501,11 +445,10 @@
 
                     <div id="page-content-wrapper">
                         <span href="#menu-toggle" id="menu-toggle">
-                            <i class="icon-arrow-left"></i>
+                            <i class="icon-arrow-left text-white"></i>
                         </span>
                     </div>
                 </div>
-                <!-- Click on MapICon Sidebar will show -->
             </div>
         </div>
         <div class="section insight" id="section2">
@@ -1929,7 +1872,7 @@
         <div class="section position-relative" id="section3">
             <div class="ead-monitoring-project">
                 <div class="monitoring-heading">
-                    <h5 class="mb-4">Projects</h5>
+                    <h5 class="mb-4">Our Initiatives to Protect AQ</h5>
                 </div>
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
@@ -1952,10 +1895,10 @@
                     <div id="home" class="tab-pane active p-0 m-0 project-slider">
                         <div id="recipeCarousel" class="carousel slide slide-carol mt-4" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item carol-item active">
+                                <!-- <div class="carousel-item carol-item active">
                                     <div class="col-md-3">
-                                        <div class="position-relative main-content">
-                                            <div class="openSidebar">
+                                        <div class="position-relative main-content openSidebar">
+                                            <div class="">
                                                 <img src="./images/new-images/Freepik1.png" class="item">
                                             </div>
                                             <div class="project-slide-content">
@@ -1967,13 +1910,12 @@
                                 </div>
                                 <div class="carousel-item carol-item">
                                     <div class="col-md-3">
-                                        <div class="position-relative">
+                                        <div class="position-relative main-content openSidebar">
                                             <div class="">
                                                 <img src="./images/new-images/Freepik.png" class="item">
                                             </div>
                                             <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
+                                                Sample
                                             </div>
                                         </div>
                                     </div>
@@ -1985,8 +1927,7 @@
                                                 <img src="./images/new-images/Freepik2.png" class="item">
                                             </div>
                                             <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
+                                                Testing
                                             </div>
                                         </div>
                                     </div>
@@ -1998,8 +1939,7 @@
                                                 <img src="./images/new-images/Freepik3.png" class="item">
                                             </div>
                                             <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
+                                                Testing2
                                             </div>
                                         </div>
                                     </div>
@@ -2011,8 +1951,7 @@
                                                 <img src="./images/achievments/a5.jpg" class="item">
                                             </div>
                                             <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
+                                                Testing3
                                             </div>
                                         </div>
                                     </div>
@@ -2025,14 +1964,12 @@
                                                      class="item">
                                             </div>
                                             <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
+                                                Testing5
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-
                         </div>
                         <button id="prev" class="mt-4" href="#recipeCarousel" role="button" data-bs-slide="prev">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -2046,117 +1983,9 @@
                                 <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" fill="#004B87" />
                             </svg>
                         </button>
-                        <!-- <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </a> -->
-                        <!-- <div id="wrapper" class="mt-4"> -->
-                        <!-- <div id="carousel" class="mb-4" style="display: none;"> -->
-                        <!-- <div id="content">
-                            <div class="position-relative main-content">
-                                <div class="openSidebar">
-                                    <img class="item" src="./images/new-images/Freepik1.png" />
-                                    <div class="project-slide-content">
-                                        Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="position-relative main-content">
-                                <div class="openSidebar">
-                                    <img class="item" src="./images/new-images/Freepik.png" />
-                                    <div class="project-slide-content">
-                                        Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="./images/new-images/Freepik2.png" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="./images/new-images/Freepik3.png"  class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img  src="./images/achievments/a5.jpg" class="item"/>
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/1_images/img-4.jpg" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/1_images/img-7.jpg" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/1_images/img-8.jpg" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                            <div class="position-relative">
-                                <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/1_images/img-9.jpg" class="item" />
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet scelerisque
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- </div> -->
-                        <!-- <button id="prev" style="display: none;">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                          >
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" fill="#004B87" />
-                          </svg>
-                        </button>
-                        <button id="next" style="display: none;">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                          >
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" fill="#004B87" />
-                          </svg>
-                        </button> -->
-                        <!-- </div> -->
+
                     </div>
-                    <!-- <div id="menu1" class="container tab-pane fade p-0 m-0"><br>
-                        <h3>Menu 1</h3>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <div id="menu2" class="container tab-pane fade p-0 m-0"><br>
-                        <h3>Menu 2</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    </div>
-                    <div id="menu4" class="container tab-pane fade p-0 m-0"><br>
-                        <h3>Menu 4</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    </div> -->
+
                     <!-- Modal -->
                     <div class="modal-background">
                         <div class="sidebar">
@@ -2166,21 +1995,10 @@
                                         <span class="material-symbols-outlined"> close </span>
                                     </button>
                                 </div>
-                                <img src="./images/new-images/fullFreepik.png" class="img-fluid mb-3">
-                                <h6 class="mb-3">
-                                    Lorem ipsum dolor sit amet consectetur. Velit for all of scelerisque
-                                </h6>
+                                <img src="" class="img-fluid mb-3 ProjectbgImage">
+                                <h6 class="mb-3 projectItemContent"></h6>
                                 <p class="text-justify h-200-scroll">
-                                    Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to
-                                    protecting and enhancing air quality, groundwater as well as the biodiversity of our
-                                    desert and marine ecosystem. By partnering with other government entities, the
-                                    private sector, NGOs, and global environmental agencies, we embrace international
-                                    best practice, innovation, and hard work to institute effective policy measures, and
-                                    ensure environmental issues remain one of the top priorities of our national agenda.
-
-                                    Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to
-                                    protecting and enhancing air quality, groundwater as well as the biodiversity of our
-                                    desert and marine ecosystem. By partnering with other government entities.
+                                    Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures, and ensure environmental issues remain one of the top priorities of our national agenda. Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities.
                                 </p>
                             </div>
                         </div>
@@ -2453,46 +2271,45 @@
                         </p>
                     </div>
                     <div class="col-xl-6">
+                        <!--start 20-March-24 added Validation -->
                         <div class="contact-form">
-                            <form>
+                            <form id="myForm">
                                 <div class="row">
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
                                             <input type="text" name="name" class="form-control" id="inputField">
                                             <label for="inputField">Your Name</label>
+                                            <div class="error-message" id="nameError"></div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-lg-9">
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div> -->
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
                                             <input type="email" name="email" class="form-control" id="emailField">
                                             <label for="emailField">Email</label>
+                                            <div class="error-message" id="emailError"></div>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <input type="email" name="email" class="form-control" id="phoneField">
+                                            <input type="tel" name="phone" class="form-control" id="phoneField">
                                             <label for="phoneField">Phone</label>
+                                            <div class="error-message" id="phoneError"></div>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <textarea rows="4" name="message" class="form-control"
-                                                      placeholder="Message"></textarea>
+                                            <textarea rows="4" name="message" class="form-control" placeholder="Message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
-                                        <button type="button" class="button button-primary send-btn mt-5">
+                                        <button type="submit" class="button button-primary send-btn mt-5">
                                             Submit
                                         </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                        <!-- End 20-March-24 added Validation -->
                         <!-- This is for mobile device only -->
                         <p class="contact-content d-block d-sm-block d-md-block d-lg-block d-xl-none res-mb0 res-padding15">
                             Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and
@@ -2787,17 +2604,19 @@
     <!-------------------------------- Script Sections------------------->
 
     <script src="./js/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- start 29-March-24 removed cdn-->
+    <script src="./js/jquery-ui.min.js"></script>
+    <!--end 29-March-24 -->
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/apexcharts.js"></script>
     <!--<script src="./js/chart.js"></script>-->
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@latest"></script>
-
+    <!--start 29-March-24 removed cdn-->
+    <script src="./js/graphs-js/chart.js"></script>
+    <script src="./js/graphs-js/chartjs-plugin-annotation@latest.js"></script>
+    <script src="./js/graphs-js/moment@latest.js"></script>
+    <script src="./js/graphs-js/chartjs-adapter-moment@latest.js"></script>
+    <!--end 29-March-24 removed cdn-->
 
     <script src="./js/index-script.js"></script>
     <script src="./scolling-script/fullpage.js"></script>
@@ -2911,9 +2730,23 @@
         });
     </script>
     <script>
+        // start 30-March-24 modified this section ----------
         $(document).ready(function () {
             $('#searchInput').on('keyup', function () {
                 var searchText = $(this).val().toLowerCase();
+                var $searchIcon = $('.p-input span img');
+
+                if (searchText.trim() !== '') {
+                    $searchIcon.attr('src', './images/new-images/cross-blue.png').css({
+                        'width': '15px',
+                        'cursor': 'pointer'
+                    });
+                } else {
+                    $searchIcon.attr('src', './images/new-images/search_icon.png').css({
+                        'width': '17px',
+                        'cursor': 'default'
+                    });
+                }
                 $('.list-group-item').each(function () {
                     var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
                     if (listItemText.indexOf(searchText) === -1) {
@@ -2923,18 +2756,23 @@
                     }
                 });
             });
+            $('.p-input span img').on('click', function () {
+                // Reset search field and change icon back to search_icon.png
+                $('#searchInput').val('').trigger('keyup');
+            });
             $('#headerSearchInput').on('keyup', function () {
-                var searchText = $(this).val().toLowerCase(); // Get the value of the input field and convert it to lowercase
-                $('.search-result').each(function () { // Loop through each list item
-                    var listItemText = $(this).find('.searchItem li').text().toLowerCase(); // Get the text content of the list item and convert it to lowercase
-                    if (listItemText.indexOf(searchText) === -1) { // Check if the list item text contains the search text
-                        $(this).hide(); // If yes, show the list item
+                var searchText = $(this).val().toLowerCase();
+                $('.search-result').each(function () {
+                    var listItemText = $(this).find('.searchItem li').text().toLowerCase();
+                    if (listItemText.indexOf(searchText) === -1) {
+                        $(this).hide();
                     } else {
-                        $(this).show(); // If not, hide the list item
+                        $(this).show();
                     }
                 });
             });
         });
+        // end 30-March-24 modified this section ----------
     </script>
 
     <script src="https://js.arcgis.com/4.28/"></script>

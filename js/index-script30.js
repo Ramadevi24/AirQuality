@@ -445,6 +445,7 @@ const colorCodes = {
     hazar: '#A06A7B'
 };
 
+// 29-March-2024 added days text-----
 const statusClass = {
     Good: "Good",
     Moderate: "Moderate",
@@ -453,6 +454,9 @@ const statusClass = {
     VeryUnHealthly: "Very UnHealthly Days",
     Hazardous: "Hazardous Days",
 }
+
+
+
 
 const aqiContent = {
     Good: "Enjoy the Fresh Air",
@@ -649,7 +653,7 @@ var aqiLineChartOptions1 = {
     }
 };
 
-var pollutantLineChartOptions1 = {
+var pollutantLineChartOptions = {
     series: [],
     chart: {
         height: 300,
@@ -741,7 +745,6 @@ var pollutantLineChartOptions1 = {
         }
     }
 };
-
 
 $(window).on('load', function () {
     setTimeout(function () { // allowing 3 secs to fade out loader
@@ -893,7 +896,7 @@ $(document).ready(function () {
     //aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
     //pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
     //aqiLineChart.render();
-    //pollutantLineChart.render();   
+    //pollutantLineChart.render();
     activePollutant = pollutantNames.AQI;
     getCurrentLocation();
 
@@ -1051,46 +1054,46 @@ items.forEach((el, index) => {
         next = next.nextElementSibling;
     }
 });
-
+// 29-March-24 commented these fucntions --------
 // Function to check if last slide is active
-//function isLastSlideActive() {
-//    let activeSlide = document.querySelector('.carol-item.active');
-//    let lastSlide = items[items.length - 1];
-//    return activeSlide === lastSlide;
-//}
+// function isLastSlideActive() {
+//     let activeSlide = document.querySelector('.carol-item.active');
+//     let lastSlide = items[items.length - 1];
+//     return activeSlide === lastSlide;
+// }
 
-//// Function to check if first slide is active
-//function isFirstSlideActive() {
-//    let activeSlide = document.querySelector('.carol-item.active');
-//    let firstSlide = items[0];
-//    return activeSlide === firstSlide;
-//}
+// Function to check if first slide is active
+// function isFirstSlideActive() {
+//     let activeSlide = document.querySelector('.carol-item.active');
+//     let firstSlide = items[0];
+//     return activeSlide === firstSlide;
+// }
 
-//// Add event listener to the carousel for slide change
-//document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', function () {
-//    // Check if last slide is active
-//    if (isLastSlideActive()) {
-//        // Add opacity to next button
-//        nextButton.style.opacity = '0.5';
-//        nextButton.disabled = true;
-//    } else {
-//        // Remove opacity from next button
-//        nextButton.style.opacity = '1';
-//        nextButton.disabled = false;
-//    }
+// Add event listener to the carousel for slide change
+// document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', function () {
+//     // Check if last slide is active
+//     if (isLastSlideActive()) {
+//         // Add opacity to next button
+//         nextButton.style.opacity = '0.5';
+//         nextButton.disabled = true;
+//     } else {
+//         // Remove opacity from next button
+//         nextButton.style.opacity = '1';
+//         nextButton.disabled = false;
+//     }
 
-//    // Check if first slide is active
-//    if (isFirstSlideActive()) {
-//        // Add opacity to previous button
-//        prevButton.style.opacity = '0.5';
-//        prevButton.disabled = true;
-//    } else {
-//        // Remove opacity from previous button
-//        prevButton.style.opacity = '1';
-//        prevButton.disabled = false;
-//    }
-//});
-
+//     // Check if first slide is active
+//     if (isFirstSlideActive()) {
+//         // Add opacity to previous button
+//         prevButton.style.opacity = '0.5';
+//         prevButton.disabled = true;
+//     } else {
+//         // Remove opacity from previous button
+//         prevButton.style.opacity = '1';
+//         prevButton.disabled = false;
+//     }
+// });
+// 29-March-24 commented these fucntions --------
 // Do not remove below code starts---------------------------------
 function getAqiStatus(value) {
     if (value >= 0 && value <= 50) {
@@ -1148,6 +1151,7 @@ function getAqiStatusAndColorCode(value) {
     }
 }
 
+// 29-March-24 modified aqi values
 function getColorClassForAqi(aqi) {
     if (aqi >= 0 && aqi <= 50) {
         return colorClass.GoodColorClass;
@@ -1344,8 +1348,8 @@ function loadStationData() {
             var aqiDetails = getAqiStatusAndColorCode(aqi);
             var currentYearOverview = new Date().getFullYear();
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
-            $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi").text(aqi).css('color', aqiDetails.color);
-            $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus, #sideBarAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
+            $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi").text(aqi).css('color', aqiDetails.color); //30-March-24 ID added
+            $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus, #sideBarAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);//30-March-24 ID added
             $("#aqiNearestStation, #insightNearestStation").text('Nearest Station: ' + currentStationDetails.stationName);
             $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
             $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality' + '<br>Overview for ' + currentYearOverview);
@@ -1387,7 +1391,7 @@ function loadStationData() {
     });
     // LoadProgressBar(inputParam)
 }
-// start Arisha pending to complete the content values
+// start 29-March-24 Arisha pending to complete the content values
 
 function getAQILevel(value) {
     if (value >= 0 && value <= 50) return 'good';
@@ -1435,7 +1439,8 @@ function getActivityContent(aqiLevel) {
             { img: "cycle_brown.png", text: "Avoid Outdoor Cycling" },
             { img: "heart_brown.png", text: "Avoid the Outdoors for babies and sensitive individuals" },
             { img: "dinner_brown.png", text: "Enjoy Your Meal Indoors" },
-        ],       
+        ],
+        // Add definitions for other AQI levels...
     };
 
     return activities[aqiLevel].map(activity => `
@@ -1480,6 +1485,7 @@ function getHealthRecommendationContent(aqiLevel) {
         ],
         // Add definitions for other AQI levels...
     };
+
     return recommendations[aqiLevel].map(recommendation => `
         <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(/\s+/g, '')}" data-backdrop="false">
             <div class="bg-gray">
@@ -1514,13 +1520,14 @@ function getHealthRecommendationContent(aqiLevel) {
         </li>
     `).join('');
 }
+
 function updateActivities(value) {
     const aqiLevel = getAQILevel(value);
     const content = getActivityContent(aqiLevel);
     $('.activities-imgs').empty().append(content);
     updateAQIImage(aqiLevel);
     updateInsightAQIImage(aqiLevel);
-    updateSideBarAQIImage(aqiLevel)
+    updateSideBarAQIImage(aqiLevel) 
 }
 
 function updateHeathReccommendation(value) {
@@ -1528,10 +1535,11 @@ function updateHeathReccommendation(value) {
     const content = getHealthRecommendationContent(aqiLevel);
     $('.healthCommendation-content').empty().append(content);
 }
+
 function updateAQIImage(aqiLevel) {
     // Replace 'Circular-Shape.png' with appropriate image filenames
     var imageSrc = './images/new-images/';
-    switch (aqiLevel) {
+    switch(aqiLevel) {
         case 'good':
             imageSrc += 'AQ-pattern_green.png';
             break;
@@ -1559,7 +1567,7 @@ function updateAQIImage(aqiLevel) {
 function updateInsightAQIImage(aqiLevel) {
     // Replace 'Circular-Shape.png' with appropriate image filenames
     var imageSrc = './images/new-images/map/';
-    switch (aqiLevel) {
+    switch(aqiLevel) {
         case 'good':
             imageSrc += 'mapCircular_green.png';
             break;
@@ -1588,7 +1596,7 @@ function updateInsightAQIImage(aqiLevel) {
 function updateSideBarAQIImage(aqiLevel) {
     // Replace 'Circular-Shape.png' with appropriate image filenames
     var imageSrc = './images/new-images/map/';
-    switch (aqiLevel) {
+    switch(aqiLevel) {
         case 'good':
             imageSrc += 'mapCircular_green.png';
             break;
@@ -1614,7 +1622,8 @@ function updateSideBarAQIImage(aqiLevel) {
 }
 
 
-// End Arisha pending to complete the content values
+// End 29-March-24 Arisha pending to complete the content values
+
 function updateCauses(station, pollutant) {
     const causesContainer = document.querySelector('.Causes-img');
     causesContainer.innerHTML = ''; // Clear existing causes
@@ -1645,7 +1654,7 @@ function updateLegendVisibility(selectedStation) {
     pollutants.forEach(pollutant => {
         // Check if the selected station monitors this pollutant
         const isMonitored = causeStationData[selectedStation] && causeStationData[selectedStation].hasOwnProperty(pollutant);
-        //console.log(pollutant, isMonitored); // This will now log true/false based on whether the station has the pollutant
+        console.log(pollutant, isMonitored); // This will now log true/false based on whether the station has the pollutant
 
         const legendDiv = document.getElementById(`legend-${pollutant}`);
         if (legendDiv) {
@@ -1779,7 +1788,7 @@ function selectedStation(stationId) {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
     loadStationData();
 }
-
+// 29-March-2024 modified this function-------------
 function getAirQualitySafetyLevel() {
     $.ajax({
         url: baseUrl + 'GetDailyCountsAirQualityStation?input=' + currentStationDetails.stationId,
@@ -1787,24 +1796,29 @@ function getAirQualitySafetyLevel() {
         dataType: 'json',
         success: function (data) {
             var aqiStatusDiv = $("#aqiStatusDiv");
-            var aqiDailyCountsDiv = $("#aqiDailyCountsDiv");
+            var aqiDailyCountsDiv = $("#aqiDailyCountsDiv"); 
             var aqiSmallScreenDailyCounts = $("#aqiSmallScreenDailyCounts");
+
             aqiStatusDiv.empty();
             aqiDailyCountsDiv.empty();
             aqiSmallScreenDailyCounts.empty();
+
+            // Append to aqiStatusDiv
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
+            
+            // Append to aqiDailyCountsDiv
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
             aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
-
+            
             // Append to aqiSmallScreenDailyCounts
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
@@ -1812,7 +1826,8 @@ function getAirQualitySafetyLevel() {
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
-
+            
+        
         },
         error: handleApiError
     });
@@ -1824,12 +1839,17 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
               <span>` + aqiStatus + `</span>
             </div>`;
 }
+
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
               <p>` + aqiValue + `</p>
               <span>` + aqiStatus + `</span>
             </div>`;
 }
+// 29-March-2024 modified this function-------------
+
+
+
 function getStationChartApi(filter) {
     var url;
     switch (filter) {
@@ -1884,46 +1904,25 @@ function bindStationDataToLineChart(filter) {
     $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates,#pollutantHourlyBarChartDates").empty();
     switch (filter) {
         case chartFilter.Daily:
-            //categoriesData = chartData.map(t => { return t.day.split(' '); });
-            chartData.forEach(item => {
-                categoriesData.push(item.day.split(' '));
-            });
+            categoriesData = chartData.map(t => { return t.day.split(' '); });
             break;
         case chartFilter.Monthly:
-            chartData.forEach(item => {
-                categoriesData.push(item.month);
-            });
-            //categoriesData = chartData.map(t => { return t.month; });
+            categoriesData = chartData.map(t => { return t.month; });
             break;
         case chartFilter.Yearly:
-            //categoriesData = chartData.map(t => { return t.year; });
-            chartData.forEach(item => {
-                categoriesData.push(item.year);
-            });
-            break;
-        case chartFilter.Custom:
-            //categoriesData = chartData.map(t => { return t.hour.split(' '); });
-            chartData.map(item => {
-                const dateParts = item.recordedDate.split('/');
-                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                // Combine the formatted date with the hour, separated by a semicolon
-                const formattedString = `${formattedDate};${item.hour}`;
-                categoriesData.push(formattedString);
-            });
+            categoriesData = chartData.map(t => { return t.year; });
             break;
         default:
             //categoriesData = chartData.map(t => { return t.hour.split(' '); });
-            chartData.map(item => {
-                const dateParts = item.recordedDate.split('/');
-                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+             chartData.map(item => {
+                 const dateParts = item.recordedDate.split('/');
+                 const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
-                // Combine the formatted date with the hour, separated by a semicolon
-                const formattedString = `${formattedDate};${item.hour}`;
-                categoriesData.push(formattedString);
+                 // Combine the formatted date with the hour, separated by a semicolon
+                 const formattedString = `${formattedDate};${item.hour}`;
+                 categoriesData.push(formattedString);
             });
             break;
-
     }
     var pollutantLineChartId = "aqiLineChart";
     var chartStatus = Chart.getChart(pollutantLineChartId); // <canvas> id
@@ -1941,633 +1940,174 @@ function bindStationDataToLineChart(filter) {
 
 
 
+    const iso8601Dates = convertToISO8601(categoriesData);
+    const dateTimes = iso8601Dates.map(entry => new Date(entry));
+    const minDate = new Date(Math.min(...dateTimes));
+    const maxDate = new Date(Math.max(...dateTimes));
+    const minDateString = minDate.toISOString().split('T')[0];
+    const maxDateString = maxDate.toISOString().split('T')[0];
 
-    if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
 
-        const iso8601Dates = convertToISO8601(categoriesData);
-        const dateTimes = iso8601Dates.map(entry => new Date(entry));
-        const minDate = new Date(Math.min(...dateTimes));
-        const maxDate = new Date(Math.max(...dateTimes));
-        const minDateString = minDate.toISOString().split('T')[0];
-        const maxDateString = maxDate.toISOString().split('T')[0];
-        var myChart = new Chart(lineChart, {
-            type: 'line',
-            data: {
-                labels: iso8601Dates, // Add your labels here
-                datasets: [{
-                    label: '', // Optional: add your series name
-                    data: aqiData, // Add your data points here
-                    backgroundColor: gradientFill,
-                    borderColor: function (context) {
-                        const chart = context.chart;
-                        const { ctx, chartArea } = chart;
+    var myChart = new Chart(lineChart, {
+        type: 'line',
+        data: {
+            labels: iso8601Dates, // Add your labels here
+            datasets: [{
+                label: '', // Optional: add your series name
+                data: aqiData, // Add your data points here
+                backgroundColor: gradientFill,
+                borderColor: function (context) {
+                    const chart = context.chart;
+                    const { ctx, chartArea } = chart;
 
-                        if (!chartArea) {
-                            // This case happens on initial chart load
-                            return null;
-                        }
-                        var gradientStroke = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                        gradientStroke.addColorStop(0, '#9CD84E');
-                        gradientStroke.addColorStop(0.5, 'yellow');
-                        gradientStroke.addColorStop(1, '#F99049');
+                    if (!chartArea) {
+                        // This case happens on initial chart load
+                        return null;
+                    }
+                    var gradientStroke = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+                    gradientStroke.addColorStop(0, '#9CD84E');
+                    gradientStroke.addColorStop(0.5, 'yellow');
+                    gradientStroke.addColorStop(1, '#F99049');
 
-                        return gradientStroke;
-                    },
-                    pointBackgroundColor: 'white',
-                    fill: true,
-                    tension: 0.4 // Smooth the line
-                }]
+                    return gradientStroke;
+                },
+                pointBackgroundColor: 'white',
+                fill: true,
+                tension: 0.4 // Smooth the line
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            toolbar: {
+                show: false,
+                tools: {
+                    download: false,
+                }
             },
-
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                toolbar: {
-                    show: false,
-                    tools: {
-                        download: false,
-                    }
+            plugins: {
+                legend: {
+                    display: false // This hides the legend
                 },
-                plugins: {
-                    legend: {
-                        display: false // This hides the legend
-                    },
-                    title: {
-                        display: true,
-                        // text: 'Chart.js Bar Chart - Stacked'
-                    },
-                    tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
-                            }
-                        }
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                },
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'hour',
-                            // Format for tooltip display
-                            tooltipFormat: 'hh:mm a'
-                        },
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 20
-                        },
-                        grid: {
-                            display: false
-                        }
-                    },
-                    x2: {
-                        type: 'time',
-                        time: {
-                            unit: 'day',
-                            // Format for tooltip and tick display
-                            tooltipFormat: 'MMM D',
-                            displayFormats: {
-                                day: 'MMM D'
-                            }
-                        },
-                        position: 'bottom',
-                        ticks: {
-                            // Auto-skip prevents label overlapping.
-                            autoSkip: true,
-                            // Max 20 ticks, adjust as needed.
-                            maxTicksLimit: 20
-                        },
-                        grid: {
-                            drawOnChartArea: false
-                        },
-                        min: minDateString,
-                        max: maxDateString
-                    },
-                    y: {
-                        stacked: true,
-                        grid: {
-                            display: false
-                        }
-                    },
+                title: {
+                    display: true,
+                    // text: 'Chart.js Bar Chart - Stacked'
                 },
             },
-
-        });
-    }
-    else {
-        var myChart = new Chart(lineChart, {
-            type: 'line',
-            data: {
-                labels: categoriesData,
-                datasets: [{
-                    label: '', 
-                    data: aqiData, 
-                    backgroundColor: gradientFill,
-                    borderColor: function (context) {
-                        const chart = context.chart;
-                        const { ctx, chartArea } = chart;
-
-                        if (!chartArea) {                          
-                            return null;
-                        }
-                        var gradientStroke = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-                        gradientStroke.addColorStop(0, '#9CD84E');
-                        gradientStroke.addColorStop(0.5, 'yellow');
-                        gradientStroke.addColorStop(1, '#F99049');
-
-                        return gradientStroke;
-                    },
-                    pointBackgroundColor: 'white',
-                    fill: true,
-                    tension: 0.4 // Smooth the line
-                }]
+            interaction: {
+                intersect: false,
             },
-
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                toolbar: {
-                    show: false,
-                    tools: {
-                        download: false,
-                    }
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'hour',
+                    },
+                    ticks: {
+                        // Auto-skip prevents label overlapping.
+                        autoSkip: true,
+                        // Max 20 ticks, adjust as needed.
+                        maxTicksLimit: 20
+                    },
+                    position: 'bottom',
+                    grid: {
+                        display: false, // This will remove the Y-axis grid lines
+                        drawBorder: false, // Optional: if you also want to remove the axis border
+                    },// Primary x-axis
                 },
-                plugins: {
-                    legend: {
-                        display: false // This hides the legend
-                    },
-                    title: {
-                        display: true,                       
-                    },
-                    tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
-                            }
+                x2: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        tooltipFormat: 'MMM D',
+                        displayFormats: {
+                            day: 'MMM D'
                         }
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0
-                        },
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },
-                        stacked: true,
                     },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
+                    position: 'bottom',
+                    ticks: {
+                        // Auto-skip prevents label overlapping.
+                        autoSkip: true,
+                        // Max 20 ticks, adjust as needed.
+                        maxTicksLimit: 20
                     },
 
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    // Ensure alignment with x-axis range
+                    min: minDateString, // Set dynamically
+                    max: maxDateString  // Set dynamically
+                },
+                y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
+                    stacked: true,
+                    grid: {
+                        display: false, // This will remove the Y-axis grid lines
+                        drawBorder: false, // Optional: if you also want to remove the axis border
+                    },// Assuming you want the Y-axis stacked as well
                 },
             }
-
-        });
-    }
-    myChart.update();  
-    var pollutantsLineChartId = "pollutantLineChart";
-    var chartStatus = Chart.getChart(pollutantsLineChartId); // <canvas> id
-    if (chartStatus != undefined) {
-        chartStatus.destroy();
-    }
-    const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');
-
-    if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
-        const iso8601Dates = convertToISO8601(categoriesData);
-        const dateTimes = iso8601Dates.map(entry => new Date(entry));
-        const minDate = new Date(Math.min(...dateTimes));
-        const maxDate = new Date(Math.max(...dateTimes));
-        const minDateString = minDate.toISOString().split('T')[0];
-        const maxDateString = maxDate.toISOString().split('T')[0];
-        const myPollutantChart = new Chart(pollutantLineChart, {
-            type: 'line', 
-            data: {
-                labels: iso8601Dates,
-                datasets: [
-                    {
-                        label: 'PM10',
-                        data: pm10Data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'SO2',
-                        data: so2Data,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'CO',
-                        data: coData,
-                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'O3',
-                        data: o3Data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'NO2',
-                        data: no2Data,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            usePointStyle: true,
-                            padding: 20, 
-                            boxWidth: 12, 
-                            boxHeight: 12,                           
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {                                    
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                    
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
-                        },
-                        onClick: function (e, legendItem, legend) {
-                            const index = legendItem.datasetIndex;
-                            const chart = legend.chart;
-                            const meta = chart.getDatasetMeta(index);
-                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
-
-                            chart.update();
-
-                            var legendItems = chart.legend.legendItems;
-                            for (var i = 0; i < legendItems.length; i++) {
-                                if (i === index) {
-                                    if (meta.hidden) {                                       
-                                        legend.legendItems[i].hidden = true; 
-                                    } else {                                        
-                                        legend.legendItems[i].hidden = false; 
-                                    }
-                                }
-                            }
-                        },
-                    },
-                    tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {                           
-                            title: function (tooltipItems) {                             
-                                const time = tooltipItems[0].label;                                
-                                return time;
-                            },
-                            label: function () {                                
-                                return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-
-                               
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-                                   
-                                    const dataPoint = chartData[dataIndex];
-                                   
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
-                        }
-                    },
-                },
-                interaction: {
+        },
+        plugins: {
+            tooltip: {
+                tooltip: {
+                    shared: true,
                     intersect: false,
-                },
-                scales: {
                     x: {
-                        type: 'time',
-                        time: {
-                            unit: 'hour',
-                            // Format for tooltip display
-                            tooltipFormat: 'hh:mm a'
-                        },
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 20
-                        },
-                        grid: {
-                            display: false
-                        }
-                    },
-                    x2: {
-                        type: 'time',
-                        time: {
-                            unit: 'day',
-                            // Format for tooltip and tick display
-                            tooltipFormat: 'MMM D',
-                            displayFormats: {
-                                day: 'MMM D'
-                            }
-                        },
-                        position: 'bottom',
-                        ticks: {
-                            // Auto-skip prevents label overlapping.
-                            autoSkip: true,
-                            // Max 20 ticks, adjust as needed.
-                            maxTicksLimit: 20
-                        },
-                        grid: {
-                            drawOnChartArea: false
-                        },
-                        min: minDateString,
-                        max: maxDateString
+                        show: false,
                     },
                     y: {
-                        stacked: true,
-                        grid: {
-                            display: false
+                        formatter: function (value, options) {
+                            $("#lineChartAqiSo2Value").text(chartData[options.dataPointIndex].sO2);
+                            $("#lineChartAqiNo2Value").text(chartData[options.dataPointIndex].nO2);
+                            $("#lineChartAqiCoValue").text(chartData[options.dataPointIndex].co);
+                            $("#lineChartAqiPm10Value").text(chartData[options.dataPointIndex].pM10);
+                            $("#lineChartAqiO3Value").text(chartData[options.dataPointIndex].o3);
+                            return value;
                         }
-                    },
-                },
-            },
-        });
-        myPollutantChart.update();
-    }
-    else {
-        const myPollutantChart = new Chart(pollutantLineChart, {
-            type: 'line', // Specify the chart type
-            data: {
-                labels: categoriesData, // X-axis categories go here
-                datasets: [
-                    {
-                        label: 'PM10',
-                        data: pm10Data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'SO2',
-                        data: so2Data,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'CO',
-                        data: coData,
-                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'O3',
-                        data: o3Data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'NO2',
-                        data: no2Data,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        pointRadius: 0,
-                        borderWidth: 1
                     }
-                ]
-
+                }
             },
-            options: {
-                scales: {
-                    x: {
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0
-                        },
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },
-                        stacked: true,
-                    },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
-                    },
-
-                },
-                responsive: true, // Make the chart responsive
-                maintainAspectRatio: false, // Allows custom chart size without maintaining aspect ratio
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom', // Position the legend at the bottom of the chart
-                        labels: {
-                            usePointStyle: true, // Use the same style as the point style for the legend symbols
-                            padding: 20, // Add some padding between legend items
-                            boxWidth: 12, // Width of the colored box
-                            boxHeight: 12, // Height of the colored box
-                            // Generate labels with custom style based on dataset visibility
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    // Check if the associated dataset is currently hidden
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    // Modify the label to add a custom style property if the dataset is hidden
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
-                        },
-                        onClick: function (e, legendItem, legend) {
-                            const index = legendItem.datasetIndex;
-                            const chart = legend.chart;
-                            const meta = chart.getDatasetMeta(index);
-
-                            // Toggle the visibility of the dataset
-                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
-
-                            // Update the chart
-                            chart.update();
-
-                            // Now, we update the appearance of the legend item
-                            // Find the legend items and toggle a class or style
-                            var legendItems = chart.legend.legendItems;
-                            for (var i = 0; i < legendItems.length; i++) {
-                                if (i === index) {
-                                    if (meta.hidden) {
-                                        // Apply custom styling or class to mark as disabled
-                                        legend.legendItems[i].hidden = true; // Custom property for reference
-                                    } else {
-                                        // Remove custom styling or class
-                                        legend.legendItems[i].hidden = false; // Custom property for reference
-                                    }
-                                }
-                            }
-                        },
-                    },
-                    tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            title: function (tooltipItems) {
-                                const time = tooltipItems[0].label;
-                                return time;
-                            },
-                            label: function () {
-                                return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-
-
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-
-                                    const dataPoint = chartData[dataIndex];
-
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
-                        }
-                    },
+            legend: {
+                display: false // Hide legend if not needed
+            },
+            animations: {
+                tension: {
+                    duration: 2000,
+                    easing: 'easeInCubic'
                 }
             }
-        });
-        myPollutantChart.update();
-    }   
+        }
 
+    });
+    myChart.update();
+    //pollutantLineChart.updateOptions({
+    //    series: [{
+    //        name: 'PM10',
+    //        data: pm10Data
+    //    },
+    //    {
+    //        name: 'SO2',
+    //        data: so2Data
+    //    },
+    //    {
+    //        name: 'CO',
+    //        data: coData
+    //    },
+    //    {
+    //        name: 'O3',
+    //        data: o3Data
+    //    },
+    //    {
+    //        name: 'NO2',
+    //        data: no2Data
+    //    }],
+    //    xaxis: {
+    //        categories: categoriesData,
+    //        tickAmount: 10,
+    //    }
+    //});
 }
 
 function bindStationDataToBarChart(filter) {
@@ -2614,23 +2154,6 @@ function bindStationDataToBarChart(filter) {
                             thresholdData.push(item.pM10);
                         }
                         categoriesData.push(item.year);
-                    });
-                    break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        if (item.pM10 > pollutantThresholdLimits.PM10Hourly) {
-                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Hourly);
-                            thresholdData.push(pollutantThresholdLimits.PM10Hourly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.pM10);
-                        }
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
                     });
                     break;
                 default:
@@ -2702,23 +2225,6 @@ function bindStationDataToBarChart(filter) {
                             thresholdData.push(item.sO2);
                         }
                         categoriesData.push(item.year);
-                    });
-                    break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        if (item.sO2 > pollutantThresholdLimits.SO2Hourly) {
-                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Hourly);
-                            thresholdData.push(pollutantThresholdLimits.SO2Hourly);
-                        } else {
-                            barChartData.push(0);
-                            thresholdData.push(item.sO2);
-                        }
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
                     });
                     break;
                 default:
@@ -2990,19 +2496,6 @@ function bindStationDataToBarChart(filter) {
                         backgroundColors.push(colorCodes[getColorClassForAqi(item.aqi)]);
                     });
                     break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        barChartData.push(item.aqi);
-                        categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.aqi)]);
-                    });
-                    break;
                 default:
                     chartData.forEach(item => {
                         // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
@@ -3256,14 +2749,17 @@ function updateCharts(selectedFilter) {
     // Do not remove below code ends---------------------------------
 }
 // Do not remove below code ends---------------------------------
-var imageData = [
-    { imageUrl: "./images/new-images/Freepik1.png", content: "Lorem ipsum dolor sit amet amet consectetur" },
-    { imageUrl: "./images/new-images/Freepik.png", content: "SampleNWq" },
-    { imageUrl: "./images/new-images/Freepik2.png", content: "Testingwewe" },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Testing2werewr" },
-    { imageUrl: "./images/achievments/a5.jpg", content: "Testing3retertert" },
-    { imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Testing4retrt" },
 
+// start 29-march-24 added this code for project section
+
+var imageData = [
+    {imageUrl: "./images/new-images/Freepik1.png", content: "Lorem ipsum dolor sit amet amet consectetur"},
+    {imageUrl: "./images/new-images/Freepik.png", content: "SampleNWq"},
+    {imageUrl: "./images/new-images/Freepik2.png", content: "Testingwewe"},
+    {imageUrl: "./images/new-images/Freepik3.png", content: "Testing2werewr"},
+    {imageUrl: "./images/achievments/a5.jpg", content: "Testing3retertert"},
+    {imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Testing4retrt"},
+    
 ];
 
 
@@ -3293,11 +2789,11 @@ $.each(imageData, function (index, item) {
         carouselItem.append(content);
     }
 
-
+    
     $('#recipeCarousel .carousel-inner').append(carouselItem);
 });
 
-$('.main-content').on('click', function () {
+$('.main-content').on('click', function() {
 
     var imageSrc = $(this).find('.item').attr('src');
     //console.log(imageSrc);
@@ -3309,7 +2805,7 @@ $('.main-content').on('click', function () {
 
 
 $('#recipeCarousel').on('slid.bs.carousel', function () {
-
+   
     var currentIndex = $('.carousel-item.active').index();
     var totalItems = $('.carousel-item').length - 1; // subtracting 1 because index starts from 0
     if (currentIndex === totalItems) {
@@ -3399,3 +2895,5 @@ $('#phoneField').on('input', function () {
         $('#phoneError').text('');
     }
 });
+
+// start 30-March-24 Contact Us form validation code 

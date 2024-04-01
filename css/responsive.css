@@ -1329,7 +1329,7 @@
         font-size: 20px;
     }
     .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
-        height: 815px;
+        height: 860px;
     }
     .wheather-widget .map-bg-opacity img {
         width: 230px;
@@ -1343,6 +1343,9 @@
     }
     .insight .align-items-flexstart{
         padding: 6rem 0rem;
+    }
+    .wheather-widget{
+        bottom: 30px;
     }
 }
 
@@ -1622,8 +1625,19 @@
     .insight .hour_box{
         padding-top: 1rem;
     }
+
+    .fp-viewing-6 #fp-nav{
+        top: 44%;
+    }
 }
 
 @media screen and (min-width: 1365px) and (max-width: 1367px) and (min-height: 767px) and (max-height: 768px) {
 
+}
+
+@media (min-width: 1500px) and (max-width: 1950px) {
+    .insight .hour_box {
+        padding-top: 11%;
+        /* height: 100%; */
+    }
 }
