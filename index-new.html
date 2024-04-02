@@ -315,11 +315,10 @@
                     </div>
                     <div class="station-details row pt-2 pe-1 ps-1">
                         <div class="col-5">
-                            <p class="legend-text mb-1">
-                                Unhealthy for sensitive groups
+                            <p class="legend-text mb-1" id="mobileAQIStatus">                            
                             </p>
                             <p class="legend-value">
-                                110 <label class="text-white"> AQI</label>
+                                <span id="mobileAQILevelValue"></span> <label class="text-white"> AQI</label>
                             </p>
                         </div>
                         <div class="station-box col-7">
@@ -359,7 +358,7 @@
                     <div id="sidebar-wrapper">
                         <div class="sidebar-nav">
                             <div class="wheather-widget">
-                                <h6 class="text-white text-center"> Nearest station: Khalifa City </h6>
+                                <h6 class="text-white text-center" id="sidebarNearestStation"> </h6>
                                 <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
                                     <img src="./images/new-images/mapCircular.png" class="img-fluid sidebar-Image" id="sideBarAQIImage">
                                     <div class="weather-card-map">
@@ -482,7 +481,7 @@
                                     <h3 class="" id="airQualitySafetyLevelStation"></h3>
                                 </div>
                                 <div class="slide active">
-                                    <div class="container pad_r">
+                                    <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
                                             <div class="col-xl-5 d-flex  flex-column  justify-content-between">
                                                 <div class="quality-index-wrapper-h2">
@@ -791,6 +790,9 @@
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
+                                                                        </div>                                                 
+                                                                        <div class="ug_content indexbar-ugcontent">
+                                                                            <p>ug/m3</p>
                                                                         </div>
                                                                         <div class="canvas-graphs-height">
                                                                             <canvas id="ADstationAqiBarGraph"></canvas>
@@ -798,11 +800,11 @@
                                                                         <div class="date_row">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                <p>Feb 15 2024</p>
+            </li>
+            <li class="d-none d-sm-none d-md-none d-lg-block">
+                <p>Feb 16 2024</p>
+            </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading">
@@ -991,8 +993,79 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <!-- Start 02-April-2024 -->
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+                                                                        <div class="mb-2 text-right crossicon">
+                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            Address Goes Here Lorem Ipsum XYz
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measure Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content">
+                                                                            <ul class="ps-0">
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
+                                                                                </li>
+                                                                                <li>Noise</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>                                                                   
+                                                                </div>
                                                                 <div class="chart-f-content">
-                                                                    <p></p>
+                                                                    <p>
+                                                                        AQI measures air quality; pollutant trends track
+                                                                        changes in air pollution over
+                                                                        time.
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1061,11 +1134,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                        <p>Feb 15 2024</p>
+                    </li>
+                    <li class="d-none d-sm-none d-md-none d-lg-block">
+                        <p>Feb 16 2024</p>
+                    </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1080,8 +1153,81 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+                                                                        <div class="mb-2 text-right crossicon">
+                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            Address Goes Here Lorem Ipsum XYz
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measure Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content">
+                                                                            <ul class="ps-0">
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
+                                                                                </li>
+                                                                                <li>Noise</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Hooray!">
+          <img src="./images/new-images/info-icon.png">
+        </a> -->
+                                                                </div>
                                                                 <div class="chart-f-content">
-                                                                    <p></p>
+                                                                    <p>
+                                                                        AQI measures air quality; pollutant trends track
+                                                                        changes in air pollution over
+                                                                        time.
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1150,11 +1296,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                        <p>Feb 15 2024</p>
+                    </li>
+                    <li class="d-none d-sm-none d-md-none d-lg-block">
+                        <p>Feb 16 2024</p>
+                    </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1169,8 +1315,81 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+                                                                        <div class="mb-2 text-right crossicon">
+                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            Address Goes Here Lorem Ipsum XYz
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measure Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content">
+                                                                            <ul class="ps-0">
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
+                                                                                </li>
+                                                                                <li>Noise</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Hooray!">
+          <img src="./images/new-images/info-icon.png">
+        </a> -->
+                                                                </div>
                                                                 <div class="chart-f-content">
-                                                                    <p></p>
+                                                                    <p>
+                                                                        AQI measures air quality; pollutant trends track
+                                                                        changes in air pollution over
+                                                                        time.
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1239,11 +1458,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                        <p>Feb 15 2024</p>
+                    </li>
+                    <li class="d-none d-sm-none d-md-none d-lg-block">
+                        <p>Feb 16 2024</p>
+                    </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1258,8 +1477,78 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+                                                                        <div class="mb-2 text-right crossicon">
+                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            Address Goes Here Lorem Ipsum XYz
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measure Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content">
+                                                                            <ul class="ps-0">
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
+                                                                                </li>
+                                                                                <li>Noise</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>                                         
+                                                                </div>
                                                                 <div class="chart-f-content">
-                                                                    <p></p>
+                                                                    <p>
+                                                                        AQI measures air quality; pollutant trends track
+                                                                        changes in air pollution over
+                                                                        time.
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1328,11 +1617,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                        <p>Feb 15 2024</p>
+                    </li>
+                    <li class="d-none d-sm-none d-md-none d-lg-block">
+                        <p>Feb 16 2024</p>
+                    </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1347,11 +1636,83 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Start 22-March-2024 -->
-                                                                <div class="chart-f-content">
-                                                                    <p></p>
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+                                                                        <div class="mb-2 text-right crossicon">
+                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                            Khalifa City
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            Address Goes Here Lorem Ipsum XYz
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measure Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content">
+                                                                            <ul class="ps-0">
+                                                                                <li>
+                                                                                    Particulate Matter less than 10
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        10)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Nitrogen Dioxide <span class="blue-bold">(NO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Hydrogen Sulphide <span class="blue-bold">(H2S)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Carbon Monoxide <span class="blue-bold">(CO)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Meteorology <span class="blue-bold">(MET)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Particulate Matter less than 2.5
+                                                                                    microns <span class="blue-bold">
+                                                                                        (PM
+                                                                                        2.5)
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Sulphur Dioxide <span class="blue-bold">(SO2)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Total hydrocarbons <span class="blue-bold">(THC)</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    Benzene, Toluene, Ethylbenzene &amp;
+                                                                                    Xylene <span class="blue-bold">(BTEX)</span>
+                                                                                </li>
+                                                                                <li>Noise</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Hooray!">
+          <img src="./images/new-images/info-icon.png">
+        </a> -->
                                                                 </div>
-                                                                <!-- End 22-March-2024 -->
+                                                                <div class="chart-f-content">
+                                                                    <p>
+                                                                        AQI measures air quality; pollutant trends track
+                                                                        changes in air pollution over
+                                                                        time.
+                                                                    </p>
+                                                                </div>
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1550,12 +1911,12 @@
                                                                     <div class="tab_shados">
                                                                         <!-- /////modify//// -->
                                                                         <!-- <div class="aqi-content mult-value-tab">
-                                                                          <strong class="linebefore2">AQI</strong>
-                                                                          <p>88 GOOD</p>
-                                                                        </div> -->
+      <strong class="linebefore2">AQI</strong>
+      <p>88 GOOD</p>
+    </div> -->
                                                                         <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
-                                                                         SENSITIVE GROUPS
-                                                                        </p></li></div> -->
+     SENSITIVE GROUPS
+    </p></li></div> -->
                                                                         <!-- /////modify/////// -->
                                                                         <div class="grid-value">
                                                                             <div class="grid-upper">
@@ -1633,9 +1994,26 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="canvas-graphs-height">
+                                                                        <div class="canvas-graphs-height polly-linchart-height">
                                                                             <canvas id="pollutantLineChart"></canvas>
                                                                         </div>
+                                                                        <ul class="nav pollutantline-tabs">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link">PM10</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link">SO2</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link">CO</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link">O3</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link">NO2</a>
+                                                                            </li>
+                                                                        </ul>
 
                                                                     </div>
                                                                 </div>
@@ -1816,14 +2194,16 @@
 
         <div class="section position-relative" id="section3">
             <div class="ead-monitoring-project">
-                <div class="monitoring-heading">
-                    <!-- start 01-April-24 -->
+                <div class="monitoring-heading">                   
                     <h5 class="mb-1">Our Initiatives to Protect AQ</h5>
-                    <p class="initiative-heading-content">
+                    <p class="d-none d-sm-none d-md-none d-lg-block initiative-heading-content">
                         Join us in the fight for cleaner skies and healthier communities. Become a <br>
                         guardian of our atmosphere and safeguard our future.
                     </p>
-                    <!-- end 01-April-24 -->
+                    <p class="d-block d-sm-block d-md-block d-lg-none initiative-heading-content">
+                        Join us in the fight for cleaner skies and healthier communities. Become a
+                        guardian of our atmosphere and safeguard our future.
+                    </p>               
                 </div>
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
@@ -1948,8 +2328,7 @@
                                 </div>
                                 <img src="" class="img-fluid mb-3 ProjectbgImage">
                                 <h6 class="mb-3 projectItemContent"></h6>
-                                <p class="text-justify h-200-scroll">
-                                    Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures, and ensure environmental issues remain one of the top priorities of our national agenda. Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities.
+                                <p class="text-justify h-200-scroll projectItemDescription">
                                 </p>
                             </div>
                         </div>
@@ -1984,19 +2363,14 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button type="button" class="accordion-button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseOne">
-                                        Who is considered in a sensitive group?
+                                        What does ‘Air Quality’ refer to?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                      data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed
-                                            to protecting and enhancing air quality, groundwater as well as the
-                                            biodiversity of our desert and marine ecosystem. By partnering with other
-                                            government entities, the private sector, NGOs, and global environmental
-                                            agencies, we embrace international best practice, innovation, and hard work
-                                            to institute effective policy measures.
+                                            Air quality refers to the condition of the air in our environment, specifically the presence of pollutants that can impact human health and the environment.
                                         </p>
                                     </div>
                                 </div>
@@ -2006,16 +2380,14 @@
                                 <h2 class="accordion-header" id="headingThree">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapseThree">
-                                        How can I check the air quality in my area?
+                                        What are common air pollutants present in the environment?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                      data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            You can check the air quality in your area by choosing the nearest
-                                            monitoring station or searching
-                                            your area from the search menu in the map.
+                                            Common air pollutants include particulate matter (PM), nitrogen dioxide (NO2), sulfur dioxide (SO2), ozone (O3), and carbon monoxide (CO).
                                         </p>
                                     </div>
                                 </div>
@@ -2024,21 +2396,13 @@
                                 <h2 class="accordion-header" id="heading4">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse4">
-                                        Why is LP Dolor used?
+                                        How does air quality influence weather patterns?
                                     </button>
                                 </h2>
                                 <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            Yes, air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.
                                         </p>
                                     </div>
                                 </div>
@@ -2047,21 +2411,13 @@
                                 <h2 class="accordion-header" id="heading5">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse5">
-                                        What is the most used version?
+                                        What is the number of air quality monitoring stations currently operational in Abu Dhabi?
                                     </button>
                                 </h2>
                                 <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            The Environment Agency – Abu Dhabi oversees a network of 20 fixed air quality monitoring stations situated across the Emirate of Abu Dhabi, complemented by an additional 2 mobile air quality monitoring stations.
                                         </p>
                                     </div>
                                 </div>
@@ -2070,21 +2426,13 @@
                                 <h2 class="accordion-header" id="heading6">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse6">
-                                        What are the origins of LP Dolor Sit?
+                                        Who is considered in a sensitive group?
                                     </button>
                                 </h2>
                                 <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            High-risk groups, including children under 18, the elderly, individuals with chronic heart or lung disease, pregnant individuals, people with diabetes, and active outdoor adults, require focused attention. These individuals are more likely to experience the adverse impacts of poor air quality, necessitating proactive measures. To protect these vulnerable populations, it is crucial to monitor air quality, limit outdoor activities during peak pollution hours, ensure well-ventilated indoor spaces, and adhere to medical advice, particularly for those with pre-existing conditions. By collectively taking these steps, we can foster a healthier and more resilient community, prioritizing the well-being of those most at risk from air pollution.
                                         </p>
                                     </div>
                                 </div>
@@ -2093,21 +2441,13 @@
                                 <h2 class="accordion-header" id="heading7">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse7">
-                                        What is the original text of LP Dolor Sit Amet?
+                                        How can I check the air quality in my area?
                                     </button>
                                 </h2>
                                 <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            You can check the air quality in your area by choosing the nearest monitoring station or searching your area from the search menu in the map  .
                                         </p>
                                     </div>
                                 </div>
@@ -2116,21 +2456,13 @@
                                 <h2 class="accordion-header" id="heading8">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse8">
-                                        How long should LP pages be?
+                                        Does air quality play a role in climate change?
                                     </button>
                                 </h2>
                                 <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            Air quality does indeed play a significant role in climate change. Air pollutants classified as greenhouse gases such as methane and carbon dioxide contribute to climate change by intensifying the greenhouse effect and altering the Earth’s energy balance
                                         </p>
                                     </div>
                                 </div>
@@ -2139,21 +2471,13 @@
                                 <h2 class="accordion-header" id="heading9">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                             data-bs-target="#collapse9">
-                                        How can you automatically print ‘LP’ text?
+                                        How does climate change affect air quality?
                                     </button>
                                 </h2>
                                 <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="accordion-body">
                                         <p>
-                                            This is the third item's accordion body.</strong> It is hidden by default,
-                                            until the collapse
-                                            plugin adds the appropriate classes that we use to style each element. These
-                                            classes control the
-                                            overall appearance, as well as the showing and hiding via CSS transitions.
-                                            You can modify any of this
-                                            with custom CSS or overriding our default variables. It's also worth noting
-                                            that just about any HTML
-                                            can go within the though the transition does limit overflow.
+                                            Climate change can alter weather patterns, leading to more frequent and severe heatwaves, droughts, and wildfires. This can worsen air quality by increasing pollution levels, such as particulate matter and ground-level ozone. Additionally, rising temperatures can accelerate the formation of ozone and increase the volatility of pollutants. Changes in atmospheric circulation can further impact regional air quality, while shifts in ecosystems can alter the composition of atmospheric pollutants.
                                         </p>
                                     </div>
                                 </div>
@@ -2256,7 +2580,7 @@
                                         <button type="submit" class="button button-primary send-btn mt-5">
                                             Submit
                                         </button>
-                                        <div id="submitStatus"></div>
+                                        <div class="error-message" id="submitStatus"></div>
                                     </div>
                                 </div>
                             </form>

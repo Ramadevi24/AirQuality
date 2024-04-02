@@ -5,6 +5,15 @@
     .banner-section .carousel-caption-banner .h5{
         font-size: 23px!important; top: 42px!important;
     }
+    .sidebar-nav{
+        width: 323px;
+    }
+    #page-content-wrapper{
+        right: 13px;
+    }
+    #wrapper.toggled #page-content-wrapper{
+        right: 94%;
+    }
 }
 
 @media (min-width: 370px) and (max-width: 399px){
@@ -28,12 +37,20 @@
     .nearest-section .station-details .station-box .between-gap {
         gap: 45px;
     }
+    .web-top-legends {
+        
+        width: 85%!important;
+        
+    }
 }
 
 @media (min-width: 320px) and (max-width: 766px){
     /* .full-screen #wrapper{
         display: block!important;
     } */
+    .project-modal .h-200-scroll{
+        height: 275px;
+    }
     .res-mb0{margin-bottom: 0;}
     .res-padding15{padding-left: 10px; padding-right: 10px;}
     .mb-23 {margin-bottom: 23px;}
@@ -64,12 +81,29 @@
     .pollutant-toggleBar .info-popup{
         width: 90%; padding: 29px 30px 22px 30px;
     }
+    #wrapper .sidebar-nav .wheather-widget{
+        display: block;
+    }
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image{
+        display: none;
+    }
+    #wrapper .sidebar-nav .wheather-widget .weather-card-map{
+        position: relative;
+        top: 30px;
+        left: 0;
+        transform: inherit;
+        margin-bottom: 60px;
+    }
     .down-arrow, .wheather-widget{
         display: none;
     }
     .web-top-legends {
-        right: 27px;
+        right: 0;
         top: 35px;
+        left: 0;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
     .ead-monitoring-project{
         position: relative;
@@ -365,6 +399,9 @@
     .footermobile-none{
         display: none;
     }
+    .linechart-height-res{
+        height: 270px;
+    }
     .sm-pd-left3{
         padding-left: 11px;
     }
@@ -375,7 +412,7 @@
         margin:0px 2px;
     }
     .insight .pollutant-hour-top7{
-        top: -9px !important;
+        top: -3px !important;
     right: -9px !important;
     }
     .insight .margin-top-0{
@@ -404,7 +441,7 @@
     }
     .insight .sm-screen-mtb{
         margin-top: 35px;
-        margin-bottom: 30px;
+        margin-bottom: 19px;
     }
     .insight .hourly-3datebox{
         margin: 0!important;
@@ -504,7 +541,7 @@
     .insight .quality-index-wrapper-h2 h2 {
         font-size: 19px;
         padding-bottom: 5px;
-        margin-bottom: 20px ;
+        margin-bottom: 0px ;
         min-height: 25px !important;
     
     }
@@ -601,7 +638,7 @@
         bottom: 27%;
     }
     .insight ul.nav.upperTop{
-        bottom: 15%!important;
+        bottom: 24%!important;
     }
     /* .insight .graph-duration-filters .btn {
         top: -7px;
@@ -614,10 +651,18 @@
     }
 }
 
+
 @media (min-width: 768px) and (max-width: 1199px){
     /* Arisha Start */
     body{
         font-size: 18px;
+    }
+    .linechart-height-res{
+        height: 270px!important;
+    }
+    .equal-station-box-height {
+        height: 555px;
+        margin-bottom: 5px;
     }
     .insight .pollutant-toggleBar .pollutantbar-title{
         font-size: 22px;
@@ -937,7 +982,7 @@
     .insight .quality-index-wrapper-h2 h2 {
         padding-top: 25px;
         margin: 0px;
-        padding-bottom: 20px;
+        padding-bottom: 0px;
         font-size: 28px;
     }
     .insight .number-index p {
@@ -1123,7 +1168,7 @@
         bottom: 123px;
     }
     .insight ul.nav.upperTop {
-        bottom: 90px!important;
+        bottom: 115px!important;
     }
     .canvas-graphs-height{
         height: 350px;
@@ -1139,12 +1184,10 @@
     
 }
 
-/* @media (min-width: 799px) and (max-width: 900px){
-    .video-wrapper {
-        height: fit-content;
-        
-    }
-} */
+@media (min-width: 799px) and (max-width: 900px){
+    .tab-pd-0{padding-left: 0; padding-right: 0;}
+    .insightStation h3{padding-left: 21px;}
+}
 
 @media (min-width: 1024px) and (max-width: 1199px){
     .footermobile-show{
@@ -1368,6 +1411,12 @@
     .insight .pollutant-toggleBar .iconimg{
         width: 27px;
         height: 27px;
+    }
+    .polly-linchart-height{
+        height: 270px;
+    }
+    .insight .pollutantline-tabs{
+        bottom: -32px;
     }
     .project-slider .item{
         height: 317px;

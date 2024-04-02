@@ -74,7 +74,9 @@ a{
 .text-justify{
     text-align: justify;
 }
-
+.text-left{
+    text-align: left;
+}
 .green-color{
    color: var(--green); 
 }
@@ -1512,7 +1514,7 @@ body.map-viwer-enabled{
   }
   
   /* Desktop View*/
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 320px) {
     #wrapper {
       padding-left: 350px;
       /* display: none; */
@@ -1552,12 +1554,12 @@ body.map-viwer-enabled{
 /* .insight{
     display: none;
 } */
-#section2{
+/* #section2{
     background-image: url("../images/new-images/CircularShape-bottom.png");;
     background-repeat: no-repeat, no-repeat;
     background-position: bottom right;
     background-size: 400px;
-}
+} */
 .insight .search-box {
     gap: 20px;
     width: 100%;
@@ -3010,13 +3012,14 @@ color: var(--green);
     gap: 5px;
     justify-content: space-between;
 }
-.insight .mult-value strong {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 15px;
-    text-align: left;
-    font-family: 'GothamMedium';
-}
+    .insight .mult-value strong {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 15px;
+        text-align: left;
+        font-family: 'GothamMedium';
+        color: #33333366;
+    }
 .insight .mult-value p {
     font-size: 14px;
     font-weight: 700;
@@ -3024,7 +3027,7 @@ color: var(--green);
     text-align: left;
     margin: 0px;
     font-family: 'GothamMedium';
-    color: #33333366;
+    color: #111;
 }
 .insight .grid-upper p {
     font-size: 14px;
@@ -3644,13 +3647,13 @@ table {
 /* ------------End  Insight section Css----------------*/
 
 /* ------------Start PROJECTS section Start Css----------------*/
-#section3, #section5{
+/* #section3, #section5{
     background-image: url("../images/new-images/CircularShape1.png");
     background-repeat: no-repeat;
     background-position: top right;
     justify-content: flex-start;
     background-size: 400px;
-}
+} */
 .ead-monitoring-project{
     padding-left: 60px;
     padding-right: 60px;
@@ -3939,16 +3942,40 @@ table {
     color: var(--grey);
     font-family: 'Gothamlight';
 }
+
+#recipeCarousel .openSidebar .project-slide-description{
+    display: none;
+}
+
+.insight .pollutantline-tabs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+}
+    .insight .pollutantline-tabs li a {
+        background: #E6EDF3;
+        margin: 0px 8px;
+        padding: 1px 10px;
+        color: var(--blue);
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'GothamMedium';
+    }
 /* ------------End PROJECTS section Css----------------*/
 
 /* ------------Start FAQ section Css----------------*/
-#section4 {
+/* #section4 {
     background-image: url(../images/new-images/bottom-CircularShape.png);
     background-repeat: no-repeat;
     background-position: bottom left;
     justify-content: flex-start;
     background-size: 400px;
-}
+} */
 
 .faq-section{
     margin-top: 10%;
