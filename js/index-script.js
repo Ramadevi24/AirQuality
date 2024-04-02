@@ -1387,13 +1387,17 @@ function loadStationData(initialCall = false) {
             updateActivities(aqi);
             updateHeathReccommendation(aqi);
             var pollutantColorClass = getColorClassForAqi(aqi);
-            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature").empty();
+            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature,#mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature").empty();
             $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
             $("#mainPollutantValue").append(aqi + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
             $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
             $('#windDirection').append(data.direction);
             $('#relativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
             $('#temperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+            $('#mobileWindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
+            $('#mobileWindDirection').append(data.direction);
+            $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+            $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
