@@ -293,18 +293,18 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
 
         $("#airPurifier").click(function (event) {
 
-            var layer = webmap.findLayerById("18d30ddfba7-layer-3");
+            var layer = webmap.findLayerById("AQI_1_7235");
             if (!layer.visible) {
                 layer.visible = true;
             }
             else {
-                layer.visible = false;
+                layer.visible = false
             }
 
         });
 
         $("#wind").click(function (event) {
-            var layer = webmap.findLayerById("18c9125f8e5-layer-2");
+            var layer = webmap.findLayerById("18e0dd83703-layer-3");
             if (!layer.visible) {
                 layer.visible = true;
             }
@@ -312,6 +312,20 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 layer.visible = false;
             }
         });
+
+         
+
+
+        $("#mapLocation").click(function (event) {  
+            console.log(longitude);
+           
+                // Use the obtained coordinates to move the map view
+                view.goTo({
+                    center: [latitude, longitude],
+                    zoom: 20
+                });
+            });
+       
         // end changes
 
         $("#stationsDropdownMap").click(function (event) {

@@ -249,26 +249,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="wheather-list">
-                            <div class="under-wheather-list weather-line">
-                                <p class="mb-0">Wind Speed</p>
-                                <span>10<sub>km/h</sub></span>
-                            </div>
-                            <div class="under-wheather-list">
-                                <p class="mb-0">Wind Direction</p>
-                                <span>35<sup>o</sup><sub>C</sub></span>
-                            </div>
-                        </div>
-                        <div class="wheather-list">
-                            <div class="under-wheather-list">
-                                <p class="mb-0">Humidity</p>
-                                <span>55<sub>%</sub></span>
-                            </div>
-                            <div class="under-wheather-list">
-                                <p class="mb-0">Air Pressure</p>
-                                <span>1000<sub>mb</sub></span>
-                            </div>
-                        </div> -->
                         <div class="text-center">
                             <button class="button insight-btn">More Insights</button>
                             <button class="button insight-btn-tab">More Insights</button>
@@ -301,7 +281,7 @@
                             </button>
                         </li>
                         <li class="">
-                            <button class="btn">
+                            <button class="btn" id="mapLocation">
                                 <i class="icon-pointer"></i>
                             </button>
                         </li>
@@ -417,7 +397,7 @@
 
                             </div>
                             <div class="overview-heading mt-3 mb-3" id="SidebaryearlyAirQualityOverview">
-                           </div>
+                            </div>
                             <div class="small-device-legend-list">
                                 <div class="row" id="aqiDailyCountsDiv">
                                 </div>
@@ -1851,14 +1831,14 @@
                         <a class="nav-link active" data-bs-toggle="pill" href="#home">Air Quality</a>
                     </li>
                     <!-- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" href="#menu1">Category 2</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" href="#menu2">Category 3</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" href="#menu4">Category 4</a>
-        </li> -->
+                        <a class="nav-link" data-bs-toggle="pill" href="#menu1">Category 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="pill" href="#menu2">Category 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="pill" href="#menu4">Category 4</a>
+                    </li> -->
                 </ul>
 
                 <!-- Tab panes -->
@@ -1867,79 +1847,79 @@
                         <div id="recipeCarousel" class="carousel slide slide-carol mt-4" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <!-- <div class="carousel-item carol-item active">
-                        <div class="col-md-3">
-                            <div class="position-relative main-content openSidebar">
-                                <div class="">
-                                    <img src="./images/new-images/Freepik1.png" class="item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative main-content openSidebar">
+                                            <div class="">
+                                                <img src="./images/new-images/Freepik1.png" class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
+                                                scelerisque
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="project-slide-content">
-                                    Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                    scelerisque
+                                <div class="carousel-item carol-item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative main-content openSidebar">
+                                            <div class="">
+                                                <img src="./images/new-images/Freepik.png" class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Sample
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carol-item">
-                        <div class="col-md-3">
-                            <div class="position-relative main-content openSidebar">
-                                <div class="">
-                                    <img src="./images/new-images/Freepik.png" class="item">
+                                <div class="carousel-item carol-item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative">
+                                            <div class="">
+                                                <img src="./images/new-images/Freepik2.png" class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Testing
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="project-slide-content">
-                                    Sample
+                                <div class="carousel-item carol-item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative">
+                                            <div class="">
+                                                <img src="./images/new-images/Freepik3.png" class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Testing2
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carol-item">
-                        <div class="col-md-3">
-                            <div class="position-relative">
-                                <div class="">
-                                    <img src="./images/new-images/Freepik2.png" class="item">
+                                <div class="carousel-item carol-item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative">
+                                            <div class="">
+                                                <img src="./images/achievments/a5.jpg" class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Testing3
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="project-slide-content">
-                                    Testing
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carol-item">
-                        <div class="col-md-3">
-                            <div class="position-relative">
-                                <div class="">
-                                    <img src="./images/new-images/Freepik3.png" class="item">
-                                </div>
-                                <div class="project-slide-content">
-                                    Testing2
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carol-item">
-                        <div class="col-md-3">
-                            <div class="position-relative">
-                                <div class="">
-                                    <img src="./images/achievments/a5.jpg" class="item">
-                                </div>
-                                <div class="project-slide-content">
-                                    Testing3
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carol-item">
-                        <div class="col-md-3">
-                            <div class="position-relative">
-                                <div class="">
-                                    <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
-                                         class="item">
-                                </div>
-                                <div class="project-slide-content">
-                                    Testing5
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                                <div class="carousel-item carol-item">
+                                    <div class="col-md-3">
+                                        <div class="position-relative">
+                                            <div class="">
+                                                <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
+                                                     class="item">
+                                            </div>
+                                            <div class="project-slide-content">
+                                                Testing5
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <button id="prev" class="mt-4" href="#recipeCarousel" role="button" data-bs-slide="prev">
@@ -2584,10 +2564,12 @@
     <script src="./js/apexcharts.js"></script>
     <!--<script src="./js/chart.js"></script>-->
     <!--start 29-March-24 removed cdn-->
-    <script src="./js/graphs-js/chart.js"></script>
+    <!--<script src="./js/graphs-js/chart.js"></script>
     <script src="./js/graphs-js/chartjs-plugin-annotation@latest.js"></script>
     <script src="./js/graphs-js/moment@latest.js"></script>
-    <script src="./js/graphs-js/chartjs-adapter-moment@latest.js"></script>
+    <script src="./js/graphs-js/chartjs-adapter-moment@latest.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <!--end 29-March-24 removed cdn-->
 
     <script src="./js/index-script.js"></script>

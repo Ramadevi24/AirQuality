@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:7047/";//"https://adairqualityapi.ead.ae/";
+const baseUrl = "https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -8,6 +8,8 @@ var chartData = [];
 var aqiLineChart;
 var pollutantLineChart;
 var activePollutant;
+var latitude;
+var longitude
 
 const causeStationData = {
     'Hamdan Street': {
@@ -1270,8 +1272,8 @@ function createRadialGradient3(context) {
 
 function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(function success(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
         currentStationDetails = findNearestStation(latitude, longitude);
         if (currentStationDetails) {
             loadStationData();
@@ -2004,7 +2006,8 @@ function bindStationDataToLineChart(filter) {
                     },
                     pointBackgroundColor: 'white',
                     fill: true,
-                    tension: 0.4 // Smooth the line
+                    tension: 0.4,
+                    pointRadius: 0
                 }]
             },
 
@@ -2086,9 +2089,9 @@ function bindStationDataToLineChart(filter) {
                         time: {
                             unit: 'day',
                             // Format for tooltip and tick display
-                            tooltipFormat: 'MMM D',
+                            tooltipFormat: 'MMM d',
                             displayFormats: {
-                                day: 'MMM D'
+                                day: 'MMM d'
                             }
                         },
                         position: 'bottom',
@@ -2122,7 +2125,7 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,
+                    data: aqiData,                   
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
@@ -2140,7 +2143,8 @@ function bindStationDataToLineChart(filter) {
                     },
                     pointBackgroundColor: 'white',
                     fill: true,
-                    tension: 0.4 // Smooth the line
+                    tension: 0.4,
+                    pointRadius: 0,
                 }]
             },
 
@@ -2248,42 +2252,47 @@ function bindStationDataToLineChart(filter) {
                     {
                         label: 'PM10',
                         data: pm10Data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 1)',
+                        borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        tension: 0.4,
+                        borderWidth: 3
                     },
                     {
                         label: 'SO2',
                         data: so2Data,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
+                        borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        tension: 0.4,
+                        borderWidth: 3
                     },
                     {
                         label: 'CO',
                         data: coData,
-                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.6)',
+                        borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        tension: 0.4,
+                        borderWidth: 3
                     },
                     {
                         label: 'O3',
                         data: o3Data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.4)',
+                        borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        tension: 0.4,
+                        borderWidth: 3
                     },
                     {
                         label: 'NO2',
                         data: no2Data,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
+                        borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        tension: 0.4,
+                        borderWidth: 3
                     }
                 ]
             },
@@ -2381,45 +2390,41 @@ function bindStationDataToLineChart(filter) {
                         type: 'time',
                         time: {
                             unit: 'hour',
-                            // Format for tooltip display
-                            tooltipFormat: 'hh:mm a'
-                        },
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 20
+                            tooltipfirmat: 'HH:mm a'
                         },
                         grid: {
                             display: false
-                        }
+                        },
+
                     },
-                    x2: {
+                    x1: {
+                        id: 'x1',
                         type: 'time',
                         time: {
                             unit: 'day',
-                            // Format for tooltip and tick display
-                            tooltipFormat: 'MMM D',
+                            tooltipFormat: 'MMM d',
                             displayFormats: {
-                                day: 'MMM D'
+                                day: 'MMM d'
                             }
                         },
-                        position: 'bottom',
+                        grid: {
+                            display: false
+                        },
                         ticks: {
                             // Auto-skip prevents label overlapping.
                             autoSkip: true,
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        grid: {
-                            drawOnChartArea: false
-                        },
+                        position: 'bottom',
                         min: minDateString,
                         max: maxDateString
                     },
                     y: {
-                        stacked: true,
                         grid: {
                             display: false
-                        }
+                        },
+                        beginAtZero: true
                     },
                 },
             },
@@ -2435,86 +2440,84 @@ function bindStationDataToLineChart(filter) {
                     {
                         label: 'PM10',
                         data: pm10Data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 1)',
+                        borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'SO2',
                         data: so2Data,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
+                        borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'CO',
                         data: coData,
-                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.6)',
+                        borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'O3',
                         data: o3Data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.4)',
+                        borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'NO2',
                         data: no2Data,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
+                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
+                        borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
-                        borderWidth: 1
+                        borderWidth: 2
                     }
                 ]
 
             },
             options: {
-                scales: {
-                    x: {
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0
-                        },
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },
-                        stacked: true,
-                    },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
-                    },
+                //scales: {
+                //    x: {
+                //        ticks: {
+                //            maxRotation: 0,
+                //            minRotation: 0
+                //        },
+                //        grid: {
+                //            display: false, 
+                //            drawBorder: false, 
+                //        },
+                //        stacked: true,
+                //    },
+                //    y: { 
+                //        stacked: true,
+                //        grid: {
+                //            display: false, 
+                //            drawBorder: false, 
+                //        },
+                //    },
 
-                },
-                responsive: true, // Make the chart responsive
-                maintainAspectRatio: false, // Allows custom chart size without maintaining aspect ratio
+                //},
+                responsive: true, 
+                maintainAspectRatio: false, 
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'bottom', // Position the legend at the bottom of the chart
+                        position: 'bottom', 
                         labels: {
-                            usePointStyle: true, // Use the same style as the point style for the legend symbols
-                            padding: 20, // Add some padding between legend items
-                            boxWidth: 12, // Width of the colored box
-                            boxHeight: 12, // Height of the colored box
-                            // Generate labels with custom style based on dataset visibility
+                            usePointStyle: true, 
+                            padding: 20, 
+                            boxWidth: 12, 
+                            boxHeight: 12,
+                           
                             generateLabels: function (chart) {
                                 const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    // Check if the associated dataset is currently hidden
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    // Modify the label to add a custom style property if the dataset is hidden
+                                return labels.map(label => {                                   
+                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
                                     label.textStyle = isHidden ? 'disabled' : 'normal';
                                     return label;
                                 });
@@ -3122,9 +3125,9 @@ function bindStationDataToBarChart(filter) {
                         type: 'time',
                         time: {
                             unit: 'day',
-                            tooltipFormat: 'MMM D',
+                            tooltipFormat: 'MMM d',
                             displayFormats: {
-                                day: 'MMM D'
+                                day: 'MMM d'
                             }
                         },
                         position: 'bottom',

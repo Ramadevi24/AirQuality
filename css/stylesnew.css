@@ -1030,6 +1030,9 @@ video {
     display: none;
     border-top: 1px solid #000;
     padding: 10px 12px!important;
+    max-height:150px;
+    overflow:hidden;
+    overflow-y:scroll;
 }
 .Newsearch-box ul li{
     display: block!important;
