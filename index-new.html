@@ -231,21 +231,21 @@
                             <div class="weather-data weather-line">
                                 <div class="data-item position-relative">
                                     <h4>Wind Speed</h4>
-                                    <p class="mb-0">10<sub>km/h</sub></p>
+                                    <p class="mb-0" id="windSpeed"></p>
                                 </div>
                                 <div class="data-item">
                                     <h4>Wind Direction</h4>
-                                    <p class="mb-0">NE</p>
+                                    <p class="mb-0" id="windDirection"></p>
                                 </div>
                             </div>
                             <div class="weather-data weather-line">
                                 <div class="data-item position-relative">
                                     <h4>Humidity</h4>
-                                    <p class="mb-0">55<sub>%</sub></p>
+                                    <p class="mb-0" id="relativeHumidity"></p>
                                 </div>
                                 <div class="data-item">
                                     <h4>Temperature <span class="refresh-hide1">w</span></h4>
-                                    <p class="mb-0">35<sup>o</sup><sub>C</sub></p>
+                                    <p class="mb-0" id="temperature"></p>
                                 </div>
                             </div>
                         </div>
@@ -282,21 +282,6 @@
                                 <input class="search-txt" id="stationsDropdownMapSearch" type="text" name=""
                                        placeholder="Search Station">
                                 <ul class="listSearch" id="stationsDropdownMap">
-                                    <li>
-                                        <span class="mapSearchlist-text">Abu Dhabi</span>
-                                    </li>
-                                    <li>
-                                        <span class="mapSearchlist-text">Dubai</span>
-                                    </li>
-                                    <li>
-                                        <span class="mapSearchlist-text">Sharjah</span>
-                                    </li>
-                                    <li>
-                                        <span class="mapSearchlist-text">Ajman</span>
-                                    </li>
-                                    <li>
-                                        <span class="mapSearchlist-text">Ajman1</span>
-                                    </li>
                                 </ul>
                                 <span class="search-btn1">
                                     <img src="./images/new-images/search.png" class="whitesearch-hide mapsearch-img"
@@ -1745,25 +1730,9 @@
                                                                     aria-expanded="false" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false"
                                                                     id="selectedyear">
-                                                                2023  <span>
-                                                                    <i class="fa fa-sort-desc"
-                                                                       aria-hidden="true"></i>
-                                                                </span>
                                                             </button>
                                                             <ul class="dropdown-menu dropdown-change dropdown-menu-end"
-                                                                aria-labelledby="selectedyear">
-                                                                <li>
-                                                                    <a class="dropdown-item" href="javascript: void(0)"
-                                                                       onclick="onClickYearOfAirAnalytics(2021)">2021</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="javascript: void(0)"
-                                                                       onclick="onClickYearOfAirAnalytics(2022)">2022</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="javascript: void(0)"
-                                                                       onclick="onClickYearOfAirAnalytics(2023)">2023</a>
-                                                                </li>
+                                                                aria-labelledby="selectedyear" id="yearDropDown">
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -2307,7 +2276,7 @@
                                         <button type="submit" class="button button-primary send-btn mt-5">
                                             Submit
                                         </button>
-                                        <div class="error-message" id="submitError"></div>
+                                        <div id="submitStatus"></div>
                                     </div>
                                 </div>
                             </form>

@@ -1,4 +1,4 @@
-const baseUrl = "https://adairqualityapi.ead.ae/";
+const baseUrl = "http://localhost:7047/";//"https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -903,12 +903,25 @@ $(document).ready(function () {
     activePollutant = pollutantNames.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
+    bindYearsToDropDown(); // Do not call this function after load station data function
     loadStationData(true);
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
         $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
         getStationChartApi(chartFilter.Custom);
+    });
+
+    $('#stationsDropdownMapSearch').on('keyup', function () {
+        var searchText = $(this).val().toLowerCase();
+        $('.mapSearchlist-text').each(function () {
+            var listItemText = $(this).text().toLowerCase();
+            if (listItemText.indexOf(searchText) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
     });
 
     // Do not remove below code ends---------------------------------
@@ -1212,6 +1225,7 @@ function createRadarData() {
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
+            pointBackgroundColor: '#fff',
             lineTension: 0.2,
             data: pollutantLevels,
         }]
@@ -1331,22 +1345,13 @@ function populateSort(sortBy) {
 }
 
 function loadStationData(initialCall = false) {
-    //alert(stationid);
     const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
-    var data = $("#datafield").val();
-    // var category = $.parseJSON(data);
     $.ajax({
         url: apiUrl,
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            const selectedStationObj = {
-                averageAQI: data.averageAQI,
-                pollutantName: data.pollutantName,
-                pollutantValue: data.pollutantValue,
-                stationsList: data.stationsList
-            };
-            const aqi = Math.round(selectedStationObj.averageAQI);
+            const aqi = Math.round(data.averageAQI);
             var aqiDetails = getAqiStatusAndColorCode(aqi);
             var currentYearOverview = new Date().getFullYear();
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
@@ -1358,7 +1363,7 @@ function loadStationData(initialCall = false) {
             $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
             $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
             var mainPollutantNameContent;
-            switch (selectedStationObj.pollutantName) {
+            switch (data.pollutantName) {
                 case "PM10":
                     mainPollutantNameContent = `Particulate Matter, PM<sub>10</sub>`;
                     break;
@@ -1375,20 +1380,24 @@ function loadStationData(initialCall = false) {
                     mainPollutantNameContent = `Carbon monoxide, CO`;
                     break;
             }
-            updateCauses(currentStationDetails.stationName, selectedStationObj.pollutantName);
+            updateCauses(currentStationDetails.stationName, data.pollutantName);
             updateLegendVisibility(currentStationDetails.stationName);
             updateActivities(aqi);
             updateHeathReccommendation(aqi);
             var pollutantColorClass = getColorClassForAqi(aqi);
-            $("#mainPollutantName, #mainPollutantValue").empty();
+            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature").empty();
             $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
             $("#mainPollutantValue").append(aqi + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
+            $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
+            $('#windDirection').append(data.direction);
+            $('#relativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+            $('#temperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
             getLiveCityRankingApi();
             getAirQualitySafetyLevel();
-            getStationChartApi($('#lineChartPollutantFilter').text(), initialCall);
+            getStationChartApi($('#barChartFilter').text(), initialCall);
         },
         error: handleApiError
     });
@@ -1695,7 +1704,12 @@ function getYearlyStationPollutantsThreshold() {
 }
 
 function onClickYearOfAirAnalytics(year) {
-    $('#selectedyear').html(year);
+    var selectedYearEl = $('#selectedyear');
+    selectedYearEl.html(year);
+    selectedYearEl.append(`<span>
+    <i class="fa fa-sort-desc"
+    aria-hidden="true"></i>
+</span>`);
     getAirAnalytics(year);
 }
 
@@ -1750,8 +1764,9 @@ function getLiveCityRankingApi() {
 
 function bindLiveCityRanking() {
     // Clear existing rows
+    $('#stationRankingList, #stationsDropdownMap').empty();
     var stationRankingListDiv = $('#stationRankingList');
-    stationRankingListDiv.empty();
+    var stationsDropdownMapEl = $('#stationsDropdownMap');
     var stationDetails;
     $.each(liveCityData, function (index, station) {
         stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
@@ -1775,6 +1790,9 @@ function bindLiveCityRanking() {
                       <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `')">
                     </label>`;
             stationRankingListDiv.append(row);
+            stationsDropdownMapEl.append(`<li>
+                <span class="mapSearchlist-text">`+ stationDetails.stationName +`</span>
+            </li>`);
         }
     });
     if (currentStationDetails.stationId) {
@@ -2603,7 +2621,7 @@ function bindStationDataToBarChart(filter) {
                         categoriesData.push(item.day.split(' '));
 
                     });
-                    backgroundColors = ['#F65E5F'];
+                    backgroundColors.push('#F65E5F');
                     barChartDataSet.push({
                         label: '',
                         backgroundColor: '#004B87',
@@ -2616,15 +2634,15 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.month);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.year);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
@@ -2635,8 +2653,8 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.pM10)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
             }
             barChartDataSet.push({
@@ -2660,7 +2678,7 @@ function bindStationDataToBarChart(filter) {
                         }
                         categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColors = ['#F65E5F'];
+                    backgroundColors.push('#F65E5F');
                     barChartDataSet.push({
                         label: '',
                         backgroundColor: '#004B87',
@@ -2673,8 +2691,8 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.sO2);
                         categoriesData.push(item.month);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.sO2)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
@@ -2705,8 +2723,8 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.sO2)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
@@ -2724,7 +2742,7 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
-                    backgroundColors = ['#F65E5F'];
+                    backgroundColors.push('#F65E5F');
                     barChartDataSet.push({
                         label: '',
                         backgroundColor: '#004B87',
@@ -2748,22 +2766,22 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.co);
                         categoriesData.push(item.day.split(' '));
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.co);
                         categoriesData.push(item.month);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.co);
                         categoriesData.push(item.year);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Custom":
                     chartData.forEach(item => {
@@ -2774,8 +2792,8 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.co)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
@@ -2793,7 +2811,7 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
-                    backgroundColors = ['#F65E5F'];
+                    backgroundColors.push('#F65E5F');
                     barChartDataSet.push({
                         label: '',
                         backgroundColor: '#004B87',
@@ -2817,22 +2835,22 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.day.split(' '));
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.month);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.year);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Custom":
                     chartData.forEach(item => {
@@ -2843,8 +2861,8 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.o3)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
@@ -2893,7 +2911,7 @@ function bindStationDataToBarChart(filter) {
                         }
                         categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColors = ['#F65E5F'];
+                    backgroundColors.push('#F65E5F');
                     barChartDataSet.push({
                         label: '',
                         backgroundColor: '#004B87',
@@ -2906,15 +2924,15 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.nO2);
                         categoriesData.push(item.month);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.nO2);
                         categoriesData.push(item.year);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
                     });
+                    backgroundColors.push('#004B87');
                     break;
                 case "Custom":
                     chartData.forEach(item => {
@@ -2925,8 +2943,8 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.nO2)]);
                     });
+                    backgroundColors.push('#004B87');
                 default:
                     chartData.forEach(item => {
                         if (item.nO2 > pollutantThresholdLimits.NO2Hourly) {
@@ -3268,6 +3286,26 @@ function updateCharts(selectedFilter) {
     }
     // Do not remove below code ends---------------------------------
 }
+
+function bindYearsToDropDown() {
+    var startYear = 2016;
+    var currentYear = new Date().getFullYear();
+    var yearDropDownEl = $('#yearDropDown');
+    while (startYear <= currentYear) {
+        yearDropDownEl.append(`<li>
+            <a class="dropdown-item" href="javascript: void(0)"
+            onclick="onClickYearOfAirAnalytics(`+ startYear + `)">` + startYear + `</a>
+        </li>`);
+        ++startYear;
+    }
+    var selectedYearEl = $('#selectedyear');
+    selectedYearEl.html(currentYear);
+    selectedYearEl.append(`<span>
+        <i class="fa fa-sort-desc"
+        aria-hidden="true"></i>
+    </span>`);
+}
+
 // Do not remove below code ends---------------------------------
 var imageData = [
     { imageUrl: "./images/new-images/Freepik1.png", content: "Lorem ipsum dolor sit amet amet consectetur" },
@@ -3364,7 +3402,7 @@ document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', f
 function isLastSlideActive() {
 
     var items1 = document.querySelectorAll('.slide-carol .carol-item');
-    let activeSlide = document.querySelector('.carol-item.active'); 
+    let activeSlide = document.querySelector('.carol-item.active');
     let lastSlide = items1[items1.length - 1];
     return activeSlide === lastSlide;
 }
@@ -3436,12 +3474,14 @@ $('#myForm').submit(function (e) {
             success: function (result) {
                 if (result.mailSent) {
                     $(this).find('input, textarea').val('');
-                    $('#submitError').html('');
+                    $('#submitStatus').html('Submitted Successfully.').removeClass('error-message').addClass('success-message');
                 } else {
-                    $('#submitError').html('Please try after sometime.');
+                    $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
                 }
             },
-            error: handleApiError
+            error: function () {
+                $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
+            }
         });
     }
 });

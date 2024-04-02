@@ -4408,3 +4408,6 @@ footer .copy-rights ul li a {
     display: none !important;
 }
 
+.success-message{
+    color: green;
+}
