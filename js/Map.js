@@ -313,79 +313,29 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             }
         });
 
-         
 
 
-        $("#mapLocation").click(function (event) {  
+
+        $("#mapLocation").click(function (event) {
             console.log(longitude);
-           
-                // Use the obtained coordinates to move the map view
-                view.goTo({
-                    center: [latitude, longitude],
-                    zoom: 20
-                });
+
+            // Use the obtained coordinates to move the map view
+            view.goTo({
+                center: [latitude, longitude],
+                zoom: 20
             });
-       
+        });
+
         // end changes
 
         $("#stationsDropdownMap").click(function (event) {
+            
             if (!event.target.id.includes('Search')) {
-                if (event.target.classList.contains("abudhabiitem")) {
-                    LoadAirQualityData();
-                    var stationName = $('#abudhabi').val();
-                    $("#selectedCity").text(stationName);
-                    LoadProgressBar();
-                    displayStationInfo("EAD_HamdanStreet");
-                    LoadPollutantsTrends("EAD_HamdanStreet");
-                    var year = selectedyearButton.innerText;
-                    GetAirAnalytics(year, "");
-                    $("#stationsDropdown").val("");
-                } else {
-                    // Call your JavaScript function for dynamically created elements
-                    updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());
-                }
+                updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());             
+                currentStationDetails = stationsWithLocations.find(x => x.stationName == $(event.target).text())
+                loadStationData();
             }
-        });
-        $("#stationsDropdown").click(function (event) {
-            if (event.target.classList.contains("abudhabiitem")) {
-                LoadAirQualityData();
-                var stationName = $('#abudhabi').val();
-                $("#selectedCity").text(stationName);
-                LoadProgressBar();
-                displayStationInfo("EAD_HamdanStreet");
-                LoadPollutantsTrends("EAD_HamdanStreet");
-                var year = selectedyearButton.innerText;
-                GetAirAnalytics(year, "");
-                $("#stationsDropdown").val("");
-            }
-            if (event.target.classList.contains("dropdown-item")) {
-                // Call your JavaScript function for dynamically created elements
-                //updateSelectedCity1($(event.target).attr("data-key"),$(event.target).text());
-                ZoomToLocation($(event.target).text());
-            }
-
-        });
-
-        //$("#Refreshbtn").click(function (event) {
-        //    if ($("#selectedCity").text() == $('#abudhabi').val()) {
-        //        LoadAirQualityData();
-        //        var stationName = $('#abudhabi').val();
-        //        $("#selectedCity").text(stationName);
-        //        LoadProgressBar();
-        //        displayStationInfo("EAD_HamdanStreet");
-        //        LoadPollutantsTrends("EAD_HamdanStreet");
-        //        var year = selectedyearButton.innerText;
-        //        GetAirAnalytics(year, "");
-        //        $("#stationsDropdown").val("");
-        //    } else {
-        //        var station = $("#stationsDropdown").val();
-        //        LoadStationData(station)
-        //            ;
-        //    }
-        //    var currentDate = new Date();
-        //    var formattedDate = moment(currentDate).format("h:mm A, MMM DD");
-        //    $("#LastUpdatedDateTime").html("<strong>Last Update at</strong> " + formattedDate);
-        //});
+        });  
 
         function updateSelectedCity1(cityKey, Value) {
             ZoomToLocation(Value);
@@ -501,10 +451,10 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                             StationsObject[x].data = stationobj;
                         }
                     }
-                    const aqi = Math.round(selectedStationObj.averageAQI);                   
+                    const aqi = Math.round(selectedStationObj.averageAQI);
                     Createpollutants_EmirateLvl(aqi);
                     Createpollutants_RegionLvl();
-                    Createpollutants();                    
+                    Createpollutants();
                     $('.page-loader').fadeOut('slow');
                 },
                 error: handleApiError
@@ -690,10 +640,10 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
         }
 
 
-     
+
 
         function SelectedStation(response) {
-            debugger;
+            // debugger;
             //alert(response);
             if (response.results.length > 0) {
                 var res = response.results;
@@ -703,12 +653,13 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                         for (var i = 0; i < StationsObject.length; i++) {
                             if (StationsObject[i].attributes.Name == attrInfo.Name) {
                                 SelectedstationInfo = StationsObject[i];
+                                alert(SelectedstationInfo.KeyName);
                                 currentStationDetails = stationsWithLocations.find(x => x.stationId == SelectedstationInfo.KeyName)
-                               loadStationData();
+                                loadStationData();
                                 break
                             }
                         }
-                       // PreparePollutantSeriesData();
+                        // PreparePollutantSeriesData();
                         break;
                     }
 
@@ -960,7 +911,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             });
         }
 
-        
+
         function GetAverage(pollutantsarr) {
             var total = 0;
             var count = 0;
