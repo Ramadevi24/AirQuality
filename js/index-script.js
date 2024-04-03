@@ -11,6 +11,23 @@ var activePollutant;
 var latitude;
 var longitude
 
+const pollutantAbbrevations = {
+    AQI: "AQI",
+    PM10: "PM10",
+    PM25: "PM25",
+    NO2: "NO2",
+    SO2: "SO2",
+    CO: "CO",
+    BTEX: "BTEX",
+    MET: "MET",
+    H2S: "H2S",
+    O3: "O3",
+    THC: "THC",
+    VOCs: "VOCs",
+    NGO: "NGO",
+    Noise: "Noise"
+}
+
 const causeStationData = {
     'Hamdan Street': {
         'PM10': [
@@ -341,109 +358,149 @@ const stationsWithLocations = [{
     stationId: "EAD_HamdanStreet",
     stationName: "Hamdan Street",
     latitude: 24.4889,
-    longitude: 54.3637
+    longitude: 54.3637,
+    stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi Urban Traffic",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhadijaSchool",
     stationName: "Khadejah School",
     latitude: 24.4816,
-    longitude: 54.3693
+    longitude: 54.3693,
+    stationLocation: "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi Urban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhalifaSchool",
     stationName: "Khalifa School",
     latitude: 24.4301,
-    longitude: 54.4084
+    longitude: 54.4084,
+    stationLocation: "25-11 Ar RaÊ¹bi St - Al Mushrif - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Mussafah",
     stationName: "Mussafah",
     latitude: 24.3472,
-    longitude: 54.5029
+    longitude: 54.5029,
+    stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi Suburban Industrial",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Baniyas",
     stationName: "Baniyas School",
     latitude: 24.3213,
-    longitude: 54.6359
+    longitude: 54.6359,
+    stationLocation: "Bani Yas - East 4 - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
     latitude: 24.4035,
-    longitude: 54.5161
+    longitude: 54.5161,
+    stationLocation: "Rabdan - Abu Dhabi Urban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhalifaCity",
     stationName: "Khalifa City A",
     latitude: 24.4199,
-    longitude: 54.5782
+    longitude: 54.5782,
+    stationLocation: "5 Ê»utbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 },
 {
     stationId: "EAD_AlMafraq",
     stationName: "Al Mafraq",
     latitude: 24.2863,
-    longitude: 54.5889
+    longitude: 54.5889,
+    stationLocation: "Jarn Yafour - Abu Dhabi Suburban Industrial",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 },
 {
     stationId: "EAD_AlAinSchool",
     stationName: "Al Ain Islamic Institute",
     latitude: 24.2191,
-    longitude: 55.7349
+    longitude: 55.7349,
+    stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlAinStreet",
     stationName: "Al Ain Street",
     latitude: 24.2259,
-    longitude: 55.7658
+    longitude: 55.7658,
+    stationLocation: "Central District - Abu Dhabi Urban Traffic",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Sweihan",
     stationName: "Sweihan",
     latitude: 24.4667,
-    longitude: 55.3429
+    longitude: 55.3429,
+    stationLocation: "44th St - Sweihan - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlTawia",
     stationName: "Al Tawia",
     latitude: 24.2592,
-    longitude: 55.7049
+    longitude: 55.7049,
+    stationLocation: "Al Tiwayya - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Zakher",
     stationName: "Zakher",
     latitude: 24.1635,
-    longitude: 55.7021
+    longitude: 55.7021,
+    stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi Urban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Quaa",
     latitude: 23.5312,
-    longitude: 55.486
+    longitude: 55.486,
+    stationLocation: "Al Wiqan - Abu Dhabi Regional Rural",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_BidaZayed",
     stationName: "Bida Zayed",
     latitude: 23.6523,
-    longitude: 53.7039
+    longitude: 53.7039,
+    stationLocation: "Zayed City - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Gayathi",
     stationName: "Gayathi School",
     latitude: 23.8355,
-    longitude: 52.8103
+    longitude: 52.8103,
+    stationLocation: "Ghiyathi - Abu Dhabi Suburban Background",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Liwa",
     stationName: "Liwa Oasis",
     latitude: 23.0958,
-    longitude: 53.6064
+    longitude: 53.6064,
+    stationLocation: "3JW4+8H7 Taraq, Abu Dhabi Rural Background Regional",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_RuwaisTransco",
     stationName: "Ruwais",
     latitude: 24.0909,
-    longitude: 52.7548
+    longitude: 52.7548,
+    stationLocation: "Al Ruways Industrial City - Abu Dhabi Suburban Industrial",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Habshan",
     stationName: "Habshan South",
     latitude: 23.7504,
-    longitude: 53.7453
+    longitude: 53.7453,
+    stationLocation: "QP2W+44W - Habshan - Abu Dhabi Rural Industrial",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
     latitude: 24.0352,
-    longitude: 53.8853
+    longitude: 53.8853,
+    stationLocation: "Um Laylah - Abu Dhabi Rural Traffic",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "",
     stationName: "Abu Dhabi",
     latitude: 24.4539,
-    longitude: 54.3773
+    longitude: 54.3773,
 }];
 
 const colorClass = {
@@ -492,12 +549,18 @@ const chartFilter = {
 }
 
 const pollutantNames = {
-    AQI: "AQI",
-    PM10: "PM10",
-    SO2: "SO2",
-    CO: "CO",
-    O3: "O3",
-    NO2: "NO2"
+    PM10: "Particulate Matter less than 10 microns",
+    PM25: "Particulate Matter less than 2.5 microns",
+    NO2: "Nitrogen Dioxide",
+    SO2: "Sulphur Dioxide",
+    CO: "Carbon Monoxide",
+    BTEX: "Benzene, Toluene, Ethylbenzene and Xylene",
+    MET: "Meteorology",
+    H2S: "Hydrogen Sulphide",
+    O3: "Ozone",
+    THC: "Total Hydrocarbons",
+    VOCs: "Volatile Organic Compounds",
+    NGO: "Non-Governmental Organization"
 }
 
 const pollutantThresholdLimits = {
@@ -902,7 +965,7 @@ $(document).ready(function () {
     //pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
     //aqiLineChart.render();
     //pollutantLineChart.render();   
-    activePollutant = pollutantNames.AQI;
+    activePollutant = pollutantAbbrevations.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
     bindYearsToDropDown(); // Do not call this function after load station data function
@@ -1382,6 +1445,7 @@ function loadStationData(initialCall = false) {
                     mainPollutantNameContent = `Carbon monoxide, CO`;
                     break;
             }
+
             updateCauses(currentStationDetails.stationName, data.pollutantName);
             updateLegendVisibility(currentStationDetails.stationName);
             updateActivities(aqi);
@@ -1797,13 +1861,35 @@ function bindLiveCityRanking() {
                     </label>`;
             stationRankingListDiv.append(row);
             stationsDropdownMapEl.append(`<li>
-                <span class="mapSearchlist-text">`+ stationDetails.stationName +`</span>
+                <span class="mapSearchlist-text">`+ stationDetails.stationName + `</span>
             </li>`);
         }
     });
+
+    var stationDetails;
     if (currentStationDetails.stationId) {
         $("#" + currentStationDetails.stationId).attr('checked', 'checked');
+        stationDetails = currentStationDetails;
+    } else {
+        stationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
     }
+
+    var airQualityIndexTooltipPollutantContent = '';
+    stationDetails.measuredPolluants.forEach(item => {
+        if (item != pollutantAbbrevations.Noise) {
+            airQualityIndexTooltipPollutantContent += `<li>` + pollutantNames[item] + `<span class="blue-bold">
+                    (`+ getPollutantWithUnits(item) + `)
+                </span>
+            </li>`;
+        } else {
+            airQualityIndexTooltipPollutantContent += `<li>` + item + `</li>`;
+        }
+    });
+
+    $('.pollutantbar-title').text(stationDetails.stationName);
+    $('.pollutantbar-address').text(stationDetails.stationLocation);
+    $('.pollutantbar-details').empty();
+    $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
 }
 
 function selectedStation(stationId) {
@@ -1855,6 +1941,7 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
               <span>` + aqiStatus + `</span>
             </div>`;
 }
+
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
               <p>` + aqiValue + `</p>
@@ -2129,7 +2216,7 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,                   
+                    data: aqiData,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
@@ -2506,22 +2593,22 @@ function bindStationDataToLineChart(filter) {
                 //    },
 
                 //},
-                responsive: true, 
-                maintainAspectRatio: false, 
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'bottom', 
+                        position: 'bottom',
                         labels: {
-                            usePointStyle: true, 
-                            padding: 20, 
-                            boxWidth: 12, 
+                            usePointStyle: true,
+                            padding: 20,
+                            boxWidth: 12,
                             boxHeight: 12,
-                           
+
                             generateLabels: function (chart) {
                                 const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {                                   
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
+                                return labels.map(label => {
+                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
                                     label.textStyle = isHidden ? 'disabled' : 'normal';
                                     return label;
                                 });
@@ -2614,7 +2701,7 @@ function bindStationDataToBarChart(filter) {
     var pollutantBarChartId;
     var barChartDataSet = [];
     switch (activePollutant) {
-        case pollutantNames.PM10:
+        case pollutantAbbrevations.PM10:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
@@ -2672,7 +2759,7 @@ function bindStationDataToBarChart(filter) {
             });
             pollutantBarChartId = "ADstationPm10BarGraph";
             break;
-        case pollutantNames.SO2:
+        case pollutantAbbrevations.SO2:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
@@ -2767,7 +2854,7 @@ function bindStationDataToBarChart(filter) {
             });
             pollutantBarChartId = "ADstationSo2BarGraph";
             break;
-        case pollutantNames.CO:
+        case pollutantAbbrevations.CO:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
@@ -2836,7 +2923,7 @@ function bindStationDataToBarChart(filter) {
             });
             pollutantBarChartId = "ADstationCoBarGraph";
             break;
-        case pollutantNames.O3:
+        case pollutantAbbrevations.O3:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
@@ -2905,7 +2992,7 @@ function bindStationDataToBarChart(filter) {
             });
             pollutantBarChartId = "ADstationO3BarGraph";
             break;
-        case pollutantNames.NO2:
+        case pollutantAbbrevations.NO2:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
@@ -3142,7 +3229,7 @@ function bindStationDataToBarChart(filter) {
                             autoSkip: true,
                             maxTicksLimit: 20,
                             rotation: 0, // No rotation
-                           
+
                         },
                         position: 'bottom',
                         grid: {
@@ -3300,6 +3387,7 @@ function findMinMaxDates(dataset) {
 
     return { minDateString, maxDateString };
 }
+
 function convertToISO8601(dateTimeStrings) {
     return dateTimeStrings.map(dateTime => {
         const [date, timePart] = dateTime.split(';');
@@ -3350,18 +3438,46 @@ function bindYearsToDropDown() {
     </span>`);
 }
 
+function getPollutantWithUnits(value) {
+    var el;
+    switch (value) {
+        case pollutantAbbrevations.PM10:
+            el = `PM<sub>10</sub>`;
+            break;
+        case pollutantAbbrevations.PM25:
+            el = `PM<sub>2.5</sub>`;
+            break;
+        case pollutantAbbrevations.NO2:
+            el = `NO<sub>2</sub>`;
+            break;
+        case pollutantAbbrevations.SO2:
+            el = `SO<sub>2</sub>`;
+            break;
+        case pollutantAbbrevations.H2S:
+            el = `H<sub>2</sub>S`;
+            break;
+        case pollutantAbbrevations.O3:
+            el = `O<sub>3</sub>`;
+            break;
+        default:
+            el = value;
+            break;
+    }
+    return el;
+}
+
 // Do not remove below code ends---------------------------------
 var imageData = [
     { imageUrl: "./images/new-images/Freepik1.png", content: "E-linking for Continuous Emission Monitoring System ", description: "E-linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in CLIENT as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable CLIENT to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help CLIENT to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
-    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency – Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
-    { imageUrl: "./images/achievments/a5.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors’ emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
+    { imageUrl: "./images/new-images/Freepik.png", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency ï¿½ Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
+    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency ï¿½ Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
+    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency ï¿½ Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
+    { imageUrl: "./images/achievments/a5.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectorsï¿½ emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
     { imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
     { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders" },
+    { imageUrl: "./images/new-images/Freepik.png", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency ï¿½ Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority ï¿½ Abu Dhabi, Department of Transport and other public and private stakeholders" },
     { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region’s first smog-free tower at Surf Abu Dhabi, the world’s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
+    { imageUrl: "./images/new-images/Freepik3.png", content: "Smog-Free Tower", description: "The Environment Agency ï¿½ Abu Dhabi (EAD) and Modon Properties inaugurated the regionï¿½s first smog-free tower at Surf Abu Dhabi, the worldï¿½s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
 ];
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
