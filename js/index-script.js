@@ -2120,38 +2120,15 @@ function bindStationDataToLineChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
+                        enabled: false,
+                        external: function (context) {
+                            // Check if the tooltip is active (hovering)
+                            if (context.tooltip.opacity === 0) {
+                                // Clear the values when not hovering
+                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                            } else {
+                                // Call the custom function to update the values
+                                updatePollutantValues(context.tooltip.dataPoints);
                             }
                         }
                     }
@@ -2216,7 +2193,8 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,
+                    data: aqiData,  
+                    pointHoverRadius: 5,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
@@ -2256,38 +2234,15 @@ function bindStationDataToLineChart(filter) {
                         display: true,
                     },
                     tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
+                        enabled: false,
+                        external: function (context) {
+                            // Check if the tooltip is active (hovering)
+                            if (context.tooltip.opacity === 0) {
+                                // Clear the values when not hovering
+                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                            } else {
+                                // Call the custom function to update the values
+                                updatePollutantValues(context.tooltip.dataPoints);
                             }
                         }
                     }
@@ -2346,6 +2301,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2355,6 +2311,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2364,6 +2321,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.6)',
                         borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2373,6 +2331,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2382,6 +2341,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     }
@@ -2396,17 +2356,18 @@ function bindStationDataToLineChart(filter) {
                         position: 'bottom',
                         labels: {
                             usePointStyle: true,
-                            padding: 20,
-                            boxWidth: 12,
-                            boxHeight: 12,
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            padding: 40,
+                            boxWidth: 8,
+                            boxHeight: 8,
+                            color: '#666',
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2429,59 +2390,78 @@ function bindStationDataToLineChart(filter) {
                         },
                     },
                     tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
+                        enabled: false,                       
+                        external: function (context) {
+                          
+                            if (context.tooltip.opacity === 0) {
+                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;
+                            }
+
+                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
+                                const dataIndex = tooltipItem.dataIndex;
+                                const datasetIndex = tooltipItem.datasetIndex;
+                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
+                                //console.log(dataPoint); // This should show you the actual data structure of a point
+                                //.log(dataPoint.pM10); 
+                                switch (datasetIndex) {
+                                    case 0:
+                                       // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        $("#lineChartPollutantPm10Value").text(dataPoint);
+                                        break;
+                                    case 1:
+                                        $("#lineChartPollutantSo2Value").text(dataPoint);
+                                        break;
+                                    case 2:
+                                        $("#lineChartPollutantCoValue").text(dataPoint);
+                                        break;
+                                    case 3:
+                                        $("#lineChartPollutantO3Value").text(dataPoint);
+                                        break;
+                                    case 4:
+                                        $("#lineChartPollutantNo2Value").text(dataPoint);
+                                        break;
+                                }
+                            });
+                        },
                         callbacks: {
-                            title: function (tooltipItems) {
-                                const time = tooltipItems[0].label;
-                                return time;
-                            },
+                            //title: function (tooltipItems) {                               
+                            //    //let fullTimestamp = tooltipItems[0].label;
+                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                            //    //hour = hour === 0 ? 12 : hour;
+                            //    //hour = hour < 10 ? '0' + hour : hour;
+                            //    //return `${hour} ${meridiem}`;
+                            //    return '';
+                            //},
                             label: function () {
                                 return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-
-
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-
-                                    const dataPoint = chartData[dataIndex];
-
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
+                            }
+                            
                         }
                     },
                 },
                 interaction: {
-                    intersect: false,
+                    mode: 'nearest', // The mode 'nearest' makes sure the point closest to the mouse gets highlighted
+                    axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
+                    intersect: false // This allows for showing the hover effect even if not directly over a point
                 },
                 scales: {
                     x: {
                         type: 'time',
                         time: {
                             unit: 'hour',
-                            tooltipfirmat: 'HH:mm a'
+                            tooltipfirmat: 'HH:mm a',
+                            displayFormats: {
+                                hour: 'hh a'
+                            }
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 20
+                            
                         },
                         grid: {
                             display: false
@@ -2491,6 +2471,7 @@ function bindStationDataToLineChart(filter) {
                     x1: {
                         id: 'x1',
                         type: 'time',
+                        position: 'bottom',
                         time: {
                             unit: 'day',
                             tooltipFormat: 'MMM d',
@@ -2507,7 +2488,7 @@ function bindStationDataToLineChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        position: 'bottom',
+                        
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2534,6 +2515,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2542,6 +2524,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2550,6 +2533,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.6)',
                         borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2558,6 +2542,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2566,53 +2551,35 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     }
                 ]
 
             },
             options: {
-                //scales: {
-                //    x: {
-                //        ticks: {
-                //            maxRotation: 0,
-                //            minRotation: 0
-                //        },
-                //        grid: {
-                //            display: false, 
-                //            drawBorder: false, 
-                //        },
-                //        stacked: true,
-                //    },
-                //    y: { 
-                //        stacked: true,
-                //        grid: {
-                //            display: false, 
-                //            drawBorder: false, 
-                //        },
-                //    },
-
-                //},
-                responsive: true,
-                maintainAspectRatio: false,
+               
+                responsive: true, 
+                maintainAspectRatio: false, 
                 plugins: {
                     legend: {
                         display: true,
                         position: 'bottom',
                         labels: {
-                            usePointStyle: true,
-                            padding: 20,
-                            boxWidth: 12,
-                            boxHeight: 12,
-
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            usePointStyle: true, 
+                            padding: 60, 
+                            boxWidth: 8, 
+                            boxHeight: 8,
+                            color: '#666',
+                           
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {                                   
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2620,79 +2587,115 @@ function bindStationDataToLineChart(filter) {
                             const meta = chart.getDatasetMeta(index);
 
                             // Toggle the visibility of the dataset
-                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+                            meta.hidden = !meta.hidden;
 
-                            // Update the chart
+                            // Trigger an update to show/hide the data and adjust legend appearance
                             chart.update();
-
-                            // Now, we update the appearance of the legend item
-                            // Find the legend items and toggle a class or style
-                            var legendItems = chart.legend.legendItems;
-                            for (var i = 0; i < legendItems.length; i++) {
-                                if (i === index) {
-                                    if (meta.hidden) {
-                                        // Apply custom styling or class to mark as disabled
-                                        legend.legendItems[i].hidden = true; // Custom property for reference
-                                    } else {
-                                        // Remove custom styling or class
-                                        legend.legendItems[i].hidden = false; // Custom property for reference
-                                    }
-                                }
-                            }
                         },
-                    },
+                    },                    
                     tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
+                        enabled: false,
+                        external: function (context) {
+
+                            if (context.tooltip.opacity === 0) {
+                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;
+                            }
+
+                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
+                                const dataIndex = tooltipItem.dataIndex;
+                                const datasetIndex = tooltipItem.datasetIndex;
+                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
+                                //console.log(dataPoint); // This should show you the actual data structure of a point
+                                //.log(dataPoint.pM10); 
+                                switch (datasetIndex) {
+                                    case 0:
+                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        $("#lineChartPollutantPm10Value").text(dataPoint);
+                                        break;
+                                    case 1:
+                                        $("#lineChartPollutantSo2Value").text(dataPoint);
+                                        break;
+                                    case 2:
+                                        $("#lineChartPollutantCoValue").text(dataPoint);
+                                        break;
+                                    case 3:
+                                        $("#lineChartPollutantO3Value").text(dataPoint);
+                                        break;
+                                    case 4:
+                                        $("#lineChartPollutantNo2Value").text(dataPoint);
+                                        break;
+                                }
+                            });
+                        },
                         callbacks: {
-                            title: function (tooltipItems) {
-                                const time = tooltipItems[0].label;
-                                return time;
-                            },
+                            //title: function (tooltipItems) {                               
+                            //    //let fullTimestamp = tooltipItems[0].label;
+                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                            //    //hour = hour === 0 ? 12 : hour;
+                            //    //hour = hour < 10 ? '0' + hour : hour;
+                            //    //return `${hour} ${meridiem}`;
+                            //    return '';
+                            //},
                             label: function () {
                                 return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                            }
 
-
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-
-                                    const dataPoint = chartData[dataIndex];
-
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
                         }
                     },
-                }
+                },
+                interaction: {
+                    mode: 'nearest', // The mode 'nearest' makes sure the point closest to the mouse gets highlighted
+                    axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
+                    intersect: false // This allows for showing the hover effect even if not directly over a point
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0
+                        },
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },
+                        stacked: true,
+                    },
+                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
+                        stacked: true,
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },// Assuming you want the Y-axis stacked as well
+                    },
+
+                },
             }
         });
         myPollutantChart.update();
     }
 
 }
+function updatePollutantValues(tooltipItems) {
+    var index = tooltipItems[0].dataIndex;
 
+    // Retrieve data for all pollutants
+    var so2 = chartData[index].sO2;
+    var no2 = chartData[index].nO2;
+    var co = chartData[index].co;
+    var pm10 = chartData[index].pM10;
+    var o3 = chartData[index].o3;
+
+    // Update the text of the corresponding DOM elements with the pollutant values
+    $("#lineChartAqiSo2Value").text(so2);
+    $("#lineChartAqiNo2Value").text(no2);
+    $("#lineChartAqiCoValue").text(co);
+    $("#lineChartAqiPm10Value").text(pm10);
+    $("#lineChartAqiO3Value").text(o3);
+}
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
     var thresholdData = [];
@@ -2756,6 +2759,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationPm10BarGraph";
             break;
@@ -2851,6 +2855,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationSo2BarGraph";
             break;
@@ -2920,6 +2925,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationCoBarGraph";
             break;
@@ -3070,6 +3076,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationNo2BarGraph";
             break;
@@ -3124,7 +3131,7 @@ function bindStationDataToBarChart(filter) {
                     break;
             }
             barChartDataSet = [{
-                label: 'aqi',
+                label: '',
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
@@ -3160,7 +3167,7 @@ function bindStationDataToBarChart(filter) {
                 datasets: barChartDataSet
                 //datasets: barChartDataSet.map(dataset => ({
                 //    ...dataset,
-                //    barThickness: 5, // This sets the thickness of each bar to 50 pixels
+                //    barThickness: 10, // This sets the thickness of each bar to 50 pixels
                 //})),
             },
 
@@ -3200,15 +3207,8 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-
-                                // Check the condition here; for example, if the pollutant value is 'pm10'
-                                if (context.dataset.label === 'aqi') {
-                                    // If the condition is met, append the string ' ug/3'
-                                    return value;
-                                } else {
-                                    // If the condition is not met, return the value as it is
                                     return value + ' ug/m3';
-                                }
+                               
                             }
                         }
                     }
