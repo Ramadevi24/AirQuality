@@ -359,49 +359,49 @@ const stationsWithLocations = [{
     stationName: "Hamdan Street",
     latitude: 24.4889,
     longitude: 54.3637,
-    stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi Urban Traffic",
+    stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi, Urban Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhadijaSchool",
     stationName: "Khadejah School",
     latitude: 24.4816,
     longitude: 54.3693,
-    stationLocation: "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi Urban Background",
+    stationLocation: "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhalifaSchool",
     stationName: "Khalifa School",
     latitude: 24.4301,
     longitude: 54.4084,
-    stationLocation: "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi Suburban Background",
+    stationLocation: "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Mussafah",
     stationName: "Mussafah",
     latitude: 24.3472,
     longitude: 54.5029,
-    stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi Suburban Industrial",
+    stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Baniyas",
     stationName: "Baniyas School",
     latitude: 24.3213,
     longitude: 54.6359,
-    stationLocation: "Bani Yas - East 4 - Abu Dhabi Suburban Background",
+    stationLocation: "Bani Yas - East 4 - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
     latitude: 24.4035,
     longitude: 54.5161,
-    stationLocation: "Rabdan - Abu Dhabi Urban Background",
+    stationLocation: "Rabdan - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_KhalifaCity",
     stationName: "Khalifa City A",
     latitude: 24.4199,
     longitude: 54.5782,
-    stationLocation: "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi Suburban Background",
+    stationLocation: "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 },
 {
@@ -409,7 +409,7 @@ const stationsWithLocations = [{
     stationName: "Al Mafraq",
     latitude: 24.2863,
     longitude: 54.5889,
-    stationLocation: "Jarn Yafour - Abu Dhabi Suburban Industrial",
+    stationLocation: "Jarn Yafour - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 },
 {
@@ -417,84 +417,84 @@ const stationsWithLocations = [{
     stationName: "Al Ain Islamic Institute",
     latitude: 24.2191,
     longitude: 55.7349,
-    stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi Suburban Background",
+    stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlAinStreet",
     stationName: "Al Ain Street",
     latitude: 24.2259,
     longitude: 55.7658,
-    stationLocation: "Central District - Abu Dhabi Urban Traffic",
+    stationLocation: "Central District - Abu Dhabi, Urban Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Sweihan",
     stationName: "Sweihan",
     latitude: 24.4667,
     longitude: 55.3429,
-    stationLocation: "44th St - Sweihan - Abu Dhabi Suburban Background",
+    stationLocation: "44th St - Sweihan - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlTawia",
     stationName: "Al Tawia",
     latitude: 24.2592,
     longitude: 55.7049,
-    stationLocation: "Al Tiwayya - Abu Dhabi Suburban Background",
+    stationLocation: "Al Tiwayya - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Zakher",
     stationName: "Zakher",
     latitude: 24.1635,
     longitude: 55.7021,
-    stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi Urban Background",
+    stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Quaa",
     latitude: 23.5312,
     longitude: 55.486,
-    stationLocation: "Al Wiqan - Abu Dhabi Regional Rural",
+    stationLocation: "Al Wiqan - Abu Dhabi, Regional Rural",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_BidaZayed",
     stationName: "Bida Zayed",
     latitude: 23.6523,
     longitude: 53.7039,
-    stationLocation: "Zayed City - Abu Dhabi Suburban Background",
+    stationLocation: "Zayed City - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Gayathi",
     stationName: "Gayathi School",
     latitude: 23.8355,
     longitude: 52.8103,
-    stationLocation: "Ghiyathi - Abu Dhabi Suburban Background",
+    stationLocation: "Ghiyathi - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Liwa",
     stationName: "Liwa Oasis",
     latitude: 23.0958,
     longitude: 53.6064,
-    stationLocation: "3JW4+8H7 Taraq, Abu Dhabi Rural Background Regional",
+    stationLocation: "3JW4+8H7 Taraq, Abu Dhabi, Rural Background Regional",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_RuwaisTransco",
     stationName: "Ruwais",
     latitude: 24.0909,
     longitude: 52.7548,
-    stationLocation: "Al Ruways Industrial City - Abu Dhabi Suburban Industrial",
+    stationLocation: "Al Ruways Industrial City - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_Habshan",
     stationName: "Habshan South",
     latitude: 23.7504,
     longitude: 53.7453,
-    stationLocation: "QP2W+44W - Habshan - Abu Dhabi Rural Industrial",
+    stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
     latitude: 24.0352,
     longitude: 53.8853,
-    stationLocation: "Um Laylah - Abu Dhabi Rural Traffic",
+    stationLocation: "Um Laylah - Abu Dhabi, Rural Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "",
@@ -591,10 +591,29 @@ var radarOptions = {
         legend: {
             display: false,
         },
+        tooltip: {
+            enabled: true,
+            displayColors: false, // Set this to false to hide the color box
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+                label: function (context) {
+                    var label = context.dataset.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.parsed.r !== null) {
+                        label += context.parsed.r + ' ug/m3'; // Appending 'ug/m3' to the label
+                    }
+                    return label;
+                }
+               
+            }
+        },
     },
-    maintainAspectRatio: false, // Disable aspect ratio maintenance
+    maintainAspectRatio: false,
     animation: {
-        duration: 2000, // Animation duration in milliseconds
+        duration: 2000,
     },
 };
 
@@ -1286,11 +1305,11 @@ function createRadarData() {
         datasets: [{
             label: '',
             //borderColor: 'rgba(250, 207, 57, 1)',
-            //pointBackgroundColor: getColors(pollutantLevels),
+           // pointBackgroundColor: getColors(pollutantLevels),
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
-            pointBackgroundColor: '#fff',
+            pointBackgroundColor: 'rgba(250, 207, 57, 1)',
             lineTension: 0.2,
             data: pollutantLevels,
         }]
@@ -1451,7 +1470,7 @@ function loadStationData(initialCall = false) {
             updateActivities(aqi);
             updateHeathReccommendation(aqi);
             var pollutantColorClass = getColorClassForAqi(aqi);
-            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature,#mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature").empty();
+            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature,#mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature, #smallScreenwindSpeed, #smallScreenWindDirection, #smallScreenHumidity, #smallScreenTemperature").empty();
             $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
             $("#mainPollutantValue").append(aqi + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
             $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
@@ -1462,6 +1481,10 @@ function loadStationData(initialCall = false) {
             $('#mobileWindDirection').append(data.direction);
             $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
             $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`); 
+            $('#smallScreenWindDirection').append(data.direction);
+            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`); 
+            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`); 
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
@@ -2360,14 +2383,14 @@ function bindStationDataToLineChart(filter) {
                             boxWidth: 8,
                             boxHeight: 8,
                             color: '#666',
-                            //generateLabels: function (chart) {
-                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                            //    return labels.map(label => {
-                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
-                            //        return label;
-                            //    });
-                            //}
+                            generateLabels: function (chart) {
+                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                                return labels.map(label => {
+                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
+                                    label.textStyle = isHidden ? 'disabled' : 'normal';
+                                    return label;
+                                });
+                            }
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -3642,6 +3665,8 @@ $('#myForm').submit(function (e) {
                 if (result.mailSent) {
                     $(this).find('input, textarea').val('');
                     $('#submitStatus').html('Submitted Successfully.').removeClass('error-message').addClass('success-message');
+                    document.querySelector(".contact-form").style.display = "none";
+                    document.querySelector(".thankyou-form").style.display = "block";
                 } else {
                     $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
                 }
@@ -3686,3 +3711,95 @@ $('#phoneField').on('input', function () {
         $('#phoneError').text('');
     }
 });
+var accordionContent = [
+    {
+        question: "What does ‘Air Quality’ refer to?",
+        answer: "Air quality refers to the condition of the air in our environment, specifically the presence of pollutants that can impact human health and the environment."
+    },
+    {
+        question: "What are common air pollutants present in the environment?",
+        answer: "Common air pollutants include particulate matter (PM), nitrogen dioxide (NO2), sulfur dioxide (SO2), ozone (O3), and carbon monoxide (CO)."
+    },
+    {
+        question: "How does air quality influence weather patterns?",
+        answer: "Yes, air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation."
+    },
+    {
+        question: "What is the number of air quality monitoring stations currently operational in Abu Dhabi?",
+        answer: "The Environment Agency – Abu Dhabi oversees a network of 20 fixed air quality monitoring stations situated across the Emirate of Abu Dhabi, complemented by an additional 2 mobile air quality monitoring stations."
+    },
+    {
+        question: "Who is considered in a sensitive group?",
+        answer: "High-risk groups, including children under 18, the elderly, individuals with chronic heart or lung disease, pregnant individuals, people with diabetes, and active outdoor adults, require focused attention. These individuals are more likely to experience the adverse impacts of poor air quality, necessitating proactive measures. To protect these vulnerable populations, it is crucial to monitor air quality, limit outdoor activities during peak pollution hours, ensure well-ventilated indoor spaces, and adhere to medical advice, particularly for those with pre-existing conditions. By collectively taking these steps, we can foster a healthier and more resilient community, prioritizing the well-being of those most at risk from air pollution."
+    },
+    {
+        question: "How can I check the air quality in my area?",
+        answer: "You can check the air quality in your area by choosing the nearest monitoring station or searching your area from the search menu in the map."
+    },
+    {
+        question: "Does air quality play a role in climate change? ",
+        answer: "Air quality does indeed play a significant role in climate change. Air pollutants classified as greenhouse gases such as methane and carbon dioxide contribute to climate change by intensifying the greenhouse effect and altering the Earth’s energy balance."
+    },
+    {
+        question: "How does climate change affect air quality? ",
+        answer: "Climate change can alter weather patterns, leading to more frequent and severe heatwaves, droughts, and wildfires. This can worsen air quality by increasing pollution levels, such as particulate matter and ground-level ozone. Additionally, rising temperatures can accelerate the formation of ozone and increase the volatility of pollutants. Changes in atmospheric circulation can further impact regional air quality, while shifts in ecosystems can alter the composition of atmospheric pollutants."
+    },
+    {
+        question: "How can individuals contribute to reducing air pollution?",
+        answer: "<ul><li>Opt for Sustainable Transportation.</li> <li>Use energy-efficient appliances and turn off electronics when not in use.</li> <li>Choose clean energy sources like solar or wind power.</li> <li>Avoid unnecessary vehicle usage to decrease traffic emissions. </li> <li>  Consume local produce </li> </ul>"
+    },
+    {
+        question: "What are the different sources of air pollution?",
+        answer: "Air pollution sources can be categorized into two main types: anthropogenic and natural sources. Anthropogenic sources are emissions that are released from human activities. Examples of human activities are industrial emissions, transportation, agricultural practices, and residential activities. Natural sources are those naturally occurring processes that release pollutants into the atmosphere such as volcanic eruptions, wildfires, dust and pollen from wind erosion and vegetation, and biogenic emissions from plants and trees."
+    },
+    {
+        question: "What are the health risks associated with air pollution?",
+        answer: "Air pollution at high levels and prolonged exposure can cause respiratory problems, aggravate existing health conditions, and contribute to cardiovascular issues."
+    },
+    {
+        question: "What are the different types of  particulate matter?",
+        answer: "Particulate matter (PM) refers to tiny particles or droplets in the air that can be inhaled into the lungs. These particles vary in size, and they are categorized based on their diameter. The two main types of particulate matter are: PM10 and PM2.5."
+    },
+    {
+        question: "What is ozone (O3)?",
+        answer: "Ozone (O3) is a molecule composed of three oxygen atoms. It is a pale blue gas with a distinct, sharp smell. Ozone is present both in the Earth's upper atmosphere (stratosphere) and at ground level (troposphere), forming the ozone layer and contributing to air quality, respectively."
+    },
+    {
+        question: "What are nitrogen oxides (NO2)?",
+        answer: "Nitrogen oxides (NOx) refer to a group of reactive gases that consist of nitrogen and oxygen molecules. The two primary nitrogen oxides of environmental concern are nitrogen monoxide (NO) and nitrogen dioxide (NO2). The chemical formulas for these gases are NO and NO2, respectively. Nitrogen oxides are produced during combustion processes, such as those occurring in vehicles, power plants, and industrial facilities. The main sources of NOx emissions include the burning of fossil fuels, particularly in internal combustion engines and industrial boilers"
+    },
+    {
+        question: "What is sulfur dioxide (SO2)?",
+        answer: "Sulfur dioxide (SO2) is a colorless gas with a pungent odor. It is composed of one sulfur atom and two oxygen atoms, and its chemical formula is SO2. Sulfur dioxide is produced mainly by burning fossil fuels containing sulfur, such as coal and oil, in power plants and by certain industrial processes. It is also released during volcanic eruptions."
+    },
+    {
+        question: "What is carbon monoxide (CO)?",
+        answer: "Carbon monoxide (CO) is a colorless, odorless, and tasteless gas. It is composed of one carbon atom and one oxygen atom, and its chemical formula is CO. Carbon monoxide is produced by incomplete combustion of carbon-containing fuels, such as gasoline, natural gas, and wood. It can be emitted from vehicles, industrial processes, and household appliances. Carbon monoxide is known for its potential danger, as high concentrations can be toxic to humans and animals. In indoor environments, it is important to ensure proper ventilation and the correct functioning of combustion appliances to prevent the buildup of carbon monoxide. "
+    },
+];
+
+
+$.each(accordionContent, function(index, item) {
+    // Create accordion item HTML
+    var accordionItem = '<div class="accordion-item">' +
+        '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
+        '<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse' + (index + 1) + '">' +
+        item.question +
+        '</button>' +
+        '</h2>' +
+        '<div id="collapse' + (index + 1) + '" class="accordion-collapse collapse" data-bs-parent="#myAccordion">' +
+        '<div class="accordion-body pt-1 pb-2 text-justify">' +
+        '<p>' +
+        item.answer +
+        '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+    // Append the accordion item HTML to the accordion container
+    $('#myAccordion').append(accordionItem);
+});
+
+// Show the first accordion item by default
+$('#collapse1').addClass('show');
+$('#heading1 button').toggleClass('collapsed');

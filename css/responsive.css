@@ -138,12 +138,15 @@
     .air-map-container .air-map-col ul.map-hori-tools{
         right: 10px;
         top: unset;
-        bottom: 56px;
+        bottom: 45px;
     }
     .Newsearch-box{
         display: flex;
         justify-content: flex-start;
-        pointer-events: none;
+        /* position: absolute; */
+    }
+    .Newsearch-box:hover > .search-txt, .Newsearch-box:hover > .listSearch {
+        margin-left: 110px;
     }
     .air-map-container .air-map-col ul.map-hori-tools li .btn span{
         font-size: 30px;
@@ -400,7 +403,7 @@
         display: none;
     }
     .linechart-height-res{
-        height: 270px;
+        height: 270px;margin-bottom: 10px;
     }
     .sm-pd-left3{
         padding-left: 11px;
@@ -1505,7 +1508,7 @@
         top: 12%;
     }
     .contact-section{
-        margin-top: 6%;
+        margin-top: 5%;
     }
     .modal-background img{
         height: 280px;
@@ -1699,6 +1702,9 @@
 
     .fp-viewing-6 #fp-nav{
         top: 44%;
+    }
+    .send-btn{
+        margin-top: 15px !important;
     }
 }
 

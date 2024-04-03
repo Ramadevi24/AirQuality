@@ -17,7 +17,7 @@
           integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="./css/material-icon.css" />
-   <link href="./css/stylesnew.css" rel="stylesheet">
+    <link href="./css/stylesnew.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="./js/graphs-js/googlejs.js"></script>
@@ -100,30 +100,15 @@
                                     <button class="btn search-icon" type="button">
                                         <img src="./images/new-images/search.png" width="16" class="filter1">
                                     </button>
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="headerSearchInput"
-                                           aria-label="Search">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                           id="headerSearchInput" aria-label="Search">
                                     <input type="reset" value="x">
                                     <i class="icon-circle-xmark-regular"></i>
                                 </form>
                                 <div class="search-result">
-                                    <p class="opacity-1 ms-0">Suggestions</p>
-                                    <ul class="searchItem">
-                                        <li>
-                                            <i class="icon-long-right-arrow"></i> Air
-                                        </li>
-                                        <li>
-                                            <i class="icon-long-right-arrow"></i> Map
-                                        </li>
-                                        <li>
-                                            <i class="icon-long-right-arrow"></i> Metrological Data
-                                        </li>
-                                        <li>
-                                            <i class="icon-long-right-arrow"></i> Station Data
-                                        </li>
-                                        <li>
-                                            <i class="icon-long-right-arrow"></i> Chart
-                                        </li>
-                                        </ulclass="searchItem">
+                                    <p class="opacity-1 ms-0">Search Results</p>
+                                    <ul id="searchResults" class="searchItem">
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +246,7 @@
                             <div class="Newsearch-box">
                                 <input class="search-txt" id="stationsDropdownMapSearch" type="text" name=""
                                        placeholder="Search Station">
-                                <ul class="listSearch" id="stationsDropdownMap">
+                                <ul class="listSearch mapStationSearchScroll" id="stationsDropdownMap">
                                 </ul>
                                 <span class="search-btn1">
                                     <img src="./images/new-images/search.png" class="whitesearch-hide mapsearch-img"
@@ -315,37 +300,37 @@
                     </div>
                     <div class="station-details row pt-2 pe-1 ps-1">
                         <div class="col-5">
-                            <p class="legend-text mb-1" id="mobileAQIStatus">                            
+                            <p class="legend-text mb-1" id="mobileAQIStatus">
                             </p>
                             <p class="legend-value">
                                 <span id="mobileAQILevelValue"></span> <label class="text-white"> AQI</label>
                             </p>
                         </div>
-                        <!--<div class="station-box col-7">
+                        <!-- start 03-April-24 --- -->
+                        <div class="station-box col-7">
                             <div class="d-flex between-gap">
                                 <div class="station-data">
                                     <h4>Wind Speed</h4>
-                                    <p class="mb-2">30<sub>km/h</sub></p>
+                                    <p class="mb-2" id="smallScreenwindSpeed"></p>
                                 </div>
                                 <div class="station-data">
                                     <h4>Wind Direction</h4>
-                                    <p class="mb-2">NE</p>
+                                    <p class="mb-2" id="smallScreenWindDirection"></p>
                                 </div>
                             </div>
                             <div class="d-flex between-gap">
                                 <div class="station-data">
                                     <h4>Humidity &nbsp;&nbsp;&nbsp;&nbsp;</h4>
-                                    <p class="mb-2">55<sub>%</sub></p>
+                                    <p class="mb-2" id="smallScreenHumidity"></p>
                                 </div>
                                 <div class="station-data">
                                     <h4>Temperature</h4>
-                                    <p class="mb-2">35<sup>o</sup><sub>C</sub></p>
+                                    <p class="mb-2" id="smallScreenTemperature"></p>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
-
                 <div class="overview-heading mt-3 firstshow-section" id="yearlyAirQualityOverview">
                 </div>
                 <div class="list-container firstshow-section" id="aqiStatusDiv">
@@ -381,7 +366,7 @@
                                     <div class="weather-data weather-line">
                                         <div class="data-item position-relative">
                                             <h4>Humidity</h4>
-                                            <p class="mb-0"id="mobileRelativeHumidity"></p>
+                                            <p class="mb-0" id="mobileRelativeHumidity"></p>
                                         </div>
                                         <div class="data-item">
                                             <h4>Temperature <span class="refresh-hide1">w</span></h4>
@@ -790,7 +775,7 @@
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
-                                                                        </div>                                                 
+                                                                        </div>
                                                                         <div class="ug_content indexbar-ugcontent">
                                                                             <p>ug/m3</p>
                                                                         </div>
@@ -800,11 +785,11 @@
                                                                         <div class="date_row">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                <p>Feb 15 2024</p>
-            </li>
-            <li class="d-none d-sm-none d-md-none d-lg-block">
-                <p>Feb 16 2024</p>
-            </li> -->
+                                                                                    <p>Feb 15 2024</p>
+                                                                                </li>
+                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
+                                                                                    <p>Feb 16 2024</p>
+                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading">
@@ -875,7 +860,7 @@
                                                     </div>
 
                                                     <div id="pm10Tab" class="tab-content mt-0" style="display: none;">
-                                                        <div>
+                                                        <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
@@ -977,7 +962,7 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                    </div>                                                                   
+                                                                    </div>
                                                                 </div>
                                                                 <div class="chart-f-content">
                                                                     <p>
@@ -990,7 +975,7 @@
                                                         </div>
                                                     </div>
                                                     <div id="so2Tab" class="tab-content mt-0" style="display: none;">
-                                                        <div>
+                                                        <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
@@ -1053,11 +1038,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                        <p>Feb 15 2024</p>
-                    </li>
-                    <li class="d-none d-sm-none d-md-none d-lg-block">
-                        <p>Feb 16 2024</p>
-                    </li> -->
+                                                                                    <p>Feb 15 2024</p>
+                                                                                </li>
+                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
+                                                                                    <p>Feb 16 2024</p>
+                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1110,7 +1095,7 @@
                                                         </div>
                                                     </div>
                                                     <div id="coTab" class="tab-content mt-0" style="display: none;">
-                                                        <div>
+                                                        <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
@@ -1173,11 +1158,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                        <p>Feb 15 2024</p>
-                    </li>
-                    <li class="d-none d-sm-none d-md-none d-lg-block">
-                        <p>Feb 16 2024</p>
-                    </li> -->
+                                                                                    <p>Feb 15 2024</p>
+                                                                                </li>
+                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
+                                                                                    <p>Feb 16 2024</p>
+                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1230,7 +1215,7 @@
                                                         </div>
                                                     </div>
                                                     <div id="o3Tab" class="tab-content mt-0" style="display: none;">
-                                                        <div>
+                                                        <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
@@ -1293,11 +1278,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                        <p>Feb 15 2024</p>
-                    </li>
-                    <li class="d-none d-sm-none d-md-none d-lg-block">
-                        <p>Feb 16 2024</p>
-                    </li> -->
+                                                                                    <p>Feb 15 2024</p>
+                                                                                </li>
+                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
+                                                                                    <p>Feb 16 2024</p>
+                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1337,7 +1322,7 @@
                                                                             <ul class="ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                    </div>                                         
+                                                                    </div>
                                                                 </div>
                                                                 <div class="chart-f-content">
                                                                     <p>
@@ -1350,7 +1335,7 @@
                                                         </div>
                                                     </div>
                                                     <div id="no2Tab" class="tab-content mt-0" style="display: none;">
-                                                        <div>
+                                                        <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
                                                                 <div class="quality-index-wrapper-h2">
                                                                     <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
@@ -1413,11 +1398,11 @@
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
                                                                                 <!-- <li>
-                        <p>Feb 15 2024</p>
-                    </li>
-                    <li class="d-none d-sm-none d-md-none d-lg-block">
-                        <p>Feb 16 2024</p>
-                    </li> -->
+                                                                                    <p>Feb 15 2024</p>
+                                                                                </li>
+                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
+                                                                                    <p>Feb 16 2024</p>
+                                                                                </li> -->
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1466,7 +1451,7 @@
                                                                         time.
                                                                     </p>
                                                                 </div>
-                                                               
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1629,7 +1614,7 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="canvas-graphs-height linechart-height-res">
+                                                                        <div class="canvas-graphs-heightline linechart-height-res">
                                                                             <canvas id="aqiLineChart"></canvas>
                                                                         </div>
                                                                         <!--<div class="date_row">
@@ -1665,12 +1650,12 @@
                                                                     <div class="tab_shados">
                                                                         <!-- /////modify//// -->
                                                                         <!-- <div class="aqi-content mult-value-tab">
-      <strong class="linebefore2">AQI</strong>
-      <p>88 GOOD</p>
-    </div> -->
+                                                                          <strong class="linebefore2">AQI</strong>
+                                                                          <p>88 GOOD</p>
+                                                                        </div> -->
                                                                         <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
-     SENSITIVE GROUPS
-    </p></li></div> -->
+                                                                         SENSITIVE GROUPS
+                                                                        </p></li></div> -->
                                                                         <!-- /////modify/////// -->
                                                                         <div class="grid-value">
                                                                             <div class="grid-upper">
@@ -1948,7 +1933,7 @@
 
         <div class="section position-relative" id="section3">
             <div class="ead-monitoring-project">
-                <div class="monitoring-heading">                   
+                <div class="monitoring-heading">
                     <h5 class="mb-1">Our Air Quality Monitoring Initiatives</h5>
                     <p class="d-none d-sm-none d-md-none d-lg-block initiative-heading-content">
                         Join us in the fight for cleaner skies and healthier communities. Become a <br>
@@ -1957,7 +1942,7 @@
                     <p class="d-block d-sm-block d-md-block d-lg-none initiative-heading-content">
                         Join us in the fight for cleaner skies and healthier communities. Become a
                         guardian of our atmosphere and safeguard our future.
-                    </p>               
+                    </p>
                 </div>
                 <!-- Nav pills -->
                 <ul class="nav nav-pills" role="tablist">
@@ -2104,140 +2089,147 @@
                     <div class="col-xl-8">
                         <div class="accordion faqscrolling" id="myAccordion">
                             <!-- <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">2. What is Bootstrap?</button>
+                                                     <h2 class="accordion-header" id="headingOne">
+                                                            <button type="button" class="accordion-button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseOne">
+                                                                What does ‘Air Quality’ refer to?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseOne" class="accordion-collapse collapse show"
+                                                             data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    Air quality refers to the condition of the air in our environment, specifically the presence of pollutants that can impact human health and the environment.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="headingThree">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseThree">
+                                                                What are common air pollutants present in the environment?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseThree" class="accordion-collapse collapse"
+                                                             data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    Common air pollutants include particulate matter (PM), nitrogen dioxide (NO2), sulfur dioxide (SO2), ozone (O3), and carbon monoxide (CO).
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading4">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse4">
+                                                                How does air quality influence weather patterns?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    Yes, air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading5">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse5">
+                                                                What is the number of air quality monitoring stations currently operational in Abu Dhabi?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    The Environment Agency – Abu Dhabi oversees a network of 20 fixed air quality monitoring stations situated across the Emirate of Abu Dhabi, complemented by an additional 2 mobile air quality monitoring stations.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading6">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse6">
+                                                                Who is considered in a sensitive group?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    High-risk groups, including children under 18, the elderly, individuals with chronic heart or lung disease, pregnant individuals, people with diabetes, and active outdoor adults, require focused attention. These individuals are more likely to experience the adverse impacts of poor air quality, necessitating proactive measures. To protect these vulnerable populations, it is crucial to monitor air quality, limit outdoor activities during peak pollution hours, ensure well-ventilated indoor spaces, and adhere to medical advice, particularly for those with pre-existing conditions. By collectively taking these steps, we can foster a healthier and more resilient community, prioritizing the well-being of those most at risk from air pollution.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading7">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse7">
+                                                                How can I check the air quality in my area?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    You can check the air quality in your area by choosing the nearest monitoring station or searching your area from the search menu in the map  .
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading8">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse8">
+                                                                Does air quality play a role in climate change?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    Air quality does indeed play a significant role in climate change. Air pollutants classified as greenhouse gases such as methane and carbon dioxide contribute to climate change by intensifying the greenhouse effect and altering the Earth’s energy balance
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="heading9">
+                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapse9">
+                                                                How does climate change affect air quality?
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                                            <div class="accordion-body pt-1 pb-2">
+                                                                <p>
+                                                                    Climate change can alter weather patterns, leading to more frequent and severe heatwaves, droughts, and wildfires. This can worsen air quality by increasing pollution levels, such as particulate matter and ground-level ozone. Additionally, rising temperatures can accelerate the formation of ozone and increase the volatility of pollutants. Changes in atmospheric circulation can further impact regional air quality, while shifts in ecosystems can alter the composition of atmospheric pollutants.
+                                                                </p>
+                                                            </div>
+                                                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading10">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse10">
+                                            How can individuals contribute to reducing air pollution?
+                                    </button>
                                 </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#myAccordion">
-                                    <div class="card-body">
-                                        <p>Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+                                <div id="collapse10" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                    <div class="accordion-body pt-1 pb-2">
+                                        <ul>
+                                            <li>Opt for Sustainable Transportation.</li>
+                                            <li>Use energy-efficient appliances and turn off electronics when not in use.</li>
+                                            <li>Choose clean energy sources like solar or wind power.</li>
+                                            <li>Avoid unnecessary vehicle usage to decrease traffic emissions. </li>
+                                            <li>  Consume local produce </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div> -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne">
-                                        What does ‘Air Quality’ refer to?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Air quality refers to the condition of the air in our environment, specifically the presence of pollutants that can impact human health and the environment.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseThree">
-                                        What are common air pollutants present in the environment?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                     data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Common air pollutants include particulate matter (PM), nitrogen dioxide (NO2), sulfur dioxide (SO2), ozone (O3), and carbon monoxide (CO).
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading4">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse4">
-                                        How does air quality influence weather patterns?
-                                    </button>
-                                </h2>
-                                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Yes, air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading5">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse5">
-                                        What is the number of air quality monitoring stations currently operational in Abu Dhabi?
-                                    </button>
-                                </h2>
-                                <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            The Environment Agency – Abu Dhabi oversees a network of 20 fixed air quality monitoring stations situated across the Emirate of Abu Dhabi, complemented by an additional 2 mobile air quality monitoring stations.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading6">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse6">
-                                        Who is considered in a sensitive group?
-                                    </button>
-                                </h2>
-                                <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            High-risk groups, including children under 18, the elderly, individuals with chronic heart or lung disease, pregnant individuals, people with diabetes, and active outdoor adults, require focused attention. These individuals are more likely to experience the adverse impacts of poor air quality, necessitating proactive measures. To protect these vulnerable populations, it is crucial to monitor air quality, limit outdoor activities during peak pollution hours, ensure well-ventilated indoor spaces, and adhere to medical advice, particularly for those with pre-existing conditions. By collectively taking these steps, we can foster a healthier and more resilient community, prioritizing the well-being of those most at risk from air pollution.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading7">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse7">
-                                        How can I check the air quality in my area?
-                                    </button>
-                                </h2>
-                                <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            You can check the air quality in your area by choosing the nearest monitoring station or searching your area from the search menu in the map  .
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading8">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse8">
-                                        Does air quality play a role in climate change?
-                                    </button>
-                                </h2>
-                                <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Air quality does indeed play a significant role in climate change. Air pollutants classified as greenhouse gases such as methane and carbon dioxide contribute to climate change by intensifying the greenhouse effect and altering the Earth’s energy balance
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading9">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse9">
-                                        How does climate change affect air quality?
-                                    </button>
-                                </h2>
-                                <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Climate change can alter weather patterns, leading to more frequent and severe heatwaves, droughts, and wildfires. This can worsen air quality by increasing pollution levels, such as particulate matter and ground-level ozone. Additionally, rising temperatures can accelerate the formation of ozone and increase the volatility of pollutants. Changes in atmospheric circulation can further impact regional air quality, while shifts in ecosystems can alter the composition of atmospheric pollutants.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -2352,7 +2344,7 @@
                         </p>
                         <!-- This is for mobile device only -->
                         <!-- Thankyou form Start -->
-                        <!-- <div class="col-sm-12 thankyou-form text-center mt-5">
+                        <div class="col-sm-12 thankyou-form text-center mt-5">
                             <div class="col-sm-12 text-center d-flex align-items-center justify-content-center mb-4">
                                 <div class="contact-info-icon">
                                     <img src="./images/new-images/tick.png" alt="phone">
@@ -2361,7 +2353,7 @@
 
                             <h5 class="mb-3">Thank you for reaching out! </h5>
                             <h6>Your message has been received. We'll get back to you shortly.</h6>
-                        </div> -->
+                        </div>
                         <!-- Thankyou form End -->
                     </div>
                 </div>
@@ -2539,13 +2531,13 @@
                             <p class="sm-pd-left11">&#xa9 Abu Dhabi All Rights Reserved 2024</p>
                             <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block">
                                 <li>
-                                    <a href="privacy-policy.html" class="heading-link" data-heading="Privacy Policy">Privacy Policy</a>
+                                    <a href="privacy-policy.html">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="privacy-policy.html" class="heading-link" data-heading="Terms of Use">Terms of Use</a>
+                                    <a href="terms-conditions.html">Terms of Use</a>
                                 </li>
                                 <li>
-                                    <a href="privacy-policy.html" class="heading-link" data-heading="Copyrights">Copyrights</a>
+                                    <a href="copyrights.html">Copyrights</a>
                                 </li>
                             </ul>
                             <!-- This will show only in small devices -->
@@ -2591,10 +2583,10 @@
                                 <a href="privacy-policy.html">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#">Terms of Use</a>
+                                <a href="terms-conditions.html">Terms of Use</a>
                             </li>
                             <li>
-                                <a href="#">Copyrights</a>
+                                <a href="copyrights.html">Copyrights</a>
                             </li>
                         </ul>
                     </div>
@@ -2681,7 +2673,7 @@
                 menu: '#menu',
                 //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
                 scrollBar: true,
-                normalScrollElements: '.project-modal, .faqscrolling, .sidebar-dataScroll',
+                normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .sidebar-dataScroll',
                 onLeave: function (origin, destination, direction) {
                     console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
                     if (origin.index === 2 && !sliding) {
@@ -2805,6 +2797,133 @@
             });
         });
         // end 30-March-24 modified this section ----------
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('headerSearchInput');
+            const searchResults = document.getElementById('searchResults');
+            const searchModal = document.getElementById('mainSearch');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.trim().toLowerCase();
+                searchResults.innerHTML = '';
+
+                if (searchTerm.length < 3) {
+                    return;
+                }
+                let resultsFound = false;
+                document.querySelectorAll('p, span, li, a').forEach(function (element) {
+                    const text = element.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        appendToResults(element);
+                        resultsFound = true;
+                    }
+                });
+                document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(function (heading) {
+                    const text = heading.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        appendToResults(heading);
+                        resultsFound = true;
+                    }
+                });
+                if (!resultsFound) {
+                    const li = document.createElement('li');
+                    li.textContent = 'No results found';
+                    searchResults.appendChild(li);
+                }
+            });
+
+            searchInput.addEventListener('click', function () {
+                searchResults.innerHTML = '';
+            });
+
+            searchResults.addEventListener('click', function (event) {
+                const target = event.target;
+                if (target.tagName.toLowerCase() === 'a') {
+                    const url = target.getAttribute('data-url');
+                }
+                searchModal.classList.remove('show');
+                searchResults.innerHTML = '';
+                searchInput.value = '';
+            });
+
+            searchResults.addEventListener('click', function () {
+                searchModal.classList.remove('show');
+                searchResults.innerHTML = '';
+                searchInput.value = '';
+            });
+
+            function appendToResults(element) {
+                let parentSlide = element.closest('.slide');
+                if (parentSlide) {
+                    // If the element is within a slide
+                    const slideIndex = Array.from(parentSlide.parentNode.children).indexOf(parentSlide);
+                    const mainUrl = window.location.href.split('#')[0];
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    const span = document.createElement('span');
+                    const slideUrl = mainUrl + '#slide2/' + slideIndex;
+                    if (slideUrl) {
+                        a.href = slideUrl;
+                        span.textContent = element.textContent;
+                        a.appendChild(span);
+                        li.appendChild(a);
+                        searchResults.appendChild(li);
+
+                        let parentDiv = element.parentElement;
+                        while (parentDiv !== null) {
+                            if (parentDiv.tagName.toLowerCase() === 'div') {
+                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                    const parentHeading = document.createElement('a');
+                                    parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    parentHeading.href = slideUrl;
+                                    searchResults.insertBefore(parentHeading, li);
+                                    break;
+                                }
+                            }
+                            parentDiv = parentDiv.parentElement;
+                        }
+                    }
+                } else {
+                    // If the element is not within a slide
+                    let parentSeDiv = element.parentElement;
+                    let sectionId = null;
+                    while (parentSeDiv !== null) {
+                        if (parentSeDiv.classList.contains('section') && parentSeDiv.id) {
+                            sectionId = parentSeDiv.id;
+                            break;
+                        }
+                        parentSeDiv = parentSeDiv.parentElement;
+                    }
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    const span = document.createElement('span');
+                    const sectionUrl = '#' + sectionId;
+                    if (sectionUrl) {
+                        a.href = sectionUrl;
+                        span.textContent = element.textContent;
+                        a.appendChild(span);
+                        li.appendChild(a);
+                        searchResults.appendChild(li);
+
+                        let parentDiv = element.parentElement;
+                        while (parentDiv !== null) {
+                            if (parentDiv.tagName.toLowerCase() === 'div') {
+                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                    const parentHeading = document.createElement('a');
+                                    parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    parentHeading.href = sectionUrl;
+                                    searchResults.insertBefore(parentHeading, li);
+                                    break;
+                                }
+                            }
+                            parentDiv = parentDiv.parentElement;
+                        }
+                    }
+                }
+            }
+        });
+
     </script>
 
     <script src="https://js.arcgis.com/4.28/"></script>

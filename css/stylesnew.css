@@ -89,6 +89,9 @@ a{
 .hazar-color{
     color: var(--hazar);
 }
+.greyColor{
+    color: var(--grey);
+}
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -598,6 +601,28 @@ header .search-block .search-collapse .search-result ul li i:before {
 .tablet-menu, .footermobile-show{
     display: none;
 }
+.search-block ul#searchResults a {
+    color: var(--blue);
+}
+
+.search-block ul#searchResults li a span {
+    color: #000 !important;
+}
+
+.search-block ul#searchResults {
+    padding: 12px;
+    border-radius: 11px;
+}
+
+    .search-block ul#searchResults li a {
+        border-bottom: 1px solid #ccc;
+        display: block;
+        width: 75%;
+    }
+
+        .search-block ul#searchResults li a[href="#null"] {
+            display: none;
+        }
 
 /*----------- End Header CSS--------------- */
 
@@ -994,9 +1019,15 @@ video {
     height: 40px;
     /* background-color: rgb(0 0 0 / 12%) !important; */
 }
+.search-crossImage {
+    background-image: url('../images/new-images/cross-blue.png') !important;
+    background-position: center right 10px !important;
+    background-size: 11px 11px !important;
+    background-repeat: no-repeat !important;
+}
 .search-txt {
     border: none;
-    background: #fff!important;
+    background-color: #fff !important;
     outline: none;
     float: left;
     padding: 0;
@@ -1007,7 +1038,7 @@ video {
     width: 0px;
 }
 .Newsearch-box:hover > .search-txt, .Newsearch-box:hover > .listSearch{
-    width: 240px;
+    width: 210px;
     padding: 0 11px;
     display: block;
 }
@@ -1032,9 +1063,9 @@ video {
     display: none;
     border-top: 1px solid #000;
     padding: 10px 12px!important;
-    max-height:150px;
+   /* max-height:150px;
     overflow:hidden;
-    overflow-y:scroll;
+    overflow-y:scroll;*/
 }
 .Newsearch-box ul li{
     display: block!important;
@@ -1042,6 +1073,11 @@ video {
     line-height: 25px;
     cursor: pointer;
     font-size: 14px;
+}
+.mapStationSearchScroll {
+    max-height: 150px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 .air-map-container .air-map-col ul.map-vert-tools li {
     display: inline-block;
@@ -1135,9 +1171,9 @@ video {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    width: 67%;
     margin: 0 auto;
-    padding: 10px 0 0 0;
+    padding: 15px 0 0 0;
     border-radius: 5px;
     /* background-color: #f0f0f0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
@@ -1341,13 +1377,13 @@ video {
 .small-device-legend-list .hazar {
     color: var(--hazar);
 }
-.air-map-container .list-container .darkorange span{
+/*.air-map-container .list-container .darkorange span{
     width: 70%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     line-height: 16px;
-}
+}*/
 .mapsearch-img{
     height: 16px!important;
 }
@@ -2997,7 +3033,7 @@ color: var(--green);
     flex-direction: column;
     gap: 13px;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 2px;
 }
 .insight .grid-bottom {
     display: flex;
@@ -3631,7 +3667,12 @@ table {
 
 .canvas-graphs-height{
     height: 330px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.canvas-graphs-heightline{
+    height: 300px;
+    margin-bottom: 20px;
 }
 
 .equal-station-box-height {
@@ -3664,7 +3705,7 @@ table {
 .contact-section{
     padding-left: 60px;
     padding-right: 60px;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 .ead-monitoring-project .monitoring-heading h5, .contact-section h5{
     font-family: 'GothamMedium';
@@ -3826,7 +3867,7 @@ table {
 .modal-background img{
     width: 100%;
     height: 350px;
-    object-fit: cover;
+   /* object-fit: cover;*/
 }
 .p12{
     padding: 7px 22px 22px 22px;
@@ -3947,7 +3988,7 @@ table {
     display: none;
 }
 
-.insight .pollutantline-tabs{
+.insight .pollutantline-tabs {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3955,6 +3996,7 @@ table {
     bottom: -50px;
     left: 0;
     right: 0;
+    display: none;
 }
     .insight .pollutantline-tabs li a {
         background: #E6EDF3;
@@ -3978,7 +4020,7 @@ table {
 } */
 
 .faq-section{
-    margin-top: 10%;
+    margin-top: 6%;
 }
 .faq-section h4{
     font-family: 'Gothammedium';
@@ -4085,7 +4127,7 @@ table {
 .contact-content{
     width: 90%; 
     text-align: justify;
-    padding-top: 15px !important;
+    padding-top: 13px !important;
 }
 
 .contact-form input {
@@ -4212,6 +4254,9 @@ table {
 
 
 /*---- Contact Thankyou Form----- */
+.thankyou-form{
+    display: none;
+}
 .thankyou-form h6{
     font-size: 13px;
     text-transform: inherit;
@@ -4336,6 +4381,10 @@ footer .copy-rights ul li a {
 }
 .scrollPolicyShow {
     height: 505px;
+    overflow: scroll;
+}
+.scrollPolicyShow-term {
+    height: 415px;
     overflow: scroll;
 }
 /* #privacy-policy-section {

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Abu Dhabi Air Quality</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./scolling-script/fullpage.css" />
+    <!--16-dec cdn removed -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Air Icons -->
+    <link href="./fonts/air-icons/air-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/material-icon.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link href="./css/stylesnew.css" rel="stylesheet">
+    <link href="./css/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-529G4HVEPS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-529G4HVEPS');
+    </script>
+</head>
+
+<body class="">
+
+
+    <!-- 08-Jan-24 -->
+    <!-- <header class="sticky-top position-fixed w-100 panel header-responsive-flex privacy-fadeout" data-section-name="header">
+	<nav class="navbar navbar-expand-md py-0">
+      <div class="container-fluid headerpt-10">
+        <a class="navbar-brand black pointer-event" href="#">
+          <img src="./images/ead-logo-b.svg" alt="">
+        </a>
+        <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 pagination web-menu" id="menu">
+            <li class="nav-item" data-menuanchor="slide0">
+              <a class="nav-link" href="index-new.html#slide0">Our Air Quality</a>
+            </li>
+			<li class="nav-item" data-menuanchor="slide2">
+              <a class="nav-link" href="index-new.html#slide2">Insights</a>
+            </li>
+			<li class="nav-item" data-menuanchor="slide3">
+				<a class="nav-link" href="index-new.html#slide3">Projects</a>
+			  </li>
+            <li class="nav-item" data-menuanchor="slide4">
+              <a class="nav-link" href="index-new.html#slide4">FAQ</a>
+            </li>
+			<li class="nav-item" data-menuanchor="slide5">
+				<a class="nav-link" href="index-new.html#slide5">Contact Us</a>
+			  </li>
+            
+          </ul>
+          <button type="button" class="close header-close-icon d-block d-sm-block d-md-none" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+       	<div class="search-block">
+			<button class="btn btn-nobg mobicon-search" type="button" data-bs-toggle="collapse" data-bs-target="#mainSearch"
+				aria-expanded="false" aria-controls="mainSearch">
+				<span class="material-symbols-outlined text-white">
+					search
+				</span>
+			</button>
+			<div class="collapse search-collapse" id="mainSearch">
+				<div class="card card-body">
+				<div class="container-fluid p-2">
+					<button  data-bs-toggle="collapse" data-bs-target="#mainSearch" class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+					Close
+					</button>
+
+					<form class="form-inline relative d-flex">
+					<button class="btn search-icon">
+						<span class="material-symbols-outlined">
+							search
+						</span>
+					</button>
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<input type="reset" value="x">
+					<i class="icon-circle-xmark-regular"></i>
+					</form>
+					<div class="search-result">
+					<p class="opacity-1 ms-0">Suggestions</p>
+					<ul>
+						<li>
+						<i class="icon-long-right-arrow"></i> Air
+						</li>
+						<li>
+						<i class="icon-long-right-arrow"></i> Map
+						</li>
+						<li>
+						<i class="icon-long-right-arrow"></i> Metrological Data
+						</li>
+						<li>
+						<i class="icon-long-right-arrow"></i> Station Data
+						</li>
+						<li>
+						<i class="icon-long-right-arrow"></i> Chart
+						</li>
+					</ul>
+					</div>
+				</div>
+				</div>
+			</div>
+        </div>
+      </div>
+    </nav>
+</header> -->
+
+
+    <header class="sticky-top position-fixed w-100 panel header-responsive-flex privacy-fadeout"
+        data-section-name="header">
+        <nav class="navbar navbar-expand-md py-0">
+            <div class="container-fluid headerpt-10">
+                <!-- <a class="navbar-brand white pointer-event" href="#">
+          <img src="./images/ead-logo.png" alt="">
+        </a> -->
+                <a class="navbar-brand black pointer-event" href="#">
+                    <img src="./images/ead-logo-b.svg" alt="">
+                </a>
+                <div class="navmobile-new d-md-none">
+                    <div class="logomobile-new"></div>
+                    <div id="hamburger">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobile-overlay">
+                    <a href="index-new.html#slide0" class="mobair-quality active">Our Air Quality</a>
+                    <a href="index-new.html#slide2">Insight</a>
+                    <a href="index-new.html#slide3">Projects</a>
+                    <a href="index-new.html#slide4">Faq</a>
+                    <a href="index-new.html#slide5">Contact US</a>
+                </div>
+                <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 pagination web-menu" id="menu">
+                        <li class="nav-item" data-menuanchor="slide0">
+                            <a class="nav-link" href="index-new.html#slide0">Our Air Quality</a>
+                        </li>
+                        <li class="nav-item" data-menuanchor="slide2">
+                            <a class="nav-link" href="index-new.html#slide2">Insights</a>
+                        </li>
+                        <li class="nav-item" data-menuanchor="slide3">
+                            <a class="nav-link" href="index-new.html#slide3">Projects</a>
+                        </li>
+                        <li class="nav-item" data-menuanchor="slide4">
+                            <a class="nav-link" href="index-new.html#slide4">FAQ</a>
+                        </li>
+                        <li class="nav-item" data-menuanchor="slide5">
+                            <a class="nav-link" href="index-new.html#slide5">Contact Us</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
+                        aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="search-block">
+                    <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
+                        <!-- <img src="./images/new-images/search.png" class="whitesearch-hide" width="16"> -->
+                        <img src="./images/new-images/search-blue.png" class="" width="16">
+                    </button>
+                    <div class="collapse search-collapse" id="mainSearch">
+                        <div class="card card-body">
+                            <div class="container-fluid p-2">
+                                <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
+                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+                                    Close
+                                </button>
+        
+                                <form class="form-inline relative d-flex">
+                                    <button class="btn search-icon" type="button">
+                                        <img src="./images/new-images/search.png" width="16" class="filter1">
+                                    </button>
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        id="headerSearchInput" aria-label="Search">
+                                    <input type="reset" value="x">
+                                    <i class="icon-circle-xmark-regular"></i>
+                                </form>
+                                <div class="search-result">
+                                    <p class="opacity-1 ms-0">Search Results</p>
+                                    <ul id="searchResults" class="searchItem">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </nav>
+    </header>
+    <div id="fullpage">
+        <div class="section position-relative private-scroll-hide" id="section7">
+            <!-- <img src="./images/new-images/privacy-policy-shape.png" class="privacy-img"> -->
+            <div class="faq-section privacy-policy container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h4 class="me-4 pt-2" id="dynamic-heading">Copyrights</h4>
+                    </div>
+                    <div class="col-lg-8">
+                        <p class="contact-content pt-1 w-100">
+                            This Copyright section forms part of the Terms & Conditions and therefore the terms on which
+                            we provide and allow access to this website. All the Content of this website is the property
+                            of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent,
+                            intellectual and other property rights of the information contained in this website. Any
+                            unauthorized use, reproduction or printing of the information, materials and proprietary
+                            rights contained in this website is strictly prohibited.
+                        </p>
+                        <div class="scrollPolicyShow-term">
+                            <div class="mb-4">
+                                <h6 class="">1. Intellectual Property Rights</h6>
+                                <ul class="greyColor">
+                                    <li>EAD, our service providers, our consultants, or third parties who have granted
+                                        us permission to reproduce their material on this website, own all trademarks,
+                                        copyright and all other intellectual property rights in the Content on this
+                                        website.</li>
+                                    <li>The Content shall not be used for any commercial purposes, including but not
+                                        limited to, selling, distributing, or republishing the Content.</li>
+                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks
+                                        and copyrights) found on this website are either owned, controlled, or licensed
+                                        by [to] EAD. As such, the act of consolidation and arrangement of all Content is
+                                        the sole property of EAD and is protected by copyright laws.</li>
+                                    <li>EAD retains all Intellectual Property Rights in all Content. The names,
+                                        trademarks, and logos found on the website and in the materials therein are
+                                        owned and licensed for EAD, unless otherwise stated. The use of these trademarks
+                                        is prohibited without permission from EAD</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section fp-auto-height" id="section6">
+            <div class="myContentHeight">
+                <footer class="panel0">
+                    <div class="footer-container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-xl-3 position-relative">
+                                <a href="https://www.ead.gov.ae/" target="_blank" class="brand-logo">
+                                    <img src="./images/ead-logo.png" class="img-fluid">
+                                </a>
+                                <div class="social-small-links d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                    <div class="left">
+                                        <ul class="social-media">
+                                            <li class="icon-pd-15">
+                                                <a href="http://www.facebook.com/EnvironmentAbuDhabi" target="_blank">
+                                                    <i class="icon-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="icon-pd-15">
+                                                <a href="http://www.instagram.com/Environmentabudhabi" target="_blank">
+                                                    <i class="icon-insta"></i>
+                                                </a>
+                                            </li>
+                                            <li class="icon-pd-8">
+                                                <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
+                                                   target="_blank">
+                                                    <i class="icon-linkin"></i>
+                                                </a>
+                                            </li>
+                                            <li class="icon-pd-5">
+                                                <a href="http://www.twitter.com/EADTweets" target="_blank">
+                                                    <i class="icon-twitter-x"></i>
+                                                </a>
+                                            </li>
+                                            <li class="icon-pd-5">
+                                                <a href="http://www.threads.net/@environmentabudhabi" target="_blank">
+                                                    <i class="icon-threads"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-xl-9">
+                                <div class="row">
+                                    <div class="col-xl-2 col-sm-12 col-md-4">
+                                        <div class="d-inline-block text-sm-start">
+                                            <h6>
+                                                <a href="index-new.html#slide0" class="footermobile-none">Our Air Quality</a>
+                                                <a href="#demo" class="footermobile-show">Our Air Quality</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <!-- 05-JAN-24 -->
+                                    <div class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                        <div class="d-inline-block text-sm-start">
+                                            <h6 class=""><a href="index-new.html#slide2">Insights</a></h6>
+                                            <ul class="links">
+                                                <li>
+                                                    <a href="index-new.html#slide2">Health Recommendation</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="index-new.html#slide2">AQI and Pollutant Trends</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="index-new.html#slide2">Our Air Analytics</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="index-new.html#slide2">Station AQI and Pollutants Trends</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- This will show only in small devices only -->
+                                    <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                        <div class="d-inline-block text-sm-start w-100">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary dropdown-toggle mb-23"
+                                                        data-bs-toggle="dropdown">
+                                                    Insight <img src="./images/new-images/drop-arrow.png" class="ms-2">
+                                                </button>
+                                                <ul class="dropdown-menu w-100">
+                                                    <li>
+                                                        <a class="dropdown-item" href="index-new.html#footerhealth">
+                                                            Health
+                                                            Recommendation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="index-new.html#footer-trends">
+                                                            AQI and Pollutant
+                                                            Trends
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="index-new.html#footerradar-analytic">
+                                                            Our Air
+                                                            Analytics
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="index-new.html#footerStation-trends">
+                                                            Station
+                                                            AQI and Pollutants Trends
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- This will show only in small devices only end-->
+                                    <div class="col-xl-3 col-sm-12 col-md-12">
+                                        <div class="d-inline-block text-sm-start">
+                                            <h6>
+                                                <a href="index-new.html#slide3" class="footermobile-none"> Projects</a>
+                                                <a href="index-new.html#section3" class="footermobile-show"> Projects</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-12 col-md-12">
+                                        <div class="d-inline-block text-sm-start">
+                                            <h6>
+                                                <a href="index-new.html#slide4" class="footermobile-none">FAQ</a>
+                                                <a href="index-new.html#section4" class="footermobile-show">FAQ</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                        <div class="d-inline-block text-sm-start">
+                                            <h6 class=""><a href="index-new.html#slide5">Contact Us</a></h6>
+                                            <ul class="links">
+                                                <li>
+                                                    <a href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
+                                                </li>
+                                                <li>
+                                                    <a href="tel:+97126934444">+97126934444</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- This will show only in small devices only -->
+                                    <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                        <div class="d-inline-block text-sm-start w-100">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary dropdown-toggle"
+                                                        data-bs-toggle="dropdown">
+                                                    Contact Us <img src="./images/new-images/drop-arrow.png"
+                                                                    class="ms-2 minus-four">
+                                                </button>
+                                                <ul class="dropdown-menu w-100">
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="tel:+97126934444">+97126934444</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- This will show only in small devices only end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="d-block d-sm-block d-md-none">
+                    <!-- start 03-April-24 -->
+                    <div class="footer-2-sec">
+                        <div class="copy-rights">
+                            <p class="sm-pd-left11">&#xa9 Abu Dhabi All Rights Reserved 2024</p>
+                            <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block">
+                                <li>
+                                    <a href="privacy-policy.html">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="terms-conditions.html">Terms of Use</a>
+                                </li>
+                                <li>
+                                    <a href="copyrights.html">Copyrights</a>
+                                </li>
+                            </ul>
+                            <!-- This will show only in small devices -->
+                            <div class="social-small-links d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                                <div class="left">
+                                    <ul class="social-media">
+                                        <li class="icon-pd-15">
+                                            <a href="http://www.facebook.com/EnvironmentAbuDhabi" target="_blank">
+                                                <i class="icon-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="icon-pd-15">
+                                            <a href="http://www.instagram.com/Environmentabudhabi" target="_blank">
+                                                <i class="icon-insta"></i>
+                                            </a>
+                                        </li>
+                                        <li class="icon-pd-8">
+                                            <a href="http://www.linkedin.com/company/environment-agency-abu-dhabi"
+                                               target="_blank">
+                                                <i class="icon-linkin"></i>
+                                            </a>
+                                        </li>
+                                        <li class="icon-pd-5">
+                                            <a href="http://www.twitter.com/EADTweets" target="_blank">
+                                                <i class="icon-twitter-x"></i>
+                                            </a>
+                                        </li>
+                                        <li class="icon-pd-5">
+                                            <a href="http://www.threads.net/@environmentabudhabi" target="_blank">
+                                                <i class="icon-threads"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- This will show only in small devices -->
+                        </div>
+                    </div>
+                    <hr class="opacity-1">
+                    <div class="tab-privacy-section text-center">
+                        <ul class="d-none d-sm-none d-md-block d-lg-block d-xl-none">
+                            <li>
+                                <a href="privacy-policy.html">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="terms-conditions.html">Terms of Use</a>
+                            </li>
+                            <li>
+                                <a href="copyrights.html">Copyrights</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end 03-April-24 -->
+                </footer>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+
+
+
+
+    <!-------------------------------- Script Sections------------------->
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/apexcharts.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./chart.js"></script>
+    <script type="text/javascript" src="./graphs.js"></script>
+    <script src="./js/index-script.js"></script>
+    <!-- <script type="text/javascript" src="./scolling-script/fullpage.js"></script> -->
+    <!-- <script>
+  var myFullpage = new fullpage('#fullpage', {
+        anchors: ['slide7'],
+        sectionsColor: ['#fff'],
+        navigation: false,
+        navigationPosition: 'right',
+		    menu: '#menu',
+        //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+		    scrollBar: true,
+		    normalScrollElements: '.scrollPolicyShow'
+    });
+</script> -->
+    <script>
+        $(document).ready(function () {
+
+            function isMobile() {
+                return window.innerWidth < 1199;
+            }
+
+            if (!isMobile()) {
+                // Check if FullPage.js is already loaded
+                if (typeof fullpage === 'function') {
+                    initializeFullPage();
+                } else {
+                    // Load FullPage.js script dynamically
+                    loadExternalScript();
+                }
+            }
+        });
+        function initializeFullPage() {
+
+            var myFullpage = new fullpage('#fullpage', {
+                anchors: ['slide7'],
+                sectionsColor: ['#fff'],
+                navigation: false,
+                navigationPosition: 'right',
+                menu: '#menu',
+                //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+                scrollBar: true,
+                normalScrollElements: '.scrollPolicyShow-term'
+            });
+        }
+        function loadExternalScript() {
+            // Load FullPage.js script only if window width is greater than 990px
+            if (window.innerWidth > 1100) {
+                var scriptTag = document.createElement('script');
+                scriptTag.src = './scolling-script/fullpage.js'; // Update the path accordingly
+                scriptTag.onload = initializeFullPage; // Initialize FullPage.js after script is loaded
+                document.head.appendChild(scriptTag);
+            }
+        }
+    </script>
+
+
+<!-- 03-April-24 Search Functionality by Sachin Start -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('headerSearchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchModal = document.getElementById('mainSearch');
+  
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.trim().toLowerCase();
+            searchResults.innerHTML = '';
+  
+            if (searchTerm.length < 3) {
+                return;
+            }
+            let resultsFound = false;
+            document.querySelectorAll('p, span, li, a').forEach(function (element) {
+                const text = element.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    appendToResults(element);
+                    resultsFound = true;
+                }
+            });
+            document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(function (heading) {
+                const text = heading.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    appendToResults(heading);
+                    resultsFound = true;
+                }
+            });
+            if (!resultsFound) {
+        const li = document.createElement('li');
+        li.textContent = 'No results found';
+        searchResults.appendChild(li);
+    }
+        });
+  
+        searchInput.addEventListener('click', function () {
+            searchResults.innerHTML = '';
+        });
+  
+        searchResults.addEventListener('click', function (event) {
+            const target = event.target;
+            if (target.tagName.toLowerCase() === 'a') {
+                const url = target.getAttribute('data-url');
+            }
+            searchModal.classList.remove('show');
+            searchResults.innerHTML = '';
+            searchInput.value = '';
+        });
+  
+        searchResults.addEventListener('click', function () {
+            searchModal.classList.remove('show');
+            searchResults.innerHTML = '';
+            searchInput.value = '';
+        });
+  
+        function appendToResults(element) {
+            let parentSlide = element.closest('.slide');
+            if (parentSlide) {
+                // If the element is within a slide
+                const slideIndex = Array.from(parentSlide.parentNode.children).indexOf(parentSlide);
+                const mainUrl = window.location.href.split('#')[0];
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                const span = document.createElement('span');
+                const slideUrl = mainUrl + '#slide2/' + slideIndex;
+                if (slideUrl) {
+                    a.href = slideUrl;
+                    span.textContent = element.textContent;
+                    a.appendChild(span);
+                    li.appendChild(a);
+                    searchResults.appendChild(li);
+  
+                    let parentDiv = element.parentElement;
+                    while (parentDiv !== null) {
+                        if (parentDiv.tagName.toLowerCase() === 'div') {
+                            if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                const parentHeading = document.createElement('a');
+                                parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                parentHeading.href = slideUrl;
+                                searchResults.insertBefore(parentHeading, li);
+                                break;
+                            }
+                        }
+                        parentDiv = parentDiv.parentElement;
+                    }
+                }
+            } else {
+                // If the element is not within a slide
+                let parentSeDiv = element.parentElement;
+                let sectionId = null;
+                while (parentSeDiv !== null) {
+                    if (parentSeDiv.classList.contains('section') && parentSeDiv.id) {
+                        sectionId = parentSeDiv.id;
+                        break;
+                    }
+                    parentSeDiv = parentSeDiv.parentElement;
+                }
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                const span = document.createElement('span');
+                const sectionUrl = '#' + sectionId;
+                if (sectionUrl) {
+                    a.href = sectionUrl;
+                    span.textContent = element.textContent;
+                    a.appendChild(span);
+                    li.appendChild(a);
+                    searchResults.appendChild(li);
+  
+                    let parentDiv = element.parentElement;
+                    while (parentDiv !== null) {
+                        if (parentDiv.tagName.toLowerCase() === 'div') {
+                            if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                const parentHeading = document.createElement('a');
+                                parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                parentHeading.href = sectionUrl;
+                                searchResults.insertBefore(parentHeading, li);
+                                break;
+                            }
+                        }
+                        parentDiv = parentDiv.parentElement;
+                    }
+                }
+            }
+        }
+    });
+  
+  </script>
+  <!--  03-April-24 Search Functinality by Sachin End -->
+</body>
+
+</html>
