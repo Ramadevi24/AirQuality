@@ -1,4 +1,4 @@
-const baseUrl = "https://adairqualityapi.ead.ae/";
+ï»¿const baseUrl = "https://adairqualityapi.ead.ae/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -2033,38 +2033,15 @@ function bindStationDataToLineChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
+                        enabled: false,
+                        external: function (context) {
+                            // Check if the tooltip is active (hovering)
+                            if (context.tooltip.opacity === 0) {
+                                // Clear the values when not hovering
+                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                            } else {
+                                // Call the custom function to update the values
+                                updatePollutantValues(context.tooltip.dataPoints);
                             }
                         }
                     }
@@ -2129,7 +2106,8 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,                   
+                    data: aqiData,  
+                    pointHoverRadius: 5,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
@@ -2169,38 +2147,15 @@ function bindStationDataToLineChart(filter) {
                         display: true,
                     },
                     tooltip: {
-                        // Enable shared tooltips
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function (context) {
-                                var label = context.dataset.label || '';
-
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y;
-                                }
-                                return label;
-                                //console.log(label);
-                            },
-                            afterBody: function (context) {
-                                // Assuming 'chartData' is accessible in this scope. If not, you'll need to adjust accordingly.
-                                var index = context[0].dataIndex;
-                                var so2 = chartData[index].sO2;
-                                var no2 = chartData[index].nO2;
-                                var co = chartData[index].co;
-                                var pm10 = chartData[index].pM10;
-                                var o3 = chartData[index].o3;
-                                $("#lineChartAqiSo2Value").text(so2);
-                                $("#lineChartAqiNo2Value").text(no2);
-                                $("#lineChartAqiCoValue").text(co);
-                                $("#lineChartAqiPm10Value").text(pm10);
-                                $("#lineChartAqiO3Value").text(o3);
-                                // Update DOM elements or return additional strings to include in the tooltip text.
-                                // For example, to return text to be included in the tooltip:
-                                // return ['SO2: ' + so2, 'NO2: ' + no2, 'CO: ' + co, 'PM10: ' + pm10, 'O3: ' + o3];
+                        enabled: false,
+                        external: function (context) {
+                            // Check if the tooltip is active (hovering)
+                            if (context.tooltip.opacity === 0) {
+                                // Clear the values when not hovering
+                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                            } else {
+                                // Call the custom function to update the values
+                                updatePollutantValues(context.tooltip.dataPoints);
                             }
                         }
                     }
@@ -2259,6 +2214,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2268,6 +2224,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2277,6 +2234,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.6)',
                         borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2286,6 +2244,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
@@ -2295,6 +2254,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     }
@@ -2309,17 +2269,18 @@ function bindStationDataToLineChart(filter) {
                         position: 'bottom',
                         labels: {
                             usePointStyle: true,
-                            padding: 20,
-                            boxWidth: 12,
-                            boxHeight: 12,
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            padding: 40,
+                            boxWidth: 8,
+                            boxHeight: 8,
+                            color: '#666',
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2342,59 +2303,78 @@ function bindStationDataToLineChart(filter) {
                         },
                     },
                     tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
+                        enabled: false,                       
+                        external: function (context) {
+                          
+                            if (context.tooltip.opacity === 0) {
+                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;
+                            }
+
+                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
+                                const dataIndex = tooltipItem.dataIndex;
+                                const datasetIndex = tooltipItem.datasetIndex;
+                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
+                                //console.log(dataPoint); // This should show you the actual data structure of a point
+                                //.log(dataPoint.pM10); 
+                                switch (datasetIndex) {
+                                    case 0:
+                                       // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        $("#lineChartPollutantPm10Value").text(dataPoint);
+                                        break;
+                                    case 1:
+                                        $("#lineChartPollutantSo2Value").text(dataPoint);
+                                        break;
+                                    case 2:
+                                        $("#lineChartPollutantCoValue").text(dataPoint);
+                                        break;
+                                    case 3:
+                                        $("#lineChartPollutantO3Value").text(dataPoint);
+                                        break;
+                                    case 4:
+                                        $("#lineChartPollutantNo2Value").text(dataPoint);
+                                        break;
+                                }
+                            });
+                        },
                         callbacks: {
-                            title: function (tooltipItems) {
-                                const time = tooltipItems[0].label;
-                                return time;
-                            },
+                            //title: function (tooltipItems) {                               
+                            //    //let fullTimestamp = tooltipItems[0].label;
+                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                            //    //hour = hour === 0 ? 12 : hour;
+                            //    //hour = hour < 10 ? '0' + hour : hour;
+                            //    //return `${hour} ${meridiem}`;
+                            //    return '';
+                            //},
                             label: function () {
                                 return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-
-
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-
-                                    const dataPoint = chartData[dataIndex];
-
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
+                            }
+                            
                         }
                     },
                 },
                 interaction: {
-                    intersect: false,
+                    mode: 'nearest', // The mode 'nearest' makes sure the point closest to the mouse gets highlighted
+                    axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
+                    intersect: false // This allows for showing the hover effect even if not directly over a point
                 },
                 scales: {
                     x: {
                         type: 'time',
                         time: {
                             unit: 'hour',
-                            tooltipfirmat: 'HH:mm a'
+                            tooltipfirmat: 'HH:mm a',
+                            displayFormats: {
+                                hour: 'hh a'
+                            }
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 20
+                            
                         },
                         grid: {
                             display: false
@@ -2404,6 +2384,7 @@ function bindStationDataToLineChart(filter) {
                     x1: {
                         id: 'x1',
                         type: 'time',
+                        position: 'bottom',
                         time: {
                             unit: 'day',
                             tooltipFormat: 'MMM d',
@@ -2420,7 +2401,7 @@ function bindStationDataToLineChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        position: 'bottom',
+                        
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2447,6 +2428,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2455,6 +2437,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2463,6 +2446,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.6)',
                         borderColor: 'rgba(0, 75, 135, 0.6)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2471,6 +2455,7 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     },
                     {
@@ -2479,33 +2464,14 @@ function bindStationDataToLineChart(filter) {
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 2
                     }
                 ]
 
             },
             options: {
-                //scales: {
-                //    x: {
-                //        ticks: {
-                //            maxRotation: 0,
-                //            minRotation: 0
-                //        },
-                //        grid: {
-                //            display: false, 
-                //            drawBorder: false, 
-                //        },
-                //        stacked: true,
-                //    },
-                //    y: { 
-                //        stacked: true,
-                //        grid: {
-                //            display: false, 
-                //            drawBorder: false, 
-                //        },
-                //    },
-
-                //},
+               
                 responsive: true, 
                 maintainAspectRatio: false, 
                 plugins: {
@@ -2514,18 +2480,19 @@ function bindStationDataToLineChart(filter) {
                         position: 'bottom', 
                         labels: {
                             usePointStyle: true, 
-                            padding: 20, 
-                            boxWidth: 12, 
-                            boxHeight: 12,
+                            padding: 60, 
+                            boxWidth: 8, 
+                            boxHeight: 8,
+                            color: '#666',
                            
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {                                   
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {                                   
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2533,79 +2500,115 @@ function bindStationDataToLineChart(filter) {
                             const meta = chart.getDatasetMeta(index);
 
                             // Toggle the visibility of the dataset
-                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+                            meta.hidden = !meta.hidden;
 
-                            // Update the chart
+                            // Trigger an update to show/hide the data and adjust legend appearance
                             chart.update();
-
-                            // Now, we update the appearance of the legend item
-                            // Find the legend items and toggle a class or style
-                            var legendItems = chart.legend.legendItems;
-                            for (var i = 0; i < legendItems.length; i++) {
-                                if (i === index) {
-                                    if (meta.hidden) {
-                                        // Apply custom styling or class to mark as disabled
-                                        legend.legendItems[i].hidden = true; // Custom property for reference
-                                    } else {
-                                        // Remove custom styling or class
-                                        legend.legendItems[i].hidden = false; // Custom property for reference
-                                    }
-                                }
-                            }
                         },
-                    },
+                    },                    
                     tooltip: {
-                        enabled: true,
-                        mode: 'index',
-                        intersect: false,
+                        enabled: false,
+                        external: function (context) {
+
+                            if (context.tooltip.opacity === 0) {
+                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;
+                            }
+
+                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
+                                const dataIndex = tooltipItem.dataIndex;
+                                const datasetIndex = tooltipItem.datasetIndex;
+                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
+                                //console.log(dataPoint); // This should show you the actual data structure of a point
+                                //.log(dataPoint.pM10); 
+                                switch (datasetIndex) {
+                                    case 0:
+                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        $("#lineChartPollutantPm10Value").text(dataPoint);
+                                        break;
+                                    case 1:
+                                        $("#lineChartPollutantSo2Value").text(dataPoint);
+                                        break;
+                                    case 2:
+                                        $("#lineChartPollutantCoValue").text(dataPoint);
+                                        break;
+                                    case 3:
+                                        $("#lineChartPollutantO3Value").text(dataPoint);
+                                        break;
+                                    case 4:
+                                        $("#lineChartPollutantNo2Value").text(dataPoint);
+                                        break;
+                                }
+                            });
+                        },
                         callbacks: {
-                            title: function (tooltipItems) {
-                                const time = tooltipItems[0].label;
-                                return time;
-                            },
+                            //title: function (tooltipItems) {                               
+                            //    //let fullTimestamp = tooltipItems[0].label;
+                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                            //    //hour = hour === 0 ? 12 : hour;
+                            //    //hour = hour < 10 ? '0' + hour : hour;
+                            //    //return `${hour} ${meridiem}`;
+                            //    return '';
+                            //},
                             label: function () {
                                 return null;
-                            },
-                            afterBody: (tooltipItems) => {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                            }
 
-
-                                tooltipItems.forEach(tooltipItem => {
-                                    const dataIndex = tooltipItem.dataIndex;
-                                    const datasetIndex = tooltipItem.datasetIndex;
-
-                                    const dataPoint = chartData[dataIndex];
-
-                                    switch (datasetIndex) {
-                                        case 0:
-                                            $("#lineChartPollutantPm10Value").text(dataPoint.pM10);
-                                            break;
-                                        case 1:
-                                            $("#lineChartPollutantSo2Value").text(dataPoint.sO2);
-                                            break;
-                                        case 2:
-                                            $("#lineChartPollutantCoValue").text(dataPoint.co);
-                                            break;
-                                        case 3:
-                                            $("#lineChartPollutantO3Value").text(dataPoint.o3);
-                                            break;
-                                        case 4:
-                                            $("#lineChartPollutantNo2Value").text(dataPoint.nO2);
-                                            break;
-                                    }
-                                });
-                                return '';
-                            },
                         }
                     },
-                }
+                },
+                interaction: {
+                    mode: 'nearest', // The mode 'nearest' makes sure the point closest to the mouse gets highlighted
+                    axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
+                    intersect: false // This allows for showing the hover effect even if not directly over a point
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0
+                        },
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },
+                        stacked: true,
+                    },
+                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
+                        stacked: true,
+                        grid: {
+                            display: false, // This will remove the Y-axis grid lines
+                            drawBorder: false, // Optional: if you also want to remove the axis border
+                        },// Assuming you want the Y-axis stacked as well
+                    },
+
+                },
             }
         });
         myPollutantChart.update();
     }
 
 }
+function updatePollutantValues(tooltipItems) {
+    var index = tooltipItems[0].dataIndex;
 
+    // Retrieve data for all pollutants
+    var so2 = chartData[index].sO2;
+    var no2 = chartData[index].nO2;
+    var co = chartData[index].co;
+    var pm10 = chartData[index].pM10;
+    var o3 = chartData[index].o3;
+
+    // Update the text of the corresponding DOM elements with the pollutant values
+    $("#lineChartAqiSo2Value").text(so2);
+    $("#lineChartAqiNo2Value").text(no2);
+    $("#lineChartAqiCoValue").text(co);
+    $("#lineChartAqiPm10Value").text(pm10);
+    $("#lineChartAqiO3Value").text(o3);
+}
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
     var thresholdData = [];
@@ -2669,6 +2672,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationPm10BarGraph";
             break;
@@ -2764,6 +2768,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationSo2BarGraph";
             break;
@@ -2833,6 +2838,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationCoBarGraph";
             break;
@@ -2983,6 +2989,7 @@ function bindStationDataToBarChart(filter) {
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
+                borderRadius: 3
             });
             pollutantBarChartId = "ADstationNo2BarGraph";
             break;
@@ -3037,7 +3044,7 @@ function bindStationDataToBarChart(filter) {
                     break;
             }
             barChartDataSet = [{
-                label: 'aqi',
+                label: '',
                 backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
@@ -3073,7 +3080,7 @@ function bindStationDataToBarChart(filter) {
                 datasets: barChartDataSet
                 //datasets: barChartDataSet.map(dataset => ({
                 //    ...dataset,
-                //    barThickness: 5, // This sets the thickness of each bar to 50 pixels
+                //    barThickness: 10, // This sets the thickness of each bar to 50 pixels
                 //})),
             },
 
@@ -3113,15 +3120,8 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-
-                                // Check the condition here; for example, if the pollutant value is 'pm10'
-                                if (context.dataset.label === 'aqi') {
-                                    // If the condition is met, append the string ' ug/3'
-                                    return value;
-                                } else {
-                                    // If the condition is not met, return the value as it is
                                     return value + ' ug/m3';
-                                }
+                               
                             }
                         }
                     }
@@ -3353,15 +3353,15 @@ function bindYearsToDropDown() {
 // Do not remove below code ends---------------------------------
 var imageData = [
     { imageUrl: "./images/new-images/Freepik1.png", content: "E-linking for Continuous Emission Monitoring System ", description: "E-linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in CLIENT as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable CLIENT to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help CLIENT to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
-    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency – Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
-    { imageUrl: "./images/achievments/a5.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors’ emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
+    { imageUrl: "./images/new-images/Freepik.png", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency â€“ Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
+    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency â€“ Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
+    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency â€“ Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
+    { imageUrl: "./images/achievments/a5.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectorsâ€™ emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
     { imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
     { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders" },
+    { imageUrl: "./images/new-images/Freepik.png", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency â€“ Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority â€“ Abu Dhabi, Department of Transport and other public and private stakeholders" },
     { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region’s first smog-free tower at Surf Abu Dhabi, the world’s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
+    { imageUrl: "./images/new-images/Freepik3.png", content: "Smog-Free Tower", description: "The Environment Agency â€“ Abu Dhabi (EAD) and Modon Properties inaugurated the regionâ€™s first smog-free tower at Surf Abu Dhabi, the worldâ€™s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
 ];
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
