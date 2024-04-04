@@ -41,14 +41,14 @@
             display: flex;
         }
         .colSmall{
-            width:35px;
+            width:40px;
         }
         .colLarge{
             max-width:700px;
             overflow-x:scroll;
         }
         .box{
-            width:700px;
+            width:calc(700px - 40px);
             height: 500px;
         }
     </style>
@@ -74,10 +74,10 @@
         //chart1=====================
         // setup
         const data = {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
                 label: 'Weekly Sales',
-                data: [18, 12, 6, 9, 12, 3, 9],
+                data: [9, 12, 6, 9, 12, 3, 9, 18, 12, 6, 9, 12, 3, 9, 18, 12, 6, 9, 12, 3, 9],
                 backgroundColor: [
                     'rgba(255, 26, 104, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -105,9 +105,29 @@
             type: 'bar',
             data,
             options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 10,
+                        bottom:10
+                    },
+                },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            drawTicks: false,                           
+                            drawBorder: false,
+                        }
+                    }
+                    
+                },
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 }
             }
@@ -124,7 +144,7 @@
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
                 label: 'Weekly Sales',
-                data: [18, 12, 6, 9, 12, 3, 9],
+                data: myChart.data.datasets[0].data,
             }]
         };
 
@@ -133,9 +153,33 @@
             type: 'bar',
             data: data2,
             options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        bottom:53.5
+                    }
+                },
                 scales: {
+                    x: {
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            drawTicks: false
+                        }                 
+
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true ,  
+                        afterFit: (ctx) => {
+                            //console.log(ctx);
+                            ctx.width = 40;
+                        },
+                    }                   
+                },
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 }
             }
@@ -146,6 +190,15 @@
             document.getElementById('myChart2'),
             config2
         );
+
+        const box = document.querySelector('.box')
+        const barLength = myChart.data.labels.length;
+        if (barLength > 7) {
+            const chartWidth = 700 + ((barLength - 7) * 30)
+            box.style.width = `${chartWidth}px`;
+        }
+
+
 
         // chart2"========================"
 
