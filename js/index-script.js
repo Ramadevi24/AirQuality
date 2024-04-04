@@ -1026,6 +1026,19 @@ function toggleDiv(tabId, pollutant) {
     });
     document.getElementById(tabId).style.display = 'block';
     activePollutant = pollutant;
+    // var tabEl = $('#' + tabId);
+    // var dateBox = tabEl.find('.date-box');
+    // if ($("#barChartFilter").text() == chartFilter.Custom) {
+    //     if (dateBox.hasClass('calen-box-hide')) {
+    //         dateBox.removeClass('calen-box-hide');
+    //         tabEl.find('.quality-button-dropdown').hide();
+    //     }
+    // } else {
+    //     if (tabEl.hasClass('quality-button-dropdown')) {
+    //         dateBox.addClass('calen-box-hide');
+    //         tabEl.find('.quality-button-dropdown').show();
+    //     }
+    // }
     bindStationDataToBarChart($("#barChartFilter").text());
 }
 
@@ -1108,26 +1121,27 @@ $(document).ready(function () {
     });
 
     $('.quality-index-dropItem').click(function () {
-        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
-        var dateBox = parentContainer.find('.date-box'); // Find the date-box within the parent container
-
-        if ($(this).text() === 'Custom') {
-            dateBox.removeClass('calen-box-hide');
-            parentContainer.find('.quality-button-dropdown').hide();
+        var el = $('.btn-group-filter');
+         if ($(this).text() == chartFilter.Custom) {
+            el.find('.date-box').removeClass('calen-box-hide');
+            el.find('.quality-button-dropdown').hide();
+            var datepickerEl = $(this).closest('.btn-group-filter').find('#datepicker');
+            if (!datepickerEl.val()) {
+                datepickerEl.focus();
+            } 
         } else {
-            dateBox.addClass('calen-box-hide');
-            parentContainer.find('.quality-button-dropdown').show();
+            el.find('.date-box').addClass('calen-box-hide');
+            el.find('.quality-button-dropdown').show();
         }
         updateCharts($(this).text());
     });
 
     $('.datePickImage').click(function () {
-        var parentContainer = $(this).closest('.btn-group'); // Find the parent container
-        parentContainer.find('.quality-button-dropdown').text(chartFilter.Hourly);
-        parentContainer.find('.quality-button-dropdown').show();
-        parentContainer.find('.date-box').addClass('calen-box-hide');
+        var el = $('.btn-group-filter');
+        el.find('.date-box').addClass('calen-box-hide');
+        el.find('.quality-button-dropdown').show();
         $('.dropdown-change li a').removeClass("active");
-        parentContainer.find('.quality-index-dropItem:first').addClass("active");
+        el.find('.quality-index-dropItem:first').addClass("active");
         $('.datepicker').val('');
         updateCharts(chartFilter.Hourly);
     });
@@ -2702,6 +2716,7 @@ function bindStationDataToLineChart(filter) {
     }
 
 }
+
 function updatePollutantValues(tooltipItems) {
     var index = tooltipItems[0].dataIndex;
 
@@ -2719,6 +2734,7 @@ function updatePollutantValues(tooltipItems) {
     $("#lineChartAqiPm10Value").text(pm10);
     $("#lineChartAqiO3Value").text(o3);
 }
+
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
     var thresholdData = [];
