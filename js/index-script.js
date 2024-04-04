@@ -2852,18 +2852,6 @@ function bindStationDataToBarChart(filter) {
                         borderRadius: 3
                     });
                     break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        barChartData.push(item.sO2);
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
-                    });
-                    backgroundColors.push('#004B87');
-                    break;
                 default:
                     chartData.forEach(item => {
                         if (item.sO2 > pollutantThresholdLimits.SO2Hourly) {
@@ -2922,18 +2910,6 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColors.push('#004B87');
                     break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        barChartData.push(item.co);
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
-                    });
-                    backgroundColors.push('#004B87');
-                    break;
                 default:
                     chartData.forEach(item => {
                         if (item.co > pollutantThresholdLimits.COHourly) {
@@ -2989,18 +2965,6 @@ function bindStationDataToBarChart(filter) {
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.year);
-                    });
-                    backgroundColors.push('#004B87');
-                    break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        barChartData.push(item.o3);
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
                     });
                     backgroundColors.push('#004B87');
                     break;
@@ -3074,17 +3038,6 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColors.push('#004B87');
                     break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        barChartData.push(item.nO2);
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        categoriesData.push(formattedString);
-                    });
-                    backgroundColors.push('#004B87');
                 default:
                     chartData.forEach(item => {
                         if (item.nO2 > pollutantThresholdLimits.NO2Hourly) {
@@ -3143,19 +3096,6 @@ function bindStationDataToBarChart(filter) {
                         backgroundColors.push(colorCodes[getColorClassForAqi(item.aqi)]);
                     });
                     break;
-                case "Custom":
-                    chartData.forEach(item => {
-                        // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
-                        const dateParts = item.recordedDate.split('/');
-                        const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
-
-                        // Combine the formatted date with the hour, separated by a semicolon
-                        const formattedString = `${formattedDate};${item.hour}`;
-                        barChartData.push(item.aqi);
-                        categoriesData.push(formattedString);
-                        backgroundColors.push(colorCodes[getColorClassForAqi(item.aqi)]);
-                    });
-                    break;
                 default:
                     chartData.forEach(item => {
                         // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
@@ -3207,8 +3147,8 @@ function bindStationDataToBarChart(filter) {
                 //datasets: barChartDataSet
                 datasets: barChartDataSet.map(dataset => ({
                     ...dataset,
-                    barThickness: 12,
-                    offset: 5
+                    barThickness: 10,
+                    // offset: 5
                     
                 })),
                 
@@ -3310,7 +3250,7 @@ function bindStationDataToBarChart(filter) {
                             display: false,                          
                             
                         },
-                        beginAtZero: true
+                        //beginAtZero: true
                     },
                 },
             },
