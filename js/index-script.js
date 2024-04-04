@@ -3217,7 +3217,7 @@ function bindStationDataToBarChart(filter) {
                         grid: {
                             display: false
                         },
-
+                        stacked: true,
                     },
                     x1: {
                         id: 'x1',
@@ -3233,7 +3233,6 @@ function bindStationDataToBarChart(filter) {
                         grid: {
                             //display: false,
                             drawOnChartArea:false,
-
                         },
                         ticks: {
                             // Auto-skip prevents label overlapping.
@@ -3247,9 +3246,9 @@ function bindStationDataToBarChart(filter) {
                     },
                     y: {
                         grid: {
-                            display: false,                          
-                            
+                            display: false,   
                         },
+                        stacked: true
                         //beginAtZero: true
                     },
                 },
