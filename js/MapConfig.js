@@ -1,7 +1,7 @@
 ﻿var portalUrl = "https://maps.smartgeoapps.com/portal"
 var TrustedDomains = ["enviroportal.ead.ae", "localhost", "atlas.smartgeoapps.com"];
 var WebMapID = "753b0e40332946c5a16c5f97cb8317d4";
-var MonitoringStationsAPI = "https://enviroportal.ead.ae/server/rest/services/Enviroportal/MonitoringStations/MapServer/0" //"https://atlas.smartgeoapps.com/server/rest/services/AIrQuality/MonitoringStations/MapServer/0";
+var MonitoringStationsAPI = "https://atlas.smartgeoapps.com/server/rest/services/AIrQuality/MonitoringStations/MapServer/0";
 //var AirQualityService1 = "https://atlas.smartgeoapps.com/AirQualityWS/AQMS.asmx";
 var AirQualityService = "https://adairqualityapi.ead.ae/";
 var ImagesPath = "./images/new-images/";
@@ -9,7 +9,7 @@ var stationsIDs= [
     {
         "Hamdan Street": "EAD_HamdanStreet",
         "Khadejah School": "EAD_KhadijaSchool",
-        "Khalifa School": "EAD_KhalifaSchool",
+        "Khalifa School": "EAD_KhalifaSchool",  
         "Mussafah": "EAD_Mussafah",
         "Baniyas School": "EAD_Baniyas",
         "Al Ain Islamic Institute": "EAD_AlAinSchool",
