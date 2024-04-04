@@ -317,7 +317,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
 
 
         $("#mapLocation").click(function (event) {
-            console.log(longitude);
+           // console.log(longitude);
 
             // Use the obtained coordinates to move the map view
             view.goTo({
@@ -653,7 +653,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                         for (var i = 0; i < StationsObject.length; i++) {
                             if (StationsObject[i].attributes.Name == attrInfo.Name) {
                                 SelectedstationInfo = StationsObject[i];
-                                alert(SelectedstationInfo.KeyName);
+                                
                                 currentStationDetails = stationsWithLocations.find(x => x.stationId == SelectedstationInfo.KeyName)
                                 loadStationData();
                                 break

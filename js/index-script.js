@@ -607,7 +607,7 @@ var radarOptions = {
                     }
                     return label;
                 }
-               
+
             }
         },
     },
@@ -1319,7 +1319,7 @@ function createRadarData() {
         datasets: [{
             label: '',
             //borderColor: 'rgba(250, 207, 57, 1)',
-           // pointBackgroundColor: getColors(pollutantLevels),
+            // pointBackgroundColor: getColors(pollutantLevels),
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
@@ -1495,10 +1495,10 @@ function loadStationData(initialCall = false) {
             $('#mobileWindDirection').append(data.direction);
             $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
             $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`); 
+            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
             $('#smallScreenWindDirection').append(data.direction);
-            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`); 
-            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`); 
+            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
@@ -2230,7 +2230,7 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,  
+                    data: aqiData,
                     pointHoverRadius: 5,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
@@ -2396,15 +2396,16 @@ function bindStationDataToLineChart(filter) {
                             padding: 40,
                             boxWidth: 8,
                             boxHeight: 8,
+                            borderWidth: 0,
                             color: '#666',
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2427,9 +2428,9 @@ function bindStationDataToLineChart(filter) {
                         },
                     },
                     tooltip: {
-                        enabled: false,                       
+                        enabled: false,
                         external: function (context) {
-                          
+
                             if (context.tooltip.opacity === 0) {
                                 $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
                                 return;
@@ -2443,7 +2444,7 @@ function bindStationDataToLineChart(filter) {
                                 //.log(dataPoint.pM10); 
                                 switch (datasetIndex) {
                                     case 0:
-                                       // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
                                         $("#lineChartPollutantPm10Value").text(dataPoint);
                                         break;
                                     case 1:
@@ -2476,7 +2477,7 @@ function bindStationDataToLineChart(filter) {
                             label: function () {
                                 return null;
                             }
-                            
+
                         }
                     },
                 },
@@ -2498,7 +2499,7 @@ function bindStationDataToLineChart(filter) {
                         ticks: {
                             autoSkip: true,
                             maxTicksLimit: 20
-                            
+
                         },
                         grid: {
                             display: false
@@ -2525,7 +2526,7 @@ function bindStationDataToLineChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        
+
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2595,20 +2596,20 @@ function bindStationDataToLineChart(filter) {
 
             },
             options: {
-               
-                responsive: true, 
-                maintainAspectRatio: false, 
+
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: true,
                         position: 'bottom',
                         labels: {
-                            usePointStyle: true, 
-                            padding: 60, 
-                            boxWidth: 8, 
+                            usePointStyle: true,
+                            padding: 60,
+                            boxWidth: 8,
                             boxHeight: 8,
                             color: '#666',
-                           
+
                             //generateLabels: function (chart) {
                             //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
                             //    return labels.map(label => {                                   
@@ -2629,7 +2630,7 @@ function bindStationDataToLineChart(filter) {
                             // Trigger an update to show/hide the data and adjust legend appearance
                             chart.update();
                         },
-                    },                    
+                    },
                     tooltip: {
                         enabled: false,
                         external: function (context) {
@@ -3203,16 +3204,19 @@ function bindStationDataToBarChart(filter) {
             data: {
                 labels: iso8601Dates,
                 fill: false,
-                datasets: barChartDataSet
-                //datasets: barChartDataSet.map(dataset => ({
-                //    ...dataset,
-                //    barThickness: 10, // This sets the thickness of each bar to 50 pixels
-                //})),
+                //datasets: barChartDataSet
+                datasets: barChartDataSet.map(dataset => ({
+                    ...dataset,
+                    barThickness: 12,
+                    offset: 5
+                    
+                })),
+                
             },
 
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: false,                
                 toolbar: {
                     show: false,
                     tools: {
@@ -3246,8 +3250,8 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-                                    return value + ' ug/m3';
-                               
+                                return value + ' ug/m3';
+
                             }
                         }
                     }
@@ -3255,29 +3259,30 @@ function bindStationDataToBarChart(filter) {
                 interaction: {
                     intersect: false,
                 },
-                scales: {
+               scales: {
                     x: {
                         type: 'time',
                         time: {
-                            displayFormats: {
-                                hour: 'h a' // Display hours with AM/PM
-                            },
                             unit: 'hour',
+                            tooltipfirmat: 'HH:mm a',
+                            displayFormats: {
+                                hour: 'hh a'
+                            }
                         },
                         ticks: {
                             autoSkip: true,
-                            maxTicksLimit: 20,
-                            rotation: 0, // No rotation
+                            maxTicksLimit: 20
 
                         },
-                        position: 'bottom',
                         grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Primary x-axis
+                            display: false
+                        },
+
                     },
-                    x2: {
+                    x1: {
+                        id: 'x1',
                         type: 'time',
+                        position: 'bottom',
                         time: {
                             unit: 'day',
                             tooltipFormat: 'MMM d',
@@ -3285,7 +3290,11 @@ function bindStationDataToBarChart(filter) {
                                 day: 'MMM d'
                             }
                         },
-                        position: 'bottom',
+                        grid: {
+                            //display: false,
+                            drawOnChartArea:false,
+
+                        },
                         ticks: {
                             // Auto-skip prevents label overlapping.
                             autoSkip: true,
@@ -3293,21 +3302,17 @@ function bindStationDataToBarChart(filter) {
                             maxTicksLimit: 20
                         },
 
+                        min: minDateString,
+                        max: maxDateString
+                    },
+                    y: {
                         grid: {
-                            drawOnChartArea: false
+                            display: false,                          
+                            
                         },
-                        // Ensure alignment with x-axis range
-                        min: minDateString, // Set dynamically
-                        max: maxDateString  // Set dynamically
+                        beginAtZero: true
                     },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
-                    },
-                }
+                },
             },
 
             animations: {
@@ -3507,16 +3512,16 @@ function getPollutantWithUnits(value) {
 
 // Do not remove below code ends---------------------------------
 var imageData = [
-    { imageUrl: "./images/new-images/Freepik1.png", content: "E-linking for Continuous Emission Monitoring System ", description: "E-linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in CLIENT as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable CLIENT to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help CLIENT to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency � Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
-    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency � Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency � Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
-    { imageUrl: "./images/achievments/a5.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors� emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
-    { imageUrl: "https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
+    { imageUrl: "./images/new-images/e_linking.jpg", content: "E-linking for Continuous Emission Monitoring System ", description: "E- linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in EAD as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable EAD to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help EAD to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
+    { imageUrl: "./images/new-images/Monitoring_network.jpg", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
+    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency – Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
+    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
+    { imageUrl: "./images/new-images/GHG1.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
+    { imageUrl: "./images/new-images/Odor.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
     { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." },
-    { imageUrl: "./images/new-images/Freepik.png", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency � Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority � Abu Dhabi, Department of Transport and other public and private stakeholders" },
-    { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Smog-Free Tower", description: "The Environment Agency � Abu Dhabi (EAD) and Modon Properties inaugurated the region�s first smog-free tower at Surf Abu Dhabi, the world�s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
+    { imageUrl: "./images/new-images/Remote_sensing.jpg", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders" },
+    { imageUrl: "./images/new-images/EAD_Research.jpg", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
+    { imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region's first smog-free tower at Surf Abu Dhabi, the world's most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
 ];
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
@@ -3795,7 +3800,7 @@ var accordionContent = [
 ];
 
 
-$.each(accordionContent, function(index, item) {
+$.each(accordionContent, function (index, item) {
     // Create accordion item HTML
     var accordionItem = '<div class="accordion-item">' +
         '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
