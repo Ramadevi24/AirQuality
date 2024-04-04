@@ -607,7 +607,7 @@ var radarOptions = {
                     }
                     return label;
                 }
-               
+
             }
         },
     },
@@ -1305,7 +1305,7 @@ function createRadarData() {
         datasets: [{
             label: '',
             //borderColor: 'rgba(250, 207, 57, 1)',
-           // pointBackgroundColor: getColors(pollutantLevels),
+            // pointBackgroundColor: getColors(pollutantLevels),
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
@@ -1481,10 +1481,10 @@ function loadStationData(initialCall = false) {
             $('#mobileWindDirection').append(data.direction);
             $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
             $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`); 
+            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
             $('#smallScreenWindDirection').append(data.direction);
-            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`); 
-            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`); 
+            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
@@ -2216,7 +2216,7 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData,
                 datasets: [{
                     label: '',
-                    data: aqiData,  
+                    data: aqiData,
                     pointHoverRadius: 5,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
@@ -2382,15 +2382,16 @@ function bindStationDataToLineChart(filter) {
                             padding: 40,
                             boxWidth: 8,
                             boxHeight: 8,
+                            borderWidth: 0,
                             color: '#666',
-                            generateLabels: function (chart) {
-                                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return labels.map(label => {
-                                    const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                                    label.textStyle = isHidden ? 'disabled' : 'normal';
-                                    return label;
-                                });
-                            }
+                            //generateLabels: function (chart) {
+                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            //    return labels.map(label => {
+                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
+                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
+                            //        return label;
+                            //    });
+                            //}
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2413,9 +2414,9 @@ function bindStationDataToLineChart(filter) {
                         },
                     },
                     tooltip: {
-                        enabled: false,                       
+                        enabled: false,
                         external: function (context) {
-                          
+
                             if (context.tooltip.opacity === 0) {
                                 $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
                                 return;
@@ -2429,7 +2430,7 @@ function bindStationDataToLineChart(filter) {
                                 //.log(dataPoint.pM10); 
                                 switch (datasetIndex) {
                                     case 0:
-                                       // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
                                         $("#lineChartPollutantPm10Value").text(dataPoint);
                                         break;
                                     case 1:
@@ -2462,7 +2463,7 @@ function bindStationDataToLineChart(filter) {
                             label: function () {
                                 return null;
                             }
-                            
+
                         }
                     },
                 },
@@ -2484,7 +2485,7 @@ function bindStationDataToLineChart(filter) {
                         ticks: {
                             autoSkip: true,
                             maxTicksLimit: 20
-                            
+
                         },
                         grid: {
                             display: false
@@ -2511,7 +2512,7 @@ function bindStationDataToLineChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-                        
+
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2581,20 +2582,20 @@ function bindStationDataToLineChart(filter) {
 
             },
             options: {
-               
-                responsive: true, 
-                maintainAspectRatio: false, 
+
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: true,
                         position: 'bottom',
                         labels: {
-                            usePointStyle: true, 
-                            padding: 60, 
-                            boxWidth: 8, 
+                            usePointStyle: true,
+                            padding: 60,
+                            boxWidth: 8,
                             boxHeight: 8,
                             color: '#666',
-                           
+
                             //generateLabels: function (chart) {
                             //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
                             //    return labels.map(label => {                                   
@@ -2615,7 +2616,7 @@ function bindStationDataToLineChart(filter) {
                             // Trigger an update to show/hide the data and adjust legend appearance
                             chart.update();
                         },
-                    },                    
+                    },
                     tooltip: {
                         enabled: false,
                         external: function (context) {
@@ -3187,16 +3188,19 @@ function bindStationDataToBarChart(filter) {
             data: {
                 labels: iso8601Dates,
                 fill: false,
-                datasets: barChartDataSet
-                //datasets: barChartDataSet.map(dataset => ({
-                //    ...dataset,
-                //    barThickness: 10, // This sets the thickness of each bar to 50 pixels
-                //})),
+                //datasets: barChartDataSet
+                datasets: barChartDataSet.map(dataset => ({
+                    ...dataset,
+                    barThickness: 12,
+                    offset: 5
+                    
+                })),
+                
             },
 
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: false,                
                 toolbar: {
                     show: false,
                     tools: {
@@ -3230,8 +3234,8 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-                                    return value + ' ug/m3';
-                               
+                                return value + ' ug/m3';
+
                             }
                         }
                     }
@@ -3239,29 +3243,30 @@ function bindStationDataToBarChart(filter) {
                 interaction: {
                     intersect: false,
                 },
-                scales: {
+               scales: {
                     x: {
                         type: 'time',
                         time: {
-                            displayFormats: {
-                                hour: 'h a' // Display hours with AM/PM
-                            },
                             unit: 'hour',
+                            tooltipfirmat: 'HH:mm a',
+                            displayFormats: {
+                                hour: 'hh a'
+                            }
                         },
                         ticks: {
                             autoSkip: true,
-                            maxTicksLimit: 20,
-                            rotation: 0, // No rotation
+                            maxTicksLimit: 20
 
                         },
-                        position: 'bottom',
                         grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Primary x-axis
+                            display: false
+                        },
+
                     },
-                    x2: {
+                    x1: {
+                        id: 'x1',
                         type: 'time',
+                        position: 'bottom',
                         time: {
                             unit: 'day',
                             tooltipFormat: 'MMM d',
@@ -3269,7 +3274,11 @@ function bindStationDataToBarChart(filter) {
                                 day: 'MMM d'
                             }
                         },
-                        position: 'bottom',
+                        grid: {
+                            //display: false,
+                            drawOnChartArea:false,
+
+                        },
                         ticks: {
                             // Auto-skip prevents label overlapping.
                             autoSkip: true,
@@ -3277,21 +3286,17 @@ function bindStationDataToBarChart(filter) {
                             maxTicksLimit: 20
                         },
 
+                        min: minDateString,
+                        max: maxDateString
+                    },
+                    y: {
                         grid: {
-                            drawOnChartArea: false
+                            display: false,                          
+                            
                         },
-                        // Ensure alignment with x-axis range
-                        min: minDateString, // Set dynamically
-                        max: maxDateString  // Set dynamically
+                        beginAtZero: true
                     },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
-                        grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
-                    },
-                }
+                },
             },
 
             animations: {
@@ -3779,7 +3784,7 @@ var accordionContent = [
 ];
 
 
-$.each(accordionContent, function(index, item) {
+$.each(accordionContent, function (index, item) {
     // Create accordion item HTML
     var accordionItem = '<div class="accordion-item">' +
         '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
