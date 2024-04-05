@@ -2668,7 +2668,7 @@ color: var(--green);
 .insight #pm10Tab .quality-index-wrapper h2 {
     padding: 0 !important;
 }
-.insight #aiqTab .quality-index-wrapper h2 {
+.insight #aqiTab .quality-index-wrapper h2 {
     padding: 0 !important;
 }
 .insight ul.legend li span.marker_good:before {

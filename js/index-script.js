@@ -9,7 +9,8 @@ var aqiLineChart;
 var pollutantLineChart;
 var activePollutant;
 var latitude;
-var longitude
+var longitude;
+var hasAccessToLocation = false;
 
 const pollutantAbbrevations = {
     AQI: "AQI",
@@ -446,7 +447,7 @@ const stationsWithLocations = [{
     latitude: 24.1635,
     longitude: 55.7021,
     stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Quaa",
@@ -980,15 +981,11 @@ $(document).ready(function () {
 
     // Do not remove below code starts---------------------------------
     $('#currentDate').html(getFormattedDate(new Date()));
-    //aqiLineChart = new ApexCharts(document.querySelector("#aqiLineChart"), aqiLineChartOptions);
-    //pollutantLineChart = new ApexCharts(document.querySelector("#pollutantLineChart"), pollutantLineChartOptions);
-    //aqiLineChart.render();
-    //pollutantLineChart.render();   
     activePollutant = pollutantAbbrevations.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
     bindYearsToDropDown(); // Do not call this function after load station data function
-    loadStationData(true);
+    getLiveCityRankingApi();
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
@@ -1015,6 +1012,12 @@ $(document).ready(function () {
 
 // Insight Section Script by Sachin---------
 function toggleDiv(tabId, pollutant) {
+    showHideToggleDiv(tabId, pollutant);
+    activePollutant = pollutant;
+    bindStationDataToBarChart($("#barChartFilter").text());
+}
+
+function showHideToggleDiv(tabId, pollutant){
     if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
         document.getElementById('myTabs').classList.add('upperTop');
     } else {
@@ -1025,21 +1028,6 @@ function toggleDiv(tabId, pollutant) {
         div.style.display = 'none';
     });
     document.getElementById(tabId).style.display = 'block';
-    activePollutant = pollutant;
-    // var tabEl = $('#' + tabId);
-    // var dateBox = tabEl.find('.date-box');
-    // if ($("#barChartFilter").text() == chartFilter.Custom) {
-    //     if (dateBox.hasClass('calen-box-hide')) {
-    //         dateBox.removeClass('calen-box-hide');
-    //         tabEl.find('.quality-button-dropdown').hide();
-    //     }
-    // } else {
-    //     if (tabEl.hasClass('quality-button-dropdown')) {
-    //         dateBox.addClass('calen-box-hide');
-    //         tabEl.find('.quality-button-dropdown').show();
-    //     }
-    // }
-    bindStationDataToBarChart($("#barChartFilter").text());
 }
 
 // // Map Search icon script Start--------------   
@@ -1371,10 +1359,10 @@ function getCurrentLocation() {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         currentStationDetails = findNearestStation(latitude, longitude);
-        if (currentStationDetails) {
-            loadStationData();
-        }
+        hasAccessToLocation = true;
+        loadStationData();
     }, function error() {
+        hasAccessToLocation = false;
     });
 }
 
@@ -1442,7 +1430,7 @@ function populateSort(sortBy) {
     }
 }
 
-function loadStationData(initialCall = false) {
+function loadStationData(initialRequest = false) {
     const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
     $.ajax({
         url: apiUrl,
@@ -1455,7 +1443,7 @@ function loadStationData(initialCall = false) {
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
             $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
             $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetails.status).css('color', aqiDetails.color);
-            $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text('Nearest Station: ' + currentStationDetails.stationName);
+            $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? 'Nearest Station: ' : 'Station:') + currentStationDetails.stationName);
             $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
             $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
             $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
@@ -1480,7 +1468,7 @@ function loadStationData(initialCall = false) {
             }
 
             updateCauses(currentStationDetails.stationName, data.pollutantName);
-            updateLegendVisibility(currentStationDetails.stationName);
+            updateLegendVisibility();
             updateActivities(aqi);
             updateHeathReccommendation(aqi);
             var pollutantColorClass = getColorClassForAqi(aqi);
@@ -1502,9 +1490,16 @@ function loadStationData(initialCall = false) {
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
-            getLiveCityRankingApi();
             getAirQualitySafetyLevel();
-            getStationChartApi($('#barChartFilter').text(), initialCall);
+            bindLiveCityRanking();
+            if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
+                activePollutant = pollutantAbbrevations.AQI;
+                showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
+                $('#myTabs .nav-item .nav-link').removeClass("active");
+                $('#aqiTabToggle').addClass('active')
+            }
+
+            getStationChartApi($('#barChartFilter').text(), initialRequest);
         },
         error: handleApiError
     });
@@ -1707,7 +1702,6 @@ function updateInsightAQIImage(aqiLevel) {
     $('#InsightaqiImage').attr('src', imageSrc);
 }
 
-
 function updateSideBarAQIImage(aqiLevel) {
     // Replace 'Circular-Shape.png' with appropriate image filenames
     var imageSrc = './images/new-images/map/';
@@ -1762,19 +1756,17 @@ function updateCauses(station, pollutant) {
     });
 }
 
-function updateLegendVisibility(selectedStation) {
+function updateLegendVisibility() {
     const pollutants = ['PM10', 'NO2', 'SO2', 'CO', 'O3']; // All possible pollutants
     pollutants.forEach(pollutant => {
         // Check if the selected station monitors this pollutant
-        const isMonitored = causeStationData[selectedStation] && causeStationData[selectedStation].hasOwnProperty(pollutant);
-        //console.log(pollutant, isMonitored); // This will now log true/false based on whether the station has the pollutant
-
         const legendDiv = document.getElementById(`legend-${pollutant}`);
         if (legendDiv) {
-            legendDiv.style.display = isMonitored ? '' : 'none'; // Show if monitored, hide otherwise
+            legendDiv.style.display = currentStationDetails.measuredPolluants.includes(pollutant) ? '' : 'none'; // Show if monitored, hide otherwise
         }
     });
 }
+
 function handleApiError(error) {
     $('.page-loader').fadeOut('slow');
     console.error('Error fetching data:', error);
@@ -1853,20 +1845,17 @@ function getAirAnalytics(year) {
 }
 
 function getLiveCityRankingApi() {
-    if (liveCityData.length == 0) {
-        $.ajax({
-            url: baseUrl + 'GetStationRanking',
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                liveCityData = data;
-                bindLiveCityRanking();
-            },
-            error: handleApiError
-        });
-    } else {
-        bindLiveCityRanking();
-    }
+    $.ajax({
+        url: baseUrl + 'GetStationRanking',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            liveCityData = data;
+            currentStationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
+            loadStationData(true);
+        },
+        error: handleApiError
+    });
 }
 
 function bindLiveCityRanking() {
@@ -1903,12 +1892,9 @@ function bindLiveCityRanking() {
         }
     });
 
-    var stationDetails;
     if (currentStationDetails.stationId) {
         $("#" + currentStationDetails.stationId).attr('checked', 'checked');
         stationDetails = currentStationDetails;
-    } else {
-        stationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
     }
 
     var airQualityIndexTooltipPollutantContent = '';
@@ -1986,7 +1972,7 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
             </div>`;
 }
 
-function getStationChartApi(filter, initialCall = false) {
+function getStationChartApi(filter, initialRequest = false) {
     var url;
     switch (filter) {
         case chartFilter.Daily:
@@ -2016,7 +2002,7 @@ function getStationChartApi(filter, initialCall = false) {
             chartData = data;
             bindStationDataToBarChart(filter);
             bindStationDataToLineChart(filter);
-            if (initialCall) {
+            if (initialRequest) {
                 getCurrentLocation();
             }
         },
