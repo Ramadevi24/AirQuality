@@ -693,18 +693,20 @@ header .search-block .search-collapse .search-result ul li i:before {
     left: 0;
     padding-top: 10px 
 }
-#mobile-overlay a {
-    text-decoration: none;
-    color: var(--blue);
-    font-size: 14px;
-    margin: 5% 0% 0% 6%;
-    opacity: 1;
-    transition: opacity 0.2s linear;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-bottom: 2px solid #ffffff;
-    cursor: pointer !important;
-}
+    #mobile-overlay a {
+        text-decoration: none;
+        color: var(--blue);
+        font-size: 14px;
+        margin: 5% 0% 0% 6%;
+        opacity: 1;
+        transition: opacity 0.2s linear;
+        text-transform: uppercase;
+        font-weight: 700;
+        border-bottom: 2px solid #ffffff;
+        cursor: pointer !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
 #mobile-overlay.menu {
     transform: translateY(0%);
 }
@@ -764,7 +766,7 @@ video {
 .banner-section .carousel-caption-banner p {
     font-family: 'Gothamlight';
     font-size: 15px;
-    width: 52%;
+    width: 100%;
     text-align: center;
 }
 .banner-section .carousel-caption-banner .h6{
@@ -1888,9 +1890,9 @@ body.map-viwer-enabled{
 .insight .slide-content ul .modal.fade button.btn-close:focus{
     box-shadow: none;
 }
-.insight .slide-content ul .modal.fade button.btn-close:hover{
-    background: #1d5f95;
-}
+    .insight .slide-content ul .modal.fade button.btn-close:hover{
+        background: #1e6daa;
+    }
     .insight .slide-content ul .modal.fade button.btn-close {
         float: right;
         color: #fff !important;
@@ -1899,7 +1901,7 @@ body.map-viwer-enabled{
         border-radius: 50px;
         border: 2px solid rgba(255, 255, 255, 1);
         opacity: 1;
-        background: none !important;
+        background: none;
     }
 .insight .slide-content ul .modal.fade button.btn-close i {
     color: #fff;
@@ -3513,9 +3515,9 @@ color: var(--green);
     position: relative;
 }
 /* ----------------------- */
-.insight .slide-content ul .modal.fade button.btn-close:hover {
+/* .insight .slide-content ul .modal.fade button.btn-close:hover {
     background: #34709f !important;
-}
+} */
 .insight .silde-dv .fp-arrow.fp-controlArrow:hover {
     background: #dde4ea;
 }
@@ -3684,6 +3686,10 @@ table {
 }
 .insight .graph-duration-filters .pollutant-hour-top7{
     top: -7px;
+}
+.scroll-yearlyDropdown{
+    height: 120px;
+    overflow: scroll;
 }
 /* ------------End  Insight section Css----------------*/
 
@@ -4008,6 +4014,15 @@ table {
         cursor: pointer;
         font-family: 'GothamMedium';
     }
+@keyframes slideFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
 /* ------------End PROJECTS section Css----------------*/
 
 /* ------------Start FAQ section Css----------------*/
@@ -4387,6 +4402,9 @@ footer .copy-rights ul li a {
     height: 415px;
     overflow: scroll;
 }
+    .scrollPolicyShow .mb-4, .scrollPolicyShow-term .mb-4{
+        transition: opacity 0.3s ease;
+    }
 /* #privacy-policy-section {
     background-image: url(../images/new-images/bottom-CircularShape.png);
     background-repeat: no-repeat;

@@ -9,18 +9,19 @@ $('.circle').animate({
 var MonitoringStationInfo;
 var StationsObject = [];
 var stationsData = [];
-var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo;
+var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo; var selectedfeature
 var view;
 var featureLayer;
 require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
     "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/PictureMarkerSymbol",
     "esri/symbols/TextSymbol", "esri/widgets/Zoom", "esri/widgets/Fullscreen", "esri/widgets/BasemapToggle", "esri/widgets/Locate", "esri/widgets/Home",
     "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent", "esri/widgets/Popup", "esri/core/reactiveUtils", "esri/geometry/projection", "esri/geometry/SpatialReference",
-],
+    "esri/Basemap", "esri/layers/VectorTileLayer", "esri/layers/TileLayer", "esri/Map",],
 
     (esriConfig, ClassBreaksRenderer, esriLang, MapView, WebMap, query, MapImageLayer, Query,
         GraphicsLayer, Graphic, FeatureLayer, SimpleMarkerSymbol, PictureMarkerSymbol, TextSymbol,
-        Zoom, Fullscreen, BasemapToggle, Locate, Home, Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference
+        Zoom, Fullscreen, BasemapToggle, Locate, Home, Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference, Basemap,
+        VectorTileLayer, TileLayer, Map
     ) => {
         esriConfig.request.httpsDomains.push("enviroportal.ead.ae");
         esriConfig.portalUrl = portalUrl;
@@ -64,6 +65,44 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 }
             })
         });
+        const vtlLayer = new VectorTileLayer({
+            // URL to the vector tile service
+            url: "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer"
+        });
+        var worldImageryLayer = new TileLayer({
+            url: "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"
+        });
+        var toggleBaseMap;
+        const customBasemap = new Basemap({
+            baseLayers: [worldImageryLayer],
+
+            thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/10df2279f9684e4a9f6a7f08febac2a9/info/thumbnail/thumbnail1584118328864.jpeg"
+        });
+
+        const toggle = new BasemapToggle({
+            visibleElements: {
+                title: false
+            },
+            view: view,
+            nextBasemap: customBasemap
+        });
+
+        // Add widget to the top right corner of the view
+        view.ui.add(toggle, "bottom-right");
+
+
+        //Initiate the Basemap Toggle Widget
+        // toggleBaseMap = new BasemapToggle({
+        //     view: view,
+        //     nextBasemap: customBasemap
+        // });
+        // toggleBaseMap.watch('activeBasemap', function (basemap) {
+        //     console.log("current basemap title: ", basemap.title);
+        //     //if (basemap.title != "BaseMapEng_LightGray_WM") {
+        //     //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
+        //     //}
+        // });
+        // view.ui.add(toggleBaseMap, "bottom-left");
         /*view.watch("extent", function(newValue) {
            if (!uaeExtent.contains(newValue)) {
            view.goTo({
@@ -77,6 +116,8 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
            });
        }
    });*/
+
+
         projection.load().then(function () {
             var uaeExtent3857 = projection.project(uaeExtent, new SpatialReference({ wkid: 3857 }));
             view.watch("extent", function (newValue) {
@@ -247,20 +288,20 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 // top: 184,
                 // right: 40
                 // } // Change to the desired position
-                // // });
-                var toggleBaseMap;
-                //Initiate the Basemap Toggle Widget
-                toggleBaseMap = new BasemapToggle({
-                    view: view,
-                    nextBasemap: "satellite"
-                });
-                toggleBaseMap.watch('activeBasemap', function (basemap) {
-                    console.log("current basemap title: ", basemap.title);
-                    //if (basemap.title != "BaseMapEng_LightGray_WM") {
-                    //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
-                    //}
-                });
-                view.ui.add(toggleBaseMap, "bottom-left");
+                // // // });
+                // var toggleBaseMap;
+                // //Initiate the Basemap Toggle Widget
+                // toggleBaseMap = new BasemapToggle({
+                //     view: view,
+                //     nextBasemap: "satellite"
+                // });
+                // toggleBaseMap.watch('activeBasemap', function (basemap) {
+                //     console.log("current basemap title: ", basemap.title);
+                //     //if (basemap.title != "BaseMapEng_LightGray_WM") {
+                //     //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
+                //     //}
+                // });
+                // view.ui.add(toggleBaseMap, "bottom-left");
 
                 // var dropdownMenu = document.getElementById('stationsDropdown');
                 var dropdownMap = document.getElementById('stationsDropdownMap');
@@ -312,12 +353,8 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 layer.visible = false;
             }
         });
-
-
-
-
         $("#mapLocation").click(function (event) {
-           // console.log(longitude);
+            // console.log(longitude);
 
             // Use the obtained coordinates to move the map view
             view.goTo({
@@ -329,13 +366,100 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
         // end changes
 
         $("#stationsDropdownMap").click(function (event) {
-            
+
             if (!event.target.id.includes('Search')) {
-                updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());             
+                updateSelectedCity1($(event.target).attr("data-key"), $(event.target).text());
                 currentStationDetails = stationsWithLocations.find(x => x.stationName == $(event.target).text())
+                var esriquery = FeatureCollectionlyr.createQuery()
+                esriquery.where = "1=1";
+                esriquery.returnGeometry = true;
+                esriquery.outFields = ["*"];
+                FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {
+                    console.log(selectedfeature)
+                    var classBreakInfos = [
+                        {
+                            minValue: 1,
+                            maxValue: 50,
+                            symbol: Indexunder50,
+                            label: "< 50"
+                        }, {
+                            minValue: 51,
+                            maxValue: 100,
+                            symbol: Index51_100,
+                            label: "51 - 100"
+                        }, {
+                            minValue: 101,
+                            maxValue: 150,
+                            symbol: Index101_150,
+                            label: "101 - 150"
+                        }, {
+                            minValue: 151,
+                            maxValue: 200,
+                            symbol: Index151_200,
+                            label: "151 - 200"
+                        }, {
+                            minValue: 201,
+                            maxValue: 300,
+                            symbol: Index201_300,
+                            label: "201 - 300"
+                        }, {
+                            minValue: 301,
+                            maxValue: 500,
+                            symbol: Index301_500,
+                            label: ">300"
+                        }
+                    ]
+                    for (let index = 0; index < results.features.length; index++) {
+                        if ($(event.target).text() == results.features[index].attributes['Name']) {
+                            for (let i = 0; i < classBreakInfos.length; i++) {
+                                if (parseInt(results.features[index].attributes['AQI']) > classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
+                                    var selectedsymbol = classBreakInfos[i].symbol
+                                    selectedsymbol.outline.color = 'white'
+                                    selectedsymbol.outline.width = 2
+                                    const points = {
+                                        type: "point",  // autocasts as new Point()
+                                        longitude: results.features[index].geometry.longitude,
+                                        latitude: results.features[index].geometry.latitude
+                                    };
+                                    const newgraphic = new Graphic({
+                                        geometry: points,
+                                        symbol: selectedsymbol
+                                    });
+                                    const textSymbol = {
+                                        type: "text",  // autocasts as new TextSymbol()
+                                        color: "white",
+                                        haloColor: "black",
+                                        haloSize: "1px",
+                                        text: results.features[index].attributes['Name'],
+                                        xoffset: 3,
+                                        yoffset: 3,
+                                        font: {  // autocasts as new Font()
+                                            size: 9,
+                                            family: "Orbitron",
+                                            weight: "bold"
+                                        }
+                                    };
+                                    const point = {
+                                        type: "point",  // autocasts as new Point()
+                                        longitude: results.features[index].geometry.longitude,
+                                        latitude: results.features[index].geometry.latitude
+                                    };
+                                    const pointGraphic = new Graphic({
+                                        geometry: point,
+                                        symbol: textSymbol
+                                    });
+
+                                    view.graphics.add(newgraphic)
+                                    view.graphics.add(pointGraphic);
+                                }
+                            }
+                        }
+
+                    }
+                })
                 loadStationData();
             }
-        });  
+        });
 
         function updateSelectedCity1(cityKey, Value) {
             ZoomToLocation(Value);
@@ -638,10 +762,6 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 StationsObject[count].ImageUrl = attachmentUrl;
             });
         }
-
-
-
-
         function SelectedStation(response) {
             // debugger;
             //alert(response);
@@ -650,11 +770,13 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                 for (var j = 0; j < res.length; j++) {
                     if (res[j].layer.title == "Air Quality Index") {
                         var attrInfo = response.results[0].graphic.attributes;
+                        selectedfeature = response.results[0];
                         for (var i = 0; i < StationsObject.length; i++) {
                             if (StationsObject[i].attributes.Name == attrInfo.Name) {
                                 SelectedstationInfo = StationsObject[i];
-                                
+                                view.graphics.removeAll()
                                 currentStationDetails = stationsWithLocations.find(x => x.stationId == SelectedstationInfo.KeyName)
+
                                 loadStationData();
                                 break
                             }
@@ -664,7 +786,93 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     }
 
                 }
+                var esriquery = FeatureCollectionlyr.createQuery()
+                esriquery.where = "1=1";
+                esriquery.returnGeometry = true;
+                esriquery.outFields = ["*"];
+                FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {
+                    console.log(selectedfeature)
+                    var classBreakInfos = [
+                        {
+                            minValue: 1,
+                            maxValue: 50,
+                            symbol: Indexunder50,
+                            label: "< 50"
+                        }, {
+                            minValue: 51,
+                            maxValue: 100,
+                            symbol: Index51_100,
+                            label: "51 - 100"
+                        }, {
+                            minValue: 101,
+                            maxValue: 150,
+                            symbol: Index101_150,
+                            label: "101 - 150"
+                        }, {
+                            minValue: 151,
+                            maxValue: 200,
+                            symbol: Index151_200,
+                            label: "151 - 200"
+                        }, {
+                            minValue: 201,
+                            maxValue: 300,
+                            symbol: Index201_300,
+                            label: "201 - 300"
+                        }, {
+                            minValue: 301,
+                            maxValue: 500,
+                            symbol: Index301_500,
+                            label: ">300"
+                        }
+                    ]
+                    for (let index = 0; index < results.features.length; index++) {
+                        if (selectedfeature.graphic.attributes['Name'] == results.features[index].attributes['Name']) {
+                            for (let i = 0; i < classBreakInfos.length; i++) {
+                                if (parseInt(results.features[index].attributes['AQI']) > classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
+                                    var selectedsymbol = classBreakInfos[i].symbol
+                                    selectedsymbol.outline.color = 'white'
+                                    selectedsymbol.outline.width = 2
+                                    const points = {
+                                        type: "point",  // autocasts as new Point()
+                                        longitude: results.features[index].geometry.longitude,
+                                        latitude: results.features[index].geometry.latitude
+                                    };
+                                    const newgraphic = new Graphic({
+                                        geometry: points,
+                                        symbol: selectedsymbol
+                                    });
+                                    const textSymbol = {
+                                        type: "text",  // autocasts as new TextSymbol()
+                                        color: "white",
+                                        haloColor: "black",
+                                        haloSize: "1px",
+                                        text: results.features[index].attributes['Name'],
+                                        xoffset: 3,
+                                        yoffset: 3,
+                                        font: {  // autocasts as new Font()
+                                            size: 9,
+                                            family: "Orbitron",
+                                            weight: "bold"
+                                        }
+                                    };
+                                    const point = {
+                                        type: "point",  // autocasts as new Point()
+                                        longitude: results.features[index].geometry.longitude,
+                                        latitude: results.features[index].geometry.latitude
+                                    };
+                                    const pointGraphic = new Graphic({
+                                        geometry: point,
+                                        symbol: textSymbol
+                                    });
 
+                                    view.graphics.add(newgraphic)
+                                    view.graphics.add(pointGraphic);
+                                }
+                            }
+                        }
+
+                    }
+                })
 
                 //PreparePollutantData(SelectedstationInfo);
             }

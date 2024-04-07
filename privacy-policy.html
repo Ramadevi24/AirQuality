@@ -129,13 +129,16 @@
             <div></div>
           </div>
         </div>
+        <!-- start 05-April-24 -->
         <div class="mobile-menu" id="mobile-overlay">
-          <a href="index-new.html#slide0" class="mobair-quality active">Our Air Quality</a>
-          <a href="index-new.html#slide2">Insight</a>
-          <a href="index-new.html#slide3">Projects</a>
-          <a href="index-new.html#slide4">Faq</a>
-          <a href="index-new.html#slide5">Contact US</a>
+            <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
+            <a href="index-new.html#demo" class="mobair-quality">Our Air Quality</a>
+            <a href="index-new.html#section2">Insight</a>
+            <a href="index-new.html#section3">Projects</a>
+            <a href="index-new.html#section4">Faq</a>
+            <a href="index-new.html#section5">Contact US</a>
         </div>
+         <!-- End 05-April-24 -->
         <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 pagination web-menu" id="menu">
             <li class="nav-item" data-menuanchor="slide0">
@@ -207,7 +210,7 @@
                 <p class="contact-content pt-1 w-100">
                     This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you use our services. We are committed to safeguarding your privacy and ensuring the security of your personal data.              
                 </p>
-                <div class="scrollPolicyShow">
+                <div class="scrollPolicyShow" onscroll="adjustOpacity()">
                   <div class="mb-4">
                     <h6 class=""> 1. Information We Collect </h6>
                     <p class="contact-content">
@@ -311,20 +314,22 @@
                         <div class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                             <div class="d-inline-block text-sm-start">
                                 <h6 class=""><a href="index-new.html#slide2">Insights</a></h6>
-                                <ul class="links">
+                                <!-- start 04-April-24 -->
+                                <ul class="links footer_link">
                                     <li>
-                                        <a href="index-new.html#slide2">Health Recommendation</a>
+                                        <a href="#slide2">Health Recommendation</a>
                                     </li>
                                     <li class="">
-                                        <a href="index-new.html#slide2">AQI and Pollutant Trends</a>
+                                        <a href="#slide2/1">AQI and Pollutant Trends</a>
                                     </li>
                                     <li class="">
-                                        <a href="index-new.html#slide2">Our Air Analytics</a>
+                                        <a href="#slide2/3">Our Air Analytics</a>
                                     </li>
                                     <li class="">
-                                        <a href="index-new.html#slide2">Station AQI and Pollutants Trends</a>
+                                        <a href="#slide2/2">Station AQI and Pollutants Trends</a>
                                     </li>
                                 </ul>
+                                <!-- End 04-April-24 -->
                             </div>
                         </div>
                         <!-- This will show only in small devices only -->
@@ -689,6 +694,45 @@ function loadExternalScript() {
 </script>
 <!--  03-April-24 Search Functinality by Sachin End -->
 
+<!-- start 04-April-24 Script -->
+<script>
+    function adjustOpacity() {
+   var scrollContainer = document.querySelector('.scrollPolicyShow');
+   var scrollPosition = scrollContainer.scrollTop;
+   var range = 70;
+   var maxOpacity = 1;
+   var minOpacity = 0.3;
+   var rangeTop = scrollPosition;
+   var rangeBottom = scrollPosition + range;
+   var contentSections = scrollContainer.querySelectorAll('.mb-4');
+   contentSections.forEach(function(section) {
+     var sectionTop = section.offsetTop - scrollContainer.offsetTop;
+     var sectionBottom = sectionTop + section.clientHeight;
+     if (sectionTop < rangeBottom && sectionBottom > rangeTop) {
+       var distanceFromRange = Math.min(Math.abs(sectionTop - rangeTop), Math.abs(sectionBottom - rangeBottom));
+       var opacity = 1 - distanceFromRange / range;
+       opacity = Math.max(minOpacity, Math.min(maxOpacity, opacity));
+       section.style.opacity = opacity;
+     } else {
+       section.style.opacity = 1;
+     }
+   });
+ }
+     </script>
+<!-- end 04-April-24 Script -->
 
+ <!-- start 04-April-2024 script -->
+ <script>
+    const baseURL ='https://aqitest.ead.ae/index-new.html' //http://adairqualityapi.ead.ae
+    // const mainUrl = window.location.href.split('#')[0];
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll('.footer_link a');
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            link.setAttribute('href', baseURL + href);
+        });
+    });
+</script>
+<!-- start 04-April-2024 script -->
 </body>
 </html>

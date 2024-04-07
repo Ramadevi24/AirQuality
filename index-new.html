@@ -47,6 +47,7 @@
                     </div>
                 </div>
                 <div class="mobile-menu" id="mobile-overlay">
+                    <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
                     <a href="#demo" class="mobair-quality active">Our Air Quality</a>
                     <a href="#section2">Insight</a>
                     <a href="#section3">Projects</a>
@@ -471,7 +472,7 @@
                                             <div class="col-xl-5 d-flex  flex-column  justify-content-between">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25">aIR quality Safety level</h2>
-                                                    <p class="refresh-hide1 mb-0">Last refreshed: 1:00 PM (UTC +4)</p>
+                                                    <p class="refresh-hide1 mb-0 airpb-0">Last refreshed: 1:00 PM (UTC +4)</p>
                                                 </div>
                                                 <div class="main-box pd-main-box">
                                                     <div class="index-content d-flex tab-padding-50">
@@ -551,7 +552,7 @@
                                                  id="footerhealth">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25"> HEALTH RECOMMENDATIONS </h2>
-                                                    <p class="refresh-hide1 mb-0">Last refreshed: 1:00 PM (UTC +4)</p>
+                                                    <p class="refresh-hide1 mb-0 airpb-0">Last refreshed: 1:00 PM (UTC +4)</p>
                                                 </div>
                                                 <div class="slide-content main-box  position-relative health-recommand-tab">
                                                     <p class="paratab">
@@ -716,7 +717,7 @@
                                     </div>
                                 </div>
                                 <div class="slide">
-                                    <div class="container">
+                                    <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
                                             <div class="col-lg-12 d-flex flex-column  justify-content-between"
                                                  id="footer-trends">
@@ -795,7 +796,7 @@
                                                                         <div class="pollutants-legend-heading">
                                                                             <div class="pollutants-legend-series">
                                                                                 <span class="pollutants-legend-marker good-span"></span>
-                                                                                <span class="pollutants-legend-text">Good1</span>
+                                                                                <span class="pollutants-legend-text">Good</span>
                                                                             </div>
                                                                             <div class="pollutants-legend-series">
                                                                                 <span class="pollutants-legend-marker moderate-span"></span>
@@ -1493,7 +1494,7 @@
                                         <div class="col-lg-12 d-flex flex-column  justify-content-between"
                                              id="footerStation-trends">
                                             <div>
-                                                <div class="container">
+                                                <div class="container pad_r tab-pd-0">
                                                     <div id="aiq_line">
                                                         <div class="quality-index-wrapper-h2 sm-screen-mtb">
                                                             <h2 class="index-mb-0 tab-top-pd40 mb-0">
@@ -1578,7 +1579,7 @@
                                                                             </li>
                                                                         </div>
                                                                         <!-- ////modify///// -->
-                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters d-none d-sm-none d-md-block">
+                                                                        <div class="row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="tabscreen-3-mt btn-group btn-group-filter me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top pollutant-hour-top"
                                                                                         type="button"
@@ -1587,7 +1588,7 @@
                                                                                         id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
-                                                                                <div class="date-box calen-box-hide">
+                                                                                <div class="date-box calen-box-hide lineChartmt-0">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text" id="datepicker" class="datepicker" autocomplete="off" placeholder="Custom">
@@ -1765,12 +1766,12 @@
                                     </div>
                                 </div>
                                 <div class="slide exceeded-box">
-                                    <div class="container">
+                                    <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap radar_section">
                                             <div class="col-xl-5 d-flex flex-column justify-content-between">
                                                 <div class="quality-index-wrapper-h2">
                                                     <!-- <h3>Station: Khalifa City</h3> -->
-                                                    <h2 class="mb-0 exceed-height tab-top-pd40">
+                                                    <h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">
                                                         number of hours <br>
                                                         exceedance per year
                                                     </h2>
@@ -1817,7 +1818,7 @@
                                             <div class="col-xl-7 d-flex flex-column justify-content-between"
                                                  id="footerradar-analytic">
                                                 <div class="quality-index-wrapper-h2">
-                                                    <h2 class="mb-0 exceed-height">our air analytics</h2>
+                                                    <h2 class="mb-0 exceed-height tabexceed-pb0">our air analytics</h2>
                                                 </div>
                                                 <div class="main-box">
                                                     <div class="head d-flex justify-content-end align-items-center">
@@ -1828,7 +1829,7 @@
                                                                     aria-haspopup="true" aria-expanded="false"
                                                                     id="selectedyear">
                                                             </button>
-                                                            <ul class="dropdown-menu dropdown-change dropdown-menu-end"
+                                                            <ul class="dropdown-menu dropdown-change dropdown-menu-end scroll-yearlyDropdown"
                                                                 aria-labelledby="selectedyear" id="yearDropDown">
                                                             </ul>
                                                         </div>
@@ -2415,18 +2416,18 @@
                                     <div class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                                         <div class="d-inline-block text-sm-start">
                                             <h6 class=""><a href="#slide2">Insights</a></h6>
-                                            <ul class="links">
+                                            <ul class="links footer_link">
                                                 <li>
                                                     <a href="#slide2">Health Recommendation</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#slide2">AQI and Pollutant Trends</a>
+                                                    <a href="#slide2/1">AQI and Pollutant Trends</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#slide2">Our Air Analytics</a>
+                                                    <a href="#slide2/3">Our Air Analytics</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#slide2">Station AQI and Pollutants Trends</a>
+                                                    <a href="#slide2/2">Station AQI and Pollutants Trends</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2663,8 +2664,8 @@
         });
 
         function initializeFullPage() {
-            var slideIndexS = 0,
-                sliding = false;
+            var sliding = false;
+            var slideIndexS = localStorage.getItem('slideIndexS') || 0;
             var myFullpage = new fullpage('#fullpagediv', {
                 anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
                 sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
@@ -2673,19 +2674,21 @@
                 menu: '#menu',
                 //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
                 scrollBar: true,
-                normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .sidebar-dataScroll',
+                normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .scroll-yearlyDropdown, .sidebar-dataScroll',
                 onLeave: function (origin, destination, direction) {
                     console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
                     if (origin.index === 2 && !sliding) {
                         if (direction === 'down' && slideIndexS < 3) {
-                            slideIndexS++
+                            slideIndexS++;
                             myFullpage.moveSlideRight();
                             return false;
                         } else if (direction === 'up' && slideIndexS > 0) {
-                            slideIndexS--
+                            slideIndexS--;
                             myFullpage.moveSlideLeft();
                             return false;
                         }
+                    } else if (sliding) {
+                        sliding = false; // For menu header sliding issue
                     } else if (sliding) {
                         return false;
                     }
@@ -2702,6 +2705,33 @@
                         $('.fp-next').removeClass('disabled');
                     }
                 }
+            });
+            if (slideIndexS == 0) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled');
+            } else if (slideIndexS == 2) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled');
+            } else {
+                $('.fp-prev').removeClass('disabled');
+                $('.fp-next').removeClass('disabled');
+            }
+            if (window.location.href.indexOf('#slide2/3') > -2) {
+                window.location.hash = 'slide2';
+            }
+            // For menu header sliding issue
+            $('#menu a').on('click', function () {
+                sliding = true;
+                setTimeout(function () {
+                    sliding = false;
+                }, 2000);
+            });
+            myFullpage.setAutoScrolling(true);
+            myFullpage.setAllowScrolling(true, 'up, down');
+
+            myFullpage.on('slideLeave', function (section, origin, destination, direction) {
+                slideIndexS = destination.index;
+                localStorage.setItem('slideIndexS', slideIndexS);
             });
         }
 
@@ -2923,6 +2953,70 @@
                 }
             }
         });
+
+    </script>
+    <!-- start 04-April-2024 script -->
+    <script>
+        // const baseURL = 'https://aqitest.ead.ae/index-new.html' //http://adairqualityapi.ead.ae
+        // const mainUrl = window.location.href.split('#')[0];
+        const baseURL = window.location.href.split('#')[0];
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll('.footer_link a');
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', baseURL + href);
+            });
+        });
+    </script>
+    <!-- start 04-April-2024 script -->
+
+    <script>
+        // 05-April-24 For Project Animation Script -------------------
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.id === 'section3') {
+                    // Load your script here
+                    loadScript();
+                    // Stop observing once loaded
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+        function loadScript() {
+            let images = document.querySelectorAll('[id^="image_"]');
+            images.forEach(function(image, index) {
+                // Add the animation class to start the animation
+                image.classList.add('animate-from-bottom');
+
+                // Calculate animation duration based on index
+                let animationDuration = calculateAnimationDuration(index);
+
+                // Bind id dynamically to animate-from-bottom class
+                let animateClass = '.animate-from-bottom#' + image.id;
+
+                // Add animation class with dynamically bound id
+                document.querySelector(animateClass).style.animation = 'slideFromBottom ' + animationDuration + 's ease-out'; // Adjust animation speed as needed
+            });
+        }
+        function calculateAnimationDuration(index) {
+
+            const animationDurations = [
+                0.8, 1.0, 1.3, 1.6, 2.0  // Add more durations as needed
+            ];
+            let durationIndex = index % animationDurations.length;
+            return animationDurations[durationIndex];
+        }
+
+        // Create an intersection observer instance
+        if (!observer) {
+            // Create an intersection observer instance
+            var observer = new IntersectionObserver(handleIntersection, {
+                threshold: 0.5 // Adjust threshold as needed
+            });
+        }
+
+        // Observe #section3
+        observer.observe(document.querySelector('#section3'));                
 
     </script>
 

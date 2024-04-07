@@ -1011,13 +1011,7 @@ $(document).ready(function () {
 // Project Section modal End--------------
 
 // Insight Section Script by Sachin---------
-function toggleDiv(tabId, pollutant) {
-    showHideToggleDiv(tabId, pollutant);
-    activePollutant = pollutant;
-    bindStationDataToBarChart($("#barChartFilter").text());
-}
-
-function showHideToggleDiv(tabId, pollutant){
+function toggleDiv(tabId, pollutant) {  
     if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
         document.getElementById('myTabs').classList.add('upperTop');
     } else {
@@ -1028,6 +1022,8 @@ function showHideToggleDiv(tabId, pollutant){
         div.style.display = 'none';
     });
     document.getElementById(tabId).style.display = 'block';
+    activePollutant = pollutant;
+    bindStationDataToBarChart($("#barChartFilter").text());
 }
 
 // // Map Search icon script Start--------------   
@@ -3466,7 +3462,9 @@ $.each(imageData, function (index, item) {
         var content = $('<div>').addClass('col-md-3');
         var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
         var imageDiv = $('<div>');
-        var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl);
+        var imageId = 'image_' + ((index * minPerSlide) + i);
+        // var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl);
+        var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl).attr('id', imageId); // Add ID to image       
         var projectContent = $('<div>').addClass('project-slide-content').text(imageData[(index + i) % imageData.length].content);
         var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[(index + i) % imageData.length].description);
 
@@ -3628,28 +3626,39 @@ $('#myForm').submit(function (e) {
 $('#inputField').on('input', function () {
     var name = $(this).val();
     var nameRegex = /^[a-zA-Z\s]*$/;
+    var spaceCount = (name.match(/\s/g) || []).length;
     if (!nameRegex.test(name)) {
         $('#nameError').text('Please enter a valid name (only letters and spaces)');
+    } else if (spaceCount > 4) {
+        $('#nameError').text('Please enter a maximum of three spaces.');
     } else {
         $('#nameError').text('');
     }
 });
 
+$('#inputField').on('keypress', function (e) {
+    var name = $(this).val();
+    var spaceCount = (name.match(/\s/g) || []).length;
+    if (spaceCount >= 4 && e.keyCode === 32) {
+        e.preventDefault();
+    }
+});
 $('#emailField').on('input', function () {
     var email = $(this).val();
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         $('#emailError').text('Please enter a valid email address');
+    } else if (/^[^a-zA-Z0-9]/.test(email) || /([^a-zA-Z0-9])\1/.test(email)) {
+        $('#emailError').text('Email cannot start with a special character or contain consecutive special characters');
     } else {
         $('#emailError').text('');
     }
 });
-
 $('#phoneField').on('input', function () {
     var phone = $(this).val();
     // Remove any non-digit characters from the phone number
     var cleanedPhone = phone.replace(/\D/g, '');
-    var phoneRegex = /^\+?\d{0,3}\d{10}$/;
+    var phoneRegex = /^(?!.*(?:0{10}|1{10}|2{10}|3{10}|4{10}|5{10}|6{10}|7{10}|8{10}|9{10}))[0-9]{10}$/;
     var undesiredFormatRegex = /^1234567890$/;
     if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
         $('#phoneError').text('Please enter a valid 10-digit phone number');
