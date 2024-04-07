@@ -3259,6 +3259,9 @@ color: var(--green);
 .insight #ADstationAqiBarGraph {
     margin-bottom: 15px;
 }
+.insight #ADstationPm10BarGraph, .insight #ADstationSo2BarGraph, .insight #ADstationCoBarGraph, .insight #ADstationO3BarGraph, .insight #ADstationNo2BarGraph {
+    margin-bottom: 15px;
+}
 
 /* ------07-March-24 */
 .insight #showButton {
@@ -3671,7 +3674,28 @@ table {
     height: 330px;
     margin-bottom: 40px;
 }
+.canvas-graphs-bar-main {
+    display: flex;
+    width: 100%;
+}
 
+.canvas-graphs-barchart {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    margin-left: -3px;
+}
+
+.canvas-graphs-barchart1 {
+    width: 40px;
+    height: 290px;
+}
+
+.canvas-graphs-Innerdiv {
+    width: calc(300% - 40px);
+    height: inherit;
+    overflow-y: hidden;
+}
 .canvas-graphs-heightline{
     height: 300px;
     margin-bottom: 20px;

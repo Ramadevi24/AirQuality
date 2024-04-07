@@ -2724,7 +2724,9 @@ function bindStationDataToBarChart(filter) {
     var categoriesData = [];
     var backgroundColors = [];
     var pollutantBarChartId;
+    var pollutantBarChartId1;
     var barChartDataSet = [];
+    var boxid,boxid1,boxid2;
     switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
@@ -2784,6 +2786,10 @@ function bindStationDataToBarChart(filter) {
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationPm10BarGraph";
+            pollutantBarChartId1 = "ADstationPm10BarGraph1";
+            boxid = "pm10Barchart1";
+            boxid1 = "pm10Barchart";
+            boxid2 = "pm10Barchartinner";
             break;
         case pollutantAbbrevations.SO2:
             switch (filter) {
@@ -2868,6 +2874,10 @@ function bindStationDataToBarChart(filter) {
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationSo2BarGraph";
+            pollutantBarChartId1 = "ADstationSo2BarGraph1";
+            boxid = "so2Barchart1";
+            boxid1 = "so2Barchart";
+            boxid2 = "so2Barchartinner";
             break;
         case pollutantAbbrevations.CO:
             switch (filter) {
@@ -2926,6 +2936,10 @@ function bindStationDataToBarChart(filter) {
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationCoBarGraph";
+            pollutantBarChartId1 = "ADstationCoBarGraph1";
+            boxid = "coBarchart1";
+            boxid1 = "coBarchart";
+            boxid2 = "coBarchartinner";
             break;
         case pollutantAbbrevations.O3:
             switch (filter) {
@@ -2983,6 +2997,10 @@ function bindStationDataToBarChart(filter) {
                 data: barChartData,
             });
             pollutantBarChartId = "ADstationO3BarGraph";
+            pollutantBarChartId1 = "ADstationO3BarGraph1";
+            boxid = "o3Barchart1";
+            boxid1 = "o3Barchart";
+            boxid2 = "o3Barchartinner";
             break;
         case pollutantAbbrevations.NO2:
             switch (filter) {
@@ -3054,6 +3072,10 @@ function bindStationDataToBarChart(filter) {
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationNo2BarGraph";
+            pollutantBarChartId1 = "ADstationNo2BarGraph1";
+            boxid = "no2Barchart1";
+            boxid1 = "no2Barchart";
+            boxid2 = "no2Barchartinner";
             break;
         default:
             switch (filter) {
@@ -3100,18 +3122,37 @@ function bindStationDataToBarChart(filter) {
                 borderRadius: 3
             }];
             pollutantBarChartId = "ADstationAqiBarGraph";
+            pollutantBarChartId1 = "ADstationAqiBarGraph1"
+            boxid = "AqiBarchart1";
+            boxid1 = "AqiBarchart";
+            boxid2 = "AqiBarchartinner";
             break;
     }
     var chartStatus = Chart.getChart(pollutantBarChartId); // <canvas> id
+    var chartStatus1 = Chart.getChart(pollutantBarChartId1);	
     if (chartStatus != undefined) {
         chartStatus.destroy();
+    } if (chartStatus1 != undefined) {
+        chartStatus1.destroy();
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
+    var barChart1 = document.getElementById(pollutantBarChartId1).getContext('2d');
+    /* const box = document.querySelector('.canvas-graphs-barchart1');
+    const box1 = document.querySelector('.canvas-graphs-barchart');
+    const box3 = document.querySelector('.canvas-graphs-Innerdiv'); */
 
-
+    const box = document.getElementById(boxid);
+    const box1 = document.getElementById(boxid1);
+    const box3 = document.getElementById(boxid2);
     // Getting min and max dates from the dataset
+    // Define the media query string
+    var mediaQuery = "(min-width: 768px) and (max-width: 1199px)";
+    // Test the media query
+    var mql = window.matchMedia(mediaQuery);
 
-
+    var mediaQuery1 = "(min-width: 320px) and (max-width: 767px)";
+    // Test the media query
+    var mql1 = window.matchMedia(mediaQuery1);
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -3120,7 +3161,16 @@ function bindStationDataToBarChart(filter) {
         const minDateString = minDate.toISOString().split('T')[0];
         const maxDateString = maxDate.toISOString().split('T')[0];
 
-
+        box.style.height = "290px";
+        box3.style.width = "300%";
+        if (mql.matches) {
+            box.style.height = "300px";
+            box1.style.marginLeft = "-7px";
+        }
+        if (mql1.matches) {
+            box.style.height = "275px";
+            box1.style.marginLeft = "-10px";
+        }
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -3129,7 +3179,7 @@ function bindStationDataToBarChart(filter) {
                 //datasets: barChartDataSet
                 datasets: barChartDataSet.map(dataset => ({
                     ...dataset,
-                    barThickness: 10,
+                   // barThickness: 10,
                     // offset: 5
                     
                 })),
@@ -3225,15 +3275,87 @@ function bindStationDataToBarChart(filter) {
 
                         min: minDateString,
                         max: maxDateString
+                   },
+                    y: {
+                        //  beginAtZero: true,
+                        display: false,
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            display: false,
+                        },
+                        gridLines: {
+                            drawBorder: false,
+                        },
+                        // stacked: true
+                    }
+                },
+            },
+
+            animations: {
+                tension: {
+                    duration: 2000,
+                    easing: 'easeInCubic'
+                }
+            }
+
+        });
+
+        var constructBarChart1 = new Chart(barChart1, {
+            type: 'bar',
+            data: {
+                labels: iso8601Dates,
+                fill: false,
+                //datasets: barChartDataSet
+                datasets: barChartDataSet.map(dataset => ({
+                    ...dataset,
+                    // barThickness: 10,
+                    //barWidth:20,
+                    //barPercentage: 0.5,
+                    //offset: 5
+
+                })),
+
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 40,
+                        bottom: 25
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            display: false
+                        },
+                        // stacked: true,            
+
                     },
                     y: {
                         grid: {
                             display: false,   
                         },
+                        afterFit: (ctx) => {
+                            //console.log(ctx);
+                            ctx.width = 40;
+                        },
                         stacked: true
                         //beginAtZero: true
                     },
                 },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
             },
 
             animations: {
@@ -3246,6 +3368,29 @@ function bindStationDataToBarChart(filter) {
         });
     }
     else {
+        if (filter !== 'Daily') {
+            box.style.height = "315px";
+            box3.style.width = "100%";
+        } else {
+            box.style.height = "300px";
+            box3.style.width = "150%";
+        }
+        if (mql.matches) {
+            if (filter !== 'Daily') {
+                box.style.height = "325px";
+            } else {
+                box.style.height = "310px";
+            }
+        }
+        if (mql1.matches) {
+            if (filter !== 'Daily') {
+                box.style.height = "300px";
+                box1.style.marginLeft = "-10px";
+            } else {
+                box.style.height = "285px";
+                box1.style.marginLeft = "0px";
+            }
+        }
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -3309,12 +3454,19 @@ function bindStationDataToBarChart(filter) {
                         },
                         stacked: true,
                     },
-                    y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                        stacked: true,
+                    y: {
+                        //  beginAtZero: true,
+                        display: false,
+                        ticks: {
+                            display: false
+                        },
                         grid: {
-                            display: false, // This will remove the Y-axis grid lines
-                            drawBorder: false, // Optional: if you also want to remove the axis border
-                        },// Assuming you want the Y-axis stacked as well
+                            display: false,
+                        },
+                        gridLines: {
+                            drawBorder: false,
+                        },
+                        // stacked: true
                     },
 
                 },
@@ -3328,7 +3480,74 @@ function bindStationDataToBarChart(filter) {
             }
 
         });
+
+        var constructBarChart1 = new Chart(barChart1, {
+            type: 'bar',
+            data: {
+                labels: categoriesData,
+                fill: false,
+                datasets: barChartDataSet
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                toolbar: {
+                    show: false,
+                    tools: {
+                        download: false,
+                    }
+                },
+                layout: {
+                    padding: {
+                        top: 40,
+                        bottom: 20
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            display: false
+                        },
+                        stacked: true,
+
+                    },
+                    y: {
+                        stacked: true,
+                        grid: {
+                            display: false,
+                        },
+                        afterFit: (ctx) => {
+                            //console.log(ctx);
+                            ctx.width = 40;
+                        },
+                        // stacked: true
+                        //beginAtZero: true
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            },
+
+            animations: {
+                tension: {
+                    duration: 2000,
+                    easing: 'easeInCubic'
+                }
+            }
+
+        });
     }
+    constructBarChart1.update();
     constructBarChart.update();
 
 }
