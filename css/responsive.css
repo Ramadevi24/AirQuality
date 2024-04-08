@@ -76,7 +76,8 @@
         top: 20%;
     }
     .mapsearch-img{
-        height: 20px!important;
+        height: 20px !important;
+        width: 20px;
     }
     .search-btn1{
         height: 40px;
@@ -1395,7 +1396,7 @@
         height: 780px;
     }
     .canvas-graphs-height{
-        height: 590px;
+        height: 590px!important;
     }
     .equal-station-box-height{
         height: 800px;
@@ -1775,7 +1776,7 @@
         margin-bottom: 33px;
     }
     .canvas-pollutant-resHt{
-        height: 285px;
+        height: 310px;
     }
     .insight .graph-duration-filters .pollutant-hour-top {
         top: -10px !important;
