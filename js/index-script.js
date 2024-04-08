@@ -1011,7 +1011,7 @@ $(document).ready(function () {
 // Project Section modal End--------------
 
 // Insight Section Script by Sachin---------
-function toggleDiv(tabId, pollutant) {  
+function showHideToggleDiv(tabId, pollutant) {  
     if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
         document.getElementById('myTabs').classList.add('upperTop');
     } else {
@@ -3149,6 +3149,8 @@ function bindStationDataToBarChart(filter) {
     var mediaQuery = "(min-width: 768px) and (max-width: 1199px)";
     // Test the media query
     var mql = window.matchMedia(mediaQuery);
+    let minDate = new Date(); 
+    let maxDate = new Date();
 
     var mediaQuery1 = "(min-width: 320px) and (max-width: 767px)";
     // Test the media query
@@ -3156,10 +3158,15 @@ function bindStationDataToBarChart(filter) {
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
-        const minDate = new Date(Math.min(...dateTimes));
-        const maxDate = new Date(Math.max(...dateTimes));
-        const minDateString = minDate.toISOString().split('T')[0];
-        const maxDateString = maxDate.toISOString().split('T')[0];
+        if (dateTimes.length > 0) {
+            minDate = new Date(Math.min(...dateTimes));
+            maxDate = new Date(Math.max(...dateTimes));
+            
+        }
+        minDateString = minDate.toISOString().split('T')[0];
+        maxDateString = maxDate.toISOString().split('T')[0];
+       
+        
 
         box.style.height = "290px";
         box3.style.width = "300%";

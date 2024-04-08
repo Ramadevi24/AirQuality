@@ -108,7 +108,8 @@
                                 </form>
                                 <div class="search-result">
                                     <p class="opacity-1 ms-0">Search Results</p>
-                                    <ul id="searchResults" class="searchItem">
+                                    <!-- 08-April-24 class added searchHeaderScroll -->
+                                    <ul id="searchResults" class="searchItem searchHeaderScroll">
                                     </ul>
                                 </div>
                             </div>
@@ -1501,27 +1502,27 @@
                                                     <ul class="nav twobar-tabs" id="myTabs">
                                                         <li class="nav-item">
                                                             <a class="nav-link active" id="aqiTabToggle"
-                                                               onclick="toggleDiv('aqiTab', 'AQI')"
+                                                               onclick="showHideToggleDiv('aqiTab', 'AQI')"
                                                                style="cursor: pointer;">AQI</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-PM10">
-                                                            <a class="nav-link" onclick="toggleDiv('pm10Tab', 'PM10')"
+                                                            <a class="nav-link" onclick="showHideToggleDiv('pm10Tab', 'PM10')"
                                                                style="cursor: pointer;">PM10</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-SO2">
-                                                            <a class="nav-link" onclick="toggleDiv('so2Tab', 'SO2')"
+                                                            <a class="nav-link" onclick="showHideToggleDiv('so2Tab', 'SO2')"
                                                                style="cursor: pointer;">SO2</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-CO">
-                                                            <a class="nav-link" onclick="toggleDiv('coTab', 'CO')"
+                                                            <a class="nav-link" onclick="showHideToggleDiv('coTab', 'CO')"
                                                                style="cursor: pointer;">CO</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-O3">
-                                                            <a class="nav-link" onclick="toggleDiv('o3Tab', 'O3')"
+                                                            <a class="nav-link" onclick="showHideToggleDiv('o3Tab', 'O3')"
                                                                style="cursor: pointer;">O3</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-NO2">
-                                                            <a class="nav-link" onclick="toggleDiv('no2Tab', 'NO2')"
+                                                            <a class="nav-link" onclick="showHideToggleDiv('no2Tab', 'NO2')"
                                                                style="cursor: pointer;">NO2</a>
                                                         </li>
                                                     </ul>
@@ -2709,14 +2710,14 @@
             var sliding = false;
             var slideIndexS = localStorage.getItem('slideIndexS') || 0;
             var myFullpage = new fullpage('#fullpagediv', {
-                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5'],
-                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
+                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6'], //08-April-24
+                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'], //08-April-24
                 navigation: true,
                 navigationPosition: 'right',
                 menu: '#menu',
                 //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
                 scrollBar: true,
-                normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .scroll-yearlyDropdown, .sidebar-dataScroll',
+                normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .searchHeaderScroll, .scroll-yearlyDropdown, .sidebar-dataScroll', ////08-April-24
                 onLeave: function (origin, destination, direction) {
                     console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
                     if (origin.index === 2 && !sliding) {
@@ -2771,7 +2772,12 @@
             myFullpage.setAutoScrolling(true);
             myFullpage.setAllowScrolling(true, 'up, down');
 
-            myFullpage.on('slideLeave', function (section, origin, destination, direction) {
+            // myFullpage.on('slideLeave', function (section, origin, destination, direction) {
+            //     slideIndexS = destination.index;
+            //     localStorage.setItem('slideIndexS', slideIndexS);
+            // });
+            // //08-April-24 
+            document.addEventListener('slideLeave', function(section, origin, destination, direction) {
                 slideIndexS = destination.index;
                 localStorage.setItem('slideIndexS', slideIndexS);
             });
@@ -2828,6 +2834,7 @@
     <script>
         // start 30-March-24 modified this section ----------
         $(document).ready(function () {
+            
             $('#searchInput').on('keyup', function () {
                 var searchText = $(this).val().toLowerCase();
                 var $searchIcon = $('.p-input span img');
@@ -2858,6 +2865,7 @@
             });
             $('#headerSearchInput').on('keyup', function () {
                 var searchText = $(this).val().toLowerCase();
+                //$('.searchItem').toggleClass('searchHeaderScroll');
                 $('.search-result').each(function () {
                     var listItemText = $(this).find('.searchItem li').text().toLowerCase();
                     if (listItemText.indexOf(searchText) === -1) {
@@ -2870,6 +2878,8 @@
         });
         // end 30-March-24 modified this section ----------
     </script>
+
+    <!-- start 08-April-204 modified this script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const searchInput = document.getElementById('headerSearchInput');
@@ -2997,6 +3007,8 @@
         });
 
     </script>
+    <!--end 08-April-204 modified this script -->
+
     <!-- start 04-April-2024 script -->
     <script>
         // const baseURL = 'https://aqitest.ead.ae/index-new.html' //http://adairqualityapi.ead.ae
@@ -3061,6 +3073,24 @@
         observer.observe(document.querySelector('#section3'));                
 
     </script>
+
+    
+<!-- <script>
+    // Get the video element
+    var video = document.getElementById("myVideo");
+
+    // Attempt to play the video
+    var playPromise = video.play();
+
+    // Catch any errors
+    if (playPromise !== undefined) {
+        debugger;
+        playPromise.catch(function(error) {
+            // Suppress the error
+            console.error('Error suppressing: ', error);
+        });
+    }
+</script> -->
 
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>
