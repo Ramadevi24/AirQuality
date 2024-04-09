@@ -360,7 +360,7 @@ header .search-block .search-collapse .card-body .container-fluid {
 }
 header .search-block .search-collapse .card-body .container-fluid .close {
     position: absolute!important;
-    right: 12px;
+    right: 35px;
     bottom: 15px;
     outline: none;
 }
@@ -620,7 +620,7 @@ header .search-block .search-collapse .search-result ul li i:before {
 }
 
 .searchHeaderScroll{
-    max-height: 500px; /* Adjust the max-height as needed */
+    max-height: calc(100vh - 265px); /* Adjust the max-height as needed */
     overflow: scroll;
 }
         .search-block ul#searchResults li a[href="#null"] {
@@ -1009,7 +1009,7 @@ video {
     margin: 2px;
 }
 .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
-    height: 559px;
+    height: calc(100vh - 165px);
 } 
 .bg-opacity {
     background: rgb(0 0 0 / 12%) !important;
@@ -1279,7 +1279,7 @@ video {
 
 .insight-btn{
     border: 1px solid #fff;
-    color: var(--yellow);
+    color: var(--blue);
     padding: 3px 10px;
 }
 .insight-btn:hover{
@@ -1390,7 +1390,8 @@ video {
     line-height: 16px;
 }*/
 .mapsearch-img{
-    height: 16px!important;
+    height: 18px!important;
+    width: 18px;
 }
 .level-two em {
     left: 12px !important;
@@ -1827,6 +1828,12 @@ body.map-viwer-enabled{
     clear: both;
     background: #fff;
 }
+
+.insight .resolution-ht{
+    height: calc(100vh - 195px);
+}
+
+
 .insight .pd-main-box{
     padding: 25px 2rem;
 }
@@ -3733,6 +3740,7 @@ table {
     padding-right: 60px;
     position: absolute;
     top: 15%;
+    width: 100%;
     /* margin-top: 30%; */
 }
 .contact-section{
@@ -3900,7 +3908,7 @@ table {
 .modal-background img{
     width: 100%;
     height: 350px;
-   /* object-fit: cover;*/
+   object-fit: cover;
 }
 .p12{
     padding: 7px 22px 22px 22px;
@@ -4305,6 +4313,13 @@ table {
     width: 39%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.location-img-ht{
+    background-color: transparent!important;
+}
+.location-img-ht img{
+    width: 40px!important;
 }
 /* ------------End Contact us section Css----------------*/
 

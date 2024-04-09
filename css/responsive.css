@@ -76,8 +76,8 @@
         top: 20%;
     }
     .mapsearch-img{
-        height: 20px !important;
-        width: 20px;
+        height: 22px !important;
+        width: 22px;
     }
     .search-btn1{
         height: 40px;
@@ -689,8 +689,18 @@
     .tabexceed-pb0{
         padding-bottom: 27px!important;
     }
+    .mapsearch-img {
+        height: 19px !important;
+        width: 19px !important;
+    }
     .insight .airpb-0{
         padding-bottom: 0!important;
+    }
+    .tab-pd-left a{
+        padding-left: 2px!important;
+    }
+    .tab-opacity-pd{
+        margin-left: 25px;margin-right: 25px;
     }
     .equal-station-box-height {
         height: 555px;
@@ -861,7 +871,14 @@
     }
     .ead-monitoring-project{
         position: relative;
+        padding-left: 35px;
+        padding-right: 10px;
     }
+    .contact-section{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
     .ead-monitoring-project #recipeCarousel .carousel-item .col-md-3{
         width: 50%;
     }
@@ -882,8 +899,11 @@
         margin-bottom: 50px;
     }
     .footer-container{
-        padding-right: 40px;
-        padding-left: 40px;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    .footer-2-sec {
+        padding-left: 25px;
     }
     footer .brand-logo{
         max-width: 200px; margin-bottom: 20px; 
@@ -1476,9 +1496,9 @@
     .air-map-container .list-container{
         padding: 30px 0 0 0;
     }
-    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
+    /* .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
         height: 860px;
-    }
+    } */
     .wheather-widget .map-bg-opacity img {
         width: 230px;
         height: 230px !important;
@@ -1502,6 +1522,9 @@
     .insight .pollutant-toggleBar .iconimg{
         width: 27px;
         height: 27px;
+    }
+    .insight .resolution-ht {
+        height: calc(100vh - 170px);
     }
     .polly-linchart-height{
         height: 270px;

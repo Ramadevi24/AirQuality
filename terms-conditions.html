@@ -695,30 +695,31 @@
   
   </script>
   <!--  03-April-24 Search Functinality by Sachin End -->
-<!-- start 04-April-24 Script -->
+<!-- start 09-April-24 Script -->
 <script>
     function adjustOpacity() {
-   var scrollContainer = document.querySelector('.scrollPolicyShow-term');
-   var scrollPosition = scrollContainer.scrollTop;
-   var range = 70;
-   var maxOpacity = 1;
-   var minOpacity = 0.3;
-   var rangeTop = scrollPosition;
-   var rangeBottom = scrollPosition + range;
-   var contentSections = scrollContainer.querySelectorAll('.mb-4');
-   contentSections.forEach(function(section) {
-     var sectionTop = section.offsetTop - scrollContainer.offsetTop;
-     var sectionBottom = sectionTop + section.clientHeight;
-     if (sectionTop < rangeBottom && sectionBottom > rangeTop) {
-       var distanceFromRange = Math.min(Math.abs(sectionTop - rangeTop), Math.abs(sectionBottom - rangeBottom));
-       var opacity = 1 - distanceFromRange / range;
-       opacity = Math.max(minOpacity, Math.min(maxOpacity, opacity));
-       section.style.opacity = opacity;
-     } else {
-       section.style.opacity = 1;
-     }
-   });
- }
+  var scrollContainer = document.querySelector('.scrollPolicyShow-term');
+  var scrollPosition = scrollContainer.scrollTop;
+  var range = 10;
+  var maxOpacity = 1;
+  var minOpacity = 0.3;
+  var rangeTop = scrollPosition;
+  var rangeBottom = scrollPosition + range;
+  var contentSections = scrollContainer.querySelectorAll('.mb-4');
+  var sectionsToAdjust = [...contentSections].slice(0, -1);
+  sectionsToAdjust.forEach(function(section) {
+    var sectionTop = section.offsetTop - scrollContainer.offsetTop;
+    var sectionBottom = sectionTop + section.clientHeight;
+    if (sectionTop < rangeBottom && sectionBottom > rangeTop) {
+      var distanceFromRange = Math.min(Math.abs(sectionTop - rangeTop), Math.abs(sectionBottom - rangeBottom));
+      var opacity = 1 - distanceFromRange / range;
+      opacity = Math.max(minOpacity, Math.min(maxOpacity, opacity));
+      section.style.opacity = opacity;
+    } else {
+      section.style.opacity = 1;
+    }
+  });
+}
      </script>
 
 <script>
@@ -733,7 +734,7 @@
     });
 </script>
 
-<!-- end 04-April-24 Script -->
+<!-- end 09-April-24 Script -->
 
 </body>
 

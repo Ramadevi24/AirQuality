@@ -3857,32 +3857,41 @@ $('#myForm').submit(function (e) {
 // Add event listeners to input fields for real-time validation
 $('#inputField').on('input', function () {
     var name = $(this).val();
-    var nameRegex = /^[a-zA-Z\s]*$/;
-    var spaceCount = (name.match(/\s/g) || []).length;
-    if (!nameRegex.test(name)) {
-        $('#nameError').text('Please enter a valid name (only letters and spaces)');
-    } else if (spaceCount > 4) {
-        $('#nameError').text('Please enter a maximum of three spaces.');
+    var nameRegex = /^[a-zA-Z\s'-]+$/;
+    if (name.trim() !== name) {
+        $('#nameError').text('No leading or trailing spaces are allowed');
+    } else if (!nameRegex.test(name)) {
+        $('#nameError').text('Please enter a valid name (only letters, spaces, hyphens, and apostrophes)');
     } else {
         $('#nameError').text('');
     }
 });
 
-$('#inputField').on('keypress', function (e) {
-    var name = $(this).val();
-    var spaceCount = (name.match(/\s/g) || []).length;
-    if (spaceCount >= 4 && e.keyCode === 32) {
-        e.preventDefault();
-    }
-});
+// $('#inputField').on('keypress', function (e) {
+//     var name = $(this).val();
+//     var spaceCount = (name.match(/\s/g) || []).length;
+//     if (spaceCount >= 4 && e.keyCode === 32) {
+//         e.preventDefault();
+//     }
+// });
+
 $('#emailField').on('input', function () {
     var email = $(this).val();
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var specialCharRegex = /^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/;
+    var parts = email.split('@');
     if (!emailRegex.test(email)) {
         $('#emailError').text('Please enter a valid email address');
-    } else if (/^[^a-zA-Z0-9]/.test(email) || /([^a-zA-Z0-9])\1/.test(email)) {
-        $('#emailError').text('Email cannot start with a special character or contain consecutive special characters');
-    } else {
+    } else if (specialCharRegex.test(email)) {
+        $('#emailError').text('Email cannot start or end with a special character');
+    } else if (/([^a-zA-Z0-9])\1{1,}/.test(email)) {
+        $('#emailError').text('Email cannot contain consecutive repeating special characters');
+    } else if (email.indexOf('@gmail.com@gmail.com') !== -1) {
+        $('#emailError').text('Invalid email address');
+    }  else if (parts.length === 2 && parts[0] === parts[1]) {
+        $('#emailError').text('Please enter a valid email address');
+    }
+    else {
         $('#emailError').text('');
     }
 });
