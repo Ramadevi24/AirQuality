@@ -1815,6 +1815,11 @@ function getAirAnalytics(year) {
         method: 'GET',
         dataType: 'json',
         success: function (data) {
+            if (!data || data.length === 0) {                 
+                $('#radarChart').hide();                
+                return;
+            }
+            $('#radarChart').show();  
             labelsData = [];
             pollutantLevels = [];
             colorCodesForAirAnalytics = [];
@@ -2736,7 +2741,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Daily);
                             thresholdData.push(pollutantThresholdLimits.PM10Daily);
                         } else {
-                            barChartData.push(0);
+                            //barChartData.push(0);
                             thresholdData.push(item.pM10);
                         }
                         categoriesData.push(item.day.split(' '));
@@ -2799,7 +2804,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Daily);
                             thresholdData.push(pollutantThresholdLimits.SO2Daily);
                         } else {
-                            barChartData.push(0);
+                            //barChartData.push(0);
                             thresholdData.push(item.sO2);
                         }
                         categoriesData.push(item.day.split(' '));
@@ -2826,7 +2831,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Yearly);
                             thresholdData.push(pollutantThresholdLimits.SO2Yearly);
                         } else {
-                            barChartData.push(0);
+                            //barChartData.push(0);
                             thresholdData.push(item.sO2);
                         }
                         categoriesData.push(item.year);
@@ -2846,7 +2851,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Hourly);
                             thresholdData.push(pollutantThresholdLimits.SO2Hourly);
                         } else {
-                            barChartData.push(0);
+                           // barChartData.push();
                             thresholdData.push(item.sO2);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -2908,7 +2913,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.co - pollutantThresholdLimits.COHourly);
                             thresholdData.push(pollutantThresholdLimits.COHourly);
                         } else {
-                            barChartData.push(0);
+                            //barChartData.push(0);
                             thresholdData.push(item.co);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -2970,7 +2975,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.o3 - pollutantThresholdLimits.O3Hourly);
                             thresholdData.push(pollutantThresholdLimits.O3Hourly);
                         } else {
-                            barChartData.push(0);
+                           // barChartData.push(0);
                             thresholdData.push(item.o3);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -3010,7 +3015,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Daily);
                             thresholdData.push(pollutantThresholdLimits.NO2Daily);
                         } else {
-                            barChartData.push(0);
+                          //  barChartData.push(0);
                             thresholdData.push(item.nO2);
                         }
                         categoriesData.push(item.day.split(' '));
@@ -3044,7 +3049,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Hourly);
                             thresholdData.push(pollutantThresholdLimits.NO2Hourly);
                         } else {
-                            barChartData.push(0);
+                           // barChartData.push(0);
                             thresholdData.push(item.nO2);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -3441,7 +3446,8 @@ function bindStationDataToBarChart(filter) {
                             },
                             label: function (context) {
                                 // Return the value for the tooltip
-                                return context.parsed.y;
+                                let value = context.parsed.y;
+                                return value + ' ug/m3';
                             }
                         }
                     }
