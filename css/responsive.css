@@ -683,6 +683,9 @@
     body{
         font-size: 18px;
     }
+    .faqscrolling{
+        padding-right: 0;
+    }
     .linechart-height-res{
         height: 270px!important;
     }
@@ -1243,8 +1246,11 @@
 }
 
 @media (min-width: 799px) and (max-width: 900px){
-    .tab-pd-0{padding-left: 0; padding-right: 0;}
-    .insightStation h3{padding-left: 21px;}
+    .tab-pd-0{padding-left: 0; padding-right: 0; max-width: 755px;}
+    .insightStation h3{padding-left: 11px;}
+    .faq-section {
+        padding-left: 0; padding-right: 0; max-width: 91%;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1199px){
@@ -1713,7 +1719,7 @@
         margin: 0px;
     }
     .insight #radarChart {
-        width: 340px !important;
+        /* width: 340px !important; */
         height: 300px !important;
         margin-top: -30px;
     }

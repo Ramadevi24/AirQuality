@@ -3888,10 +3888,11 @@ $('#emailField').on('input', function () {
         $('#emailError').text('Email cannot contain consecutive repeating special characters');
     } else if (email.indexOf('@gmail.com@gmail.com') !== -1) {
         $('#emailError').text('Invalid email address');
-    }  else if (parts.length === 2 && parts[0] === parts[1]) {
+    } else if (parts.length === 2 && parts[0] === parts[1]) {
         $('#emailError').text('Please enter a valid email address');
-    }
-    else {
+    } else if (parts[0].includes(parts[1])) {
+        $('#emailError').text('Invalid email address');
+    } else {
         $('#emailError').text('');
     }
 });

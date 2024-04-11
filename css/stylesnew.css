@@ -602,6 +602,8 @@ header .search-block .search-collapse .search-result ul li i:before {
 }
 .search-block ul#searchResults a {
     color: var(--blue);
+    display: block;
+
 }
 
 .search-block ul#searchResults li a span {
@@ -611,12 +613,17 @@ header .search-block .search-collapse .search-result ul li i:before {
 .search-block ul#searchResults {
     padding: 12px;
     border-radius: 11px;
+    position: relative;
+    z-index:9999;
+    max-height: 600px;
+    overflow-y: scroll;
+    width: 90%;
 }
 
 .search-block ul#searchResults li a {
     border-bottom: 1px solid #ccc;
     display: block;
-    width: 85%;
+    /* width: 85%; */
 }
 
 .searchHeaderScroll{
@@ -4483,6 +4490,12 @@ footer .copy-rights ul li a {
 }
 .privacy-fadeout #hamburger.open div {
     background: transparent;
+}
+.w-95{
+   width: 95%; 
+}
+.copy-mt-8{
+    margin-top: 8%;
 }
 /* ------------End Privacy Policy section Css----------------*/
 /*------------------- Chart Related Tooltip---------------- */
