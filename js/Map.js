@@ -12,16 +12,16 @@ var stationsData = [];
 var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo; var selectedfeature
 var view;
 var featureLayer;
-require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
-    "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/PictureMarkerSymbol",
-    "esri/symbols/TextSymbol", "esri/widgets/Zoom", "esri/widgets/Fullscreen", "esri/widgets/BasemapToggle", "esri/widgets/Locate", "esri/widgets/Home",
+require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
+    "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer",  "esri/symbols/PictureMarkerSymbol",
+    "esri/symbols/TextSymbol", "esri/widgets/BasemapToggle", 
     "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent", "esri/widgets/Popup", "esri/core/reactiveUtils", "esri/geometry/projection", "esri/geometry/SpatialReference",
-    "esri/Basemap", "esri/layers/VectorTileLayer", "esri/layers/TileLayer", "esri/Map",],
+    "esri/Basemap", "esri/layers/VectorTileLayer", "esri/layers/TileLayer",],
 
-    (esriConfig, ClassBreaksRenderer, esriLang, MapView, WebMap, query, MapImageLayer, Query,
-        GraphicsLayer, Graphic, FeatureLayer, SimpleMarkerSymbol, PictureMarkerSymbol, TextSymbol,
-        Zoom, Fullscreen, BasemapToggle, Locate, Home, Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference, Basemap,
-        VectorTileLayer, TileLayer, Map
+    (esriConfig, ClassBreaksRenderer,  MapView, WebMap, query, MapImageLayer, Query,
+        GraphicsLayer, Graphic, FeatureLayer,  PictureMarkerSymbol, TextSymbol,
+        BasemapToggle,  Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference, Basemap,
+        VectorTileLayer, TileLayer,
     ) => {
         esriConfig.request.httpsDomains.push("enviroportal.ead.ae");
         esriConfig.portalUrl = portalUrl;
@@ -359,7 +359,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
             // Use the obtained coordinates to move the map view
             view.goTo({
                 center: [latitude, longitude],
-                zoom: 20
+                zoom: 7
             });
         });
 
@@ -412,7 +412,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     for (let index = 0; index < results.features.length; index++) {
                         if ($(event.target).text() == results.features[index].attributes['Name']) {
                             for (let i = 0; i < classBreakInfos.length; i++) {
-                                if (parseInt(results.features[index].attributes['AQI']) > classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
+                                if (parseInt(results.features[index].attributes['AQI']) >classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
                                     var selectedsymbol = classBreakInfos[i].symbol
                                     selectedsymbol.outline.color = 'white'
                                     selectedsymbol.outline.width = 2
@@ -828,7 +828,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/core/lang", 
                     for (let index = 0; index < results.features.length; index++) {
                         if (selectedfeature.graphic.attributes['Name'] == results.features[index].attributes['Name']) {
                             for (let i = 0; i < classBreakInfos.length; i++) {
-                                if (parseInt(results.features[index].attributes['AQI']) > classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
+                                if (parseInt(results.features[index].attributes['AQI']) >classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
                                     var selectedsymbol = classBreakInfos[i].symbol
                                     selectedsymbol.outline.color = 'white'
                                     selectedsymbol.outline.width = 2
