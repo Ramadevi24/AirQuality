@@ -13,6 +13,7 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Air Icons -->
     <link href="./fonts/air-icons/air-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/css/main.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
           integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
@@ -21,7 +22,6 @@
     <link href="./css/responsive.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="./js/graphs-js/googlejs.js"></script>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.x/esri/css/main.css">
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -93,11 +93,12 @@
                     <div class="collapse search-collapse" id="mainSearch">
                         <div class="card card-body">
                             <div class="container-fluid p-2">
-                                <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
+                                <!-- start 16-April-24 -->
+                                <!-- <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
                                     class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
                                     Close
-                                </button>
-
+                                </button> -->
+                                <!-- End 16-April-24 -->
                                 <form class="form-inline relative d-flex">
                                     <button class="btn search-icon" type="button">
                                         <img src="./images/new-images/search.png" width="16" class="filter1">
@@ -113,6 +114,12 @@
                                     <ul id="searchResults" class="searchItem searchHeaderScroll ps-0">
                                     </ul>
                                 </div>
+                                <!-- start 16-April-24 -->
+                                <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
+                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+                                    Close
+                                </button>
+                                <!-- End 16-April-24 -->
                             </div>
                         </div>
                     </div>
@@ -475,7 +482,8 @@
                                 <div class="slide active">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
-                                            <div class="col-xl-5 d-flex  flex-column  justify-content-between">
+                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            <div class="col-xl-5 d-flex  flex-column  justify-content-start">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25">aIR quality Safety level</h2>
                                                     <p class="refresh-hide1 mb-0 airpb-0">Last refreshed: 1:00 PM (UTC
@@ -556,7 +564,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-7 d-flex flex-column justify-content-between"
+                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            <div class="col-xl-7 d-flex flex-column justify-content-start"
                                                 id="footerhealth">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25"> HEALTH RECOMMENDATIONS </h2>
@@ -730,7 +739,8 @@
                                 <div class="slide">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
-                                            <div class="col-lg-12 d-flex flex-column  justify-content-between"
+                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            <div class="col-lg-12 d-flex flex-column  justify-content-start"
                                                 id="footer-trends">
                                                 <div class="bar_section">
                                                     <div id="aqiTab" class="tab-content mt-0">
@@ -872,10 +882,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1016,10 +1028,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1164,10 +1178,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1312,10 +1328,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1460,10 +1478,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1608,10 +1628,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                         class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <div class="mb-2 text-right crossicon">
-                                                                            <img src="./images/new-images/Arrow-right.png"
+                                                                        <!-- Start 16-April-24 -->
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
                                                                         </div>
+                                                                        <!-- End 16-April-24 -->
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                 class="mb-3" width="22" height="22"
@@ -1682,7 +1704,8 @@
                                 <!-- </div> -->
                                 <div class="slide">
                                     <div class="row equal-height-row d-flex flex-wrap">
-                                        <div class="col-lg-12 d-flex flex-column  justify-content-between"
+                                        <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                        <div class="col-lg-12 d-flex flex-column justify-content-start"
                                             id="footerStation-trends">
                                             <div>
                                                 <div class="container pad_r tab-pd-0">
@@ -2009,7 +2032,8 @@
                                 <div class="slide exceeded-box">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap radar_section">
-                                            <div class="col-xl-5 d-flex flex-column justify-content-between">
+                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            <div class="col-xl-5 d-flex flex-column justify-content-start">
                                                 <div class="quality-index-wrapper-h2">
                                                     <!-- <h3>Station: Khalifa City</h3> -->
                                                     <h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">
@@ -2017,7 +2041,8 @@
                                                         exceedance per year
                                                     </h2>
                                                 </div>
-                                                <div class="main-box">
+                                                <!-- start 16-March-24 class added pollutant-number-aligment & adjust-height-290 -->
+                                                <div class="main-box pollutant-number-aligment adjust-height-290">
                                                     <div class="hour_box">
                                                         <div class="number-exceedance">
                                                             <label class="number-exceedance-heading">CO</label>
@@ -2061,12 +2086,14 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-7 d-flex flex-column justify-content-between"
+                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            <div class="col-xl-7 d-flex flex-column justify-content-start"
                                                 id="footerradar-analytic">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="mb-0 exceed-height tabexceed-pb0">our air analytics</h2>
                                                 </div>
-                                                <div class="main-box">
+                                                <!-- start 16-March-24 class added adjust-height-290 -->
+                                                <div class="main-box adjust-height-290">
                                                     <div class="head d-flex justify-content-end align-items-center">
                                                         <div class="btn-group res-airanalytic">
                                                             <button type="button" class="btn btn-sm dropdown-toggle"
@@ -3019,10 +3046,11 @@
             $('.mobile-menu a').removeClass("active");
             $(this).addClass("active");
         });
-        $('.web-menu .tablet-menu').click(function () {
-            $('.web-menu .tablet-menu').removeClass("active");
-            $(this).addClass("active");
-        });
+        // start 16-April-24 -------
+        // $('.web-menu .tablet-menu').click(function () {
+        //     $('.web-menu .tablet-menu').removeClass("active");
+        //     $(this).addClass("active");
+        // });
 
     </script>
 
@@ -3307,6 +3335,41 @@
         });
     }
 </script> -->
+
+    <!-- Start 16-April-24 -->
+    <script>
+        $(document).ready(function(){
+            if (window.innerHeight < 1193) {
+                $(window).scroll(function() {
+                    var scrollPosition = $(this).scrollTop();
+                    var activeSectionId = null; // Variable to store the ID of the active section
+                    
+                    // Loop through each section
+                    $('.section').each(function() {
+                        var sectionId = $(this).attr('id');
+                        var sectionOffset = $(this).offset().top - 100; // Adjusted offset for better highlighting
+                        if (scrollPosition >= sectionOffset) {
+                            activeSectionId = sectionId;
+                        }
+                    });
+
+                    // Remove all existing section classes from the body
+                    $('body').removeClass(function(index, className) {
+                        // Remove any class that starts with 'section'
+                        return (className.match(/(^|\s)section\S+/g) || []).join(' ');
+                    });
+
+                    // Add class to body for the active section
+                    if (activeSectionId) {
+                        $('body').addClass(activeSectionId);
+                        $('#menu li.nav-item').removeClass('active');
+                        $('#menu li.nav-item[data-menuanchor="slide' + activeSectionId.substr(7) + '"]').addClass('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- End 16-April-24 -->
 
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>

@@ -473,9 +473,9 @@
     .newcutom-btn{
         width: 120px 
     }
-    header .search-block .search-collapse .card-body .container-fluid .close{
+    /* header .search-block .search-collapse .card-body .container-fluid .close{
         bottom: 7px;
-    }
+    } */
     header .search-block .search-collapse .card-body{
         padding: 10px 5px;
     }
@@ -1436,8 +1436,18 @@
     .insight .graph-duration-filters .pollutant-hour-top7 {
         top: 22px;
     }
-    .pd-main-box{
+    /* .pd-main-box{
         height: 830px!important;
+    } */
+    .insight #radarChart{
+        height: 420px !important;
+    }
+    .insight ul.legend_radar{
+        bottom: 35%;
+        position: absolute;
+    }
+    .insight .resolution-ht {
+        height: calc(100vh - 230px);
     }
     .exceeded-box .main-box{
         height: 680px;
@@ -1520,6 +1530,9 @@
     }
     .wheather-widget{
         bottom: 30px;
+    }
+    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
+        height: calc(100vh - 200px);
     }
 }
 
@@ -1692,7 +1705,7 @@
         height: 40px;
     }
     .insight .Causes-img p, .insight .activities-imgs p {
-        font-size: 10px;
+        font-size: 9px;
     }
     .insight .activities-imgs {
         gap: 2px;
@@ -1744,7 +1757,7 @@
     } */
   
     .insight .data-list {
-        max-height: 64vh;
+        height: calc(100vh - 180px);
     }
     /* =============6 MARCH 2024========= */
     .insight .quality-index-wrapper-h2 h3{
@@ -1813,9 +1826,9 @@
     .insight .graph-duration-filters .pollutant-hour-top7 {
         top: -14px !important;
     }
-    .insight .hour_box{
+    /* .insight .hour_box{
         padding-top: 1rem;
-    }
+    } */
 
     .fp-viewing-6 #fp-nav{
         top: 44%;
@@ -1829,9 +1842,75 @@
 
 }
 
-@media (min-width: 1500px) and (max-width: 1950px) {
-    .insight .hour_box {
-        padding-top: 11%;
+/* @media (min-width: 1500px) and (max-width: 1950px) { */
+    /* .insight .hour_box {
+        padding-top: 11%; */
         /* height: 100%; */
+    /* } */
+/* } */
+
+@media (min-width: 1800px) and (max-width: 2500px) {
+    .adjust-height-290{
+        height: calc(100vh - 285px)!important;
+    }
+    .insight ul.legend_radar {
+        bottom: 25%;
+        position: absolute;
+    }
+    .insight #radarChart{
+        height: 500px !important;
+    }
+    .contact-section{
+        margin-top: 0;
+    }
+    #section4{
+        justify-content: flex-start;
+    }
+    .faq-section {
+        margin-top: 8%;
+    }
+    .faqscrolling {
+        height: 760px;
+        overflow: auto;
+        padding-right: 20px;
+    }
+    .insightStation h3{
+        padding-left: 24px;
+    }
+    .tab-pd-0{
+        padding-left: 0; padding-right: 0;
+    }
+    .equal-air-box-height {
+        height: calc(100vh - 270px);
+    }
+    .equal-station-box-height{
+        height: calc(100vh - 240px);
+    }
+    .canvas-graphs-height {
+        height: 590px !important;
+    }
+    .canvas-graphs-heightline {
+        height: 547px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top, .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: 20px;
+    }
+    .insight .lineChartmt-0, .margin-top-0{
+        margin-top: 20px;
+    }
+    .project-slider .item{
+        height: 450px;
+    }
+}
+
+@media (min-width: 2045px) and (max-width: 2500px) {
+    .tab-pd-0{
+        max-width: 1405px;
+    }
+}
+
+@media (min-width: 2301px) and (max-width: 2305px) {
+    .tab-pd-0{
+        max-width: 1602px;
     }
 }

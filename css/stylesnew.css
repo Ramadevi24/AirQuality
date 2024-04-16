@@ -359,10 +359,11 @@ header .search-block .search-collapse .card-body .container-fluid {
     position: relative;
 }
 header .search-block .search-collapse .card-body .container-fluid .close {
-    position: absolute!important;
-    right: 35px;
-    bottom: 15px;
+    /* position: absolute!important;
+    right: 10px;
+    bottom: 15px; */
     outline: none;
+    float: right;
 }
 .transition-all {
     transition-property: all;
@@ -611,13 +612,13 @@ header .search-block .search-collapse .search-result ul li i:before {
 }
 
 .search-block ul#searchResults {
-    padding: 12px;
+    /* padding: 12px; */
     border-radius: 11px;
     position: relative;
     z-index:9999;
-    max-height: 600px;
+    /* max-height: 600px; */
     overflow-y: scroll;
-    width: 90%;
+    /* width: 90%; */
 }
 
 .search-block ul#searchResults li a {
@@ -1920,6 +1921,11 @@ body.map-viwer-enabled{
         opacity: 1;
         background: none;
     }
+
+    .insight .slide-content ul .modal.fade button.btn-close:hover{
+        background: #39688e;
+    }
+
 .insight .slide-content ul .modal.fade button.btn-close i {
     color: #fff;
     font-size: 21px;
@@ -2140,7 +2146,7 @@ body.map-viwer-enabled{
     font-weight: 800;
     top: 0;
     right: 0px;
-    background-image: url(../images/calendar.png);
+    background-image: url(../images/new-images/filter-icon.png);
     background-position: right 6px center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
@@ -3258,6 +3264,7 @@ color: var(--green);
     width: 30%;
 }
 .insight .hour_box {
+    width: 100%;
     /* padding-top: 11%; */
     /* height: 100%; */
 }
@@ -3412,7 +3419,7 @@ color: var(--green);
     background-color: transparent;
 }
 .sidebar-dataScroll{
-    height: 520px;
+    height: calc(100vh - 217px);
     overflow: auto;
     padding-right: 10px 
 }
@@ -3460,6 +3467,10 @@ color: var(--green);
 }
 .insight .pollutant-toggleBar .crossicon{
     cursor: pointer;
+}
+.insight .pollutant-toggleBar .crossicon:hover{
+    background: #1c5f94;
+    border-radius: 50px;
 }
 .insight .res-airanalytic .dropdown-change{
     min-width: 100%;
@@ -3546,6 +3557,10 @@ color: var(--green);
 }
 .exceeded-box .main-box {
     margin-bottom: 0 !important;
+}
+.pollutant-number-aligment{
+    display: flex;
+    align-items: center;
 }
 /* .no-calendar::-webkit-calendar-picker-indicator {
     background-image: url('../images/calendar.png');
@@ -3731,6 +3746,10 @@ table {
 .scroll-yearlyDropdown{
     height: 120px;
     overflow: scroll;
+}
+
+.adjust-height-290{
+    height: calc(100vh - 285px);
 }
 /* ------------End  Insight section Css----------------*/
 

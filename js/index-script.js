@@ -489,7 +489,7 @@ const stationsWithLocations = [{
     latitude: 23.7504,
     longitude: 53.7453,
     stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
@@ -2741,7 +2741,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Daily);
                             thresholdData.push(pollutantThresholdLimits.PM10Daily);
                         } else {
-                            //barChartData.push(0);
+                            barChartData.push(0);
                             thresholdData.push(item.pM10);
                         }
                         categoriesData.push(item.day.split(' '));
@@ -3218,18 +3218,20 @@ function bindStationDataToBarChart(filter) {
                     tooltip: {
                         callbacks: {
                             title: function (tooltipItems) {
-                                // Get the label of the first tooltip item, which is the date string
-                                let fullTimestamp = tooltipItems[0].label;
-                                // Manually parse the hour from the timestamp
-                                let hourMatch = fullTimestamp.match(/\b(\d+):/);
-                                let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
-                                let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-                                let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
-                                // Convert to 12-hour format if needed
-                                hour = hour === 0 ? 12 : hour; // Convert 0 hours to 12 AM
-                                hour = hour < 10 ? '0' + hour : hour; // Pad single digit hours with a zero
-                                // Return the formatted string
-                                return `${hour} ${meridiem}`;
+                                if (tooltipItems && tooltipItems.length > 0){
+                                    // Get the label of the first tooltip item, which is the date string
+                                    let fullTimestamp = tooltipItems[0].label;
+                                    // Manually parse the hour from the timestamp
+                                    let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                                    let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                                    let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                                    let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                                    // Convert to 12-hour format if needed
+                                    hour = hour === 0 ? 12 : hour; // Convert 0 hours to 12 AM
+                                    hour = hour < 10 ? '0' + hour : hour; // Pad single digit hours with a zero
+                                    // Return the formatted string
+                                    return `${hour} ${meridiem}`;
+                                }
                             },
                             label: function (context) {
                                 // Return the value for the tooltip
@@ -3237,6 +3239,11 @@ function bindStationDataToBarChart(filter) {
                                 return value + ' ug/m3';
 
                             }
+                            },
+                            filter: function(tooltipItem, data) {
+                                //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
+                                // Hide tooltip if the value is zero
+                                return tooltipItem.raw !== 0;
                         }
                     }
                 },
@@ -3300,7 +3307,7 @@ function bindStationDataToBarChart(filter) {
                         gridLines: {
                             drawBorder: false,
                         },
-                        // stacked: true
+                         stacked: true
                     }
                 },
             },
@@ -3348,7 +3355,7 @@ function bindStationDataToBarChart(filter) {
                         grid: {
                             display: false
                         },
-                        // stacked: true,            
+                         stacked: true,            
 
                     },
                     y: {
@@ -3431,26 +3438,33 @@ function bindStationDataToBarChart(filter) {
                     tooltip: {
                         callbacks: {
                             title: function (tooltipItems) {
-                                // Get the label of the first tooltip item, which is the date string
-                                let fullTimestamp = tooltipItems[0].label;
-                                // Manually parse the hour from the timestamp
-                                let hourMatch = fullTimestamp.match(/\b(\d+):/);
-                                let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
-                                let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-                                let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
-                                // Convert to 12-hour format if needed
-                                hour = hour === 0 ? 12 : hour; // Convert 0 hours to 12 AM
-                                hour = hour < 10 ? '0' + hour : hour; // Pad single digit hours with a zero
-                                // Return the formatted string
-                                return `${hour} ${meridiem}`;
+                                if (tooltipItems && tooltipItems.length > 0){
+                                    // Get the label of the first tooltip item, which is the date string
+                                    let fullTimestamp = tooltipItems[0].label;
+                                    // Manually parse the hour from the timestamp
+                                    let hourMatch = fullTimestamp.match(/\b(\d+):/);
+                                    let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
+                                    let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
+                                    let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
+                                    // Convert to 12-hour format if needed
+                                    hour = hour === 0 ? 12 : hour; // Convert 0 hours to 12 AM
+                                    hour = hour < 10 ? '0' + hour : hour; // Pad single digit hours with a zero
+                                    // Return the formatted string
+                                    return `${hour} ${meridiem}`;
+                                }
                             },
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
                                 return value + ' ug/m3';
+                            },
+                        },
+                        filter: function(tooltipItem, data) {
+                            //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
+                            // Hide tooltip if the value is zero
+                            return tooltipItem.raw !== 0;
                             }
                         }
-                    }
                 },
                 interaction: {
                     intersect: false,
@@ -3479,7 +3493,7 @@ function bindStationDataToBarChart(filter) {
                         gridLines: {
                             drawBorder: false,
                         },
-                        // stacked: true
+                         stacked: true
                     },
 
                 },
@@ -3531,7 +3545,7 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
 
                     },
-                    y: {
+                    y:{
                         stacked: true,
                         grid: {
                             display: false,
@@ -3539,9 +3553,7 @@ function bindStationDataToBarChart(filter) {
                         afterFit: (ctx) => {
                             //console.log(ctx);
                             ctx.width = 40;
-                        },
-                        // stacked: true
-                        //beginAtZero: true
+                        }
                     },
                 },
                 plugins: {

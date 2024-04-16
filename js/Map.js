@@ -964,9 +964,9 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                     //haloColor : "dodgerblue",
                     font: {
                         // autocast as new Font()
-                        family: "Cairo",
-                        size: 10,
-                        weight: "bold"
+                        family: "GothamMedium",
+                        size: 8
+                        //weight: "bold"
                     }
                 },
                 labelPlacement: "above-center",
