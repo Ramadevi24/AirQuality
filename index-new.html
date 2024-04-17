@@ -1348,7 +1348,7 @@
                                                                             Measured Pollutants
                                                                         </p>
                                                                         <div class="info-popup-content">
-                                                                            <ul class="ps-0">
+                                                                            <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -1498,7 +1498,7 @@
                                                                             Measured Pollutants
                                                                         </p>
                                                                         <div class="info-popup-content">
-                                                                            <ul class="ps-0">
+                                                                            <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -1648,7 +1648,7 @@
                                                                             Measured Pollutants
                                                                         </p>
                                                                         <div class="info-popup-content">
-                                                                            <ul class="ps-0">
+                                                                            <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -3367,6 +3367,13 @@
                     }
                 });
             }
+            $('.search-collapse').on('show.bs.collapse', function() {
+                // Reset the form
+                $(this).find('form')[0].reset();
+
+                // Reset the search results
+                $(this).find('#searchResults').empty();
+            });
         });
     </script>
     <!-- End 16-April-24 -->

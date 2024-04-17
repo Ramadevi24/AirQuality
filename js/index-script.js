@@ -1628,6 +1628,7 @@ function getHealthRecommendationContent(aqiLevel) {
         </li>
     `).join('');
 }
+
 function updateActivities(value) {
     const aqiLevel = getAQILevel(value);
     const content = getActivityContent(aqiLevel);

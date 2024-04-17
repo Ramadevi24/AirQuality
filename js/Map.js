@@ -434,9 +434,9 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                                         xoffset: 3,
                                         yoffset: 3,
                                         font: {  // autocasts as new Font()
-                                            size: 9,
-                                            family: "Orbitron",
-                                            weight: "bold"
+                                            size: 8,
+                                            family: "roboto",
+                                            //weight: "bold"
                                         }
                                     };
                                     const point = {
@@ -850,9 +850,9 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                                         xoffset: 3,
                                         yoffset: 3,
                                         font: {  // autocasts as new Font()
-                                            size: 9,
-                                            family: "Orbitron",
-                                            weight: "bold"
+                                            size: 8,
+                                            family: "roboto",
+                                           // weight: "bold"
                                         }
                                     };
                                     const point = {
@@ -964,7 +964,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                     //haloColor : "dodgerblue",
                     font: {
                         // autocast as new Font()
-                        family: "GothamMedium",
+                        family: "roboto",
                         size: 8
                         //weight: "bold"
                     }

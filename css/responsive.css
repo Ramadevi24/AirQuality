@@ -407,6 +407,9 @@
     .footermobile-none{
         display: none;
     }
+    .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 135px;
+    }
     .insight .lineChartmt-0{
         margin: 0!important;
     }
@@ -685,6 +688,15 @@
     }
     .faqscrolling{
         padding-right: 0;
+    }
+    header nav.navbar .navbar-brand{
+        padding: 10px 10px 10px 15px;
+    }
+    .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 75px;
+    }
+    .full-screen .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 160px;
     }
     .linechart-height-res{
         height: 270px!important;
@@ -1835,6 +1847,9 @@
     }
     .send-btn{
         margin-top: 15px !important;
+    }
+    #AqiBarchart {
+        margin-top: -15px;
     }
 }
 

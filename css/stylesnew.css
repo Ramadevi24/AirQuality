@@ -3080,6 +3080,7 @@ color: var(--green);
         text-align: left;
         font-family: 'GothamMedium';
         color: #33333366;
+        height: 12px;
     }
 .insight .mult-value p {
     font-size: 14px;
@@ -3703,7 +3704,7 @@ table {
 }
 
 .canvas-graphs-height{
-    height: 315px;
+    height: 330px;
     margin-bottom: 40px;
 }
 .canvas-graphs-bar-main {
@@ -4581,4 +4582,11 @@ footer .copy-rights ul li a {
 
 .success-message{
     color: green;
+}
+
+.esri-ui-bottom-right.esri-ui-corner {
+    position: absolute;
+    bottom: 50px; /* This keeps the element aligned to the bottom */
+    right: 0; /* This keeps the element aligned to the right */
+    top: 10px !important; /* This adds a 20px offset from the top */
 }
