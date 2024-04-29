@@ -135,13 +135,21 @@
                 <!-- The slideshow/carousel -->
                 <div class="video-wrapper video-container">
                     <!-- <img src="./images/new-images/BG.png"> -->
-                    <video loop muted data-autoplay playsinline id="myVideo"
+                    <!-- // start 25-April-24-- -->
+                    <video muted data-autoplay id="myVideo"
                         class="w-100 d-none d-sm-none d-md-none d-lg-block">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
-                    <video autoplay muted loop id="myVideo" class="w-100 d-block d-sm-block d-md-block d-lg-none">
+                    <button id="playPauseBtn2" class="d-none d-sm-none d-md-none d-lg-block">
+                        <i class="fa fa-pause-circle-o fa-3x text-white"></i>
+                     </button>
+                    <button id="playPauseBtn1" class="d-block d-sm-block d-md-block d-lg-none">
+                       <i class="fa fa-pause-circle-o fa-3x text-white"></i>
+                    </button>
+                    <video autoplay muted id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
+                    <!-- // end 25-April-24-- -->
                 </div>
                 <div class="overlay"></div>
                 <div class="carousel-caption-banner home-slider-animation d-none-0 d-md-block-0 ">
@@ -422,11 +430,15 @@
                             </div>
                         </div>
                         <div class="data-sort_sidebar hidden">
-                            <h2 id="expandTrigger">Choose a city to access insights on the Air Quality Index </h2>
+                            <!-- start 25-April-24 -->
+                            <h2 class="d-block d-sm-block d-md-none d-lg-none" id="expandTrigger">
+                               <span class="span">Expand Panel </span> 
+                            </h2>
+                            <!-- end 25-April-24 -->
                             <div id="side_bar_content">
                                 <div class="search-box d-flex">
                                     <div class="p-input position-relative">
-                                        <input type="text" id="searchInput" placeholder="Search...">
+                                        <input type="text" id="searchInput" placeholder="Search Text...">
                                         <span>
                                             <img src="./images/new-images/search_icon.png" alt="">
                                         </span>
@@ -807,9 +819,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content indexbar-ugcontent">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="AqiBarchart1"
                                                                                 class="canvas-graphs-height canvas-graphs-barchart1">
@@ -835,6 +849,7 @@
             </li> -->
                                                                             </ul>
                                                                         </div>
+                                                                        <!-- start 23-April-2024 -->
                                                                         <div class="pollutants-legend-heading">
                                                                             <div class="pollutants-legend-series">
                                                                                 <span
@@ -852,21 +867,21 @@
                                                                                 <span
                                                                                     class="pollutants-legend-marker sensitive-span"></span>
                                                                                 <span
-                                                                                    class="pollutants-legend-text">Unhealthy
+                                                                                    class="pollutants-legend-text">UnHealthy
                                                                                     for Sensitive Groups</span>
                                                                             </div>
                                                                             <div class="pollutants-legend-series">
                                                                                 <span
                                                                                     class="pollutants-legend-marker unhealth-span"></span>
                                                                                 <span
-                                                                                    class="pollutants-legend-text">Unhealthy</span>
+                                                                                    class="pollutants-legend-text">UnHealthy</span>
                                                                             </div>
                                                                             <div class="pollutants-legend-series">
                                                                                 <span
                                                                                     class="pollutants-legend-marker veryunhealth-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Very
-                                                                                    Unhealthy</span>
+                                                                                    UnHealthy</span>
                                                                             </div>
                                                                             <div class="pollutants-legend-series">
                                                                                 <span
@@ -875,7 +890,7 @@
                                                                                     class="pollutants-legend-text">Hazardous</span>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- Start 22-March-2024 -->
+                                                                        <!-- end 23-April-2024 -->
                                                                     </div>
                                                                 </div>
                                                                 <div class="pollutant-toggleBar position-relative">
@@ -905,9 +920,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                        <!-- start 19-April-24 -->
+                                                                        <hr>
+                                                                        <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -982,9 +1004,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="pm10Barchart1"
                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1018,7 +1042,7 @@
                                                                                     class="pollutants-legend-marker above-acceptable-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Above
-                                                                                    Acceptable Value</span>
+                                                                                    Acceptable Value (150)</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1051,9 +1075,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                         <!-- start 19-April-24 -->
+                                                                         <hr>
+                                                                         <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -1127,9 +1158,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="so2Barchart1"
                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1169,7 +1202,7 @@
                                                                                     class="pollutants-legend-marker above-acceptable-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Above
-                                                                                    Acceptable Value</span>
+                                                                                    Acceptable Value (350)</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1201,9 +1234,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                         <!-- start 19-April-24 -->
+                                                                         <hr>
+                                                                         <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -1277,9 +1317,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="coBarchart1"
                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1319,7 +1361,7 @@
                                                                                     class="pollutants-legend-marker above-acceptable-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Above
-                                                                                    Acceptable Value</span>
+                                                                                    Acceptable Value (30)</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1351,9 +1393,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                         <!-- start 19-April-24 -->
+                                                                         <hr>
+                                                                         <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -1427,9 +1476,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="o3Barchart1"
                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1469,7 +1520,7 @@
                                                                                     class="pollutants-legend-marker above-acceptable-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Above
-                                                                                    Acceptable Value</span>
+                                                                                    Acceptable Value (200)</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1501,9 +1552,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                         <!-- start 19-April-24 -->
+                                                                         <hr>
+                                                                         <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -1577,9 +1635,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- start 19-april-24 -->
                                                                         <div class="ug_content">
-                                                                            <p>ug/m3</p>
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
+                                                                        <!-- End 19-april-24 -->
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="no2Barchart1"
                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1619,7 +1679,7 @@
                                                                                     class="pollutants-legend-marker above-acceptable-span"></span>
                                                                                 <span
                                                                                     class="pollutants-legend-text">Above
-                                                                                    Acceptable Value</span>
+                                                                                    Acceptable Value (150)</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1651,9 +1711,16 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
+                                                                         <!-- start 19-April-24 -->
+                                                                         <hr>
+                                                                         <p class="measure-pollut mb-0">
+                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                        </p>
+                                                                        <!-- end end-April-24 -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="chart-f-content">
+                                                                <!-- start 19-April-24 hidden-set class added -->
+                                                                <div class="chart-f-content hidden-set">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
                                                                         changes in air pollution over
@@ -1664,6 +1731,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!-- start 19-April-24 -->
                                                     <ul class="nav twobar-tabs" id="myTabs">
                                                         <li class="nav-item">
                                                             <a class="nav-link active" id="aqiTabToggle"
@@ -1673,29 +1741,30 @@
                                                         <li class="nav-item" id="legend-PM10">
                                                             <a class="nav-link"
                                                                 onclick="showHideToggleDiv('pm10Tab', 'PM10')"
-                                                                style="cursor: pointer;">PM10</a>
+                                                                style="cursor: pointer;">PM<sub>10</sub><sup>ug/m<sup>3</sup></sup></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-SO2">
                                                             <a class="nav-link"
                                                                 onclick="showHideToggleDiv('so2Tab', 'SO2')"
-                                                                style="cursor: pointer;">SO2</a>
+                                                                style="cursor: pointer;">SO<sub>2</sub><sup>ug/m<sup>3</sup></sup></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-CO">
                                                             <a class="nav-link"
                                                                 onclick="showHideToggleDiv('coTab', 'CO')"
-                                                                style="cursor: pointer;">CO</a>
+                                                                style="cursor: pointer;">CO<sup>ug/m<sup>3</sup></sup></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-O3">
                                                             <a class="nav-link"
                                                                 onclick="showHideToggleDiv('o3Tab', 'O3')"
-                                                                style="cursor: pointer;">O3</a>
+                                                                style="cursor: pointer;">O<sub>3</sub><sup>ug/m<sup>3</sup></sup></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-NO2">
                                                             <a class="nav-link"
                                                                 onclick="showHideToggleDiv('no2Tab', 'NO2')"
-                                                                style="cursor: pointer;">NO2</a>
+                                                                style="cursor: pointer;">NO<sub>2</sub><sup>ug/m<sup>3</sup></sup></a>
                                                         </li>
                                                     </ul>
+                                                    <!-- End 19-April-24 -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1751,46 +1820,48 @@
 
                                                                           </li>
                                                                         </div> -->
+                                                                        <!-- start 19-April-24 -->
                                                                         <div class="grid-value">
-                                                                            <div class="grid-upper">
-                                                                                <p>ug/m<sup>3</sup></p>
-                                                                            </div>
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiSo2Value"></strong>
                                                                                     <p>
                                                                                         SO <sub>2</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartAqiSo2Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiNo2Value"></strong>
                                                                                     <p>
                                                                                         NO <sub>2</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartAqiNo2Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
+                                                                                    <p>CO</p>
                                                                                     <strong
                                                                                         id="lineChartAqiCoValue"></strong>
-                                                                                    <p>CO</p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiPm10Value"></strong>
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartAqiPm10Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartAqiO3Value"></strong>
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartAqiO3Value"></strong>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="grid-upper">
+                                                                                <p>ug/m<sup>3</sup></p>
+                                                                            </div>
                                                                         </div>
+                                                                        <!-- End 19-April-24 -->
                                                                         <div class="aqi-content mult-value-tab">
                                                                             <li class="position-relative">
                                                                                 <span class="linebefore">AQI</span>
@@ -1858,6 +1929,7 @@
                                                                             <ul id="aqiHourlyLineChartDates">
                                                                             </ul>
                                                                         </div>-->
+                                                                         <!-- start 23-April-2024 -->
                                                                         <ul class="legend aqi-legend-pd-0">
                                                                             <li>
                                                                                 <span
@@ -1869,23 +1941,24 @@
                                                                             </li>
                                                                             <li>
                                                                                 <span
-                                                                                    class="marker_unh marker_legend"></span>Unhealthy
+                                                                                    class="marker_unh marker_legend"></span>UnHealthy
                                                                                 for sensitive groups
                                                                             </li>
                                                                             <li>
                                                                                 <span
-                                                                                    class="marker_unhh marker_legend"></span>Unhealthy
+                                                                                    class="marker_unhh marker_legend"></span>UnHealthy
                                                                             </li>
                                                                             <li>
                                                                                 <span
                                                                                     class="marker_vunh marker_legend"></span>Very
-                                                                                unhealthy
+                                                                                    UnHealthy
                                                                             </li>
                                                                             <li>
                                                                                 <span
                                                                                     class="marker_h marker_legend"></span>Hazardous
                                                                             </li>
                                                                         </ul>
+                                                                         <!-- end 23-April-2024 -->
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="pills-profile"
@@ -1900,46 +1973,48 @@
                                                                          SENSITIVE GROUPS
                                                                         </p></li></div> -->
                                                                         <!-- /////modify/////// -->
+                                                                        <!-- start 19-April-24 -->
                                                                         <div class="grid-value">
-                                                                            <div class="grid-upper">
-                                                                                <p>ug/m<sup>3</sup></p>
-                                                                            </div>
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantSo2Value"></strong>
                                                                                     <p>
                                                                                         SO <sub>2</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartPollutantSo2Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantNo2Value"></strong>
                                                                                     <p>
                                                                                         NO <sub>2</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                    id="lineChartPollutantNo2Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
+                                                                                    <p>CO</p>
                                                                                     <strong
                                                                                         id="lineChartPollutantCoValue"></strong>
-                                                                                    <p>CO</p>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantPm10Value"></strong>
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartPollutantPm10Value"></strong>
                                                                                 </div>
                                                                                 <div class="mult-value">
-                                                                                    <strong
-                                                                                        id="lineChartPollutantO3Value"></strong>
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
+                                                                                    <strong
+                                                                                        id="lineChartPollutantO3Value"></strong>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="grid-upper">
+                                                                                <p>ug/m<sup>3</sup></p>
+                                                                            </div>
                                                                         </div>
+                                                                         <!-- End 19-April-24 -->
                                                                         <div class="aqi-content mult-value-tab">
                                                                             <strong class="linebefore2">AQI</strong>
                                                                             <p id="lineChartPollutantValueStatus"></p>
@@ -2112,6 +2187,7 @@
                                                             class=""></canvas>
 
                                                     </div>
+                                                     <!-- start 23-April-2024 -->
                                                     <ul class="legend_radar">
                                                         <li>
                                                             <span class="marker_good marker_legend"></span>Good
@@ -2120,20 +2196,21 @@
                                                             <span class="marker_mod marker_legend"></span>Moderate
                                                         </li>
                                                         <li>
-                                                            <span class="marker_unh marker_legend"></span>Unhealthy for
+                                                            <span class="marker_unh marker_legend"></span>UnHealthy for
                                                             sensitive groups
                                                         </li>
                                                         <li>
-                                                            <span class="marker_unhh marker_legend"></span>Unhealthy
+                                                            <span class="marker_unhh marker_legend"></span>UnHealthy
                                                         </li>
                                                         <li>
                                                             <span class="marker_vunh marker_legend"></span>Very
-                                                            unhealthy
+                                                            UnHealthy
                                                         </li>
                                                         <li>
                                                             <span class="marker_h marker_legend"></span>Hazardous
                                                         </li>
                                                     </ul>
+                                                     <!-- end 23-April-2024 -->
                                                 </div>
                                                 <div
                                                     class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
@@ -2962,6 +3039,7 @@
                 //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
                 scrollBar: true,
                 normalScrollElements: '.project-modal, .faqscrolling, .mapStationSearchScroll, .searchHeaderScroll, .scroll-yearlyDropdown, .sidebar-dataScroll', ////08-April-24
+                // start 25-april-24---------
                 onLeave: function (origin, destination, direction) {
                     console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
                     if (origin.index === 2 && !sliding) {
@@ -2974,35 +3052,52 @@
                             myFullpage.moveSlideLeft();
                             return false;
                         }
-                    } else if (sliding) {
+                    } else if (origin.index === 0) { // Added condition for origin.index === 0
+                        var introVideo = document.getElementById('myVideo');
+                        console.log('removing attribute', introVideo.getAttribute('data-autoplay'))
+                        if (introVideo.hasAttribute('data-autoplay') && introVideo.ended) {
+                            introVideo.removeAttribute('data-autoplay');
+                        }else if (introVideo.hasAttribute('data-autoplay') && introVideo.paused){
+                            console.log('introVideo.paused change the button');
+                            introVideo.removeAttribute('data-autoplay');
+                            introVideo.pause();
+                            $('#playPauseBtn2').html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                        }else if(!introVideo.hasAttribute('data-autoplay')){
+                            console.log('only last condition introVideo.paused');
+                            $('#playPauseBtn2').html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                        }
+                    }else if (sliding) {
                         sliding = false; // For menu header sliding issue
                     } else if (sliding) {
                         return false;
                     }
-                },
+                }, // end 25-april-24---------
+                
                 onSlideLeave: function (section, origin, destination, direction) {
+                    // Start 22-April-24 -------------
                     if (destination.index === 0) {
                         $('.fp-prev').addClass('disabled');
-                        $('.fp-next').removeClass('disabled');
+                        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
                     } else if (destination.index === 3) {
                         $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').addClass('disabled');
+                        $('.fp-next').addClass('disabled').removeClass('animate-blinking');
                     } else {
                         $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').removeClass('disabled');
+                        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
                     }
                 }
             });
             if (slideIndexS == 0) {
                 $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled');
+                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
             } else if (slideIndexS == 2) {
                 $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled');
+                $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
             } else {
                 $('.fp-prev').removeClass('disabled');
-                $('.fp-next').removeClass('disabled');
+                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
             }
+            // End 22-April-24 -------------
             // if (window.location.href.includes('#slide2') && !window.location.href.includes('#slide2/3')) {
             //     window.location.hash = 'slide2';
             // }
@@ -3377,6 +3472,73 @@
         });
     </script>
     <!-- End 16-April-24 -->
+
+    <!-- start 25-April-24 -->
+    <script>
+        $(document).ready(function(){
+            // Get the video elements
+    var video1 = document.getElementById("myVideo1");
+    var video2 = document.getElementById("myVideo");
+
+    // Get the play/pause buttons
+    var playPauseButton1 = $("#playPauseBtn1");
+    var playPauseButton2 = $("#playPauseBtn2");
+
+    // Function to toggle play/pause for video1
+    function togglePlayPause1() {
+        if (video1.paused) {
+            video1.play();
+            playPauseButton1.html('<i class="fa fa-pause-circle-o fa-3x text-white"></i>');
+        } else {
+            video1.pause();
+            playPauseButton1.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+        }
+    }
+
+    // Function to toggle play/pause for video2
+    function togglePlayPause2() {
+        if (video2.paused) {
+            video2.play();
+            playPauseButton2.html('<i class="fa fa-pause-circle-o fa-3x text-white"></i>');
+        } else {
+            video2.pause();
+            playPauseButton2.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+        }
+    }
+
+    // Event listener for play/pause button of video1
+    playPauseButton1.on("click", function(){
+        togglePlayPause1();
+    });
+
+    // Event listener for play/pause button of video2
+    playPauseButton2.on("click", function(){
+        togglePlayPause2();
+    });
+
+    // Event listener for video1 click (for mobile devices)
+    video1.addEventListener("click", function() {
+        togglePlayPause1();
+    });
+
+    // Event listener for video2 click (for mobile devices)
+    video2.addEventListener("click", function() {
+        togglePlayPause2();
+    });
+
+    // Event listener for video1 end
+    video1.addEventListener("ended", function() {
+        playPauseButton1.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+    });
+
+    // Event listener for video2 end
+    video2.addEventListener("ended", function() {
+        playPauseButton2.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+    });
+        });
+    </script>
+    
+    <!-- end 25-April-24 -->
 
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>

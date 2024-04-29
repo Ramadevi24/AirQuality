@@ -130,6 +130,9 @@ a{
     text-transform: uppercase;
 }
 
+.hidden-set{
+    visibility: hidden;
+}
 /* ----------------End Common CSS */
 /*-------------------- Page loader Css */
 .page-loader {
@@ -738,7 +741,13 @@ video {
     width:100%;
     height:100%;
 }
-
+#playPauseBtn2, #playPauseBtn1{
+    background: transparent;
+    position: absolute;
+    bottom: 10px; 
+    z-index:1;
+    border: none;
+}
 .overlay {
     background-color: #5b677063;
     /* opacity: .6; */
@@ -1081,7 +1090,7 @@ video {
     overflow-y:scroll;*/
 }
 .Newsearch-box ul li{
-    display: block!important;
+    display: block;
     color: #000;
     line-height: 25px;
     cursor: pointer;
@@ -1709,6 +1718,7 @@ body.map-viwer-enabled{
     line-height: 11px;
     letter-spacing: 0em;
     text-align: left;
+    float: left;
     /* color: var(--green); */
 }
 .insight .quality-index-wrapper h3 {
@@ -3212,10 +3222,11 @@ color: var(--green);
 
 .insight .ug_content{
     position: relative;
-    top: 35px 
+    top: 35px;
+    visibility: hidden;
 }
 .insight .ug_content p {
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 800;
     text-align: left;
     color: #004B87;
@@ -3309,8 +3320,9 @@ color: var(--green);
     border-radius: 50px;
     width: 40px;
     height: 40px;
-    border: 2px solid rgba(0, 75, 135, 1)
+    border: 2px solid rgba(0, 75, 135, 1);
 }
+
 .insight .silde-dv .fp-arrow.fp-controlArrow.fp-next,.silde-dv .fp-arrow.fp-controlArrow.fp-prev{
     position: absolute;
     left: 85% !important;
@@ -3329,6 +3341,7 @@ color: var(--green);
     font-size: 30px;
     line-height: 35px;
     padding: 0px 10px 10px 13px;
+   
 }
 .insight .silde-dv .fp-arrow.fp-controlArrow.fp-prev::before {
     content: '\f104';
@@ -3339,6 +3352,19 @@ color: var(--green);
     line-height: 35px;
     padding: 0px 10px 10px 11px;
 }
+
+.animate-blinking::before{
+    animation: animate linear 2s infinite;
+    animation-delay: 0.9s;
+}
+@keyframes animate {
+    0%, 100% {
+        color: var(--blue);
+    }
+    50% {
+        color: var(--lightgrey);
+    }
+  }
 
 .fp-arrow.fp-controlArrow.fp-next.disabled, .fp-arrow.fp-controlArrow.fp-prev.disabled {
     opacity: 0.3;
@@ -3420,7 +3446,7 @@ color: var(--green);
     background-color: transparent;
 }
 .sidebar-dataScroll{
-    height: calc(100vh - 217px);
+    height: calc(100vh - 190px);
     overflow: auto;
     padding-right: 10px 
 }
@@ -3431,8 +3457,8 @@ color: var(--green);
     padding: 10px;
     border-radius: 0;
     z-index: 10;
-    bottom: 9px;
-    right: 10px;
+    bottom: 35px;
+    right: 17px;
     width: 42%;
     background: var(--blue);
     opacity: 88%;
@@ -3444,14 +3470,14 @@ color: var(--green);
     z-index: 1111;
 }
 .insight .pollutant-toggleBar .iconimg{
-    /* position: absolute; */
-    /* right: 0; */
-    width: 30px;
-    height: 30px;
-    /* bottom: 0px; */
-    float: right;
+    position: absolute;
+    right: 7px;
+    width: 28px;
+    height: 28px;
+    bottom: 21px;
+    /* float: right;
     margin-top: -11px;
-    position: sticky;
+    position: sticky; */
 }
 .insight .pollutant-toggleBar .pollutantbar-title{
     font-family: 'GothamMedium';
@@ -3699,7 +3725,7 @@ table {
 }
 /* 22-March-2024 */
 .equal-air-box-height{
-    height: 500px;
+    height: 520px;
     margin-bottom: 10px;
 }
 
@@ -4590,3 +4616,4 @@ footer .copy-rights ul li a {
     right: 0; /* This keeps the element aligned to the right */
     top: 10px !important; /* This adds a 20px offset from the top */
 }
+

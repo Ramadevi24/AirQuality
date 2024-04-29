@@ -354,10 +354,11 @@ const causeStationData = {
         ]
     }
 };
-
+// start 22-April-24---------
 const stationsWithLocations = [{
     stationId: "EAD_HamdanStreet",
     stationName: "Hamdan Street",
+    regionName: "Abu Dhabi",
     latitude: 24.4889,
     longitude: 54.3637,
     stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi, Urban Traffic",
@@ -365,6 +366,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_KhadijaSchool",
     stationName: "Khadejah School",
+    regionName: "Abu Dhabi",
     latitude: 24.4816,
     longitude: 54.3693,
     stationLocation: "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi, Urban Background",
@@ -372,6 +374,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_KhalifaSchool",
     stationName: "Khalifa School",
+    regionName: "Abu Dhabi",
     latitude: 24.4301,
     longitude: 54.4084,
     stationLocation: "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi, Suburban Background",
@@ -379,6 +382,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Mussafah",
     stationName: "Mussafah",
+    regionName: "Abu Dhabi",
     latitude: 24.3472,
     longitude: 54.5029,
     stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi, Suburban Industrial",
@@ -386,6 +390,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Baniyas",
     stationName: "Baniyas School",
+    regionName: "Abu Dhabi",
     latitude: 24.3213,
     longitude: 54.6359,
     stationLocation: "Bani Yas - East 4 - Abu Dhabi, Suburban Background",
@@ -393,6 +398,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
+    regionName: "Abu Dhabi",
     latitude: 24.4035,
     longitude: 54.5161,
     stationLocation: "Rabdan - Abu Dhabi, Urban Background",
@@ -400,6 +406,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_KhalifaCity",
     stationName: "Khalifa City A",
+    regionName: "Abu Dhabi",
     latitude: 24.4199,
     longitude: 54.5782,
     stationLocation: "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi, Suburban Background",
@@ -408,6 +415,7 @@ const stationsWithLocations = [{
 {
     stationId: "EAD_AlMafraq",
     stationName: "Al Mafraq",
+    regionName: "Abu Dhabi",
     latitude: 24.2863,
     longitude: 54.5889,
     stationLocation: "Jarn Yafour - Abu Dhabi, Suburban Industrial",
@@ -416,6 +424,7 @@ const stationsWithLocations = [{
 {
     stationId: "EAD_AlAinSchool",
     stationName: "Al Ain Islamic Institute",
+    regionName: "Al Ain",
     latitude: 24.2191,
     longitude: 55.7349,
     stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi, Suburban Background",
@@ -423,6 +432,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_AlAinStreet",
     stationName: "Al Ain Street",
+    regionName: "Al Ain",
     latitude: 24.2259,
     longitude: 55.7658,
     stationLocation: "Central District - Abu Dhabi, Urban Traffic",
@@ -430,6 +440,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Sweihan",
     stationName: "Sweihan",
+    regionName: "Al Ain",
     latitude: 24.4667,
     longitude: 55.3429,
     stationLocation: "44th St - Sweihan - Abu Dhabi, Suburban Background",
@@ -437,6 +448,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_AlTawia",
     stationName: "Al Tawia",
+    regionName: "Al Ain",
     latitude: 24.2592,
     longitude: 55.7049,
     stationLocation: "Al Tiwayya - Abu Dhabi, Suburban Background",
@@ -444,6 +456,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Zakher",
     stationName: "Zakher",
+    regionName: "Al Ain",
     latitude: 24.1635,
     longitude: 55.7021,
     stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
@@ -451,6 +464,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Quaa",
+    regionName: "Al Ain",
     latitude: 23.5312,
     longitude: 55.486,
     stationLocation: "Al Wiqan - Abu Dhabi, Regional Rural",
@@ -458,6 +472,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_BidaZayed",
     stationName: "Bida Zayed",
+    regionName: "Al Dhafra",
     latitude: 23.6523,
     longitude: 53.7039,
     stationLocation: "Zayed City - Abu Dhabi, Suburban Background",
@@ -465,6 +480,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Gayathi",
     stationName: "Gayathi School",
+    regionName: "Al Dhafra",
     latitude: 23.8355,
     longitude: 52.8103,
     stationLocation: "Ghiyathi - Abu Dhabi, Suburban Background",
@@ -472,6 +488,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Liwa",
     stationName: "Liwa Oasis",
+    regionName: "Al Dhafra",
     latitude: 23.0958,
     longitude: 53.6064,
     stationLocation: "3JW4+8H7 Taraq, Abu Dhabi, Rural Background Regional",
@@ -479,6 +496,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_RuwaisTransco",
     stationName: "Ruwais",
+    regionName: "Al Dhafra",
     latitude: 24.0909,
     longitude: 52.7548,
     stationLocation: "Al Ruways Industrial City - Abu Dhabi, Suburban Industrial",
@@ -486,6 +504,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_Habshan",
     stationName: "Habshan South",
+    regionName: "Al Dhafra",
     latitude: 23.7504,
     longitude: 53.7453,
     stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
@@ -493,6 +512,7 @@ const stationsWithLocations = [{
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
+    regionName: "Al Dhafra",
     latitude: 24.0352,
     longitude: 53.8853,
     stationLocation: "Um Laylah - Abu Dhabi, Rural Traffic",
@@ -503,6 +523,8 @@ const stationsWithLocations = [{
     latitude: 24.4539,
     longitude: 54.3773,
 }];
+
+// End 22-April-24---------
 
 const colorClass = {
     GoodColorClass: "green",
@@ -523,15 +545,25 @@ const colorCodes = {
     hazar: '#A06A7B'
 };
 
+// start 19-April-24--
 const statusClass = {
     Good: "Good Days",
     Moderate: "Moderate Days",
-    UnHealthlySensitiveGroups: "UnHealthly Sensitive Groups",
-    UnHealthly: "UnHealthly Days",
-    VeryUnHealthly: "Very UnHealthly Days",
+    UnHealthlySensitiveGroups: "UnHealthy Sensitive Groups",
+    UnHealthly: "UnHealthy Days",
+    VeryUnHealthly: "Very UnHealthy Days",
     Hazardous: "Hazardous Days",
 }
+// end 19-April-24--
 
+const statusClassNew1 = {
+    Good: "Good",
+    Moderate: "Moderate",
+    UnHealthlySensitiveGroups: "UnHealthy Sensitive Groups",
+    UnHealthly: "UnHealthy",
+    VeryUnHealthly: "Very UnHealthy",
+    Hazardous: "Hazardous",
+}
 const aqiContent = {
     Good: "Enjoy the Fresh Air",
     Moderate: "Enjoy Your Day Outdoors!",
@@ -595,7 +627,7 @@ var radarOptions = {
         tooltip: {
             enabled: true,
             displayColors: false, // Set this to false to hide the color box
-            mode: 'index',
+            mode: 'nearest',
             intersect: false,
             callbacks: {
                 label: function (context) {
@@ -861,19 +893,20 @@ $(window).scroll(function () {
 });
 
 //  05-Feb-2024 Map Search icon script Start--------------   
-$('.listSearch li').on("click", function () {
-    $(".listSearch li").css("background-color", "");
-    $(this).css("background-color", "rgb(213 213 213)");
-    var value = $(this).text();
-    //alert(value);
-    $(".show-mapSearchList").show();
-    $(".show-mapSearchList").html(value);
-    $('.Newsearch-box').hide();
-});
+//$('.listSearch li').on("click", function () {
+//    $(".listSearch li").css("background-color", "");
+//    $(this).css("background-color", "rgb(213 213 213)");
+//    var value = $(this).text();
+//    //alert(value);
+//    $(".show-mapSearchList").show();
+//    $(".show-mapSearchList").html(value);
+//    $('.Newsearch-box').hide();
+//});
 
 $('.show-mapSearchList').click(function () {
     $('.Newsearch-box').show();
     $(".show-mapSearchList").hide();
+    $('#stationsDropdownMapSearch').val('');
 });
 // Map Search icon script Start--------------   
 
@@ -993,17 +1026,36 @@ $(document).ready(function () {
         getStationChartApi(chartFilter.Custom);
     });
 
-    $('#stationsDropdownMapSearch').on('keyup', function () {
-        var searchText = $(this).val().toLowerCase();
-        $('.mapSearchlist-text').each(function () {
-            var listItemText = $(this).text().toLowerCase();
-            if (listItemText.indexOf(searchText) === -1) {
-                $(this).hide();
+    // start 22-April-24 -----------
+    // $('#stationsDropdownMapSearch').on('keyup', function () {
+    //     var searchText = $(this).val().toLowerCase();
+    //     $('.mapSearchlist-text').each(function () {
+    //         var listItemText = $(this).text().toLowerCase();
+    //         console.log('listItemText', listItemText);
+    //         if (listItemText.indexOf(searchText) === -1) {
+    //             $(this).hide();
+    //         } else {
+    //             $(this).show();
+    //         }
+    //     });
+    // });
+
+    document.getElementById('stationsDropdownMapSearch').addEventListener('input', function() {
+        var searchText = this.value.toLowerCase();
+        var listItems = document.querySelectorAll('.listSearch li');
+
+        listItems.forEach(function(item) {
+            var stationName = item.querySelector('.station-name').textContent.toLowerCase();
+            var regionName = item.querySelector('.region-name').textContent.toLowerCase();
+
+            if (stationName.includes(searchText) || regionName.includes(searchText)) {
+                item.style.display = 'block';
             } else {
-                $(this).show();
+                item.style.display = 'none';
             }
         });
     });
+    // End 22-April-24 -----------
 
     // Do not remove below code ends---------------------------------
 });
@@ -1250,7 +1302,45 @@ function getAqiStatusAndColorCode(value) {
         };
     }
 }
-
+function getAqiStatusAndColorCodeNew(value) {
+    if (value >= 0 && value <= 50) {
+        return {
+            status: statusClassNew1.Good,
+            color: colorCodes.green,
+            Content: aqiContent.Good
+        };
+    } else if (value > 50 && value <= 100) {
+        return {
+            status: statusClassNew1.Moderate,
+            color: colorCodes.lightorange,
+            Content: aqiContent.Moderate
+        };
+    } else if (value > 100 && value <= 150) {
+        return {
+            status: statusClassNew1.UnHealthlySensitiveGroups,
+            color: colorCodes.darkorange,
+            Content: aqiContent.UnHealthlySensitiveGroups
+        };
+    } else if (value > 150 && value <= 200) {
+        return {
+            status: statusClassNew1.UnHealthly,
+            color: colorCodes.peach,
+            Content: aqiContent.UnHealthly
+        };
+    } else if (value > 200 && value <= 300) {
+        return {
+            status: statusClassNew1.VeryUnHealthly,
+            color: colorCodes.purple,
+            Content: aqiContent.VeryUnHealthly
+        };
+    } else {
+        return {
+            status: statusClassNew1.Hazardous,
+            color: colorCodes.hazar,
+            Content: aqiContent.Hazardous
+        };
+    }
+}
 function getColorClassForAqi(aqi) {
     if (aqi >= 0 && aqi <= 50) {
         return colorClass.GoodColorClass;
@@ -1435,10 +1525,12 @@ function loadStationData(initialRequest = false) {
         success: function (data) {
             const aqi = Math.round(data.averageAQI);
             var aqiDetails = getAqiStatusAndColorCode(aqi);
+            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
             var currentYearOverview = new Date().getFullYear();
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetails.status).css('color', aqiDetails.color);
             $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
-            $("#averageAqiStatus, #airQualitySafetyLevelAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetails.status).css('color', aqiDetails.color);
+            $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color); //23-April-24
+            $("#airQualitySafetyLevelAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
             $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? 'Nearest Station: ' : 'Station:') + currentStationDetails.stationName);
             $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
             $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ' Yearly Air Quality Overview for ' + currentYearOverview);
@@ -1559,38 +1651,38 @@ function getActivityContent(aqiLevel) {
         </div>
     `).join('');
 }
-
+// start 19-April-24-------------
 function getHealthRecommendationContent(aqiLevel) {
     const recommendations = {
         good: [
             { img: "mask1.png", title: "Mask Usage", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         moderate: [
             { img: "mask1.png", title: "Mask Usage", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         unhealthyForSensitiveGroups: [
             { img: "mask1.png", title: "Wear a Mask if possible", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Its best to keep your windows closed", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Time to switch on your air purifiers", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Its best to keep your windows closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Time to switch on your air purifiers", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         unhealthy: [
             { img: "mask1.png", title: "Wearing a Mask is Advised", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Windows Should be Closed", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Windows Should be Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         veryUnhealthy: [
             { img: "mask1.png", title: "Best to Wear a Mask", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         hazardous: [
             { img: "mask1.png", title: "Best to Wear a Mask", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
+            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
+            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
         ],
         // Add definitions for other AQI levels...
     };
@@ -1628,7 +1720,7 @@ function getHealthRecommendationContent(aqiLevel) {
         </li>
     `).join('');
 }
-
+// End 19-April-24-------------
 function updateActivities(value) {
     const aqiLevel = getAQILevel(value);
     const content = getActivityContent(aqiLevel);
@@ -1859,7 +1951,7 @@ function getLiveCityRankingApi() {
         error: handleApiError
     });
 }
-
+// Start 22-April-24 -------------
 function bindLiveCityRanking() {
     // Clear existing rows
     $('#stationRankingList, #stationsDropdownMap').empty();
@@ -1879,6 +1971,7 @@ function bindLiveCityRanking() {
                       <div class="list-content">
                         <div class="inner_list-content">
                           <p>`+ station.name + `</p>
+                          <p style="display: none;">`+ stationDetails.regionName + `</p> 
                           <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
                         </div>
                         <div class="dis-content">
@@ -1889,9 +1982,11 @@ function bindLiveCityRanking() {
                     </label>`;
             stationRankingListDiv.append(row);
             stationsDropdownMapEl.append(`<li>
-                <span class="mapSearchlist-text">`+ stationDetails.stationName + `</span>
+                <span class="station-name">`+ stationDetails.stationName + `</span> 
+                <span class="region-name" style="display: none;">`+ stationDetails.regionName + `</span>
             </li>`);
         }
+        // end 22-April-24 -------------
     });
 
     if (currentStationDetails.stationId) {
@@ -1917,6 +2012,15 @@ function bindLiveCityRanking() {
     $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
 }
 
+// start 22-April-24 -----
+$('.mapStationSearchScroll').on('click', 'li', function() {
+    var stationName = $(this).find('.station-name').text();
+    $(".show-mapSearchList").show().html(stationName);
+    $('.Newsearch-box').hide();
+});
+// End 22-April-24 -----
+
+
 function selectedStation(stationId) {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
     loadStationData();
@@ -1940,12 +2044,12 @@ function getAirQualitySafetyLevel() {
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass)); // start 19-April-24 changed function name due to counting animation
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass)); // start 19-April-24 changed function name due to counting animation
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass)); // start 19-April-24 changed function name due to counting animation
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass)); // start 19-April-24 changed function name due to counting animation
 
             // Append to aqiSmallScreenDailyCounts
             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
@@ -1959,20 +2063,92 @@ function getAirQualitySafetyLevel() {
         error: handleApiError
     });
 }
-
+// start 19-April-24 ---------
 function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
-    return `<div class="list-item ` + aqiColorStatus + `">
-              <p>` + aqiValue + `</p>
-              <span>` + aqiStatus + `</span>
-            </div>`;
+    // return `<div class="list-item ` + aqiColorStatus + `">
+    //           <p>` + aqiValue + `</p>
+    //           <span>` + aqiStatus + `</span>
+    //  
+       
+     // Create a container for the count and status
+     var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
+
+     // Create a span element for the count
+     var countSpan = $('<p></p>');
+ 
+     // Append the count span to the container
+     container.append(countSpan);
+ 
+     // Append the status span to the container
+     container.append('<span>' + aqiStatus + '</span>');
+ 
+     // Append the container to the parent
+     $("#aqiStatusDiv").append(container);
+ 
+     // Use jQuery animate() function to animate the count
+     $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+         duration: 1000,
+         easing: 'linear',
+         step: function () {
+             // Update the count value
+             countSpan.text(Math.floor(this.countNum));
+         },
+         complete: function () {
+             // Update the count value when animation is complete
+             countSpan.text(this.countNum);
+         }
+     });
+   
 }
 
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
+    // return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
+    //           <p>` + aqiValue + `</p>
+    //           <span>` + aqiStatus + `</span>
+    //         </div>`;
+
+
+     // Create a container for the count and status
+     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
+
+     // Create a span element for the count
+     var countSpan = $('<p></p>');
+ 
+     // Append the count span to the container
+     container.append(countSpan);
+ 
+     // Append the status span to the container
+     container.append('<span>' + aqiStatus + '</span>');
+ 
+     // Append the container to the parent
+     $("#aqiSmallScreenDailyCounts").append(container);
+ 
+     // Use jQuery animate() function to animate the count
+     $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+         duration: 1000,
+         easing: 'linear',
+         step: function () {
+             // Update the count value
+             countSpan.text(Math.floor(this.countNum));
+         },
+         complete: function () {
+             // Update the count value when animation is complete
+             countSpan.text(this.countNum);
+         }
+     });
+
+}
+function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
     return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
               <p>` + aqiValue + `</p>
               <span>` + aqiStatus + `</span>
             </div>`;
+
 }
+// End 19-April-24 ---------
+
+
+
 
 function getStationChartApi(filter, initialRequest = false) {
     var url;
@@ -2083,20 +2259,19 @@ function bindStationDataToLineChart(filter) {
     gradientFill.addColorStop(0.5, 'rgba(250, 207, 57, 0.2)');
     gradientFill.addColorStop(1, 'rgba(249, 144, 73, 0.2)');
 
-
-    // Getting min and max dates from the dataset
-
-
-
-
+    let minDate = new Date();
+    let maxDate = new Date();
+     
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
-
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
-        const minDate = new Date(Math.min(...dateTimes));
-        const maxDate = new Date(Math.max(...dateTimes));
-        const minDateString = minDate.toISOString().split('T')[0];
-        const maxDateString = maxDate.toISOString().split('T')[0];
+        if (dateTimes.length > 0) {
+            minDate = new Date(Math.min(...dateTimes));
+            maxDate = new Date(Math.max(...dateTimes));
+
+        }
+        minDateString = minDate.toISOString().split('T')[0];
+        maxDateString = maxDate.toISOString().split('T')[0];
         var myChart = new Chart(lineChart, {
             type: 'line',
             data: {
@@ -2121,7 +2296,7 @@ function bindStationDataToLineChart(filter) {
                         return gradientStroke;
                     },
                     pointBackgroundColor: 'white',
-                    fill: true,
+                    fill: false,
                     tension: 0.4,
                     pointRadius: 0
                 }]
@@ -2236,7 +2411,7 @@ function bindStationDataToLineChart(filter) {
                         return gradientStroke;
                     },
                     pointBackgroundColor: 'white',
-                    fill: true,
+                    fill: false,
                     tension: 0.4,
                     pointRadius: 0,
                 }]
@@ -2306,22 +2481,26 @@ function bindStationDataToLineChart(filter) {
     if (chartStatus != undefined) {
         chartStatus.destroy();
     }
-    const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');
+    const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');    
 
+  
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
-        const minDate = new Date(Math.min(...dateTimes));
-        const maxDate = new Date(Math.max(...dateTimes));
-        const minDateString = minDate.toISOString().split('T')[0];
-        const maxDateString = maxDate.toISOString().split('T')[0];
+        if (dateTimes.length > 0) {
+            minDate = new Date(Math.min(...dateTimes));
+            maxDate = new Date(Math.max(...dateTimes));
+
+        }
+        minDateString = minDate.toISOString().split('T')[0];
+        maxDateString = maxDate.toISOString().split('T')[0];
         const myPollutantChart = new Chart(pollutantLineChart, {
             type: 'line',
             data: {
                 labels: iso8601Dates,
                 datasets: [
                     {
-                        label: 'PM10',
+                        label: 'PM₁₀',
                         data: pm10Data,
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
@@ -2331,7 +2510,7 @@ function bindStationDataToLineChart(filter) {
                         borderWidth: 3
                     },
                     {
-                        label: 'SO2',
+                        label: 'SO₂',
                         data: so2Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
@@ -2351,7 +2530,7 @@ function bindStationDataToLineChart(filter) {
                         borderWidth: 3
                     },
                     {
-                        label: 'O3',
+                        label: 'O₃',
                         data: o3Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
@@ -2361,7 +2540,7 @@ function bindStationDataToLineChart(filter) {
                         borderWidth: 3
                     },
                     {
-                        label: 'NO2',
+                        label: 'NO₂',
                         data: no2Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
@@ -2536,16 +2715,16 @@ function bindStationDataToLineChart(filter) {
                 labels: categoriesData, // X-axis categories go here
                 datasets: [
                     {
-                        label: 'PM10',
+                        label: 'PM₁₀',
                         data: pm10Data,
                         backgroundColor: 'rgba(0, 75, 135, 1)',
                         borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
                         pointHoverRadius: 5,
-                        borderWidth: 2
+                        borderWidth: 2,
                     },
                     {
-                        label: 'SO2',
+                        label: 'SO₂',
                         data: so2Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.8)',
                         borderColor: 'rgba(0, 75, 135, 0.8)',
@@ -2563,7 +2742,7 @@ function bindStationDataToLineChart(filter) {
                         borderWidth: 2
                     },
                     {
-                        label: 'O3',
+                        label: 'O₃',
                         data: o3Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.4)',
                         borderColor: 'rgba(0, 75, 135, 0.4)',
@@ -2572,7 +2751,7 @@ function bindStationDataToLineChart(filter) {
                         borderWidth: 2
                     },
                     {
-                        label: 'NO2',
+                        label: 'NO₂',
                         data: no2Data,
                         backgroundColor: 'rgba(0, 75, 135, 0.2)',
                         borderColor: 'rgba(0, 75, 135, 0.2)',
@@ -3691,8 +3870,9 @@ var imageData = [
 ];
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
-
-$.each(imageData, function (index, item) {
+// start 22-April-24--------------
+if(window.innerWidth < 990){
+    $.each(imageData, function (index, item) {
     var carouselItem = $('<div>').addClass('carousel-item carol-item');
     if (index === 0) {
         carouselItem.addClass('active');
@@ -3700,6 +3880,7 @@ $.each(imageData, function (index, item) {
 
 
     let minPerSlide = 6;
+    // alert(window.innerWidth);
     if (window.innerWidth < 768) {
         minPerSlide = 2;
     }
@@ -3724,6 +3905,44 @@ $.each(imageData, function (index, item) {
 
     $('#recipeCarousel .carousel-inner').append(carouselItem);
 });
+} else{
+    var itemsPerPage = 5; // Number of items per slide
+
+    $.each(imageData, function (index, item) {
+        if (index % itemsPerPage === 0) {
+            var carouselItem = $('<div>').addClass('carousel-item carol-item');
+            if (index === 0) {
+                carouselItem.addClass('active');
+            }
+
+            // Loop through each item per slide
+            for (let i = 0; i < itemsPerPage; i++) {
+                var dataIndex = index + i;
+                if (dataIndex >= imageData.length) {
+                    // If dataIndex exceeds imageData length, wrap around to the beginning
+                    dataIndex = dataIndex % imageData.length;
+                }
+
+                var content = $('<div>').addClass('col-md-3');
+                var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+                var imageDiv = $('<div>');
+                var imageId = 'image_' + dataIndex;
+                var image = $('<img>').addClass('item').attr('src', imageData[dataIndex].imageUrl).attr('id', imageId);
+                var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+                var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
+
+                // Assemble elements
+                imageDiv.append(image);
+                mainContent.append(imageDiv, projectContent, projectItemDescription);
+                content.append(mainContent);
+                carouselItem.append(content);
+            }
+
+            $('#recipeCarousel .carousel-inner').append(carouselItem);
+        }
+    });
+}
+// End 22-April-24--------------
 
 $('.main-content').on('click', function () {
 

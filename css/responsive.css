@@ -51,6 +51,16 @@
     /* .full-screen #wrapper{
         display: block!important;
     } */
+
+    .highlight #sidebar.expanded h2 .span{
+        display: none;
+    }
+    .insight .data-sort_sidebar h2{
+        text-align: center;padding-bottom: 25px;
+    }
+    .air-map-container.full-screen{
+        height: 100vh!important;
+    }
     .project-modal .h-200-scroll{
         height: 275px;
     }
@@ -103,7 +113,7 @@
     }
     .web-top-legends {
         right: 0;
-        top: 35px;
+        bottom: 88%;
         left: 0;
         width: 90%;
         margin-left: auto;
@@ -133,9 +143,15 @@
         justify-content: center;
     }
     .air-map-container.full-screen ul.map-vert-tools{
-        bottom: 55px;
+        bottom: 88%; 
     }
-
+    .air-map-container.full-screen .air-map-col ul.map-hori-tools{
+        right: 10px;
+        bottom: 78%;
+    }
+    .air-map-container.full-screen .air-map-col .web-top-legends{
+        bottom: 25px;
+    }
     .air-map-container .air-map-col ul.map-vert-tools li i{
         font-size: 25px;
     }
@@ -325,7 +341,7 @@
         background: #9aa1a9;
         text-align: center;
         border-radius: 20px;
-        top: 9px;
+        top: 15px;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -336,7 +352,7 @@
         border-radius: 20px 20px 0px 0px;
         border: none;
         background: #fff;
-        padding: 20px 15px;
+        padding: 29px 15px;
         width: 100%;
         text-align: center;
     }
@@ -406,6 +422,12 @@
 @media (min-width: 320px) and (max-width: 767px){
     .footermobile-none{
         display: none;
+    }
+    .acceptable-legend{
+        bottom: 38px!important;
+    }
+    #aiq_line{
+        margin-top: -99px;
     }
     .esri-ui-bottom-right.esri-ui-corner{
         bottom: 135px;
@@ -686,8 +708,15 @@
     body{
         font-size: 18px;
     }
+    .air-map-container.full-screen{
+        height: 100vh!important;
+    }
+    
     .faqscrolling{
         padding-right: 0;
+    }
+    #aiq_line{
+        margin-top: -80px;
     }
     header nav.navbar .navbar-brand{
         padding: 10px 10px 10px 15px;
@@ -746,7 +775,7 @@
         display: block;
     }
     .full-screen .web-top-legends{
-        bottom: 100px   
+        bottom: 40px;  
     }
     .insight .graph-duration-filters .tab-screen-mt .btn, .insight .graph-duration-filters .tab-screen-mt .date-box{
         top: 30px;
@@ -1025,7 +1054,7 @@
         font-size: 22px;
     }
     .sidebar-dataScroll{
-        height: calc(100vh - 160px);
+        height: calc(100vh - 130px);
         overflow: auto;
         /* height: 720px; */
     }
@@ -1039,10 +1068,14 @@
     .insight-btn-tab{
         display: block;
         border: 1px solid #fff;
-        color: var(--yellow);
+        color: var(--blue);
         padding: 3px 10px;
         margin-left: auto;
-    margin-right: auto;
+        margin-right: auto;
+    }
+    .insight-btn-tab:hover {
+        background-color: transparent;
+        border: 1px solid #fff;
     }
     /*------------------------- Arisha End------------------------------ */
     .insight .silde-dv {
@@ -1431,7 +1464,7 @@
         font-size: 17px;
     }
     .equal-air-box-height{
-        height: 780px;
+        height: 800px;
     }
     .canvas-graphs-height{
         height: 590px!important;
@@ -1478,7 +1511,7 @@
     }
     .sidebar-dataScroll{
         /* height: 810px; */
-        height: calc(100vh - 250px);
+        height: calc(100vh - 218px);
         overflow: auto;
     }
     .project-modal .h-200-scroll{
@@ -1801,7 +1834,7 @@
         top: -5px; right: -2px;
     }
     .pollutant-toggleBar .info-popup{
-        padding: 20px 30px 40px 30px;
+        padding: 9px 30px 18px 30px;
     }
     /* .insight .mtb-mdscreens{
         margin-top: 20px; margin-bottom: 30px;
@@ -1811,7 +1844,7 @@
         top: 30px;
     } */
     .equal-air-box-height {
-        height: 435px;
+        height: 457px;
         margin-bottom: 7px;
         padding: 9px 15px !important;
     }
