@@ -4617,3 +4617,7 @@ footer .copy-rights ul li a {
     top: 10px !important; /* This adds a 20px offset from the top */
 }
 
+.pollutantLineChart_margin {
+    margin-top: 30px;
+}
+

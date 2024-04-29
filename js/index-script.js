@@ -1040,11 +1040,11 @@ $(document).ready(function () {
     //     });
     // });
 
-    document.getElementById('stationsDropdownMapSearch').addEventListener('input', function() {
+    document.getElementById('stationsDropdownMapSearch').addEventListener('input', function () {
         var searchText = this.value.toLowerCase();
         var listItems = document.querySelectorAll('.listSearch li');
 
-        listItems.forEach(function(item) {
+        listItems.forEach(function (item) {
             var stationName = item.querySelector('.station-name').textContent.toLowerCase();
             var regionName = item.querySelector('.region-name').textContent.toLowerCase();
 
@@ -1063,7 +1063,7 @@ $(document).ready(function () {
 // Project Section modal End--------------
 
 // Insight Section Script by Sachin---------
-function showHideToggleDiv(tabId, pollutant) {  
+function showHideToggleDiv(tabId, pollutant) {
     if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
         document.getElementById('myTabs').classList.add('upperTop');
     } else {
@@ -1158,13 +1158,13 @@ $(document).ready(function () {
 
     $('.quality-index-dropItem').click(function () {
         var el = $('.btn-group-filter');
-         if ($(this).text() == chartFilter.Custom) {
+        if ($(this).text() == chartFilter.Custom) {
             el.find('.date-box').removeClass('calen-box-hide');
             el.find('.quality-button-dropdown').hide();
             var datepickerEl = $(this).closest('.btn-group-filter').find('#datepicker');
             if (!datepickerEl.val()) {
                 datepickerEl.focus();
-            } 
+            }
         } else {
             el.find('.date-box').addClass('calen-box-hide');
             el.find('.quality-button-dropdown').show();
@@ -1908,11 +1908,11 @@ function getAirAnalytics(year) {
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            if (!data || data.length === 0) {                 
-                $('#radarChart').hide();                
+            if (!data || data.length === 0) {
+                $('#radarChart').hide();
                 return;
             }
-            $('#radarChart').show();  
+            $('#radarChart').show();
             labelsData = [];
             pollutantLevels = [];
             colorCodesForAirAnalytics = [];
@@ -2013,7 +2013,7 @@ function bindLiveCityRanking() {
 }
 
 // start 22-April-24 -----
-$('.mapStationSearchScroll').on('click', 'li', function() {
+$('.mapStationSearchScroll').on('click', 'li', function () {
     var stationName = $(this).find('.station-name').text();
     $(".show-mapSearchList").show().html(stationName);
     $('.Newsearch-box').hide();
@@ -2069,36 +2069,36 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     //           <p>` + aqiValue + `</p>
     //           <span>` + aqiStatus + `</span>
     //  
-       
-     // Create a container for the count and status
-     var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
 
-     // Create a span element for the count
-     var countSpan = $('<p></p>');
- 
-     // Append the count span to the container
-     container.append(countSpan);
- 
-     // Append the status span to the container
-     container.append('<span>' + aqiStatus + '</span>');
- 
-     // Append the container to the parent
-     $("#aqiStatusDiv").append(container);
- 
-     // Use jQuery animate() function to animate the count
-     $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
-         duration: 1000,
-         easing: 'linear',
-         step: function () {
-             // Update the count value
-             countSpan.text(Math.floor(this.countNum));
-         },
-         complete: function () {
-             // Update the count value when animation is complete
-             countSpan.text(this.countNum);
-         }
-     });
-   
+    // Create a container for the count and status
+    var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
+
+    // Create a span element for the count
+    var countSpan = $('<p></p>');
+
+    // Append the count span to the container
+    container.append(countSpan);
+
+    // Append the status span to the container
+    container.append('<span>' + aqiStatus + '</span>');
+
+    // Append the container to the parent
+    $("#aqiStatusDiv").append(container);
+
+    // Use jQuery animate() function to animate the count
+    $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+        duration: 1000,
+        easing: 'linear',
+        step: function () {
+            // Update the count value
+            countSpan.text(Math.floor(this.countNum));
+        },
+        complete: function () {
+            // Update the count value when animation is complete
+            countSpan.text(this.countNum);
+        }
+    });
+
 }
 
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
@@ -2108,34 +2108,34 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     //         </div>`;
 
 
-     // Create a container for the count and status
-     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
+    // Create a container for the count and status
+    var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
 
-     // Create a span element for the count
-     var countSpan = $('<p></p>');
- 
-     // Append the count span to the container
-     container.append(countSpan);
- 
-     // Append the status span to the container
-     container.append('<span>' + aqiStatus + '</span>');
- 
-     // Append the container to the parent
-     $("#aqiSmallScreenDailyCounts").append(container);
- 
-     // Use jQuery animate() function to animate the count
-     $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
-         duration: 1000,
-         easing: 'linear',
-         step: function () {
-             // Update the count value
-             countSpan.text(Math.floor(this.countNum));
-         },
-         complete: function () {
-             // Update the count value when animation is complete
-             countSpan.text(this.countNum);
-         }
-     });
+    // Create a span element for the count
+    var countSpan = $('<p></p>');
+
+    // Append the count span to the container
+    container.append(countSpan);
+
+    // Append the status span to the container
+    container.append('<span>' + aqiStatus + '</span>');
+
+    // Append the container to the parent
+    $("#aqiSmallScreenDailyCounts").append(container);
+
+    // Use jQuery animate() function to animate the count
+    $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+        duration: 1000,
+        easing: 'linear',
+        step: function () {
+            // Update the count value
+            countSpan.text(Math.floor(this.countNum));
+        },
+        complete: function () {
+            // Update the count value when animation is complete
+            countSpan.text(this.countNum);
+        }
+    });
 
 }
 function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
@@ -2261,11 +2261,13 @@ function bindStationDataToLineChart(filter) {
 
     let minDate = new Date();
     let maxDate = new Date();
-     
+
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
+            let lastrefreshdate = dateTimes[0].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            $("#StAQIlastrefreshtime").text(lastrefreshdate)
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
 
@@ -2324,14 +2326,14 @@ function bindStationDataToLineChart(filter) {
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
-                                // Clear the values when not hovering
-                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                                /*$("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');	*/
+                                updatePollutantValues();
                             } else {
                                 // Call the custom function to update the values
                                 updatePollutantValues(context.tooltip.dataPoints);
                             }
                         }
-                    }
+                    },
                 },
                 interaction: {
                     intersect: false,
@@ -2350,7 +2352,8 @@ function bindStationDataToLineChart(filter) {
                         },
                         grid: {
                             display: false
-                        }
+                        },
+                        reverse: true
                     },
                     x2: {
                         type: 'time',
@@ -2372,6 +2375,7 @@ function bindStationDataToLineChart(filter) {
                         grid: {
                             drawOnChartArea: false
                         },
+                        reverse: true,
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2439,7 +2443,8 @@ function bindStationDataToLineChart(filter) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
                                 // Clear the values when not hovering
-                                $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');
+                                /* $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');*/
+                                updatePollutantValues();
                             } else {
                                 // Call the custom function to update the values
                                 updatePollutantValues(context.tooltip.dataPoints);
@@ -2475,19 +2480,22 @@ function bindStationDataToLineChart(filter) {
 
         });
     }
+    updatePollutantValues();
     myChart.update();
     var pollutantsLineChartId = "pollutantLineChart";
     var chartStatus = Chart.getChart(pollutantsLineChartId); // <canvas> id
     if (chartStatus != undefined) {
         chartStatus.destroy();
     }
-    const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');    
+    const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');
 
-  
+
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
+            let lastrefreshdate = dateTimes[0].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            $("#StAQIlastrefreshtime").text(lastrefreshdate)
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
 
@@ -2599,7 +2607,9 @@ function bindStationDataToLineChart(filter) {
                         external: function (context) {
 
                             if (context.tooltip.opacity === 0) {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                /*$("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;*/
+                                updateAllPollutantValues();
                                 return;
                             }
 
@@ -2671,6 +2681,7 @@ function bindStationDataToLineChart(filter) {
                         grid: {
                             display: false
                         },
+                        reverse: true,
 
                     },
                     x1: {
@@ -2693,7 +2704,7 @@ function bindStationDataToLineChart(filter) {
                             // Max 20 ticks, adjust as needed.
                             maxTicksLimit: 20
                         },
-
+                        reverse: true,
                         min: minDateString,
                         max: maxDateString
                     },
@@ -2706,6 +2717,7 @@ function bindStationDataToLineChart(filter) {
                 },
             },
         });
+        updateAllPollutantValues();
         myPollutantChart.update();
     }
     else {
@@ -2803,7 +2815,9 @@ function bindStationDataToLineChart(filter) {
                         external: function (context) {
 
                             if (context.tooltip.opacity === 0) {
-                                $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                /*$("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
+                                return;*/
+                                updateAllPollutantValues();
                                 return;
                             }
 
@@ -2880,13 +2894,17 @@ function bindStationDataToLineChart(filter) {
                 },
             }
         });
+        updateAllPollutantValues();
         myPollutantChart.update();
     }
 
 }
 
 function updatePollutantValues(tooltipItems) {
-    var index = tooltipItems[0].dataIndex;
+    var index = 0;
+    if (tooltipItems != undefined) {
+        index = tooltipItems[0].dataIndex;
+    }
 
     // Retrieve data for all pollutants
     var so2 = chartData[index].sO2;
@@ -2903,6 +2921,26 @@ function updatePollutantValues(tooltipItems) {
     $("#lineChartAqiO3Value").text(o3);
 }
 
+function updateAllPollutantValues(tooltipItems) {
+    var index = 0;
+    if (tooltipItems != undefined) {
+        index = tooltipItems[0].dataIndex;
+    }
+
+    // Retrieve data for all pollutants
+    var so2 = chartData[index].sO2;
+    var no2 = chartData[index].nO2;
+    var co = chartData[index].co;
+    var pm10 = chartData[index].pM10;
+    var o3 = chartData[index].o3;
+    // Update the text of the corresponding DOM elements with the pollutant values
+    $("#lineChartPollutantSo2Value").text(so2);
+    $("#lineChartPollutantNo2Value").text(no2);
+    $("#lineChartPollutantCoValue").text(co);
+    $("#lineChartPollutantPm10Value").text(pm10);
+    $("#lineChartPollutantO3Value").text(o3);
+}
+
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
     var thresholdData = [];
@@ -2911,7 +2949,8 @@ function bindStationDataToBarChart(filter) {
     var pollutantBarChartId;
     var pollutantBarChartId1;
     var barChartDataSet = [];
-    var boxid,boxid1,boxid2;
+    var boxid, boxid1, boxid2;
+    var lastrefreshtime;
     switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
@@ -2975,6 +3014,7 @@ function bindStationDataToBarChart(filter) {
             boxid = "pm10Barchart1";
             boxid1 = "pm10Barchart";
             boxid2 = "pm10Barchartinner";
+            lastrefreshtime = "pm10lastrefreshtime";
             break;
         case pollutantAbbrevations.SO2:
             switch (filter) {
@@ -3031,7 +3071,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Hourly);
                             thresholdData.push(pollutantThresholdLimits.SO2Hourly);
                         } else {
-                           // barChartData.push();
+                            // barChartData.push();
                             thresholdData.push(item.sO2);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -3063,6 +3103,7 @@ function bindStationDataToBarChart(filter) {
             boxid = "so2Barchart1";
             boxid1 = "so2Barchart";
             boxid2 = "so2Barchartinner";
+            lastrefreshtime = "so2lastrefreshtime";
             break;
         case pollutantAbbrevations.CO:
             switch (filter) {
@@ -3125,6 +3166,7 @@ function bindStationDataToBarChart(filter) {
             boxid = "coBarchart1";
             boxid1 = "coBarchart";
             boxid2 = "coBarchartinner";
+            lastrefreshtime = "colastrefreshtime";
             break;
         case pollutantAbbrevations.O3:
             switch (filter) {
@@ -3155,7 +3197,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.o3 - pollutantThresholdLimits.O3Hourly);
                             thresholdData.push(pollutantThresholdLimits.O3Hourly);
                         } else {
-                           // barChartData.push(0);
+                            // barChartData.push(0);
                             thresholdData.push(item.o3);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -3186,6 +3228,7 @@ function bindStationDataToBarChart(filter) {
             boxid = "o3Barchart1";
             boxid1 = "o3Barchart";
             boxid2 = "o3Barchartinner";
+            lastrefreshtime = "o3lastrefreshtime";
             break;
         case pollutantAbbrevations.NO2:
             switch (filter) {
@@ -3195,7 +3238,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Daily);
                             thresholdData.push(pollutantThresholdLimits.NO2Daily);
                         } else {
-                          //  barChartData.push(0);
+                            //  barChartData.push(0);
                             thresholdData.push(item.nO2);
                         }
                         categoriesData.push(item.day.split(' '));
@@ -3229,7 +3272,7 @@ function bindStationDataToBarChart(filter) {
                             barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Hourly);
                             thresholdData.push(pollutantThresholdLimits.NO2Hourly);
                         } else {
-                           // barChartData.push(0);
+                            // barChartData.push(0);
                             thresholdData.push(item.nO2);
                         }
                         const dateParts = item.recordedDate.split('/');
@@ -3261,6 +3304,7 @@ function bindStationDataToBarChart(filter) {
             boxid = "no2Barchart1";
             boxid1 = "no2Barchart";
             boxid2 = "no2Barchartinner";
+            lastrefreshtime = "no2lastrefreshtime";
             break;
         default:
             switch (filter) {
@@ -3311,10 +3355,11 @@ function bindStationDataToBarChart(filter) {
             boxid = "AqiBarchart1";
             boxid1 = "AqiBarchart";
             boxid2 = "AqiBarchartinner";
+            lastrefreshtime = "aqilastrefreshtime";
             break;
     }
     var chartStatus = Chart.getChart(pollutantBarChartId); // <canvas> id
-    var chartStatus1 = Chart.getChart(pollutantBarChartId1);	
+    var chartStatus1 = Chart.getChart(pollutantBarChartId1);
     if (chartStatus != undefined) {
         chartStatus.destroy();
     } if (chartStatus1 != undefined) {
@@ -3334,7 +3379,7 @@ function bindStationDataToBarChart(filter) {
     var mediaQuery = "(min-width: 768px) and (max-width: 1199px)";
     // Test the media query
     var mql = window.matchMedia(mediaQuery);
-    let minDate = new Date(); 
+    let minDate = new Date();
     let maxDate = new Date();
 
     var mediaQuery1 = "(min-width: 320px) and (max-width: 767px)";
@@ -3344,14 +3389,16 @@ function bindStationDataToBarChart(filter) {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
+            let lastrefreshdate = dateTimes[0].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            $("#" + lastrefreshtime).text(lastrefreshdate);
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
-            
+
         }
         minDateString = minDate.toISOString().split('T')[0];
         maxDateString = maxDate.toISOString().split('T')[0];
-       
-        
+
+
 
         box.style.height = "290px";
         box3.style.width = "300%";
@@ -3371,16 +3418,16 @@ function bindStationDataToBarChart(filter) {
                 //datasets: barChartDataSet
                 datasets: barChartDataSet.map(dataset => ({
                     ...dataset,
-                   // barThickness: 10,
+                    // barThickness: 10,
                     // offset: 5
-                    
+
                 })),
-                
+
             },
 
             options: {
                 responsive: true,
-                maintainAspectRatio: false,                
+                maintainAspectRatio: false,
                 toolbar: {
                     show: false,
                     tools: {
@@ -3398,7 +3445,7 @@ function bindStationDataToBarChart(filter) {
                     tooltip: {
                         callbacks: {
                             title: function (tooltipItems) {
-                                if (tooltipItems && tooltipItems.length > 0){
+                                if (tooltipItems && tooltipItems.length > 0) {
                                     // Get the label of the first tooltip item, which is the date string
                                     let fullTimestamp = tooltipItems[0].label;
                                     // Manually parse the hour from the timestamp
@@ -3419,18 +3466,18 @@ function bindStationDataToBarChart(filter) {
                                 return value + ' ug/m3';
 
                             }
-                            },
-                            filter: function(tooltipItem, data) {
-                                //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
-                                // Hide tooltip if the value is zero
-                                return tooltipItem.raw !== 0;
+                        },
+                        filter: function (tooltipItem, data) {
+                            //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
+                            // Hide tooltip if the value is zero
+                            return tooltipItem.raw !== 0;
                         }
                     }
                 },
                 interaction: {
                     intersect: false,
                 },
-               scales: {
+                scales: {
                     x: {
                         type: 'time',
                         time: {
@@ -3448,6 +3495,7 @@ function bindStationDataToBarChart(filter) {
                         grid: {
                             display: false
                         },
+                        reverse: true,
                         stacked: true,
                     },
                     x1: {
@@ -3463,8 +3511,9 @@ function bindStationDataToBarChart(filter) {
                         },
                         grid: {
                             //display: false,
-                            drawOnChartArea:false,
+                            drawOnChartArea: false,
                         },
+                        reverse: true,
                         ticks: {
                             // Auto-skip prevents label overlapping.
                             autoSkip: true,
@@ -3474,7 +3523,7 @@ function bindStationDataToBarChart(filter) {
 
                         min: minDateString,
                         max: maxDateString
-                   },
+                    },
                     y: {
                         //  beginAtZero: true,
                         display: false,
@@ -3487,7 +3536,7 @@ function bindStationDataToBarChart(filter) {
                         gridLines: {
                             drawBorder: false,
                         },
-                         stacked: true
+                        stacked: true
                     }
                 },
             },
@@ -3535,12 +3584,12 @@ function bindStationDataToBarChart(filter) {
                         grid: {
                             display: false
                         },
-                         stacked: true,            
+                        stacked: true,
 
                     },
                     y: {
                         grid: {
-                            display: false,   
+                            display: false,
                         },
                         afterFit: (ctx) => {
                             //console.log(ctx);
@@ -3618,7 +3667,7 @@ function bindStationDataToBarChart(filter) {
                     tooltip: {
                         callbacks: {
                             title: function (tooltipItems) {
-                                if (tooltipItems && tooltipItems.length > 0){
+                                if (tooltipItems && tooltipItems.length > 0) {
                                     // Get the label of the first tooltip item, which is the date string
                                     let fullTimestamp = tooltipItems[0].label;
                                     // Manually parse the hour from the timestamp
@@ -3639,12 +3688,12 @@ function bindStationDataToBarChart(filter) {
                                 return value + ' ug/m3';
                             },
                         },
-                        filter: function(tooltipItem, data) {
+                        filter: function (tooltipItem, data) {
                             //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
                             // Hide tooltip if the value is zero
                             return tooltipItem.raw !== 0;
-                            }
                         }
+                    }
                 },
                 interaction: {
                     intersect: false,
@@ -3673,7 +3722,7 @@ function bindStationDataToBarChart(filter) {
                         gridLines: {
                             drawBorder: false,
                         },
-                         stacked: true
+                        stacked: true
                     },
 
                 },
@@ -3725,7 +3774,7 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
 
                     },
-                    y:{
+                    y: {
                         stacked: true,
                         grid: {
                             display: false,
@@ -3871,41 +3920,41 @@ var imageData = [
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
 // start 22-April-24--------------
-if(window.innerWidth < 990){
+if (window.innerWidth < 990) {
     $.each(imageData, function (index, item) {
-    var carouselItem = $('<div>').addClass('carousel-item carol-item');
-    if (index === 0) {
-        carouselItem.addClass('active');
-    }
+        var carouselItem = $('<div>').addClass('carousel-item carol-item');
+        if (index === 0) {
+            carouselItem.addClass('active');
+        }
 
 
-    let minPerSlide = 6;
-    // alert(window.innerWidth);
-    if (window.innerWidth < 768) {
-        minPerSlide = 2;
-    }
-    for (let i = 1; i < minPerSlide; i++) {
-        var content = $('<div>').addClass('col-md-3');
-        var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
-        var imageDiv = $('<div>');
-        var imageId = 'image_' + ((index * minPerSlide) + i);
-        // var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl);
-        var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl).attr('id', imageId); // Add ID to image       
-        var projectContent = $('<div>').addClass('project-slide-content').text(imageData[(index + i) % imageData.length].content);
-        var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[(index + i) % imageData.length].description);
+        let minPerSlide = 6;
+        // alert(window.innerWidth);
+        if (window.innerWidth < 768) {
+            minPerSlide = 2;
+        }
+        for (let i = 1; i < minPerSlide; i++) {
+            var content = $('<div>').addClass('col-md-3');
+            var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+            var imageDiv = $('<div>');
+            var imageId = 'image_' + ((index * minPerSlide) + i);
+            // var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl);
+            var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl).attr('id', imageId); // Add ID to image       
+            var projectContent = $('<div>').addClass('project-slide-content').text(imageData[(index + i) % imageData.length].content);
+            var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[(index + i) % imageData.length].description);
 
 
-        // Assemble elements
-        imageDiv.append(image);
-        mainContent.append(imageDiv, projectContent, projectItemDescription);
-        content.append(mainContent);
-        carouselItem.append(content);
-    }
+            // Assemble elements
+            imageDiv.append(image);
+            mainContent.append(imageDiv, projectContent, projectItemDescription);
+            content.append(mainContent);
+            carouselItem.append(content);
+        }
 
 
-    $('#recipeCarousel .carousel-inner').append(carouselItem);
-});
-} else{
+        $('#recipeCarousel .carousel-inner').append(carouselItem);
+    });
+} else {
     var itemsPerPage = 5; // Number of items per slide
 
     $.each(imageData, function (index, item) {
