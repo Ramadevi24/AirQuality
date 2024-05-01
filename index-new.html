@@ -141,10 +141,10 @@
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
                     <button id="playPauseBtn2" class="d-none d-sm-none d-md-none d-lg-block">
-                        <i class="fa fa-pause-circle-o fa-3x text-white"></i>
+                        <i class="fa fa-pause fa-2x text-white"></i>
                     </button>
                     <button id="playPauseBtn1" class="d-block d-sm-block d-md-block d-lg-none">
-                        <i class="fa fa-pause-circle-o fa-3x text-white"></i>
+                        <i class="fa fa-pause fa-2x text-white"></i>
                     </button>
                     <video autoplay muted id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
@@ -438,7 +438,7 @@
                             <div id="side_bar_content">
                                 <div class="search-box d-flex">
                                     <div class="p-input position-relative">
-                                        <input type="text" id="searchInput" placeholder="Search Text...">
+                                        <input type="text" id="searchInput" placeholder="Search Station...">
                                         <span>
                                             <img src="./images/new-images/search_icon.png" alt="">
                                         </span>
@@ -1659,27 +1659,27 @@
                                                         <li class="nav-item" id="legend-PM10">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('pm10Tab', 'PM10')"
-                                                               style="cursor: pointer;">PM<sub>10</sub><sup>ug/m<sup>3</sup></sup></a>
+                                                                style="cursor: pointer;">PM<sub>10</sub></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-SO2">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('so2Tab', 'SO2')"
-                                                               style="cursor: pointer;">SO<sub>2</sub><sup>ug/m<sup>3</sup></sup></a>
+                                                               style="cursor: pointer;">SO<sub>2</sub></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-CO">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('coTab', 'CO')"
-                                                               style="cursor: pointer;">CO<sup>ug/m<sup>3</sup></sup></a>
+                                                               style="cursor: pointer;">CO</a>
                                                         </li>
                                                         <li class="nav-item" id="legend-O3">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('o3Tab', 'O3')"
-                                                               style="cursor: pointer;">O<sub>3</sub><sup>ug/m<sup>3</sup></sup></a>
+                                                               style="cursor: pointer;">O<sub>3</sub></a>
                                                         </li>
                                                         <li class="nav-item" id="legend-NO2">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('no2Tab', 'NO2')"
-                                                               style="cursor: pointer;">NO<sub>2</sub><sup>ug/m<sup>3</sup></sup></a>
+                                                               style="cursor: pointer;">NO<sub>2</sub></a>
                                                         </li>
                                                     </ul>
                                                     <!-- End 19-April-24 -->
@@ -1698,7 +1698,7 @@
                                                 <div class="container pad_r tab-pd-0">
                                                     <div id="aiq_line">
                                                         <div class="quality-index-wrapper-h2 sm-screen-mtb">
-                                                            <h2 class="index-mb-0 tab-top-pd40 mb-0">
+                                                            <h2 class="index-mb-0 tab-top-pd40 mb-0 changeHeading-pollutant">
                                                                 Station AQI and
                                                                 Pollutants Trends
                                                             </h2>
@@ -1710,14 +1710,14 @@
                                                             <ul class="nav nav-pills mb-3" id="pills-tab"
                                                                 role="tablist">
                                                                 <li class="nav-item" role="presentation">
-                                                                    <a class="nav-link active" id="pills-aqi_lin-tab"
+                                                                    <a class="nav-link active select-pils" id="pills-aqi_lin-tab"
                                                                        data-bs-toggle="pill"
                                                                        data-bs-target="#pills-aqi_lin" type="button"
                                                                        role="tab" aria-controls="pills-aqi_lin"
                                                                        aria-selected="true"> AQI </a>
                                                                 </li>
                                                                 <li class="nav-item" role="presentation">
-                                                                    <a class="nav-link" id="pills-pro ile-tab"
+                                                                    <a class="nav-link select-pils" id="pills-pro ile-tab"
                                                                        data-bs-toggle="pill"
                                                                        data-bs-target="#pills-profile" type="button"
                                                                        role="tab" aria-controls="pills-profile"
@@ -1732,11 +1732,11 @@
                                                                         <!-- <div class="quality-index-wrapper-h2"><h2>station aqi and pollutants tends</h2></div> -->
                                                                         <!-- /////modify/////// -->
                                                                         <!-- <div class="aqi-content">
-                                                                          <li class="position-relative">
-                                                                            <span class="linebefore">AQI</span>
+      <li class="position-relative">
+        <span class="linebefore">AQI</span>
 
-                                                                          </li>
-                                                                        </div> -->
+      </li>
+    </div> -->
                                                                         <!-- start 19-April-24 -->
                                                                         <div class="grid-value">
                                                                             <div class="grid-bottom">
@@ -1827,9 +1827,9 @@
                                                                             <canvas id="aqiLineChart"></canvas>
                                                                         </div>
                                                                         <!--<div class="date_row">
-                                                                            <ul id="aqiHourlyLineChartDates">
-                                                                            </ul>
-                                                                        </div>-->
+        <ul id="aqiHourlyLineChartDates">
+        </ul>
+    </div>-->
                                                                         <!-- start 23-April-2024 -->
                                                                         <ul class="legend aqi-legend-pd-0">
                                                                             <li>
@@ -1854,6 +1854,41 @@
                                                                             </li>
                                                                         </ul>
                                                                         <!-- end 23-April-2024 -->
+                                                                        <div class="pollutant-toggleBar position-relative">
+                                                                            <img src="./images/new-images/info-icon.png"
+                                                                                 class="ic-top-position">
+                                                                            <div class="info-popup info-topPosition">
+                                                                                <!-- Start 16-April-24 -->
+                                                                                <div class="mb-2 text-right">
+                                                                                    <img class="crossicon" src="./images/new-images/Arrow-right.png"
+                                                                                         width="35" height="35">
+                                                                                </div>
+                                                                                <!-- End 16-April-24 -->
+                                                                                <div class="">
+                                                                                    <img src="./images/new-images/Exaclamation-w.png"
+                                                                                         class="mb-3" width="22" height="22"
+                                                                                         alt="health-icon">
+                                                                                </div>
+                                                                                <p class="pollutantbar-title mb-0">
+                                                                                </p>
+                                                                                <p class="pollutantbar-address mb-0">
+                                                                                </p>
+                                                                                <hr>
+                                                                                <p class="measure-pollut">
+                                                                                    Measured Pollutants
+                                                                                </p>
+                                                                                <div class="info-popup-content">
+                                                                                    <ul class="pollutantbar-details ps-0">
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <!-- start 19-April-24 -->
+                                                                                <hr>
+                                                                                <p class="measure-pollut mb-0">
+                                                                                    AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                                </p>
+                                                                                <!-- end end-April-24 -->
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="pills-profile"
@@ -1861,12 +1896,12 @@
                                                                     <div class="tab_shados">
                                                                         <!-- /////modify//// -->
                                                                         <!-- <div class="aqi-content mult-value-tab">
-                                                                          <strong class="linebefore2">AQI</strong>
-                                                                          <p>88 GOOD</p>
-                                                                        </div> -->
+      <strong class="linebefore2">AQI</strong>
+      <p>88 GOOD</p>
+    </div> -->
                                                                         <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
-                                                                         SENSITIVE GROUPS
-                                                                        </p></li></div> -->
+     SENSITIVE GROUPS
+    </p></li></div> -->
                                                                         <!-- /////modify/////// -->
                                                                         <!-- start 19-April-24 -->
                                                                         <div class="grid-value">
@@ -1955,23 +1990,58 @@
                                                                         <div class=" pollutantLineChart_margin canvas-graphs-height polly-linchart-height">
                                                                             <canvas id="pollutantLineChart"></canvas>
                                                                         </div>
+                                                                        <div class="pollutant-toggleBar position-relative">
+                                                                            <img src="./images/new-images/info-icon.png"
+                                                                                 class="pollu-top-position">
+                                                                            <div class="info-popup info-topPosition1">
+                                                                                <!-- Start 16-April-24 -->
+                                                                                <div class="mb-2 text-right">
+                                                                                    <img class="crossicon" src="./images/new-images/Arrow-right.png"
+                                                                                         width="35" height="35">
+                                                                                </div>
+                                                                                <!-- End 16-April-24 -->
+                                                                                <div class="">
+                                                                                    <img src="./images/new-images/Exaclamation-w.png"
+                                                                                         class="mb-3" width="22" height="22"
+                                                                                         alt="health-icon">
+                                                                                </div>
+                                                                                <p class="pollutantbar-title mb-0">
+                                                                                </p>
+                                                                                <p class="pollutantbar-address mb-0">
+                                                                                </p>
+                                                                                <hr>
+                                                                                <p class="measure-pollut">
+                                                                                    Measured Pollutants
+                                                                                </p>
+                                                                                <div class="info-popup-content">
+                                                                                    <ul class="pollutantbar-details ps-0">
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <!-- start 19-April-24 -->
+                                                                                <hr>
+                                                                                <p class="measure-pollut mb-0">
+                                                                                    AQI measures air quality; pollutant trends track changes in air pollution over time.
+                                                                                </p>
+                                                                                <!-- end end-April-24 -->
+                                                                            </div>
+                                                                        </div>
                                                                         <!--<ul class="nav pollutantline-tabs">
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link">PM10</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link">SO2</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link">CO</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link">O3</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link">NO2</a>
-                                                                            </li>
-                                                                        </ul>-->
+        <li class="nav-item">
+            <a class="nav-link">PM10</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">SO2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">CO</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">O3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">NO2</a>
+        </li>
+    </ul>-->
 
                                                                     </div>
                                                                 </div>
@@ -2928,10 +2998,10 @@
                             console.log('introVideo.paused change the button');
                             introVideo.removeAttribute('data-autoplay');
                             introVideo.pause();
-                            $('#playPauseBtn2').html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                            $('#playPauseBtn2').html('<i class="fa fa-play fa-2x text-white"></i>');
                         } else if (!introVideo.hasAttribute('data-autoplay')) {
                             console.log('only last condition introVideo.paused');
-                            $('#playPauseBtn2').html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                            $('#playPauseBtn2').html('<i class="fa fa-play fa-2x text-white"></i>');
                         }
                     } else if (sliding) {
                         sliding = false; // For menu header sliding issue
@@ -3352,10 +3422,10 @@
             function togglePlayPause1() {
                 if (video1.paused) {
                     video1.play();
-                    playPauseButton1.html('<i class="fa fa-pause-circle-o fa-3x text-white"></i>');
+                    playPauseButton1.html('<i class="fa fa-pause fa-2x text-white"></i>');
                 } else {
                     video1.pause();
-                    playPauseButton1.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                    playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
                 }
             }
 
@@ -3363,10 +3433,10 @@
             function togglePlayPause2() {
                 if (video2.paused) {
                     video2.play();
-                    playPauseButton2.html('<i class="fa fa-pause-circle-o fa-3x text-white"></i>');
+                    playPauseButton2.html('<i class="fa fa-pause fa-2x text-white"></i>');
                 } else {
                     video2.pause();
-                    playPauseButton2.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                    playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
                 }
             }
 
@@ -3392,12 +3462,12 @@
 
             // Event listener for video1 end
             video1.addEventListener("ended", function () {
-                playPauseButton1.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
             });
 
             // Event listener for video2 end
             video2.addEventListener("ended", function () {
-                playPauseButton2.html('<i class="fa fa-play-circle-o fa-3x text-white"></i>');
+                playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
             });
         });
     </script>

@@ -316,49 +316,21 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
 
             });
         }
-
-        var touchArea = document.getElementById("zoomplus"); // or any specific element
-
-        // Function to handle the zoom on touch
-        function handleTouchZoom(event) {
+        // added for mp zoom controls --prasanna
+        $("#zoomplus").click(function (event) {
             let zm = view.zoom + 1;
             view.goTo({
                 target: view.center,
                 zoom: zm
             });
-        }
-
-        // Click event for mouse interactions
-        touchArea.addEventListener("click", handleTouchZoom);
-
-        // Touchend event for touch interactions
-        touchArea.addEventListener("touchend", handleTouchZoom);
-
-        // added for mp zoom controls --prasanna
-        //$("#zoomplus").click(function (event) {
-        //    let zm = view.zoom + 1;
-        //    view.goTo({
-        //        target: view.center,
-        //        zoom: zm
-        //    });
-        //});
-        // Select the touchpad area or element you want to attach the listener to
-        var touchAreaMinus = document.getElementById("zoomMinus"); // Ensure this ID matches your HTML element
-
-        // Function to handle the zoom out on touch
-        function handleTouchZoomOut(event) {
+        });
+        $("#zoomMinus").click(function (event) {
             let zm = view.zoom - 1;
             view.goTo({
                 target: view.center,
                 zoom: zm
             });
-        }
-
-        // Click event for mouse interactions
-        touchAreaMinus.addEventListener("click", handleTouchZoomOut);
-
-        // Touchend event for touch interactions
-        touchAreaMinus.addEventListener("touchend", handleTouchZoomOut);
+        });
 
         $("#airPurifier").click(function (event) {
 
@@ -613,11 +585,6 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
             });
         }
 
-
-        function handleApiError(error) {
-            $('.page-loader').fadeOut('slow');
-            console.error('Error fetching data:', error);
-        }
         function Createpollutants_EmirateLvl(AQIValue) {
             // Display avaerage of lastest one hour AQI Index Value at Emirate Level
             var AbuDhabi_Point = {
