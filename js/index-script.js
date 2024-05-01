@@ -1154,10 +1154,18 @@ $(document).ready(function () {
     $('.ic-top-position').on('click', function () {
         $('.info-topPosition').show();
     });
+    $('.crossicon1').on('click', function () {
+        $('.info-topPosition').hide();
+    });
 
     $('.pollu-top-position').on('click', function () {
         $('.info-topPosition1').show();
     });
+    $('.crossicon2').on('click', function () {
+        $('.info-topPosition1').hide();
+    });
+
+
     $('.crossicon').on('click', function () {
         $('.info-popup').hide();
     });
@@ -1551,10 +1559,10 @@ function loadStationData(initialRequest = false) {
             $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
             $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
             $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color); //23-April-24
-            $("#airQualitySafetyLevelAqiStatus").text(aqiDetails.status).css('color', aqiDetails.color);
+            $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
             //  $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? 'Nearest Station: ' : 'Station:') + currentStationDetails.stationName);
             $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ' , ' + currentStationDetails.regionName); // 29-April-24
-            $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName);
+            $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
             $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview); // 29-April-24
             $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
             $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);

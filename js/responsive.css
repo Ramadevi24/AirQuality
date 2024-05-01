@@ -1,0 +1,1993 @@
+@media (min-width: 320px) and (max-width: 365px){
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        width: 90%; padding: 15px 30px 17px 30px!important;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 23px!important; top: 42px!important;
+    }
+    .sidebar-nav{
+        width: 323px;
+    }
+    #page-content-wrapper{
+        right: 13px;
+    }
+    #wrapper.toggled #page-content-wrapper{
+        right: 94%;
+    }
+    .sidebar-dataScroll{
+        height: 490px 
+    }
+}
+
+@media (min-width: 370px) and (max-width: 399px){
+    .data-sort_sidebar.hidden{
+        padding: 30px 15px!important;
+    }
+}
+@media (min-width: 420px) and (max-width: 430px){
+    .data-sort_sidebar.hidden{
+        padding: 28px 15px!important;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 435px){
+    .highlight #sidebar{
+        bottom: -25px!important;
+    }
+    .insight .data-sort_sidebar h2{
+        font-size: 13px;
+    }
+    .nearest-section .station-details .station-box .between-gap {
+        gap: 45px;
+    }
+    .web-top-legends {
+        
+        width: 85%!important;
+        
+    }
+}
+
+@media (min-width: 320px) and (max-width: 766px){
+    /* .full-screen #wrapper{
+        display: block!important;
+    } */
+
+    .highlight #sidebar.expanded h2 .span{
+        display: none;
+    }
+    .insight .data-sort_sidebar h2{
+        text-align: center;padding-bottom: 25px;
+    }
+    .air-map-container.full-screen{
+        height: 100vh!important;
+    }
+    .project-modal .h-200-scroll{
+        height: 275px;
+    }
+    .res-mb0{margin-bottom: 0;}
+    .res-padding15{padding-left: 10px; padding-right: 10px;}
+    .mb-23 {margin-bottom: 23px;}
+    .location-popup-start{
+        padding: 10px 10px;
+    }
+    .insight ul.dropdown-menu.sorttoggle.show{
+        left: auto!important;
+    }
+    .insight .number-exceedance .number-exceedance-heading{
+        font-size: 23px;
+    }
+    .privacy-img{
+        display: none;
+    }
+    .project-slider #recipeCarousel .carol-item .col-md-3{
+        width: 100%;
+    }
+    .banner-section .carousel-caption-banner{
+        top: 20%;
+    }
+    .mapsearch-img{
+        height: 22px !important;
+        width: 22px;
+    }
+    .search-btn1{
+        height: 40px;
+    }
+    .pollutant-toggleBar .info-popup {
+        width: 90%; padding: 29px 30px 22px 30px;
+    }
+    .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        width: 96%; padding: 29px 30px 22px 30px;
+    }
+    #wrapper .sidebar-nav .wheather-widget{
+        display: block;
+    }
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image{
+        display: none;
+    }
+    #wrapper .sidebar-nav .wheather-widget .weather-card-map{
+        position: relative;
+        top: 30px;
+        left: 0;
+        transform: inherit;
+        margin-bottom: 60px;
+    }
+    .down-arrow, .wheather-widget{
+        display: none;
+    }
+    .web-top-legends {
+        right: 0;
+        bottom: 88%;
+        left: 0;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .ead-monitoring-project{
+        position: relative;
+    }
+    .home-slider-animation .emirates-text{
+        font-size: 24px;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 24px; top: 42px;
+    }
+    /* .weather-card{
+        top: 83px; right: 5px;
+    } */
+    .circular-width{
+        width: 230px;
+        height: 230px;
+    }
+    .air-map-container .air-map-col ul.map-vert-tools{
+        bottom: 0;
+        top: auto;
+        left: 0;
+        right: 0;
+        justify-content: center;
+    }
+    .air-map-container.full-screen ul.map-vert-tools{
+        bottom: 88%; 
+    }
+    .air-map-container.full-screen .air-map-col ul.map-hori-tools{
+        right: 10px;
+        bottom: 78%;
+    }
+    .air-map-container.full-screen .air-map-col .web-top-legends{
+        bottom: 25px;
+    }
+    .air-map-container .air-map-col ul.map-vert-tools li i{
+        font-size: 25px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools{
+        right: 10px;
+        top: unset;
+        bottom: 45px;
+    }
+    .Newsearch-box{
+        display: flex;
+        justify-content: flex-start;
+        /* position: absolute; */
+    }
+    .Newsearch-box:hover > .search-txt, .Newsearch-box:hover > .listSearch {
+        margin-left: 110px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools li .btn span{
+        font-size: 30px;
+    }
+    .air-map-container .overview-heading{
+        padding: 5px 45px;
+        font-size: 16px;
+    }
+    .air-map-container .list-container{
+       display: none;
+    }
+    
+    .air-map-container .air-map-col{
+        margin-bottom: 10px;
+    }
+    .air-map-container .list-item span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .air-map-container .list-item p{
+        position: relative;
+    }
+    
+    .air-map-container .air-map-col .mapmobile-ht{
+        height: unset;
+    }
+    .ead-monitoring-project, .contact-section, .faq-section {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 10%;
+    }
+    #section3, #section5{
+        background-image: none;
+    }
+    .sticky-top{
+        top: -2px;
+    }
+    .project-slider .carousel-inner .carousel-item.active, .project-slider .carousel-inner .carousel-item-next, 
+    .project-slider .carousel-inner .carousel-item-prev {
+        display: block; 
+    }
+
+    /* .project-slider .item{
+        width: 330px;
+    } */
+    .project-slider .project-slide-content{
+        font-size: 15px;
+    }
+    .sidebar{
+        overflow: auto;
+    }
+    .modal-background img{
+        height: 250px;
+    }
+    
+    .faq-section h4{
+        font-size: 25px;
+        float: unset;
+        margin-right: 0 !important;
+    }
+    .faqscrolling{
+        padding-left: 2px;
+        padding-right: 2px;
+        height: auto;
+    }
+    .contact-section .left-side::before{
+        display: none;
+    }
+    .contact-content{
+        width: 100%;
+    }
+    .myContentHeight{
+        margin-top: 10%; height: auto;
+    }
+    .contact-section h6{
+        font-family: 'GothamMedium';
+    }
+    .contact-section .contact-form .form-group{
+        margin-bottom: 10px;
+    }
+    .contact-section .contact-form{
+        padding-left: 10px; padding-right: 10px; margin-top: -15px 
+    }
+    .contact-section .contact-form .send-btn{
+        margin-top: 15px !important;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    .contact-form input::placeholder {
+        font-size: 15px;
+    }
+    .contact-form textarea::placeholder {
+        
+        font-size: 15px;
+    }
+    .footer-container{
+        padding-right: 10px; padding-left: 10px;
+    }
+    footer .brand-logo{
+        max-width: 200px; margin-bottom: 20px; 
+    }
+    .footer-container h6{
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .footer-container .dropdown button{
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-family: 'GothamMedium';
+        padding: 0;
+    }
+    .footer-container .dropdown button:active, .footer-container .dropdown ul li a:active{
+        background-color: transparent;
+    }
+    /* footer .social-small-links .left ul.social-media{
+        display: none;
+    } */
+    footer .social-small-links{
+        order: 2; position: relative;
+    }
+    footer .copy-rights p{
+        order: 3;
+    }
+    footer .copy-rights{
+        display: grid;
+    }
+    footer .copy-rights ul{
+        padding-left: 0;
+        display: flex;
+        list-style: none;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    footer .copy-rights ul li a {
+        padding: 1px 9px;
+    }
+    footer .social-small-links .left ul.social-media{
+        justify-content: flex-start; margin-bottom: 20px;
+    }
+    footer .social-small-links .left ul.social-media li{
+        margin-right: -9px;
+    }
+    footer .social-small-links .left ul.social-media li a{
+        font-size: 30px;
+    }
+   /* =======================Sachin 11 March================ */
+    .highlight #sidebar {
+        height: 10%;
+        position: fixed;
+        bottom: 1px;
+        left: 0;
+        right: 0;
+        transition: height 0.5s ease;
+        z-index: 1024;
+        display: block !important;
+    }
+
+    .highlight #sidebar.expanded {
+        height: 100%;
+    }
+    #sidebar{
+        display: none;
+    }
+    .data-sort_sidebar.hidden h2:before {
+        position: absolute;
+        content: ' ';
+        width: 32px;
+        height: 5px;
+        z-index: 9999;
+        background: #9aa1a9;
+        text-align: center;
+        border-radius: 20px;
+        top: 15px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .data-sort_sidebar.hidden {
+        position: relative;
+        text-align: center;
+        box-shadow: 0px -4px 6px 0px #A3A3A44F;
+        border-radius: 20px 20px 0px 0px;
+        border: none;
+        background: #fff;
+        padding: 29px 15px;
+        width: 100%;
+        text-align: center;
+    }
+    /* ======================Close 11 March==================== */
+    .small-device-legend-list{
+        margin-bottom: 30px;
+    }
+    .insightStation h3{
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .insight .search-box .p-input input{
+        background-color: #e4e4e4;
+    }
+    .sidebar-dataScroll{
+        height: calc(100vh - 150px);
+        overflow: auto;
+    }
+    .privacy-policy {
+        margin-top: 25% !important;
+    }
+    .nearest-section .station-details .legend-text, .nearest-section .station-details .legend-value{
+        padding-left: 3px;
+    }
+    /* -----For Mobile header ------------*/
+    header.formobile-fading #hamburger.open div {
+        background: transparent;
+    }
+    header.formobile-fading .navbar-brand.white{
+        display: none;
+    }
+    header.formobile-fading .navbar-brand.black{
+        display: block;
+    }
+    
+    header.formobile-fading nav.navbar {
+        background-color: #fff;
+        width: 100%;
+    }
+    header.formobile-fading nav.navbar .navbar-nav li a {
+        color: var(--blue);
+        padding: 10px 10px !important;
+        text-transform: uppercase;
+        position: relative;
+        transition: all 2s;
+        font-size: 13px;
+        font-weight: 700;
+    }
+    header.formobile-fading nav.navbar .navbar-nav li a.active {
+        color: var(--blue);
+        font-family: 'Gothammedium';
+        font-weight: 600;
+    }
+    header.formobile-fading nav.navbar .search-block span{
+        color: var(--blue)!important;
+    }
+    .formobile-fading #hamburger div:before, .formobile-fading #hamburger div:after, .formobile-fading #hamburger div{
+        background-color: var(--blue)
+    }
+    .formobile-fading .whitesearch-hide {
+        display: none;
+    }
+    .formobile-fading .blue-hide {
+        display: block;
+    }
+}
+@media (min-width: 320px) and (max-width: 767px){
+    .footermobile-none{
+        display: none;
+    }
+    .pollutant-toggleBar .info-topPosition {
+        bottom: 3px;
+        right: 12px;
+    }
+    .insight .resolution-ht{
+        height: auto;
+    }
+    .acceptable-legend{
+        bottom: 38px!important;
+    }
+    #aiq_line{
+        margin-top: -99px;
+    }
+    .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 135px;
+    }
+    .insight .lineChartmt-0{
+        margin: 0!important;
+    }
+    .sm-pd-left11{
+        padding-left: 11px;
+    }
+    .linechart-height-res{
+        height: 270px;margin-bottom: 10px;
+    }
+    .sm-pd-left3{
+        padding-left: 11px;
+    }
+    .footer-2-sec {
+        padding-left: 0px;
+    }
+    .insight ul#myTabs li a{
+        margin:0px 2px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top{
+        top: 1px!important;
+        right: -2px!important;
+    }
+    .insight .pollutant-hour-top7{
+        top: -3px !important;
+    right: -9px !important; 
+    }
+    .insight .margin-top-0{
+        margin: 0!important;
+    top: -2px !important;
+    right: -7px !important;
+    }
+    .insight .graph-duration-filters .hourly-3{
+        right: 0!important;
+    }
+    .insight ul.aqi-legend-pd-0{
+        padding-left: 0;
+    }
+    .equal-station-box-height {
+        height: auto;
+        margin-bottom: 5px;
+    }
+    .insight .pollutant-toggleBar .ic-top-position{
+        top: -20px; right: 1px;
+    }
+    .insight .graph-duration-filters .hourly-4-screen .btn{
+        right: 0!important;
+        top: -7px!important;
+    }
+    .insight .graph-duration-filters .hourly-4-screen .date-box{
+        right: 0!important;
+        margin-top: -7px!important;
+        margin: 0;
+    }
+    .insight .sm-screen-mtb{
+        margin-top: 35px;
+        margin-bottom: 19px;
+    }
+    .insight .hourly-3datebox{
+        margin: 0!important;
+    }
+    .insight .graph-duration-filters .two-one-top {
+        top: 10px; right: 10px;
+    }
+    .canvas-graphs-height{
+        margin-bottom: 0px;
+    }
+    .newcutom-btn{
+        width: 120px 
+    }
+    /* header .search-block .search-collapse .card-body .container-fluid .close{
+        bottom: 7px;
+    } */
+    header .search-block .search-collapse .card-body{
+        padding: 10px 5px;
+    }
+    .footermobile-show{
+        display: block;
+    }
+    .index-mb-0{
+        margin-bottom: 0!important;
+    }
+    .exceed-height{
+        margin-top: 30px;
+        margin-bottom: 18px !important;
+    }
+    .exceeded-box .main-box{
+        margin-bottom: 20px!important; 
+    }
+    .exceeded-box .contact-content p{
+        font-size: 17px;
+    }
+    /* .date_row {
+        padding: 1px;
+        padding-bottom: 70px;
+    } */
+    .insight .chart-f-content p {
+        font-size: 18px;
+        font-weight: 400;
+        /* margin: 0px; */
+        text-align: left;
+        color: var(--grey);
+        /* margin-bottom: 30px;
+        margin-top: 20px;
+        min-height: 90px;
+        display: none; */
+    }
+    #newchartTrend .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+        justify-content: flex-start;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        margin-top: 0;
+    }
+    header .headerpt-10 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    header .search-block {
+        width: auto;
+        justify-content: flex-start;
+        padding: 0px 0px 0 0px;
+        order: 1;
+        margin-right: 29px 
+    }
+    .banner-section .carousel-caption-banner p{
+        width: 100%;
+    }
+    /* =====================Sachin 7 March ================= */
+   
+    .insight .silde-dv {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0;
+    }
+    .insight .main-box {
+        padding: 0.8rem;
+        margin-bottom: 35px;
+    }
+    .insight ul#myTabs {
+        gap: 5px;
+    }
+    .insight ul.legend {
+        gap: 5px 18px;
+        flex-wrap: wrap;
+        min-height: 85px;
+    }
+    .insight .Causes-img p, .insight .activities-imgs p {
+        font-size: 10px;
+    }
+    .insight .quality-index-wrapper-h2 h3 {
+        padding-left: 12px;
+        font-size: 12px;
+    }
+    .insight .quality-index-wrapper-h2 h2 {
+        font-size: 19px;
+        padding-bottom: 5px;
+        margin-bottom: 0px ;
+        min-height: 25px !important;
+    
+    }
+    .insight .number-index p strong {
+        font-size: 80px;
+    }
+    .insight .number-index p {
+        font-size: 18px;
+    }
+    .insight .number-index .small-13 {
+        font-size: 16px;
+    }
+    .insight .pollutant_dv h3, .insight .Causes-wrapper h3, .insight .activities-wrapper h3 {
+        font-size: 14px;
+    }
+    .insight .activities-imgs {
+        gap: 2px;
+        margin-left: -6px;
+    margin-right: -2px;
+    }
+    .insight .grid-value {
+        width: 100%;
+        gap: 10px;
+        padding: 15px 0px;
+        padding-top: 50px;
+    }    
+    .insight .hour_box ul {
+        width: 100%;
+    }
+    .insight #radarChart {
+        width: 320px !important;
+        /* height: 340px !important; */
+    }
+    .insight ul.legend_radar{
+        margin-bottom: 15px;
+    }
+    .insight .aqi-content {
+        top: 0;
+        width: 100%;
+        left: 0px;
+        width: max-content;
+    }
+    .insight .align-items-flexstart {
+        padding: 1rem 0px;
+        width: 100%;
+    }
+    .insight .slide-content p {
+        margin-top: 30px;
+    }
+    .insight .polutenat_bar .tab_shado .graph-duration-filters {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .insight .aqi-content.mult-value-tab {
+        top: 0;
+        left: 0;
+        width: max-content;
+    }
+    .insight .contact-content {
+        width: 100%;
+        padding-top: 10px;
+    }
+    #ADstationAqiBarGraph {
+        overflow: hidden;
+        overflow-x: scroll;
+        margin-top: 30px;
+        margin-bottom: 0px !important; 
+    }
+    .canvas-graphs-barchart1 {
+        margin-top: 30px;
+        height: 275px;
+    }
+
+    .canvas-graphs-barchart {
+        margin-left: -10px;
+    }
+    #chart_polutent {
+        overflow: hidden;
+        overflow-x: scroll;
+        margin-top: 31px;
+    }
+    #options_aiq_line{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    #newchartTrend{
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+    .pad_r {
+        padding-right: 0px !important;
+    }
+    /* ------------ add new res css -------------- */
+    .insight .ug_content {
+        top: 20px;
+    }
+    .insight .indexbar-ugcontent{
+        top: 40px!important;
+    }
+    .insight ul.nav.twobar-tabs {
+        bottom: 27%;
+    }
+    .insight ul.nav.upperTop{
+        bottom: 24%!important;
+    }
+    /* .insight .graph-duration-filters .btn {
+        top: -7px;
+    } */
+    .insight .date_row ul li p {
+        margin-bottom: 30px;
+    }
+    .insight .date-box{
+        margin: 10px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1199px){
+    /* Arisha Start */
+    body{
+        font-size: 18px;
+    }
+    .insight .resolution-ht{
+        height: auto;
+    }
+    .air-map-container.full-screen{
+        height: 100vh!important;
+    }
+    
+    .faqscrolling{
+        padding-right: 0;
+    }
+    #aiq_line{
+        margin-top: -80px;
+    }
+    header nav.navbar .navbar-brand{
+        padding: 10px 10px 10px 15px;
+    }
+    .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 75px;
+    }
+    .full-screen .esri-ui-bottom-right.esri-ui-corner{
+        bottom: 160px;
+    }
+    .linechart-height-res{
+        height: 270px!important;
+    }
+    .tabexceed-pb0{
+        padding-bottom: 27px!important;
+    }
+    .mapsearch-img {
+        height: 19px !important;
+        width: 19px !important;
+    }
+    .insight .airpb-0{
+        padding-bottom: 0!important;
+    }
+    .tab-pd-left a{
+        padding-left: 2px!important;
+    }
+    .tab-opacity-pd{
+        margin-left: 25px;margin-right: 25px;
+    }
+    .equal-station-box-height {
+        height: 555px;
+        margin-bottom: 5px;
+    }
+    .insight .pollutant-toggleBar .pollutantbar-title{
+        font-size: 22px;
+    }
+    .insight .indexbar-ugcontent{
+        top: 35px!important;
+    }
+    .insight ul.dropdown-menu.sorttoggle.show{
+        left: -45%!important;
+    }
+    .banner-section .carousel-caption-banner{
+        gap: 20px;
+    }
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        width: 90%; padding: 25px 30px 37px 30px;
+    }
+    #locationModal .modal-body p{
+        font-size: 14px;
+    }
+    .large-webmenu, .footermobile-none{
+        display: none;
+    }
+    .tablet-menu, .footermobile-show{
+        display: block;
+    }
+    .full-screen .web-top-legends{
+        bottom: 40px;  
+    }
+    .insight .graph-duration-filters .tab-screen-mt .btn, .insight .graph-duration-filters .tab-screen-mt .date-box{
+        top: 30px;
+        right: 10px;
+    }
+    #chart_polutent{
+        margin-top: 30px;
+    }
+    .insight .ug_content {
+        top: 18px;
+    }
+    .insight .md-top-tablet{
+        top: 30px!important; right: 10px!important;
+    }
+    .insight .graph-duration-filters .tabscreen-3-mt .btn, .insight .graph-duration-filters .tabscreen-3-mt .date-box{
+        top: -5px!important 
+    }
+    .insight .graph-duration-filters .hourly-4-screen .btn, .insight .graph-duration-filters .hourly-4-screen .date-box{
+        top: -15px!important 
+    }
+    .header-responsive-flex .container-fluid{
+        justify-content:center;
+        padding-left: 10px;
+        padding-right: 10px 
+    }
+    header nav.navbar .navbar-nav li {
+        padding: 0px 3px !important;
+    }
+    header nav.navbar .navbar-nav li a, header.fadeout nav.navbar .navbar-nav li a{
+        padding: 8px!important;
+    }
+    .banner-section .carousel-caption-banner .h6{
+       font-size: 20px;
+    }
+    .home-slider-animation .emirates-text{
+        font-size: 35px;
+    }
+    .home-slider-animation .welcome-text{
+        font-size: 32px;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 40px; top: 48px; width: 100%;
+    }
+    .circular-width{
+        width: 350px; height: 350px;
+    }
+    header .search-block{
+        width: auto;
+    }
+    /* .weather-card{
+        top: 37%; right: -7%;
+    } */
+    .section1-dateshift .date{
+        font-size: 13px;
+    }
+    .weather-card h2{
+        font-size: 23px;
+    }
+    .weather-card h5{
+        font-size: 32px;
+    }
+    .weather-card h6{
+        font-size: 18px;
+    }
+    .weather-card .date-shift{
+        margin-left: 17px 
+    }
+    .weather-card .date{
+        font-size: 17px;
+    }
+    .down-arrow{
+        display: none;
+    }
+    .air-map-container .overview-heading{
+        font-size: 22px;
+    }
+    .air-map-container .list-container{
+        align-items: flex-start;
+        width: 95%;
+        gap: 19px;
+        padding: 25px 0;
+    }
+    .air-map-container .list-item span{
+        font-size: 15px;
+    }
+    .air-map-container .air-map-col .iframeimg, .air-map-container .air-map-col iframe {
+        height: 670px;
+    }
+    .air-map-container .air-map-col ul.map-vert-tools{
+        top: 45px;
+    }
+    .air-map-container .air-map-col ul.map-hori-tools{
+        top: 90px;
+    }
+    .air-map-container .air-map-col{
+        margin-bottom: 0;
+    }
+    .insight .align-items-flexstart{
+        padding: 2rem 0rem 
+    }
+    .insightStation h3{
+        font-size: 20px;
+    }
+    .insight .main-box {
+        margin-bottom: 35px;
+    }
+    .insight .tab-padding-50{
+        padding: 10px 50px 
+    }
+    .health-recommand-tab .paratab{
+        padding-top: 15px!important;
+    }
+    .health-recommand-tab ul li{
+        margin-bottom: 0;
+    }
+    
+    .insight #exampleModal .mask-use{
+        font-size: 26px;
+    }
+    .insight .calendar-icon{
+        top: 2px;
+    }
+    .tab-top-pd40{
+        margin-top: 40px!important;
+    }
+    .insight .aqi-content{
+        padding: 3px 12px;
+    }
+    .insight .hour_box ul li span{
+        font-size: 23px;
+    }
+    .insight .hour_box ul li p{
+        font-size: 19px;
+    }
+    .insight .contact-content{
+        width: 100%;
+    }
+    .ead-monitoring-project{
+        position: relative;
+        padding-left: 35px;
+        padding-right: 10px;
+    }
+    .contact-section{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .ead-monitoring-project #recipeCarousel .carousel-item .col-md-3{
+        width: 50%;
+    }
+    .project-modal .h-200-scroll{
+        height: 400px
+    }
+    .faq-section h4{
+        float: left;
+        font-size: 33px;
+        margin-bottom: 40px;
+    }
+    .faq-section .accordion-button{
+        font-size: 18px;
+    }
+    .contact-section .contact-content{
+        width: 100%; 
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .footer-container{
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    .footer-2-sec {
+        padding-left: 25px;
+    }
+    footer .brand-logo{
+        max-width: 200px; margin-bottom: 20px; 
+    }
+    .footer-container h6{
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .footer-container .dropdown button{
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-family: 'GothamMedium';
+        padding: 0;
+    }
+    .footer-container .dropdown button:active, .footer-container .dropdown ul li a:active{
+        background-color: transparent;
+    }
+    /* footer .social-small-links .left ul.social-media{
+        display: none;
+    } */
+    footer .social-small-links{
+        order: 2; position: relative;
+    }
+    footer .copy-rights p{
+        order: 3;
+    }
+    footer .copy-rights{
+        display: grid;
+    }
+    footer .copy-rights ul{
+        padding-left: 0;
+        display: flex;
+        list-style: none;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    footer .copy-rights ul li a {
+        padding: 1px 11px;
+    }
+    footer .social-small-links .left ul.social-media{
+        justify-content: flex-start; margin-bottom: 20px;margin-top: 15px;
+    }
+    footer .social-small-links .left ul.social-media li{
+        margin-right: -6px;
+    }
+    footer .social-small-links .left ul.social-media li a{
+        font-size: 30px;
+    }
+    .mb-23 {
+        margin-bottom: 23px;
+    }
+    .tab-privacy-section ul{
+        padding-left: 0;
+        padding-bottom: 20px;
+    }
+    .tab-privacy-section li{
+        list-style: none;
+        display: inline-block;
+        padding: 10px 10px;
+    }
+    .highlight #sidebar {
+        display: block;
+    }
+    #sidebar {
+        display: none;
+    }
+    .expand-panel{
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(270deg);
+        top: 35%;
+        position: absolute;
+        font-family: 'GothamMedium';
+        color: var(--blue);
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    .insight .search-box .p-input input {
+        background-color: #e4e4e4;
+    }
+    .insight .inner_list-content p{
+        font-size: 16px;
+    }
+    .insight .inner_list-content span{
+        font-size: 15px;
+    }
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        width: 80%;
+    }
+    .privacy-policy {
+        margin-top: 15%;
+    }
+    .private-scroll-hide .contact-content {
+        width: 100%; font-size: 20px;
+    }
+    .privacy-fadeout nav.navbar .navbar-nav li a{
+        padding: 8px!important;
+    }
+    .privacy-img{
+        display: none;
+    }
+    .scrollPolicyShow h6{
+        font-size: 22px;
+    }
+    .sidebar-dataScroll{
+        height: calc(100vh - 130px);
+        overflow: auto;
+        /* height: 720px; */
+    }
+    .scrollPolicyShow {
+        height: auto;
+        overflow: auto;
+    }
+    .insight-btn{
+        display: none;
+    }
+    .insight-btn-tab{
+        display: block;
+        border: 1px solid #fff;
+        color: var(--blue);
+        padding: 3px 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .insight-btn-tab:hover {
+        background-color: transparent;
+        border: 1px solid #fff;
+    }
+    /*------------------------- Arisha End------------------------------ */
+    .insight .silde-dv {
+        padding-right: 0px;
+    }
+    .insight .quality-index-wrapper-h2 h2 {
+        padding-top: 25px;
+        margin: 0px;
+        padding-bottom: 0px;
+        font-size: 28px;
+    }
+    .insight .number-index p {
+        font-size: 21px;
+    }
+    .insight .number-index .small-13 span{
+        font-size: 23px;
+    }
+    .insight .number-index p strong {
+        font-size: 95px;
+        line-height: 90px;
+    }
+    .number-index h6.small-13 {
+        font-size: 16px;
+    }
+    
+    .insight .Causes-img img {
+        max-width: 70px;
+        margin-right: 15px;
+    }
+    .insight .Causes-img p, .insight .activities-imgs p {
+        font-size: 15px;
+    }
+    /* .insight .activities-imgs {
+        gap: 16px;
+    } */
+    .insight .slide-content p {
+        margin: 0px;
+        padding: 40px 0px;
+    }
+    .slide-content.main-box.position-relative {
+        padding: 40px;
+    }
+    .insight .slide-content ul li .bg-gray img {
+        width: 70px;
+        height: 70px;
+    }
+    .insight .slide-content ul li {
+        gap: 20px;
+    }
+    .insight .quality-index-wrapper-h2 p {
+        padding-bottom: 25px;
+        margin: 0px;
+    }
+    .insight #ADstationAqiBarGraph {
+        overflow: hidden;
+        overflow-x: scroll;
+        margin-top: 25px;
+    }
+    .insight #ADstationAqiBarGraph{
+        margin-bottom: 0px;
+    }
+    .canvas-graphs-barchart1 {
+        height: 300px;
+        margin-top: 25px;
+    }
+    .insight .red-c p {
+        font-size: 18px;
+    }
+    .insight .white-bg p {
+        font-size: 18px;
+    }
+    .insight .pollutant_dv h3, .insight .Causes-wrapper h3, .insight .activities-wrapper h3 {
+        font-size: 20px;
+    }
+    .insight .activities-imgs img {
+        max-width: 70px;
+        height: 70px;
+    }
+    .insight .slide-content ul li p {
+        font-size: 22px;
+    }
+    .insight .polutenat_bar .tab_shado .graph-duration-filters {
+        position: absolute;
+        right: 0px;
+        top: -4%;
+    }
+    .insight ul#myTabs {
+        gap: 18px;
+        width: 100%;
+    }
+    .insight ul.legend {
+        gap: 8px 50px;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        min-height: 80px;
+    }
+    .insight .chart-f-content p {
+        padding-top: 30px;
+        font-size: 17px;
+        color: var(--grey);
+    }
+    .insight .grid-upper p {
+        font-size: 11px;
+    }
+    .insight .mult-value strong {
+        font-size: 12px;
+    }
+    .insight .mult-value p {
+        font-size: 12px;
+    }
+    .insight .grid-value {
+        width: 400px;
+        margin-bottom: 10px;
+    }
+    .insight .radar_section .quality-index-wrapper-h2 h2 br{
+        display: none;
+    }
+    .insight .hour_box ul {
+        gap: 30px;
+        width: 100%;
+    }
+    .insight .hour_box ul li {
+        max-width: 180px;
+        max-height: 180px;
+    }
+    .insight .contact-content p {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 10px 0px !important;
+    }
+    .insight #radarChart {
+        width: 100% !important;
+        height: 550px !important;
+    }    
+    .insight #sidebar {
+        width: 100%;
+        position: fixed;
+        height: 100%;
+        top: 0px;
+        right: 100%;
+        transition: right 0.5s ease;
+        z-index: 11111;
+      }
+      .insight #sidebar.visible {
+        right: 0px;
+        transition: right 0.7s ease;
+      }
+      .insight #sidebar-btn {
+        display: block;
+        /* vertical-align: middle; */
+        width: 25px;
+        height: 100px;
+        cursor: pointer;
+        position: fixed;
+        top: 0px;
+        z-index: 99;
+        left: 0px;
+      }
+    
+      .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0;
+        text-align: center;
+        /* border: 1px solid #ccc; */
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100vh;
+      }
+      .insight .coll-icon img {
+        width: 90px;
+        position: absolute;
+        /* left: -28px; */
+        /* top: 44px; */
+        /* transform: rotate(90deg); */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        top: 50%;
+        /* height: 80px; */
+        height: 7px;
+      }
+      .insight #sidebar.visible #sidebar-btn {
+        transition: right 0.9s ease;
+        top: 0px;
+        position: absolute;
+        left: 50%;
+    }
+    
+    .insight .data-sort_sidebar {
+        position: relative;
+        width: 50%;
+    }
+    .insight ul.nav.twobar-tabs {
+        bottom: 123px;
+    }
+    .insight ul.nav.upperTop {
+        bottom: 115px!important;
+    }
+    .canvas-graphs-height{
+        height: 350px;
+    }
+    /* .chart-f-content {
+        min-height: 55px;
+        display: none;
+    } */
+    
+        
+
+
+    
+}
+
+@media (min-width: 799px) and (max-width: 900px){
+    .tab-pd-0{padding-left: 0; padding-right: 0; max-width: 755px;}
+    .insightStation h3{padding-left: 11px;}
+    .faq-section {
+        padding-left: 0; padding-right: 0; max-width: 91%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px){
+    .footermobile-show{
+        display: block;
+    }
+    .footermobile-none{
+        display: none;
+    }
+    .insight .coll-icon img {
+        width: 90px;
+        position: absolute;
+        /* left: -28px; */
+        /* top: 44px; */
+        /* transform: rotate(90deg); */
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        top: 50%;
+        /* height: 80px; */
+        height: 7px;
+    }
+    .expand-panel {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(270deg);
+        top: 39%;
+        position: absolute;
+        font-family: 'GothamMedium';
+        color: var(--blue);
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+    .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0;
+        text-align: center;
+        /* border: 1px solid #ccc; */
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100vh;
+    }
+    .video-wrapper{
+        height: 100vh;
+    }  
+    .lgtab-hide .contact-content{
+        display: none;
+    }
+    .insightStation h3{
+        padding-left: 40px;
+    }
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        width: 65%;
+    }
+    .insight .pollutant-toggleBar .pollutantbar-title{
+        font-size: 22px;
+    }
+    /* ---------------------------end 18 march */
+    div#section2 .col-lg-9.col-md-12 {
+        width: 100%;
+    }
+    .insight .silde-dv {
+        padding-left: 10px;
+        padding-right: 0;
+        margin-top: 2%;
+    }
+        
+     /* collapse css here */
+    
+     .insight #sidebar {
+        width: 100%;
+        position: fixed;
+        height: 100%;
+        top: 65px;
+        right: 100%;
+        transition: right 0.5s ease;
+        z-index: 9;
+      }
+      .insight #sidebar.visible {
+        right: 0px;
+        transition: right 0.7s ease;
+      }
+      .insight #sidebar-btn {
+        display: block;
+        /* vertical-align: middle; */
+        width: 25px;
+        height: 100px;
+        cursor: pointer;
+        position: fixed;
+        top: 72px;
+        z-index: 99;
+        left: 0px;
+      }
+    
+      /* .insight .coll-icon {
+        width: 25px;
+        height: 100px;
+        background: #fff;
+        border-radius: 0px 6px 6px 0px;
+        text-align: center;
+        border: 1px solid #ccc;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      } */
+      /* .insight .coll-icon img {
+        width: 80px;
+        position: absolute;
+        left: -28px;
+        top: 44px;
+        transform: rotate(90deg);
+      } */
+      .insight  #sidebar.visible #sidebar-btn {
+        transition: right 0.9s ease;
+        top: 0px;
+        position: absolute;
+        left: 40%;
+    }
+    
+      .insight .data-sort_sidebar {
+        position: relative;
+        width: 40%;
+    }
+    .date_row {
+        padding-bottom: 70px;
+    }    
+    .insight ul.nav.twobar-tabs {
+        bottom: 16%;
+    }
+    
+    
+    
+
+}
+
+@media (min-width: 1200px) and (max-width: 1320px){
+    .myContentHeight {
+        height: 275px;
+    }
+   
+}
+@media (min-width: 1321px) and (max-width: 1369px){
+    /* .interesting-facts-section .contri-box{
+        height: calc(50% - 34px);
+    } */
+    
+  
+}
+@media (min-width: 1200px) and (max-width: 1402px){
+    footer .copy-rights ul li a {
+        padding: 1px 18px;
+        padding-right: 0;
+    }
+
+}
+
+@media (min-width: 1403px) and (max-width: 1450px){
+    .myContentHeight {
+        height: 246px;
+    }
+    
+}
+@media (min-width: 1451px) and (max-width: 1699px){
+ 
+}
+@media (min-width: 1700px) and (max-width: 1750px){
+    body, header nav.navbar .navbar-nav li a, header.fadeout nav.navbar .navbar-nav li a, .air-map-container .list-item span{
+        font-size: 17px;
+    }
+    .equal-air-box-height{
+        height: 800px;
+    }
+    .canvas-graphs-height{
+        height: 590px!important;
+    }
+    .equal-station-box-height{
+        height: 800px;
+    }
+    .canvas-graphs-heightline{
+        height: 580px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top ,  .insight .margin-top-0{
+        top: 26px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: 22px;
+    }
+    /* .pd-main-box{
+        height: 830px!important;
+    } */
+    .insight #radarChart{
+        height: 420px !important;
+    }
+    .insight ul.legend_radar{
+        bottom: 35%;
+        position: absolute;
+    }
+    .insight .resolution-ht {
+        height: calc(100vh - 230px);
+    }
+    .exceeded-box .main-box{
+        height: 680px;
+    }
+    .lineChartmt-0{
+        margin-top: 26px;
+    }
+    .home-slider-animation .welcome-text, .home-slider-animation .emirates-text{
+        font-size: 50px;
+    }
+    .banner-section .carousel-caption-banner .h5{
+        font-size: 60px; top: 46px; 
+    }
+    .banner-section .carousel-caption-banner .h6{
+        font-size: 22px;
+    }
+    .sidebar-dataScroll{
+        /* height: 810px; */
+        height: calc(100vh - 218px);
+        overflow: auto;
+    }
+    .project-modal .h-200-scroll{
+        height: 555px;
+    }
+    #section4{
+        justify-content: flex-start;
+    }
+    .faqscrolling{
+        height: 800px;
+    }
+    .faq-section {
+        margin-top: 9%;
+    }
+    /* .contact-section{
+        margin-top: 19%;
+    } */
+    .circular-width {
+        width: 380px;
+        height: 380px;
+    }
+    .weather-card h2{
+        font-size: 25px;
+    }
+    .weather-card h5{
+        font-size: 45px;
+    }
+    .weather-card h6, .weather-card .date{
+        font-size: 18px;
+    }
+    .section1-dateshift .date{
+        font-size: 13px;
+    }
+    /* .weather-card{
+        top: 139px; right: -25px;
+    } */
+    .air-map-container{
+        justify-content: flex-start;
+    }
+    .air-map-container .overview-heading{
+        font-size: 20px;margin-top: 30px !important;
+    }
+    .air-map-container .list-container{
+        padding: 30px 0 0 0;
+    }
+    /* .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
+        height: 860px;
+    } */
+    .wheather-widget .map-bg-opacity img {
+        width: 230px;
+        height: 230px !important;
+    }
+    .project-slider .item{
+        height: 450px;
+    }
+    .myContentHeight {
+        height: 270px;
+    }
+    .insight .align-items-flexstart{
+        padding: 6rem 0rem;
+    }
+    .wheather-widget{
+        bottom: 30px;
+    }
+    .air-map-container .air-map-col img, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg{
+        height: calc(100vh - 200px);
+    }
+}
+
+
+@media screen and (min-width: 1355px) and (max-width: 1368px) and (min-height: 600px) and (max-height: 765px) {
+    .scroll-info-top{
+        height: 150px; overflow: auto;
+    }
+    .insight .pollutant-toggleBar .ic-top-position{
+        top: -12px; right: -7px; bottom: 0;
+    }
+    .insight .pollutant-toggleBar .pollu-top-position{
+        bottom: 7px;
+    }
+    .insight .pollutant-toggleBar .iconimg{
+        width: 27px;
+        height: 27px;
+    }
+    .insight .resolution-ht {
+        height: calc(100vh - 170px);
+    }
+    .polly-linchart-height{
+        height: 270px;
+    }
+    .insight .pollutantline-tabs{
+        bottom: -32px;
+    }
+    .project-slider .item{
+        height: 317px;
+    }
+    .linechart-height-res{
+        height: 230px;
+    }
+    .scrollPolicyShow {
+        height: 355px;
+    }
+    .insight .slide-content ul .modal.fade button.btn-close img{
+        width: 13px !important;
+        height: 13px;
+    }
+    .insight .res-airanalytic{
+        margin-top: 9px;width: 100px;
+    }
+    .insight ul.legend_radar{
+        margin-top: 10px
+    }
+    .enjoy-mb-8{
+        margin-bottom: 8px!important;
+    }
+    .insight ul.dropdown-menu.sorttoggle.show {
+        left: -13% !important;
+    }
+    /* .levelmb25{
+        margin-bottom: 25px!important;
+    } */
+    .exceed-height{
+        min-height: 55px!important;
+    }
+    /* .med-datenow{
+        padding: 0px;
+        padding-bottom: 7px;  
+    } */
+    .insight .calendar-icon{
+        top: 4px;
+    }
+    .banner-section .carousel-caption-banner .h6{
+        font-size: 14px;
+    }
+    .banner-section .home-slider-animation .six-resolution-mt30{
+        margin-top: 30px!important;
+    }
+    .banner-section .home-slider-animation .six-resolution-mt10{
+        margin-top: 10px!important;
+    }
+    .drop-arrow-icon{
+        bottom: 15px;
+    }
+    .drop-arrow-icon1{
+        bottom: 35px;
+    }
+    .air-map-container .air-map-col .mp-resolution, .air-map-container .air-map-col iframe, .air-map-container .air-map-col .mapimg {
+        height: 500px;
+    }
+    #wrapper .sidebar-nav .wheather-widget{
+        padding: 0px 40px;
+    }
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image{
+        height: 220px !important
+    }
+    .weather-box .weather-data{
+        margin-top: 11px;
+    }
+    /* .air-map-container .list-container{
+        padding: 0px 0;
+    } */
+    .air-map-container .overview-heading{
+        margin-top: 10px !important;
+    }
+    .air-map-container .list-container{
+        padding: 5px 0 0 0; 
+    }
+    .air-map-container .list-container .darkorange span{
+        line-height: 15px;
+    }
+    .air-map-container .list-item span{
+        line-height: 10px;
+    }
+    .air-map-container .list-item p {
+        font-size: 32px;
+    }
+    .ead-monitoring-project{
+        top: 12%;
+    }
+    .contact-section{
+        margin-top: 5%;
+    }
+    .modal-background img{
+        height: 280px;
+    }
+    .project-modal .h-200-scroll{
+        height: 185px;
+    }
+    /* .project-slider .item{
+        width: 300px;
+    } */
+    #section3, #section5{
+        background-size: 350px;
+    }
+    .faqscrolling{
+        height: 423px;
+        overflow: auto;
+        padding-right: 20px;
+    }
+    .myContentHeight{
+        height: 258px;
+        overflow: hidden;
+    }
+      /* =====================Sachin Responsive CSS===================== */
+      .insight .data-sort_sidebar h2 {
+        padding-bottom: 8px;
+        font-size: 14px;
+    }
+    .insight .search-box .p-input input {
+        padding: 8px 30px;
+    }
+    .insight .inner_list-content p {
+        font-size: 11px;
+    }
+    .insight .inner_list-content span {
+        font-size: 10px;
+    }
+    .insight .data-list label.list-group-item {
+        margin-bottom: 6px;
+    }
+    .insight .quality-index-wrapper-h2 h2 {
+        font-size: 18px;
+        padding-bottom: 5px;
+        margin: 0px;
+        /* min-height: 48px !important; */
+    }
+    .insight .number-index p strong {
+        font-size: 55px;
+        /* line-height: 48px; */
+    }
+    .insight .pd-main-box {
+        padding: 6px 2rem!important;
+    }
+    .insight .main-box {
+        padding: 0rem 1rem;
+    }
+    .insight .index-content {
+        gap: 10px;
+    }
+    .insight .Causes-img img {
+        max-width: 40px;
+    }
+    .insight .activities-imgs img {
+        max-width: 40px;
+        height: 40px;
+    }
+    .insight .Causes-img p, .insight .activities-imgs p {
+        font-size: 9px;
+    }
+    .insight .activities-imgs {
+        gap: 2px;
+        margin-left: -12px;
+        margin-right: -9px;
+    }
+    /* .insight .graph-duration-filters .btn {
+        width: 115px;
+        padding: 6px;
+        font-size: 12px;
+    } */
+    .insight .tab_shado {
+        padding: 5px 10px;
+    }
+    .insight .chart-f-content p {
+        font-size: 14px;
+        padding-top: 1px;
+    }
+    .insight .date_row ul li p {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+    .air_p p {
+        margin: 0px;
+    }
+    .insight #radarChart {
+        /* width: 340px !important; */
+        height: 300px !important;
+        margin-top: -30px;
+    }
+    .insight .hour_box ul li {
+        height: 100px;
+    }
+    .insight .hour_box ul li span {
+        font-size: 18px;
+    }
+    .insight .hour_box li h3 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    .insight #carouselExampleControls .carousel-item .contact-content p {
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 9px;
+    }
+    /* .contact-content p {
+        font-size: 14px;
+        line-height: 18px;
+    } */
+  
+    .insight .data-list {
+        height: calc(100vh - 180px);
+    }
+    /* =============6 MARCH 2024========= */
+    .insight .quality-index-wrapper-h2 h3{
+        margin: 0;
+    }
+    .insight .silde-dv{
+        margin-top: 1%;
+    }
+   .insight .contact-content{
+    padding-top: 0 !important;
+   }
+
+    #wrapper .sidebar-nav .overview-heading {
+         padding: 5px 20px;
+         margin: 0 !important;
+    }
+    #wrapper .sidebar-nav .small-device-legend-list .row{
+        margin-bottom: 0px;
+    }
+    .insight .slide-content ul .modal.fade button.btn-close{
+        width: 30px; height: 30px;
+    }
+    .insight .graph-duration-filters .btn, .insight .graph-duration-filters .date-box{
+        top: 4px; right: 4px;
+    }
+    .insight .graph-duration-filters .tabscreen-3-mt .btn, .insight .graph-duration-filters .tabscreen-3-mt .date-box,
+    .insight .graph-duration-filters .hourly-4-screen .btn, .insight .graph-duration-filters .hourly-4-screen .date-box
+    {
+        top: -5px; right: -2px;
+    }
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
+        padding: 9px 30px 18px 30px;
+    }
+    /* .insight .mtb-mdscreens{
+        margin-top: 20px; margin-bottom: 30px;
+    } */
+    /* .insight .ug_content {
+        position: relative;
+        top: 30px;
+    } */
+    .equal-air-box-height {
+        height: 457px;
+        margin-bottom: 7px;
+        padding: 9px 15px !important;
+    }
+    .equal-station-box-height {
+        height: 435px;
+        margin-bottom: 10px;
+        padding: 15px 15px !important;
+    }
+    .insight .pollutants-legend-heading{
+        bottom: 9px;
+    }
+    .insight ul.nav.twobar-tabs {
+        bottom: 65px;
+    }
+    .canvas-graphs-height{
+        margin-bottom: 33px;
+    }
+    .canvas-pollutant-resHt{
+        height: 310px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top {
+        top: -10px !important;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: -14px !important;
+    }
+    /* .insight .hour_box{
+        padding-top: 1rem;
+    } */
+
+    .fp-viewing-6 #fp-nav{
+        top: 44%;
+    }
+    .send-btn{
+        margin-top: 15px !important;
+    }
+    #AqiBarchart {
+        margin-top: -15px;
+    }
+}
+
+@media screen and (min-width: 1365px) and (max-width: 1367px) and (min-height: 767px) and (max-height: 768px) {
+
+}
+
+/* @media (min-width: 1500px) and (max-width: 1950px) { */
+    /* .insight .hour_box {
+        padding-top: 11%; */
+        /* height: 100%; */
+    /* } */
+/* } */
+
+@media (min-width: 1800px) and (max-width: 2500px) {
+    .adjust-height-290{
+        height: calc(100vh - 285px)!important;
+    }
+    .insight ul.legend_radar {
+        bottom: 25%;
+        position: absolute;
+    }
+    .insight #radarChart{
+        height: 500px !important;
+    }
+    .contact-section{
+        margin-top: 0;
+    }
+    #section4{
+        justify-content: flex-start;
+    }
+    .faq-section {
+        margin-top: 8%;
+    }
+    .faqscrolling {
+        height: 760px;
+        overflow: auto;
+        padding-right: 20px;
+    }
+    .insightStation h3{
+        padding-left: 24px;
+    }
+    .tab-pd-0{
+        padding-left: 0; padding-right: 0;
+    }
+    .equal-air-box-height {
+        height: calc(100vh - 270px);
+    }
+    .equal-station-box-height{
+        height: calc(100vh - 240px);
+    }
+    .canvas-graphs-height {
+        height: 590px !important;
+    }
+    .canvas-graphs-heightline {
+        height: 547px;
+    }
+    .insight .graph-duration-filters .pollutant-hour-top, .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: 20px;
+    }
+    .insight .lineChartmt-0, .margin-top-0{
+        margin-top: 20px;
+    }
+    .project-slider .item{
+        height: 450px;
+    }
+}
+
+@media (min-width: 2045px) and (max-width: 2500px) {
+    .tab-pd-0{
+        max-width: 1405px;
+    }
+}
+
+@media (min-width: 2301px) and (max-width: 2305px) {
+    .tab-pd-0{
+        max-width: 1602px;
+    }
+}

@@ -174,10 +174,7 @@
                     <div class="collapse search-collapse" id="mainSearch">
                         <div class="card card-body">
                             <div class="container-fluid p-2">
-                                <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
-                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
-                                    Close
-                                </button>
+                                
         
                                 <form class="form-inline relative d-flex">
                                     <button class="btn search-icon" type="button">
@@ -188,11 +185,17 @@
                                     <input type="reset" value="x">
                                     <i class="icon-circle-xmark-regular"></i>
                                 </form>
+                                <!-- start 30-April-24 -->
                                 <div class="search-result">
                                     <p class="opacity-1 ms-0">Search Results</p>
-                                    <ul id="searchResults" class="searchItem">
+                                    <ul id="searchResults"  class="searchItem searchHeaderScroll ps-0">
                                     </ul>
                                 </div>
+                                <!-- end 30-April-24 -->
+                                <button id="closeButton" data-bs-toggle="collapse" data-bs-target="#mainSearch"
+                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -203,6 +206,10 @@
     <div id="fullpage">
         <div class="section position-relative private-scroll-hide" id="section7">
             <!-- <img src="./images/new-images/privacy-policy-shape.png" class="privacy-img"> -->
+            <h2 class="d-block d-sm-block d-md-none d-lg-none" id="expandTrigger" style="display: none;">
+                <span class="span" id="stationsDropdownMapSearch">Expand Panel </span> 
+                <p id="#section2"></p>
+             </h2>
             <div class="faq-section privacy-policy copy-mt-8 container">
                 <div class="row">
                     <div class="col-lg-4">
@@ -288,7 +295,7 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-xl-9">
                                 <div class="row">
-                                    <div class="col-xl-2 col-sm-12 col-md-4">
+                                    <div class="col-xl-3 col-sm-12 col-md-4">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
                                                 <a href="index-new.html#slide0" class="footermobile-none">Our Air Quality</a>
@@ -356,7 +363,7 @@
                                         </div>
                                     </div>
                                     <!-- This will show only in small devices only end-->
-                                    <div class="col-xl-3 col-sm-12 col-md-12">
+                                    <div class="col-xl-2 col-sm-12 col-md-12">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
                                                 <a href="index-new.html#slide3" class="footermobile-none"> Projects</a>
@@ -540,7 +547,7 @@
                 menu: '#menu',
                 //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
                 scrollBar: true,
-                normalScrollElements: '.scrollPolicyShow-term'
+                normalScrollElements: '.scrollPolicyShow-term, .searchHeaderScroll'
             });
         }
         function loadExternalScript() {
@@ -555,135 +562,152 @@
     </script>
 
 
-<!-- 03-April-24 Search Functionality by Sachin Start -->
+<!-- 30-April-24 Search Functionality by Sachin Start -->
+<script>
+    $(document).ready(function () {
+        $("#closeButton").click(function () {
+            $("#headerSearchInput").val(""); // Resetting the value of the search input
+            $("#searchResults").empty();
+        });
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('headerSearchInput');
-        const searchResults = document.getElementById('searchResults');
-        const searchModal = document.getElementById('mainSearch');
-  
-        searchInput.addEventListener('input', function () {
-            const searchTerm = this.value.trim().toLowerCase();
-            searchResults.innerHTML = '';
-  
-            if (searchTerm.length < 3) {
-                return;
-            }
-            let resultsFound = false;
-            document.querySelectorAll('p, span, li, a').forEach(function (element) {
-                const text = element.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    appendToResults(element);
-                    resultsFound = true;
+            const searchInput = document.getElementById('headerSearchInput');
+            const searchResults = document.getElementById('searchResults');
+            const searchModal = document.getElementById('mainSearch');
+            const resetButton = document.querySelector('.form-inline input[type="reset"]');
+            let inputClicked = false;
+
+            searchInput.addEventListener('input', function () {
+                
+                const searchTerm = this.value.trim().toLowerCase();
+                searchResults.innerHTML = '';
+                if (searchTerm.length < 3) {
+                    return;
+                }
+                let resultsFound = false;
+
+                document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, li:not(li > a)').forEach(function (element) {
+                    const text = element.textContent.toLowerCase();
+                    if (text.includes(searchTerm) && getComputedStyle(element).display !== 'none') {
+                        appendToResults(element);
+                        resultsFound = true;
+                    }
+                });
+
+               
+                
+
+                if (!resultsFound) {
+                    const li = document.createElement('li');
+                    li.textContent = 'No results found';
+                    searchResults.appendChild(li);
+                    // Remove display: none attribute from search-result div
+                    const searchResultDiv = document.querySelector('.search-result');
+                    searchResultDiv.removeAttribute('style');
+                    
                 }
             });
-            document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(function (heading) {
-                const text = heading.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    appendToResults(heading);
-                    resultsFound = true;
+
+            searchInput.addEventListener('click', function () {
+                if (!inputClicked) {
+                    searchResults.innerHTML = '';
                 }
+                inputClicked = true;
             });
-            if (!resultsFound) {
-        const li = document.createElement('li');
-        li.textContent = 'No results found';
-        searchResults.appendChild(li);
-    }
-        });
-  
-        searchInput.addEventListener('click', function () {
-            searchResults.innerHTML = '';
-        });
-  
-        searchResults.addEventListener('click', function (event) {
-            const target = event.target;
-            if (target.tagName.toLowerCase() === 'a') {
-                const url = target.getAttribute('data-url');
-            }
-            searchModal.classList.remove('show');
-            searchResults.innerHTML = '';
-            searchInput.value = '';
-        });
-  
-        searchResults.addEventListener('click', function () {
-            searchModal.classList.remove('show');
-            searchResults.innerHTML = '';
-            searchInput.value = '';
-        });
-  
-        function appendToResults(element) {
-            let parentSlide = element.closest('.slide');
-            if (parentSlide) {
-                // If the element is within a slide
-                const slideIndex = Array.from(parentSlide.parentNode.children).indexOf(parentSlide);
-                const mainUrl = window.location.href.split('#')[0];
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                const span = document.createElement('span');
-                const slideUrl = mainUrl + '#slide2/' + slideIndex;
-                if (slideUrl) {
-                    a.href = slideUrl;
-                    span.textContent = element.textContent;
-                    a.appendChild(span);
-                    li.appendChild(a);
-                    searchResults.appendChild(li);
-  
-                    let parentDiv = element.parentElement;
-                    while (parentDiv !== null) {
-                        if (parentDiv.tagName.toLowerCase() === 'div') {
-                            if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
-                                const parentHeading = document.createElement('a');
-                                parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
-                                parentHeading.href = slideUrl;
-                                searchResults.insertBefore(parentHeading, li);
-                                break;
-                            }
-                        }
-                        parentDiv = parentDiv.parentElement;
-                    }
+
+            resetButton.addEventListener('click', function () {
+                searchResults.innerHTML = '';
+            });
+
+            searchResults.addEventListener('click', function (event) {
+                const target = event.target;
+                if (target.tagName.toLowerCase() === 'a') {
+                    const url = target.getAttribute('data-url');
                 }
-            } else {
-                // If the element is not within a slide
-                let parentSeDiv = element.parentElement;
-                let sectionId = null;
-                while (parentSeDiv !== null) {
-                    if (parentSeDiv.classList.contains('section') && parentSeDiv.id) {
-                        sectionId = parentSeDiv.id;
-                        break;
-                    }
-                    parentSeDiv = parentSeDiv.parentElement;
-                }
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                const span = document.createElement('span');
-                const sectionUrl = '#' + sectionId;
-                if (sectionUrl) {
-                    a.href = sectionUrl;
-                    span.textContent = element.textContent;
-                    a.appendChild(span);
-                    li.appendChild(a);
-                    searchResults.appendChild(li);
-  
-                    let parentDiv = element.parentElement;
-                    while (parentDiv !== null) {
-                        if (parentDiv.tagName.toLowerCase() === 'div') {
-                            if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
-                                const parentHeading = document.createElement('a');
-                                parentHeading.textContent = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
-                                parentHeading.href = sectionUrl;
-                                searchResults.insertBefore(parentHeading, li);
-                                break;
+                searchModal.classList.remove('show');
+                searchResults.innerHTML = '';
+                searchInput.value = '';
+                inputClicked = false;
+            });
+            function appendToResults(element) {
+                const consecutiveWordsRegex = /\b(\w+)\s+\1\b/g;
+                let parentSlide = element.closest('.slide');
+                if (parentSlide) {
+                    const slideIndex = Array.from(parentSlide.parentNode.children).indexOf(parentSlide);
+                    const mainUrl = window.location.href.split('#')[0];
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    const span = document.createElement('span');
+                    const slideUrl = mainUrl + '#slide2/' + slideIndex;
+                    if (slideUrl) {
+                        a.href = slideUrl;
+                        const textContentWithoutDuplicates = element.textContent.replace(consecutiveWordsRegex, '$1');
+                        span.textContent = textContentWithoutDuplicates;
+                        a.appendChild(span);
+                        li.appendChild(a);
+                        searchResults.appendChild(li);
+
+                        let parentDiv = element.parentElement;
+                        while (parentDiv !== null) {
+                            if (parentDiv.tagName.toLowerCase() === 'div') {
+                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                    const parentHeading = document.createElement('a');
+                                    const headingText = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    const headingTextWithoutDuplicates = headingText.replace(consecutiveWordsRegex, '$1');
+                                    parentHeading.textContent = headingTextWithoutDuplicates;
+                                    parentHeading.href = slideUrl;
+                                    searchResults.insertBefore(parentHeading, li);
+                                    break;
+                                }
                             }
+                            parentDiv = parentDiv.parentElement;
                         }
-                        parentDiv = parentDiv.parentElement;
+                    }
+                } else {
+                    let parentSeDiv = element.parentElement;
+                    let sectionId = null;
+                    while (parentSeDiv !== null) {
+                        if (parentSeDiv.classList.contains('section') && parentSeDiv.id) {
+                            sectionId = parentSeDiv.id;
+                            break;
+                        }
+                        parentSeDiv = parentSeDiv.parentElement;
+                    }
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    const span = document.createElement('span');
+                    const sectionUrl = '#' + sectionId;
+                    if (sectionUrl) {
+                        a.href = sectionUrl;
+                        const textContentWithoutDuplicates = element.textContent.replace(consecutiveWordsRegex, '$1');
+                        span.textContent = textContentWithoutDuplicates;
+                        a.appendChild(span);
+                        li.appendChild(a);
+                        searchResults.appendChild(li);
+                        let parentDiv = element.parentElement;
+                        while (parentDiv !== null) {
+                            if (parentDiv.tagName.toLowerCase() === 'div') {
+                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                    const parentHeading = document.createElement('a');
+                                    const headingText = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    const headingTextWithoutDuplicates = headingText.replace(consecutiveWordsRegex, '$1');
+                                    parentHeading.textContent = headingTextWithoutDuplicates;
+                                    parentHeading.href = sectionUrl;
+                                    searchResults.insertBefore(parentHeading, li);
+                                    break;
+                                }
+                            }
+                            parentDiv = parentDiv.parentElement;
+                        }
                     }
                 }
             }
-        }
-    });
+        });
   
   </script>
-  <!--  03-April-24 Search Functinality by Sachin End -->
+  <!--  30-April-24 Search Functinality by Sachin End -->
 
   <!-- Start 09-April-24 -->
   <script>
