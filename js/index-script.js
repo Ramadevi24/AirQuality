@@ -549,9 +549,9 @@ const colorCodes = {
 const statusClass = {
     Good: "Good Days",
     Moderate: "Moderate Days",
-    UnHealthlySensitiveGroups: "UnHealthy Sensitive Groups",
-    UnHealthly: "UnHealthy Days",
-    VeryUnHealthly: "Very UnHealthy Days",
+    UnHealthlySensitiveGroups: "Unhealthy Sensitive Groups",
+    UnHealthly: "Unhealthy Days",
+    VeryUnHealthly: "Very Unhealthy Days",
     Hazardous: "Hazardous Days",
 }
 // end 19-April-24--
@@ -559,17 +559,17 @@ const statusClass = {
 const statusClassNew1 = {
     Good: "Good",
     Moderate: "Moderate",
-    UnHealthlySensitiveGroups: "UnHealthy Sensitive Groups",
-    UnHealthly: "UnHealthy",
-    VeryUnHealthly: "Very UnHealthy",
+    UnHealthlySensitiveGroups: "Unhealthy Sensitive Groups",
+    UnHealthly: "Unhealthy",
+    VeryUnHealthly: "Very Unhealthy",
     Hazardous: "Hazardous",
 }
 const aqiContent = {
-    Good: "Enjoy the Fresh Air",
-    Moderate: "Enjoy Your Day Outdoors!",
-    UnHealthlySensitiveGroups: "Babies And Sensitive Persons Should Stay Indoors",
-    UnHealthly: "Best to Stay Indoors",
-    VeryUnHealthly: "Not a Good Time to be Outdoors, Spend Your Day Indoors",
+    Good: "Enjoy the fresh air",
+    Moderate: "Enjoy your day outdoors!",
+    UnHealthlySensitiveGroups: "Babies and sensitive persons should stay indoors",
+    UnHealthly: "Best to stay indoors",
+    VeryUnHealthly: "Not a good time to be outdoors, spend your day indoors",
     Hazardous: "You should avoid outdoor activities",
 }
 
@@ -998,18 +998,21 @@ $(document).ready(function () {
 
     var quotes = $(".quotes");
     var quoteIndex = -1;
+    var hasShown = false;
+
 
     function showNextQuote() {
         ++quoteIndex;
         quotes.eq(quoteIndex % quotes.length)
-            .fadeIn(2000)
-            .delay(2000)
-            .fadeOut(2000, showNextQuote);
+            .fadeIn(2000, function () {
+                $(this).css('display', 'block');
+            })
     }
-
-    setTimeout(function () {
-        showNextQuote();
-    }, 4000);
+    $(document).ready(function () {
+        setTimeout(function () {
+            showNextQuote();
+        }, 4000);
+    });
     // Bannner text fadeout function End--------
 
     // Do not remove below code starts---------------------------------
@@ -2169,13 +2172,41 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 
 }
 function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
-    return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
-              <p>` + aqiValue + `</p>
-              <span>` + aqiStatus + `</span>
-            </div>`;
+    // return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
+    //           <p>` + aqiValue + `</p>
+    //           <span>` + aqiStatus + `</span>
+    //         </div>`;
 
-}
-// End 19-April-24 ---------
+    // Create a container for the count and status
+    var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
+
+    // Create a span element for the count
+    var countSpan = $('<p></p>');
+
+    // Append the count span to the container
+    container.append(countSpan);
+
+    // Append the status span to the container
+    container.append('<span>' + aqiStatus + '</span>');
+
+    // Append the container to the parent
+    $("#aqiDailyCountsDiv").append(container);
+
+    // Use jQuery animate() function to animate the count
+    $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+        duration: 4000,
+        easing: 'linear',
+        step: function () {
+            // Update the count value
+            countSpan.text(Math.floor(this.countNum));
+        },
+        complete: function () {
+            // Update the count value when animation is complete
+            countSpan.text(this.countNum);
+        }
+    });
+
+}// End 19-April-24 ---------
 
 
 
@@ -2296,8 +2327,10 @@ function bindStationDataToLineChart(filter) {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
+            if (filter !== 'Custom') { 
             let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
             $("#StAQIlastrefreshtime").text(lastrefreshdate)
+            }
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
 
@@ -2524,8 +2557,10 @@ function bindStationDataToLineChart(filter) {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
-            let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-            $("#StAQIlastrefreshtime").text(lastrefreshdate)
+            if (filter !== 'Custom') {
+                let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+                $("#StAQIlastrefreshtime").text(lastrefreshdate)
+            }
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
 
@@ -3419,8 +3454,12 @@ function bindStationDataToBarChart(filter) {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
-            let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-            $("#" + lastrefreshtime).text(lastrefreshdate);
+            if (filter !== 'Custom') {
+                alert("#" + lastrefreshtime);
+                let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+                alert(lastrefreshdate);
+                $("#" + lastrefreshtime).text(lastrefreshdate);
+            }
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
 
@@ -4306,3 +4345,11 @@ $.each(accordionContent, function (index, item) {
 // Show the first accordion item by default
 $('#collapse1').addClass('show');
 $('#heading1 button').toggleClass('collapsed');
+$('.select-pils').on('click', function () {
+    var tabText = $(this).text();
+    if (tabText === ' AQI ') {
+        $('.changeHeading-pollutant').text('Station AQI Trends');
+    } else if (tabText === ' Pollutant ') {
+        $('.changeHeading-pollutant').text('Station Pollutants Trends');
+    }
+});

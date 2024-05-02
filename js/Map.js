@@ -428,15 +428,15 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                                     const textSymbol = {
                                         type: "text",  // autocasts as new TextSymbol()
                                         color: "white",
-                                        haloColor: "black",
+                                        haloColor: "#505050",
                                         haloSize: "1px",
                                         text: results.features[index].attributes['Name'],
                                         xoffset: 3,
                                         yoffset: 3,
                                         font: {  // autocasts as new Font()
-                                            size: 8,
+                                            size: 10,
                                             family: "roboto",
-                                            //weight: "bold"
+                                            weight: "bold"
                                         }
                                     };
                                     const point = {
@@ -595,7 +595,16 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
 
             // var pointGraphic1 = CreateGraphicSymbol(AbuDhabi_Point, AQIValue, pollutantGrpLyr_EmirateLvl)
             var textSymbol = new TextSymbol({
-                text: AQIValue
+                text: AQIValue,
+                color: "#36454F",  // Choose color            
+               
+                xoffset: 0,  // Adjust as needed to center the text
+                yoffset: -5,  // Adjust to shift text above the center if needed
+                font: {
+                    size: 10,  // Size of the font
+                    family: "roboto",  // Font family
+                    weight: "bold"  // Weight of the font
+                }
             });
             var symbol = GetColourValue(AQIValue)
             var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl, width: 100, height: 100 });
@@ -646,10 +655,18 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                     };
                     // var pointGraphic1 = CreateGraphicSymbol(Region_Loc, RegionArr[j].AQI, pollutantGrpLyr_RegionLvl);
                     var textSymbol = new TextSymbol({
-                        text: RegionArr[j].AQI
+                        text: RegionArr[j].AQI,
+                        color: "#36454F",  // Choose color 
+                        xoffset: 0,  // Adjust as needed to center the text
+                        yoffset: -5,  // Adjust to shift text above the center if needed
+                        font: {
+                            size: 10,  // Size of the font
+                            family: "roboto",  // Font family
+                            weight: "bold"  // Weight of the font
+                        }
                     });
                     var symbol = GetColourValue(RegionArr[j].AQI)
-                    var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl, width: 60, height: 60 });
+                    var picSymbol = new PictureMarkerSymbol({ url: symbol.ImageUrl, width: 100, height: 100 });
                     var picgraphic = new Graphic({ geometry: Region_Point, symbol: picSymbol });
                     var textgraphic = new Graphic({ geometry: Region_Point, symbol: textSymbol });
                     //Add Text symbol to graphic Layer
@@ -681,15 +698,15 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
             };
             let textSymbol = {
                 type: "text",  // autocasts as new TextSymbol()
-                color: "black",
+                color: "#505050",
                 text: "",
                 xoffset: 0,
                 yoffset: -5,
                 font: {  // autocasts as new Font()
                     size: 10,
                     family: "roboto",
-                    weight: "normal",
-                    style: "normal"
+                    weight: "bold",
+                    //style: "normal"
                 }
             };
 
@@ -791,7 +808,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                 esriquery.returnGeometry = true;
                 esriquery.outFields = ["*"];
                 FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {
-                    console.log(selectedfeature)
+                   // console.log(selectedfeature)
                     var classBreakInfos = [
                         {
                             minValue: 1,
@@ -844,15 +861,15 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                                     const textSymbol = {
                                         type: "text",  // autocasts as new TextSymbol()
                                         color: "white",
-                                        haloColor: "black",
+                                        haloColor: "#505050",
                                         haloSize: "1px",
                                         text: results.features[index].attributes['Name'],
-                                        xoffset: 3,
-                                        yoffset: 3,
+                                        xoffset: 10,
+                                        yoffset: 10,
                                         font: {  // autocasts as new Font()
-                                            size: 8,
+                                            size: 10,
                                             family: "roboto",
-                                           // weight: "bold"
+                                            weight: "bold"
                                         }
                                     };
                                     const point = {
@@ -959,14 +976,14 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                 // autocasts as new LabelClass()
                 symbol: {
                     type: "text", // autocasts as new TextSymbol()
-                    color: "black",
+                    color: "#505050",
                     yoffset: -20,
                     //haloColor : "dodgerblue",
                     font: {
                         // autocast as new Font()
                         family: "roboto",
-                        size: 8
-                        //weight: "bold"
+                        size: 10,
+                        weight: "bold"
                     }
                 },
                 labelPlacement: "above-center",
