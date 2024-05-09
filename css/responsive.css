@@ -507,7 +507,7 @@
         margin: 0;
     }
     .insight .sm-screen-mtb{
-        margin-top: 35px;
+        margin-top: 120px;
         margin-bottom: 19px;
     }
     .insight .hourly-3datebox{
@@ -729,8 +729,22 @@
 
 @media (min-width: 768px) and (max-width: 1199px){
     /* Arisha Start */
+    /* start for disclaimer text purpose */
+        .wheather-widget, .web-top-legends{bottom: 50px;}
+        .esri-ui-bottom-right.esri-ui-corner{
+            /* bottom: 75px; */
+            bottom: 110px;
+        }
+        .map-disclaimer{
+            bottom: 13px;
+        }
+   
+    /* End for disclaimer text purpose */
     .scroll-info-top{
         height: 146px; overflow: auto;
+    }
+    .insight .sm-screen-mtb{
+        margin-top: 90px;
     }
     .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1{
         z-index: 1;
@@ -757,9 +771,7 @@
     header nav.navbar .navbar-brand{
         padding: 10px 10px 10px 15px;
     }
-    .esri-ui-bottom-right.esri-ui-corner{
-        bottom: 75px;
-    }
+    
     .full-screen .esri-ui-bottom-right.esri-ui-corner{
         bottom: 160px;
     }
@@ -1896,7 +1908,7 @@
         top: 30px;
     } */
     .equal-air-box-height {
-        height: 457px;
+        height: 440px;
         margin-bottom: 7px;
         padding: 9px 15px !important;
     }

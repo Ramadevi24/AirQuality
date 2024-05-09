@@ -12,19 +12,19 @@ var stationsData = [];
 var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo; var selectedfeature
 var view;
 var featureLayer;
-require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
+require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
     "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer",  "esri/symbols/PictureMarkerSymbol",
     "esri/symbols/TextSymbol", "esri/widgets/BasemapToggle", 
     "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent", "esri/widgets/Popup", "esri/core/reactiveUtils", "esri/geometry/projection", "esri/geometry/SpatialReference",
     "esri/Basemap", "esri/layers/VectorTileLayer", "esri/layers/TileLayer",],
 
-    (esriConfig, ClassBreaksRenderer,  MapView, WebMap, query, MapImageLayer, Query,
+    (Map,esriConfig, ClassBreaksRenderer,  MapView, WebMap, query, MapImageLayer, Query,
         GraphicsLayer, Graphic, FeatureLayer,  PictureMarkerSymbol, TextSymbol,
         BasemapToggle,  Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference, Basemap,
         VectorTileLayer, TileLayer,
     ) => {
         esriConfig.request.httpsDomains.push("enviroportal.ead.ae");
-        esriConfig.portalUrl = portalUrl;
+        //esriConfig.portalUrl = portalUrl;
         for (var i = 0; i < TrustedDomains.length; i++) {
 
             esriConfig.request.trustedServers.push(TrustedDomains[i]);
@@ -36,17 +36,17 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
             ymax: 26.083329, // Northernmost latitude
             spatialReference: { wkid: 4326 } // WGS84 spatial reference
         });
-        const webmap = new WebMap({
-            portalItem: {
-                id: WebMapID
-            }
-        });
-        console.log(webmap);
-        var dynamicMapServiceLayer = new MapImageLayer({
-            url: "https://maps.smartgeoapps.com/server/rest/services/AQI_UAE/ImageServer",
+        //const webmap = new WebMap({
+        //    portalItem: {
+        //        id: WebMapID
+        //    }
+        //});
+       // console.log(webmap);
+        var webmap = new Map({
+            basemap: "dark-gray-vector",
             opacity: 0.5
         });
-        webmap.basemap = "dark-gray-vector"//"oceans"//"topo"//"streets-vector"; 
+        //webmap.basemap = "dark-gray-vector"//"oceans"//"topo"//"streets-vector"; 
 
         view = new MapView({
             map: webmap,
@@ -156,9 +156,9 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
 
         // Remove the default zoom buttons
         view.ui.components = [];
-        view.on("mouse-wheel", (event) => {
-            event.stopPropagation();
-        });
+        //view.on("mouse-wheel", (event) => {
+        //    event.stopPropagation();
+        //});
         //console.log(view.ui.components);
         LoadDefaultWidgets();
 
@@ -354,13 +354,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
             }
         });
         $("#mapLocation").click(function (event) {
-            // console.log(longitude);
-
-            // Use the obtained coordinates to move the map view
-            view.goTo({
-                center: [latitude, longitude],
-                zoom: 7
-            });
+            ZoomToLocation(nearestStation);
         });
 
         // end changes
@@ -467,6 +461,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
         }
 
         function ZoomToLocation(searchValue) {
+            alert(nearestStation);
             // Create a Query object
             var query = new Query({
                 where: "Name LIKE '%" + searchValue + "%'", // Replace with your field name
@@ -671,7 +666,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                     var textgraphic = new Graphic({ geometry: Region_Point, symbol: textSymbol });
                     //Add Text symbol to graphic Layer
                     pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
-                    //pollutantTextGrpLyr_Region.add(pointGraphic1);
+                   // pollutantTextGrpLyr_Region.add(pointGraphic1);
                 }
 
                 //CreateGraphic_Region(RegionArr[j]);
@@ -759,7 +754,7 @@ require(["esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapVie
                 var attributesinfo = MonitoringFeatures[i].attributes;
                 ObjectIDList.push(attributesinfo.OBJECTID);
                 var stationObj;
-                if (attributesinfo.Name == 'Al Qua’a') {
+                if (attributesinfo.Name == "Al Qua’a") {
                     stationObj = { "Name": attributesinfo.Name, "KeyName": "EAD_AlQuaa", "attributes": attributesinfo, "geometry": MonitoringFeatures[i].geometry }
                 }
                 else {

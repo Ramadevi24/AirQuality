@@ -10,6 +10,7 @@ var pollutantLineChart;
 var activePollutant;
 var latitude;
 var longitude;
+var nearestStation;
 var hasAccessToLocation = false;
 
 const pollutantAbbrevations = {
@@ -362,7 +363,8 @@ const stationsWithLocations = [{
     latitude: 24.4889,
     longitude: 54.3637,
     stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi, Urban Traffic",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_KhadijaSchool",
     stationName: "Khadejah School",
@@ -370,7 +372,8 @@ const stationsWithLocations = [{
     latitude: 24.4816,
     longitude: 54.3693,
     stationLocation: "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi, Urban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_KhalifaSchool",
     stationName: "Khalifa School",
@@ -378,7 +381,8 @@ const stationsWithLocations = [{
     latitude: 24.4301,
     longitude: 54.4084,
     stationLocation: "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Mussafah",
     stationName: "Mussafah",
@@ -386,7 +390,8 @@ const stationsWithLocations = [{
     latitude: 24.3472,
     longitude: 54.5029,
     stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi, Suburban Industrial",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Baniyas",
     stationName: "Baniyas School",
@@ -394,7 +399,8 @@ const stationsWithLocations = [{
     latitude: 24.3213,
     longitude: 54.6359,
     stationLocation: "Bani Yas - East 4 - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
@@ -402,15 +408,17 @@ const stationsWithLocations = [{
     latitude: 24.4035,
     longitude: 54.5161,
     stationLocation: "Rabdan - Abu Dhabi, Urban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_KhalifaCity",
-    stationName: "Khalifa City A",
+    stationName: "Khalifa City A", 
     regionName: "Abu Dhabi",
     latitude: 24.4199,
     longitude: 54.5782,
     stationLocation: "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 },
 {
     stationId: "EAD_AlMafraq",
@@ -419,7 +427,8 @@ const stationsWithLocations = [{
     latitude: 24.2863,
     longitude: 54.5889,
     stationLocation: "Jarn Yafour - Abu Dhabi, Suburban Industrial",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
 },
 {
     stationId: "EAD_AlAinSchool",
@@ -428,7 +437,8 @@ const stationsWithLocations = [{
     latitude: 24.2191,
     longitude: 55.7349,
     stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlAinStreet",
     stationName: "Al Ain Street",
@@ -436,7 +446,8 @@ const stationsWithLocations = [{
     latitude: 24.2259,
     longitude: 55.7658,
     stationLocation: "Central District - Abu Dhabi, Urban Traffic",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Sweihan",
     stationName: "Sweihan",
@@ -444,7 +455,8 @@ const stationsWithLocations = [{
     latitude: 24.4667,
     longitude: 55.3429,
     stationLocation: "44th St - Sweihan - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlTawia",
     stationName: "Al Tawia",
@@ -452,7 +464,8 @@ const stationsWithLocations = [{
     latitude: 24.2592,
     longitude: 55.7049,
     stationLocation: "Al Tiwayya - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Zakher",
     stationName: "Zakher",
@@ -460,15 +473,17 @@ const stationsWithLocations = [{
     latitude: 24.1635,
     longitude: 55.7021,
     stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_AlQuaa",
-    stationName: "Al Quaa",
+    stationName: "Al Qua’a",
     regionName: "Al Ain",
     latitude: 23.5312,
     longitude: 55.486,
     stationLocation: "Al Wiqan - Abu Dhabi, Regional Rural",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_BidaZayed",
     stationName: "Bida Zayed",
@@ -476,7 +491,8 @@ const stationsWithLocations = [{
     latitude: 23.6523,
     longitude: 53.7039,
     stationLocation: "Zayed City - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Gayathi",
     stationName: "Gayathi School",
@@ -484,7 +500,8 @@ const stationsWithLocations = [{
     latitude: 23.8355,
     longitude: 52.8103,
     stationLocation: "Ghiyathi - Abu Dhabi, Suburban Background",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Liwa",
     stationName: "Liwa Oasis",
@@ -492,7 +509,8 @@ const stationsWithLocations = [{
     latitude: 23.0958,
     longitude: 53.6064,
     stationLocation: "3JW4+8H7 Taraq, Abu Dhabi, Rural Background Regional",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_RuwaisTransco",
     stationName: "Ruwais",
@@ -500,7 +518,8 @@ const stationsWithLocations = [{
     latitude: 24.0909,
     longitude: 52.7548,
     stationLocation: "Al Ruways Industrial City - Abu Dhabi, Suburban Industrial",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Habshan",
     stationName: "Habshan South",
@@ -508,7 +527,8 @@ const stationsWithLocations = [{
     latitude: 23.7504,
     longitude: 53.7453,
     stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
@@ -516,7 +536,8 @@ const stationsWithLocations = [{
     latitude: 24.0352,
     longitude: 53.8853,
     stationLocation: "Um Laylah - Abu Dhabi, Rural Traffic",
-    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise]
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
 }, {
     stationId: "",
     stationName: "Abu Dhabi",
@@ -1021,7 +1042,11 @@ $(document).ready(function () {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
     bindYearsToDropDown(); // Do not call this function after load station data function
-    getLiveCityRankingApi();
+    ////getLiveCityRankingApi();
+    //getCurrentLocation();
+    ////loadStationData(true);
+    getCurrentLocation();
+   // getLiveCityRankingApi();
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
@@ -1079,8 +1104,22 @@ function showHideToggleDiv(tabId, pollutant) {
     document.getElementById(tabId).style.display = 'block';
     activePollutant = pollutant;
     bindStationDataToBarChart($("#barChartFilter").text());
+    updateThreshold(pollutant, $("#barChartFilter").text());
 }
 
+function updateThreshold(pollutant, timeFilter) {
+    pollutant = pollutant.replace(/\s+/g, ' ').trim();
+    timeFilter = timeFilter.replace(/\s+/g, ' ').trim();
+    const thresholdKey = `${pollutant}${timeFilter}`;
+    if (pollutantThresholdLimits.hasOwnProperty(thresholdKey)) {
+        const thresholdValue = pollutantThresholdLimits[thresholdKey];
+        // If the element exists, update its text content
+        const thresholdElementId = `${pollutant.toLowerCase()}thresholdValue`;
+        const thresholdElement = document.getElementById(thresholdElementId);
+        //document.getElementById('pm10thresholdValue').textContent = thresholdValue || 'N/A';
+        thresholdElement.textContent = thresholdValue;
+    }   
+}
 // // Map Search icon script Start--------------   
 $(".dropdown-change li a").click(function () {
     var selText = $(this).text();
@@ -1173,8 +1212,10 @@ $(document).ready(function () {
         $('.info-popup').hide();
     });
 
+  
     $('.quality-index-dropItem').click(function () {
-        var el = $('.btn-group-filter');
+       
+        var el = $('.btn-group-filter');       
         if ($(this).text() == chartFilter.Custom) {
             el.find('.date-box').removeClass('calen-box-hide');
             el.find('.quality-button-dropdown').hide();
@@ -1404,7 +1445,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 
 // Function to find the nearest station
 function findNearestStation(currentLat, currentLong) {
-    let nearestStation;
+    //let nearestStation;
     let shortestDistance = Infinity;
 
     stationsWithLocations.forEach(station => {
@@ -1476,11 +1517,16 @@ function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(function success(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
-        currentStationDetails = findNearestStation(latitude, longitude);
+        currentStationDetails = findNearestStation(latitude, longitude);   
+        nearestStation = currentStationDetails;
         hasAccessToLocation = true;
-        loadStationData();
+        getLiveCityRankingApi(hasAccessToLocation);
+        loadStationData();       
     }, function error() {
         hasAccessToLocation = false;
+        //loadStationData(); 
+        getLiveCityRankingApi(hasAccessToLocation);
+        
     });
 }
 
@@ -1612,7 +1658,8 @@ function loadStationData(initialRequest = false) {
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
             getAirQualitySafetyLevel();
-            bindLiveCityRanking();
+           // getLiveCityRankingApi();
+            //bindLiveCityRanking();
             if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
                 activePollutant = pollutantAbbrevations.AQI;
                 showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
@@ -1859,7 +1906,7 @@ function updateCauses(station, pollutant) {
 
     const causes = causeStationData[station][pollutant];
 
-    causes.forEach(cause => {
+    causes?.forEach(cause => {
         // Create new elements for the cause
         const causeDiv = document.createElement('div');
         causeDiv.className = 'text-center';
@@ -1971,15 +2018,19 @@ function getAirAnalytics(year) {
     });
 }
 
-function getLiveCityRankingApi() {
+function getLiveCityRankingApi(hasAccessToLocation) {
     $.ajax({
         url: baseUrl + 'GetStationRanking',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
             liveCityData = data;
-            currentStationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
-            loadStationData(true);
+            if (!hasAccessToLocation) {
+                currentStationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
+                loadStationData();
+            }           
+            //loadStationData(true);
+            bindLiveCityRanking();
         },
         error: handleApiError
     });
@@ -2241,15 +2292,49 @@ function getStationChartApi(filter, initialRequest = false) {
             chartData = data;
             bindStationDataToBarChart(filter);
             bindStationDataToLineChart(filter);
-            if (initialRequest) {
-                getCurrentLocation();
-            }
+            //if (initialRequest) {
+            //    getCurrentLocation();
+            //}
         },
         error: handleApiError
     });
 }
 
 function bindStationDataToLineChart(filter) {
+	/* added newly start */
+	/*Chart.defaults.LineWithLine = Chart.defaults.line;
+
+var originalLineDraw = Chart.controllers.line.prototype.draw;
+
+// Extend the new type
+Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.prototype, {
+    draw: function (ease) {
+        // Use the base draw function
+        originalLineDraw.call(this, ease);
+
+        // Check if tooltip is active
+        if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+            var activePoint = this.chart.tooltip._active[0],
+                ctx = this.chart.ctx,
+                x = activePoint.tooltipPosition().x,
+                topY = this.chart.legend.bottom,
+                bottomY = this.chart.chartArea.bottom;
+
+            // Draw line
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, (topY + 5));
+            ctx.lineTo(x, bottomY);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#07C';
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+});*/
+
+/* added newly end */
+	
     var aqiData = [];
     var pm10Data = [];
     var so2Data = [];
@@ -2567,26 +2652,25 @@ function bindStationDataToLineChart(filter) {
         }
         minDateString = minDate.toISOString().split('T')[0];
         maxDateString = maxDate.toISOString().split('T')[0];
-        const myPollutantChart = new Chart(pollutantLineChart, {
-            type: 'line',
-            data: {
-                labels: iso8601Dates,
-                datasets: [
-                    {
-                        label: 'PM₁₀',
-                        data: pm10Data,
-                        backgroundColor: 'rgba(0, 75, 135, 1)',
-                        borderColor: 'rgba(0, 75, 135, 1)',
+		
+		console.log(currentStationDetails);
+		const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find
+		const dataArray = [
+						{
+                        label: 'SO2',
+                        data: so2Data,
+                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
+                        borderColor: 'rgba(0, 75, 135, 0.8)',
                         pointRadius: 0,
                         pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
-                    {
-                        label: 'SO₂',
-                        data: so2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
-                        borderColor: 'rgba(0, 75, 135, 0.8)',
+					 {
+                        label: 'NO2',
+                        data: no2Data,
+                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
+                        borderColor: 'rgba(0, 75, 135, 0.2)',
                         pointRadius: 0,
                         pointHoverRadius: 5,
                         tension: 0.4,
@@ -2602,27 +2686,37 @@ function bindStationDataToLineChart(filter) {
                         tension: 0.4,
                         borderWidth: 3
                     },
-                    {
-                        label: 'O₃',
-                        data: o3Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.4)',
-                        borderColor: 'rgba(0, 75, 135, 0.4)',
+					 {
+                        label: 'PM10',
+                        data: pm10Data,
+                        backgroundColor: 'rgba(0, 75, 135, 1)',
+                        borderColor: 'rgba(0, 75, 135, 1)',
                         pointRadius: 0,
                         pointHoverRadius: 5,
                         tension: 0.4,
                         borderWidth: 3
                     },
-                    {
-                        label: 'NO₂',
-                        data: no2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
-                        borderColor: 'rgba(0, 75, 135, 0.2)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        tension: 0.4,
-                        borderWidth: 3
-                    }
+					{
+						label: 'O3',
+						data: o3Data,
+						backgroundColor: 'rgba(0, 75, 135, 0.4)',
+						borderColor: 'rgba(0, 75, 135, 0.4)',
+						pointRadius: 0,
+						pointHoverRadius: 5,
+						tension: 0.4,
+						borderWidth: 3
+					},
+                   
                 ]
+		const fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
+
+		console.log(fianlItems);
+		
+        const myPollutantChart = new Chart(pollutantLineChart, {
+            type: 'line',
+            data: {
+                labels: iso8601Dates,
+                datasets: fianlItems
             },
             options: {
                 responsive: true,
@@ -2672,51 +2766,14 @@ function bindStationDataToLineChart(filter) {
                         external: function (context) {
 
                             if (context.tooltip.opacity === 0) {
-                                /*$("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-                                return;*/
+                                
                                 updateAllPollutantValues();
                                 return;
                             }
-
-                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
-                                const dataIndex = tooltipItem.dataIndex;
-                                const datasetIndex = tooltipItem.datasetIndex;
-                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
-                                //console.log(dataPoint); // This should show you the actual data structure of a point
-                                //.log(dataPoint.pM10); 
-                                switch (datasetIndex) {
-                                    case 0:
-                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
-                                        $("#lineChartPollutantPm10Value").text(dataPoint);
-                                        break;
-                                    case 1:
-                                        $("#lineChartPollutantSo2Value").text(dataPoint);
-                                        break;
-                                    case 2:
-                                        $("#lineChartPollutantCoValue").text(dataPoint);
-                                        break;
-                                    case 3:
-                                        $("#lineChartPollutantO3Value").text(dataPoint);
-                                        break;
-                                    case 4:
-                                        $("#lineChartPollutantNo2Value").text(dataPoint);
-                                        break;
-                                }
-                            });
+								updateAllPollutantValues(context.tooltip.dataPoints)
                         },
                         callbacks: {
-                            //title: function (tooltipItems) {                               
-                            //    //let fullTimestamp = tooltipItems[0].label;
-                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
-                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
-                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
-                            //    //hour = hour === 0 ? 12 : hour;
-                            //    //hour = hour < 10 ? '0' + hour : hour;
-                            //    //return `${hour} ${meridiem}`;
-                            //    return '';
-                            //},
-                            label: function () {
+                               label: function () {
                                 return null;
                             }
 
@@ -2984,6 +3041,11 @@ function updatePollutantValues(tooltipItems) {
     $("#lineChartAqiCoValue").text(co);
     $("#lineChartAqiPm10Value").text(pm10);
     $("#lineChartAqiO3Value").text(o3);
+		const aqi = Math.round(chartData[index].aqi);
+            var aqiDetails = getAqiStatusAndColorCode(aqi);
+            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
+            var currentYearOverview = new Date().getFullYear();
+            $("#lineChartAqiValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);           
 }
 
 function updateAllPollutantValues(tooltipItems) {
@@ -3004,6 +3066,11 @@ function updateAllPollutantValues(tooltipItems) {
     $("#lineChartPollutantCoValue").text(co);
     $("#lineChartPollutantPm10Value").text(pm10);
     $("#lineChartPollutantO3Value").text(o3);
+	const aqi = Math.round(chartData[index].aqi);
+            var aqiDetails = getAqiStatusAndColorCode(aqi);
+            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
+            var currentYearOverview = new Date().getFullYear();
+            $("#lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color); 
 }
 
 function bindStationDataToBarChart(filter) {
@@ -3455,9 +3522,9 @@ function bindStationDataToBarChart(filter) {
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
             if (filter !== 'Custom') {
-                alert("#" + lastrefreshtime);
+                
                 let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-                alert(lastrefreshdate);
+                
                 $("#" + lastrefreshtime).text(lastrefreshdate);
             }
             minDate = new Date(Math.min(...dateTimes));
@@ -3532,7 +3599,11 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-                                return value + ' ug/m³';
+                               
+                                if (pollutantBarChartId == "ADstationAqiBarGraph")
+                                    return value;
+                                else
+                                    return value + ' ug/m³';
 
                             }
                         },
