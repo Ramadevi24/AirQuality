@@ -205,7 +205,12 @@
     .air-map-container .air-map-col .mapmobile-ht{
         height: unset;
     }
-    .ead-monitoring-project, .contact-section, .faq-section {
+    .ead-monitoring-project {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 0%;
+    }
+    .contact-section, .faq-section {
         padding-left: 15px;
         padding-right: 15px;
         margin-top: 10%;
@@ -431,6 +436,10 @@
     }
 }
 @media (min-width: 320px) and (max-width: 767px){
+    
+    .insight .slide-content ul .modal.fade{
+        z-index: 0;
+    }
     header .search-block .search-collapse .search-result{
         margin-bottom: 20px;
     }
@@ -445,7 +454,7 @@
         height: auto;
     }
     .acceptable-legend{
-        bottom: 38px!important;
+        bottom: 25px!important;padding: 0 23px!important;
     }
     #aiq_line{
         margin-top: -99px;
@@ -542,14 +551,15 @@
         margin-bottom: 20px!important; 
     }
     .exceeded-box .contact-content p{
-        font-size: 17px;
+        font-size: 14px;
+        margin-top: -20px !important;
     }
     /* .date_row {
         padding: 1px;
         padding-bottom: 70px;
     } */
     .insight .chart-f-content p {
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 400;
         /* margin: 0px; */
         text-align: left;
@@ -730,13 +740,17 @@
 @media (min-width: 768px) and (max-width: 1199px){
     /* Arisha Start */
     /* start for disclaimer text purpose */
-        .wheather-widget, .web-top-legends{bottom: 50px;}
+        .wheather-widget, .web-top-legends{bottom: 70px;}
         .esri-ui-bottom-right.esri-ui-corner{
             /* bottom: 75px; */
-            bottom: 110px;
+            bottom: 128px;
         }
         .map-disclaimer{
             bottom: 13px;
+            padding: 0px 31px;
+        }
+        .insight .slide-content ul .modal.fade{
+            z-index: 0;
         }
    
     /* End for disclaimer text purpose */
@@ -1224,7 +1238,7 @@
         min-height: 80px;
     }
     .insight .chart-f-content p {
-        padding-top: 30px;
+        padding-top: 9px;
         font-size: 17px;
         color: var(--grey);
     }
@@ -1502,14 +1516,16 @@
         padding: 1px 18px;
         padding-right: 0;
     }
-
+    .web-top-legends{bottom: 35px;}
+    .esri-ui-bottom-right.esri-ui-corner{bottom: 75px;}
 }
 
 @media (min-width: 1403px) and (max-width: 1450px){
     .myContentHeight {
         height: 246px;
     }
-    
+    .web-top-legends{bottom: 30px;}
+    .esri-ui-bottom-right.esri-ui-corner{bottom: 78px;}
 }
 @media (min-width: 1451px) and (max-width: 1699px){
  
@@ -1517,6 +1533,9 @@
 @media (min-width: 1700px) and (max-width: 1750px){
     body, header nav.navbar .navbar-nav li a, header.fadeout nav.navbar .navbar-nav li a, .air-map-container .list-item span{
         font-size: 17px;
+    }
+    .insight .pollutant-toggleBar .pollu-top-position{
+        bottom: -18px;
     }
     .equal-air-box-height{
         height: 800px;
@@ -1641,11 +1660,14 @@
     .scroll-info-top{
         height: 150px; overflow: auto;
     }
+    .wheather-widget{
+        bottom: 30px;
+    }
     .insight .pollutant-toggleBar .ic-top-position{
-        top: -12px; right: -7px; bottom: 0;
+        top: -17px; right: -7px; bottom: 0;
     }
     .insight .pollutant-toggleBar .pollu-top-position{
-        bottom: 7px;
+        bottom: 12px;
     }
     .insight .pollutant-toggleBar .iconimg{
         width: 27px;
@@ -1830,8 +1852,8 @@
         padding: 5px 10px;
     }
     .insight .chart-f-content p {
-        font-size: 14px;
-        padding-top: 1px;
+        font-size: 12px;
+        padding-top: 0px;
     }
     .insight .date_row ul li p {
         font-size: 13px;
@@ -1913,8 +1935,8 @@
         padding: 9px 15px !important;
     }
     .equal-station-box-height {
-        height: 435px;
-        margin-bottom: 10px;
+        height: 432px;
+        margin-bottom: 2px;
         padding: 15px 15px !important;
     }
     .insight .pollutants-legend-heading{

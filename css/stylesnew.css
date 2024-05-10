@@ -161,9 +161,7 @@ a{
   .page-loader .loader img,  
   .page-loader .loader svg{
     width: 90px;
-    /* animation: loading-spinner 1s linear infinite;
-    animation-duration: 2s;
-    transition: 0.2s all ease; */
+    
 }
 .page-loader .clouds-1 {
     background-image: url("../images/clouds_2.webp");
@@ -907,42 +905,22 @@ video {
 }
 
 .drop-arrow-icon{
-    /* width: 2em;
-    height: 2em; 
-    background-color: transparent;  */
+    
     z-index: 80; 
     bottom: 35px; 
     position: absolute; 
-    /* border-width: 0 0.25em 0.25em 0; 
-    border-style: solid; 
-    border-color: #fff;  */
-    /*  */
     left: 49%;
     animation: bounce 2s infinite;
-    /* animation: scrolldown-arrow 1.2s ease-in-out infinite 0.15s;
-    transform: translateY(0%) rotate(1deg); */
-    /*  */
-    /* 
-    opacity: 0; */
+    
 }
 .drop-arrow-icon1{
-    /* width: 2em; 
-    height: 2em; 
-    background-color: transparent;  */
+    
     z-index: 80; 
     bottom: 57px; 
     position: absolute; 
     animation: bounce 2s infinite;
-    /* animation: scrolldown-arrow 1.2s ease-in-out infinite;
-    transform: translateY(0%) rotate(1deg); */
-    /* border-width: 0 0.25em 0.25em 0; 
-    border-style: solid; 
-    border-color: #fff; 
-     */
     left: 49%;
-    /*  */
-    /* 
-    opacity: 0; */
+   
 }
 
 @keyframes scrolldown-arrow {
@@ -975,9 +953,10 @@ video {
 /*------------- End Down Arrow Icon----------------- */
 
 /* ------------First Our Air Quality MAP section Start Css----------------*/
+/* 10-May-24 */
 .map-disclaimer{
     position: absolute;
-    bottom: 11px;
+    bottom: 9px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -1232,10 +1211,10 @@ video {
     margin-right: auto;
     line-height: 16px;
 }
-
+/* 10-May-2024 */
 .wheather-widget{
     position: absolute;
-    bottom: 15px;
+    bottom: 38px;
     left: 40px;
     background: #11111145;
     backdrop-filter: blur(10px);
@@ -2128,11 +2107,7 @@ body.map-viwer-enabled{
 .position-justice{
     justify-content: flex-end!important;
 }
-/* .emoji-indoors{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+
 .text-italic{
     font-style: italic;
 }
@@ -2524,20 +2499,7 @@ color: var(--green);
     justify-content: flex-start;
     padding: 4rem 0rem;
 }
-/* .insight .Causes-wrapper h3 {
-    font-size: 18px;
-    font-weight: 350;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: left;
-} */
-/* .insight .activities-wrapper h3{
-    font-size: 18px;
-    font-weight: 350;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: left;
-} */
+
 .insight .Causes-img{
     display: flex;
     align-items: center;
@@ -2619,9 +2581,7 @@ color: var(--green);
     bottom: 90px;
     left: 0;
     right: 0;
-    /* top: 84%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+  
 }
 .insight ul#myTabs li a {
     background: #E6EDF3;
@@ -2806,7 +2766,7 @@ color: var(--green);
 
 /* ======================================sssss=================== */
 .insight .chart-f-content p {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     margin: 0px;
     text-align: center;
@@ -2945,13 +2905,7 @@ color: var(--green);
        
 
 }
-/* .insight #radarChart{
-    width: 350px !important;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    height: 350px !important;
-} */
+
 .insight .hour_box ul li {
     margin-bottom: 0px;
     display: flex;
@@ -2968,9 +2922,7 @@ color: var(--green);
      */
     text-align: center;
 }
-/* .insight .hour_box ul li p {
-    font-family: 'GothamMedium';
-} */
+
 .insight .hour_box ul li {
     margin-bottom: 0px;
     display: flex;
@@ -3009,10 +2961,7 @@ color: var(--green);
 }
 
 .insight .hour_box li h3 {
-    /* font-size: 40px;
-    font-weight: 700;
-    line-height: 25px;
-    letter-spacing: 0em; */
+    
     text-align: center;
     color: #004B87;
     margin-bottom: 0;
@@ -3352,14 +3301,7 @@ color: var(--green);
     line-height: 35px;
     padding: 0px 10px 10px 11px;
 }
-/* .animate-blinking{
-    position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 30px;
-  height: 30px;
-} */
+
 .animate-blinking:before {
     content: '';
     display: block;
@@ -3386,10 +3328,7 @@ color: var(--green);
     width: 100%;
     height: 100%;
     text-align: center;
-    /* background-color: white; */
-    /* border-radius: 15px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); */
-    /* animation: pulse-dot 2s cubic-bezier(0.1, 0.7, 1.0, 0.1) -0.4s infinite; */
+  
   }
   
   @keyframes pulse-ring {
@@ -3400,35 +3339,7 @@ color: var(--green);
       opacity: 0;
     }
   }
-  /* @keyframes pulse-dot {
-    0% {
-      transform: scale(0.8);
-    }
-    50% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0.8);
-    }
-  } */
-/* .animate-blinking{
-    position: absolute;
-    border-radius: 50%; 
-    width: calc(100% + 20px); 
-    height: calc(100% + 20px); 
-    animation: mymove 1s infinite;
-    background-color: transparent; 
-    border: 5px solid #fff; 
-} */
-/* .animate-blinking{
-    animation: mymove 2s infinite;
-    position: absolute;
-    background-color: #00FF00
-  } */
-/* @keyframes mymove {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
-  } */
+ 
 
 .fp-arrow.fp-controlArrow.fp-next.disabled, .fp-arrow.fp-controlArrow.fp-prev.disabled {
     opacity: 0.3;
@@ -3444,10 +3355,7 @@ color: var(--green);
     left: 31px;
 }
 /* ----------------------------- */
-/* .date_row {
-    padding: 10px;
-    padding-bottom: 40px;
-} */
+
 .insight .btn-group.res-air-mt{
     position: relative;
 }
@@ -3555,13 +3463,13 @@ color: var(--green);
 }
 
 .insight .pollutant-toggleBar .ic-top-position{
-    top: 0; right: -7px;
+    top: -15px; right: -7px;
     bottom: 0;position: absolute;width: 28px;
     height: 28px;
 }
 
 .insight .pollutant-toggleBar .pollu-top-position{
-    right: -5px; bottom: -7px; position: absolute;width: 28px;
+    right: -5px; bottom: 8px; position: absolute;width: 28px;
     height: 28px;
 }
 
@@ -3676,13 +3584,7 @@ color: var(--green);
     display: flex;
     align-items: center;
 }
-/* .no-calendar::-webkit-calendar-picker-indicator {
-    background-image: url('../images/calendar.png');
-      background-position:center;
-       background-size:15px 15px;
-       background-repeat:no-repeat;
-      color:rgba(204,204,204,0);
-}*/
+
 .insight .date-box {
     z-index: 1;
     position: relative;
@@ -3712,15 +3614,7 @@ color: var(--green);
 .insight .date-box .cal-div label{
     outline: none;
 }
-/* input[type=date]:required:invalid::-webkit-datetime-edit {
-    color: transparent;
-}
-input[type=date]:focus::-webkit-datetime-edit {
-    color: var(--blue) !important;
-} */
-/* input[type=date]:focus{
-    box-shadow: none; border-color: transparent;
-} */
+
 .calen-box-hide{
     display: none;
 }
@@ -3812,7 +3706,7 @@ table {
 }
 /* 22-March-2024 */
 .equal-air-box-height{
-    height: 520px;
+    height: 515px;
     margin-bottom: 10px;
 }
 
@@ -3848,7 +3742,7 @@ table {
 }
 
 .equal-station-box-height {
-    height: 520px;
+    height: 505px;
     margin-bottom: 10px;
 }
 .insight .graph-duration-filters .pollutant-hour-top{
@@ -4036,12 +3930,7 @@ table {
     align-items: center;
     justify-content: center;
 }
-/* .sidebar a:hover {
-    color: #f1f1f1;
-}
-.sidebar .close-btn:hover {
-    color: #fff;
-} */
+
 
 .sidebar .modal-title {
     color: #fff;
@@ -4102,19 +3991,7 @@ table {
     display: flex; 
   }
 
-  /* medium and up screens */
-  /* @media (min-width: 768px) {
-
-    .project-slider .carousel-inner .carousel-item-end.active,
-    .project-slider .carousel-inner .carousel-item-next {
-      transform: translateX(25%);
-    }
-
-    .project-slider .carousel-inner .carousel-item-start.active, 
-    .project-slider .carousel-inner .carousel-item-prev {
-      transform: translateX(-25%);
-    }
-  } */
+  
 
   .project-slider .carousel-inner .carousel-item-end,
   .project-slider .carousel-inner .carousel-item-start { 
@@ -4207,13 +4084,7 @@ table {
 /* ------------End PROJECTS section Css----------------*/
 
 /* ------------Start FAQ section Css----------------*/
-/* #section4 {
-    background-image: url(../images/new-images/bottom-CircularShape.png);
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    justify-content: flex-start;
-    background-size: 400px;
-} */
+
 
 .faq-section{
     margin-top: 4%;
@@ -4375,12 +4246,7 @@ table {
   font-family: 'Gothamlight';
   font-size: 13px;
 }
-/* .contact-form input {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    height: 55px;
-} */
+
 .contact-form input:hover, .contact-form input:focus{
     outline: none;
     box-shadow: none;
@@ -4415,19 +4281,14 @@ table {
    
   }
   .material-style input {
-    /* width: 250px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc; */
+    
     border-radius: 0px;
     transition: border-color 0.3s;
     padding-bottom: 0;
     font-size: 14px;
     padding-top: 20px;
   }
-  /* .material-style input:focus {
-    border-color: dodgerblue;
-  } */
+  
   /* Placeholder animation */
   .material-style input:focus + label {
     top: -4px;
@@ -4438,8 +4299,6 @@ table {
     top: 9px;
     left: 0px;
     color: #b3b3b3;
-    /* font-size: 16px;
-    color: #999; */
     pointer-events: none;
     transition: top 0.3s, font-size 0.3s, color 0.3s;
   }
@@ -4593,12 +4452,7 @@ footer .copy-rights ul li a {
     .scrollPolicyShow .mb-4, .scrollPolicyShow-term .mb-4{
         transition: opacity 0.3s ease;
     }
-/* #privacy-policy-section {
-    background-image: url(../images/new-images/bottom-CircularShape.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 400px;
-} */
+
 .privacy-img{
     position: absolute;
     width: 250px;
@@ -4687,11 +4541,7 @@ footer .copy-rights ul li a {
     font-weight: 600;
     font-size: 13px;
 }
-/* body.modal-open {
-    position: fixed!important;
-    left:0;
-    right: 0;
-} */
+
 
 /*------------------- Chart Related Tooltip---------------- */
 
@@ -4706,7 +4556,7 @@ footer .copy-rights ul li a {
 .esri-ui-bottom-right.esri-ui-corner {
     position: absolute;
     bottom: 50px; /* This keeps the element aligned to the bottom */
-    right: 30px; /* This keeps the element aligned to the right */
+    right: 20px; /* This keeps the element aligned to the right */
     top: 10px !important; /* This adds a 20px offset from the top */
 }
 

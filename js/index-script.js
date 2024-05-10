@@ -364,7 +364,7 @@ const stationsWithLocations = [{
     longitude: 54.3637,
     stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi, Urban Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_KhadijaSchool",
     stationName: "Khadejah School",
@@ -382,7 +382,7 @@ const stationsWithLocations = [{
     longitude: 54.4084,
     stationLocation: "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Mussafah",
     stationName: "Mussafah",
@@ -391,7 +391,7 @@ const stationsWithLocations = [{
     longitude: 54.5029,
     stationLocation: "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Baniyas",
     stationName: "Baniyas School",
@@ -400,7 +400,7 @@ const stationsWithLocations = [{
     longitude: 54.6359,
     stationLocation: "Bani Yas - East 4 - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlMaqta",
     stationName: "Al Maqta",
@@ -409,16 +409,16 @@ const stationsWithLocations = [{
     longitude: 54.5161,
     stationLocation: "Rabdan - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_KhalifaCity",
-    stationName: "Khalifa City A", 
+    stationName: "Khalifa City A",
     regionName: "Abu Dhabi",
     latitude: 24.4199,
     longitude: 54.5782,
     stationLocation: "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 },
 {
     stationId: "EAD_AlMafraq",
@@ -428,7 +428,7 @@ const stationsWithLocations = [{
     longitude: 54.5889,
     stationLocation: "Jarn Yafour - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10]
 },
 {
     stationId: "EAD_AlAinSchool",
@@ -438,7 +438,7 @@ const stationsWithLocations = [{
     longitude: 55.7349,
     stationLocation: "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlAinStreet",
     stationName: "Al Ain Street",
@@ -447,7 +447,7 @@ const stationsWithLocations = [{
     longitude: 55.7658,
     stationLocation: "Central District - Abu Dhabi, Urban Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_Sweihan",
     stationName: "Sweihan",
@@ -456,7 +456,7 @@ const stationsWithLocations = [{
     longitude: 55.3429,
     stationLocation: "44th St - Sweihan - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_AlTawia",
     stationName: "Al Tawia",
@@ -465,7 +465,7 @@ const stationsWithLocations = [{
     longitude: 55.7049,
     stationLocation: "Al Tiwayya - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Zakher",
     stationName: "Zakher",
@@ -474,7 +474,7 @@ const stationsWithLocations = [{
     longitude: 55.7021,
     stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10]
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Qua’a",
@@ -483,7 +483,7 @@ const stationsWithLocations = [{
     longitude: 55.486,
     stationLocation: "Al Wiqan - Abu Dhabi, Regional Rural",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_BidaZayed",
     stationName: "Bida Zayed",
@@ -492,7 +492,7 @@ const stationsWithLocations = [{
     longitude: 53.7039,
     stationLocation: "Zayed City - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Gayathi",
     stationName: "Gayathi School",
@@ -501,7 +501,7 @@ const stationsWithLocations = [{
     longitude: 52.8103,
     stationLocation: "Ghiyathi - Abu Dhabi, Suburban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Liwa",
     stationName: "Liwa Oasis",
@@ -510,7 +510,7 @@ const stationsWithLocations = [{
     longitude: 53.6064,
     stationLocation: "3JW4+8H7 Taraq, Abu Dhabi, Rural Background Regional",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_RuwaisTransco",
     stationName: "Ruwais",
@@ -519,7 +519,7 @@ const stationsWithLocations = [{
     longitude: 52.7548,
     stationLocation: "Al Ruways Industrial City - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Habshan",
     stationName: "Habshan South",
@@ -528,7 +528,7 @@ const stationsWithLocations = [{
     longitude: 53.7453,
     stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.PM10,pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_E11Road",
     stationName: "E11 Road",
@@ -537,7 +537,7 @@ const stationsWithLocations = [{
     longitude: 53.8853,
     stationLocation: "Um Laylah - Abu Dhabi, Rural Traffic",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-	AvailablePolluants:[pollutantAbbrevations.SO2,pollutantAbbrevations.NO2,pollutantAbbrevations.CO,pollutantAbbrevations.PM10]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10]
 }, {
     stationId: "",
     stationName: "Abu Dhabi",
@@ -673,7 +673,7 @@ var radarOptions = {
 
 
 $(window).on('load', function () {
-    setTimeout(function () { 
+    setTimeout(function () {
         $('.page-loader').fadeOut('slow');
     }, 3500);
 });
@@ -768,20 +768,20 @@ $(document).ready(function () {
         // Open Sidebar
         $(".openSidebar").click(function () {
             $(".sidebar").css("width", "97%");
-            $('.modal-background').addClass('project-modal');          
+            $('.modal-background').addClass('project-modal');
         });
     }
     else {
         // Open Sidebar
         $(".openSidebar").click(function () {
             $(".sidebar").css("width", "40%");
-            $('.modal-background').addClass('project-modal');           
+            $('.modal-background').addClass('project-modal');
         });
     }
 
     // Close Sidebar
     $(".close-btn").click(function () {
-        $(".sidebar").css("width", "0");       
+        $(".sidebar").css("width", "0");
         $('.modal-background').removeClass('project-modal');
     });
 
@@ -804,14 +804,14 @@ $(document).ready(function () {
             showNextQuote();
         }, 4000);
     });
-  
+
     $('#currentDate').html(getFormattedDate(new Date()));
     activePollutant = pollutantAbbrevations.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
-    bindYearsToDropDown();   
+    bindYearsToDropDown();
     getCurrentLocation();
- 
+
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
@@ -819,7 +819,7 @@ $(document).ready(function () {
         getStationChartApi(chartFilter.Custom);
     });
 
- 
+
     document.getElementById('stationsDropdownMapSearch').addEventListener('input', function () {
         var searchText = this.value.toLowerCase();
         var listItems = document.querySelectorAll('.listSearch li');
@@ -835,7 +835,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
 });
 
 
@@ -859,16 +859,20 @@ function updateThreshold(pollutant, timeFilter) {
     pollutant = pollutant.replace(/\s+/g, ' ').trim();
     timeFilter = timeFilter.replace(/\s+/g, ' ').trim();
     const thresholdKey = `${pollutant}${timeFilter}`;
+    const thresholdValue = pollutantThresholdLimits[thresholdKey];
+    // If the element exists, update its text content
+    const thresholdElementId = `${pollutant.toLowerCase()}thresholdValue`;
+    const thresholdElement = document.getElementById(thresholdElementId);
     if (pollutantThresholdLimits.hasOwnProperty(thresholdKey)) {
-        const thresholdValue = pollutantThresholdLimits[thresholdKey];
-        // If the element exists, update its text content
-        const thresholdElementId = `${pollutant.toLowerCase()}thresholdValue`;
-        const thresholdElement = document.getElementById(thresholdElementId);
         //document.getElementById('pm10thresholdValue').textContent = thresholdValue || 'N/A';
         thresholdElement.textContent = thresholdValue;
-    }   
+    } else {
+        if (thresholdElement != null) {
+            thresholdElement.textContent = thresholdValue;
+        }
+    }
 }
- 
+
 $(".dropdown-change li a").click(function () {
     var selText = $(this).text();
     $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
@@ -876,6 +880,7 @@ $(".dropdown-change li a").click(function () {
         $('.dropdown-change li a').removeClass("active");
         $(this).addClass("active");
     }
+    updateThreshold(activePollutant, selText);
 });
 
 
@@ -960,10 +965,10 @@ $(document).ready(function () {
         $('.info-popup').hide();
     });
 
-  
+
     $('.quality-index-dropItem').click(function () {
-       
-        var el = $('.btn-group-filter');       
+
+        var el = $('.btn-group-filter');
         if ($(this).text() == chartFilter.Custom) {
             el.find('.date-box').removeClass('calen-box-hide');
             el.find('.quality-button-dropdown').hide();
@@ -996,7 +1001,7 @@ $(document).ready(function () {
         if (window.innerWidth <= 767) {
             $('.dropdown-change').css('top', '52px').css('right', '22px'); // Adjust for small devices
         }
-      
+
         if (window.innerWidth >= 768 && window.innerWidth <= 1199) {
             $('.dropdown-change').css('top', '70px').css('right', '22px'); // Adjust for tablet devices
         }
@@ -1170,7 +1175,7 @@ function createRadarData() {
         labels: labelsData,
         fill: false,
         datasets: [{
-            label: '',         
+            label: '',
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
@@ -1198,7 +1203,7 @@ function createRadialGradient3(context) {
     const ctx = context.chart.ctx;
 
     var gradient = ctx.createConicGradient(-1.479, centerX, centerY);
-   
+
     var gradientStop = colorCodesForAirAnalytics.length / 12 * 0.1;
     var colorGradient = 0
     colorCodesForAirAnalytics.forEach(item => {
@@ -1207,7 +1212,7 @@ function createRadialGradient3(context) {
             colorGradient += gradientStop;
         }
     });
-   
+
     ctx.fillStyle = gradient;
     ctx.fillRect(chartArea.left, chartArea.top, chartWidth, chartHeight);
 
@@ -1218,16 +1223,16 @@ function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(function success(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
-        currentStationDetails = findNearestStation(latitude, longitude);   
+        currentStationDetails = findNearestStation(latitude, longitude);
         nearestStation = currentStationDetails;
         hasAccessToLocation = true;
         getLiveCityRankingApi(hasAccessToLocation);
-        loadStationData();       
+        loadStationData();
     }, function error() {
         hasAccessToLocation = false;
         //loadStationData(); 
         getLiveCityRankingApi(hasAccessToLocation);
-        
+
     });
 }
 
@@ -1358,7 +1363,7 @@ function loadStationData(initialRequest = false) {
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
-            getAirQualitySafetyLevel();          
+            getAirQualitySafetyLevel();
             if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
                 activePollutant = pollutantAbbrevations.AQI;
                 showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
@@ -1370,7 +1375,7 @@ function loadStationData(initialRequest = false) {
         },
         error: handleApiError
     });
-    
+
 }
 
 
@@ -1434,34 +1439,34 @@ function getActivityContent(aqiLevel) {
 function getHealthRecommendationContent(aqiLevel) {
     const recommendations = {
         good: [
-            { img: "mask1.png", title: "Mask Usage", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Enjoy the fresh air! No need for masks when the air quality is good." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "An excellent time to open your windows for fresh air circulation." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "No need to switch on your air purifier." },
         ],
         moderate: [
-            { img: "mask1.png", title: "Mask Usage", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended for sensitive groups." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Exercise caution when circulating the air to ensure healthy indoor air quality." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Keep the air purifier running when sensitive individuals are present." },
         ],
         unhealthyForSensitiveGroups: [
-            { img: "mask1.png", title: "Wear a Mask if possible", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Its best to keep your windows closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Time to switch on your air purifiers", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended for sensitive groups, along with limiting outdoor exposure." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Exercise caution when circulating air, especially around sensitive groups." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Keep the air purifier running when sensitive individuals are present." },
         ],
         unhealthy: [
-            { img: "mask1.png", title: "Wearing a Mask is Advised", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Windows Should be Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended, along with limiting outdoor activity." },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is not recommended, particularly in situations involving sensitive individuals." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Switching on your air purifier is recommended for healthy indoor air quality." },
         ],
         veryUnhealthy: [
-            { img: "mask1.png", title: "Best to Wear a Mask", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
         ],
         hazardous: [
-            { img: "mask1.png", title: "Best to Wear a Mask", description: "If outdoor exposure is unavoidable, consider wearing a mask. Note that not all masks provide equal protection against particle pollution. Cloth or dust masks may fall short, but  well-fittedN95 or KN95 masks offer  better filtration capabilities and can be beneficial onhigh AQI days." },
-            { img: "health_kit2.png", title: "Best to Keep Your Windows Closed", description: "Ensure healthy indoor air quality by keeping windows and doors closed. Opt for the recirculate setting on your air conditioning unit, use a portable HEPA air cleaner, or, in severe circumstances, create a clean room environment." },
-            { img: "health_kit3.png", title: "Best to Use an Air Purifier", description: "Reduce outdoor time to under 30 minutes during high AQI days and lower the intensity of outdoor activities. The longer and more strenuous the activity, the higher the risk of exposure to unhealthy air pollution levels, according to the EPA." },
+            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
+            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
+            { img: "health_kit3.png", title: "Switching on your Air Purifierr", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
         ],
         // Add definitions for other AQI levels...
     };
@@ -1727,8 +1732,8 @@ function getLiveCityRankingApi(hasAccessToLocation) {
             if (!hasAccessToLocation) {
                 currentStationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
                 loadStationData();
-            }           
-            
+            }
+
             bindLiveCityRanking();
         },
         error: handleApiError
@@ -1736,7 +1741,7 @@ function getLiveCityRankingApi(hasAccessToLocation) {
 }
 
 function bindLiveCityRanking() {
-    
+
     $('#stationRankingList, #stationsDropdownMap').empty();
     var stationRankingListDiv = $('#stationRankingList');
     var stationsDropdownMapEl = $('#stationsDropdownMap');
@@ -1769,7 +1774,7 @@ function bindLiveCityRanking() {
                 <span class="region-name" style="display: none;">`+ stationDetails.regionName + `</span>
             </li>`);
         }
-        
+
     });
 
     if (currentStationDetails.stationId) {
@@ -1848,7 +1853,7 @@ function getAirQualitySafetyLevel() {
 }
 
 function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
-  
+
     var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -1880,7 +1885,7 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 }
 
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
-  
+
     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -1911,7 +1916,7 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 
 }
 function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
-  
+
     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -1974,15 +1979,15 @@ function getStationChartApi(filter, initialRequest = false) {
         success: function (data) {
             chartData = data;
             bindStationDataToBarChart(filter);
-            bindStationDataToLineChart(filter);           
+            bindStationDataToLineChart(filter);
         },
         error: handleApiError
     });
 }
 
 function bindStationDataToLineChart(filter) {
-	
-	
+
+
     var aqiData = [];
     var pm10Data = [];
     var so2Data = [];
@@ -2055,14 +2060,42 @@ function bindStationDataToLineChart(filter) {
 
     let minDate = new Date();
     let maxDate = new Date();
+    //for vertical line strat
+    Chart.registry.plugins.register({
+        id: 'drawVerticalLine',
+        afterDraw: function (chart) {
+            if (chart.tooltip._active && chart.tooltip._active.length && chart.canvas.id == "aqiLineChart") {
+                var activePoint = chart.tooltip._active[0],
+                    ctx = chart.ctx,
+                    y_axis = chart.scales['y'],
+                    x = activePoint.element.x,
+                    topY = y_axis.top,
+                    bottomY = y_axis.bottom;
 
+                var gradientStroke = ctx.createLinearGradient(0, bottomY, 0, topY);
+                gradientStroke.addColorStop(0, '#9CD84E');
+                gradientStroke.addColorStop(0.5, 'yellow');
+                gradientStroke.addColorStop(1, '#F99049');
+                // Draw line
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(x, topY);
+                ctx.lineTo(x, bottomY);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = gradientStroke;
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+    });
+    //for vertical line end
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
-            if (filter !== 'Custom') { 
-            let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-            $("#StAQIlastrefreshtime").text(lastrefreshdate)
+            if (filter !== 'Custom') {
+                let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+                $("#StAQIlastrefreshtime").text(lastrefreshdate)
             }
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
@@ -2096,7 +2129,8 @@ function bindStationDataToLineChart(filter) {
                     pointBackgroundColor: 'white',
                     fill: false,
                     tension: 0.4,
-                    pointRadius: 0
+                    pointRadius: 0,
+                    hoverRadius: 8
                 }]
             },
 
@@ -2118,6 +2152,7 @@ function bindStationDataToLineChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
+                        id: "single",
                         enabled: false,
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
@@ -2193,7 +2228,7 @@ function bindStationDataToLineChart(filter) {
                 datasets: [{
                     label: '',
                     data: aqiData,
-                    pointHoverRadius: 5,
+                    pointHoverRadius: 8,
                     backgroundColor: gradientFill,
                     borderColor: function (context) {
                         const chart = context.chart;
@@ -2213,6 +2248,7 @@ function bindStationDataToLineChart(filter) {
                     fill: false,
                     tension: 0.4,
                     pointRadius: 0,
+                    hoverRadius: 8
                 }]
             },
 
@@ -2237,7 +2273,7 @@ function bindStationDataToLineChart(filter) {
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
-                              updatePollutantValues();
+                                updatePollutantValues();
                             } else {
                                 // Call the custom function to update the values
                                 updatePollutantValues(context.tooltip.dataPoints);
@@ -2273,6 +2309,7 @@ function bindStationDataToLineChart(filter) {
 
         });
     }
+
     updatePollutantValues();
     myChart.update();
     var pollutantsLineChartId = "pollutantLineChart";
@@ -2281,7 +2318,86 @@ function bindStationDataToLineChart(filter) {
         chartStatus.destroy();
     }
     const pollutantLineChart = document.getElementById(pollutantsLineChartId).getContext('2d');
+    //for vertical line start
+    Chart.registry.plugins.register({
+        id: 'drawVerticalLine1',
+        afterDraw: function (chart) {
+            if (chart.tooltip._active && chart.tooltip._active.length && chart.canvas.id == "pollutantLineChart") {
+                var activePoint = chart.tooltip._active[0],
+                    ctx = chart.ctx,
+                    y_axis = chart.scales['y'],
+                    x = activePoint.element.x,
+                    topY = y_axis.top,
+                    bottomY = y_axis.bottom;
+                // Draw line
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(x, topY);
+                ctx.lineTo(x, bottomY);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(0, 75, 135, 1)';
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+    });
+    //for vertical line end
 
+    const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find
+    const dataArray = [
+        {
+            label: 'SO2',
+            data: so2Data,
+            backgroundColor: 'rgba(0, 75, 135, 0.8)',
+            borderColor: 'rgba(0, 75, 135, 0.8)',
+            pointRadius: 0,
+            pointHoverRadius: 8,
+            tension: 0.4,
+            borderWidth: 3
+        },
+        {
+            label: 'NO2',
+            data: no2Data,
+            backgroundColor: 'rgba(0, 75, 135, 0.2)',
+            borderColor: 'rgba(0, 75, 135, 0.2)',
+            pointRadius: 0,
+            pointHoverRadius: 8,
+            tension: 0.4,
+            borderWidth: 3
+        },
+        {
+            label: 'CO',
+            data: coData,
+            backgroundColor: 'rgba(0, 75, 135, 0.6)',
+            borderColor: 'rgba(0, 75, 135, 0.6)',
+            pointRadius: 0,
+            pointHoverRadius: 8,
+            tension: 0.4,
+            borderWidth: 3
+        },
+        {
+            label: 'PM10',
+            data: pm10Data,
+            backgroundColor: 'rgba(0, 75, 135, 1)',
+            borderColor: 'rgba(0, 75, 135, 1)',
+            pointRadius: 0,
+            pointHoverRadius: 8,
+            tension: 0.4,
+            borderWidth: 3
+        },
+        {
+            label: 'O3',
+            data: o3Data,
+            backgroundColor: 'rgba(0, 75, 135, 0.4)',
+            borderColor: 'rgba(0, 75, 135, 0.4)',
+            pointRadius: 0,
+            pointHoverRadius: 8,
+            tension: 0.4,
+            borderWidth: 3
+        },
+
+    ]
+    const fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
 
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
@@ -2296,65 +2412,8 @@ function bindStationDataToLineChart(filter) {
 
         }
         minDateString = minDate.toISOString().split('T')[0];
-        maxDateString = maxDate.toISOString().split('T')[0];		
-		const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find
-		const dataArray = [
-						{
-                        label: 'SO2',
-                        data: so2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
-                        borderColor: 'rgba(0, 75, 135, 0.8)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        tension: 0.4,
-                        borderWidth: 3
-                    },
-					 {
-                        label: 'NO2',
-                        data: no2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
-                        borderColor: 'rgba(0, 75, 135, 0.2)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        tension: 0.4,
-                        borderWidth: 3
-                    },
-                    {
-                        label: 'CO',
-                        data: coData,
-                        backgroundColor: 'rgba(0, 75, 135, 0.6)',
-                        borderColor: 'rgba(0, 75, 135, 0.6)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        tension: 0.4,
-                        borderWidth: 3
-                    },
-					 {
-                        label: 'PM10',
-                        data: pm10Data,
-                        backgroundColor: 'rgba(0, 75, 135, 1)',
-                        borderColor: 'rgba(0, 75, 135, 1)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        tension: 0.4,
-                        borderWidth: 3
-                    },
-					{
-						label: 'O3',
-						data: o3Data,
-						backgroundColor: 'rgba(0, 75, 135, 0.4)',
-						borderColor: 'rgba(0, 75, 135, 0.4)',
-						pointRadius: 0,
-						pointHoverRadius: 5,
-						tension: 0.4,
-						borderWidth: 3
-					},
-                   
-                ]
-		const fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
+        maxDateString = maxDate.toISOString().split('T')[0];
 
-		
-		
         const myPollutantChart = new Chart(pollutantLineChart, {
             type: 'line',
             data: {
@@ -2374,7 +2433,7 @@ function bindStationDataToLineChart(filter) {
                             boxWidth: 8,
                             boxHeight: 8,
                             borderWidth: 0,
-                            color: '#666',                           
+                            color: '#666',
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2399,16 +2458,15 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: false,
                         external: function (context) {
-
                             if (context.tooltip.opacity === 0) {
-                                
                                 updateAllPollutantValues();
                                 return;
+                            } else {
+                                updateAllPollutantValues(context.tooltip.dataPoints);
                             }
-								updateAllPollutantValues(context.tooltip.dataPoints)
                         },
                         callbacks: {
-                               label: function () {
+                            label: function () {
                                 return null;
                             }
 
@@ -2474,6 +2532,7 @@ function bindStationDataToLineChart(filter) {
                 },
             },
         });
+
         updateAllPollutantValues();
         myPollutantChart.update();
     }
@@ -2482,53 +2541,7 @@ function bindStationDataToLineChart(filter) {
             type: 'line', // Specify the chart type
             data: {
                 labels: categoriesData, // X-axis categories go here
-                datasets: [
-                    {
-                        label: 'PM₁₀',
-                        data: pm10Data,
-                        backgroundColor: 'rgba(0, 75, 135, 1)',
-                        borderColor: 'rgba(0, 75, 135, 1)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 2,
-                    },
-                    {
-                        label: 'SO₂',
-                        data: so2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.8)',
-                        borderColor: 'rgba(0, 75, 135, 0.8)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'CO',
-                        data: coData,
-                        backgroundColor: 'rgba(0, 75, 135, 0.6)',
-                        borderColor: 'rgba(0, 75, 135, 0.6)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'O₃',
-                        data: o3Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.4)',
-                        borderColor: 'rgba(0, 75, 135, 0.4)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'NO₂',
-                        data: no2Data,
-                        backgroundColor: 'rgba(0, 75, 135, 0.2)',
-                        borderColor: 'rgba(0, 75, 135, 0.2)',
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    }
-                ]
+                datasets: fianlItems
 
             },
             options: {
@@ -2545,7 +2558,7 @@ function bindStationDataToLineChart(filter) {
                             boxWidth: 8,
                             boxHeight: 8,
                             color: '#666',
-                           
+
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2562,39 +2575,14 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: false,
                         external: function (context) {
-
                             if (context.tooltip.opacity === 0) {
-                               
                                 updateAllPollutantValues();
                                 return;
+                            } else {
+                                updateAllPollutantValues(context.tooltip.dataPoints);
                             }
-
-                            context.tooltip.dataPoints.forEach(function (tooltipItem) {
-                                const dataIndex = tooltipItem.dataIndex;
-                                const datasetIndex = tooltipItem.datasetIndex;
-                                const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
-                               
-                                switch (datasetIndex) {
-                                    case 0:
-                                       
-                                        $("#lineChartPollutantPm10Value").text(dataPoint);
-                                        break;
-                                    case 1:
-                                        $("#lineChartPollutantSo2Value").text(dataPoint);
-                                        break;
-                                    case 2:
-                                        $("#lineChartPollutantCoValue").text(dataPoint);
-                                        break;
-                                    case 3:
-                                        $("#lineChartPollutantO3Value").text(dataPoint);
-                                        break;
-                                    case 4:
-                                        $("#lineChartPollutantNo2Value").text(dataPoint);
-                                        break;
-                                }
-                            });
                         },
-                        callbacks: {                            
+                        callbacks: {
                             label: function () {
                                 return null;
                             }
@@ -2630,6 +2618,7 @@ function bindStationDataToLineChart(filter) {
                 },
             }
         });
+
         updateAllPollutantValues();
         myPollutantChart.update();
     }
@@ -2655,11 +2644,11 @@ function updatePollutantValues(tooltipItems) {
     $("#lineChartAqiCoValue").text(co);
     $("#lineChartAqiPm10Value").text(pm10);
     $("#lineChartAqiO3Value").text(o3);
-		const aqi = Math.round(chartData[index].aqi);
-            var aqiDetails = getAqiStatusAndColorCode(aqi);
-            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
-            var currentYearOverview = new Date().getFullYear();
-            $("#lineChartAqiValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);           
+    const aqi = Math.round(chartData[index].aqi);
+    var aqiDetails = getAqiStatusAndColorCode(aqi);
+    var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
+    var currentYearOverview = new Date().getFullYear();
+    $("#lineChartAqiValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
 }
 
 function updateAllPollutantValues(tooltipItems) {
@@ -2680,11 +2669,11 @@ function updateAllPollutantValues(tooltipItems) {
     $("#lineChartPollutantCoValue").text(co);
     $("#lineChartPollutantPm10Value").text(pm10);
     $("#lineChartPollutantO3Value").text(o3);
-	const aqi = Math.round(chartData[index].aqi);
-            var aqiDetails = getAqiStatusAndColorCode(aqi);
-            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
-            var currentYearOverview = new Date().getFullYear();
-            $("#lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color); 
+    const aqi = Math.round(chartData[index].aqi);
+    var aqiDetails = getAqiStatusAndColorCode(aqi);
+    var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
+    var currentYearOverview = new Date().getFullYear();
+    $("#lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
 }
 
 function bindStationDataToBarChart(filter) {
@@ -3113,12 +3102,12 @@ function bindStationDataToBarChart(filter) {
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
     var barChart1 = document.getElementById(pollutantBarChartId1).getContext('2d');
-  
+
 
     const box = document.getElementById(boxid);
     const box1 = document.getElementById(boxid1);
     const box3 = document.getElementById(boxid2);
-   
+
     var mediaQuery = "(min-width: 768px) and (max-width: 1199px)";
     // Test the media query
     var mql = window.matchMedia(mediaQuery);
@@ -3133,9 +3122,9 @@ function bindStationDataToBarChart(filter) {
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
         if (dateTimes.length > 0) {
             if (filter !== 'Custom') {
-                
+
                 let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-                
+
                 $("#" + lastrefreshtime).text(lastrefreshdate);
             }
             minDate = new Date(Math.min(...dateTimes));
@@ -3210,7 +3199,7 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.parsed.y;
-                               
+
                                 if (pollutantBarChartId == "ADstationAqiBarGraph")
                                     return value;
                                 else
@@ -3218,7 +3207,7 @@ function bindStationDataToBarChart(filter) {
 
                             }
                         },
-                        filter: function (tooltipItem, data) {                           
+                        filter: function (tooltipItem, data) {
                             return tooltipItem.raw !== 0;
                         }
                     }
@@ -3427,7 +3416,7 @@ function bindStationDataToBarChart(filter) {
                                 return value + ' ug/m³';
                             },
                         },
-                        filter: function (tooltipItem, data) {                            
+                        filter: function (tooltipItem, data) {
                             return tooltipItem.raw !== 0;
                         }
                     }
@@ -3671,7 +3660,7 @@ if (window.innerWidth < 990) {
 
 
         let minPerSlide = 6;
-    
+
         if (window.innerWidth < 768) {
             minPerSlide = 2;
         }
@@ -3737,9 +3726,9 @@ if (window.innerWidth < 990) {
 
 $('.main-content').on('click', function () {
 
-    var imageSrc = $(this).find('.item').attr('src'); 
+    var imageSrc = $(this).find('.item').attr('src');
     var projectContent = $(this).find('.project-slide-content').text();
-    var projectItemDescription = $(this).find('.project-slide-description').text();  
+    var projectItemDescription = $(this).find('.project-slide-description').text();
     $('.modal-background .img-fluid').attr('src', imageSrc);
     $('.modal-background .projectItemContent').text(projectContent);
     $('.modal-background .projectItemDescription').text(projectItemDescription);
