@@ -1,4 +1,4 @@
-const baseUrl = "https://adairqualityapi.ead.ae/";
+const baseUrl = "https://ead-airquality.azurewebsites.net/AQAPI/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -355,7 +355,7 @@ const causeStationData = {
         ]
     }
 };
-// start 22-April-24---------
+
 const stationsWithLocations = [{
     stationId: "EAD_HamdanStreet",
     stationName: "Hamdan Street",
@@ -545,7 +545,7 @@ const stationsWithLocations = [{
     longitude: 54.3773,
 }];
 
-// End 22-April-24---------
+
 
 const colorClass = {
     GoodColorClass: "green",
@@ -566,7 +566,7 @@ const colorCodes = {
     hazar: '#A06A7B'
 };
 
-// start 19-April-24--
+
 const statusClass = {
     Good: "Good Days",
     Moderate: "Moderate Days",
@@ -575,7 +575,7 @@ const statusClass = {
     VeryUnHealthly: "Very Unhealthy Days",
     Hazardous: "Hazardous Days",
 }
-// end 19-April-24--
+
 
 const statusClassNew1 = {
     Good: "Good",
@@ -671,229 +671,14 @@ var radarOptions = {
     },
 };
 
-var aqiLineChartOptions1 = {
-    series: [{
-        name: '',
-        data: []
-    }],
-    chart: {
-        height: 300,
-        width: '100%',
-        type: 'area',
-        toolbar: {
-            show: false
-        },
-    },
-    dataLabels: {
-        enabled: false
-    },
-    stroke: {
-        curve: 'smooth',
-        fill: {
-            type: "gradient",
-            gradient: {
-                type: "horizontal",
-                colorStops: [
-                    [
-                        {
-                            offset: 0,
-                            color: "#9CD84E",
-                            opacity: 1
-                        },
-                        {
-                            offset: 50,
-                            color: "yellow",
-                            opacity: 1
-                        },
-                        {
-                            offset: 80,
-                            color: "#F99049",
-                            opacity: 1
-                        }
-                    ]
-                ]
-            }
-        }
-    },
-    xaxis: {
-        // type: 'datetime',
-        categories: [], //['1/11/2000', '2/11/2000', '3/11/2000', '4/11/2000', '5/11/2000', '6/11/2000', '7/11/2000', '8/11/2000', '9/11/2000', '10/11/2000', '11/11/2000', '12/11/2000', '1/11/2001', '2/11/2001', '3/11/2001','4/11/2001' ,'5/11/2001' ,'6/11/2001'],
-        tickAmount: 10,
-        labels: {
-            rotateAlways: false,
-            rotate: 0
-        }
-    },
-    grid: {
-        show: false, // hide grid
-    },
-    colors: ['#9CD84E', '#facf3978', '#F99049'],
-    fill: {
-        type: "gradient",
-        gradient: {
-            shadeIntensity: 1,
-            type: "horizontal",
-            colorStops: [
-                [
-                    {
-                        offset: 0,
-                        color: "#9cd84e6b",
-                        opacity: 0.2
-                    },
-                    {
-                        offset: 50,
-                        color: "#facf3978",
-                        opacity: 0.2
-                    },
-                    {
-                        offset: 80,
-                        color: "#f9904957",
-                        opacity: 0.2
-                    }
-                ]
-            ]
-        }
-    },
-    yaxis: {
-        min: 0,
-        // max: 100
-    },
-    responsive: [
-        {
-            breakpoint: 1350,
-            options: {
-                chart: {
-                    height: 250
-                }
-            },
-            breakpoint: 1400,
-            options: {
-                chart: {
-                    height: 250
-                }
-            },
-        }
-    ],
-    tooltip: {
-        shared: true,
-        intersect: false,
-        x: {
-            show: false,
-        },
-        y: {
-            formatter: function (value, options) {
-                $("#lineChartAqiSo2Value").text(chartData[options.dataPointIndex].sO2);
-                $("#lineChartAqiNo2Value").text(chartData[options.dataPointIndex].nO2);
-                $("#lineChartAqiCoValue").text(chartData[options.dataPointIndex].co);
-                $("#lineChartAqiPm10Value").text(chartData[options.dataPointIndex].pM10);
-                $("#lineChartAqiO3Value").text(chartData[options.dataPointIndex].o3);
-                return value;
-            }
-        }
-    }
-};
-
-var pollutantLineChartOptions1 = {
-    series: [],
-    chart: {
-        height: 300,
-        width: '100%',
-        type: 'line',
-        toolbar: {
-            show: false
-        },
-    },
-    dataLabels: {
-        enabled: false
-    },
-    stroke: {
-        width: [3, 3, 3, 3, 3, 3],
-        curve: 'smooth'
-    },
-    xaxis: {
-        categories: [],
-        labels: {
-            rotateAlways: false,
-            rotate: 0
-        }
-        // tickAmount: 10,
-    },
-    grid: {
-        show: false, // hide grid
-    },
-
-    yaxis: {
-        min: 0,
-        // max: 100
-    },
-    responsive: [
-        {
-            breakpoint: 767,
-            options: {
-                chart: {
-                    width: 600
-                }
-            }
-        }, {
-            breakpoint: 1350,
-            options: {
-                chart: {
-                    height: 250
-                }
-            }
-        },
-        {
-            breakpoint: 1400,
-            options: {
-                chart: {
-                    height: 250
-                }
-            }
-        },
-    ],
-    tooltip: {
-        enabled: true,
-        shared: true,
-        intersect: false,
-        y: {
-            formatter: function (value, options) {
-                if (options.series.length > 0) {
-                    options.series.forEach((item, index) => {
-                        switch (index) {
-                            case 0:
-                                $("#lineChartPollutantPm10Value").text(item.length > 0 ? chartData[options.dataPointIndex].pM10 : '');
-                                break;
-                            case 1:
-                                $("#lineChartPollutantSo2Value").text(item.length > 0 ? chartData[options.dataPointIndex].sO2 : '');
-                                break;
-                            case 2:
-                                $("#lineChartPollutantCoValue").text(item.length > 0 ? chartData[options.dataPointIndex].co : '');
-                                break;
-                            case 3:
-                                $("#lineChartPollutantO3Value").text(item.length > 0 ? chartData[options.dataPointIndex].o3 : '');
-                                break;
-                            case 4:
-                                $("#lineChartPollutantNo2Value").text(item.length > 0 ? chartData[options.dataPointIndex].nO2 : '');
-                                break;
-                        }
-                        return value;
-                    });
-                } else {
-                    $("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-                }
-            }
-        }
-    }
-};
-
 
 $(window).on('load', function () {
-    setTimeout(function () { // allowing 3 secs to fade out loader
+    setTimeout(function () { 
         $('.page-loader').fadeOut('slow');
     }, 3500);
 });
 
-//  05-Feb-2024 Banner Arrrow animation script Start-------------- 
+
 $('.down-arrow-bg').click(function () {
     let currentSectionIndex = 0;
     var nextSection = $(this).closest('.down-arrow').next('div');
@@ -901,8 +686,7 @@ $('.down-arrow-bg').click(function () {
         nextSection[currentSectionIndex].scrollIntoView({ block: "start", behavior: "smooth" });
     }
 });
-// Banner Arrrow animation script End-------------- 
-// Hiding Nav some page scroll
+
 $(window).scroll(function () {
     var scroll = $(window).scrollTop();
     if (scroll >= 600) {
@@ -913,25 +697,14 @@ $(window).scroll(function () {
     }
 });
 
-//  05-Feb-2024 Map Search icon script Start--------------   
-//$('.listSearch li').on("click", function () {
-//    $(".listSearch li").css("background-color", "");
-//    $(this).css("background-color", "rgb(213 213 213)");
-//    var value = $(this).text();
-//    //alert(value);
-//    $(".show-mapSearchList").show();
-//    $(".show-mapSearchList").html(value);
-//    $('.Newsearch-box').hide();
-//});
+
 
 $('.show-mapSearchList').click(function () {
     $('.Newsearch-box').show();
     $(".show-mapSearchList").hide();
     $('#stationsDropdownMapSearch').val('');
 });
-// Map Search icon script Start--------------   
 
-//  05-Feb-2024 Breath text heading animation script Start--------------
 
 var TxtRotate = function (el, toRotate, period) {
     this.toRotate = toRotate;
@@ -995,27 +768,24 @@ $(document).ready(function () {
         // Open Sidebar
         $(".openSidebar").click(function () {
             $(".sidebar").css("width", "97%");
-            $('.modal-background').addClass('project-modal');
-            // $(".main-content").css("margin-right", "250px");
+            $('.modal-background').addClass('project-modal');          
         });
     }
     else {
         // Open Sidebar
         $(".openSidebar").click(function () {
             $(".sidebar").css("width", "40%");
-            $('.modal-background').addClass('project-modal');
-            // $(".main-content").css("margin-right", "250px");
+            $('.modal-background').addClass('project-modal');           
         });
     }
 
     // Close Sidebar
     $(".close-btn").click(function () {
-        $(".sidebar").css("width", "0");
-        //$(".main-content").css("margin-right", "0");
+        $(".sidebar").css("width", "0");       
         $('.modal-background').removeClass('project-modal');
     });
 
-    // 05-Feb-2024 Bannner text fadeout function start------
+
 
     var quotes = $(".quotes");
     var quoteIndex = -1;
@@ -1034,19 +804,14 @@ $(document).ready(function () {
             showNextQuote();
         }, 4000);
     });
-    // Bannner text fadeout function End--------
-
-    // Do not remove below code starts---------------------------------
+  
     $('#currentDate').html(getFormattedDate(new Date()));
     activePollutant = pollutantAbbrevations.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
-    bindYearsToDropDown(); // Do not call this function after load station data function
-    ////getLiveCityRankingApi();
-    //getCurrentLocation();
-    ////loadStationData(true);
+    bindYearsToDropDown();   
     getCurrentLocation();
-   // getLiveCityRankingApi();
+ 
 
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
@@ -1054,20 +819,7 @@ $(document).ready(function () {
         getStationChartApi(chartFilter.Custom);
     });
 
-    // start 22-April-24 -----------
-    // $('#stationsDropdownMapSearch').on('keyup', function () {
-    //     var searchText = $(this).val().toLowerCase();
-    //     $('.mapSearchlist-text').each(function () {
-    //         var listItemText = $(this).text().toLowerCase();
-    //         console.log('listItemText', listItemText);
-    //         if (listItemText.indexOf(searchText) === -1) {
-    //             $(this).hide();
-    //         } else {
-    //             $(this).show();
-    //         }
-    //     });
-    // });
-
+ 
     document.getElementById('stationsDropdownMapSearch').addEventListener('input', function () {
         var searchText = this.value.toLowerCase();
         var listItems = document.querySelectorAll('.listSearch li');
@@ -1083,14 +835,10 @@ $(document).ready(function () {
             }
         });
     });
-    // End 22-April-24 -----------
-
-    // Do not remove below code ends---------------------------------
+    
 });
 
-// Project Section modal End--------------
 
-// Insight Section Script by Sachin---------
 function showHideToggleDiv(tabId, pollutant) {
     if (pollutant === 'PM10' || pollutant === 'SO2' || pollutant === 'CO' || pollutant === 'O3' || pollutant === 'NO2') {
         document.getElementById('myTabs').classList.add('upperTop');
@@ -1120,7 +868,7 @@ function updateThreshold(pollutant, timeFilter) {
         thresholdElement.textContent = thresholdValue;
     }   
 }
-// // Map Search icon script Start--------------   
+ 
 $(".dropdown-change li a").click(function () {
     var selText = $(this).text();
     $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
@@ -1130,7 +878,7 @@ $(".dropdown-change li a").click(function () {
     }
 });
 
-// $("#myTabs").insertBefore(".bar_section .legend");
+
 $(function () {
     $('#myTabs .nav-item .nav-link').click(function () {
         if (!$(this).hasClass("active")) {
@@ -1140,7 +888,7 @@ $(function () {
     });
 });
 
-//  05-Feb-2024 Banner Arrrow animation script Start-------------- 
+
 $('.down-arrow').on('click', function () {
     fullpage_api.moveTo('slide1');
 });
@@ -1248,17 +996,14 @@ $(document).ready(function () {
         if (window.innerWidth <= 767) {
             $('.dropdown-change').css('top', '52px').css('right', '22px'); // Adjust for small devices
         }
-        //alert(window.innerWidth);
-        // Check if it's a tablet device
+      
         if (window.innerWidth >= 768 && window.innerWidth <= 1199) {
             $('.dropdown-change').css('top', '70px').css('right', '22px'); // Adjust for tablet devices
         }
     });
 });
 
-// Info Icon cross button script----------------------
 
-// Project slider JS ---------------------------------
 let items = document.querySelectorAll('.slide-carol .carol-item');
 let prevButton = document.getElementById('prev');
 let nextButton = document.getElementById('next');
@@ -1280,46 +1025,7 @@ items.forEach((el, index) => {
     }
 });
 
-// Function to check if last slide is active
-//function isLastSlideActive() {
-//    let activeSlide = document.querySelector('.carol-item.active');
-//    let lastSlide = items[items.length - 1];
-//    return activeSlide === lastSlide;
-//}
 
-//// Function to check if first slide is active
-//function isFirstSlideActive() {
-//    let activeSlide = document.querySelector('.carol-item.active');
-//    let firstSlide = items[0];
-//    return activeSlide === firstSlide;
-//}
-
-//// Add event listener to the carousel for slide change
-//document.getElementById('recipeCarousel').addEventListener('slid.bs.carousel', function () {
-//    // Check if last slide is active
-//    if (isLastSlideActive()) {
-//        // Add opacity to next button
-//        nextButton.style.opacity = '0.5';
-//        nextButton.disabled = true;
-//    } else {
-//        // Remove opacity from next button
-//        nextButton.style.opacity = '1';
-//        nextButton.disabled = false;
-//    }
-
-//    // Check if first slide is active
-//    if (isFirstSlideActive()) {
-//        // Add opacity to previous button
-//        prevButton.style.opacity = '0.5';
-//        prevButton.disabled = true;
-//    } else {
-//        // Remove opacity from previous button
-//        prevButton.style.opacity = '1';
-//        prevButton.disabled = false;
-//    }
-//});
-
-// Do not remove below code starts---------------------------------
 function getAqiStatus(value) {
     if (value >= 0 && value <= 50) {
         return statusClass.Good;
@@ -1464,9 +1170,7 @@ function createRadarData() {
         labels: labelsData,
         fill: false,
         datasets: [{
-            label: '',
-            //borderColor: 'rgba(250, 207, 57, 1)',
-            // pointBackgroundColor: getColors(pollutantLevels),
+            label: '',         
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
@@ -1494,9 +1198,7 @@ function createRadialGradient3(context) {
     const ctx = context.chart.ctx;
 
     var gradient = ctx.createConicGradient(-1.479, centerX, centerY);
-
-    // The pattern is 30 degrees of blend between quadrants
-    // 60 degrees of pure color in the quadrant
+   
     var gradientStop = colorCodesForAirAnalytics.length / 12 * 0.1;
     var colorGradient = 0
     colorCodesForAirAnalytics.forEach(item => {
@@ -1505,8 +1207,7 @@ function createRadialGradient3(context) {
             colorGradient += gradientStop;
         }
     });
-
-    // Set the fill style and draw a rectangle
+   
     ctx.fillStyle = gradient;
     ctx.fillRect(chartArea.left, chartArea.top, chartWidth, chartHeight);
 
@@ -1657,9 +1358,7 @@ function loadStationData(initialRequest = false) {
             $('.page-loader').fadeOut('slow');
             getYearlyStationPollutantsThreshold();
             getAirAnalytics($("#selectedyear").text());
-            getAirQualitySafetyLevel();
-           // getLiveCityRankingApi();
-            //bindLiveCityRanking();
+            getAirQualitySafetyLevel();          
             if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
                 activePollutant = pollutantAbbrevations.AQI;
                 showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
@@ -1671,9 +1370,9 @@ function loadStationData(initialRequest = false) {
         },
         error: handleApiError
     });
-    // LoadProgressBar(inputParam)
+    
 }
-// start Arisha pending to complete the content values
+
 
 function getAQILevel(value) {
     if (value >= 0 && value <= 50) return 'good';
@@ -1731,7 +1430,7 @@ function getActivityContent(aqiLevel) {
         </div>
     `).join('');
 }
-// start 19-April-24-------------
+
 function getHealthRecommendationContent(aqiLevel) {
     const recommendations = {
         good: [
@@ -1800,7 +1499,7 @@ function getHealthRecommendationContent(aqiLevel) {
         </li>
     `).join('');
 }
-// End 19-April-24-------------
+
 function updateActivities(value) {
     const aqiLevel = getAQILevel(value);
     const content = getActivityContent(aqiLevel);
@@ -1899,10 +1598,10 @@ function updateSideBarAQIImage(aqiLevel) {
     $('#sideBarAQIImage').attr('src', imageSrc);
 }
 
-// End Arisha pending to complete the content values
+
 function updateCauses(station, pollutant) {
     const causesContainer = document.querySelector('.Causes-img');
-    causesContainer.innerHTML = ''; // Clear existing causes
+    causesContainer.innerHTML = '';
 
     const causes = causeStationData[station][pollutant];
 
@@ -2029,15 +1728,15 @@ function getLiveCityRankingApi(hasAccessToLocation) {
                 currentStationDetails = stationsWithLocations.find(x => x.stationId == liveCityData[0].stationName);
                 loadStationData();
             }           
-            //loadStationData(true);
+            
             bindLiveCityRanking();
         },
         error: handleApiError
     });
 }
-// Start 22-April-24 -------------
+
 function bindLiveCityRanking() {
-    // Clear existing rows
+    
     $('#stationRankingList, #stationsDropdownMap').empty();
     var stationRankingListDiv = $('#stationRankingList');
     var stationsDropdownMapEl = $('#stationsDropdownMap');
@@ -2070,7 +1769,7 @@ function bindLiveCityRanking() {
                 <span class="region-name" style="display: none;">`+ stationDetails.regionName + `</span>
             </li>`);
         }
-        // end 22-April-24 -------------
+        
     });
 
     if (currentStationDetails.stationId) {
@@ -2096,13 +1795,13 @@ function bindLiveCityRanking() {
     $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
 }
 
-// start 22-April-24 -----
+
 $('.mapStationSearchScroll').on('click', 'li', function () {
     var stationName = $(this).find('.station-name').text();
     $(".show-mapSearchList").show().html(stationName);
     $('.Newsearch-box').hide();
 });
-// End 22-April-24 -----
+
 
 
 function selectedStation(stationId) {
@@ -2147,14 +1846,9 @@ function getAirQualitySafetyLevel() {
         error: handleApiError
     });
 }
-// start 19-April-24 ---------
-function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
-    // return `<div class="list-item ` + aqiColorStatus + `">
-    //           <p>` + aqiValue + `</p>
-    //           <span>` + aqiStatus + `</span>
-    //  
 
-    // Create a container for the count and status
+function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
+  
     var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -2186,13 +1880,7 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 }
 
 function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
-    // return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
-    //           <p>` + aqiValue + `</p>
-    //           <span>` + aqiStatus + `</span>
-    //         </div>`;
-
-
-    // Create a container for the count and status
+  
     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -2223,12 +1911,7 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 
 }
 function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
-    // return `<div class="col-4 col-sm-4 col-md-4 column ` + aqiColorStatus + `">
-    //           <p>` + aqiValue + `</p>
-    //           <span>` + aqiStatus + `</span>
-    //         </div>`;
-
-    // Create a container for the count and status
+  
     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
 
     // Create a span element for the count
@@ -2257,7 +1940,7 @@ function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
         }
     });
 
-}// End 19-April-24 ---------
+}
 
 
 
@@ -2291,49 +1974,14 @@ function getStationChartApi(filter, initialRequest = false) {
         success: function (data) {
             chartData = data;
             bindStationDataToBarChart(filter);
-            bindStationDataToLineChart(filter);
-            //if (initialRequest) {
-            //    getCurrentLocation();
-            //}
+            bindStationDataToLineChart(filter);           
         },
         error: handleApiError
     });
 }
 
 function bindStationDataToLineChart(filter) {
-	/* added newly start */
-	/*Chart.defaults.LineWithLine = Chart.defaults.line;
-
-var originalLineDraw = Chart.controllers.line.prototype.draw;
-
-// Extend the new type
-Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.prototype, {
-    draw: function (ease) {
-        // Use the base draw function
-        originalLineDraw.call(this, ease);
-
-        // Check if tooltip is active
-        if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
-            var activePoint = this.chart.tooltip._active[0],
-                ctx = this.chart.ctx,
-                x = activePoint.tooltipPosition().x,
-                topY = this.chart.legend.bottom,
-                bottomY = this.chart.chartArea.bottom;
-
-            // Draw line
-            ctx.save();
-            ctx.beginPath();
-            ctx.moveTo(x, (topY + 5));
-            ctx.lineTo(x, bottomY);
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = '#07C';
-            ctx.stroke();
-            ctx.restore();
-        }
-    }
-});*/
-
-/* added newly end */
+	
 	
     var aqiData = [];
     var pm10Data = [];
@@ -2474,7 +2122,6 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
-                                /*$("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');	*/
                                 updatePollutantValues();
                             } else {
                                 // Call the custom function to update the values
@@ -2590,9 +2237,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
-                                // Clear the values when not hovering
-                                /* $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiO3Value").text('');*/
-                                updatePollutantValues();
+                              updatePollutantValues();
                             } else {
                                 // Call the custom function to update the values
                                 updatePollutantValues(context.tooltip.dataPoints);
@@ -2651,9 +2296,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
 
         }
         minDateString = minDate.toISOString().split('T')[0];
-        maxDateString = maxDate.toISOString().split('T')[0];
-		
-		console.log(currentStationDetails);
+        maxDateString = maxDate.toISOString().split('T')[0];		
 		const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find
 		const dataArray = [
 						{
@@ -2710,7 +2353,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                 ]
 		const fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
 
-		console.log(fianlItems);
+		
 		
         const myPollutantChart = new Chart(pollutantLineChart, {
             type: 'line',
@@ -2731,15 +2374,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                             boxWidth: 8,
                             boxHeight: 8,
                             borderWidth: 0,
-                            color: '#666',
-                            //generateLabels: function (chart) {
-                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                            //    return labels.map(label => {
-                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;
-                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
-                            //        return label;
-                            //    });
-                            //}
+                            color: '#666',                           
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2910,15 +2545,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                             boxWidth: 8,
                             boxHeight: 8,
                             color: '#666',
-
-                            //generateLabels: function (chart) {
-                            //    const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                            //    return labels.map(label => {                                   
-                            //        const isHidden = chart.getDatasetMeta(label.datasetIndex).hidden;                                   
-                            //        label.textStyle = isHidden ? 'disabled' : 'normal';
-                            //        return label;
-                            //    });
-                            //}
+                           
                         },
                         onClick: function (e, legendItem, legend) {
                             const index = legendItem.datasetIndex;
@@ -2937,8 +2564,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                         external: function (context) {
 
                             if (context.tooltip.opacity === 0) {
-                                /*$("#lineChartPollutantSo2Value, #lineChartPollutantNo2Value, #lineChartPollutantCoValue, #lineChartPollutantPm10Value, #lineChartPollutantO3Value").text('');
-                                return;*/
+                               
                                 updateAllPollutantValues();
                                 return;
                             }
@@ -2947,11 +2573,10 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                                 const dataIndex = tooltipItem.dataIndex;
                                 const datasetIndex = tooltipItem.datasetIndex;
                                 const dataPoint = context.chart.data.datasets[datasetIndex].data[dataIndex];
-                                //console.log(dataPoint); // This should show you the actual data structure of a point
-                                //.log(dataPoint.pM10); 
+                               
                                 switch (datasetIndex) {
                                     case 0:
-                                        // console.log(context.chart.data.datasets[0].data[0].pm10);
+                                       
                                         $("#lineChartPollutantPm10Value").text(dataPoint);
                                         break;
                                     case 1:
@@ -2969,18 +2594,7 @@ Chart.controllers.LineWithLine = Chart.helpers.extend(Chart.controllers.line.pro
                                 }
                             });
                         },
-                        callbacks: {
-                            //title: function (tooltipItems) {                               
-                            //    //let fullTimestamp = tooltipItems[0].label;
-                            //    //let hourMatch = fullTimestamp.match(/\b(\d+):/);
-                            //    //let meridiemMatch = fullTimestamp.match(/(a\.m\.|p\.m\.)/i);
-                            //    //let hour = hourMatch ? parseInt(hourMatch[1], 10) : 0;
-                            //    //let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : 'AM';
-                            //    //hour = hour === 0 ? 12 : hour;
-                            //    //hour = hour < 10 ? '0' + hour : hour;
-                            //    //return `${hour} ${meridiem}`;
-                            //    return '';
-                            //},
+                        callbacks: {                            
                             label: function () {
                                 return null;
                             }
@@ -3499,15 +3113,12 @@ function bindStationDataToBarChart(filter) {
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
     var barChart1 = document.getElementById(pollutantBarChartId1).getContext('2d');
-    /* const box = document.querySelector('.canvas-graphs-barchart1');
-    const box1 = document.querySelector('.canvas-graphs-barchart');
-    const box3 = document.querySelector('.canvas-graphs-Innerdiv'); */
+  
 
     const box = document.getElementById(boxid);
     const box1 = document.getElementById(boxid1);
     const box3 = document.getElementById(boxid2);
-    // Getting min and max dates from the dataset
-    // Define the media query string
+   
     var mediaQuery = "(min-width: 768px) and (max-width: 1199px)";
     // Test the media query
     var mql = window.matchMedia(mediaQuery);
@@ -3607,9 +3218,7 @@ function bindStationDataToBarChart(filter) {
 
                             }
                         },
-                        filter: function (tooltipItem, data) {
-                            //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
-                            // Hide tooltip if the value is zero
+                        filter: function (tooltipItem, data) {                           
                             return tooltipItem.raw !== 0;
                         }
                     }
@@ -3818,9 +3427,7 @@ function bindStationDataToBarChart(filter) {
                                 return value + ' ug/m³';
                             },
                         },
-                        filter: function (tooltipItem, data) {
-                            //console.log(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]);
-                            // Hide tooltip if the value is zero
+                        filter: function (tooltipItem, data) {                            
                             return tooltipItem.raw !== 0;
                         }
                     }
@@ -4039,7 +3646,7 @@ function getPollutantWithUnits(value) {
     return el;
 }
 
-// Do not remove below code ends---------------------------------
+
 var imageData = [
     { imageUrl: "./images/new-images/e_linking.jpg", content: "E-linking for Continuous Emission Monitoring System ", description: "E- linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in EAD as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable EAD to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help EAD to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
     { imageUrl: "./images/new-images/Monitoring_network.jpg", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
@@ -4054,7 +3661,7 @@ var imageData = [
 ];
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
-// start 22-April-24--------------
+
 if (window.innerWidth < 990) {
     $.each(imageData, function (index, item) {
         var carouselItem = $('<div>').addClass('carousel-item carol-item');
@@ -4064,7 +3671,7 @@ if (window.innerWidth < 990) {
 
 
         let minPerSlide = 6;
-        // alert(window.innerWidth);
+    
         if (window.innerWidth < 768) {
             minPerSlide = 2;
         }
@@ -4126,15 +3733,13 @@ if (window.innerWidth < 990) {
         }
     });
 }
-// End 22-April-24--------------
+
 
 $('.main-content').on('click', function () {
 
-    var imageSrc = $(this).find('.item').attr('src');
-    //console.log(imageSrc);
+    var imageSrc = $(this).find('.item').attr('src'); 
     var projectContent = $(this).find('.project-slide-content').text();
-    var projectItemDescription = $(this).find('.project-slide-description').text();
-    //console.log(projectContent);
+    var projectItemDescription = $(this).find('.project-slide-description').text();  
     $('.modal-background .img-fluid').attr('src', imageSrc);
     $('.modal-background .projectItemContent').text(projectContent);
     $('.modal-background .projectItemDescription').text(projectItemDescription);
@@ -4283,13 +3888,6 @@ $('#inputField').on('input', function () {
     }
 });
 
-// $('#inputField').on('keypress', function (e) {
-//     var name = $(this).val();
-//     var spaceCount = (name.match(/\s/g) || []).length;
-//     if (spaceCount >= 4 && e.keyCode === 32) {
-//         e.preventDefault();
-//     }
-// });
 
 $('#emailField').on('input', function () {
     var email = $(this).val();

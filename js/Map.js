@@ -12,13 +12,13 @@ var stationsData = [];
 var pollutantGrpLyr_EmirateLvl; var FeatureCollectionlyr; var SelectedstationInfo; var selectedfeature
 var view;
 var featureLayer;
-require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapView", "esri/WebMap", "esri/rest/query", "esri/layers/MapImageLayer",
+require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/views/MapView",  "esri/rest/query",
     "esri/rest/support/Query", "esri/layers/GraphicsLayer", "esri/Graphic", "esri/layers/FeatureLayer",  "esri/symbols/PictureMarkerSymbol",
     "esri/symbols/TextSymbol", "esri/widgets/BasemapToggle", 
     "esri/widgets/Search", "esri/widgets/Expand", "esri/geometry/Extent", "esri/widgets/Popup", "esri/core/reactiveUtils", "esri/geometry/projection", "esri/geometry/SpatialReference",
     "esri/Basemap", "esri/layers/VectorTileLayer", "esri/layers/TileLayer",],
 
-    (Map,esriConfig, ClassBreaksRenderer,  MapView, WebMap, query, MapImageLayer, Query,
+    (Map,esriConfig, ClassBreaksRenderer,  MapView,  query, Query,
         GraphicsLayer, Graphic, FeatureLayer,  PictureMarkerSymbol, TextSymbol,
         BasemapToggle,  Search, Expand, Extent, Popup, reactiveUtils, projection, SpatialReference, Basemap,
         VectorTileLayer, TileLayer,
@@ -36,17 +36,13 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             ymax: 26.083329, // Northernmost latitude
             spatialReference: { wkid: 4326 } // WGS84 spatial reference
         });
-        //const webmap = new WebMap({
-        //    portalItem: {
-        //        id: WebMapID
-        //    }
-        //});
-       // console.log(webmap);
+        
+      
         var webmap = new Map({
             basemap: "dark-gray-vector",
             opacity: 0.5
         });
-        //webmap.basemap = "dark-gray-vector"//"oceans"//"topo"//"streets-vector"; 
+        
 
         view = new MapView({
             map: webmap,
@@ -88,34 +84,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
         });
 
         // Add widget to the top right corner of the view
-        view.ui.add(toggle, "bottom-right");
-
-
-        //Initiate the Basemap Toggle Widget
-        // toggleBaseMap = new BasemapToggle({
-        //     view: view,
-        //     nextBasemap: customBasemap
-        // });
-        // toggleBaseMap.watch('activeBasemap', function (basemap) {
-        //     console.log("current basemap title: ", basemap.title);
-        //     //if (basemap.title != "BaseMapEng_LightGray_WM") {
-        //     //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
-        //     //}
-        // });
-        // view.ui.add(toggleBaseMap, "bottom-left");
-        /*view.watch("extent", function(newValue) {
-           if (!uaeExtent.contains(newValue)) {
-           view.goTo({
-               target: uaeExtent,
-               center: uaeExtent.center,
-               duration: 500 // Duration of animation in milliseconds
-           }).catch(function(error){
-               if (error.name != "AbortError"){
-                   console.error(error);
-               }
-           });
-       }
-   });*/
+        view.ui.add(toggle, "bottom-right");      
 
 
         projection.load().then(function () {
@@ -156,10 +125,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
 
         // Remove the default zoom buttons
         view.ui.components = [];
-        //view.on("mouse-wheel", (event) => {
-        //    event.stopPropagation();
-        //});
-        //console.log(view.ui.components);
+       
         LoadDefaultWidgets();
 
         featureLayer = new FeatureLayer({
@@ -183,12 +149,8 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             id: "pollutantTextGrpLyr_Region",
             title: "Label_Region"
         });
-        //webmap.addMany([dynamicMapServiceLayer, pollutantGrpLyr_EmirateLvl, pollutantTextGrpLyr, pollutantGrpLyr_RegionLvl, pollutantTextGrpLyr_Region]);
-        webmap.layers.push(pollutantTextGrpLyr, pollutantGrpLyr_EmirateLvl, pollutantGrpLyr_RegionLvl, pollutantTextGrpLyr_Region);
-        // view.watch('extent', function () {// Scale change Event
-        // //  console.log("Watch for the current scale: ", view.scale);
-        // OnScaleChange(view.scale);
-        // // });
+       webmap.layers.push(pollutantTextGrpLyr, pollutantGrpLyr_EmirateLvl, pollutantGrpLyr_RegionLvl, pollutantTextGrpLyr_Region);
+      
 
         var previousZoomLevel = view.zoom;
         reactiveUtils.watch(
@@ -198,7 +160,6 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 if (stationary) {
                     const newZoom = zoom
                     if (newZoom !== previousZoomLevel) {
-                        console.log(`Zoom level changed to: ${newZoom}`);
                         previousZoomLevel = newZoom;
                         OnScaleChange(newZoom);
                     }
@@ -212,11 +173,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 //Initialize Search Widget
                 const featureLayerDistricts = new FeatureLayer({
                     url: MonitoringStationsAPI,
-                    //popupTemplate: {
-                    //    // autocasts as new PopupTemplate()
-                    //    title: "{Name} </br>{Location}, ({Region})",
-                    //    overwriteActions: true
-                    //},
+                  
                     popupTemplate: {
                         // autocasts as new PopupTemplate()
                         title: "Station:" + "{Name}",
@@ -275,44 +232,10 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 });
 
 
-                //view.ui.add(searchWidget, "top-right");	
-
-
-                // const zoom = new Zoom({
-                // view: view
-                // });
-
-                // // Add the Zoom widget to the UI with a custom position
-                // view.ui.add(zoom, {
-                // position: {
-                // top: 184,
-                // right: 40
-                // } // Change to the desired position
-                // // // });
-                // var toggleBaseMap;
-                // //Initiate the Basemap Toggle Widget
-                // toggleBaseMap = new BasemapToggle({
-                //     view: view,
-                //     nextBasemap: "satellite"
-                // });
-                // toggleBaseMap.watch('activeBasemap', function (basemap) {
-                //     console.log("current basemap title: ", basemap.title);
-                //     //if (basemap.title != "BaseMapEng_LightGray_WM") {
-                //     //    toggleBaseMap.nextBasemap.thumbnailUrl = "https://www.arcgis.com/sharing/rest/content/items/8b3b470883a744aeb60e5fff0a319ce7/info/thumbnail/light_gray_canvas.jpg"
-                //     //}
-                // });
-                // view.ui.add(toggleBaseMap, "bottom-left");
-
-                // var dropdownMenu = document.getElementById('stationsDropdown');
+               
                 var dropdownMap = document.getElementById('stationsDropdownMap');
                 var selectedCityButton = document.getElementById('selectedCity');
-                // Set the default city
-                //selectedCityButton.innerText = $('#abudhabi').val();
-
-                //initializeDropdown(dropdownMenu);
-                // initializeDropdown(dropdownMap);
-
-                //view.ui.add (document.getElementById('stationsDropdownMap'), "bottom-right");
+                
 
             });
         }
@@ -368,8 +291,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 esriquery.where = "1=1";
                 esriquery.returnGeometry = true;
                 esriquery.outFields = ["*"];
-                FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {
-                    console.log(selectedfeature)
+                FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {                   
                     var classBreakInfos = [
                         {
                             minValue: 1,
@@ -460,9 +382,8 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             //updateSelectedCity(cityKey);
         }
 
-        function ZoomToLocation(searchValue) {
-            alert(nearestStation);
-            // Create a Query object
+        function ZoomToLocation(searchValue) {        
+           
             var query = new Query({
                 where: "Name LIKE '%" + searchValue + "%'", // Replace with your field name
                 returnGeometry: true,
@@ -608,8 +529,6 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             //Add Text symbol to graphic Layer
             pollutantTextGrpLyr.addMany([picgraphic, textgraphic]);
 
-            //Add Text symbol to graphic Layer
-            // pollutantTextGrpLyr.add(pointGraphic1);
 
         }
         function Createpollutants_RegionLvl() { // Display avaerage of lastest one hour AQI Index Value at Emirate Level
@@ -665,11 +584,10 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                     var picgraphic = new Graphic({ geometry: Region_Point, symbol: picSymbol });
                     var textgraphic = new Graphic({ geometry: Region_Point, symbol: textSymbol });
                     //Add Text symbol to graphic Layer
-                    pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);
-                   // pollutantTextGrpLyr_Region.add(pointGraphic1);
+                    pollutantTextGrpLyr_Region.addMany([picgraphic, textgraphic]);                 
                 }
 
-                //CreateGraphic_Region(RegionArr[j]);
+           
 
             }
 
@@ -677,10 +595,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             pollutantTextGrpLyr_Region.visible = false;
         }
         function CreateGraphicSymbol(Region_Loc, AQI, graphiclayer) {
-            // symbol: {
-            // type: "picture-marker",
-            // url: 'CoSchools.svg'
-            // }
+           
             let symbol = {
                 type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
                 style: "circle",
@@ -762,7 +677,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 }
                 StationsObject.push(stationObj);
             }
-
+            
             LoadAirQualityData();
         });
 
@@ -775,8 +690,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
             });
         }
         function SelectedStation(response) {
-            // debugger;
-            //alert(response);
+          
             if (response.results.length > 0) {
                 var res = response.results;
                 for (var j = 0; j < res.length; j++) {
@@ -793,7 +707,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                                 break
                             }
                         }
-                        // PreparePollutantSeriesData();
+                        
                         break;
                     }
 
@@ -803,7 +717,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 esriquery.returnGeometry = true;
                 esriquery.outFields = ["*"];
                 FeatureCollectionlyr.queryFeatures(esriquery).then(function (results) {
-                   // console.log(selectedfeature)
+                   
                     var classBreakInfos = [
                         {
                             minValue: 1,
@@ -884,9 +798,7 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                         }
 
                     }
-                })
-
-                //PreparePollutantData(SelectedstationInfo);
+                })                
             }
 
 
@@ -1070,59 +982,19 @@ require(["esri/Map","esri/config", "esri/renderers/ClassBreaksRenderer", "esri/v
                 objectIdField: "OBJECTID",
                 fields: Fieldsarr,
                 popupEnabled: false,
-                // popupTemplate: {
-                // // autocasts as new PopupTemplate()
-                // title: "Station:" + "{Name}",
-                // content: [
-                // {
-                // type: "fields",
-                // fieldInfos: [
-                // {
-                // fieldName: "AQI",
-                // label: "AQI"
-                // },
-                // {
-                // fieldName: "SO2",
-                // label: "SO<sub>2</sub>"
-                // },
-                // {
-                // fieldName: "NO2",
-                // label: "NO<sub>2</sub>"
-                // },
-                // {
-                // fieldName: "CO",
-                // label: "CO"
-                // },
-                // {
-                // fieldName: "O3",
-                // label: "O<sub>3</sub>"
-                // },
-                // {
-                // fieldName: "PM10",
-                // label: "PM<sub>10</sub>"
-                // }
-                // ]
-                // }
-                // ]
-                // },
+               
                 outFields: ["*"],
                 labelingInfo: [labelClass],
                 renderer: renderer
             });
             view.map.add(FeatureCollectionlyr);
-            //view.popup.set("dockOptions", {
-            //    breakpoint: false,
-            //    buttonEnabled: false,
-            //    position: "top-left"
-            //});
+          
             FeatureCollectionlyr.visible = false;
             view.on("click", function (evt) {
                 var screenPoint = evt.screenPoint;
                 var opts = {
                     include: FeatureCollectionlyr
                 }
-                // the hitTest() checks to see if any graphics in the view
-                // intersect the given screen point
                 if (FeatureCollectionlyr.visible) {
                     view.hitTest(screenPoint, opts)
                         .then(SelectedStation);

@@ -8,15 +8,11 @@
     <title>Abu Dhabi Air Quality</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-    <link rel="stylesheet" type="text/css" href="./scolling-script/fullpage.css" />
-    <!--16-dec cdn removed -->
+    <link rel="stylesheet" type="text/css" href="./scolling-script/fullpage.css" />    
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Air Icons -->
     <link href="./fonts/air-icons/air-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/css/main.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/css/main.css">    
     <link rel="stylesheet" href="./css/material-icon.css" />
     <link href="./css/stylesnew.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
@@ -92,13 +88,7 @@
                     </button>
                     <div class="collapse search-collapse" id="mainSearch">
                         <div class="card card-body">
-                            <div class="container-fluid p-2">
-                                <!-- start 16-April-24 -->
-                                <!-- <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
-                                    class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
-                                    Close
-                                </button> -->
-                                <!-- End 16-April-24 -->
+                            <div class="container-fluid p-2">                                
                                 <form class="form-inline relative d-flex">
                                     <button class="btn search-icon" type="button">
                                         <img src="./images/new-images/search.png" width="16" class="filter1">
@@ -110,16 +100,16 @@
                                 </form>
                                 <div class="search-result">
                                     <p class="opacity-1 ms-0">Search Results</p>
-                                    <!-- 09-April-24 class added ps-0 -->
+                                   
                                     <ul id="searchResults" class="searchItem searchHeaderScroll ps-0">
                                     </ul>
                                 </div>
-                                <!-- start 16-April-24 -->
+                              
                                 <button data-bs-toggle="collapse" data-bs-target="#mainSearch"
                                         class="close newcutom-btn btn position-relative hover:delay-[.5s] transition-all duration-500 hover:text-white before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-0 before:transition-all before:duration-500 before:bg-amber-300 before:hover:w-full after:absolute after:left-0 after:bottom-0 after:h-0 after:w-full after:transition-all after:duration-500 after:bg-amber-300 after:hover:h-full after:text-white after:-z-10 after:hover:delay-[0.4s]">
                                     Close
                                 </button>
-                                <!-- End 16-April-24 -->
+                             
                             </div>
                         </div>
                     </div>
@@ -132,7 +122,7 @@
     <div id="fullpagediv">
         <div class="section" id="section0">
             <div id="demo" class="banner-section">
-                <!-- The slideshow/carousel -->
+               
                 <div class="video-wrapper video-container">                   
                     <video muted data-autoplay id="myVideo"
                            class="w-100 d-none d-sm-none d-md-none d-lg-block">
@@ -150,21 +140,9 @@
                 </div>
                 <div class="overlay"></div>
                 <div class="carousel-caption-banner home-slider-animation d-none-0 d-md-block-0 ">
-                    <h3 class="text-uppercase welcome-text">WELCOME TO</h3>
-                    <!-- <p class="h5 mb-1 quotes">
-    Air Quality -->
-                    <!-- <span  class="txt-rotate"  data-period="2000" data-rotate='[  "Air Quality" ]'></span> -->
-                    <!-- </p> -->
-                    <p class="h5 quotes">Air Quality Monitoring</p>                   
-                    <!-- <p class="h5 quotes">Air Quality Monitoring</p>
-    <p class="h5 quotes">Air Quality Monitoring</p> -->
-                    <!-- <p class="h5 quotes">Air Quality Monitoring</p>
-    <p class="h5 quotes">Air Quality Monitoring</p>
-    <p class="h5 quotes">Air Quality Monitoring</p> -->
-                    <h4 class="text-uppercase emirates-text">In Abu Dhabi</h4>
-                    <!-- <p class="mb-3 mt-4">
-      Air quality, critical for both human and environmental health, is influenced by industrial, vehicular, agricultural, and natural sources. Monitoring systems, including the Air Quality Index (AQI), play a crucial role in informing pollution control strategies and health-related interventions. Ensuring high air quality is fundamental to the well-being of ecosystems and populations.
-    </p> -->
+                    <h3 class="text-uppercase welcome-text">WELCOME TO</h3>                   
+                    <p class="h5 quotes">Air Quality Monitoring</p>
+                    <h4 class="text-uppercase emirates-text">In Abu Dhabi</h4>             
                     <p class="mb-2 mt-5 h6 six-resolution-mt30" id="aqiNearestStation">
                     </p>
                     <div class="mb-2 mt-4 position-relative six-resolution-mt10">
@@ -181,7 +159,6 @@
                             <div class="date-shift">
                                 <h4 class="mb-0 date" id="currentDate"></h4>
                             </div>
-
                         </div>
                     </div>
 
@@ -200,18 +177,10 @@
             <div class="air-map-col col-md-12">
                 <div class="map-block position-relative">
                     <div id="mapBlock" class="mapimg"></div>
-                    <!-- 30-Jan-2024 -- hide iframe and added image only -->
-                    <!--<img src="./images/new-images/MapBackground.png" class="img-fluid mp-resolution d-none d-sm-none d-md-block iframeimg fullimg-100" width="100%" height="570">
-                    <img src="./images/new-images/newmap-mobile.png" class="img-fluid mp-resolution d-block d-sm-block d-md-none mapmobile-ht fullimg-100" width="100%">-->
-                    <!-- <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2214653.7652781364!2d53.874778068933466!3d24.266467525377156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1698083632515!5m2!1sen!2sin"
-                    width="100%" height="556" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-                    <!-- Start 03-May-24 -->
+                   
                     <div class="map-disclaimer d-none d-sm-none d-md-block d-lg-block">
                         Disclaimer ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                    </div>
-                    <!-- End 03-May-24 -->
+                    </div>               
                     <div class="level-legends web-top-legends">
                         <div class="levels">
                             <span><em>0</em></span>
@@ -314,13 +283,13 @@
                         </li>
                     </ul>
                 </div>
-                <!-- This section will show only in small devices -->
+                
                 <div class="d-block d-sm-block d-md-none nearest-section">
-                    <!-- Start 03-May-24 -->
+                  
                     <div class="sm-map-disclaimer d-block d-sm-block d-md-none d-lg-none">
                         Disclaimer ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
                     </div>
-                    <!-- Start 03-May-24 -->
+                  
                     <div class="station-heading">
                         <p class="text-center text-white mb-0">
                             Nearest Station: Khalifa City
@@ -334,7 +303,7 @@
                                 <span id="mobileAQILevelValue"></span> <label class="text-white"> AQI</label>
                             </p>
                         </div>
-                        <!-- start 03-April-24 --- -->
+                      
                         <div class="station-box col-7">
                             <div class="d-flex between-gap">
                                 <div class="station-data">
@@ -437,11 +406,11 @@
                             </div>
                         </div>
                         <div class="data-sort_sidebar hidden">
-                            <!-- start 25-April-24 -->
+                          
                             <h2 class="d-block d-sm-block d-md-none d-lg-none" id="expandTrigger">
                                 <span class="span">Expand Panel </span>
                             </h2>
-                            <!-- end 25-April-24 -->
+                          
                             <div id="side_bar_content">
                                 <div class="search-box d-flex">
                                     <div class="p-input position-relative">
@@ -492,16 +461,14 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 pad_r">
                             <div class="silde-dv">
-                                <!-- <div id="carouselExampleControls" class="carousel" data-bs-touch="false"
-                                  data-bs-interval="false"> -->
-                                <!-- <div class="carousel-inner"> -->
+                                
                                 <div class="insightStation">
                                     <h3 class="" id="airQualitySafetyLevelStation"></h3>
                                 </div>
                                 <div class="slide active">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
-                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                           
                                             <div class="col-xl-5 d-flex  flex-column  justify-content-start">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="levelmb25">aIR quality Safety level</h2>
@@ -510,7 +477,7 @@
                                                         +4)
                                                     </p>
                                                 </div>
-                                                <!-- start 09-April-24 class added resolution-ht -->
+                                               
                                                 <div class="main-box pd-main-box resolution-ht">
                                                     <div class="index-content d-flex tab-padding-50">
                                                         <div class="number-index">
@@ -585,7 +552,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+
                                             <div class="col-xl-7 d-flex flex-column justify-content-start"
                                                  id="footerhealth">
                                                 <div class="quality-index-wrapper-h2">
@@ -595,7 +562,7 @@
                                                         +4)
                                                     </p>
                                                 </div>
-                                                <!-- start 09-April-24 class added resolution-ht -->
+                                              
                                                 <div class="slide-content main-box resolution-ht position-relative health-recommand-tab">
                                                     <p class="paratab">
                                                         When the air quality index (AQI) hits orange, red, purple, or
@@ -761,7 +728,7 @@
                                 <div class="slide">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap">
-                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                            
                                             <div class="col-lg-12 d-flex flex-column  justify-content-start"
                                                  id="footer-trends">
                                                 <div class="bar_section">
@@ -819,11 +786,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                       
                                                                         <div class="ug_content indexbar-ugcontent hidden-set">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                        
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="AqiBarchart1"
                                                                                  class="canvas-graphs-height canvas-graphs-barchart1">
@@ -839,15 +806,9 @@
                                                                         </div>
                                                                         <div class="date_row">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                                                                               
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 23-April-2024 -->
                                                                         <div class="pollutants-legend-heading">
                                                                             <div class="pollutants-legend-series">
                                                                                 <span class="pollutants-legend-marker good-span"></span>
@@ -880,19 +841,19 @@
                                                                                 <span class="pollutants-legend-text">Hazardous</span>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- end 23-April-2024 -->
+                                                                       
                                                                     </div>
                                                                 </div>
                                                                 <div class="pollutant-toggleBar position-relative">
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                       
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                       
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -910,15 +871,12 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 03-May-24 -->
+                                                                     
                                                                         <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                      
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                          
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -984,11 +942,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                       
                                                                         <div class="ug_content">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                        
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="pm10Barchart1"
                                                                                  class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1024,17 +982,17 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Start 02-April-2024 -->
+                                                               
                                                                 <div class="pollutant-toggleBar position-relative">
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                        
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                        
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -1052,15 +1010,12 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 03-May-24 -->
+                                                                        
                                                                         <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                        
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                                
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -1125,11 +1080,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                       
                                                                         <div class="ug_content">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                      
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="so2Barchart1"
                                                                                  class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1145,12 +1100,7 @@
                                                                         </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                                                                                
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1175,12 +1125,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                      
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                        
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -1198,15 +1148,12 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 03-May-24 -->
+                                                                        
                                                                         <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                       
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                               
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -1271,11 +1218,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                        
                                                                         <div class="ug_content">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                      
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="coBarchart1"
                                                                                  class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1291,12 +1238,7 @@
                                                                         </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                                                                                
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1321,12 +1263,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                       
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                        
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -1344,15 +1286,12 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 03-May-24 -->
+                                                                        
                                                                         <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                       
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                                
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -1417,11 +1356,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                        
                                                                         <div class="ug_content">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                       
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="o3Barchart1"
                                                                                  class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1437,12 +1376,7 @@
                                                                         </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                                                                                
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1467,12 +1401,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                       
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                       
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -1490,15 +1424,12 @@
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
                                                                         </div>
-                                                                        <!-- start 03-May-24 -->
+                                                                       
                                                                         <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                        
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                               
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -1563,11 +1494,11 @@
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- start 19-april-24 -->
+                                                                        
                                                                         <div class="ug_content">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
                                                                         </div>
-                                                                        <!-- End 19-april-24 -->
+                                                                        
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="no2Barchart1"
                                                                                  class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
@@ -1583,12 +1514,7 @@
                                                                         </div>
                                                                         <div class="date_row med-datenow">
                                                                             <ul id="pollutantHourlyBarChartDates">
-                                                                                <!-- <li>
-                                                                                    <p>Feb 15 2024</p>
-                                                                                </li>
-                                                                                <li class="d-none d-sm-none d-md-none d-lg-block">
-                                                                                    <p>Feb 16 2024</p>
-                                                                                </li> -->
+                                                                                
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pollutants-legend-heading acceptable-legend slider-content-hide">
@@ -1613,12 +1539,12 @@
                                                                     <img src="./images/new-images/info-icon.png"
                                                                          class="iconimg">
                                                                     <div class="info-popup">
-                                                                        <!-- Start 16-April-24 -->
+                                                                     
                                                                         <div class="mb-2 text-right">
                                                                             <img class="crossicon" src="./images/new-images/Arrow-right.png"
                                                                                  width="35" height="35">
                                                                         </div>
-                                                                        <!-- End 16-April-24 -->
+                                                                     
                                                                         <div class="">
                                                                             <img src="./images/new-images/Exaclamation-w.png"
                                                                                  class="mb-3" width="22" height="22"
@@ -1635,16 +1561,11 @@
                                                                         <div class="info-popup-content scroll-info-top">
                                                                             <ul class="pollutantbar-details ps-0">
                                                                             </ul>
-                                                                        </div>
-                                                                        <!-- start 03-May-24 -->
-                                                                        <hr>
-                                                                        <!-- <p class="measure-pollut mb-0">
-                                                                            AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                        </p> -->
-                                                                        <!-- end 03-May-24 -->
+                                                                        </div>                                                                       
+                                                                        <hr>                                                                      
                                                                     </div>
                                                                 </div>
-                                                                <!-- start 05-May-24 hidden-set class removed -->
+                                                        
                                                                 <div class="chart-f-content">
                                                                     <p>
                                                                         AQI measures air quality; pollutant trends track
@@ -1656,7 +1577,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- start 19-April-24 -->
+                                                   
                                                     <ul class="nav twobar-tabs" id="myTabs">
                                                         <li class="nav-item">
                                                             <a class="nav-link active" id="aqiTabToggle"
@@ -1689,22 +1610,22 @@
                                                                style="cursor: pointer;">NO<sub>2</sub></a>
                                                         </li>
                                                     </ul>
-                                                    <!-- End 19-April-24 -->
+                                                   
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- </div> -->
+                              
                                 <div class="slide">
                                     <div class="row equal-height-row d-flex flex-wrap">
-                                        <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                      
                                         <div class="col-lg-12 d-flex flex-column justify-content-start"
                                              id="footerStation-trends">
                                             <div>
                                                 <div class="container pad_r tab-pd-0">
                                                     <div id="aiq_line">
-                                                        <!-- start 03-May-24 added air_p class -->
+                                                      
                                                         <div class="quality-index-wrapper-h2 sm-screen-mtb air_p">
                                                             <h2 class="index-mb-0 tab-top-pd40 mb-0 changeHeading-pollutant">
                                                                 Station AQI TRENDS
@@ -1736,15 +1657,7 @@
                                                                      id="pills-aqi_lin" role="tabpanel"
                                                                      aria-labelledby="pills-aqi_lin-tab">
                                                                     <div class="tab_shados">
-                                                                        <!-- <div class="quality-index-wrapper-h2"><h2>station aqi and pollutants tends</h2></div> -->
-                                                                        <!-- /////modify/////// -->
-                                                                        <!-- <div class="aqi-content">
-      <li class="position-relative">
-        <span class="linebefore">AQI</span>
-
-      </li>
-    </div> -->
-                                                                        <!-- start 19-April-24 -->
+                                                                        
                                                                         <div class="grid-value">
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
@@ -1780,14 +1693,14 @@
                                                                                 <p>ug/m<sup>3</sup></p>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- End 19-April-24 -->
+                                                                      
                                                                         <div class="aqi-content mult-value-tab">
                                                                             <li class="position-relative">
                                                                                 <span class="linebefore">AQI</span>
                                                                                 <p id="lineChartAqiValueStatus"></p>
                                                                             </li>
                                                                         </div>
-                                                                        <!-- ////modify///// -->
+                                                                      
                                                                         <div class="row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="tabscreen-3-mt btn-group btn-group-filter me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top pollutant-hour-top"
@@ -1832,12 +1745,7 @@
                                                                         </div>
                                                                         <div class="canvas-graphs-heightline linechart-height-res">
                                                                             <canvas id="aqiLineChart"></canvas>
-                                                                        </div>
-                                                                        <!--<div class="date_row">
-        <ul id="aqiHourlyLineChartDates">
-        </ul>
-    </div>-->
-                                                                        <!-- start 23-April-2024 -->
+                                                                        </div>                                                                      
                                                                         <ul class="legend aqi-legend-pd-0">
                                                                             <li>
                                                                                 <span class="marker_good marker_legend"></span>Good
@@ -1860,17 +1768,17 @@
                                                                                 <span class="marker_h marker_legend"></span>Hazardous
                                                                             </li>
                                                                         </ul>
-                                                                        <!-- end 23-April-2024 -->
+                                                                      
                                                                         <div class="pollutant-toggleBar position-relative">
                                                                             <img src="./images/new-images/info-icon.png"
                                                                                  class="ic-top-position">
                                                                             <div class="info-topPosition">
-                                                                                <!-- Start 16-April-24 -->
+                                                                              
                                                                                 <div class="mb-2 text-right">
                                                                                     <img class="crossicon1" src="./images/new-images/Arrow-right.png"
                                                                                          width="35" height="35">
                                                                                 </div>
-                                                                                <!-- End 16-April-24 -->
+                                                                          
                                                                                 <div class="">
                                                                                     <img src="./images/new-images/Exaclamation-w.png"
                                                                                          class="mb-3" width="22" height="22"
@@ -1887,13 +1795,8 @@
                                                                                 <div class="info-popup-content scroll-info-top">
                                                                                     <ul class="pollutantbar-details ps-0">
                                                                                     </ul>
-                                                                                </div>
-                                                                                <!-- start 03-May-24 -->
-                                                                                <hr>
-                                                                                <!-- <p class="measure-pollut mb-0">
-                                                                                    AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                                </p> -->
-                                                                                <!-- end 03-May-24 -->
+                                                                                </div>                                                                              
+                                                                                <hr>                                                                               
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1901,16 +1804,7 @@
                                                                 <div class="tab-pane fade" id="pills-profile"
                                                                      role="tabpanel" aria-labelledby="pills-profile-tab">
                                                                     <div class="tab_shados">
-                                                                        <!-- /////modify//// -->
-                                                                        <!-- <div class="aqi-content mult-value-tab">
-      <strong class="linebefore2">AQI</strong>
-      <p>88 GOOD</p>
-    </div> -->
-                                                                        <!-- <div class="aqi-content_1"><li><span>AQI</span><p>145 UNHEALTHY FOR
-     SENSITIVE GROUPS
-    </p></li></div> -->
-                                                                        <!-- /////modify/////// -->
-                                                                        <!-- start 19-April-24 -->
+
                                                                         <div class="grid-value">
                                                                             <div class="grid-bottom">
                                                                                 <div class="mult-value">
@@ -1946,12 +1840,12 @@
                                                                                 <p>ug/m<sup>3</sup></p>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- End 19-April-24 -->
+                                                                       
                                                                         <div class="aqi-content mult-value-tab">
                                                                             <strong class="linebefore2">AQI</strong>
                                                                             <p id="lineChartPollutantValueStatus"></p>
                                                                         </div>
-                                                                        <!-- ////modify///// -->
+                                                                      
                                                                         <div class=" row pollutant-dropdown-show graph-duration-filters">
                                                                             <div class="btn-group btn-group-filter me-auto">
                                                                                 <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top pollutant-hour-top7"
@@ -2024,45 +1918,24 @@
                                                                                     <ul class="pollutantbar-details ps-0">
                                                                                     </ul>
                                                                                 </div>
-                                                                                <!-- start 03-May-24 -->
+                                                                             
                                                                                 <hr>
-                                                                                <!-- <p class="measure-pollut mb-0">
-                                                                                    AQI measures air quality; pollutant trends track changes in air pollution over time.
-                                                                                </p> -->
-                                                                                <!-- end 03-May-24 -->
+                                                                               
                                                                             </div>
-                                                                        </div>
-                                                                        <!--<ul class="nav pollutantline-tabs">
-        <li class="nav-item">
-            <a class="nav-link">PM10</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">SO2</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">CO</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">O3</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">NO2</a>
-        </li>
-    </ul>-->
+                                                                        </div>                                                                      
 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- Start 03-May-24 -->
+                                                       
                                                             <div class="chart-f-content">
                                                                 <p>
                                                                     AQI measures air quality; pollutant trends track
                                                                     changes in air pollution over
                                                                     time.
                                                                 </p>
-                                                            </div>
-                                                        <!-- End 03-May-24 -->
+                                                            </div>                                                     
                                                     </div>
                                                 </div>
                                             </div>
@@ -2072,16 +1945,16 @@
                                 <div class="slide exceeded-box">
                                     <div class="container pad_r tab-pd-0">
                                         <div class="row equal-height-row d-flex flex-wrap radar_section">
-                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                           
                                             <div class="col-xl-5 d-flex flex-column justify-content-start">
                                                 <div class="quality-index-wrapper-h2">
-                                                    <!-- <h3>Station: Khalifa City</h3> -->
+                                                   
                                                     <h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">
                                                         number of hours <br>
                                                         exceedance per year
                                                     </h2>
                                                 </div>
-                                                <!-- start 16-March-24 class added pollutant-number-aligment & adjust-height-290 -->
+                                               
                                                 <div class="main-box pollutant-number-aligment adjust-height-290">
                                                     <div class="hour_box">
                                                         <div class="number-exceedance">
@@ -2121,13 +1994,13 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!-- start 16-April-24 changed justify-content-between to justify-content-start -->
+                                          
                                             <div class="col-xl-7 d-flex flex-column justify-content-start"
                                                  id="footerradar-analytic">
                                                 <div class="quality-index-wrapper-h2">
                                                     <h2 class="mb-0 exceed-height tabexceed-pb0">our air analytics</h2>
                                                 </div>
-                                                <!-- start 16-March-24 class added adjust-height-290 -->
+                                               
                                                 <div class="main-box adjust-height-290">
                                                     <div class="head d-flex justify-content-end align-items-center">
                                                         <div class="btn-group res-airanalytic">
@@ -2147,7 +2020,7 @@
                                                                 class=""></canvas>
 
                                                     </div>
-                                                    <!-- start 23-April-2024 -->
+                                                   
                                                     <ul class="legend_radar">
                                                         <li>
                                                             <span class="marker_good marker_legend"></span>Good
@@ -2170,7 +2043,7 @@
                                                             <span class="marker_h marker_legend"></span>Hazardous
                                                         </li>
                                                     </ul>
-                                                    <!-- end 23-April-2024 -->
+                                                  
                                                 </div>
                                                 <div class="contact-content mt-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                                     <p class="mb-0">
@@ -2221,20 +2094,7 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" disabled="true">
-                                  <span>
-                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                  </span>
-                                  <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next active" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                  <span>
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                  </span>
-                                  <span class="visually-hidden">Next</span>
-                                </button> -->
-                                <!-- </div> -->
+                                </div>                              
                             </div>
                         </div>
                     </div>
@@ -2255,102 +2115,20 @@
                         guardian of our atmosphere and safeguard our future.
                     </p>
                 </div>
-                <!-- Nav pills -->
+              
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="pill" href="#home">Air Quality</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu1">Category 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu2">Category 3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#menu4">Category 4</a>
-                    </li> -->
+                    </li>                   
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div id="home" class="tab-pane active p-0 m-0 project-slider">
-                        <!-- start 10-April-2024 removed data-bs-ride="carousel" -->
+                       
                         <div id="recipeCarousel" class="carousel slide slide-carol mt-4">
                             <div class="carousel-inner" role="listbox">
-                                <!-- <div class="carousel-item carol-item active">
-                                    <div class="col-md-3">
-                                        <div class="position-relative main-content openSidebar">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik1.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Lorem ipsum dolor sit amet amet consectetur. Velit for all of amet
-                                                scelerisque
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative main-content openSidebar">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Sample
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik2.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/new-images/Freepik3.png" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing2
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="./images/achievments/a5.jpg" class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing3
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item carol-item">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            <div class="">
-                                                <img src="https://raw.githack.com/SochavaAG/example-mycode/master/pens/1_images/img-12.jpg"
-                                                     class="item">
-                                            </div>
-                                            <div class="project-slide-content">
-                                                Testing5
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                              
                             </div>
                         </div>
                         <button id="prev" class="mt-4" href="#recipeCarousel" role="button" data-bs-slide="prev">
@@ -2368,7 +2146,7 @@
 
                     </div>
 
-                    <!-- Modal -->
+                  
                     <div class="modal-background">
                         <div class="sidebar">
                             <div class="col-sm-12 p12">
@@ -2385,7 +2163,7 @@
                         </div>
                     </div>
 
-                    <!-- modal -->
+                  
                 </div>
             </div>
         </div>
@@ -2399,149 +2177,7 @@
                         <h4 class="me-4">Your Questions, <br> Answered.</h4>
                     </div>
                     <div class="col-xl-8">
-                        <div class="accordion faqscrolling" id="myAccordion">
-                            <!-- <div class="accordion-item">
-                                                     <h2 class="accordion-header" id="headingOne">
-                                                            <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapseOne">
-                                                                What does ‘Air Quality’ refer to?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseOne" class="accordion-collapse collapse show"
-                                                             data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    Air quality refers to the condition of the air in our environment, specifically the presence of pollutants that can impact human health and the environment.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingThree">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapseThree">
-                                                                What are common air pollutants present in the environment?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                                             data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    Common air pollutants include particulate matter (PM), nitrogen dioxide (NO2), sulfur dioxide (SO2), ozone (O3), and carbon monoxide (CO).
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading4">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse4">
-                                                                How does air quality influence weather patterns?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    Yes, air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading5">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse5">
-                                                                What is the number of air quality monitoring stations currently operational in Abu Dhabi?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    The Environment Agency – Abu Dhabi oversees a network of 20 fixed air quality monitoring stations situated across the Emirate of Abu Dhabi, complemented by an additional 2 mobile air quality monitoring stations.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading6">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse6">
-                                                                Who is considered in a sensitive group?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    High-risk groups, including children under 18, the elderly, individuals with chronic heart or lung disease, pregnant individuals, people with diabetes, and active outdoor adults, require focused attention. These individuals are more likely to experience the adverse impacts of poor air quality, necessitating proactive measures. To protect these vulnerable populations, it is crucial to monitor air quality, limit outdoor activities during peak pollution hours, ensure well-ventilated indoor spaces, and adhere to medical advice, particularly for those with pre-existing conditions. By collectively taking these steps, we can foster a healthier and more resilient community, prioritizing the well-being of those most at risk from air pollution.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading7">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse7">
-                                                                How can I check the air quality in my area?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    You can check the air quality in your area by choosing the nearest monitoring station or searching your area from the search menu in the map  .
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading8">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse8">
-                                                                Does air quality play a role in climate change?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    Air quality does indeed play a significant role in climate change. Air pollutants classified as greenhouse gases such as methane and carbon dioxide contribute to climate change by intensifying the greenhouse effect and altering the Earth’s energy balance
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="heading9">
-                                                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                                                    data-bs-target="#collapse9">
-                                                                How does climate change affect air quality?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                                            <div class="accordion-body pt-1 pb-2">
-                                                                <p>
-                                                                    Climate change can alter weather patterns, leading to more frequent and severe heatwaves, droughts, and wildfires. This can worsen air quality by increasing pollution levels, such as particulate matter and ground-level ozone. Additionally, rising temperatures can accelerate the formation of ozone and increase the volatility of pollutants. Changes in atmospheric circulation can further impact regional air quality, while shifts in ecosystems can alter the composition of atmospheric pollutants.
-                                                                </p>
-                                                            </div>
-                                                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading10">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse10">
-                                            How can individuals contribute to reducing air pollution?
-                                    </button>
-                                </h2>
-                                <div id="collapse10" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                    <div class="accordion-body pt-1 pb-2">
-                                        <ul>
-                                            <li>Opt for Sustainable Transportation.</li>
-                                            <li>Use energy-efficient appliances and turn off electronics when not in use.</li>
-                                            <li>Choose clean energy sources like solar or wind power.</li>
-                                            <li>Avoid unnecessary vehicle usage to decrease traffic emissions. </li>
-                                            <li>  Consume local produce </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
+                        <div class="accordion faqscrolling" id="myAccordion">                          
                         </div>
                     </div>
                 </div>
@@ -2574,11 +2210,11 @@
                             </div>
 
                             <div class="contact-info-item">
-                                <!-- Start 09-April-24 -->
+                            
                                 <div class="contact-info-icon location-img-ht">
                                     <img src="./images/new-images/loca-icon.png" alt="address">
                                 </div>
-                                <!-- End 09-April-24 -->
+                           
                                 <div class="contact-info-content">
                                     <p class="d-none d-sm-none d-md-block">
                                         Headquarters Al Mamoura, Building A, Building
@@ -2606,7 +2242,7 @@
                         </p>
                     </div>
                     <div class="col-xl-6">
-                        <!--start 20-March-24 added Validation -->
+                       
                         <div class="contact-form">
                             <form id="myForm">
                                 <div class="row">
@@ -2647,8 +2283,7 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- End 20-March-24 added Validation -->
-                        <!-- This is for mobile device only -->
+                       
                         <p class="contact-content d-block d-sm-block d-md-block d-lg-block d-xl-none res-mb0 res-padding15">
                             Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and
                             enhancing air quality, groundwater as well as the biodiversity of our desert and marine
@@ -2658,8 +2293,7 @@
                             facilitate sustainable development, and ensure environmental issues remain one of the top
                             priorities of our national agenda.
                         </p>
-                        <!-- This is for mobile device only -->
-                        <!-- Thankyou form Start -->
+                       
                         <div class="col-sm-12 thankyou-form text-center mt-5">
                             <div class="col-sm-12 text-center d-flex align-items-center justify-content-center mb-4">
                                 <div class="contact-info-icon">
@@ -2670,7 +2304,7 @@
                             <h5 class="mb-3">Thank you for reaching out! </h5>
                             <h6>Your message has been received. We'll get back to you shortly.</h6>
                         </div>
-                        <!-- Thankyou form End -->
+                     
                     </div>
                 </div>
             </div>
@@ -2727,7 +2361,7 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <!-- 05-JAN-24 -->
+                                   
                                     <div class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                                         <div class="d-inline-block text-sm-start">
                                             <h6 class=""><a href="#slide2">Insights</a></h6>
@@ -2747,7 +2381,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!-- This will show only in small devices only -->
+                                   
                                     <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                         <div class="d-inline-block text-sm-start w-100">
                                             <div class="dropdown">
@@ -2784,7 +2418,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- This will show only in small devices only end-->
+                                  
                                     <div class="col-xl-2 col-sm-12 col-md-12">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
@@ -2814,7 +2448,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!-- This will show only in small devices only -->
+                                
                                     <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                         <div class="d-inline-block text-sm-start w-100">
                                             <div class="dropdown">
@@ -2836,7 +2470,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- This will show only in small devices only end-->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -2856,11 +2490,11 @@
                                     <a href="copyrights.html">Copyrights</a>
                                 </li>
                             </ul>
-                            <!-- This will show only in small devices -->
+                       
                             <div class="social-small-links d-block d-sm-block d-md-block d-lg-block d-xl-none">
                                 <div class="left">
                                     <ul class="social-media">
-                                        <!-- start 09-April-24 added one class tab-pd-left  -->
+                                  
                                         <li class="icon-pd-15 tab-pd-left">
                                             <a href="http://www.facebook.com/EnvironmentAbuDhabi" target="_blank">
                                                 <i class="icon-facebook"></i>
@@ -2890,10 +2524,10 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- This will show only in small devices -->
+                          
                         </div>
                     </div>
-                    <!-- Start 09-April-23 class added tab-opacity-pd -->
+                 
                     <hr class="opacity-1 tab-opacity-pd">
                     <div class="tab-privacy-section text-center">
                         <ul class="d-none d-sm-none d-md-block d-lg-block d-xl-none">
@@ -2918,10 +2552,7 @@
          aria-hidden="true">
         <div class="modal-dialog location-popup-start">
             <div class="modal-content">
-                <!-- <div class="modal-header">
-                  <h5 class="modal-title" id="locationModalLabel">Modal Title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> -->
+              
                 <div class="modal-body">
                     <h6>See results closer to you ?</h6>
                     <p>To get the closest results, let Google use your device's precise location.</p>
@@ -2943,23 +2574,14 @@
 
     <!-------------------------------- Script Sections------------------->
 
-    <script src="./js/jquery-2.2.4.min.js"></script>
-    <!-- start 29-March-24 removed cdn-->
+    <script src="./js/jquery-2.2.4.min.js"></script>  
     <script src="./js/jquery-ui.min.js"></script>
-    <!--end 29-March-24 -->
+   
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/apexcharts.js"></script>
-    <!--<script src="./js/chart.js"></script>-->
-    <!--start 29-March-24 removed cdn-->
-    <!--<script src="./js/graphs-js/chart.js"></script>
-    <script src="./js/graphs-js/chartjs-plugin-annotation@latest.js"></script>
-    <script src="./js/graphs-js/moment@latest.js"></script>
-    <script src="./js/graphs-js/chartjs-adapter-moment@latest.js"></script>-->
+    <script src="./js/apexcharts.js"></script>   
     <script src="./js/graphs-js/chart4.4.2.js"></script>
-    <script src="./js/graphs-js/chartjs-adapter-date.js"></script>
-    <!--end 29-March-24 removed cdn-->
-
+    <script src="./js/graphs-js/chartjs-adapter-date.js"></script> 
     <script src="./js/index-script.js"></script>
     <script src="./scolling-script/fullpage.js"></script>
     <script type="text/javascript">
@@ -2984,28 +2606,28 @@
             var sliding = false;
             var slideIndexS = localStorage.getItem('slideIndexS') || 0;
             var myFullpage = new fullpage('#fullpagediv', {
-                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6'], //08-April-24
-                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'], //08-April-24
+                anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6'], 
+                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'], 
                 navigation: true,
                 navigationPosition: 'right',
                 menu: '#menu',
-                //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
+                
                 scrollBar: true,
                 normalScrollElements: '.project-modal, .scroll-info-top, .faqscrolling, .mapStationSearchScroll, .searchHeaderScroll, .scroll-yearlyDropdown, .sidebar-dataScroll', ////08-April-24
-                // start 25-april-24---------
+              
                 onLeave: function (origin, destination, direction) {
                     console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
                     if (origin.index === 2 && !sliding) {
                         if (direction === 'down' && slideIndexS < 3) {
                             slideIndexS++;
-                            // myFullpage.moveSlideRight();
+                            
                             return false;
                         } else if (direction === 'up' && slideIndexS > 0) {
                             slideIndexS--;
-                            // myFullpage.moveSlideLeft();
+                          
                             return false;
                         }
-                    } else if (origin.index === 0) { // Added condition for origin.index === 0
+                    } else if (origin.index === 0) { 
                         var introVideo = document.getElementById('myVideo');
                         console.log('removing attribute', introVideo.getAttribute('data-autoplay'))
                         if (introVideo.hasAttribute('data-autoplay') && introVideo.ended) {
@@ -3020,14 +2642,14 @@
                             $('#playPauseBtn2').html('<i class="fa fa-play fa-2x text-white"></i>');
                         }
                     } else if (sliding) {
-                        sliding = false; // For menu header sliding issue
+                        sliding = false; 
                     } else if (sliding) {
                         return false;
                     }
-                }, // end 25-april-24---------
+                }, 
 
                 onSlideLeave: function (section, origin, destination, direction) {
-                    // Start 22-April-24 -------------
+                  
                     if (destination.index === 0) {
                         $('.fp-prev').addClass('disabled');
                         $('.fp-next').removeClass('disabled').addClass('animate-blinking');
@@ -3051,28 +2673,20 @@
                 $('.fp-next').removeClass('disabled').addClass('animate-blinking');
             }
 
-            // Start 03-May-24---------
-             // Add event listener to mapBlock
+          
             const mapBlock = document.getElementById('mapBlock');
             mapBlock.addEventListener('mouseenter', disableScroll);
             mapBlock.addEventListener('mouseleave', enableScroll);
 
-            // Function to disable FullPage.js scrolling
+            
             function disableScroll() {
                 fullpage_api.setAllowScrolling(false);
             }
 
-            // Function to enable FullPage.js scrolling
             function enableScroll() {
                 fullpage_api.setAllowScrolling(true);
             }
-            // End 03-May-24---------
-            // End 22-April-24 -------------
-            // if (window.location.href.includes('#slide2') && !window.location.href.includes('#slide2/3')) {
-            //     window.location.hash = 'slide2';
-            // }
-
-            // For menu header sliding issue
+           
             $('#menu a').on('click', function () {
                 sliding = true;
                 setTimeout(function () {
@@ -3081,12 +2695,6 @@
             });
             myFullpage.setAutoScrolling(true);
             myFullpage.setAllowScrolling(true, 'up, down');
-
-            // myFullpage.on('slideLeave', function (section, origin, destination, direction) {
-            //     slideIndexS = destination.index;
-            //     localStorage.setItem('slideIndexS', slideIndexS);
-            // });
-            // //08-April-24
             document.addEventListener('slideLeave', function (section, origin, destination, direction) {
                 slideIndexS = destination.index;
                 localStorage.setItem('slideIndexS', slideIndexS);
@@ -3111,16 +2719,12 @@
             $('.mobile-menu a').removeClass("active");
             $(this).addClass("active");
         });
-        // start 16-April-24 -------
-        // $('.web-menu .tablet-menu').click(function () {
-        //     $('.web-menu .tablet-menu').removeClass("active");
-        //     $(this).addClass("active");
-        // });
+       
 
     </script>
 
     <script>
-        // Map minimiz/maximize
+       
         $(".map-mini-max").click(function () {
             $(".air-map-container").toggleClass("full-screen");
             $("body").toggleClass("map-viwer-enabled");
@@ -3142,7 +2746,7 @@
         });
     </script>
     <script>
-        // start 30-March-24 modified this section ----------
+       
         $(document).ready(function () {
 
             $('#searchInput').on('keyup', function () {
@@ -3184,21 +2788,20 @@
                 });
             });
         });
-        // end 30-March-24 modified this section ----------
+       
     </script>
     <script>
         function replaceTextOnPage(oldText, newText) {
             var elements = document.getElementsByTagName("*");
             for (var i = 0; i < elements.length; i++) {
-                var element = elements[i];
-                // Check if innerText is defined and not null before trimming
+                var element = elements[i];               
                 if (element.innerText && element.innerText.trim() === oldText) {
                     element.innerText = newText;
                 }
             }
         }
     </script>
-    <!-- start 09-April-204 modified this script -->
+  
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const searchInput = document.getElementById('headerSearchInput');
@@ -3243,8 +2846,7 @@
                     const searchResultDiv = document.querySelector('.search-result');
                     searchResultDiv.classList.add('results-found-block');
                     searchResults.appendChild(li);
-                    // Remove display: none attribute from search-result div
-
+                    
 
                 }
             });
@@ -3347,11 +2949,9 @@
         });
 
     </script>
-    <!--end 09-April-204 modified this script -->
-    <!-- start 04-April-2024 script -->
+  
     <script>
-        // const baseURL = 'https://aqitest.ead.ae/index-new.html' //http://adairqualityapi.ead.ae
-        // const mainUrl = window.location.href.split('#')[0];
+       
         const baseURL = window.location.href.split('#')[0];
         document.addEventListener("DOMContentLoaded", function () {
             const links = document.querySelectorAll('.footer_link a');
@@ -3361,87 +2961,63 @@
             });
         });
     </script>
-    <!-- start 04-April-2024 script -->
+  
 
     <script>
-        // 05-April-24 For Project Animation Script -------------------
+  
         function handleIntersection(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.id === 'section3') {
-                    // Load your script here
-                    loadScript();
-                    // Stop observing once loaded
+                if (entry.isIntersecting && entry.target.id === 'section3') {              
+                    loadScript();                    
                     observer.unobserve(entry.target);
                 }
             });
         }
         function loadScript() {
             let images = document.querySelectorAll('[id^="image_"]');
-            images.forEach(function (image, index) {
-                // Add the animation class to start the animation
+            images.forEach(function (image, index) {               
                 image.classList.add('animate-from-bottom');
-
-                // Calculate animation duration based on index
+              
                 let animationDuration = calculateAnimationDuration(index);
-
-                // Bind id dynamically to animate-from-bottom class
+            
                 let animateClass = '.animate-from-bottom#' + image.id;
 
-                // Add animation class with dynamically bound id
                 document.querySelector(animateClass).style.animation = 'slideFromBottom ' + animationDuration + 's ease-out'; // Adjust animation speed as needed
             });
         }
         function calculateAnimationDuration(index) {
 
             const animationDurations = [
-                0.8, 1.0, 1.3, 1.6, 2.0  // Add more durations as needed
+                0.8, 1.0, 1.3, 1.6, 2.0  
             ];
             let durationIndex = index % animationDurations.length;
             return animationDurations[durationIndex];
         }
 
-        // Create an intersection observer instance
+      
         if (!observer) {
-            // Create an intersection observer instance
+            
             var observer = new IntersectionObserver(handleIntersection, {
-                threshold: 0.5 // Adjust threshold as needed
+                threshold: 0.5 
             });
         }
 
-        // Observe #section3
+       
         observer.observe(document.querySelector('#section3'));
 
     </script>
 
-
-    <!-- <script>
-        // Get the video element
-        var video = document.getElementById("myVideo");
-
-        // Attempt to play the video
-        var playPromise = video.play();
-
-        // Catch any errors
-        if (playPromise !== undefined) {
-            debugger;
-            playPromise.catch(function(error) {
-                // Suppress the error
-                console.error('Error suppressing: ', error);
-            });
-        }
-    </script> -->
-    <!-- Start 16-April-24 -->
     <script>
         $(document).ready(function () {
             if (window.innerHeight < 1193) {
                 $(window).scroll(function () {
                     var scrollPosition = $(this).scrollTop();
-                    var activeSectionId = null; // Variable to store the ID of the active section
+                    var activeSectionId = null; 
 
                     // Loop through each section
                     $('.section').each(function () {
                         var sectionId = $(this).attr('id');
-                        var sectionOffset = $(this).offset().top - 100; // Adjusted offset for better highlighting
+                        var sectionOffset = $(this).offset().top - 100; 
                         if (scrollPosition >= sectionOffset) {
                             activeSectionId = sectionId;
                         }
@@ -3470,8 +3046,7 @@
             });
         });
     </script>
-    <!-- End 16-April-24 -->
-    <!-- start 25-April-24 -->
+
     <script>
         $(document).ready(function () {
             // Get the video elements
@@ -3535,8 +3110,6 @@
             });
         });
     </script>
-
-    <!-- end 25-April-24 -->
 
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>

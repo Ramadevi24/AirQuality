@@ -4706,7 +4706,7 @@ footer .copy-rights ul li a {
 .esri-ui-bottom-right.esri-ui-corner {
     position: absolute;
     bottom: 50px; /* This keeps the element aligned to the bottom */
-    right: 0; /* This keeps the element aligned to the right */
+    right: 30px; /* This keeps the element aligned to the right */
     top: 10px !important; /* This adds a 20px offset from the top */
 }
 
