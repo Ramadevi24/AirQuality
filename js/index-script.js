@@ -865,7 +865,7 @@ function updateThreshold(pollutant, timeFilter) {
     const thresholdElement = document.getElementById(thresholdElementId);
     if (pollutantThresholdLimits.hasOwnProperty(thresholdKey)) {
         //document.getElementById('pm10thresholdValue').textContent = thresholdValue || 'N/A';
-        thresholdElement.textContent = thresholdValue;
+        thresholdElement.textContent = "(" + thresholdValue + " ug/m³)";
     } else {
         if (thresholdElement != null) {
             thresholdElement.textContent = thresholdValue;

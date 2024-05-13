@@ -754,6 +754,21 @@ video {
     border: none;
     left: 10px;
 }
+#skipButton {
+    background: transparent;
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+    border: none;
+    left: 40px;
+}
+
+    #skipButton img {
+        width: 30px;
+        height: 30px;
+        filter: invert(1);
+    }
+
 .overlay {
     background-color: #5b677063;
     /* opacity: .6; */
