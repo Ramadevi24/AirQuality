@@ -12,7 +12,7 @@ var latitude;
 var longitude;
 var nearestStation;
 var hasAccessToLocation = false;
-
+var boolrankingflag = true;
 const pollutantAbbrevations = {
     AQI: "AQI",
     PM10: "PM10",
@@ -279,7 +279,7 @@ const causeStationData = {
             { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
-    'Liwa Oasis': {
+    'Liwa': {
         'PM10': [
             { 'cause': 'Rural Traffic', 'image': 'rural_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
@@ -504,7 +504,7 @@ const stationsWithLocations = [{
     AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.O3]
 }, {
     stationId: "EAD_Liwa",
-    stationName: "Liwa Oasis",
+    stationName: "Liwa",
     regionName: "Al Dhafra",
     latitude: 23.0958,
     longitude: 53.6064,
@@ -678,6 +678,14 @@ $(window).on('load', function () {
     }, 3500);
 });
 
+//const video = document.getElementById('myVideo');
+//if (video) {
+//    video.muted = false; // Ensure video is not muted
+//    video.play();
+//    video.addEventListener('click', function () {
+//        video.play();
+//    });
+//}
 
 $('.down-arrow-bg').click(function () {
     let currentSectionIndex = 0;
@@ -1219,21 +1227,72 @@ function createRadialGradient3(context) {
     return gradient;
 }
 
-function getCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(function success(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        currentStationDetails = findNearestStation(latitude, longitude);
-        nearestStation = currentStationDetails;
-        hasAccessToLocation = true;
-        getLiveCityRankingApi(hasAccessToLocation);
-        loadStationData();
-    }, function error() {
-        hasAccessToLocation = false;
-        //loadStationData(); 
-        getLiveCityRankingApi(hasAccessToLocation);
+//function getCurrentLocation() {
+//    navigator.permissions.query({ name: 'geolocation' }).then(function (permissionStatus) {
+//        console.log('Permission status:', permissionStatus.state);
+//        if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
+//            navigator.geolocation.getCurrentPosition(function success(position) {
+//                latitude = position.coords.latitude;
+//                longitude = position.coords.longitude;
+//                currentStationDetails = findNearestStation(latitude, longitude);
+//                nearestStation = currentStationDetails;
+//                hasAccessToLocation = true;
+//                getLiveCityRankingApi(hasAccessToLocation);
+//                loadStationData();
+//            }, function error() {
+//                hasAccessToLocation = false;
+//                //loadStationData();
+//                getLiveCityRankingApi(hasAccessToLocation);
 
-    });
+//            });
+//        }
+//        else {
+//            hasAccessToLocation = false;
+//            //loadStationData();
+//            getLiveCityRankingApi(hasAccessToLocation);
+//        }
+//    }).catch(function (error) {
+//        hasAccessToLocation = false;
+//        //loadStationData();
+//        getLiveCityRankingApi(hasAccessToLocation);
+//    });
+//}
+function getCurrentLocation() {
+    if ('geolocation' in navigator) {
+        navigator.permissions.query({ name: 'geolocation' }).then(function (permissionStatus) {
+            console.log('Permission status:', permissionStatus.state);
+            if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
+                navigator.geolocation.getCurrentPosition(function success(position) {
+                     latitude = position.coords.latitude;
+                     longitude = position.coords.longitude;
+                     currentStationDetails = findNearestStation(latitude, longitude);
+                     nearestStation = currentStationDetails;
+                     hasAccessToLocation = true;
+                    getLiveCityRankingApi(hasAccessToLocation);
+                    loadStationData();
+                }, function error(err) {
+                    console.error('Error getting location:', err.message);
+                    handleGeolocationError(err);
+                });
+            } else {
+                console.warn('Geolocation permission denied.');
+                handleGeolocationError({ code: 1, message: 'Geolocation permission denied' });
+            }
+        }).catch(function (error) {
+            console.error('Error querying geolocation permission:', error);
+            handleGeolocationError(error);
+        });
+    } else {
+        console.error('Geolocation is not supported by this browser.');
+        handleGeolocationError({ code: 0, message: 'Geolocation not supported' });
+    }
+}
+
+function handleGeolocationError(error) {
+    const hasAccessToLocation = false;
+    console.error('Geolocation error:', error);
+    getLiveCityRankingApi(hasAccessToLocation);
+    // Uncomment if needed: loadStationData();
 }
 
 function sortStations(el) {
@@ -1302,81 +1361,101 @@ function populateSort(sortBy) {
 
 function loadStationData(initialRequest = false) {
     const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
+
     $.ajax({
         url: apiUrl,
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            const aqi = Math.round(data.averageAQI);
-            var aqiDetails = getAqiStatusAndColorCode(aqi);
-            var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
-            var currentYearOverview = new Date().getFullYear();
-            $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
-            $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
-            $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color); //23-April-24
-            $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
-            //  $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? 'Nearest Station: ' : 'Station:') + currentStationDetails.stationName);
-            $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ' , ' + currentStationDetails.regionName); // 29-April-24
-            $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
-            $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview); // 29-April-24
-            $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
-            $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
-            var mainPollutantNameContent;
-            switch (data.pollutantName) {
-                case "PM10":
-                    mainPollutantNameContent = `Particulate Matter, PM<sub>10</sub>`;
-                    break;
-                case "SO2":
-                    mainPollutantNameContent = `Sulphur Dioxide, SO<sub>2</sub>`;
-                    break;
-                case "O3":
-                    mainPollutantNameContent = `Ozone, O<sub>3</sub>`;
-                    break;
-                case "NO2":
-                    mainPollutantNameContent = `Nitrogen dioxide, O<sub>3</sub>`;
-                    break;
-                case "CO":
-                    mainPollutantNameContent = `Carbon monoxide, CO`;
-                    break;
-            }
+            try {
+                if (!data || typeof data !== 'object') {
+                    throw new Error('Invalid data received from API');
+                }
 
-            updateCauses(currentStationDetails.stationName, data.pollutantName);
-            updateLegendVisibility();
-            updateActivities(aqi);
-            updateHeathReccommendation(aqi);
-            var pollutantColorClass = getColorClassForAqi(aqi);
-            $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature,#mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature, #smallScreenwindSpeed, #smallScreenWindDirection, #smallScreenHumidity, #smallScreenTemperature").empty();
-            $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
-            $("#mainPollutantValue").append(aqi + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
-            $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-            $('#windDirection').append(data.direction);
-            $('#relativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-            $('#temperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-            $('#mobileWindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-            $('#mobileWindDirection').append(data.direction);
-            $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-            $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-            $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-            $('#smallScreenWindDirection').append(data.direction);
-            $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-            $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-            $('.page-loader').fadeOut('slow');
-            getYearlyStationPollutantsThreshold();
-            getAirAnalytics($("#selectedyear").text());
-            getAirQualitySafetyLevel();
-            if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
-                activePollutant = pollutantAbbrevations.AQI;
-                showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
-                $('#myTabs .nav-item .nav-link').removeClass("active");
-                $('#aqiTabToggle').addClass('active')
-            }
+                const aqi = Math.round(data.averageAQI);
+                const aqiDetails = getAqiStatusAndColorCode(aqi);
+                const aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
+                const currentYearOverview = new Date().getFullYear();
 
-            getStationChartApi($('#barChartFilter').text(), initialRequest);
+                $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
+                $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
+                $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
+                $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
+                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ' , ' + currentStationDetails.regionName);
+                $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
+                $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+                $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+                $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
+
+                let mainPollutantNameContent;
+                switch (data.pollutantName) {
+                    case "PM10":
+                        mainPollutantNameContent = `Particulate Matter, PM<sub>10</sub>`;
+                        break;
+                    case "SO2":
+                        mainPollutantNameContent = `Sulphur Dioxide, SO<sub>2</sub>`;
+                        break;
+                    case "O3":
+                        mainPollutantNameContent = `Ozone, O<sub>3</sub>`;
+                        break;
+                    case "NO2":
+                        mainPollutantNameContent = `Nitrogen dioxide, NO<sub>2</sub>`;
+                        break;
+                    case "CO":
+                        mainPollutantNameContent = `Carbon monoxide, CO`;
+                        break;
+                    default:
+                        mainPollutantNameContent = `Unknown pollutant`;
+                }
+
+                updateCauses(currentStationDetails.stationName, data.pollutantName);
+                updateLegendVisibility();
+                updateActivities(aqi);
+                updateHeathReccommendation(aqi);
+                bindStationInfo();
+
+                const pollutantColorClass = getColorClassForAqi(aqi);
+                $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature, #mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature, #smallScreenwindSpeed, #smallScreenWindDirection, #smallScreenHumidity, #smallScreenTemperature").empty();
+                $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
+                $("#mainPollutantValue").append(data.pollutantValue + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
+                $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
+                $('#windDirection').append(data.direction);
+                $('#relativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+                $('#temperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+                $('#mobileWindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
+                $('#mobileWindDirection').append(data.direction);
+                $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+                $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+                $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
+                $('#smallScreenWindDirection').append(data.direction);
+                $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
+                $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+
+                $('.page-loader').fadeOut('slow');
+                getYearlyStationPollutantsThreshold();
+                getAirAnalytics($("#selectedyear").text());
+                getAirQualitySafetyLevel();
+
+                if (!(initialRequest || currentStationDetails.measuredPolluants.includes(activePollutant))) {
+                    activePollutant = pollutantAbbrevations.AQI;
+                    showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
+                    $('#myTabs .nav-item .nav-link').removeClass("active");
+                    $('#aqiTabToggle').addClass('active');
+                }
+
+                getStationChartApi($('#barChartFilter').text(), initialRequest);
+            } catch (error) {
+                console.error('Error processing data in loadStationData:', error);
+                handleApiError(error);
+            }
         },
-        error: handleApiError
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Error loading station data:', textStatus, errorThrown);
+            handleApiError({ jqXHR, textStatus, errorThrown });
+        }
     });
-
 }
+
 
 
 function getAQILevel(value) {
@@ -1605,6 +1684,9 @@ function updateSideBarAQIImage(aqiLevel) {
 
 
 function updateCauses(station, pollutant) {
+    if (station === 'Al Qua’a') {
+        station = "Al Quaa";
+    }
     const causesContainer = document.querySelector('.Causes-img');
     causesContainer.innerHTML = '';
 
@@ -1631,6 +1713,12 @@ function updateCauses(station, pollutant) {
 
 function updateLegendVisibility() {
     const pollutants = ['PM10', 'NO2', 'SO2', 'CO', 'O3']; // All possible pollutants
+
+    if (!currentStationDetails || !Array.isArray(currentStationDetails.measuredPolluants)) {
+        console.error('Error to get data for currentStationDetails');
+        return;
+    }
+
     pollutants.forEach(pollutant => {
         // Check if the selected station monitors this pollutant
         const legendDiv = document.getElementById(`legend-${pollutant}`);
@@ -1781,29 +1869,50 @@ function bindLiveCityRanking() {
         $("#" + currentStationDetails.stationId).attr('checked', 'checked');
         stationDetails = currentStationDetails;
     }
+    bindStationInfo();
 
-    var airQualityIndexTooltipPollutantContent = '';
-    stationDetails.measuredPolluants.forEach(item => {
-        if (item != pollutantAbbrevations.Noise) {
-            airQualityIndexTooltipPollutantContent += `<li>` + pollutantNames[item] + `<span class="blue-bold">
-                    (`+ getPollutantWithUnits(item) + `)
-                </span>
-            </li>`;
-        } else {
-            airQualityIndexTooltipPollutantContent += `<li>` + item + `</li>`;
-        }
-    });
-
-    $('.pollutantbar-title').text(stationDetails.stationName);
-    $('.pollutantbar-address').text(stationDetails.stationLocation);
-    $('.pollutantbar-details').empty();
-    $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
+   
 }
+function bindStationInfo() {
+    try {
+        if (!currentStationDetails || !Array.isArray(currentStationDetails.measuredPolluants)) {
+            throw new Error('currentStationDetails or currentStationDetails.measuredPolluants is undefined or not an array.');
+        }
 
+        var stationDetails = currentStationDetails;
+        var airQualityIndexTooltipPollutantContent = '';
+
+        stationDetails.measuredPolluants.forEach(item => {
+            if (item !== pollutantAbbrevations.Noise) {
+                airQualityIndexTooltipPollutantContent += `<li>` + pollutantNames[item] + `<span class="blue-bold">
+                        (` + getPollutantWithUnits(item) + `)
+                    </span>
+                </li>`;
+            } else {
+                airQualityIndexTooltipPollutantContent += `<li>` + item + `</li>`;
+            }
+        });
+
+        $('.pollutantbar-title').text(stationDetails.stationName);
+        $('.pollutantbar-address').text(stationDetails.stationLocation);
+        $('.pollutantbar-details').empty();
+        $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
+    } catch (error) {
+        console.error('Error binding station info:', error.message);
+        // Optionally, you can display a user-friendly error message or perform other error handling here.
+    }
+}
 
 $('.mapStationSearchScroll').on('click', 'li', function () {
     var stationName = $(this).find('.station-name').text();
-    $(".show-mapSearchList").show().html(stationName);
+    $(".show-mapSearchList")
+        .show()
+        .css({
+            'display': 'inline-block',
+            'padding': '10px',
+            'margin-left': '8px',
+        })
+        .html(stationName);
     $('.Newsearch-box').hide();
 });
 
@@ -1811,7 +1920,11 @@ $('.mapStationSearchScroll').on('click', 'li', function () {
 
 function selectedStation(stationId) {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
+    if (boolrankingflag) {
+        $("#stationsDropdownMap").trigger('click');
+    }
     loadStationData();
+    boolrankingflag = true
 }
 
 function getAirQualitySafetyLevel() {
@@ -3640,10 +3753,10 @@ var imageData = [
     { imageUrl: "./images/new-images/e_linking.jpg", content: "E-linking for Continuous Emission Monitoring System ", description: "E- linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in EAD as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable EAD to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help EAD to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
     { imageUrl: "./images/new-images/Monitoring_network.jpg", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
     { imageUrl: "./images/new-images/Freepik2.png", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency – Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
-    { imageUrl: "./images/new-images/Freepik3.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },
+    { imageUrl: "./images/new-images/inventory-img.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },//13-May-24
     { imageUrl: "./images/new-images/GHG1.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
     { imageUrl: "./images/new-images/Odor.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
-    { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." },
+    // { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." }, // 13-May-24
     { imageUrl: "./images/new-images/Remote_sensing.jpg", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders" },
     { imageUrl: "./images/new-images/EAD_Research.jpg", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
     { imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region's first smog-free tower at Surf Abu Dhabi, the world's most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
