@@ -17,7 +17,7 @@ var stationsIDs= [
         "Ruwais": "EAD_RuwaisTransco",
         "Habshan Air Quality Monitoring Station": "EAD_Habshan",
         "Habshan South": "EAD_Habshan",
-        "Al Maqtaa": "EAD_AlMaqta",
+        "Al Maqta": "EAD_AlMaqta",
         "Khalifa City A": "EAD_KhalifaCity",
         "Al Mafraq": "EAD_AlMafraq",
         "Sweihan Air Quality Monitoring Station": "EAD_Sweihan",

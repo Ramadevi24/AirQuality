@@ -1495,6 +1495,7 @@ video {
     .insight-btn:hover {
         background-color: transparent;
         border: 1px solid #fff;
+        color: #fff;
     }
 /* .weather-line::before{
     content: '';

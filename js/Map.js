@@ -1031,13 +1031,24 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
 
             var Fieldsarr = Featurecollection.fields.concat(pollutants);
             for (var i = 0; i < Featurecollection.features.length; i++) {
-                var attr = Featurecollection.features[i].attributes
-                attr.AQI = StationsObject[i].data[0].aqi;
-                attr.SO2 = StationsObject[i].data[0].sO2;
-                attr.NO2 = StationsObject[i].data[0].nO2;
-                attr.CO = StationsObject[i].data[0].co;
-                attr.O3 = StationsObject[i].data[0].o3;
-                attr.PM10 = StationsObject[i].data[0].pM10;
+                var attr = Featurecollection.features[i].attributes;
+                var stationData = StationsObject[i].data;
+                if (!stationData || stationData.length === 0) {
+                    // Assign default values of 0 if stationData is null or empty
+                    attr.AQI = 0;
+                    attr.SO2 = 0;
+                    attr.NO2 = 0;
+                    attr.CO = 0;
+                    attr.O3 = 0;
+                    attr.PM10 = 0;
+                } else {
+                    attr.AQI = stationData[0].aqi;
+                    attr.SO2 = stationData[0].sO2;
+                    attr.NO2 = stationData[0].nO2;
+                    attr.CO = stationData[0].co;
+                    attr.O3 = stationData[0].o3;
+                    attr.PM10 = stationData[0].pM10;
+                }
 
             }
             FeatureCollectionlyr = new FeatureLayer({

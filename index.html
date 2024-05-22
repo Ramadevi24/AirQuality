@@ -17,7 +17,7 @@
     <link href="./css/stylesnew.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
-    <script async src="./js/graphs-js/googlejs.js"></script>
+    <!--<script async src="./js/graphs-js/googlejs.js"></script>-->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -124,8 +124,8 @@
             <div id="demo" class="banner-section position-relative">
 
                 <div class="video-wrapper video-container position-relative">
-                    <video muted data-autoplay id="myVideo"
-                           class="w-100 d-none d-sm-none d-md-none d-lg-block">
+                   <video muted data-autoplay id="myVideo" 
+                          class="w-100 d-none d-sm-none d-md-none d-lg-block">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
                     <button id="playPauseBtn2" class="d-none d-sm-none d-md-none d-lg-block">
@@ -137,7 +137,7 @@
 
                     <button id="skipButton">
                         <img src="./images/new-images/skip-icon.svg" alt="skip">
-                    </button>
+                    </button>                    
                     <video autoplay muted id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
@@ -253,7 +253,7 @@
                             </div>
                         </li>
 
-                        <li class="">
+                        <!--<li class="">
                             <button class="btn" id="airPurifier">
                                 <i class="icon-air-purifier1"></i>
                             </button>
@@ -262,7 +262,7 @@
                             <button class="btn" id="wind">
                                 <i class="icon-wind"></i>
                             </button>
-                        </li>
+                        </li>-->
                         <li class="">
                             <button class="btn" id="mapLocation">
                                 <i class="icon-pointer"></i>
@@ -2167,7 +2167,7 @@
                                     <img src="./images/new-images/phone-call.png" alt="phone">
                                 </div>
                                 <div class="contact-info-content">
-                                    <a href="tel:+97126934444">+ 971 2639 4444</a>
+                                    <a href="tel:800555">800555</a>
                                 </div>
                             </div>
 
@@ -2414,7 +2414,7 @@
                                                     <a href="mailto:customerhappiness@ead.gov.ae">customerhappiness@ead.gov.ae</a>
                                                 </li>
                                                 <li>
-                                                    <a href="tel:+97126934444">+97126934444</a>
+                                                    <a href="tel:800555">800555</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2435,7 +2435,7 @@
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item"
-                                                           href="tel:+97126934444">+97126934444</a>
+                                                           href="tel:800555">800555</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -2717,11 +2717,11 @@
         });
     </script>
     <script>
-
         $(document).ready(function () {
 
             $('#searchInput').on('keyup', function () {
                 var searchText = $(this).val().toLowerCase();
+                var searchTextNoSpaces = searchText.replace(/\s+/g, ''); // Remove spaces from search text
                 var $searchIcon = $('.p-input span img');
 
                 if (searchText.trim() !== '') {
@@ -2735,30 +2735,39 @@
                         'cursor': 'default'
                     });
                 }
+
                 $('.list-group-item').each(function () {
                     var listItemText = $(this).find('.inner_list-content p').text().toLowerCase();
-                    if (listItemText.indexOf(searchText) === -1) {
+                    var listItemTextNoSpaces = listItemText.replace(/\s+/g, ''); // Remove spaces from list item text
+                    if (listItemText.indexOf(searchText) === -1 && listItemTextNoSpaces.indexOf(searchTextNoSpaces) === -1) {
                         $(this).hide();
                     } else {
                         $(this).show();
                     }
                 });
             });
+
             $('.p-input span img').on('click', function () {
                 $('#searchInput').val('').trigger('keyup');
             });
+
             $('#headerSearchInput').on('keyup', function () {
                 var searchText = $(this).val().toLowerCase();
+                var searchTextNoSpaces = searchText.replace(/\s+/g, ''); // Remove spaces from search text
+
                 $('.search-result').each(function () {
                     var listItemText = $(this).find('.searchItem li').text().toLowerCase();
-                    if (listItemText.indexOf(searchText) === -1) {
+                    var listItemTextNoSpaces = listItemText.replace(/\s+/g, ''); // Remove spaces from list item text
+                    if (listItemText.indexOf(searchText) === -1 && listItemTextNoSpaces.indexOf(searchTextNoSpaces) === -1) {
                         $(this).hide();
                     } else {
                         $(this).show();
                     }
                 });
             });
+
         });
+
 
     </script>
     <script>
@@ -2843,6 +2852,12 @@
                 searchInput.value = '';
                 inputClicked = false;
             });
+            function sanitizeInput(input) {
+                const element = document.createElement('div');
+                element.innerText = input;
+                return element.innerHTML;
+            }
+
             function appendToResults(element) {
                 const consecutiveWordsRegex = /\b(\w+)\s+\1\b/g;
                 let parentSlide = element.closest('.slide');
@@ -2856,7 +2871,7 @@
                     if (slideUrl) {
                         a.href = slideUrl;
                         const textContentWithoutDuplicates = element.textContent.replace(consecutiveWordsRegex, '$1');
-                        span.textContent = textContentWithoutDuplicates;
+                        span.textContent = sanitizeInput(textContentWithoutDuplicates);
                         a.appendChild(span);
                         li.appendChild(a);
                         searchResults.appendChild(li);
@@ -2864,11 +2879,12 @@
                         let parentDiv = element.parentElement;
                         while (parentDiv !== null) {
                             if (parentDiv.tagName.toLowerCase() === 'div') {
-                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                const headingElement = parentDiv.querySelector('h1, h2, h3, h4, h5, h6');
+                                if (headingElement) {
                                     const parentHeading = document.createElement('a');
-                                    const headingText = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    const headingText = headingElement.textContent;
                                     const headingTextWithoutDuplicates = headingText.replace(consecutiveWordsRegex, '$1');
-                                    parentHeading.textContent = headingTextWithoutDuplicates;
+                                    parentHeading.textContent = sanitizeInput(headingTextWithoutDuplicates);
                                     parentHeading.href = slideUrl;
                                     searchResults.insertBefore(parentHeading, li);
                                     break;
@@ -2894,18 +2910,19 @@
                     if (sectionUrl) {
                         a.href = sectionUrl;
                         const textContentWithoutDuplicates = element.textContent.replace(consecutiveWordsRegex, '$1');
-                        span.textContent = textContentWithoutDuplicates;
+                        span.textContent = sanitizeInput(textContentWithoutDuplicates);
                         a.appendChild(span);
                         li.appendChild(a);
                         searchResults.appendChild(li);
                         let parentDiv = element.parentElement;
                         while (parentDiv !== null) {
                             if (parentDiv.tagName.toLowerCase() === 'div') {
-                                if (parentDiv.querySelector('h1, h2, h3, h4, h5, h6')) {
+                                const headingElement = parentDiv.querySelector('h1, h2, h3, h4, h5, h6');
+                                if (headingElement) {
                                     const parentHeading = document.createElement('a');
-                                    const headingText = parentDiv.querySelector('h1, h2, h3, h4, h5, h6').textContent;
+                                    const headingText = headingElement.textContent;
                                     const headingTextWithoutDuplicates = headingText.replace(consecutiveWordsRegex, '$1');
-                                    parentHeading.textContent = headingTextWithoutDuplicates;
+                                    parentHeading.textContent = sanitizeInput(headingTextWithoutDuplicates);
                                     parentHeading.href = sectionUrl;
                                     searchResults.insertBefore(parentHeading, li);
                                     break;
@@ -2922,16 +2939,32 @@
     </script>
 
     <script>
-
-        const baseURL = window.location.href.split('#')[0];
         document.addEventListener("DOMContentLoaded", function () {
             const links = document.querySelectorAll('.footer_link a');
+
+            // Validate the baseURL to ensure it is a valid URL
+            function getSafeBaseURL() {
+                try {
+                    const url = new URL(window.location.href.split('#')[0]);
+                    // Additional checks can be added here to ensure the URL is from a trusted domain
+                    return url.origin + url.pathname;
+                } catch (e) {
+                    console.error('Invalid base URL:', e);
+                    return '';
+                }
+            }
+
+            const baseURL = getSafeBaseURL();
+
             links.forEach(link => {
                 const href = link.getAttribute('href');
-                link.setAttribute('href', baseURL + href);
+                if (baseURL && href) {
+                    link.setAttribute('href', baseURL + href);
+                }
             });
         });
     </script>
+
 
 
     <script>
@@ -3020,15 +3053,12 @@
 
     <script>
         $(document).ready(function () {
-            // Get the video elements
             var video1 = document.getElementById("myVideo1");
             var video2 = document.getElementById("myVideo");
-
-            // Get the play/pause buttons
+           
             var playPauseButton1 = $("#playPauseBtn1");
-            var playPauseButton2 = $("#playPauseBtn2");
+            var playPauseButton2 = $("#playPauseBtn2");          
 
-            // Function to toggle play/pause for video1
             function togglePlayPause1() {
                 if (video1.paused) {
                     video1.play();
@@ -3039,7 +3069,6 @@
                 }
             }
 
-            // Function to toggle play/pause for video2
             function togglePlayPause2() {
                 if (video2.paused) {
                     video2.play();
@@ -3050,32 +3079,26 @@
                 }
             }
 
-            // Event listener for play/pause button of video1
             playPauseButton1.on("click", function () {
                 togglePlayPause1();
             });
 
-            // Event listener for play/pause button of video2
             playPauseButton2.on("click", function () {
                 togglePlayPause2();
             });
 
-            // Event listener for video1 click (for mobile devices)
             video1.addEventListener("click", function () {
                 togglePlayPause1();
             });
 
-            // Event listener for video2 click (for mobile devices)
             video2.addEventListener("click", function () {
                 togglePlayPause2();
             });
 
-            // Event listener for video1 end
             video1.addEventListener("ended", function () {
                 playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
             });
 
-            // Event listener for video2 end
             video2.addEventListener("ended", function () {
                 playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
             });
@@ -3083,7 +3106,6 @@
             $('#skipButton').on('click', function () {
                 video2.pause();
                 video1.pause();
-                // Set the current time of the video to the end time
                 video2.currentTime = video2.duration;
                 video1.currentTime = video1.duration;
                 $('#playPauseBtn2').html('<i class="fa fa-play fa-2x text-white"></i>');
@@ -3091,37 +3113,29 @@
                 togglePlayPause2();
                 togglePlayPause1();
             });
-        });
-    </script>
-    <script>
-        // 15-May-2024----------------
-        $(document).ready(function() {
+
             var videofunc = document.getElementById('myVideo');
             var videofunc1 = document.getElementById('myVideo1');
             var aqiInfoDiv = $('.aqiInfoDiv-loadshow');
 
-            videofunc.addEventListener('ended', function() {
+            videofunc.addEventListener('ended', function () {
                 aqiInfoDiv.show();
-                //loadStationData();
             });
 
-            // If you want to hide the div again when the video is played again
-            videofunc.addEventListener('play', function() {
+            videofunc.addEventListener('play', function () {
                 aqiInfoDiv.hide();
             });
 
-            videofunc1.addEventListener('ended', function() {
-                //console.log('loadStationData');
+            videofunc1.addEventListener('ended', function () {
                 aqiInfoDiv.show();
-                //loadStationData();
             });
 
-            // If you want to hide the div again when the video is played again
-            videofunc1.addEventListener('play', function() {
+            videofunc1.addEventListener('play', function () {
                 aqiInfoDiv.hide();
-            });
+            });          
         });
-        // 15-May-2024----------------
+
+
     </script>
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>

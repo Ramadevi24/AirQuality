@@ -657,7 +657,7 @@ var radarOptions = {
                         label += ': ';
                     }
                     if (context.parsed.r !== null) {
-                        label += context.parsed.r + ' ug/m³'; // Appending 'ug/m3' to the label
+                        label += context.parsed.r; // Appending 'ug/m3' to the label
                     }
                     return label;
                 }
@@ -829,12 +829,13 @@ $(document).ready(function () {
 
 
     document.getElementById('stationsDropdownMapSearch').addEventListener('input', function () {
-        var searchText = this.value.toLowerCase();
+        var searchText = this.value.toLowerCase().replace(/\s+/g, ''); // Remove spaces from search text
         var listItems = document.querySelectorAll('.listSearch li');
 
         listItems.forEach(function (item) {
-            var stationName = item.querySelector('.station-name').textContent.toLowerCase();
-            var regionName = item.querySelector('.region-name').textContent.toLowerCase();
+            var stationName = item.querySelector('.station-name').textContent.toLowerCase().replace(/\s+/g, ''); // Remove spaces from station name
+            var regionName = item.querySelector('.region-name').textContent.toLowerCase().replace(/\s+/g, ''); // Remove spaces from region name
+
 
             if (stationName.includes(searchText) || regionName.includes(searchText)) {
                 item.style.display = 'block';
@@ -864,8 +865,10 @@ function showHideToggleDiv(tabId, pollutant) {
 }
 
 function updateThreshold(pollutant, timeFilter) {
-    pollutant = pollutant.replace(/\s+/g, ' ').trim();
-    timeFilter = timeFilter.replace(/\s+/g, ' ').trim();
+    // Use regular expressions to replace whitespace and trim
+    pollutant = pollutant.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+    timeFilter = timeFilter.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+
     const thresholdKey = `${pollutant}${timeFilter}`;
     const thresholdValue = pollutantThresholdLimits[thresholdKey];
     // If the element exists, update its text content
@@ -881,9 +884,10 @@ function updateThreshold(pollutant, timeFilter) {
     }
 }
 
+
 $(".dropdown-change li a").click(function () {
     var selText = $(this).text();
-    $(this).parents('.btn-group').find('.quality-button-dropdown').html(selText);
+    $(this).parents('.btn-group').find('.quality-button-dropdown').text(selText);
     if (!$(this).hasClass("active")) {
         $('.dropdown-change li a').removeClass("active");
         $(this).addClass("active");
@@ -1335,22 +1339,59 @@ function populateSort(sortBy) {
             if (stationDetails) {
                 var colorCode = colorCodes[getColorClassForAqi(station.aqi)];
                 station.rank = index + 1;
-                var row = `<label class="list-group-item">
-                    <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
-                      <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
-                    </span>
-                    <div class="list-content">
-                      <div class="inner_list-content text-left">
-                        <p>`+ station.name + `</p>
-                        <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
-                      </div>
-                      <div class="dis-content">
-                        <span>~ `+ station.distance + ` km</span>
-                      </div>
-                    </div>
-                    <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `')">
-                  </label>`;
-                stationRankingListDiv.append(row);
+
+                // Create elements dynamically
+                var label = document.createElement('label');
+                label.className = 'list-group-item';
+
+                var spanNumber = document.createElement('span');
+                spanNumber.className = 'numbers number';
+                spanNumber.style.borderColor = colorCode + ' !important';
+
+                var strong = document.createElement('strong');
+                strong.style.color = colorCode;
+                strong.textContent = station.rank;
+                spanNumber.appendChild(strong);
+
+                var listContent = document.createElement('div');
+                listContent.className = 'list-content';
+
+                var innerListContent = document.createElement('div');
+                innerListContent.className = 'inner_list-content text-left';
+
+                var p = document.createElement('p');
+                p.textContent = station.name;
+                innerListContent.appendChild(p);
+
+                var spanAQI = document.createElement('span');
+                spanAQI.style.color = colorCode;
+                spanAQI.textContent = 'AQI ' + station.aqi;
+                innerListContent.appendChild(spanAQI);
+
+                var disContent = document.createElement('div');
+                disContent.className = 'dis-content';
+
+                var spanDistance = document.createElement('span');
+                spanDistance.textContent = '~ ' + station.distance + ' km';
+                disContent.appendChild(spanDistance);
+
+                listContent.appendChild(innerListContent);
+                listContent.appendChild(disContent);
+
+                var input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'options';
+                input.id = stationDetails.stationId;
+                input.value = stationDetails.stationId;
+                input.autocomplete = 'off';
+                input.className = 'float-end';
+                input.onclick = function () { selectedStation(stationDetails.stationId); };
+
+                label.appendChild(spanNumber);
+                label.appendChild(listContent);
+                label.appendChild(input);
+
+                stationRankingListDiv.append(label);
             }
         });
         if (currentStationDetails.stationId) {
@@ -1360,7 +1401,7 @@ function populateSort(sortBy) {
 }
 
 function loadStationData(initialRequest = false) {
-    const apiUrl = baseUrl + 'GetAirQualityStation?input=' + currentStationDetails.stationId;
+    const apiUrl = baseUrl + 'GetAirQualityStation?input=' + encodeURIComponent(currentStationDetails.stationId);
 
     $.ajax({
         url: apiUrl,
@@ -1377,14 +1418,15 @@ function loadStationData(initialRequest = false) {
                 const aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
                 const currentYearOverview = new Date().getFullYear();
 
+                // Set text content safely
                 $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
                 $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
-                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ' , ' + currentStationDetails.regionName);
+                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
                 $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
-                $("#yearlyAirQualityOverview").html(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
-                $("#SidebaryearlyAirQualityOverview").html(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+                $("#yearlyAirQualityOverview").text(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+                $("#SidebaryearlyAirQualityOverview").text(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
                 $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
 
                 let mainPollutantNameContent;
@@ -1416,20 +1458,20 @@ function loadStationData(initialRequest = false) {
 
                 const pollutantColorClass = getColorClassForAqi(aqi);
                 $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature, #mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature, #smallScreenwindSpeed, #smallScreenWindDirection, #smallScreenHumidity, #smallScreenTemperature").empty();
-                $("#mainPollutantName").append(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
-                $("#mainPollutantValue").append(data.pollutantValue + `ug/m<sup>3</sup>`).css('color', colorCodes[pollutantColorClass]);
-                $('#windSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-                $('#windDirection').append(data.direction);
-                $('#relativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-                $('#temperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-                $('#mobileWindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-                $('#mobileWindDirection').append(data.direction);
-                $('#mobileRelativeHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-                $('#mobileTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
-                $('#smallScreenwindSpeed').append(data.windSpeed + `<sub>km/h</sub>`);
-                $('#smallScreenWindDirection').append(data.direction);
-                $('#smallScreenHumidity').append(data.relativeHumidity + `<sub>%</sub>`);
-                $('#smallScreenTemperature').append(data.temperature + `<sup>o</sup><sub>C</sub>`);
+                $("#mainPollutantName").html(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
+                $("#mainPollutantValue").text(data.pollutantValue + 'ug/m³').css('color', colorCodes[pollutantColorClass]);
+                $('#windSpeed').text(data.windSpeed + ' km/h');
+                $('#windDirection').text(data.direction);
+                $('#relativeHumidity').text(data.relativeHumidity + ' %');
+                $('#temperature').text(data.temperature + ' °C');
+                $('#mobileWindSpeed').text(data.windSpeed + ' km/h');
+                $('#mobileWindDirection').text(data.direction);
+                $('#mobileRelativeHumidity').text(data.relativeHumidity + ' %');
+                $('#mobileTemperature').text(data.temperature + ' °C');
+                $('#smallScreenwindSpeed').text(data.windSpeed + ' km/h');
+                $('#smallScreenWindDirection').text(data.direction);
+                $('#smallScreenHumidity').text(data.relativeHumidity + ' %');
+                $('#smallScreenTemperature').text(data.temperature + ' °C');
 
                 $('.page-loader').fadeOut('slow');
                 getYearlyStationPollutantsThreshold();
@@ -1455,6 +1497,7 @@ function loadStationData(initialRequest = false) {
         }
     });
 }
+
 
 
 
@@ -1904,17 +1947,18 @@ function bindStationInfo() {
 }
 
 $('.mapStationSearchScroll').on('click', 'li', function () {
-    var stationName = $(this).find('.station-name').text();
+    var stationName = $(this).find('.station-name').text().replace(/\s+/g, ''); // Remove spaces
     $(".show-mapSearchList")
         .show()
         .css({
             'display': 'inline-block',
-            'padding': '10px',
+            'padding': '4px',
             'margin-left': '8px',
         })
-        .html(stationName);
+        .text(stationName);  // Use text() instead of html()
     $('.Newsearch-box').hide();
 });
+
 
 
 
@@ -1966,8 +2010,15 @@ function getAirQualitySafetyLevel() {
 }
 
 function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
+    // Sanitize class name to avoid injection
+    function sanitizeClassName(className) {
+        return className.replace(/[^a-z0-9-_]/gi, '');
+    }
 
-    var container = $('<div class="list-item ' + aqiColorStatus + '"></div>');
+    // Create container with sanitized class name
+    var container = $('<div></div>', {
+        "class": 'list-item ' + sanitizeClassName(aqiColorStatus)
+    });
 
     // Create a span element for the count
     var countSpan = $('<p></p>');
@@ -1975,14 +2026,14 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     // Append the count span to the container
     container.append(countSpan);
 
-    // Append the status span to the container
-    container.append('<span>' + aqiStatus + '</span>');
+    // Append the status span to the container with sanitized text
+    container.append($('<span></span>').text(aqiStatus));
 
     // Append the container to the parent
     $("#aqiStatusDiv").append(container);
 
     // Use jQuery animate() function to animate the count
-    $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+    $({ countNum: 0 }).animate({ countNum: aqiValue }, {
         duration: 4000,
         easing: 'linear',
         step: function () {
@@ -1994,12 +2045,19 @@ function airQualitySafetyLevelDivElements(aqiValue, aqiStatus, aqiColorStatus) {
             countSpan.text(this.countNum);
         }
     });
-
 }
 
-function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
 
-    var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
+function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
+    // Sanitize class name to avoid injection
+    function sanitizeClassName(className) {
+        return className.replace(/[^a-z0-9-_]/gi, '');
+    }
+
+    // Create container with sanitized class name
+    var container = $('<div></div>', {
+        "class": 'col-4 col-sm-4 col-md-4 column ' + sanitizeClassName(aqiColorStatus)
+    });
 
     // Create a span element for the count
     var countSpan = $('<p></p>');
@@ -2007,14 +2065,14 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
     // Append the count span to the container
     container.append(countSpan);
 
-    // Append the status span to the container
-    container.append('<span>' + aqiStatus + '</span>');
+    // Append the status span to the container with sanitized text
+    container.append($('<span></span>').text(aqiStatus));
 
     // Append the container to the parent
     $("#aqiSmallScreenDailyCounts").append(container);
 
     // Use jQuery animate() function to animate the count
-    $({ countNum: container.find('.count').text() }).animate({ countNum: aqiValue }, {
+    $({ countNum: 0 }).animate({ countNum: aqiValue }, {
         duration: 4000,
         easing: 'linear',
         step: function () {
@@ -2026,8 +2084,8 @@ function DailyCountsDataDivElements(aqiValue, aqiStatus, aqiColorStatus) {
             countSpan.text(this.countNum);
         }
     });
-
 }
+
 function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
 
     var container = $('<div class="col-4 col-sm-4 col-md-4 column ' + aqiColorStatus + '"></div>');
@@ -3771,22 +3829,33 @@ if (window.innerWidth < 990) {
             carouselItem.addClass('active');
         }
 
-
         let minPerSlide = 6;
 
         if (window.innerWidth < 768) {
             minPerSlide = 2;
         }
-        for (let i = 1; i < minPerSlide; i++) {
+
+        for (let i = 0; i < minPerSlide; i++) {  // Changed the loop to start at 0 to include the current index
+            var dataIndex = (index * minPerSlide) + i;
+            if (dataIndex >= imageData.length) {
+                dataIndex = dataIndex % imageData.length;
+            }
+
             var content = $('<div>').addClass('col-md-3');
             var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
             var imageDiv = $('<div>');
-            var imageId = 'image_' + ((index * minPerSlide) + i);
-            // var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl);
-            var image = $('<img>').addClass('item').attr('src', imageData[(index + i) % imageData.length].imageUrl).attr('id', imageId); // Add ID to image       
-            var projectContent = $('<div>').addClass('project-slide-content').text(imageData[(index + i) % imageData.length].content);
-            var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[(index + i) % imageData.length].description);
+            var imageId = 'image_' + dataIndex;
 
+            // Sanitize the image URL
+            var imageUrl = imageData[dataIndex].imageUrl;
+            //if (!isValidUrl(imageUrl)) {
+            //    console.error('Invalid image URL:', imageUrl);
+            //    continue; // Skip this item if the URL is not valid
+            //}
+
+            var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
+            var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+            var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
 
             // Assemble elements
             imageDiv.append(image);
@@ -3794,7 +3863,6 @@ if (window.innerWidth < 990) {
             content.append(mainContent);
             carouselItem.append(content);
         }
-
 
         $('#recipeCarousel .carousel-inner').append(carouselItem);
     });
@@ -3820,7 +3888,15 @@ if (window.innerWidth < 990) {
                 var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
                 var imageDiv = $('<div>');
                 var imageId = 'image_' + dataIndex;
-                var image = $('<img>').addClass('item').attr('src', imageData[dataIndex].imageUrl).attr('id', imageId);
+                var imageUrl = imageData[dataIndex].imageUrl;
+
+                // Sanitize the image URL
+                //if (!isValidUrl(imageUrl)) {
+                //    console.error('Invalid image URL:', imageUrl);
+                //    continue; // Skip this item if the URL is not valid
+                //}
+
+                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
                 var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
                 var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
 
@@ -3833,9 +3909,17 @@ if (window.innerWidth < 990) {
 
             $('#recipeCarousel .carousel-inner').append(carouselItem);
         }
-    });
-}
+    });    
 
+}
+function isValidUrl(url) {
+    try {
+        const parsedUrl = new URL(url);
+        return ['http:', 'https:'].includes(parsedUrl.protocol);
+    } catch (e) {
+        return false;
+    }
+}
 
 $('.main-content').on('click', function () {
 
@@ -3914,9 +3998,14 @@ $('#myForm').submit(function (e) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var phoneRegex = /^\d{10}$/;
 
+    // Function to trim spaces without using the trim() method
+    function trimSpaces(str) {
+        return str.replace(/^\s+|\s+$/g, '');
+    }
+
     var isValidForm = true;
     // Name validation
-    if (name.trim() === '') {
+    if (trimSpaces(name) === '') {
         $('#nameError').text('Name is required');
         isValidForm = false;
     } else if (!nameRegex.test(name)) {
@@ -3927,7 +4016,7 @@ $('#myForm').submit(function (e) {
     }
 
     // Email validation
-    if (email.trim() === '') {
+    if (trimSpaces(email) === '') {
         $('#emailError').text('Email is required');
         isValidForm = false;
     } else if (!emailRegex.test(email)) {
@@ -3938,7 +4027,7 @@ $('#myForm').submit(function (e) {
     }
 
     // Phone validation
-    if (phone.trim() === '') {
+    if (trimSpaces(phone) === '') {
         $('#phoneError').text('Phone is required');
         isValidForm = false;
     } else if (!phoneRegex.test(phone)) {
@@ -3977,11 +4066,13 @@ $('#myForm').submit(function (e) {
     }
 });
 
+
 // Add event listeners to input fields for real-time validation
 $('#inputField').on('input', function () {
     var name = $(this).val();
     var nameRegex = /^[a-zA-Z\s'-]+$/;
-    if (name.trim() !== name) {
+    var trimmedName = name.replace(/^\s+|\s+$/g, ''); // Remove leading and trailing spaces using regex
+    if (trimmedName !== name) {
         $('#nameError').text('No leading or trailing spaces are allowed');
     } else if (!nameRegex.test(name)) {
         $('#nameError').text('Please enter a valid name (only letters, spaces, hyphens, and apostrophes)');
@@ -3989,6 +4080,7 @@ $('#inputField').on('input', function () {
         $('#nameError').text('');
     }
 });
+
 
 
 $('#emailField').on('input', function () {
