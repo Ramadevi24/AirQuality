@@ -323,6 +323,10 @@
         margin-right: 0 !important;
     }
 
+    .ead-monitoring-project .monitoring-heading h5, .contact-section h5 {
+        font-size: 24px;
+    }
+
     .faqscrolling {
         padding-left: 2px;
         padding-right: 2px;
@@ -2090,6 +2094,10 @@
 
 
 @media screen and (min-width: 1355px) and (max-width: 1368px) and (min-height: 600px) and (max-height: 765px) {
+    .insight .Causes-img {
+        gap: 12px;
+    }
+
     .scroll-info-top {
         height: 150px;
         overflow: auto;
@@ -2293,8 +2301,8 @@
     }
 
     .insight .number-index p strong {
-        font-size: 55px;
-        /* line-height: 48px; */
+        font-size: 50px;
+        line-height: 53px !important;
     }
 
     .insight .pd-main-box {
@@ -2571,5 +2579,226 @@
 @media (min-width: 2301px) and (max-width: 2305px) {
     .tab-pd-0 {
         max-width: 1602px;
+    }
+}
+
+@media screen and (min-width: 1270px) and (max-width: 1288px) and (min-height: 580px) and (max-height: 595px) {
+    .six-resolution-mt30 {
+        margin-top: 18px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .banner-section .carousel-caption-banner .h5 {
+        font-size: 35px;
+    }
+
+    .home-slider-animation .welcome-text, .home-slider-animation .emirates-text {
+        font-size: 23px;
+    }
+
+    .circular-width {
+        width: 240px;
+        height: 240px;
+    }
+
+    .air-map-container .air-map-col .mapimg {
+        height: calc(100vh - 150px);
+    }
+
+    .wheather-widget .map-bg-opacity img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .weather-box .weather-data {
+        margin-bottom: 7px;
+        margin-top: 8px;
+    }
+
+    .tab-mobwidget-none {
+        padding: 11px 50px;
+    }
+
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image {
+        height: 190px !important;
+    }
+
+    #wrapper .sidebar-nav .overview-heading {
+        padding: 1px 20px;
+        margin-top: 2px !important;
+        margin-bottom: 2px !important;
+    }
+
+    #aqiDailyCountsDiv .column p {
+        font-size: 22px;
+    }
+
+    .project-slider .item {
+        height: 250px;
+    }
+
+    .project-slider #recipeCarousel .carol-item .col-md-3 {
+        padding-right: 2px;
+    }
+
+    .faqscrolling {
+        height: 400px;
+    }
+
+    .contact-section h5 {
+        margin-bottom: 7px !important;
+    }
+
+    .contact-section .contact-info {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .contact-form #myForm .form-group {
+        margin-bottom: 0rem !important;
+    }
+
+    .fp-viewing-slide6 #fp-nav {
+        top: 38%;
+    }
+    /* .insight .resolution-ht{
+        overflow: scroll;
+    } */
+    .modal-background img {
+        height: 250px;
+    }
+
+    p {
+        margin-bottom: 8px;
+    }
+
+    .equal-air-box-height {
+        height: 365px;
+    }
+
+    .adjust-height-290 {
+        height: calc(100vh - 280px) !important;
+    }
+
+    .insight .number-exceedance {
+        margin-bottom: 5px;
+    }
+
+    .insight #radarChart {
+        height: 250px !important;
+        margin-top: -47px;
+    }
+
+    .insight ul.legend_radar {
+        margin-top: 4px;
+    }
+
+    .equal-station-box-height {
+        height: 367px;
+    }
+
+    .canvas-graphs-heightline {
+        height: 194px;
+        margin-bottom: -10px;
+    }
+
+    .insight .graph-duration-filters .pollutant-hour-top {
+        top: -3px;
+    }
+
+    .insight #aiq_line .row.pollutant-dropdown-show.graph-duration-filters {
+        top: -21%;
+    }
+
+    .scroll-info-top {
+        height: 150px;
+        overflow: auto;
+    }
+
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 {
+        /* display: block; */
+        padding: 15px 26px 1px 30px;
+    }
+
+    .polly-linchart-height {
+        height: 227px;
+        margin-bottom: 3px;
+    }
+
+    .insight .graph-duration-filters .pollutant-hour-top7 {
+        top: 3px;
+    }
+
+    .canvas-graphs-height {
+        height: 220px !important;
+    }
+
+    .weather-box .data-item p {
+        font-size: 22px;
+    }
+
+    .insight .pd-main-box {
+        padding: 10px 20px;
+    }
+
+    .insight .number-index p strong {
+        font-size: 45px;
+        line-height: 33px;
+    }
+
+    .insight .number-index p {
+        margin-bottom: -4px;
+    }
+
+    .insight .index-content {
+        gap: 5px;
+    }
+
+    .insight .Causes-img img {
+        max-width: 40px;
+    }
+
+    .insight .resolution-ht {
+        height: calc(100vh - 172px);
+    }
+
+    .insight .activities-imgs img {
+        height: 45px;
+    }
+
+    .insight .Causes-img {
+        gap: 7px;
+    }
+
+    .insight .slide-content ul li {
+        margin-bottom: 35px;
+    }
+
+    .insight .data-list label.list-group-item {
+        padding: 10px;
+    }
+
+    .sidebar-dataScroll {
+        height: calc(100vh - 150px);
+    }
+
+    .insight .pollutant_dv h3 {
+        font-size: 14px;
+    }
+
+    .insight .quality-index-wrapper-h2 h2 {
+        font-size: 19px;
+    }
+
+    .insight .activities-imgs {
+        margin-top: -2px !important;
+    }
+
+    .ead-monitoring-project .monitoring-heading h5, .contact-section h5 {
+        font-size: 24px;
+    }
+
+    .faq-section h4 {
+        font-size: 25px;
     }
 }

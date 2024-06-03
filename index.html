@@ -124,8 +124,8 @@
             <div id="demo" class="banner-section position-relative">
 
                 <div class="video-wrapper video-container position-relative">
-                   <video muted data-autoplay id="myVideo" 
-                          class="w-100 d-none d-sm-none d-md-none d-lg-block">
+                    <video muted data-autoplay id="myVideo"
+                           class="w-100 d-none d-sm-none d-md-none d-lg-block">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
                     <button id="playPauseBtn2" class="d-none d-sm-none d-md-none d-lg-block">
@@ -137,8 +137,11 @@
 
                     <button id="skipButton">
                         <img src="./images/new-images/skip-icon.svg" alt="skip">
-                    </button>                    
-                    <video autoplay muted id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
+                    </button>
+                    <button id="audioButton">
+                        <img src="./images/new-images/audio-on.png" alt="skip">
+                    </button>
+                    <video muted autoplay id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -151,7 +154,7 @@
                     <p class="mb-2 mt-5 h6 six-resolution-mt30 aqiInfoDiv-loadshow" id="aqiNearestStation">
                     </p>
                     <!-- 15-May-24 added this class aqiInfoDiv-loadshow----->
-                    <div class="mb-2 mt-4 position-relative six-resolution-mt10 aqiInfoDiv-loadshow">
+                    <div class="mb-2 mt-4 position-relative six-resolution-mt10 aqiInfoDiv-loadshow fade-in">
                         <img src="./images/new-images/AQ-pattern_lightorange.png" class="img-fluid circular-width"
                              id="aqiImage">
                         <div class="weather-card">
@@ -199,7 +202,7 @@
                         <p class="mb-0 uppercase">Air Quality Index</p>
                     </div>
                     <!-- 15-May-24 added this class aqiInfoDiv-loadshow----->
-                    <div class="wheather-widget firstshow-section aqiInfoDiv-loadshow tab-mobwidget-none">
+                    <div class="wheather-widget firstshow-section aqiInfoDiv-loadshow1 tab-mobwidget-none">
                         <h6 class="text-white text-center" id="insightNearestStation"></h6>
                         <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
                             <img src="./images/new-images/map/mapCircular_lightorange.png" class="img-fluid"
@@ -1220,7 +1223,7 @@
                                                                         </div>
 
                                                                         <div class="ug_content">
-                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
+                                                                            <p><sup>mg/m<sup>3</sup></sup></p>
                                                                         </div>
 
                                                                         <div class="canvas-graphs-bar-main">
@@ -1663,25 +1666,32 @@
                                                                                     </p>
                                                                                     <strong id="lineChartAqiNo2Value"></strong>
                                                                                 </div>
-                                                                                <div class="mult-value">
-                                                                                    <p>CO</p>
-                                                                                    <strong id="lineChartAqiCoValue"></strong>
-                                                                                </div>
+
                                                                                 <div class="mult-value">
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartAqiPm10Value"></strong>
                                                                                 </div>
-                                                                                <div class="mult-value">
+                                                                                <div class="mult-value" id="o3aqipollutant">
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartAqiO3Value"></strong>
                                                                                 </div>
+                                                                                <div class="mult-value line-co-pollutant">
+                                                                                    <p></p>
+                                                                                    <strong></strong>
+                                                                                </div>
+                                                                                <div class="mult-value" id="coaqipollutant">
+                                                                                    <p>CO</p>
+                                                                                    <strong id="lineChartAqiCoValue"></strong>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="grid-upper">
-                                                                                <p>ug/m<sup>3</sup></p>
+                                                                                <!-- <p>ug/m<sup>3</sup></p> -->
+                                                                                <p class="ug-m3">ug/m<sup>3</sup></p>
+                                                                                <p class="mg-m3">mg/m<sup>3</sup></p>
                                                                             </div>
                                                                         </div>
 
@@ -1798,37 +1808,43 @@
 
                                                                         <div class="grid-value">
                                                                             <div class="grid-bottom">
-                                                                                <div class="mult-value">
+                                                                                <div class="mult-value" id="so2pollutant">
                                                                                     <p>
                                                                                         SO <sub>2</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartPollutantSo2Value"></strong>
                                                                                 </div>
-                                                                                <div class="mult-value">
+                                                                                <div class="mult-value" id="no2pollutant">
                                                                                     <p>
                                                                                         NO <sub>2</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartPollutantNo2Value"></strong>
                                                                                 </div>
-                                                                                <div class="mult-value">
-                                                                                    <p>CO</p>
-                                                                                    <strong id="lineChartPollutantCoValue"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value">
+                                                                                <div class="mult-value" id="pm10pollutant">
                                                                                     <p>
                                                                                         PM <sub>10</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartPollutantPm10Value"></strong>
                                                                                 </div>
-                                                                                <div class="mult-value">
+                                                                                <div class="mult-value" id="o3pollutant">
                                                                                     <p>
                                                                                         O <sub>3</sub>
                                                                                     </p>
                                                                                     <strong id="lineChartPollutantO3Value"></strong>
                                                                                 </div>
+                                                                                <div class="mult-value line-co-pollutant">
+                                                                                    <p></p>
+                                                                                    <strong></strong>
+                                                                                </div>
+                                                                                <div class="mult-value" id="copollutant">
+                                                                                    <p>CO</p>
+                                                                                    <strong id="lineChartPollutantCoValue"></strong>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="grid-upper">
-                                                                                <p>ug/m<sup>3</sup></p>
+                                                                                <!-- <p>ug/m<sup>3</sup></p> -->
+                                                                                <p class="ug-m3">ug/m<sup>3</sup></p>
+                                                                                <p class="mg-m3">mg/m<sup>3</sup></p>
                                                                             </div>
                                                                         </div>
 
@@ -2791,7 +2807,6 @@
             let inputClicked = false;
 
             searchInput.addEventListener('input', function () {
-
                 const searchTerm = this.value.trim().toLowerCase();
                 searchResults.innerHTML = '';
                 if (searchTerm.length < 3) {
@@ -2819,15 +2834,12 @@
                     return false;
                 }
 
-
                 if (!resultsFound) {
                     const li = document.createElement('li');
                     li.textContent = 'No results found';
                     const searchResultDiv = document.querySelector('.search-result');
                     searchResultDiv.classList.add('results-found-block');
                     searchResults.appendChild(li);
-
-
                 }
             });
 
@@ -2852,10 +2864,11 @@
                 searchInput.value = '';
                 inputClicked = false;
             });
+
             function sanitizeInput(input) {
                 const element = document.createElement('div');
                 element.innerText = input;
-                return element.innerHTML;
+                return element.innerHTML.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
             }
 
             function appendToResults(element) {
@@ -3055,17 +3068,20 @@
         $(document).ready(function () {
             var video1 = document.getElementById("myVideo1");
             var video2 = document.getElementById("myVideo");
-           
+
+            var audioButton = document.getElementById('audioButton');
             var playPauseButton1 = $("#playPauseBtn1");
-            var playPauseButton2 = $("#playPauseBtn2");          
+            var playPauseButton2 = $("#playPauseBtn2");
 
             function togglePlayPause1() {
                 if (video1.paused) {
                     video1.play();
                     playPauseButton1.html('<i class="fa fa-pause fa-2x text-white"></i>');
+                    audioButton.querySelector('img').src = './images/new-images/audio-off.png';
                 } else {
                     video1.pause();
                     playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
+                    audioButton.querySelector('img').src = './images/new-images/audio-on.png';
                 }
             }
 
@@ -3073,9 +3089,11 @@
                 if (video2.paused) {
                     video2.play();
                     playPauseButton2.html('<i class="fa fa-pause fa-2x text-white"></i>');
+                    audioButton.querySelector('img').src = './images/new-images/audio-off.png';
                 } else {
                     video2.pause();
                     playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
+                    audioButton.querySelector('img').src = './images/new-images/audio-on.png';
                 }
             }
 
@@ -3112,6 +3130,9 @@
                 $('#playPauseBtn1').html('<i class="fa fa-play fa-2x text-white"></i>');
                 togglePlayPause2();
                 togglePlayPause1();
+                video1.muted = true;
+                video2.muted = true;
+                audioButton.querySelector('img').src = './images/new-images/audio-on.png';
             });
 
             var videofunc = document.getElementById('myVideo');
@@ -3132,10 +3153,35 @@
 
             videofunc1.addEventListener('play', function () {
                 aqiInfoDiv.hide();
-            });          
+            });
         });
 
 
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var video = document.getElementById('myVideo');
+            var video1 = document.getElementById('myVideo1');
+            var audioButton = document.getElementById('audioButton');
+
+            audioButton.addEventListener('click', function () {
+                // if (video.paused && video1.paused) {
+                //     // Both videos are paused
+                //     console.log('Both videos are paused. Cannot unmute.');
+                //     return;
+                // }
+                if (video.muted || video1.muted) {
+                    video.muted = false;
+                    video1.muted = false;
+                    audioButton.querySelector('img').src = './images/new-images/audio-off.png'; // Update the image to show it's unmuted
+                } else {
+                    video.muted = true;
+                    video1.muted = true;
+                    audioButton.querySelector('img').src = './images/new-images/audio-on.png'; // Update the image to show it's muted
+                }
+            });
+
+        });
     </script>
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>

@@ -358,7 +358,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                             label: "201 - 300"
                         }, {
                             minValue: 301,
-                            maxValue: 500,
+                            maxValue: 1000,
                             symbol: Index301_500,
                             label: ">300"
                         }
@@ -811,7 +811,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                             label: "201 - 300"
                         }, {
                             minValue: 301,
-                            maxValue: 500,
+                            maxValue: 1000,
                             symbol: Index301_500,
                             label: ">300"
                         }
@@ -994,7 +994,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                         label: "201 - 300"
                     }, {
                         minValue: 301,
-                        maxValue: 500,
+                        maxValue: 1000,
                         symbol: Index301_500,
                         label: ">300"
                     }
