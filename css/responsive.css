@@ -57,6 +57,22 @@
 }
 
 @media (min-width: 320px) and (max-width: 766px) {
+    .sidebar-expanded-position {
+        overflow: hidden;
+    }
+
+    .insight .grid-bottom {
+        gap: 30px;
+    }
+
+    .nearest-section .station-details .legend-value {
+        position: absolute;
+        bottom: 13px;
+    }
+
+    .station-details .m-0 .col-5 {
+        position: relative;
+    }
     /* .full-screen #wrapper{
         display: block!important;
     } */
@@ -161,16 +177,17 @@
     }
 
         #wrapper .sidebar-nav .wheather-widget .sidebar-Image {
-            display: none;
+            height: 182px !important;
+            width: 200px;
         }
 
-        #wrapper .sidebar-nav .wheather-widget .weather-card-map {
+    /* #wrapper .sidebar-nav .wheather-widget .weather-card-map {
             position: relative;
             top: 30px;
             left: 0;
             transform: inherit;
             margin-bottom: 60px;
-        }
+        } */
 
     .down-arrow, .wheather-widget {
         display: none;
@@ -484,6 +501,11 @@
         padding: 29px 15px;
         width: 100%;
         text-align: center;
+        height: 100%;
+    }
+
+    .highlight #sidebar.expanded .data-sort_sidebar.hidden {
+        margin-top: 70px;
     }
     /* ======================Close 11 March==================== */
     .small-device-legend-list {
@@ -500,7 +522,7 @@
     }
 
     .sidebar-dataScroll {
-        height: calc(100vh - 150px);
+        height: calc(100vh - 200px);
         overflow: auto;
     }
 
@@ -941,6 +963,10 @@
 @media (min-width: 768px) and (max-width: 1199px) {
     /* Arisha Start */
     /* start for disclaimer text purpose */
+    .insight .grid-bottom {
+        gap: 50px;
+    }
+
     .wheather-widget, .web-top-legends {
         bottom: 70px;
     }
@@ -2800,5 +2826,231 @@
 
     .faq-section h4 {
         font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1010px) and (max-width: 1030px) and (min-height: 450px) and (max-height: 769px) {
+    #mobile-overlay a {
+        margin: 4% 0% 0% 6%;
+    }
+
+    .six-resolution-mt10 {
+        margin-top: 8px !important;
+    }
+
+    .circular-width {
+        width: 200px;
+        height: 200px;
+    }
+
+    .six-resolution-mt30 {
+        margin-top: 25px !important;
+    }
+
+    .banner-section .carousel-caption-banner .h6 {
+        font-size: 15px;
+    }
+
+    .banner-section .carousel-caption-banner {
+        gap: 0px;
+    }
+
+    .home-slider-animation .welcome-text, .home-slider-animation .emirates-text {
+        font-size: 23px;
+    }
+
+    .banner-section .carousel-caption-banner .h5 {
+        font-size: 30px;
+        top: 32px;
+    }
+
+    .weather-card h2 {
+        font-size: 11px;
+    }
+
+    .section1-dateshift .date {
+        font-size: 9px;
+    }
+
+    .section1-dateshift .date-shift {
+        top: 45%;
+        right: -38px;
+    }
+
+    .weather-card h5 {
+        font-size: 30px;
+    }
+
+    .weather-card h6 {
+        font-size: 15px;
+    }
+
+    .air-map-container .air-map-col .mapimg {
+        height: 100vh;
+    }
+
+    .tab-mobwidget-none {
+        bottom: 39px;
+        padding: 15px 50px;
+    }
+
+    .insight-btn-tab {
+        padding: 3px 10px;
+        font-size: 13px;
+    }
+
+    #insightNearestStation {
+        font-size: 14px;
+    }
+
+    .wheather-widget .map-bg-opacity img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .weather-card-map h2, .insight .Causes-img p, .insight .activities-imgs p, .insight .inner_list-content span {
+        font-size: 12px;
+    }
+
+    .weather-box .weather-data {
+        margin-bottom: 7px;
+        margin-top: 6px;
+    }
+
+    .project-modal .h-200-scroll, .weather-box .data-item h4, .insight .inner_list-content p, #searchInput, .insight .quality-index-wrapper-h2 p, .material-style label {
+        font-size: 13px;
+    }
+
+    .weather-box .data-item p {
+        font-size: 16px;
+    }
+
+    .web-top-legends {
+        bottom: 45px;
+        font-size: 12px;
+    }
+
+    .air-map-container .overview-heading, .paratab, .insight .Causes-wrapper h3, .insight .activities-wrapper h3, .insight .pollutant_dv h3 {
+        font-size: 16px;
+    }
+
+    .air-map-container .list-container {
+        padding: 15px 0;
+    }
+
+    .air-map-container .list-item p {
+        font-size: 26px;
+    }
+
+    .insight .align-items-flexstart {
+        padding: 1rem 0rem;
+    }
+
+    .insightStation h3 {
+        padding-left: 28px;
+        font-size: 15px;
+    }
+
+    .insight .quality-index-wrapper-h2 h2 {
+        padding-top: 5px;
+        font-size: 21px;
+    }
+
+    .insight .number-index .small-13 span, .insight .number-index p, .insight .slide-content ul li p {
+        font-size: 17px;
+    }
+
+        .insight .number-index p strong {
+            font-size: 70px;
+            line-height: 70px;
+        }
+
+    .insight .tab-padding-50 {
+        padding: 10px 5px;
+    }
+
+    .expand-panel {
+        top: 25%;
+    }
+
+    .insight .slide-content ul li .bg-gray img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .insight .slide-content ul li {
+        margin-bottom: 0;
+    }
+
+    .insight .chart-f-content p {
+        padding-top: 0px;
+        font-size: 15px;
+    }
+
+    .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 {
+        width: 55%;
+        padding: 17px 30px 37px 30px;
+    }
+
+    .insight .pollutant-toggleBar .pollutantbar-title, .contact-section h6 {
+        font-size: 18px;
+    }
+
+    .pollutantbar-address {
+        font-size: 14px;
+    }
+
+    .contact-section .contact-info-item .contact-info-content a, .error-message, .contact-info-content p, .send-btn, .contact-section .contact-content, .insight .pollutant-toggleBar .info-popup-content ul li, .ead-monitoring-project .initiative-heading-content, .ead-monitoring-project .nav-pills .nav-link.active {
+        font-size: 14px;
+    }
+
+    .insight ul.legend {
+        gap: 4px 25px;
+        font-size: 13px;
+    }
+
+    .insight .contact-content p {
+        font-size: 15px;
+    }
+
+    .insight .number-exceedance .number-exceedance-heading {
+        font-size: 22px;
+    }
+
+    .insight ul.legend_radar {
+        column-gap: 25px;
+        font-size: 13px;
+    }
+
+    .ead-monitoring-project .monitoring-heading h5, .contact-section h5, .faq-section h4 {
+        font-size: 21px;
+    }
+
+    .faq-section .accordion-button, .faq-section .accordion-item .accordion-body {
+        font-size: 15px;
+    }
+
+    .project-modal .sidebar {
+        width: 55% !important;
+        padding-top: 4px;
+    }
+
+    .modal-background img {
+        height: 250px;
+        object-fit: fill;
+    }
+
+    .project-modal .h-200-scroll {
+        max-height: calc(100vh - 82vh);
+    }
+
+    #wrapper .sidebar-nav .wheather-widget .sidebar-Image {
+        height: 190px !important;
+    }
+
+    #sidebar-wrapper .sidebar-nav {
+        overflow-y: scroll;
+        height: 100vh;
+        overflow-x: hidden;
     }
 }

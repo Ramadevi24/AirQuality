@@ -44,6 +44,32 @@ body {
     font-size: 13px;
 }
 
+/* Safari-specific styles */
+@supports (-webkit-backdrop-filter: none) {
+    .safari .banner-section .carousel-caption-banner .h5 {
+        text-transform: uppercase;
+        font-size: 40px;
+        font-family: 'Gothambold';
+        margin-top: 6px;
+        position: absolute;
+        top: 47px;
+    }
+
+    .safari header nav.navbar .navbar-nav li.active a {
+        padding: 15px 0 !important;
+    }
+
+    .safari .ead-monitoring-project .nav-pills .nav-link.active {
+        padding-top: 20px !important;
+    }
+
+    .safari .send-btn {
+        padding-top: 15px !important;
+    }
+}
+
+
+
 .opacity-1 {
     opacity: 1;
 }
@@ -1918,8 +1944,10 @@ body.map-viwer-enabled {
     border-radius: 0 !important;
     border: none;
     display: flex;
-    gap: 10px;
+    gap: 7px;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
     .insight .data-list label.list-group-item:hover {
@@ -1936,7 +1964,7 @@ body.map-viwer-enabled {
 
 .insight .list-content {
     display: flex;
-    gap: 9px;
+    gap: 7px;
 }
 
 .insight .dis-content span {
@@ -3469,48 +3497,50 @@ body.map-viwer-enabled {
 
 .insight .grid-value {
     display: flex;
-    width: 560px;
+    /* width: 560px; */
     margin: auto;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 30px;
+    /* align-items: center; */
     padding-top: 2px;
 }
 
 .insight .grid-bottom {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-between;
-    grid-area: 50px;
+    /* flex-wrap: wrap;
+    width: 100%; */
+    justify-content: center;
+    gap: 65px;
+    text-align: center;
 }
 
-.insight .mult-value {
+/* .insight .mult-value {
     display: flex;
     flex-direction: column;
     gap: 5px;
     justify-content: space-between;
+} */
+
+.insight .mult-value strong {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    font-family: 'GothamMedium';
+    color: #33333366;
+    height: 12px;
 }
 
-    .insight .mult-value strong {
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 15px;
-        text-align: left;
-        font-family: 'GothamMedium';
-        color: #33333366;
-        height: 12px;
-    }
-
-    .insight .mult-value p {
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 15px;
-        text-align: left;
-        margin: 0px;
-        font-family: 'GothamMedium';
-        color: #111;
-    }
+.insight .mult-value p {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    margin: 0px;
+    font-family: 'GothamMedium';
+    color: #111;
+}
 
 .insight .grid-upper p {
     font-size: 14px;
@@ -5277,23 +5307,46 @@ input[type="search"]::-webkit-search-cancel-button {
     margin: 0;
     font-family: 'GothamMedium';
     color: #000;
-    width: calc(100% - 102px)
+    /* width: calc(100% - 102px) */
 }
 
 .insight .grid-upper .mg-m3 {
     font-size: 14px;
     font-weight: 700;
     line-height: 15px;
-    text-align: left;
+    /* text-align: left; */
     margin: 0;
     font-family: 'GothamMedium';
     color: #000;
     width: 40px;
-    text-align: right;
+    float: right;
+    /* text-align: right; */
 }
 
-.insight .grid-upper {
+.center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%; /* Ensure the height is set so it can center vertically */
+    text-align: center; /* Center the text horizontally */
+}
+
+/* .insight .grid-upper {
     display: flex;
     justify-content: space-between;
     width: 100%;
+} */
+
+.bold-black-text {
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.insight .grid-upper .mg-m3 sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+#coaqipollutant, #copollutant {
+    margin-right: 6px;
 }

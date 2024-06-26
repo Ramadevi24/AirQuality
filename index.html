@@ -124,7 +124,8 @@
             <div id="demo" class="banner-section position-relative">
 
                 <div class="video-wrapper video-container position-relative">
-                    <video muted data-autoplay id="myVideo"
+
+                    <video muted data-autoplay playsinline id="myVideo"
                            class="w-100 d-none d-sm-none d-md-none d-lg-block">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
@@ -141,9 +142,10 @@
                     <button id="audioButton">
                         <img src="./images/new-images/audio-on.png" alt="skip">
                     </button>
-                    <video muted autoplay id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
+                    <video muted autoplay playsinline id="myVideo1" class="w-100 d-block d-sm-block d-md-block d-lg-none">
                         <source src="./images/new-images/ead4.mp4" type="video/mp4">
                     </video>
+
                 </div>
                 <div class="overlay"></div>
                 <div class="carousel-caption-banner home-slider-animation d-none-0 d-md-block-0 ">
@@ -785,13 +787,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -938,13 +940,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1074,13 +1076,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1209,13 +1211,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1344,13 +1346,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1479,13 +1481,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1653,45 +1655,54 @@
                                                                     <div class="tab_shados">
 
                                                                         <div class="grid-value">
-                                                                            <div class="grid-bottom">
-                                                                                <div class="mult-value">
-                                                                                    <p>
-                                                                                        SO <sub>2</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartAqiSo2Value"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value">
-                                                                                    <p>
-                                                                                        NO <sub>2</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartAqiNo2Value"></strong>
-                                                                                </div>
+                                                                            <div class="">
+                                                                                <div class="grid-bottom mb-2">
+                                                                                    <div class="mult-value">
+                                                                                        <p>
+                                                                                            SO <sub>2</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartAqiSo2Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value">
+                                                                                        <p>
+                                                                                            NO <sub>2</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartAqiNo2Value"></strong>
+                                                                                    </div>
 
-                                                                                <div class="mult-value">
-                                                                                    <p>
-                                                                                        PM <sub>10</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartAqiPm10Value"></strong>
+                                                                                    <div class="mult-value">
+                                                                                        <p>
+                                                                                            PM <sub>10</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartAqiPm10Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="o3aqipollutant">
+                                                                                        <p>
+                                                                                            O <sub>3</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartAqiO3Value"></strong>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="mult-value" id="o3aqipollutant">
-                                                                                    <p>
-                                                                                        O <sub>3</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartAqiO3Value"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value line-co-pollutant">
-                                                                                    <p></p>
-                                                                                    <strong></strong>
-                                                                                </div>
-                                                                                <div class="mult-value" id="coaqipollutant">
-                                                                                    <p>CO</p>
-                                                                                    <strong id="lineChartAqiCoValue"></strong>
+                                                                                <div class="grid-upper text-center ms-auto me-auto">
+                                                                                    <!-- <p>ug/m<sup>3</sup></p> -->
+                                                                                    <p class="ug-m3">ug/m<sup>3</sup></p>
+
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="grid-upper">
-                                                                                <!-- <p>ug/m<sup>3</sup></p> -->
-                                                                                <p class="ug-m3">ug/m<sup>3</sup></p>
-                                                                                <p class="mg-m3">mg/m<sup>3</sup></p>
+                                                                            <div class="">
+                                                                                <div class="grid-bottom mb-2">
+                                                                                    <div class="mult-value line-co-pollutant">
+                                                                                        <p></p>
+                                                                                        <strong></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="coaqipollutant">
+                                                                                        <p>CO</p>
+                                                                                        <strong id="lineChartAqiCoValue"></strong>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="grid-upper float-right">
+                                                                                    <p class="mg-m3">mg/m<sup>3</sup></p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
 
@@ -1732,13 +1743,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem ">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -1807,44 +1818,51 @@
                                                                     <div class="tab_shados">
 
                                                                         <div class="grid-value">
-                                                                            <div class="grid-bottom">
-                                                                                <div class="mult-value" id="so2pollutant">
-                                                                                    <p>
-                                                                                        SO <sub>2</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartPollutantSo2Value"></strong>
+                                                                            <div class="">
+                                                                                <div class="grid-bottom mb-2">
+                                                                                    <div class="mult-value" id="so2pollutant">
+                                                                                        <p>
+                                                                                            SO <sub>2</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartPollutantSo2Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="no2pollutant">
+                                                                                        <p>
+                                                                                            NO <sub>2</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartPollutantNo2Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="pm10pollutant">
+                                                                                        <p>
+                                                                                            PM <sub>10</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartPollutantPm10Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="o3pollutant">
+                                                                                        <p>
+                                                                                            O <sub>3</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartPollutantO3Value"></strong>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="mult-value" id="no2pollutant">
-                                                                                    <p>
-                                                                                        NO <sub>2</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartPollutantNo2Value"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value" id="pm10pollutant">
-                                                                                    <p>
-                                                                                        PM <sub>10</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartPollutantPm10Value"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value" id="o3pollutant">
-                                                                                    <p>
-                                                                                        O <sub>3</sub>
-                                                                                    </p>
-                                                                                    <strong id="lineChartPollutantO3Value"></strong>
-                                                                                </div>
-                                                                                <div class="mult-value line-co-pollutant">
-                                                                                    <p></p>
-                                                                                    <strong></strong>
-                                                                                </div>
-                                                                                <div class="mult-value" id="copollutant">
-                                                                                    <p>CO</p>
-                                                                                    <strong id="lineChartPollutantCoValue"></strong>
+                                                                                <div class="grid-upper text-center ms-auto me-auto">
+                                                                                    <p class="ug-m3">ug/m<sup>3</sup></p>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="grid-upper">
-                                                                                <!-- <p>ug/m<sup>3</sup></p> -->
-                                                                                <p class="ug-m3">ug/m<sup>3</sup></p>
-                                                                                <p class="mg-m3">mg/m<sup>3</sup></p>
+                                                                            <div class="">
+                                                                                <div class="grid-bottom mb-2">
+                                                                                    <div class="mult-value line-co-pollutant">
+                                                                                        <p></p>
+                                                                                        <strong></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="copollutant">
+                                                                                        <p>CO</p>
+                                                                                        <strong id="lineChartPollutantCoValue"></strong>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="grid-upper float-right">
+                                                                                    <p class="mg-m3">mg/m<sup>3</sup></p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
 
@@ -1883,13 +1901,13 @@
                                                                                     <li>
                                                                                         <a class="dropdown-item quality-index-dropItem">Daily</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Monthly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Yearly</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    <li style="display: none;">
                                                                                         <a class="dropdown-item quality-index-dropItem">Custom</a>
                                                                                     </li>
                                                                                 </ul>
@@ -3077,10 +3095,14 @@
                 if (video1.paused) {
                     video1.play();
                     playPauseButton1.html('<i class="fa fa-pause fa-2x text-white"></i>');
+                    video.muted = false;
+                    video1.muted = false;
                     audioButton.querySelector('img').src = './images/new-images/audio-off.png';
                 } else {
                     video1.pause();
                     playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
+                    video.muted = true;
+                    video1.muted = true;
                     audioButton.querySelector('img').src = './images/new-images/audio-on.png';
                 }
             }
@@ -3089,10 +3111,14 @@
                 if (video2.paused) {
                     video2.play();
                     playPauseButton2.html('<i class="fa fa-pause fa-2x text-white"></i>');
+                    video.muted = false;
+                    video1.muted = false;
                     audioButton.querySelector('img').src = './images/new-images/audio-off.png';
                 } else {
                     video2.pause();
                     playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
+                    video.muted = true;
+                    video1.muted = true;
                     audioButton.querySelector('img').src = './images/new-images/audio-on.png';
                 }
             }
@@ -3128,10 +3154,11 @@
                 video1.currentTime = video1.duration;
                 $('#playPauseBtn2').html('<i class="fa fa-play fa-2x text-white"></i>');
                 $('#playPauseBtn1').html('<i class="fa fa-play fa-2x text-white"></i>');
-                togglePlayPause2();
-                togglePlayPause1();
+                // togglePlayPause2();
+                //togglePlayPause1();
                 video1.muted = true;
                 video2.muted = true;
+                aqiInfoDiv.show();
                 audioButton.querySelector('img').src = './images/new-images/audio-on.png';
             });
 
@@ -3183,6 +3210,17 @@
 
         });
     </script>
+    <script>
+        (function () {
+            console.log('hello');
+            var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            console.log('hello', isSafari);
+            if (isSafari) {
+                document.documentElement.classList.add('safari');
+            }
+        })();
+    </script>
+
     <script src="https://js.arcgis.com/4.28/"></script>
     <script src="./js/Map.js"></script>
     <script src="./js/MapConfig.js"></script>

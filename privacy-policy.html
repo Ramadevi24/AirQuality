@@ -456,8 +456,9 @@ function initializeFullPage() {
         navigationPosition: 'right',
 		    menu: '#menu',
         //navigationTooltips: ['Our Air Quality', 'Our Air Quality-Map', 'Insights', 'Projects', 'FAQ', 'Contact Us'],
-		    scrollBar: true,
-		    normalScrollElements: '.scrollPolicyShow, .searchHeaderScroll'
+      // scrollBar: true,
+         scrollOverflow: true,
+		 normalScrollElements: '.scrollPolicyShow, .searchHeaderScroll'
     });
 }
 function loadExternalScript() {

@@ -1,6 +1,7 @@
 ﻿var TrustedDomains = ["enviroportal.ead.ae", "localhost"];
 var MonitoringStationsAPI = "https://enviroportal.ead.ae/server/rest/services/Enviroportal/MonitoringStations/MapServer/0";
-var AirQualityService = "https://adairqualityapi.ead.ae/"
+//var AirQualityService = "https://localhost:44322/"
+var AirQualityService = "https://ead-airquality.azurewebsites.net/AQAPI/"
 //"https://ead-airquality.azurewebsites.net/AQAPI/";
 var ImagesPath = "./images/new-images/";
 var stationsIDs= [

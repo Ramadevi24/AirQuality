@@ -1,4 +1,5 @@
-const baseUrl = "https://adairqualityapi.ead.ae/";
+const baseUrl = "https://ead-airquality.azurewebsites.net/AQAPI/";
+//const baseUrl = "https://localhost:44322/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -34,48 +35,48 @@ const pollutantAbbrevations = {
 const causeStationData = {
     'Hamdan Street': {
         'PM10': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' },
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ]
     },
     'Khadejah School': {
         'PM10': [
-            { 'cause': 'Commercial Establishments', 'image': 'urban_traffic.png' },
+            { 'cause': 'Commercial establishments', 'image': 'urban_traffic.png' },
             { 'cause': 'Transportation', 'image': 'traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'urban_traffic.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'urban_traffic.png' }
         ]
     },
     'Al Ain Street': {
         'PM10': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' },
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ]
     },
     'Khalifa School': {
@@ -91,20 +92,20 @@ const causeStationData = {
             { 'cause': 'Transportation', 'image': 'traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Mussafah': {
         'PM10': [
-            { 'cause': 'Industrial Traffic', 'image': 'industrial_traffic.png' },
+            { 'cause': 'Industrial traffic', 'image': 'industrial_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Industrial Traffic', 'image': 'industrial_traffic.png' },
-            { 'cause': 'Industrial Emissions', 'image': 'industrial_emission.png' }
+            { 'cause': 'Industrial traffic', 'image': 'industrial_traffic.png' },
+            { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
         ],
         'SO2': [
-            { 'cause': 'Industrial Emissions', 'image': 'industrial_emission.png' }
+            { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
         ]
     },
     'Baniyas School': {
@@ -119,7 +120,7 @@ const causeStationData = {
             { 'cause': 'Transportation', 'image': 'traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Al Maqta': {
@@ -128,16 +129,16 @@ const causeStationData = {
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Khalifa City A': {
@@ -155,21 +156,21 @@ const causeStationData = {
             { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Al Mafraq': {
         'PM10': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' },
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' },
             { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' },
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' },
             { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
         ],
         'SO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' },
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' },
             { 'cause': 'Industrial emissions', 'image': 'industrial_emission.png' }
         ]
     },
@@ -185,54 +186,54 @@ const causeStationData = {
             { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Sweihan': {
         'PM10': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Al Tawia': {
         'PM10': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ]
     },
     'Zakher': {
         'PM10': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' },
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Urban Traffic', 'image': 'urban_traffic.png' }
+            { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ]
-      
+
     },
     'Al Quaa': {
         'PM10': [
@@ -248,22 +249,22 @@ const causeStationData = {
             { 'cause': 'No identified sources in the vicinity', 'image': 'null.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Bida Zayed': {
         'PM10': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Gayathi School': {
@@ -278,64 +279,64 @@ const causeStationData = {
             { 'cause': 'Suburban residential traffic', 'image': 'residential_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Liwa': {
         'PM10': [
-            { 'cause': 'Rural Traffic', 'image': 'rural_traffic.png' },
+            { 'cause': 'Rural traffic', 'image': 'rural_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Ruwais': {
         'PM10': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'Habshan South': {
         'PM10': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' },
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Suburban Traffic', 'image': 'suburban_traffic.png' }
+            { 'cause': 'Suburban traffic', 'image': 'suburban_traffic.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     },
     'E11 Road': {
         'PM10': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' },
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'NO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ],
         'SO2': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ],
         'CO': [
-            { 'cause': 'Highway Traffic Emissions', 'image': 'highway_traffic.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' }
         ]
     },
     'Abu Dhabi': {
@@ -353,10 +354,33 @@ const causeStationData = {
             { 'cause': 'Construction activities', 'image': 'construction_activities.png' }
         ],
         'O3': [
-            { 'cause': 'Secondary Pollutant', 'image': 'secondary_pollutant.png' }
+            { 'cause': 'Secondary pollutant', 'image': 'secondary_pollutant.png' }
         ]
     }
 };
+
+const stationIdforEDB = [
+    { stationid: 6, stationName: "EAD_AlAinSchool" },
+    { stationid: 7, stationName: "EAD_AlAinStreet" },
+    { stationid: 16, stationName: "EAD_AlMafraq" },
+    { stationid: 14, stationName: "EAD_AlMaqta" },
+    { stationid: 20, stationName: "EAD_AlQuaa" },
+    { stationid: 18, stationName: "EAD_AlTawia" },
+    { stationid: 5, stationName: "EAD_Baniyas" },
+    { stationid: 8, stationName: "EAD_BidaZayed" },
+    { stationid: 13, stationName: "EAD_E11Road" },
+    { stationid: 9, stationName: "EAD_Gayathi" },
+    { stationid: 12, stationName: "EAD_Habshan" },
+    { stationid: 1, stationName: "EAD_HamdanStreet" },
+    { stationid: 2, stationName: "EAD_KhadijaSchool" },
+    { stationid: 3, stationName: "EAD_KhalifaSchool" },
+    { stationid: 10, stationName: "EAD_Liwa" },
+    { stationid: 4, stationName: "EAD_Mussafah" },
+    { stationid: 11, stationName: "EAD_RuwaisTransco" },
+    { stationid: 17, stationName: "EAD_Sweihan" },
+    { stationid: 19, stationName: "EAD_Zakher" },
+    { stationid: 15, stationName: "EAD_KhalifaCity" }
+];
 
 const stationsWithLocations = [{
     stationId: "EAD_HamdanStreet",
@@ -572,7 +596,7 @@ const colorCodes = {
 const statusClass = {
     Good: "Good Days",
     Moderate: "Moderate Days",
-    UnHealthlySensitiveGroups: "Unhealthy Sensitive Groups",
+    UnHealthlySensitiveGroups: "Unhealthy For Sensitive Groups",
     UnHealthly: "Unhealthy Days",
     VeryUnHealthly: "Very Unhealthy Days",
     Hazardous: "Hazardous Days",
@@ -582,7 +606,7 @@ const statusClass = {
 const statusClassNew1 = {
     Good: "Good",
     Moderate: "Moderate",
-    UnHealthlySensitiveGroups: "Unhealthy Sensitive Groups",
+    UnHealthlySensitiveGroups: "Unhealthy For Sensitive Groups",
     UnHealthly: "Unhealthy",
     VeryUnHealthly: "Very Unhealthy",
     Hazardous: "Hazardous",
@@ -761,6 +785,11 @@ TxtRotate.prototype.tick = function () {
 $('.navmobile-new').click(function () {
     $('#hamburger').toggleClass('open');
     $('#mobile-overlay').toggleClass('menu');
+    if ($('#mobile-overlay').hasClass('menu')) {
+        $('.data-sort_sidebar').hide();
+    } else {
+        $('.data-sort_sidebar').show();
+    }
 });
 
 //// --Mobile Menu-------------------------
@@ -885,7 +914,7 @@ function updateThreshold(pollutant, timeFilter) {
             thresholdElement.textContent = "(" + thresholdValue + " ug/m³)";
         }
         //alert(thresholdElement);
-       
+
     } else {
         if (thresholdElement != null) {
             thresholdElement.textContent = thresholdValue;
@@ -931,6 +960,7 @@ $('.insight-btn-tab').on('click', function () {
 
 document.getElementById('expandTrigger').addEventListener('click', function () {
     document.getElementById('sidebar').classList.toggle('expanded');
+    document.body.classList.toggle('sidebar-expanded-position');
 });
 $(document).ready(function () {
     var thirdSection = $('#section2');
@@ -1276,11 +1306,11 @@ function getCurrentLocation() {
             console.log('Permission status:', permissionStatus.state);
             if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
                 navigator.geolocation.getCurrentPosition(function success(position) {
-                     latitude = position.coords.latitude;
-                     longitude = position.coords.longitude;
-                     currentStationDetails = findNearestStation(latitude, longitude);
-                     nearestStation = currentStationDetails;
-                     hasAccessToLocation = true;
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    currentStationDetails = findNearestStation(latitude, longitude);
+                    nearestStation = currentStationDetails;
+                    hasAccessToLocation = true;
                     getLiveCityRankingApi(hasAccessToLocation, function () {
                         // This function will be called once getLiveCityRankingApi is completed
                         loadStationData();
@@ -1306,7 +1336,7 @@ function getCurrentLocation() {
 function handleGeolocationError(error) {
     const hasAccessToLocation = false;
     console.error('Geolocation error:', error);
-    getLiveCityRankingApi(hasAccessToLocation,true);
+    getLiveCityRankingApi(hasAccessToLocation, true);
     // Uncomment if needed: loadStationData();
 }
 
@@ -1472,18 +1502,26 @@ function loadStationData(initialRequest = false) {
                 $("#mainPollutantName, #mainPollutantValue, #windSpeed, #windDirection, #relativeHumidity, #temperature, #mobileWindSpeed, #mobileWindDirection, #mobileRelativeHumidity, #mobileTemperature, #smallScreenwindSpeed, #smallScreenWindDirection, #smallScreenHumidity, #smallScreenTemperature").empty();
                 $("#mainPollutantName").html(mainPollutantNameContent).css('background-color', colorCodes[pollutantColorClass]);
                 $("#mainPollutantValue").text(data.pollutantValue + 'ug/m³').css('color', colorCodes[pollutantColorClass]);
-                $('#windSpeed').text(data.windSpeed + ' km/h');
-                $('#windDirection').text(data.direction);
-                $('#relativeHumidity').text(data.relativeHumidity + ' %');
-                $('#temperature').text(data.temperature + ' °C');
-                $('#mobileWindSpeed').text(data.windSpeed + ' km/h');
-                $('#mobileWindDirection').text(data.direction);
-                $('#mobileRelativeHumidity').text(data.relativeHumidity + ' %');
-                $('#mobileTemperature').text(data.temperature + ' °C');
-                $('#smallScreenwindSpeed').text(data.windSpeed + ' km/h');
-                $('#smallScreenWindDirection').text(data.direction);
-                $('#smallScreenHumidity').text(data.relativeHumidity + ' %');
-                $('#smallScreenTemperature').text(data.temperature + ' °C');
+                updateText('#windSpeed', data.windSpeed, 'm/s');
+                updateText('#windDirection', data.direction, '');
+                updateText('#relativeHumidity', data.relativeHumidity, '%');
+                updateText('#temperature', data.temperature, '°C');
+                updateText('#mobileWindSpeed', data.windSpeed, 'm/s');
+                updateText('#mobileWindDirection', data.direction, '');
+                updateText('#mobileRelativeHumidity', data.relativeHumidity, '%');
+                updateText('#mobileTemperature', data.temperature, '°C');
+                updateText('#smallScreenWindSpeed', data.windSpeed, 'm/s');
+                updateText('#smallScreenWindDirection', data.direction, '');
+                updateText('#smallScreenHumidity', data.relativeHumidity, '%');
+                updateText('#smallScreenTemperature', data.temperature, '°C');
+
+                function updateText(selector, value, unit) {
+                    if (value === 0) {
+                        $(selector).text('--').addClass('center-text');
+                    } else {
+                        $(selector).text(value + ' ' + unit).removeClass('center-text');
+                    }
+                }
 
                 $('.page-loader').fadeOut('slow');
                 getYearlyStationPollutantsThreshold();
@@ -1573,34 +1611,34 @@ function getActivityContent(aqiLevel) {
 function getHealthRecommendationContent(aqiLevel) {
     const recommendations = {
         good: [
-            { img: "mask1.png", title: "Mask Usage", description: "Enjoy the fresh air! No need for masks when the air quality is good." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "An excellent time to open your windows for fresh air circulation." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "No need to switch on your air purifier." },
+            { img: "mask1.png", title: "Mask usage", description: "Enjoy the fresh air! No need for masks when the air quality is good." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "An excellent time to open your windows for fresh air circulation." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "No need to switch on your air purifier." },
         ],
         moderate: [
-            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended for sensitive groups." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Exercise caution when circulating the air to ensure healthy indoor air quality." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Keep the air purifier running when sensitive individuals are present." },
+            { img: "mask1.png", title: "Mask usage", description: "Wearing a mask is recommended for sensitive groups." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "Exercise caution when circulating the air to ensure healthy indoor air quality." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "Keep the air purifier running when sensitive individuals are present." },
         ],
         unhealthyForSensitiveGroups: [
-            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended for sensitive groups, along with limiting outdoor exposure." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Exercise caution when circulating air, especially around sensitive groups." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Keep the air purifier running when sensitive individuals are present." },
+            { img: "mask1.png", title: "Mask usage", description: "Wearing a mask is recommended for sensitive groups, along with limiting outdoor exposure." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "Exercise caution when circulating air, especially around sensitive groups." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "Keep the air purifier running when sensitive individuals are present." },
         ],
         unhealthy: [
-            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is recommended, along with limiting outdoor activity." },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is not recommended, particularly in situations involving sensitive individuals." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Switching on your air purifier is recommended for healthy indoor air quality." },
+            { img: "mask1.png", title: "Mask usage", description: "Wearing a mask is recommended, along with limiting outdoor activity." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "Circulating air is not recommended, particularly in situations involving sensitive individuals." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "Switching on your air purifier is recommended for healthy indoor air quality." },
         ],
         veryUnhealthy: [
-            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifier", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
+            { img: "mask1.png", title: "Mask usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
         ],
         hazardous: [
-            { img: "mask1.png", title: "Mask Usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
-            { img: "health_kit2.png", title: "Indoor Air Quality Maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
-            { img: "health_kit3.png", title: "Switching on your Air Purifierr", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
+            { img: "mask1.png", title: "Mask usage", description: "Wearing a mask is highly recommended, along with staying indoors. Stay safe!" },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "Circulating air is strongly discouraged due to potential risks." },
+            { img: "health_kit3.png", title: "Switching on your air purifierr", description: "Switching on your air purifier is highly advised for healthy indoor air quality." },
         ],
         // Add definitions for other AQI levels...
     };
@@ -1800,7 +1838,7 @@ function getFormattedDate(dateValue) {
 
 function getYearlyStationPollutantsThreshold() {
     $.ajax({
-        url: baseUrl + 'GetYearlyStationPollutantsThreshold?input=' + currentStationDetails.stationId,
+        url: baseUrl + 'GetYearlyStationPollutantsThreshold?stationName=' + currentStationDetails.stationId,
         method: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -1865,7 +1903,7 @@ function getAirAnalytics(year) {
     });
 }
 
-function getLiveCityRankingApi(hasAccessToLocation,callback) {
+function getLiveCityRankingApi(hasAccessToLocation, callback) {
     $.ajax({
         url: baseUrl + 'GetStationRanking',
         method: 'GET',
@@ -1933,7 +1971,7 @@ function bindLiveCityRanking() {
     }
     bindStationInfo();
 
-   
+
 }
 function bindStationInfo() {
     try {
@@ -1957,8 +1995,10 @@ function bindStationInfo() {
 
         $('.pollutantbar-title').text(stationDetails.stationName);
         $('.pollutantbar-address').text(stationDetails.stationLocation);
-        $('.pollutantbar-details').empty();
-        $('.pollutantbar-details').append(airQualityIndexTooltipPollutantContent);
+        $('.pollutantbar-details').empty().html(airQualityIndexTooltipPollutantContent);
+
+        // Ensure proper rendering of HTML elements
+        $('.pollutantbar-details').html($('.pollutantbar-details').html());
     } catch (error) {
         console.error('Error binding station info:', error.message);
         // Optionally, you can display a user-friendly error message or perform other error handling here.
@@ -1979,16 +2019,22 @@ $('.mapStationSearchScroll').on('click', 'li', function () {
 });
 
 
-
-
 function selectedStation(stationId) {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
+
+    // Clear the chart data
+    // clearChartData();
+
     if (boolrankingflag) {
         $("#stationsDropdownMap").trigger('click');
     }
+
+    // Load new station data
     loadStationData();
-    boolrankingflag = true
+
+    boolrankingflag = true;
 }
+
 
 function getAirQualitySafetyLevel() {
     $.ajax({
@@ -2150,7 +2196,11 @@ function getStationChartApi(filter, initialRequest = false) {
             url = baseUrl + 'GetMonthlyStationChart?stationName=' + currentStationDetails.stationId;
             break;
         case chartFilter.Yearly:
-            url = baseUrl + 'GetYearlyStationChart?stationName=' + currentStationDetails.stationId;
+            const station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+            if (station) {
+                currentStationDetails.stationId = station.stationid;
+            }
+            url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
             break;
         case chartFilter.Custom:
             var selectedDate = $('.datepicker').val();
@@ -2198,8 +2248,8 @@ function bindStationDataToLineChart(filter) {
         {
             label: 'SO2',
             data: so2Data,
-            backgroundColor: 'rgba(0, 75, 135, 0.8)',
-            borderColor: 'rgba(0, 75, 135, 0.8)',
+            backgroundColor: 'rgba(24, 145, 195, 1)',
+            borderColor: 'rgba(24, 145, 195, 1)',
             pointRadius: 0,
             pointHoverRadius: 8,
             tension: 0.4,
@@ -2208,8 +2258,8 @@ function bindStationDataToLineChart(filter) {
         {
             label: 'NO2',
             data: no2Data,
-            backgroundColor: 'rgba(0, 75, 135, 0.2)',
-            borderColor: 'rgba(0, 75, 135, 0.2)',
+            backgroundColor: 'rgba(58, 192, 218, 1)',
+            borderColor: 'rgba(58, 192, 218, 1)',
             pointRadius: 0,
             pointHoverRadius: 8,
             tension: 0.4,
@@ -2218,8 +2268,8 @@ function bindStationDataToLineChart(filter) {
         {
             label: 'CO',
             data: coData,
-            backgroundColor: 'rgba(0, 75, 135, 0.6)',
-            borderColor: 'rgba(0, 75, 135, 0.6)',
+            backgroundColor: 'rgba(61, 198, 195, 1)',
+            borderColor: 'rgba(61, 198, 195, 1)',
             pointRadius: 0,
             pointHoverRadius: 8,
             tension: 0.4,
@@ -2228,8 +2278,8 @@ function bindStationDataToLineChart(filter) {
         {
             label: 'PM10',
             data: pm10Data,
-            backgroundColor: 'rgba(0, 75, 135, 1)',
-            borderColor: 'rgba(0, 75, 135, 1)',
+            backgroundColor: 'rgba(1, 111, 196, 1)',
+            borderColor: 'rgba(1, 111, 196, 1)',
             pointRadius: 0,
             pointHoverRadius: 8,
             tension: 0.4,
@@ -2238,13 +2288,14 @@ function bindStationDataToLineChart(filter) {
         {
             label: 'O3',
             data: o3Data,
-            backgroundColor: 'rgba(0, 75, 135, 0.4)',
-            borderColor: 'rgba(0, 75, 135, 0.4)',
+            backgroundColor: 'rgba(80, 227, 194, 1)',
+            borderColor: 'rgba(80, 227, 194, 1)',
             pointRadius: 0,
             pointHoverRadius: 8,
             tension: 0.4,
             borderWidth: 3
-        },
+        }
+
 
     ]
     const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find    
@@ -2337,7 +2388,7 @@ function bindStationDataToLineChart(filter) {
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
-       
+
         if (dateTimes.length > 0) {
             if (filter !== 'Custom') {
                 let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
@@ -2398,8 +2449,68 @@ function bindStationDataToLineChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
-                        id: "single",
-                        enabled: false,
+                        //id: "single",
+                        enabled: true,
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                if (tooltipItems && tooltipItems.length > 0) {
+                                    // Get the label of the first tooltip item, which is the date string
+                                    let fullTimestamp = tooltipItems[0].label;
+                                    console.log("Full Timestamp: ", fullTimestamp);  // Debug log
+
+                                    // Manually parse the hour from the timestamp
+                                    let hourMatch = fullTimestamp.match(/\b(\d{1,2}):/);
+                                    // Improved regex to match AM/PM more robustly
+                                    let meridiemMatch = fullTimestamp.match(/\b(?:AM|PM|am|pm|a\.m\.|p\.m\.)\b/i);
+                                    console.log("Hour Match: ", hourMatch);  // Debug log
+                                    console.log("Meridiem Match: ", meridiemMatch);  // Debug log
+
+                                    if (hourMatch && meridiemMatch) {
+                                        let hour = parseInt(hourMatch[1], 10);
+                                        let meridiem = meridiemMatch[0].toUpperCase().replace(/\./g, '');
+
+                                        console.log("Parsed Hour: ", hour);  // Debug log
+                                        console.log("Parsed Meridiem: ", meridiem);  // Debug log
+
+                                        // Ensure the hour is converted to 12-hour format correctly
+                                        if (meridiem === 'PM' && hour !== 12) {
+                                            hour = (hour % 12) + 12;
+                                        } else if (meridiem === 'AM' && hour === 12) {
+                                            hour = 0;
+                                        }
+
+                                        // Convert back to 12-hour format and adjust meridiem
+                                        let displayHour = hour % 12;
+                                        displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
+
+                                        // Return the formatted string without leading zeros
+                                        return `${displayHour} ${meridiem}`;
+                                    } else if (hourMatch) {
+                                        let hour = parseInt(hourMatch[1], 10);
+
+                                        // Convert to 12-hour format based on 24-hour format assumption
+                                        let displayMeridiem = hour >= 12 ? 'PM' : 'AM';
+                                        let displayHour = hour % 12;
+                                        displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
+
+                                        return `${displayHour} ${displayMeridiem}`;
+                                    } else {
+                                        // Fallback for any unexpected format
+                                        return fullTimestamp;
+                                    }
+                                }
+                                return '';
+                            },
+
+                            label: function (context) {
+                                // Return the value for the tooltip
+                                let value = context.parsed.y;
+
+                                // if (pollutantLineChartId == "aqiLineChart")
+                                return value;
+
+                            },
+                        },
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
@@ -2515,7 +2626,23 @@ function bindStationDataToLineChart(filter) {
                         display: true,
                     },
                     tooltip: {
-                        enabled: false,
+                        enabled: true,
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                if (tooltipItems && tooltipItems.length > 0) {
+
+                                    return '';
+                                }
+                            },
+                            label: function (context) {
+                                // Return the value for the tooltip
+                                let value = context.parsed.y;
+
+                                // if (pollutantLineChartId == "aqiLineChart")
+                                return value;
+
+                            },
+                        },
                         external: function (context) {
                             // Check if the tooltip is active (hovering)
                             if (context.tooltip.opacity === 0) {
@@ -2576,12 +2703,18 @@ function bindStationDataToLineChart(filter) {
                     topY = y_axis.top,
                     bottomY = y_axis.bottom;
                 // Draw line
+
+                var gradientStroke = ctx.createLinearGradient(0, bottomY, 0, topY);
+                gradientStroke.addColorStop(0, '#3AC0DA');
+                gradientStroke.addColorStop(0.5, '#1891C3');
+                gradientStroke.addColorStop(1, '#016FC4');
+
                 ctx.save();
                 ctx.beginPath();
                 ctx.moveTo(x, topY);
                 ctx.lineTo(x, bottomY);
                 ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(0, 75, 135, 1)';
+                ctx.strokeStyle = gradientStroke;
                 ctx.stroke();
                 ctx.restore();
             }
@@ -2589,7 +2722,6 @@ function bindStationDataToLineChart(filter) {
     });
     //for vertical line end
 
-    
     const y1AxisConfig = {
         position: 'right',
         grid: {
@@ -2600,14 +2732,10 @@ function bindStationDataToLineChart(filter) {
             text: 'CO (mg/m³)',
             position: 'top'
         },
-        beginAtZero: true
+        beginAtZero: true,
+        display: fianlItems.some(item => item.label === 'CO')
     };
-    if (fianlItems.some(item => item.label === 'CO')) {
-        y1AxisConfig.display = true;
-    } else {
-        // If CO data is not available, hide the y1 axis
-        y1AxisConfig.display = false;
-    }
+
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -2622,13 +2750,13 @@ function bindStationDataToLineChart(filter) {
         }
         minDateString = minDate.toISOString().split('T')[0];
         maxDateString = maxDate.toISOString().split('T')[0];
-       
+
         const scales = {
             x: {
                 type: 'time',
                 time: {
                     unit: 'hour',
-                    tooltipfirmat: 'HH:mm a',
+                    tooltipFormat: 'HH:mm a',
                     displayFormats: {
                         hour: 'hh a'
                     }
@@ -2637,13 +2765,10 @@ function bindStationDataToLineChart(filter) {
                     autoSkip: false,
                     maxTicksLimit: 20,
                     stepSize: 1
-
                 },
                 grid: {
                     display: false
-                },
-                //reverse: true,
-
+                }
             },
             x1: {
                 id: 'x1',
@@ -2660,12 +2785,9 @@ function bindStationDataToLineChart(filter) {
                     display: false
                 },
                 ticks: {
-                    // Auto-skip prevents label overlapping.
                     autoSkip: true,
-                    // Max 20 ticks, adjust as needed.
                     maxTicksLimit: 20
                 },
-                //reverse: true,
                 min: minDateString,
                 max: maxDateString
             },
@@ -2681,13 +2803,11 @@ function bindStationDataToLineChart(filter) {
                 beginAtZero: true
             }
         };
-       
+
         if (fianlItems.some(item => item.label === 'CO')) {
             scales.y1 = y1AxisConfig;
         }
-        else {
-            delete scales.y1;
-        }
+
         const myPollutantChart = new Chart(pollutantLineChart, {
             type: 'line',
             data: {
@@ -2714,9 +2834,9 @@ function bindStationDataToLineChart(filter) {
                             const chart = legend.chart;
                             const meta = chart.getDatasetMeta(index);
                             meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
-
                             chart.update();
-
+                            updateYAxis(chart);
+                            updateAllPollutantValues(null, chart);
                             var legendItems = chart.legend.legendItems;
                             for (var i = 0; i < legendItems.length; i++) {
                                 if (i === index) {
@@ -2730,7 +2850,58 @@ function bindStationDataToLineChart(filter) {
                         },
                     },
                     tooltip: {
-                        enabled: false,
+                        enabled: true,
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                if (tooltipItems && tooltipItems.length > 0) {
+                                    // Get the label of the first tooltip item, which is the date string
+                                    let fullTimestamp = tooltipItems[0].label;
+                                    //console.log("Full Timestamp: ", fullTimestamp);  // Debug log
+
+                                    // Manually parse the hour from the timestamp
+                                    let hourMatch = fullTimestamp.match(/\b(\d{1,2}):/);
+                                    // Improved regex to match AM/PM more robustly
+                                    let meridiemMatch = fullTimestamp.match(/\b(?:AM|PM|am|pm|a\.m\.|p\.m\.)\b/i);
+
+                                    if (hourMatch) {
+                                        let hour = parseInt(hourMatch[1], 10);
+                                        let meridiem = meridiemMatch ? meridiemMatch[0].toUpperCase().replace(/\./g, '') : '';
+
+                                        // Check if the hour is in 24-hour format and adjust accordingly
+                                        if (hour >= 12) {
+                                            meridiem = 'PM';
+                                        } else {
+                                            meridiem = 'AM';
+                                        }
+
+                                        // Convert to 12-hour format
+                                        let displayHour = hour % 12;
+                                        displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
+
+                                        // Return the formatted string without leading zeros
+                                        return `${displayHour} ${meridiem}`;
+                                    } else {
+                                        // Fallback for any unexpected format
+                                        return fullTimestamp;
+                                    }
+                                }
+                                return '';
+                            },
+
+                            label: function (context) {
+                                // Return the value for the tooltip
+                                let value = context.parsed.y;
+                                return '';
+
+                                //if (pollutantBarChartId == "ADstationAqiBarGraph")
+                                //    return value;
+                                //else if (pollutantBarChartId == "ADstationCoBarGraph")
+                                //    return value + ' mg/m³';
+                                //else
+                                //    return value + ' ug/m³';
+
+                            }
+                        },
                         external: function (context) {
                             if (context.tooltip.opacity === 0) {
                                 updateAllPollutantValues(null, context.chart);
@@ -2739,12 +2910,7 @@ function bindStationDataToLineChart(filter) {
                                 updateAllPollutantValues(context.tooltip.dataPoints, context.chart);
                             }
                         },
-                        callbacks: {
-                            label: function () {
-                                return null;
-                            }
 
-                        }
                     },
                 },
                 interaction: {
@@ -2752,12 +2918,20 @@ function bindStationDataToLineChart(filter) {
                     axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
                     intersect: false // This allows for showing the hover effect even if not directly over a point
                 },
-               
+
                 scales: scales
             },
         });
         if (fianlItems.some(item => item.label === 'CO')) {
-            myPollutantChart.data.datasets[2].yAxisID = 'y1';
+            myPollutantChart.data.datasets.forEach(dataset => {
+                if (dataset.label === 'CO') {
+                    dataset.yAxisID = 'y1';
+                }
+            });
+        } else {
+            myPollutantChart.data.datasets.forEach(dataset => {
+                dataset.yAxisID = 'y';
+            });
         }
         updateAllPollutantValues(null, null);
         myPollutantChart.update();
@@ -2775,14 +2949,20 @@ function bindStationDataToLineChart(filter) {
                     display: false, // This will remove the Y-axis grid lines
                     drawBorder: false, // Optional: if you also want to remove the axis border
                 },
-                stacked: true,
+
             },
             y: { // Corrected from 'yAxes' to 'y' for Chart.js version 3.x syntax
-                stacked: true,
+
                 grid: {
                     display: false, // This will remove the Y-axis grid lines
                     drawBorder: false, // Optional: if you also want to remove the axis border
-                },// Assuming you want the Y-axis stacked as well
+                },
+                title: {
+                    display: true,
+                    text: 'ug/m³',
+                    position: 'top'
+                },
+                beginAtZero: true
             }
         };
 
@@ -2819,12 +2999,20 @@ function bindStationDataToLineChart(filter) {
                             const index = legendItem.datasetIndex;
                             const chart = legend.chart;
                             const meta = chart.getDatasetMeta(index);
-
-                            // Toggle the visibility of the dataset
-                            meta.hidden = !meta.hidden;
-
-                            // Trigger an update to show/hide the data and adjust legend appearance
+                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
                             chart.update();
+                            updateYAxis(chart);
+                            updateAllPollutantValues(null, chart);
+                            var legendItems = chart.legend.legendItems;
+                            for (var i = 0; i < legendItems.length; i++) {
+                                if (i === index) {
+                                    if (meta.hidden) {
+                                        legend.legendItems[i].hidden = true;
+                                    } else {
+                                        legend.legendItems[i].hidden = false;
+                                    }
+                                }
+                            }
                         },
                     },
                     tooltip: {
@@ -2838,6 +3026,7 @@ function bindStationDataToLineChart(filter) {
                             }
                         },
                         callbacks: {
+
                             label: function () {
                                 return null;
                             }
@@ -2850,7 +3039,7 @@ function bindStationDataToLineChart(filter) {
                     axis: 'x', // You can set 'y' if you want the hover effect when close to the y-axis instead
                     intersect: false // This allows for showing the hover effect even if not directly over a point
                 },
-                scales:scales                
+                scales: scales
             }
         });
 
@@ -2862,6 +3051,39 @@ function bindStationDataToLineChart(filter) {
     }
 
 }
+
+
+
+function updateYAxis(chart) {
+    const activeDatasets = chart.data.datasets.filter((dataset, index) => chart.isDatasetVisible(index));
+    const isCOVisible = activeDatasets.some(dataset => dataset.label === 'CO');
+
+    if (activeDatasets.length === 1 && isCOVisible) {
+        chart.options.scales.y.title.text = 'CO (mg/m³)';
+        chart.options.scales.y.ticks = {
+            callback: value => value.toFixed(1)
+        };
+        chart.options.scales.y1.display = false; // Hide y1 axis
+        chart.data.datasets.forEach(dataset => {
+            if (dataset.label === 'CO') {
+                dataset.yAxisID = 'y';
+            }
+        });
+    } else {
+        chart.options.scales.y.title.text = 'Concentration (µg/m³)';
+        chart.options.scales.y.ticks = {};
+        chart.options.scales.y1.title.text = 'CO (mg/m³)';
+        chart.options.scales.y1.ticks = {};
+        chart.options.scales.y1.display = true; // Show y1 axis
+        chart.data.datasets.forEach(dataset => {
+            if (dataset.label === 'CO') {
+                dataset.yAxisID = 'y1';
+            }
+        });
+    }
+    chart.update();
+}
+
 
 function updatePollutantValues(tooltipItems) {
     var index = chartData.length - 1;
@@ -2883,7 +3105,7 @@ function updatePollutantValues(tooltipItems) {
     $("#lineChartAqiPm10Value").text(pm10);
     $("#lineChartAqiO3Value").text(o3);
 
-   
+
     if (fianlItems.some(item => item.label === 'CO')) {
         $("#lineChartAqiCoValue").show();
         $("#coaqipollutant").show();
@@ -2898,10 +3120,10 @@ function updatePollutantValues(tooltipItems) {
     }
 
     if (fianlItems.some(item => item.label === 'O3')) {
-        //$("#lineChartPollutantO3Value").show();
+        //$("#lineChartpollutantO3Value").show();
         $("#o3aqipollutant").show();
     } else {
-        // $("#lineChartPollutantO3Value").hide();
+        // $("#lineChartpollutantO3Value").hide();
         $("#o3aqipollutant").hide();
     }
     const aqi = Math.round(chartData[index].aqi);
@@ -2910,33 +3132,83 @@ function updatePollutantValues(tooltipItems) {
     var currentYearOverview = new Date().getFullYear();
     $("#lineChartAqiValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
 }
+function updateYAxisTitle(chart, newTitle) {
+    if (chart.options.scales.y.title.text !== newTitle) {
+        chart.options.scales.y.title.text = newTitle;
+        chart.update();
+    }
+}
 
-function updateAllPollutantValues(tooltipItems,chart) {
+function updateAllPollutantValues(tooltipItems, chart) {
     var index = chartData.length - 1;
-    if (tooltipItems != undefined) {
+    if (tooltipItems && tooltipItems.length > 0) {
         index = tooltipItems[0].dataIndex;
     }
 
     // Retrieve data for all pollutants
     var so2 = chartData[index].sO2;
     var no2 = chartData[index].nO2;
-    var co = chartData[index].co;
     var pm10 = chartData[index].pM10;
     var o3 = chartData[index].o3;
-    if (chart) {
-        if (!chart.isDatasetVisible(0)) so2 = 0;
-        if (!chart.isDatasetVisible(1)) no2 = 0;
-        if (!chart.isDatasetVisible(2)) co = 0;
-        if (!chart.isDatasetVisible(3)) pm10 = 0;
-        if (!chart.isDatasetVisible(4)) o3 = 0;
-    }
+    var co = chartData[index].co;
 
-    // Update the text of the corresponding DOM elements with the pollutant values
-    $("#lineChartPollutantSo2Value").text(so2);
-    $("#lineChartPollutantNo2Value").text(no2);
-    $("#lineChartPollutantCoValue").text(co);
-    $("#lineChartPollutantPm10Value").text(pm10);
-    $("#lineChartPollutantO3Value").text(o3); // Show CO value and text
+
+
+    if (chart) {
+        var datasetLabels = chart.data.datasets.map(ds => ds.label);
+        let otherVisible = false;
+        let coVisible = false;
+        let coInDataset = datasetLabels.includes('CO');
+        // console.log('Chart datasets:', datasetLabels);
+        if (datasetLabels.includes('SO2') && !chart.isDatasetVisible(datasetLabels.indexOf('SO2'))) {
+            $("#lineChartPollutantSo2Value").text(so2).removeClass("bold-black-text");
+        } else {
+            otherVisible = true;
+            $("#lineChartPollutantSo2Value").text(so2).addClass("bold-black-text");
+        }
+
+        // Update text and class for NO2
+        if (datasetLabels.includes('NO2') && !chart.isDatasetVisible(datasetLabels.indexOf('NO2'))) {
+            $("#lineChartPollutantNo2Value").text(no2).removeClass("bold-black-text");
+        } else {
+            otherVisible = true;
+            $("#lineChartPollutantNo2Value").text(no2).addClass("bold-black-text");
+        }
+
+        // Update text and class for PM10
+        if (datasetLabels.includes('PM10') && !chart.isDatasetVisible(datasetLabels.indexOf('PM10'))) {
+            $("#lineChartPollutantPm10Value").text(pm10).removeClass("bold-black-text");
+        } else {
+            otherVisible = true;
+            $("#lineChartPollutantPm10Value").text(pm10).addClass("bold-black-text");
+        }
+
+        // Update text and class for O3
+        if (datasetLabels.includes('O3') && !chart.isDatasetVisible(datasetLabels.indexOf('O3'))) {
+            $("#lineChartPollutantO3Value").text(o3).removeClass("bold-black-text");
+        } else if (datasetLabels.includes('O3')) {
+            otherVisible = true;
+            $("#lineChartPollutantO3Value").text(o3).addClass("bold-black-text");
+        }
+
+        // Update text and class for CO
+        if (coInDataset && !chart.isDatasetVisible(datasetLabels.indexOf('CO'))) {
+            $("#lineChartPollutantCoValue").text(co).removeClass("bold-black-text");
+        } else if (coInDataset) {
+            coVisible = true;
+            $("#lineChartPollutantCoValue").text(co).addClass("bold-black-text");
+        }
+
+        // Update y-axis title based on visibility
+        if (coVisible && !otherVisible) {
+            updateYAxisTitle(chart, 'mg/m³');
+
+        } else {
+            updateYAxisTitle(chart, 'ug/m³');
+        }
+
+        // console.log('Pollutant values after visibility check:', { so2, no2, pm10, o3, co });
+    }
 
     if (fianlItems.some(item => item.label === 'SO2')) {
         $("#lineChartPollutantSo2Value").show();
@@ -2952,6 +3224,20 @@ function updateAllPollutantValues(tooltipItems,chart) {
         $("#no2pollutant").hide();
     }
 
+    if (fianlItems.some(item => item.label === 'PM10')) {
+        $("#lineChartPollutantPm10Value").show();
+    } else {
+        $("#lineChartPollutantPm10Value").hide();
+    }
+
+    if (fianlItems.some(item => item.label === 'O3')) {
+        $("#lineChartPollutantO3Value").show();
+        $("#o3pollutant").show();
+    } else {
+        $("#lineChartPollutantO3Value").hide();
+        $("#o3pollutant").hide();
+    }
+
     if (fianlItems.some(item => item.label === 'CO')) {
         $("#lineChartPollutantCoValue").show();
         $("#copollutant").show();
@@ -2962,31 +3248,19 @@ function updateAllPollutantValues(tooltipItems,chart) {
         $("#copollutant").hide();
         $('.mg-m3').hide();
         $('.line-co-pollutant').hide();
-
     }
 
-    if (fianlItems.some(item => item.label === 'PM10')) {
-        $("#lineChartPollutantPm10Value").show();
-    } else {
-        $("#lineChartPollutantPm10Value").hide();
-    }
-
-
-    if (fianlItems.some(item => item.label === 'O3')) {
-        $("#lineChartPollutantO3Value").show();
-        $("#o3pollutant").show();
-    } else {
-        $("#lineChartPollutantO3Value").hide();
-        $("#o3pollutant").hide();
-    }
-   
-    //$("#lineChartPollutantO3Value").text(o3);
+    // Update AQI
     const aqi = Math.round(chartData[index].aqi);
     var aqiDetails = getAqiStatusAndColorCode(aqi);
     var aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
     var currentYearOverview = new Date().getFullYear();
     $("#lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
 }
+
+
+
+
 
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
@@ -3491,6 +3765,8 @@ function bindStationDataToBarChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
+                        //enabled: false, // Disable the default tooltip
+                        // external: externalTooltipHandler,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3725,15 +4001,35 @@ function bindStationDataToBarChart(filter) {
                                 }
                             },
                             label: function (context) {
-                                // Return the value for the tooltip
-                                let value = context.parsed.y;
-                                return value + ' ug/m³';
-                            },
+                                const index = context.dataIndex;
+
+                                const thresholdValue = thresholdData[index] !== undefined ? thresholdData[index] : 0;
+                                const barValue = barChartData[index] !== undefined ? barChartData[index] : 0;
+
+
+                                // Combine the values
+                                const combinedValue = barValue + thresholdValue;
+
+                                // Determine the unit based on pollutantBarChartId
+                                let unit = ' ug/m³';
+                                if (pollutantBarChartId === "ADstationAqiBarGraph") {
+                                    unit = '';
+                                } else if (pollutantBarChartId === "ADstationCoBarGraph") {
+                                    unit = ' mg/m³';
+                                }
+
+                                // Return the combined value with the appropriate unit
+                                return `${combinedValue} ${unit}`;
+
+
+                            }
                         },
                         filter: function (tooltipItem, data) {
                             return tooltipItem.raw !== 0;
                         }
                     }
+
+                   
                 },
                 interaction: {
                     intersect: false,
@@ -3965,7 +4261,7 @@ var imageData = [
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
 
-if (window.innerWidth < 990) {
+if (window.innerWidth < 1025) {
     $.each(imageData, function (index, item) {
         var carouselItem = $('<div>').addClass('carousel-item carol-item');
         if (index === 0) {
@@ -4052,7 +4348,7 @@ if (window.innerWidth < 990) {
 
             $('#recipeCarousel .carousel-inner').append(carouselItem);
         }
-    });    
+    });
 
 }
 function isValidUrl(url) {
@@ -4139,7 +4435,7 @@ $('#myForm').submit(function (e) {
     // Regular expressions for validation
     var nameRegex = /^[a-zA-Z\s]*$/;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var phoneRegex = /^\d{10}$/;
+    var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
 
     // Function to trim spaces without using the trim() method
     function trimSpaces(str) {
@@ -4251,10 +4547,11 @@ $('#phoneField').on('input', function () {
     var phone = $(this).val();
     // Remove any non-digit characters from the phone number
     var cleanedPhone = phone.replace(/\D/g, '');
-    var phoneRegex = /^(?!.*(?:0{10}|1{10}|2{10}|3{10}|4{10}|5{10}|6{10}|7{10}|8{10}|9{10}))[0-9]{10}$/;
-    var undesiredFormatRegex = /^1234567890$/;
+    var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
+    var undesiredFormatRegex = /^(1234567890|0{10,12}|9710{9}|0123456789)$/;
+
     if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
-        $('#phoneError').text('Please enter a valid 10-digit phone number');
+        $('#phoneError').text('Please enter a valid phone number. For UAE, use 971 followed by 9 digits or 0 followed by 9 digits.');
     } else {
         $('#phoneError').text('');
     }
