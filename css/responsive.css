@@ -1,3 +1,11 @@
+@media (min-width: 320px) and (max-width: 767px) {
+    @supports (-webkit-backdrop-filter: none) {
+        .safari .banner-section .carousel-caption-banner .h5 {
+            top: 43px;
+        }
+    }
+}
+
 @media (min-width: 320px) and (max-width: 365px) {
     .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 {
         width: 90%;

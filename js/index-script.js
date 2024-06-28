@@ -2451,6 +2451,7 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         //id: "single",
                         enabled: true,
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2627,6 +2628,7 @@ function bindStationDataToLineChart(filter) {
                     },
                     tooltip: {
                         enabled: true,
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2851,6 +2853,7 @@ function bindStationDataToLineChart(filter) {
                     },
                     tooltip: {
                         enabled: true,
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3017,6 +3020,7 @@ function bindStationDataToLineChart(filter) {
                     },
                     tooltip: {
                         enabled: false,
+                        displayColors: false,
                         external: function (context) {
                             if (context.tooltip.opacity === 0) {
                                 updateAllPollutantValues(null, context.chart);
@@ -3767,6 +3771,7 @@ function bindStationDataToBarChart(filter) {
                     tooltip: {
                         //enabled: false, // Disable the default tooltip
                         // external: externalTooltipHandler,
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3993,6 +3998,7 @@ function bindStationDataToBarChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     tooltip: {
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {

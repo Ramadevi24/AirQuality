@@ -44,8 +44,9 @@ body {
     font-size: 13px;
 }
 
+
 /* Safari-specific styles */
-@supports (-webkit-backdrop-filter: none) {
+/* @supports (-webkit-backdrop-filter: none) {
     .safari .banner-section .carousel-caption-banner .h5 {
         text-transform: uppercase;
         font-size: 40px;
@@ -66,7 +67,7 @@ body {
     .safari .send-btn {
         padding-top: 15px !important;
     }
-}
+} */
 
 
 
