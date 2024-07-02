@@ -673,7 +673,9 @@ var radarOptions = {
         },
         tooltip: {
             enabled: true,
-            displayColors: false, // Set this to false to hide the color box
+            displayColors: false,
+            usePointStyle: false, // Do not use point style
+            caretSize: 0,
             mode: 'nearest',
             intersect: false,
             callbacks: {
@@ -2452,6 +2454,8 @@ function bindStationDataToLineChart(filter) {
                         //id: "single",
                         enabled: true,
                         displayColors: false,
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2629,6 +2633,8 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: true,
                         displayColors: false,
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2854,6 +2860,8 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: true,
                         displayColors: false,
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3020,7 +3028,9 @@ function bindStationDataToLineChart(filter) {
                     },
                     tooltip: {
                         enabled: false,
-                        displayColors: false,
+                        displayColors: false,    
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         external: function (context) {
                             if (context.tooltip.opacity === 0) {
                                 updateAllPollutantValues(null, context.chart);
@@ -3772,6 +3782,8 @@ function bindStationDataToBarChart(filter) {
                         //enabled: false, // Disable the default tooltip
                         // external: externalTooltipHandler,
                         displayColors: false,
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3999,6 +4011,8 @@ function bindStationDataToBarChart(filter) {
                     },
                     tooltip: {
                         displayColors: false,
+                        usePointStyle: false, // Do not use point style
+                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -4032,6 +4046,22 @@ function bindStationDataToBarChart(filter) {
                         },
                         filter: function (tooltipItem, data) {
                             return tooltipItem.raw !== 0;
+                        },
+                          positioner: function (items) {
+                            // Get the element (bar) that triggered the tooltip
+                            var tooltipItem = items[0];
+                            var chart = tooltipItem.chart;
+                            var datasetIndex = tooltipItem.datasetIndex;
+                            var index = tooltipItem.dataIndex;
+                            var bar = chart.getDatasetMeta(datasetIndex).data[index];
+
+                            // Calculate the top position of the bar
+                            var position = {
+                                x: bar.x,
+                                y: bar.y
+                            };
+
+                            return position;
                         }
                     }
 
