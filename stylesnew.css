@@ -3,13 +3,13 @@
 @font-face {
     font-family: 'GothamMedium';
     src:  url('../fonts/Gotham-Font/GothamMedium.otf') format('opentype'),
-        url('../fonts/Gotham-Font/GothamMedium.ttf') format('truetype');
+           url('../fonts/Gotham-Font/GothamMedium.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Gothambold';
-    src:  url('../fonts/Gotham-Font/Gotham-Bold.otf') format('opentype'), 
-        url('../fonts/Gotham-Font/GothamBold.ttf') format('truetype');
+    src:  url('../fonts/Gotham-Font/Gotham-Bold.otf') format('opentype'),
+           url('../fonts/Gotham-Font/GothamBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -1887,25 +1887,25 @@ body.map-viwer-enabled {
     margin-bottom: 20px;
 }
 
-    .insight .search-box .p-input {
+   .insight .search-box .p-input {
         width: 90%;
-    }
-       .p-input  .form-control{
+    } 
+.p-input  .form-control{
 border: none; 
-
-        }
-.insight .search-box .p-input input:hover, .insight .search-box .p-input input:focus, .insight .search-box .p-input input:active {
-    border: none;
-    box-shadow: none;
+           
 }
+ .insight .search-box .p-input input:hover, .insight .search-box .p-input input:focus, .insight .search-box .p-input input:active {
+                border: none;
+	box-shadow: none;
+            }
 .insight .search-box .p-input span {
-    position: absolute;
-    top: 8px;
-    right: 15px;
-    display: flex;
-    align-items: center;
-}
-
+            position: absolute;
+            top: 8px;
+            right: 15px;
+          display: flex;
+        align-items: center;
+        }
+      
             .insight .search-box .p-input span img {
                 width: 17px;
             }
@@ -4453,7 +4453,7 @@ table {
     cursor: pointer;
     width: 40px;
     height: 40px;
-    padding-right: 0;
+     padding-right: 0;
     padding-left: 0;
     /* position: absolute; */
 }
@@ -5356,20 +5356,3 @@ input[type="search"]::-webkit-search-cancel-button {
 #coaqipollutant, #copollutant {
     margin-right: 6px;
 }
-
-.chartjs-tooltip {
-    z-index: 9999 !important;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    pointer-events: none;
-    transform: translate(-50%, -100%);
-    white-space: nowrap;
-}
-
-.Exceeds{
-
-}
-

@@ -673,9 +673,7 @@ var radarOptions = {
         },
         tooltip: {
             enabled: true,
-            displayColors: false,
-            usePointStyle: false, // Do not use point style
-            caretSize: 0,
+            displayColors: false, // Set this to false to hide the color box
             mode: 'nearest',
             intersect: false,
             callbacks: {
@@ -894,8 +892,7 @@ function showHideToggleDiv(tabId, pollutant) {
     document.getElementById(tabId).style.display = 'block';
     activePollutant = pollutant;
     bindStationDataToBarChart($("#barChartFilter").text());
-    
-   updateThreshold(pollutant, $("#barChartFilter").text());
+    updateThreshold(pollutant, $("#barChartFilter").text());
 }
 
 function updateThreshold(pollutant, timeFilter) {
@@ -2023,12 +2020,14 @@ $('.mapStationSearchScroll').on('click', 'li', function () {
 
 
 function selectedStation(stationId) {
-    currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId); // Remove the class 'expanded' from the sidebar after 4 seconds
+    currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId);
+
+     // Remove the class 'expanded' from the sidebar after 4 seconds
     setTimeout(function() {
         document.getElementById('sidebar').classList.remove('expanded');
     }, 300);
 
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById('sidebar').classList.remove('visible');
     }, 300);
     // Clear the chart data
@@ -2461,8 +2460,6 @@ function bindStationDataToLineChart(filter) {
                         //id: "single",
                         enabled: true,
                         displayColors: false,
-                        usePointStyle: false, // Do not use point style
-                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2640,8 +2637,6 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: true,
                         displayColors: false,
-                        usePointStyle: false, // Do not use point style
-                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -2867,8 +2862,6 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: true,
                         displayColors: false,
-                        usePointStyle: false, // Do not use point style
-                        caretSize: 0,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3036,8 +3029,6 @@ function bindStationDataToLineChart(filter) {
                     tooltip: {
                         enabled: false,
                         displayColors: false,
-                        usePointStyle: false, // Do not use point style
-                        caretSize: 0,
                         external: function (context) {
                             if (context.tooltip.opacity === 0) {
                                 updateAllPollutantValues(null, context.chart);
@@ -3281,36 +3272,7 @@ function updateAllPollutantValues(tooltipItems, chart) {
 
 
 
-function getThresholdValue(pollutant, filter) {
-    switch (pollutant) {
-        case pollutantAbbrevations.PM10:
-            if (filter.trim() === 'Daily') return pollutantThresholdLimits.PM10Daily;
-            break;
-        case pollutantAbbrevations.SO2:
-            if (filter.trim() === 'Hourly') {
-                return pollutantThresholdLimits.SO2Hourly;
-            } else if (filter.trim() === 'Daily') {
-                return pollutantThresholdLimits.SO2Daily;
-            } else if (filter.trim() === 'Yearly') {
-                return pollutantThresholdLimits.SO2Yearly;
-            }
-            break;
-        case pollutantAbbrevations.CO:
-            if (filter.trim() === 'Hourly') return pollutantThresholdLimits.COHouly;
-            break;
-        case pollutantAbbrevations.O3:
-            if (filter.trim() === 'Hourly') return pollutantThresholdLimits.O3Hourly;
-            break;
-        case pollutantAbbrevations.NO2:
-            if (filter.trim() === 'Hourly') {
-                return pollutantThresholdLimits.NO2Hourly;
-            } else if (filter.trim() === 'Daily') {
-                return pollutantThresholdLimits.NO2Daily;
-            }
-            break;
-    }
-    return null;
-}
+
 
 function bindStationDataToBarChart(filter) {
     var barChartData = [];
@@ -3322,18 +3284,28 @@ function bindStationDataToBarChart(filter) {
     var barChartDataSet = [];
     var boxid, boxid1, boxid2;
     var lastrefreshtime;
-    var exceedsThreshold = false;
-    let backgroundColor, borderColor;
-     switch (activePollutant) {
+    switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
-                        barChartData.push(item.pM10);
-                        categoriesData.push(item.day.split(' '));
                         if (item.pM10 > pollutantThresholdLimits.PM10Daily) {
-                            exceedsThreshold = true;
+                            barChartData.push(item.pM10 - pollutantThresholdLimits.PM10Daily);
+                            thresholdData.push(pollutantThresholdLimits.PM10Daily);
+                        } else {
+                            barChartData.push(0);
+                            thresholdData.push(item.pM10);
                         }
+                        categoriesData.push(item.day.split(' '));
+
+                    });
+                    backgroundColors.push('#F65E5F');
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
                     });
                     break;
                 case "Monthly":
@@ -3341,14 +3313,14 @@ function bindStationDataToBarChart(filter) {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.month);
                     });
-                    // backgroundColors.push('#004B87');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.year);
                     });
-                    // backgroundColors.push('#004B87');
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
@@ -3360,22 +3332,14 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
+                    backgroundColors.push('#004B87');
                     break;
-            }
-            if (filter === "Daily") {
-                backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                borderColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-            } else {
-                backgroundColor = 'rgba(0, 75, 135, 1)';
-                borderColor = 'rgba(0, 75, 135, 1)';
             }
             barChartDataSet.push({
                 label: '',
-                data: barChartData,
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
-                borderWidth: 1,
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
+                data: barChartData,
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationPm10BarGraph";
@@ -3389,37 +3353,60 @@ function bindStationDataToBarChart(filter) {
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
-                        barChartData.push(item.sO2);
-                        categoriesData.push(item.day.split(' '));
                         if (item.sO2 > pollutantThresholdLimits.SO2Daily) {
-                            exceedsThreshold = true;
+                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Daily);
+                            thresholdData.push(pollutantThresholdLimits.SO2Daily);
+                        } else {
+                            //barChartData.push(0);
+                            thresholdData.push(item.sO2);
                         }
+                        categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#F65E5F');
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.sO2);
                         categoriesData.push(item.month);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
-                        barChartData.push(item.sO2);
-                        categoriesData.push(item.year);
                         if (item.sO2 > pollutantThresholdLimits.SO2Yearly) {
-                            exceedsThreshold = true;
+                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Yearly);
+                            thresholdData.push(pollutantThresholdLimits.SO2Yearly);
+                        } else {
+                            //barChartData.push(0);
+                            thresholdData.push(item.sO2);
                         }
+                        categoriesData.push(item.year);
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    break
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
+                    break;
                 default:
                     chartData.forEach(item => {
-                        barChartData.push(item.sO2);
+                        if (item.sO2 > pollutantThresholdLimits.SO2Hourly) {
+                            barChartData.push(item.sO2 - pollutantThresholdLimits.SO2Hourly);
+                            thresholdData.push(pollutantThresholdLimits.SO2Hourly);
+                        } else {
+                            // barChartData.push();
+                            thresholdData.push(item.sO2);
+                        }
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
@@ -3427,16 +3414,19 @@ function bindStationDataToBarChart(filter) {
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-
+                    backgroundColors.push('#F65E5F');
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-           
             barChartDataSet.push({
                 label: '',
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
                 borderRadius: 3
@@ -3455,47 +3445,51 @@ function bindStationDataToBarChart(filter) {
                         barChartData.push(item.co);
                         categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.co);
                         categoriesData.push(item.month);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.co);
                         categoriesData.push(item.year);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
-                        barChartData.push(item.co);
+                        if (item.co > pollutantThresholdLimits.COHourly) {
+                            barChartData.push(item.co - pollutantThresholdLimits.COHourly);
+                            thresholdData.push(pollutantThresholdLimits.COHourly);
+                        } else {
+                            //barChartData.push(0);
+                            thresholdData.push(item.co);
+                        }
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        if (item.co > pollutantThresholdLimits.COHourly) {
-                            exceedsThreshold = true;
-                        }
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#F65E5F');
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-           
             barChartDataSet.push({
                 label: '',
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
                 borderRadius: 3
@@ -3514,50 +3508,53 @@ function bindStationDataToBarChart(filter) {
                         barChartData.push(item.o3);
                         categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.month);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.o3);
                         categoriesData.push(item.year);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
-                        barChartData.push(item.o3);
+                        if (item.o3 > pollutantThresholdLimits.O3Hourly) {
+                            barChartData.push(item.o3 - pollutantThresholdLimits.O3Hourly);
+                            thresholdData.push(pollutantThresholdLimits.O3Hourly);
+                        } else {
+                            // barChartData.push(0);
+                            thresholdData.push(item.o3);
+                        }
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        if (item.o3 > pollutantThresholdLimits.O3Hourly) {
-                            exceedsThreshold = true;
-                        }
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
             }
-            
             barChartDataSet.push({
                 label: '',
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
-                borderRadius: 3
             });
             pollutantBarChartId = "ADstationO3BarGraph";
             pollutantBarChartId1 = "ADstationO3BarGraph1";
@@ -3570,54 +3567,67 @@ function bindStationDataToBarChart(filter) {
             switch (filter) {
                 case "Daily":
                     chartData.forEach(item => {
-                        barChartData.push(item.nO2);
-                        categoriesData.push(item.day.split(' '));
                         if (item.nO2 > pollutantThresholdLimits.NO2Daily) {
-                            exceedsThreshold = true;
+                            barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Daily);
+                            thresholdData.push(pollutantThresholdLimits.NO2Daily);
+                        } else {
+                            //  barChartData.push(0);
+                            thresholdData.push(item.nO2);
                         }
+                        categoriesData.push(item.day.split(' '));
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-
+                    backgroundColors.push('#F65E5F');
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
                         barChartData.push(item.nO2);
                         categoriesData.push(item.month);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.nO2);
                         categoriesData.push(item.year);
                     });
-                    backgroundColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(() => 'rgba(0, 75, 135, 1)');
+                    backgroundColors.push('#004B87');
                     break;
                 default:
                     chartData.forEach(item => {
-                        barChartData.push(item.nO2);
+                        if (item.nO2 > pollutantThresholdLimits.NO2Hourly) {
+                            barChartData.push(item.nO2 - pollutantThresholdLimits.NO2Hourly);
+                            thresholdData.push(pollutantThresholdLimits.NO2Hourly);
+                        } else {
+                            // barChartData.push(0);
+                            thresholdData.push(item.nO2);
+                        }
                         const dateParts = item.recordedDate.split('/');
                         const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                        if (item.nO2 > pollutantThresholdLimits.NO2Hourly) {
-                            exceedsThreshold = true;
-                        }
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-                    borderColor = barChartData.map(value =>  value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-
+                    backgroundColors = ['#F65E5F'];
+                    barChartDataSet.push({
+                        label: '',
+                        backgroundColor: '#004B87',
+                        lineTension: 0.2,
+                        data: thresholdData,
+                        borderRadius: 3
+                    });
                     break;
-            }           
+            }
             barChartDataSet.push({
                 label: '',
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
+                backgroundColor: backgroundColors,
                 lineTension: 0.2,
                 data: barChartData,
                 borderRadius: 3
@@ -3690,7 +3700,7 @@ function bindStationDataToBarChart(filter) {
     }
     var barChart = document.getElementById(pollutantBarChartId).getContext('2d');
     var barChart1 = document.getElementById(pollutantBarChartId1).getContext('2d');
-    var thresholdValue = getThresholdValue(activePollutant, filter);
+
 
     const box = document.getElementById(boxid);
     const box1 = document.getElementById(boxid1);
@@ -3766,26 +3776,10 @@ function bindStationDataToBarChart(filter) {
                         display: true,
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
-                    annotation: {
-                        annotations: exceedsThreshold ? {
-                            thresholdLine: {
-                                type: 'line',
-                                yMin: thresholdValue,
-                                yMax: thresholdValue,
-                                borderColor: '#808080',
-                                borderWidth: 2,
-                                borderDash: [5, 5],
-                                label: {
-                                    content: 'Threshold: ${thresholdValue} µg/m³',
-                                    enabled: true,
-                                    position: 'end'
-                                }
-                            }
-                        } : {}
-                    },
                     tooltip: {
-                        enabled: false,
-                        zIndex: 9999,
+                        //enabled: false, // Disable the default tooltip
+                        // external: externalTooltipHandler,
+                        displayColors: false,
                         callbacks: {
                             title: function (tooltipItems) {
                                 if (tooltipItems && tooltipItems.length > 0) {
@@ -3805,7 +3799,7 @@ function bindStationDataToBarChart(filter) {
                             },
                             label: function (context) {
                                 // Return the value for the tooltip
-                                let value = context.raw;
+                                let value = context.parsed.y;
 
                                 if (pollutantBarChartId == "ADstationAqiBarGraph")
                                     return value;
@@ -3816,67 +3810,8 @@ function bindStationDataToBarChart(filter) {
 
                             }
                         },
-                        external: function (context) {
-                            // Tooltip Element
-                            var tooltipEl = document.getElementById('chartjs-tooltip');
-
-                            // Create element on first render
-                            if (!tooltipEl) {
-                                tooltipEl = document.createElement('div');
-                                tooltipEl.id = 'chartjs-tooltip';
-                                tooltipEl.classList.add('chartjs-tooltip');
-                                document.body.appendChild(tooltipEl);
-                            }
-
-                            // Hide if no tooltip
-                            var tooltipModel = context.tooltip;
-                            if (tooltipModel.opacity === 0) {
-                                tooltipEl.style.opacity = 0;
-                                return;
-                            }
-
-                            // Set caret position
-                            tooltipEl.classList.remove('above', 'below', 'no-transform');
-                            if (tooltipModel.yAlign) {
-                                tooltipEl.classList.add(tooltipModel.yAlign);
-                            } else {
-                                tooltipEl.classList.add('no-transform');
-                            }
-
-                            // Set Text
-                            if (tooltipModel.body) {
-                                var bodyLines = tooltipModel.body.map(function (bodyItem) {
-                                    return bodyItem.lines;
-                                });
-
-                                var innerHtml = '<tbody>';
-
-                                bodyLines.forEach(function (body) {
-                                    innerHtml += '<tr><td>' + body + '</td></tr>';
-                                });
-                                innerHtml += '</tbody>';
-
-                                var tableRoot = tooltipEl.querySelector('table');
-                                if (!tableRoot) {
-                                    var table = document.createElement('table');
-                                    tooltipEl.appendChild(table);
-                                    tableRoot = table;
-                                }
-
-                                tableRoot.innerHTML = innerHtml;
-                            }
-
-                            var position = context.chart.canvas.getBoundingClientRect();
-
-                            // Display, position, and set styles for font
-                            tooltipEl.style.opacity = 1;
-                            tooltipEl.style.position = 'absolute';
-                            tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-                            const tooltipOffset = 10;
-                            tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY - tooltipOffset + 'px';
-                            tooltipEl.style.font = tooltipModel.options.bodyFont.string;
-                            tooltipEl.style.padding = tooltipModel.options.padding + 'px ' + tooltipModel.options.padding + 'px';
-                            tooltipEl.style.pointerEvents = 'none';
+                        filter: function (tooltipItem, data) {
+                            return tooltipItem.raw !== 0;
                         }
                     }
                 },
@@ -3931,57 +3866,28 @@ function bindStationDataToBarChart(filter) {
                         max: maxDateString
                     },
                     y: {
+                        //  beginAtZero: true,
+                        display: false,
+                        ticks: {
+                            display: false
+                        },
                         grid: {
                             display: false,
                         },
-                        afterFit: (ctx) => {
-                            //console.log(ctx);
-                            ctx.width = 40;
+                        gridLines: {
+                            drawBorder: false,
                         },
                         stacked: true
-                        //beginAtZero: true
-                    },
-                },
-
-
-                animations: {
-                    tension: {
-                        duration: 2000,
-                        easing: 'easeInCubic'
                     }
-                }
+                },
             },
-            plugins: [{
-                id: 'customBarColors',
-                afterDraw: chart => {
-                    var ctx = chart.ctx;
-                    chart.data.datasets.forEach((dataset, datasetIndex) => {
-                        var meta = chart.getDatasetMeta(datasetIndex);
-                        meta.data.forEach((bar, index) => {
-                            var value = dataset.data[index];
-                            var yScale = chart.scales.y;
-                            var base = yScale.getPixelForValue(0);
-                            var thresholdY = yScale.getPixelForValue(thresholdValue);
-                            var yPos = yScale.getPixelForValue(value);
-                            var barWidth = bar.width;
-                            var xPos = bar.x - barWidth / 2;
 
-                            ctx.save();
-                            if (value > thresholdValue) {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, thresholdY, barWidth, base - thresholdY);
-
-                                ctx.fillStyle = 'rgba(246, 94, 95, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, thresholdY - yPos);
-                            } else {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, base - yPos);
-                            }
-                            ctx.restore();
-                        });
-                    });
+            animations: {
+                tension: {
+                    duration: 2000,
+                    easing: 'easeInCubic'
                 }
-            }]
+            }
 
         });
 
@@ -4074,7 +3980,6 @@ function bindStationDataToBarChart(filter) {
                 box1.style.marginLeft = "0px";
             }
         }
-
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -4100,109 +4005,45 @@ function bindStationDataToBarChart(filter) {
                         display: true,
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
-                    annotation: {
-                        annotations: exceedsThreshold ? {
-                            thresholdLine: {
-                                type: 'line',
-                                yMin: thresholdValue,
-                                yMax: thresholdValue,
-                                borderColor: '#808080',
-                                borderWidth: 2,
-                                borderDash: [5, 5],
-                                label: {
-                                    content: 'Threshold: ${thresholdValue} µg/m³',
-                                    enabled: true,
-                                    position: 'end'
-                                }
-                            }
-                        } : {}
-                    },
                     tooltip: {
-                        enabled: false, // Enable the default tooltip
-                        zIndex: 9999, // Ensures tooltip is above other elements
-
+                        displayColors: false,
                         callbacks: {
-                            title: function () {
-                                return ''; // No title
+                            title: function (tooltipItems) {
+                                if (tooltipItems && tooltipItems.length > 0) {
+
+                                    return '';
+                                }
                             },
                             label: function (context) {
-                                // Return the value for the tooltip
-                                let value = context.raw;
+                                const index = context.dataIndex;
 
-                                if (pollutantBarChartId == "ADstationAqiBarGraph")
-                                    return value;
-                                else if (pollutantBarChartId == "ADstationCoBarGraph")
-                                    return value + ' mg/m³';
-                                else
-                                    return value + ' ug/m³';
+                                const thresholdValue = thresholdData[index] !== undefined ? thresholdData[index] : 0;
+                                const barValue = barChartData[index] !== undefined ? barChartData[index] : 0;
+
+
+                                // Combine the values
+                                const combinedValue = barValue + thresholdValue;
+
+                                // Determine the unit based on pollutantBarChartId
+                                let unit = ' ug/m³';
+                                if (pollutantBarChartId === "ADstationAqiBarGraph") {
+                                    unit = '';
+                                } else if (pollutantBarChartId === "ADstationCoBarGraph") {
+                                    unit = ' mg/m³';
+                                }
+
+                                // Return the combined value with the appropriate unit
+                                return `${combinedValue} ${unit}`;
+
 
                             }
                         },
-                        external: function (context) {
-                            // Tooltip Element
-                            var tooltipEl = document.getElementById('chartjs-tooltip');
-
-                            // Create element on first render
-                            if (!tooltipEl) {
-                                tooltipEl = document.createElement('div');
-                                tooltipEl.id = 'chartjs-tooltip';
-                                tooltipEl.classList.add('chartjs-tooltip');
-                                document.body.appendChild(tooltipEl);
-                            }
-
-                            // Hide if no tooltip
-                            var tooltipModel = context.tooltip;
-                            if (tooltipModel.opacity === 0) {
-                                tooltipEl.style.opacity = 0;
-                                return;
-                            }
-
-                            // Set caret position
-                            tooltipEl.classList.remove('above', 'below', 'no-transform');
-                            if (tooltipModel.yAlign) {
-                                tooltipEl.classList.add(tooltipModel.yAlign);
-                            } else {
-                                tooltipEl.classList.add('no-transform');
-                            }
-
-                            // Set Text
-                            if (tooltipModel.body) {
-                                var bodyLines = tooltipModel.body.map(function (bodyItem) {
-                                    return bodyItem.lines;
-                                });
-
-                                var innerHtml = '<tbody>';
-
-                                bodyLines.forEach(function (body) {
-                                    innerHtml += '<tr><td>' + body + '</td></tr>';
-                                });
-                                innerHtml += '</tbody>';
-
-                                var tableRoot = tooltipEl.querySelector('table');
-                                if (!tableRoot) {
-                                    var table = document.createElement('table');
-                                    tooltipEl.appendChild(table);
-                                    tableRoot = table;
-                                }
-
-                                tableRoot.innerHTML = innerHtml;
-                            }
-
-                            var position = context.chart.canvas.getBoundingClientRect();
-
-                            // Display, position, and set styles for font
-                            tooltipEl.style.opacity = 1;
-                            tooltipEl.style.position = 'absolute';
-                            tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-                            const tooltipOffset = 10;
-                            tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY - tooltipOffset + 'px';
-                            tooltipEl.style.font = tooltipModel.options.bodyFont.string;
-                            tooltipEl.style.padding = tooltipModel.options.padding + 'px ' + tooltipModel.options.padding + 'px';
-                            tooltipEl.style.pointerEvents = 'none';
+                        filter: function (tooltipItem, data) {
+                            return tooltipItem.raw !== 0;
                         }
                     }
 
-
+                   
                 },
                 interaction: {
                     intersect: false,
@@ -4219,30 +4060,19 @@ function bindStationDataToBarChart(filter) {
                         },
                         stacked: true,
                     },
-                    //y: {
-                    //    //  beginAtZero: true,
-                    //    display: false,
-                    //    ticks: {
-                    //        display: false
-                    //    },
-                    //    grid: {
-                    //        display: false
-                    //    },
-                    //    gridLines: {
-                    //        drawBorder: false,
-                    //    },
-                    //    stacked: true
-                    //},
                     y: {
+                        //  beginAtZero: true,
+                        display: false,
+                        ticks: {
+                            display: false
+                        },
                         grid: {
                             display: false,
                         },
-                        afterFit: (ctx) => {
-                            //console.log(ctx);
-                            ctx.width = 40;
+                        gridLines: {
+                            drawBorder: false,
                         },
                         stacked: true
-                        //beginAtZero: true
                     },
 
                 },
@@ -4252,40 +4082,8 @@ function bindStationDataToBarChart(filter) {
                         duration: 2000,
                         easing: 'easeInCubic'
                     }
-                },
-            },
-            plugins: [{
-                id: 'customBarColors',
-                afterDraw: chart => {
-                    var ctx = chart.ctx;
-                    chart.data.datasets.forEach((dataset, datasetIndex) => {
-                        var meta = chart.getDatasetMeta(datasetIndex);
-                        meta.data.forEach((bar, index) => {
-                            var value = dataset.data[index];
-                            var yScale = chart.scales.y;
-                            var base = yScale.getPixelForValue(0);
-                            var thresholdY = yScale.getPixelForValue(thresholdValue);
-                            var yPos = yScale.getPixelForValue(value);
-                            var barWidth = bar.width;
-                            var xPos = bar.x - barWidth / 2;
-
-                            ctx.save();
-                            if (value > thresholdValue) {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, thresholdY, barWidth, base - thresholdY);
-
-                                ctx.fillStyle = 'rgba(246, 94, 95, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, thresholdY - yPos);
-                            } else {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, base - yPos);
-                            }
-                            ctx.restore();
-                        });
-                    });
                 }
-            }]
-
+            }
 
         });
 
@@ -4327,17 +4125,10 @@ function bindStationDataToBarChart(filter) {
 
                     },
                     y: {
-                        display: true,
-                        ticks: {
-                            display: true
-                        },
-                        grid: {
-                            display: false
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                        },
                         stacked: true,
+                        grid: {
+                            display: false,
+                        },
                         afterFit: (ctx) => {
                             //console.log(ctx);
                             ctx.width = 40;
@@ -4362,14 +4153,6 @@ function bindStationDataToBarChart(filter) {
     }
     constructBarChart1.update();
     constructBarChart.update();
-    const legendSeriesElements = document.querySelectorAll('.Exceeds');
-    legendSeriesElements.forEach(element => {
-        if (exceedsThreshold) {
-            element.style.display = 'block';
-        } else {
-            element.style.display = 'none';
-        }
-    });
     var $barchart = $('#' + boxid1);
     var maxScroll = $barchart.prop('scrollWidth') - $barchart.outerWidth();
     $barchart.animate({
@@ -4492,55 +4275,55 @@ var imageData = [
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
 
-if (window.innerWidth < 765) {   
-        var itemsPerPage = 1;
-        $.each(imageData, function (index, item) {
-            if (index % itemsPerPage === 0) {
-                var carouselItem = $('<div>').addClass('carousel-item carol-item');
-                if (index === 0) {
-                    carouselItem.addClass('active');
-                }
-
-                // Loop through each item per slide
-                for (let i = 0; i < itemsPerPage; i++) {
-                    var dataIndex = index + i;
-                    if (dataIndex >= imageData.length) {
-                        // If dataIndex exceeds imageData length, wrap around to the beginning
-                        dataIndex = dataIndex % imageData.length;
-                    }
-
-                    var content = $('<div>').addClass('col-md-3');
-                    var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
-                    var imageDiv = $('<div>');
-                    var imageId = 'image_' + dataIndex;
-                    var imageUrl = imageData[dataIndex].imageUrl;
-
-                    // Sanitize the image URL            
-                    //if (!isValidUrl(imageUrl)) {
-                    //    console.error('Invalid image URL:', imageUrl);
-                    //    continue; // Skip this item if the URL is not valid
-                    //}
-
-                    var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
-                    var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
-                    var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
-
-                    // Assemble elements
-                    imageDiv.append(image);
-                    mainContent.append(imageDiv, projectContent, projectItemDescription);
-                    content.append(mainContent);
-                    carouselItem.append(content);
-                }
-
-                $('#recipeCarousel .carousel-inner').append(carouselItem);
+if (window.innerWidth < 765) {
+    var itemsPerPage = 1;
+    $.each(imageData, function (index, item) {
+        if (index % itemsPerPage === 0) {
+            var carouselItem = $('<div>').addClass('carousel-item carol-item');
+            if (index === 0) {
+                carouselItem.addClass('active');
             }
+
+            // Loop through each item per slide
+            for (let i = 0; i < itemsPerPage; i++) {
+                var dataIndex = index + i;
+                if (dataIndex >= imageData.length) {
+                    // If dataIndex exceeds imageData length, wrap around to the beginning
+                    dataIndex = dataIndex % imageData.length;
+                }
+
+                var content = $('<div>').addClass('col-md-3');
+                var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+                var imageDiv = $('<div>');
+                var imageId = 'image_' + dataIndex;
+                var imageUrl = imageData[dataIndex].imageUrl;
+
+                // Sanitize the image URL
+                //if (!isValidUrl(imageUrl)) {
+                //    console.error('Invalid image URL:', imageUrl);
+                //    continue; // Skip this item if the URL is not valid
+                //}
+
+                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
+                var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+                var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
+
+                // Assemble elements
+                imageDiv.append(image);
+                mainContent.append(imageDiv, projectContent, projectItemDescription);
+                content.append(mainContent);
+                carouselItem.append(content);
+            }
+
+            $('#recipeCarousel .carousel-inner').append(carouselItem);
+        }
     });
 } else {
 
     var itemsPerPage = 5; // Number of items per slide
     // Check window width and adjust itemsPerPage if necessary
     if (window.innerWidth < 1099) {
-        itemsPerPage = 2;
+       itemsPerPage = 2;
     }
     $.each(imageData, function (index, item) {
         if (index % itemsPerPage === 0) {
