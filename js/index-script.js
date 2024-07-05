@@ -894,8 +894,8 @@ function showHideToggleDiv(tabId, pollutant) {
     document.getElementById(tabId).style.display = 'block';
     activePollutant = pollutant;
     bindStationDataToBarChart($("#barChartFilter").text());
-    
-   updateThreshold(pollutant, $("#barChartFilter").text());
+
+    updateThreshold(pollutant, $("#barChartFilter").text());
 }
 
 function updateThreshold(pollutant, timeFilter) {
@@ -2024,7 +2024,7 @@ $('.mapStationSearchScroll').on('click', 'li', function () {
 
 function selectedStation(stationId) {
     currentStationDetails = stationsWithLocations.find(x => x.stationId == stationId); // Remove the class 'expanded' from the sidebar after 4 seconds
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById('sidebar').classList.remove('expanded');
     }, 300);
 
@@ -3324,7 +3324,7 @@ function bindStationDataToBarChart(filter) {
     var lastrefreshtime;
     var exceedsThreshold = false;
     let backgroundColor, borderColor;
-     switch (activePollutant) {
+    switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
                 case "Daily":
@@ -3432,7 +3432,7 @@ function bindStationDataToBarChart(filter) {
 
                     break;
             }
-           
+
             barChartDataSet.push({
                 label: '',
                 backgroundColor: backgroundColor,
@@ -3491,7 +3491,7 @@ function bindStationDataToBarChart(filter) {
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     break;
             }
-           
+
             barChartDataSet.push({
                 label: '',
                 backgroundColor: backgroundColor,
@@ -3550,7 +3550,7 @@ function bindStationDataToBarChart(filter) {
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     break;
             }
-            
+
             barChartDataSet.push({
                 label: '',
                 backgroundColor: backgroundColor,
@@ -3610,10 +3610,10 @@ function bindStationDataToBarChart(filter) {
                         }
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-                    borderColor = barChartData.map(value =>  value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
+                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
 
                     break;
-            }           
+            }
             barChartDataSet.push({
                 label: '',
                 backgroundColor: backgroundColor,
@@ -3724,14 +3724,27 @@ function bindStationDataToBarChart(filter) {
 
 
 
-        box.style.height = "290px";
+        box.style.height = "298px";
+        box.style.marginTop = "-0.4rem";
         box3.style.width = "300%";
         if (mql.matches) {
-            box.style.height = "300px";
+            if (boxid == "AqiBarchart1") {
+                box.style.height = "308px";
+                box.style.marginTop = "1.1rem";
+            } else {
+                box.style.height = "318px";
+                box.style.marginTop = "-0.4rem";
+            }
             box1.style.marginLeft = "-7px";
         }
         if (mql1.matches) {
-            box.style.height = "275px";
+            if (boxid == "AqiBarchart1") {
+                box.style.height = "284px";
+                box.style.marginTop = "1.4rem";
+            } else {
+                box.style.height = "298px";
+                box.style.marginTop = "-0.4rem";
+            }
             box1.style.marginLeft = "-10px";
         }
         var constructBarChart = new Chart(barChart, {
@@ -4055,14 +4068,17 @@ function bindStationDataToBarChart(filter) {
             box.style.height = "315px";
             box3.style.width = "100%";
         } else {
-            box.style.height = "300px";
+            box.style.height = "308px";
+            box.style.marginTop = "-0.4rem"
             box3.style.width = "150%";
         }
         if (mql.matches) {
-            if (filter !== 'Daily') {
-                box.style.height = "325px";
+            if (boxid == "AqiBarchart1") {
+                box.style.height = "318px";
+                box.style.marginTop = "1.1rem";
             } else {
-                box.style.height = "310px";
+                box.style.height = "328px";
+                box.style.marginTop = "-0.4rem";
             }
         }
         if (mql1.matches) {
@@ -4070,7 +4086,13 @@ function bindStationDataToBarChart(filter) {
                 box.style.height = "300px";
                 box1.style.marginLeft = "-10px";
             } else {
-                box.style.height = "285px";
+                if (boxid == "AqiBarchart1") {
+                    box.style.height = "292px";
+                    box.style.marginTop = "1.5rem";
+                } else {
+                    box.style.height = "307px";
+                    box.style.marginTop = "-0.4rem";
+                }
                 box1.style.marginLeft = "0px";
             }
         }
@@ -4241,7 +4263,7 @@ function bindStationDataToBarChart(filter) {
                             //console.log(ctx);
                             ctx.width = 40;
                         },
-                        stacked: true
+                        stacked: true,
                         //beginAtZero: true
                     },
 
@@ -4492,48 +4514,48 @@ var imageData = [
 
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
 
-if (window.innerWidth < 765) {   
-        var itemsPerPage = 1;
-        $.each(imageData, function (index, item) {
-            if (index % itemsPerPage === 0) {
-                var carouselItem = $('<div>').addClass('carousel-item carol-item');
-                if (index === 0) {
-                    carouselItem.addClass('active');
-                }
-
-                // Loop through each item per slide
-                for (let i = 0; i < itemsPerPage; i++) {
-                    var dataIndex = index + i;
-                    if (dataIndex >= imageData.length) {
-                        // If dataIndex exceeds imageData length, wrap around to the beginning
-                        dataIndex = dataIndex % imageData.length;
-                    }
-
-                    var content = $('<div>').addClass('col-md-3');
-                    var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
-                    var imageDiv = $('<div>');
-                    var imageId = 'image_' + dataIndex;
-                    var imageUrl = imageData[dataIndex].imageUrl;
-
-                    // Sanitize the image URL            
-                    //if (!isValidUrl(imageUrl)) {
-                    //    console.error('Invalid image URL:', imageUrl);
-                    //    continue; // Skip this item if the URL is not valid
-                    //}
-
-                    var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
-                    var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
-                    var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
-
-                    // Assemble elements
-                    imageDiv.append(image);
-                    mainContent.append(imageDiv, projectContent, projectItemDescription);
-                    content.append(mainContent);
-                    carouselItem.append(content);
-                }
-
-                $('#recipeCarousel .carousel-inner').append(carouselItem);
+if (window.innerWidth < 765) {
+    var itemsPerPage = 1;
+    $.each(imageData, function (index, item) {
+        if (index % itemsPerPage === 0) {
+            var carouselItem = $('<div>').addClass('carousel-item carol-item');
+            if (index === 0) {
+                carouselItem.addClass('active');
             }
+
+            // Loop through each item per slide
+            for (let i = 0; i < itemsPerPage; i++) {
+                var dataIndex = index + i;
+                if (dataIndex >= imageData.length) {
+                    // If dataIndex exceeds imageData length, wrap around to the beginning
+                    dataIndex = dataIndex % imageData.length;
+                }
+
+                var content = $('<div>').addClass('col-md-3');
+                var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+                var imageDiv = $('<div>');
+                var imageId = 'image_' + dataIndex;
+                var imageUrl = imageData[dataIndex].imageUrl;
+
+                // Sanitize the image URL            
+                //if (!isValidUrl(imageUrl)) {
+                //    console.error('Invalid image URL:', imageUrl);
+                //    continue; // Skip this item if the URL is not valid
+                //}
+
+                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
+                var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+                var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
+
+                // Assemble elements
+                imageDiv.append(image);
+                mainContent.append(imageDiv, projectContent, projectItemDescription);
+                content.append(mainContent);
+                carouselItem.append(content);
+            }
+
+            $('#recipeCarousel .carousel-inner').append(carouselItem);
+        }
     });
 } else {
 

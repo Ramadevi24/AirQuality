@@ -941,7 +941,8 @@
     }
     /* ------------ add new res css -------------- */
     .insight .ug_content {
-        top: 60px;
+        /*top: 60px;*/
+        top: 25px
     }
 
     .insight .indexbar-ugcontent {
@@ -1127,7 +1128,8 @@
     }
 
     .insight .ug_content {
-        top: 53px;
+        /*top: 53px;*/
+        top: 25px;
     }
 
     .insight .md-top-tablet {
