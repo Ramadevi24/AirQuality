@@ -1,10 +1,92 @@
 @media (min-width: 320px) and (max-width: 767px) {
     @supports (-webkit-backdrop-filter: none) {
-        .safari .banner-section .carousel-caption-banner .h5 {
-            top: 43px;
+        .safari .insight ul.nav.twobar-tabs {
+            bottom: 23% !important;
+        }
+
+        .safari .insight .aqi-content li span {
+            padding-top: 4px;
+        }
+
+        .safari .Newsearch-box:hover > .listSearch {
+            z-index: 1;
+        }
+
+        .safari .Newsearch-box:hover > .search-txt, .Newsearch-box:hover > .listSearch {
+            margin-left: auto !important;
+            left: 17px;
+        }
+
+        .safari .project-slider #prev:disabled, .project-slider #next:disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+        .safari .air-map-container {
+            position: relative;
+        }
+
+        .safari #wrapper {
+            position: absolute;
+            top: 0;
+            z-index: 11;
+            height: 100vh;
+        }
+
+        .safari .air-map-container.full-screen ul.map-vert-tools {
+            bottom: 86%
+        }
+
+        .safari .air-map-container.full-screen .air-map-col ul.map-hori-tools {
+            bottom: 76%
+        }
+
+        .safari #page-content-wrapper {
+            top: 40px !important
+        }
+
+        .safari #wrapper .sidebar-nav .wheather-widget {
+            top: 35px;
+            margin-bottom: 25px;
         }
     }
 }
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    @supports (-webkit-touch-callout: none) {
+        .safari .air-map-container {
+            position: relative;
+        }
+
+        .safari #wrapper {
+            position: absolute;
+            top: 0;
+            z-index: 11;
+            height: 100vh;
+        }
+
+        #playPauseBtn2, #playPauseBtn1, #skipButton, #audioButton {
+            bottom: 75px;
+        }
+
+        #dynamic-heading {
+            font-size: 30px
+        }
+
+        .project-modal .sidebar {
+            width: 60% !important;
+            background-color: #fff;
+        }
+
+        .insight .data-list label.list-group-item span.numbers {
+            padding-top: 2px
+        }
+    }
+}
+
 
 @media (min-width: 320px) and (max-width: 365px) {
     .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 {
@@ -65,8 +147,12 @@
 }
 
 @media (min-width: 320px) and (max-width: 766px) {
-    .sidebar-expanded-position {
-        overflow: hidden;
+    .scrollPolicyShow {
+        padding-right: 15px;
+    }
+
+    .scrollPolicyShow-term {
+        padding-right: 12px;
     }
 
     .insight .grid-bottom {
@@ -593,6 +679,10 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    #pm10Barchart1.canvas-graphs-barchart1, #so2Barchart1.canvas-graphs-barchart1, #coBarchart1.canvas-graphs-barchart1, #no2Barchart1.canvas-graphs-barchart1, #o3Barchart1.canvas-graphs-barchart1 {
+        margin-top: 11px;
+    }
+
     .project-slider #recipeCarousel .carol-item .col-md-3 {
         padding-right: 0px;
     }
@@ -917,7 +1007,7 @@
     }
 
     .canvas-graphs-barchart {
-        margin-left: -10px;
+        margin-left: 0px;
     }
 
     #chart_polutent {
@@ -941,8 +1031,7 @@
     }
     /* ------------ add new res css -------------- */
     .insight .ug_content {
-        /*top: 60px;*/
-        top: 25px
+        top: 25px;
     }
 
     .insight .indexbar-ugcontent {
@@ -1127,7 +1216,7 @@
         margin-top: 30px;
     }
 
-    .insight .ug_content {
+  .insight .ug_content {
         /*top: 53px;*/
         top: 25px;
     }
@@ -1703,14 +1792,14 @@
     }
 
     .insight .coll-icon {
-        width: 25px;
+        width: 35px;
         height: 100px;
-        background: #fff;
+        background: #f6f6f6;
         border-radius: 0;
         text-align: center;
         /* border: 1px solid #ccc; */
         position: absolute;
-        right: 0px;
+        left: 0px;
         top: 0px;
         height: 100vh;
     }
@@ -1815,14 +1904,14 @@
     }
 
     .insight .coll-icon {
-        width: 25px;
+        width: 35px;
         height: 100px;
-        background: #fff;
+        background: #f6f6f6;
         border-radius: 0;
         text-align: center;
         /* border: 1px solid #ccc; */
         position: absolute;
-        right: 0px;
+        left: 0px;
         top: 0px;
         height: 100vh;
     }
@@ -1914,6 +2003,7 @@
     .insight .data-sort_sidebar {
         position: relative;
         width: 40%;
+        padding-right: 9px
     }
 
     .date_row {
@@ -3062,5 +3152,82 @@
         overflow-y: scroll;
         height: 100vh;
         overflow-x: hidden;
+    }
+    /*  ----------------- For landscape Mode------------------ */
+    @media only screen and (max-height: 500px) and (orientation: landscape) {
+        .banner-section .carousel-caption-banner {
+            top: 18%;
+        }
+
+        #mobile-overlay a {
+            margin-top: 3%;
+        }
+
+        .navmobile-new {
+            top: 13px;
+        }
+
+        .air-map-container .air-map-col .mapimg {
+            height: calc(100vh - 45px);
+        }
+
+        .web-top-legends {
+            width: 44%;
+            top: 36px;
+        }
+
+        .tab-pd-0, #section4 .container {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .insight ul.nav.twobar-tabs, .insight ul.nav.upperTop {
+            bottom: 19%;
+        }
+
+        .sidebar-nav {
+            height: 350px;
+            overflow: scroll;
+        }
+
+        .air-map-container.full-screen .air-map-col ul.map-hori-tools {
+            bottom: 72%;
+        }
+
+        .project-slider .carousel-inner .carousel-item.active {
+            display: flex;
+        }
+
+        .esri-ui-bottom-right.esri-ui-corner {
+            bottom: 11px;
+        }
+
+        .air-map-container.full-screen .air-map-col .web-top-legends {
+            top: auto;
+        }
+
+        .air-map-container.full-screen ul.map-vert-tools {
+            bottom: 78%;
+        }
+
+        .video-wrapper, #myVideo1, .overlay {
+            height: 500px !important;
+        }
+
+        .six-resolution-mt30 {
+            margin-top: 20px !important;
+        }
+
+        .six-resolution-mt10 {
+            margin-top: 5px !important;
+        }
+
+        .section1-dateshift .date-shift {
+            right: -44px;
+        }
+
+        .data-sort_sidebar.hidden {
+            padding: 18px 15px;
+        }
     }
 }

@@ -3078,7 +3078,19 @@ function bindStationDataToLineChart(filter) {
 function updateYAxis(chart) {
     const activeDatasets = chart.data.datasets.filter((dataset, index) => chart.isDatasetVisible(index));
     const isCOVisible = activeDatasets.some(dataset => dataset.label === 'CO');
+    const hasY1Axis = !!chart.options.scales.y1;
 
+    if (!isCOVisible && hasY1Axis) {
+
+        chart.options.scales.y1.display = false;
+        chart.data.datasets.forEach(dataset => {
+            if (dataset.label === 'CO') {
+                dataset.yAxisID = 'y';
+            }
+        });
+        chart.update();
+        return;
+    }
     if (activeDatasets.length === 1 && isCOVisible) {
         chart.options.scales.y.title.text = 'CO (mg/m³)';
         chart.options.scales.y.ticks = {
@@ -3090,7 +3102,7 @@ function updateYAxis(chart) {
                 dataset.yAxisID = 'y';
             }
         });
-    } else {
+    } else if(hasY1Axis) {
         chart.options.scales.y.title.text = 'Concentration (µg/m³)';
         chart.options.scales.y.ticks = {};
         chart.options.scales.y1.title.text = 'CO (mg/m³)';
@@ -3324,6 +3336,67 @@ function bindStationDataToBarChart(filter) {
     var lastrefreshtime;
     var exceedsThreshold = false;
     let backgroundColor, borderColor;
+    const plugins = [];
+    const customBarColors = {
+        id: 'customBarColors',
+        afterDraw: chart => {
+            var ctx = chart.ctx;
+            var cornerRadius = 3;
+            chart.data.datasets.forEach((dataset, datasetIndex) => {
+                var meta = chart.getDatasetMeta(datasetIndex);
+                meta.data.forEach((bar, index) => {
+                    var value = dataset.data[index];
+                    if (value === 0) return; 
+                    var value = dataset.data[index];
+                    var yScale = chart.scales.y;
+                    var base = yScale.getPixelForValue(0);
+                    var thresholdY = yScale.getPixelForValue(thresholdValue);
+                    var yPos = yScale.getPixelForValue(value);
+                    var barWidth = bar.width;
+                    var xPos = bar.x - barWidth / 2;
+
+                    ctx.save();
+                    if (value > thresholdValue) {
+                        ctx.fillStyle = 'rgba(0, 75, 135, 1)';
+                        drawRoundedRect(ctx, xPos, thresholdY, barWidth, base - thresholdY, 0, false);
+                        ctx.fill();
+
+                        ctx.fillStyle = 'rgba(246, 94, 95, 1)';
+                        drawRoundedRect(ctx, xPos, yPos, barWidth, thresholdY - yPos, cornerRadius, true);
+                        ctx.fill();
+                    } else {
+                        ctx.fillStyle = 'rgba(0, 75, 135, 1)';
+                        drawRoundedRect(ctx, xPos, yPos, barWidth, base - yPos, cornerRadius, false);
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                });
+            });
+
+            function drawRoundedRect(ctx, x, y, width, height, radius, topOnly) {
+                ctx.beginPath();
+                if (topOnly) {
+                    ctx.moveTo(x, y + height);
+                    ctx.lineTo(x, y + radius);
+                    ctx.arcTo(x, y, x + radius, y, radius);
+                    ctx.lineTo(x + width - radius, y);
+                    ctx.arcTo(x + width, y, x + width, y + radius, radius);
+                    ctx.lineTo(x + width, y + height);
+                } else {
+                    ctx.moveTo(x + radius, y);
+                    ctx.lineTo(x + width - radius, y);
+                    ctx.arcTo(x + width, y, x + width, y + radius, radius);
+                    ctx.lineTo(x + width, y + height - radius);
+                    ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+                    ctx.lineTo(x + radius, y + height);
+                    ctx.arcTo(x, y + height, x, y + height - radius, radius);
+                    ctx.lineTo(x, y + radius);
+                    ctx.arcTo(x, y, x + radius, y, radius);
+                }
+                ctx.closePath();
+            }
+        }
+    };
     switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
@@ -3334,6 +3407,9 @@ function bindStationDataToBarChart(filter) {
                         if (item.pM10 > pollutantThresholdLimits.PM10Daily) {
                             exceedsThreshold = true;
                         }
+                        backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        borderColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        plugins.push(customBarColors);
                     });
                     break;
                 case "Monthly":
@@ -3341,14 +3417,16 @@ function bindStationDataToBarChart(filter) {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.month);
                     });
-                    // backgroundColors.push('#004B87');
+                    backgroundColor = 'rgba(0, 75, 135, 1)';
+                    borderColor = 'rgba(0, 75, 135, 1)';
                     break;
                 case "Yearly":
                     chartData.forEach(item => {
                         barChartData.push(item.pM10);
                         categoriesData.push(item.year);
                     });
-                    // backgroundColors.push('#004B87');
+                    backgroundColor = 'rgba(0, 75, 135, 1)';
+                    borderColor = 'rgba(0, 75, 135, 1)';
                     break;
                 default:
                     chartData.forEach(item => {
@@ -3359,16 +3437,11 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
+                        backgroundColor = 'rgba(0, 75, 135, 1)';
+                        borderColor = 'rgba(0, 75, 135, 1)';
                     });
                     break;
-            }
-            if (filter === "Daily") {
-                backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                borderColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-            } else {
-                backgroundColor = 'rgba(0, 75, 135, 1)';
-                borderColor = 'rgba(0, 75, 135, 1)';
-            }
+            }          
             barChartDataSet.push({
                 label: '',
                 data: barChartData,
@@ -3394,9 +3467,10 @@ function bindStationDataToBarChart(filter) {
                         if (item.sO2 > pollutantThresholdLimits.SO2Daily) {
                             exceedsThreshold = true;
                         }
+                        backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        plugins.push(customBarColors);
                     });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
@@ -3416,6 +3490,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    plugins.push(customBarColors);
                     break
                 default:
                     chartData.forEach(item => {
@@ -3426,20 +3501,22 @@ function bindStationDataToBarChart(filter) {
                         // Combine the formatted date with the hour, separated by a semicolon
                         const formattedString = `${formattedDate};${item.hour}`;
                         categoriesData.push(formattedString);
-                    });
-                    backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                        plugins.push(customBarColors);
 
+                    });                  
                     break;
             }
 
             barChartDataSet.push({
                 label: '',
-                backgroundColor: backgroundColor,
-                borderColor: borderColor,
-                lineTension: 0.2,
                 data: barChartData,
-                borderRadius: 3
+                backgroundColor: backgroundColor,
+               // borderColor: borderColor,
+                borderWidth: 1,
+                lineTension: 0.2,               
+                borderRadius: 3               
             });
             pollutantBarChartId = "ADstationSo2BarGraph";
             pollutantBarChartId1 = "ADstationSo2BarGraph1";
@@ -3489,15 +3566,17 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    plugins.push(customBarColors);
                     break;
             }
 
             barChartDataSet.push({
                 label: '',
+                data: barChartData,
                 backgroundColor: backgroundColor,
                 borderColor: borderColor,
+                borderWidth: 1,
                 lineTension: 0.2,
-                data: barChartData,
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationCoBarGraph";
@@ -3548,15 +3627,17 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
+                    plugins.push(customBarColors);
                     break;
             }
 
             barChartDataSet.push({
                 label: '',
+                data: barChartData,
                 backgroundColor: backgroundColor,
                 borderColor: borderColor,
+                borderWidth: 1,
                 lineTension: 0.2,
-                data: barChartData,
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationO3BarGraph";
@@ -3577,8 +3658,8 @@ function bindStationDataToBarChart(filter) {
                         }
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-
+                    borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)'),
+                    plugins.push(customBarColors);
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
@@ -3611,15 +3692,17 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
+                    plugins.push(customBarColors);
 
                     break;
             }
             barChartDataSet.push({
                 label: '',
+                data: barChartData,
                 backgroundColor: backgroundColor,
                 borderColor: borderColor,
+                borderWidth: 1,
                 lineTension: 0.2,
-                data: barChartData,
                 borderRadius: 3
             });
             pollutantBarChartId = "ADstationNo2BarGraph";
@@ -3701,10 +3784,17 @@ function bindStationDataToBarChart(filter) {
     var mql = window.matchMedia(mediaQuery);
     let minDate = new Date();
     let maxDate = new Date();
+    
 
     var mediaQuery1 = "(min-width: 320px) and (max-width: 767px)";
     // Test the media query
     var mql1 = window.matchMedia(mediaQuery1);
+    var mediaQuery2 = "(min-width: 320px) and (max-width: 365px)";
+    var mql2 = window.matchMedia(mediaQuery2);
+    var mediaQuery3 = "(min-width: 1355px) and (max-width: 1368px)";
+    var mql3 = window.matchMedia(mediaQuery3);
+   
+
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -3721,9 +3811,6 @@ function bindStationDataToBarChart(filter) {
         }
         minDateString = minDate.toISOString().split('T')[0];
         maxDateString = maxDate.toISOString().split('T')[0];
-
-
-
         box.style.height = "298px";
         box.style.marginTop = "-0.4rem";
         box3.style.width = "300%";
@@ -3745,8 +3832,29 @@ function bindStationDataToBarChart(filter) {
                 box.style.height = "298px";
                 box.style.marginTop = "-0.4rem";
             }
+            box1.style.marginLeft = "0px";
+        }
+        if (mql2.matches) {
+            if (boxid == "AqiBarchart1") {
+                box.style.height = "269px";
+                box.style.marginTop = "1.4rem";
+            } else {
+                box.style.height = "282px";
+                box.style.marginTop = "-0.4rem";
+            }
+            box1.style.marginLeft = "0px";
+        }
+        if (mql3.matches) {
+            if (boxid == "AqiBarchart1") {
+                box.style.height = "255px";
+                box.style.marginTop = "1.4rem";
+            } else {
+                box.style.height = "279px";
+                box.style.marginTop = "-0.4rem";
+            }
             box1.style.marginLeft = "-10px";
         }
+
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -3755,8 +3863,8 @@ function bindStationDataToBarChart(filter) {
                 //datasets: barChartDataSet
                 datasets: barChartDataSet.map(dataset => ({
                     ...dataset,
-                    // barThickness: 10,
-                    // offset: 5
+                    offset: 5,
+                    clip: { left: 0, top: 0, right: 0, bottom: 0 }
 
                 })),
 
@@ -3944,16 +4052,36 @@ function bindStationDataToBarChart(filter) {
                         max: maxDateString
                     },
                     y: {
+                        display: false,
+                        ticks: {
+                            display: false
+                        },
                         grid: {
                             display: false,
                         },
+                        gridLines: {
+                            drawBorder: false,
+                        },
                         afterFit: (ctx) => {
                             //console.log(ctx);
-                            ctx.width = 40;
+                            ctx.width = 0.3;
                         },
-                        stacked: true
+                        stacked: true,
                         //beginAtZero: true
                     },
+                    y1: {
+                        display: false,
+                        type: 'linear',
+                        position: 'left',
+                        stacked: true,
+                        ticks: {
+                            beginAtZero: true,
+                            callback: function (value) { return value; }
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        }
+                    }
                 },
 
 
@@ -3964,37 +4092,7 @@ function bindStationDataToBarChart(filter) {
                     }
                 }
             },
-            plugins: [{
-                id: 'customBarColors',
-                afterDraw: chart => {
-                    var ctx = chart.ctx;
-                    chart.data.datasets.forEach((dataset, datasetIndex) => {
-                        var meta = chart.getDatasetMeta(datasetIndex);
-                        meta.data.forEach((bar, index) => {
-                            var value = dataset.data[index];
-                            var yScale = chart.scales.y;
-                            var base = yScale.getPixelForValue(0);
-                            var thresholdY = yScale.getPixelForValue(thresholdValue);
-                            var yPos = yScale.getPixelForValue(value);
-                            var barWidth = bar.width;
-                            var xPos = bar.x - barWidth / 2;
-
-                            ctx.save();
-                            if (value > thresholdValue) {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, thresholdY, barWidth, base - thresholdY);
-
-                                ctx.fillStyle = 'rgba(246, 94, 95, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, thresholdY - yPos);
-                            } else {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, base - yPos);
-                            }
-                            ctx.restore();
-                        });
-                    });
-                }
-            }]
+            plugins: plugins
 
         });
 
@@ -4096,7 +4194,21 @@ function bindStationDataToBarChart(filter) {
                 box1.style.marginLeft = "0px";
             }
         }
-
+        if (mql3.matches) {
+            if (filter !== 'Daily') {
+                box.style.height = "300px";
+                box1.style.marginLeft = "0px";
+            } else {
+                if (boxid == "AqiBarchart1") {
+                    box.style.height = "251px";
+                    box.style.marginTop = "1.5rem";
+                } else {
+                    box.style.height = "285px";
+                    box.style.marginTop = "-0.4rem";
+                }
+                box1.style.marginLeft = "0px";
+            }
+        }
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -4256,14 +4368,21 @@ function bindStationDataToBarChart(filter) {
                     //    stacked: true
                     //},
                     y: {
+                        display: false,
+                            ticks: {
+                                display: false
+                            },
                         grid: {
                             display: false,
                         },
+                        gridLines: {
+                                drawBorder: false,
+                            },                        
+                        stacked: true,
                         afterFit: (ctx) => {
                             //console.log(ctx);
-                            ctx.width = 40;
+                            ctx.width = 0.3;
                         },
-                        stacked: true,
                         //beginAtZero: true
                     },
 
@@ -4276,37 +4395,7 @@ function bindStationDataToBarChart(filter) {
                     }
                 },
             },
-            plugins: [{
-                id: 'customBarColors',
-                afterDraw: chart => {
-                    var ctx = chart.ctx;
-                    chart.data.datasets.forEach((dataset, datasetIndex) => {
-                        var meta = chart.getDatasetMeta(datasetIndex);
-                        meta.data.forEach((bar, index) => {
-                            var value = dataset.data[index];
-                            var yScale = chart.scales.y;
-                            var base = yScale.getPixelForValue(0);
-                            var thresholdY = yScale.getPixelForValue(thresholdValue);
-                            var yPos = yScale.getPixelForValue(value);
-                            var barWidth = bar.width;
-                            var xPos = bar.x - barWidth / 2;
-
-                            ctx.save();
-                            if (value > thresholdValue) {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, thresholdY, barWidth, base - thresholdY);
-
-                                ctx.fillStyle = 'rgba(246, 94, 95, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, thresholdY - yPos);
-                            } else {
-                                ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                                ctx.fillRect(xPos, yPos, barWidth, base - yPos);
-                            }
-                            ctx.restore();
-                        });
-                    });
-                }
-            }]
+            plugins: plugins
 
 
         });
@@ -4381,6 +4470,8 @@ function bindStationDataToBarChart(filter) {
             }
 
         });
+
+       
     }
     constructBarChart1.update();
     constructBarChart.update();
