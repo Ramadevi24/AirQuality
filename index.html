@@ -3040,6 +3040,7 @@
 
     <script>
         $(document).ready(function () {
+	
             if (window.innerHeight < 1193) {
                 $(window).scroll(function () {
                     var scrollPosition = $(this).scrollTop();
@@ -3204,6 +3205,17 @@
                 }
             });
 
+        });
+    </script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+	//alert(window.innerWidth); 
+	//alert(window.innerHeight);
+            var videoIOS = document.getElementById('myVideo1');
+            videoIOS.muted = true; // Ensure the video is muted
+            videoIOS.play().catch(function(error) {
+                console.error('Error attempting to play the video:', error);
+            });
         });
     </script>
     <script>

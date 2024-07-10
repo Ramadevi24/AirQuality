@@ -1521,7 +1521,7 @@
     .expand-panel {
         left: 50%;
         transform: translate(-50%, -50%) rotate(270deg);
-        top: 35%;
+        top: 50%;
         position: absolute;
         font-family: 'GothamMedium';
         color: var(--blue);
@@ -1572,7 +1572,7 @@
     }
 
     .sidebar-dataScroll {
-        height: calc(100vh - 130px);
+        height: calc(100vh - 170px);
         overflow: auto;
         /* height: 720px; */
     }
@@ -1768,10 +1768,10 @@
         width: 100%;
         position: fixed;
         height: 100%;
-        top: 0px;
+        top: 65px;
         right: 100%;
         transition: right 0.5s ease;
-        z-index: 11111;
+        z-index: 9;
     }
 
         .insight #sidebar.visible {
@@ -1815,6 +1815,7 @@
             top: 50%;
             /* height: 80px; */
             height: 7px;
+            display: none;
         }
 
     .insight #sidebar.visible #sidebar-btn {
@@ -3069,9 +3070,7 @@
         padding: 10px 5px;
     }
 
-    .expand-panel {
-        top: 25%;
-    }
+   
 
     .insight .slide-content ul li .bg-gray img {
         width: 50px;
@@ -3153,7 +3152,9 @@
         height: 100vh;
         overflow-x: hidden;
     }
-    /*  ----------------- For landscape Mode------------------ */
+   
+}
+ /*  ----------------- For landscape Mode------------------ */
     @media only screen and (max-height: 500px) and (orientation: landscape) {
         .banner-section .carousel-caption-banner {
             top: 18%;
@@ -3191,7 +3192,7 @@
         }
 
         .air-map-container.full-screen .air-map-col ul.map-hori-tools {
-            bottom: 72%;
+            bottom: 70%!important;;
         }
 
         .project-slider .carousel-inner .carousel-item.active {
@@ -3207,7 +3208,7 @@
         }
 
         .air-map-container.full-screen ul.map-vert-tools {
-            bottom: 78%;
+            bottom: 76%!important;
         }
 
         .video-wrapper, #myVideo1, .overlay {
@@ -3230,4 +3231,17 @@
             padding: 18px 15px;
         }
     }
+
+
+@media (min-width: 740px) and (max-width: 745px) {
+    .tab-pd-0, #section4 .container {
+        width: 100%;
+        max-width: 100%;
+    }
+    .project-slider .carousel-inner .carousel-item.active {
+        display: flex;
+    }
+    header .search-block{padding: 6px 5px 0 0px;}
+    .highlight #sidebar{height: 6%;bottom: 0px;}
+     .web-top-legends{width: 45%;}
 }

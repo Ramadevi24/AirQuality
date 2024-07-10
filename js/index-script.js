@@ -37,7 +37,7 @@ const causeStationData = {
         'PM10': [
             { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
-        ],
+        ],       
         'NO2': [
             { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
@@ -53,7 +53,7 @@ const causeStationData = {
             { 'cause': 'Commercial establishments', 'image': 'urban_traffic.png' },
             { 'cause': 'Transportation', 'image': 'traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
-        ],
+        ],        
         'NO2': [
             { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
@@ -68,7 +68,7 @@ const causeStationData = {
         'PM10': [
             { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
-        ],
+        ],        
         'NO2': [
             { 'cause': 'Urban traffic', 'image': 'urban_traffic.png' }
         ],
@@ -3783,8 +3783,7 @@ function bindStationDataToBarChart(filter) {
     // Test the media query
     var mql = window.matchMedia(mediaQuery);
     let minDate = new Date();
-    let maxDate = new Date();
-    
+    let maxDate = new Date();    
 
     var mediaQuery1 = "(min-width: 320px) and (max-width: 767px)";
     // Test the media query
@@ -3793,8 +3792,6 @@ function bindStationDataToBarChart(filter) {
     var mql2 = window.matchMedia(mediaQuery2);
     var mediaQuery3 = "(min-width: 1355px) and (max-width: 1368px)";
     var mql3 = window.matchMedia(mediaQuery3);
-   
-
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -3804,6 +3801,8 @@ function bindStationDataToBarChart(filter) {
                 let lastrefreshdate = dateTimes[dateTimes.length - 1].toLocaleString('en-US', { hour12: true, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
 
                 $("#" + lastrefreshtime).text(lastrefreshdate);
+                $("#colastrefreshtime").text(lastrefreshdate);
+                $("#o3lastrefreshtime").text(lastrefreshdate);
             }
             minDate = new Date(Math.min(...dateTimes));
             maxDate = new Date(Math.max(...dateTimes));
@@ -3811,6 +3810,9 @@ function bindStationDataToBarChart(filter) {
         }
         minDateString = minDate.toISOString().split('T')[0];
         maxDateString = maxDate.toISOString().split('T')[0];
+
+
+
         box.style.height = "298px";
         box.style.marginTop = "-0.4rem";
         box3.style.width = "300%";
@@ -3846,8 +3848,8 @@ function bindStationDataToBarChart(filter) {
         }
         if (mql3.matches) {
             if (boxid == "AqiBarchart1") {
-                box.style.height = "255px";
-                box.style.marginTop = "1.4rem";
+                box.style.height = "298px";
+                box.style.marginTop = "-1.3rem";
             } else {
                 box.style.height = "279px";
                 box.style.marginTop = "-0.4rem";
@@ -3927,7 +3929,9 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.raw;
-
+                                if (value === null) {
+                                    value = 0;
+                                }
                                 if (pollutantBarChartId == "ADstationAqiBarGraph")
                                     return value;
                                 else if (pollutantBarChartId == "ADstationCoBarGraph")
@@ -4200,8 +4204,8 @@ function bindStationDataToBarChart(filter) {
                 box1.style.marginLeft = "0px";
             } else {
                 if (boxid == "AqiBarchart1") {
-                    box.style.height = "251px";
-                    box.style.marginTop = "1.5rem";
+                    box.style.height = "298px";
+                    box.style.marginTop = "-0.8rem";
                 } else {
                     box.style.height = "285px";
                     box.style.marginTop = "-0.4rem";
@@ -4262,7 +4266,9 @@ function bindStationDataToBarChart(filter) {
                             label: function (context) {
                                 // Return the value for the tooltip
                                 let value = context.raw;
-
+                                if (value === null) {
+                                    value = 0;
+                                }
                                 if (pollutantBarChartId == "ADstationAqiBarGraph")
                                     return value;
                                 else if (pollutantBarChartId == "ADstationCoBarGraph")
@@ -4469,9 +4475,7 @@ function bindStationDataToBarChart(filter) {
                 }
             }
 
-        });
-
-       
+        });       
     }
     constructBarChart1.update();
     constructBarChart.update();

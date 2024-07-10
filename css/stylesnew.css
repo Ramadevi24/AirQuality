@@ -2029,7 +2029,7 @@ border: none;
 
 .insight .index-content {
     flex-direction: column;
-    gap: 22px;
+    gap: 15px;
 }
 
 .insight .number-index p {
@@ -4319,6 +4319,7 @@ table {
 .canvas-graphs-barchart1 {
     width: 40px;
     height: 290px;
+   margin-right: 6px
 }
 
 .canvas-graphs-Innerdiv {
