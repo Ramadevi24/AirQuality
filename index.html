@@ -1033,6 +1033,128 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div id="pm25Tab" class="tab-content mt-0" style="display: none;">
+                                                        <div class="air_p">
+                                                            <div class="Polutant_bar" id="pills-tabContent">
+                                                                <div class="quality-index-wrapper-h2">
+                                                                    <h2 class="index-mb-0 mb-0">POLLUTANT TRENDS</h2>
+                                                                    <p class="last-refersh-color">
+                                                                        Last refreshed: <span id="pm25lastrefreshtime"></span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="polutenat_bar">
+                                                                    <div class="tab_shado equal-air-box-height">
+                                                                        <div class=" row pollutant-dropdown-show graph-duration-filters">
+                                                                            <div class="tab-screen-mt btn-group btn-group-filter me-auto">
+                                                                                <button class="btn btn-light btn-sm dropdown-toggle quality-button-dropdown two-one-top"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                        id="barChartFilter">
+                                                                                    Hourly
+                                                                                </button>
+                                                                                <div class="date-box calen-box-hide">
+                                                                                    <div class="cal-div">
+                                                                                        <label for="datepicker">
+                                                                                            <input type="text"
+                                                                                                   id="datepicker"
+                                                                                                   class="datepicker"
+                                                                                                   autocomplete="off"
+                                                                                                   placeholder="Custom">
+                                                                                        </label>
+                                                                                        <img src="./images/new-images/filter-icon.png"
+                                                                                             width="16" height="16"
+                                                                                             id="datePickImage"
+                                                                                             class="me-2 datePickImage">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                    <li>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Hourly</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a class="dropdown-item quality-index-dropItem">Daily</a>
+                                                                                    </li>
+                                                                                    <li style="display: none;">
+                                                                                        <a class="dropdown-item quality-index-dropItem">Monthly</a>
+                                                                                    </li>
+                                                                                    <li style="display: none;">
+                                                                                        <a class="dropdown-item quality-index-dropItem">Yearly</a>
+                                                                                    </li>
+                                                                                    <li style="display: none;">
+                                                                                        <a class="dropdown-item quality-index-dropItem">Custom</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="ug_content">
+                                                                            <p><sup>ug/m<sup>3</sup></sup></p>
+                                                                        </div>
+
+                                                                        <div class="canvas-graphs-bar-main">
+                                                                            <div id="pm25Barchart1"
+                                                                                 class="canvas-graphs-height canvas-pollutant-resHt canvas-graphs-barchart1">
+                                                                                <canvas id="ADstationPm25BarGraph1"></canvas>
+                                                                            </div>
+                                                                            <div id="pm25Barchart"
+                                                                                 class="canvas-graphs-height canvas-graphs-barchart canvas-pollutant-resHt">
+                                                                                <div id="pm25Barchartinner"
+                                                                                     class="canvas-graphs-Innerdiv">
+                                                                                    <canvas id="ADstationPm25BarGraph"></canvas>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="date_row med-datenow mtb-mdscreens">
+                                                                            <ul id="pollutantHourlyBarChartDates">
+                                                                            </ul>
+                                                                        </div>                                                                        
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="pollutant-toggleBar position-relative">
+                                                                    <img src="./images/new-images/info-icon.png"
+                                                                         class="iconimg">
+                                                                    <div class="info-popup">
+
+                                                                        <div class="mb-2 text-right">
+                                                                            <img class="crossicon" src="./images/new-images/Arrow-right.png"
+                                                                                 width="35" height="35">
+                                                                        </div>
+
+                                                                        <div class="">
+                                                                            <img src="./images/new-images/Exaclamation-w.png"
+                                                                                 class="mb-3" width="22" height="22"
+                                                                                 alt="health-icon">
+                                                                        </div>
+                                                                        <p class="pollutantbar-title mb-0">
+                                                                        </p>
+                                                                        <p class="pollutantbar-address mb-0">
+                                                                        </p>
+                                                                        <hr>
+                                                                        <p class="measure-pollut">
+                                                                            Measured Pollutants
+                                                                        </p>
+                                                                        <div class="info-popup-content scroll-info-top">
+                                                                            <ul class="pollutantbar-details ps-0">
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <hr>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="chart-f-content">
+                                                                    <p>
+                                                                        Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div id="so2Tab" class="tab-content mt-0" style="display: none;">
                                                         <div class="air_p">
                                                             <div class="Polutant_bar" id="pills-tabContent">
@@ -1580,6 +1702,11 @@
                                                                onclick="showHideToggleDiv('pm10Tab', 'PM10')"
                                                                style="cursor: pointer;">PM<sub>10</sub></a>
                                                         </li>
+                                                        <li class="nav-item" id="legend-PM25">
+                                                            <a class="nav-link"
+                                                               onclick="showHideToggleDiv('pm25Tab', 'PM25')"
+                                                               style="cursor: pointer;">PM<sub>2.5</sub></a>
+                                                        </li>
                                                         <li class="nav-item" id="legend-SO2">
                                                             <a class="nav-link"
                                                                onclick="showHideToggleDiv('so2Tab', 'SO2')"
@@ -1670,6 +1797,12 @@
                                                                                             PM<sub>10</sub>
                                                                                         </p>
                                                                                         <strong id="lineChartAqiPm10Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value">
+                                                                                        <p>
+                                                                                            PM<sub>2.5</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartAqiPm25Value"></strong>
                                                                                     </div>
                                                                                     <div class="mult-value" id="o3aqipollutant">
                                                                                         <p>
@@ -1832,6 +1965,12 @@
                                                                                             PM<sub>10</sub>
                                                                                         </p>
                                                                                         <strong id="lineChartPollutantPm10Value"></strong>
+                                                                                    </div>
+                                                                                    <div class="mult-value" id="pm25pollutant">
+                                                                                        <p>
+                                                                                            PM<sub>2.5</sub>
+                                                                                        </p>
+                                                                                        <strong id="lineChartPollutantPm25Value"></strong>
                                                                                     </div>
                                                                                     <div class="mult-value" id="o3pollutant">
                                                                                         <p>
@@ -2073,14 +2212,14 @@
                                         <div class="d-none d-sm-none d-md-none d-lg-block">
                                             <div class="row equal-height-row flex-wrap">
                                                 <div class="col-lg-5 d-flex flex-column justify-content-between lgtab-hide">
-                                                    <div class="contact-content">
+                                                    <div class="exceed-contact-content">
                                                         <p class="mb-0">
                                                             Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-7 d-flex flex-column justify-content-between lgtab-hide">
-                                                    <div class="contact-content">
+                                                    <div class="exceed-contact-content">
                                                         <p class="mb-0">
                                                             Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.
                                                             <label class="maintain-height-visible">
@@ -2122,8 +2261,8 @@
                     </li>
                 </ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
+                <!-- Tab panes 12-july-24-->
+                <div class="tab-content position-relative">
                     <div id="home" class="tab-pane active p-0 m-0 project-slider">
 
                         <div id="recipeCarousel" class="carousel slide slide-carol mt-4">
@@ -2145,27 +2284,24 @@
                         </button>
 
                     </div>
-
-
-                    <div class="modal-background">
-                        <div class="sidebar">
-                            <div class="col-sm-12 p12">
-                                <div class="text-right mb-3">
-                                    <button type="button" class="close-btn">
-                                        <span class="material-symbols-outlined"> close </span>
-                                    </button>
-                                </div>
-                                <img src="" class="img-fluid mb-3 ProjectbgImage">
-                                <h6 class="mb-3 projectItemContent"></h6>
-                                <p class="text-justify h-200-scroll projectItemDescription">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
+            <div class="modal-background">
+                <div class="sidebar">
+                    <div class="col-sm-12 p12">
+                        <div class="text-right mb-3">
+                            <button type="button" class="close-btn">
+                                <span class="material-symbols-outlined"> close </span>
+                            </button>
+                        </div>
+                        <img src="" class="img-fluid mb-3 ProjectbgImage">
+                        <h6 class="mb-3 projectItemContent"></h6>
+                        <p class="text-justify h-200-scroll projectItemDescription">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="section" id="section4">
             <div class="faq-section container">
@@ -2613,11 +2749,14 @@
                 navigationPosition: 'right',
                 menu: '#menu',
 
-                scrollBar: true,
+                //scrollBar: true,
+                scrollOverflow: true,  
+                autoScrolling:true,
+                fitToSection: true,
                 normalScrollElements: '.project-modal, .scroll-info-top, .faqscrolling, .mapStationSearchScroll, .searchHeaderScroll, .scroll-yearlyDropdown, .sidebar-dataScroll', ////08-April-24
 
                 onLeave: function (origin, destination, direction) {
-                    console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS);
+                    console.log('Index: ' + origin.index + ' Slide Index: ' + slideIndexS, destination.index);
                     if (origin.index === 2 && !sliding) {
                         if (direction === 'down' && slideIndexS < 3) {
                             slideIndexS++;
@@ -2646,6 +2785,13 @@
                         sliding = false;
                     } else if (sliding) {
                         return false;
+                    }
+
+                    // Check scroll position and apply fadeout effect
+                    if (destination.index === 0) {
+                        $('header').removeClass('fadeout');
+                    } else {
+                        $('header').addClass('fadeout');
                     }
                 },
 
@@ -2678,6 +2824,10 @@
             const mapBlock = document.getElementById('mapBlock');
             mapBlock.addEventListener('mouseenter', disableScroll);
             mapBlock.addEventListener('mouseleave', enableScroll);
+
+            const wrapper1 = document.getElementById('wrapper');
+            wrapper1.addEventListener('mouseenter', disableScroll);
+            wrapper1.addEventListener('mouseleave', enableScroll);
 
 
             function disableScroll() {

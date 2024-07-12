@@ -869,30 +869,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
 
         }
 
-        function GetLast24HoursData() {
-
-            try {
-                $.ajax({
-                    method: "GET",
-                    cors: false,
-                    async: false,
-                    url: AirQualityService + "GetAirQualityStation",
-
-                    success: function (r) {
-                        console.log(r);
-                    },
-                    error: function (err) {
-                        console.log(err)
-                    }
-                });
-
-
-            } catch (e) {
-                console.log(e);
-
-            }
-        }
-
+     
         function PreparePollutantSeriesData() {
             var selectedStationObj;
             var SeriesArray = [];
