@@ -3482,7 +3482,7 @@ function bindStationDataToBarChart(filter) {
     var lastrefreshtime;
     var exceedsThreshold = false;
     let backgroundColor, borderColor;
-    const plugins = [];
+    const customPlugins = [];
     const customBarColors = {
         id: 'customBarColors',
         afterDraw: chart => {
@@ -3518,8 +3518,10 @@ function bindStationDataToBarChart(filter) {
                     ctx.restore();
                 });
             });
+        }
+    };
 
-            function drawRoundedRect(ctx, x, y, width, height, radius, topOnly) {
+    function drawRoundedRect(ctx, x, y, width, height, radius, topOnly) {
                 ctx.beginPath();
                 if (topOnly) {
                     ctx.moveTo(x, y + height);
@@ -3541,8 +3543,7 @@ function bindStationDataToBarChart(filter) {
                 }
                 ctx.closePath();
             }
-        }
-    };
+       
     switch (activePollutant) {
         case pollutantAbbrevations.PM10:
             switch (filter) {
@@ -3555,7 +3556,7 @@ function bindStationDataToBarChart(filter) {
                         }
                         backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                         borderColor = barChartData.map(value => value > pollutantThresholdLimits.PM10Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                        plugins.push(customBarColors);
+                        customPlugins.push(customBarColors);
                     });
                     break;
                 case "Monthly":
@@ -3671,7 +3672,7 @@ function bindStationDataToBarChart(filter) {
                         }
                         backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                         borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                        plugins.push(customBarColors);
+                        customPlugins.push(customBarColors);
                     });
                     break;
                 case "Monthly":
@@ -3692,7 +3693,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Yearly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    plugins.push(customBarColors);
+                    customPlugins.push(customBarColors);
                     break
                 default:
                     chartData.forEach(item => {
@@ -3705,7 +3706,7 @@ function bindStationDataToBarChart(filter) {
                         categoriesData.push(formattedString);
                         backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                         borderColor = barChartData.map(value => value > pollutantThresholdLimits.SO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                        plugins.push(customBarColors);
+                        customPlugins.push(customBarColors);
 
                     });                  
                     break;
@@ -3768,7 +3769,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.COHourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    plugins.push(customBarColors);
+                    customPlugins.push(customBarColors);
                     break;
             }
 
@@ -3829,7 +3830,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.O3Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)');
-                    plugins.push(customBarColors);
+                    customPlugins.push(customBarColors);
                     break;
             }
 
@@ -3861,7 +3862,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Daily ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)'),
-                    plugins.push(customBarColors);
+                    customPlugins.push(customBarColors);
                     break;
                 case "Monthly":
                     chartData.forEach(item => {
@@ -3894,7 +3895,7 @@ function bindStationDataToBarChart(filter) {
                     });
                     backgroundColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
                     borderColor = barChartData.map(value => value > pollutantThresholdLimits.NO2Hourly ? 'rgba(246, 94, 95, 1)' : 'rgba(0, 75, 135, 1)')
-                    plugins.push(customBarColors);
+                    customPlugins.push(customBarColors);
 
                     break;
             }
@@ -4296,9 +4297,9 @@ function bindStationDataToBarChart(filter) {
                         duration: 2000,
                         easing: 'easeInCubic'
                     }
-                }
+                },               
             },
-            plugins: plugins
+            plugins: customPlugins
 
         });
 
@@ -4599,15 +4600,15 @@ function bindStationDataToBarChart(filter) {
                     },
 
                 },
-
+                //plugins,
                 animations: {
                     tension: {
                         duration: 2000,
                         easing: 'easeInCubic'
                     }
-                },
+                },   
             },
-            plugins: plugins
+            plugins: customPlugins
 
 
         });
