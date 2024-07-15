@@ -679,6 +679,9 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+.insight .pollutants-legend-series {
+        margin: 2px 2px;
+    }
     .project-modal, .project-modal .sidebar{
         position: fixed;
     }
@@ -1064,6 +1067,21 @@
 
 
 @media (min-width: 768px) and (max-width: 1199px) {
+.insight .pollutant-toggleBar .ic-top-position{
+        top: -15px;
+    }
+    .pollutant-toggleBar .info-topPosition{
+        bottom: 4px;
+    }
+	#section2 .container{
+        max-width: 100%; padding-left: 30px; padding-right: 30px;
+    }
+    #section4 .container{
+        max-width: 100%; padding-left: 40px; padding-right: 40px;
+    }
+    #section3{
+        padding-left: 20px; padding-right: 20px;
+    }
     .project-modal, .project-modal .sidebar{
         position: fixed;
     }

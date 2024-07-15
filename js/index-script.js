@@ -3485,64 +3485,98 @@ function bindStationDataToBarChart(filter) {
     const customPlugins = [];
     const customBarColors = {
         id: 'customBarColors',
+        beforeInit: function (chart) {
+            chart.customAnimation = {
+                startTime: null,
+                duration: 500, // Animation duration in milliseconds
+                progress: 0
+            };
+        },
         afterDraw: chart => {
             var ctx = chart.ctx;
             var cornerRadius = 3;
+            var currentTime = Date.now();
+            var animation = chart.customAnimation;
+
+            if (!animation.startTime) {
+                animation.startTime = currentTime;
+            }
+
+            var elapsedTime = currentTime - animation.startTime;
+            animation.progress = Math.min(elapsedTime / animation.duration, 1);
+
+            var elapsedTime = currentTime - animation.startTime;
+            animation.progress = Math.min(elapsedTime / animation.duration, 1);
+
             chart.data.datasets.forEach((dataset, datasetIndex) => {
                 var meta = chart.getDatasetMeta(datasetIndex);
                 meta.data.forEach((bar, index) => {
                     var value = dataset.data[index];
-                    if (value === 0) return; 
-                    var value = dataset.data[index];
+                    if (value === 0) return;
+
                     var yScale = chart.scales.y;
                     var base = yScale.getPixelForValue(0);
-                    var thresholdY = yScale.getPixelForValue(thresholdValue);
                     var yPos = yScale.getPixelForValue(value);
+                    var thresholdY = yScale.getPixelForValue(thresholdValue);
                     var barWidth = bar.width;
                     var xPos = bar.x - barWidth / 2;
 
                     ctx.save();
+
                     if (value > thresholdValue) {
+                        // Draw the lower part of the bar (below the threshold)
                         ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                        drawRoundedRect(ctx, xPos, thresholdY, barWidth, base - thresholdY, 0, false);
+                        var animatedHeight = (base - yPos) * animation.progress;
+                        var animatedYPos = base - animatedHeight;
+                        drawRoundedRect(ctx, xPos, animatedYPos, barWidth, animatedHeight, cornerRadius, true);
                         ctx.fill();
 
+                        // Draw the upper part of the bar (above the threshold)
                         ctx.fillStyle = 'rgba(246, 94, 95, 1)';
-                        drawRoundedRect(ctx, xPos, yPos, barWidth, thresholdY - yPos, cornerRadius, true);
+                        var upperHeight = (thresholdY - yPos) * animation.progress;
+                        drawRoundedRect(ctx, xPos, thresholdY - upperHeight, barWidth, upperHeight, cornerRadius, true);
                         ctx.fill();
                     } else {
+                        // Draw the whole bar
                         ctx.fillStyle = 'rgba(0, 75, 135, 1)';
-                        drawRoundedRect(ctx, xPos, yPos, barWidth, base - yPos, cornerRadius, false);
+                        var animatedHeight = (base - yPos) * animation.progress;
+                        var animatedYPos = base - animatedHeight;
+                        drawRoundedRect(ctx, xPos, animatedYPos, barWidth, animatedHeight, cornerRadius, true);
                         ctx.fill();
                     }
+
                     ctx.restore();
                 });
             });
+
+            if (animation.progress < 1) {
+                requestAnimationFrame(() => chart.update());
+            }
         }
     };
 
-    function drawRoundedRect(ctx, x, y, width, height, radius, topOnly) {
-                ctx.beginPath();
-                if (topOnly) {
-                    ctx.moveTo(x, y + height);
-                    ctx.lineTo(x, y + radius);
-                    ctx.arcTo(x, y, x + radius, y, radius);
-                    ctx.lineTo(x + width - radius, y);
-                    ctx.arcTo(x + width, y, x + width, y + radius, radius);
-                    ctx.lineTo(x + width, y + height);
-                } else {
-                    ctx.moveTo(x + radius, y);
-                    ctx.lineTo(x + width - radius, y);
-                    ctx.arcTo(x + width, y, x + width, y + radius, radius);
-                    ctx.lineTo(x + width, y + height - radius);
-                    ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
-                    ctx.lineTo(x + radius, y + height);
-                    ctx.arcTo(x, y + height, x, y + height - radius, radius);
-                    ctx.lineTo(x, y + radius);
-                    ctx.arcTo(x, y, x + radius, y, radius);
-                }
-                ctx.closePath();
-            }
+    function drawRoundedRect(ctx, x, y, width, height, radius, topRounded) {
+        ctx.beginPath();
+        if (topRounded) {
+            ctx.moveTo(x, y + radius);
+            ctx.lineTo(x, y + height - radius);
+            ctx.arcTo(x, y + height, x + radius, y + height, radius);
+            ctx.lineTo(x + width - radius, y + height);
+            ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+            ctx.lineTo(x + width, y + radius);
+            ctx.arcTo(x + width, y, x + width - radius, y, radius);
+            ctx.lineTo(x + radius, y);
+            ctx.arcTo(x, y, x, y + radius, radius);
+        } else {
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x + width, y + height);
+            ctx.lineTo(x, y + height);
+            ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+    }
+
        
     switch (activePollutant) {
         case pollutantAbbrevations.PM10:
@@ -4051,11 +4085,17 @@ function bindStationDataToBarChart(filter) {
         }
         if (mql3.matches) {
             if (boxid == "AqiBarchart1") {
-                box.style.setProperty("height", "275px", "important");
-                box.style.marginTop = "-1.5rem";
+                box.style.setProperty("height", "240px", "important");
+                box.style.marginTop = "-1.0rem";
+            } else if (boxid == "pm25Barchart1") {
+                box.style.setProperty("height", "240px", "important");
+                box.style.marginTop = "0rem";
+            } else if (boxid == "o3Barchart1") {
+                box.style.setProperty("height", "240px", "important");
+                box.style.marginTop = "-0.1rem";
             } else {
-                box.style.height = "279px";
-                box.style.marginTop = "-0.4rem";
+                box.style.setProperty("height", "238px", "important");
+                box.style.marginTop = "0.2rem";
             }
             box1.style.marginLeft = "-10px";
         }
