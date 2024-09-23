@@ -294,7 +294,8 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             }
         });
         $("#mapLocation").click(function (event) {
-            ZoomToLocation(nearestStation);
+            
+            ZoomToLocation(nearestStation.stationName);
         });
 
         // end changes
@@ -446,10 +447,10 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             featureLayer.queryFeatures(query).then(function (result) {
                 // Access the features in the result
                 var features = result.features;
-
+               // console.log("Queried Features:", features);
                 // Do something with the queried features, e.g., highlight on the map
                 if (features.length > 0) {
-
+                    //console.log("First Feature Details:", features[0]);
                     view.goTo({
                         center: [features[0].geometry.longitude, features[0].geometry.latitude],
                         zoom: 15
@@ -538,10 +539,10 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                 success: function (data) {
                     const selectedStationObj = {
                         averageAQI: data.averageAQI,
-                        pollutantName: data.pollutantName,
-                        pollutantValue: data.pollutantValue,
-                        stationsList: data.stationsList,
-                        pollutantName: data.pollutantName
+                       //pollutantName: data.pollutantName,
+                        //pollutantValue: data.pollutantValue,
+                         stationsList: data.stationsList,
+                       // pollutantName: data.pollutantName
                     };
                     for (var x = 0; x < StationsObject.length; x++) {
                         var stationobj = data.stationsList.filter(item => item.stationName == StationsObject[x].KeyName);
@@ -576,7 +577,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                 yoffset: -5,  // Adjust to shift text above the center if needed
                 font: {
                     size: 10,  // Size of the font
-                    family: "roboto",  // Font family
+                    family: "roboto",  // Font mapLocation
                     weight: "bold"  // Weight of the font
                 }
             });
@@ -870,54 +871,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
         }
 
      
-        function PreparePollutantSeriesData() {
-            var selectedStationObj;
-            var SeriesArray = [];
-            var dateseries = [];
-            if (typeof (SelectedstationInfo) == "undefined") {
-                selectedStationObj = StationsObject[0];
-            }
-            else {
-                selectedStationObj = SelectedstationInfo;
-            }
-            var CoisZero = true;
-            for (var i = 0; i < Pollutants.length; i++) {
-
-                var Pollutant = Pollutants[i];
-                var Pollutantdata = [];
-                var data = selectedStationObj.data;
-                for (let j = data.length - 1; j >= 0; j--) {
-
-                    var PollutantValue = data[j][Pollutant];
-                    Pollutantdata.push(PollutantValue)
-                    if (Pollutant == "CO") {
-                        if (PollutantValue > 0)
-                            CoisZero = false;
-                    }
-
-                    var dateObj = moment(data[j].datetime1, 'MM/DD/YYYY h:mm:ss a').toDate();
-                    dateObj = (dateObj.getTime());
-                    if (dateseries.indexOf(dateObj) == -1) {
-                        dateseries.push(dateObj);
-
-                    }
-                }
-                if (Pollutant == "CO" && !CoisZero) {
-                    SeriesArray.push({ name: Pollutant, data: Pollutantdata })
-                }
-                else {
-                    SeriesArray.push({ name: Pollutant, data: Pollutantdata })
-                }
-
-            }
-            GenerateCharts(SeriesArray, dateseries, selectedStationObj);
-        }
-
-        function GenerateCharts(SeriesArray, dateseries, selectedStationObj) {
-            //Render Radial CHarts
-            AQI_RadialChart(selectedStationObj);
-            Pollutant_ColumnChart(SeriesArray, dateseries);
-        }
+       
 
         function Createpollutants() {
 

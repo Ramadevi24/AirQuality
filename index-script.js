@@ -1,5 +1,5 @@
 const baseUrl = "https://ead-airquality.azurewebsites.net/AQAPI/";
-//const baseUrl = "https://eadairqualitytest.azurewebsites.net/API/";
+//const baseUrl = "https://localhost:44322/";
 var currentStationDetails;
 var liveCityData = [];
 var labelsData = [];
@@ -358,8 +358,8 @@ const causeStationData = {
             { 'cause': 'Rural traffic', 'image': 'rural_traffic.png' },
             { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
-        'SO2': [
-            { 'cause': '--', 'image': 'null.png'}
+       'SO2': [
+            { 'cause': '--' , 'image': 'null.png'}
         ],
         'NO2': [
             { 'cause': '--', 'image': 'null.png'}
@@ -594,7 +594,7 @@ const stationsWithLocations = [{
     longitude: 55.7021,
     stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
     measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
-    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
 }, {
     stationId: "EAD_AlQuaa",
     stationName: "Al Qua’a",
@@ -738,7 +738,7 @@ const pollutantNames = {
 }
 
 const pollutantThresholdLimits = {
-    PM10Daily: 150,    
+    PM10Daily: 150,
     SO2Hourly: 350,
     SO2Daily: 150,
     SO2Yearly: 60,
@@ -943,9 +943,10 @@ $(document).ready(function () {
     });
 
     $('#currentDate').html(getFormattedDate(new Date()));
-
+  
     $('#last-updatedTime').html(getFormattedDate1(new Date()));
     $('#last-updatedTime-sm').html(getFormattedDate1(new Date()));
+
     activePollutant = pollutantAbbrevations.AQI;
     currentStationDetails = stationsWithLocations.find(x => x.stationId == "");
     $('#aqiBasedSort').attr('checked', 'checked');
@@ -1897,21 +1898,23 @@ function updateCauses(station, pollutant) {
         causeDiv.className = 'text-center';
 
         const image = document.createElement('img');
+      // Check the specific condition for liwa 
         if (station === 'Liwa' && (pollutant === 'SO2' || pollutant === 'NO2')) {
             image.style.display = 'none';
         } else {
             image.src = `./images/new-images/${cause.image}`;
         }
-       //image.src = `./images/new-images/${cause.image}`;
+        //image.src = `./images/new-images/${cause.image}`;
         causeDiv.appendChild(image);
 
         const paragraph = document.createElement('p');
-
+     // Check the specific condition for liwa and SO2 to remove the mt-2 class
         if (station === 'Liwa' && (pollutant === 'SO2' || pollutant === 'NO2')) {
             paragraph.classList.remove('mt-2');
         } else {
             paragraph.className = 'mt-2';
         }
+       // paragraph.className = 'mt-2';
         paragraph.textContent = cause.cause;
         causeDiv.appendChild(paragraph);
 
@@ -1951,6 +1954,7 @@ function getFormattedDate(dateValue) {
     hours = hours % 12;
     return weekDays[dateValue.getDay()] + ' ' + (day >= 10 ? day : '0' + day) + '/' + (month >= 10 ? month : '0' + month) + '/' + dateValue.getFullYear().toString().substring(-2) + ',<br>' + (hours = hours ? hours : 12) + ' ' + hoursFormat;
 }
+
 function getFormattedDate1(dateValue) {
     var day = dateValue.getDate();
     var month = dateValue.getMonth() + 1;
@@ -1964,6 +1968,8 @@ function getFormattedDate1(dateValue) {
 
     return (day >= 10 ? day : '0' + day) + '/' + (month >= 10 ? month : '0' + month) + '/' + dateValue.getFullYear().toString().substring(-2) + ', ' + formattedHours + ':' + formattedMinutes + ' ' + hoursFormat;
 }
+
+
 function getYearlyStationPollutantsThreshold() {
     $.ajax({
         url: baseUrl + 'GetYearlyStationPollutantsThreshold?stationName=' + currentStationDetails.stationId,
@@ -1973,12 +1979,11 @@ function getYearlyStationPollutantsThreshold() {
             if (data[0]) {
                 $("#numberOfHoursExceedsThresholdCO").text(data[0].co);
                 $("#numberOfHoursExceedsThresholdSO2").text(data[0].sO2);
-               // $("#numberOfHoursExceedsThresholdPM10").text(data[0].pM10);
-                //$("#numberOfHoursExceedsThresholdPM25").text(data[0].pM10);
+                $("#numberOfHoursExceedsThresholdPM10").text(data[0].pM10);
                 $("#numberOfHoursExceedsThresholdNO2").text(data[0].nO2);
                 $("#numberOfHoursExceedsThresholdO3").text(data[0].o3);
             } else {
-                $("#numberOfHoursExceedsThresholdCO, #numberOfHoursExceedsThresholdSO2,  #numberOfHoursExceedsThresholdNO2, #numberOfHoursExceedsThresholdO3").text('');
+                $("#numberOfHoursExceedsThresholdCO, #numberOfHoursExceedsThresholdSO2, #numberOfHoursExceedsThresholdPM10, #numberOfHoursExceedsThresholdNO2, #numberOfHoursExceedsThresholdO3").text('');
             }
         },
         error: handleApiError
@@ -2323,22 +2328,15 @@ function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
 
 function getStationChartApi(filter, initialRequest = false) {
     var url;
-    var station;
     switch (filter) {
         case chartFilter.Daily:
             url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
             break;
         case chartFilter.Monthly:
-            var airQualityStationid = currentStationDetails.stationId;
-            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
-            if (station) {
-                currentStationDetails.stationId = station.stationid;
-            }
-            var edbStationid = currentStationDetails.stationId;
-            url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
+            url = baseUrl + 'GetMonthlyStationChart?stationName=' + currentStationDetails.stationId;
             break;
         case chartFilter.Yearly:
-            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+            const station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
             if (station) {
                 currentStationDetails.stationId = station.stationid;
             }
@@ -2348,13 +2346,12 @@ function getStationChartApi(filter, initialRequest = false) {
             var selectedDate = $('.datepicker').val();
             var splitDateArray = selectedDate.split('-');
             var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
-            url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' +  currentStationDetails.stationId ;
+            url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' + currentStationDetails.stationId;
             break;
         default:
             url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
             break;
     }
-
     $.ajax({
         url: url,
         method: 'GET',
@@ -2366,12 +2363,6 @@ function getStationChartApi(filter, initialRequest = false) {
         },
         error: handleApiError
     });
-    let updatedStation = stationIdforEDB.find(station => station.stationid === currentStationDetails.stationId);
-    if (updatedStation) {
-        // Assign the stationName to currentStationDetails
-        currentStationDetails.stationId = updatedStation.stationName;
-    }
-
 }
 
 function bindStationDataToLineChart(filter) {
@@ -2394,12 +2385,6 @@ function bindStationDataToLineChart(filter) {
         no2Data.push(item.nO2);
     });
     var categoriesData = [];
-    $("#lineChartPollutantSo2Value").addClass("bold-black-text");
-    $("#lineChartPollutantNo2Value").addClass("bold-black-text");
-    $("#lineChartPollutantPm10Value").addClass("bold-black-text");
-    $("#lineChartPollutantPm25Value").addClass("bold-black-text");
-    $("#lineChartPollutantO3Value").addClass("bold-black-text");
-    $("#lineChartPollutantCoValue").addClass("bold-black-text");
     $("#aqiHourlyLineChartDates, #pollutantHourlyLineChartDates,#pollutantHourlyBarChartDates").empty();
     const dataArray = [
         {
@@ -2467,7 +2452,6 @@ function bindStationDataToLineChart(filter) {
     ]
     const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find    
     fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
-    
     switch (filter) {
         case chartFilter.Daily:
             //categoriesData = chartData.map(t => { return t.day.split(' '); });
@@ -2552,7 +2536,7 @@ function bindStationDataToLineChart(filter) {
             }
         }
     });
-    //for AQI vertical line end
+    //for vertical line end
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -2858,7 +2842,7 @@ function bindStationDataToLineChart(filter) {
 
         });
     }
-    // Pollutants Line Graph
+
     updatePollutantValues();
     myChart.update();
     var pollutantsLineChartId = "pollutantLineChart";
@@ -3014,7 +2998,7 @@ function bindStationDataToLineChart(filter) {
                                     'PM10': 'PM10'
                                     // Add more mappings if needed
                                 };
-                                return fianlItems.map((dataset, i) => {
+                                return chart.data.datasets.map((dataset, i) => {
                                     const label = dataset.label || `Dataset ${i + 1}`;
                                     const customLabel = labelMap[label] || label;
                                     return {
@@ -3528,9 +3512,9 @@ function getThresholdValue(pollutant, filter) {
     switch (pollutant) {
         case pollutantAbbrevations.PM10:
             if (filter.trim() === 'Daily') return pollutantThresholdLimits.PM10Daily;
-            break;       
+            break;
         case pollutantAbbrevations.SO2:
-            if (filter.trim() === 'Hourly' || filter.trim() === 'Custom') {
+            if (filter.trim() === 'Hourly') {
                 return pollutantThresholdLimits.SO2Hourly;
             } else if (filter.trim() === 'Daily') {
                 return pollutantThresholdLimits.SO2Daily;
@@ -3539,13 +3523,13 @@ function getThresholdValue(pollutant, filter) {
             }
             break;
         case pollutantAbbrevations.CO:
-            if (filter.trim() === 'Hourly' || filter.trim() === 'Custom') return pollutantThresholdLimits.COHourly;
+            if (filter.trim() === 'Hourly') return pollutantThresholdLimits.COHouly;
             break;
         case pollutantAbbrevations.O3:
-            if (filter.trim() === 'Hourly' || filter.trim() === 'Custom') return pollutantThresholdLimits.O3Hourly;
+            if (filter.trim() === 'Hourly') return pollutantThresholdLimits.O3Hourly;
             break;
         case pollutantAbbrevations.NO2:
-            if (filter.trim() === 'Hourly' || filter.trim() === 'Custom') {
+            if (filter.trim() === 'Hourly') {
                 return pollutantThresholdLimits.NO2Hourly;
             } else if (filter.trim() === 'Daily') {
                 return pollutantThresholdLimits.NO2Daily;
@@ -3731,7 +3715,7 @@ function bindStationDataToBarChart(filter) {
                         barChartData.push(item.pM25);
                         categoriesData.push(item.day.split(' '));                        
                         backgroundColor = 'rgba(0, 75, 135, 1)';
-                        borderColor = 'rgba(0, 75, 135, 1)'; 
+                        borderColor = 'rgba(0, 75, 135, 1)';
                     });
                     break;
                 case "Monthly":
@@ -4187,7 +4171,7 @@ function bindStationDataToBarChart(filter) {
             }
             box1.style.marginLeft = "-10px";
         }
-        const maxValue = Math.max(...barChartDataSet.flatMap(dataset => dataset.data));
+
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -4221,48 +4205,21 @@ function bindStationDataToBarChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     annotation: {
-                        annotations: {
-                            ...(thresholdValue !== null && {
-                                thresholdLine: {
-                                    type: 'line',
-                                    yMin: thresholdValue,
-                                    yMax: thresholdValue,
-                                    borderColor: '#808080',
-                                    borderWidth: 2,
-                                    borderDash: [5, 5],
-                                    label: {
-                                        content: `Threshold: ${thresholdValue} µg/m³`,
-                                        enabled: true,
-                                        position: 'center',
-                                        backgroundColor: 'rgba(0,0,0,0.7)', // optional: label background color
-                                        color: '#fff', // optional: label text color
-                                        font: {
-                                            style: 'bold',
-                                            size: 12, // optional: label text size
-                                        }
-                                    }
-                                }
-                            }),
-                            maxLine: {
+                        annotations: exceedsThreshold ? {
+                            thresholdLine: {
                                 type: 'line',
-                                yMin: maxValue, // replace maxValue with your maximum y-axis value
-                                yMax: maxValue, // replace maxValue with your maximum y-axis value
-                                borderColor: '#0a0000', // optional: line color for max value
+                                yMin: thresholdValue,
+                                yMax: thresholdValue,
+                                borderColor: '#808080',
                                 borderWidth: 2,
-                                borderDash: [0, 0],
+                                borderDash: [5, 5],
                                 label: {
-                                    content: `Max Value: ${maxValue} µg/m³`, // replace maxValue with your maximum y-axis value
+                                    content: 'Threshold: ${thresholdValue} µg/m³',
                                     enabled: true,
-                                    position: 'center',
-                                    backgroundColor: 'rgba(255,0,0,0.7)', // optional: label background color
-                                    color: '#fff', // optional: label text color
-                                    font: {
-                                        style: 'bold',
-                                        size: 12, // optional: label text size
-                                    }
+                                    position: 'end'
                                 }
                             }
-                        }
+                        } : {}
                     },
                     tooltip: {
                         enabled: false,
@@ -4416,27 +4373,8 @@ function bindStationDataToBarChart(filter) {
                         min: minDateString,
                         max: maxDateString
                     },
-                    y: exceedsThreshold ? {
+                    y: {
                         display: false,
-                        ticks: {
-                            display: false
-                        },
-                        grid: {
-                            display: false,
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                        },
-                        afterFit: (ctx) => {
-                            //console.log(ctx);
-                            ctx.width = 0.3;
-                        },
-                        stacked: true,
-                        //beginAtZero: true
-                    } : {
-                        display: false,
-                        min: 0,
-                        max: thresholdValue,
                         ticks: {
                             display: false
                         },
@@ -4453,23 +4391,8 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
                         //beginAtZero: true
                     },
-                
-                    y1: exceedsThreshold ? {
+                    y1: {
                         display: false,
-                        ticks: {
-                            beginAtZero: true,
-                            callback: function (value) { return value; }
-                        },
-                        grid: {
-                            drawOnChartArea: false,
-                        },
-                        stacked: true,
-                        type: 'linear',
-                        position: 'left'
-                    } : {
-                        display: false,
-                        min: 0,
-                        max: thresholdValue,
                         type: 'linear',
                         position: 'left',
                         stacked: true,
@@ -4532,54 +4455,22 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
 
                     },
-                    y: exceedsThreshold ? {
+                    y: {
                         grid: {
                             display: false,
                         },
                         afterFit: (ctx) => {
+                            //console.log(ctx);
                             ctx.width = 40;
                         },
                         stacked: true
-                    } : {
-                        min: 0,
-                        max: thresholdValue,
-                        grid: {
-                            display: false,
-                        },
-                        afterFit: (ctx) => {
-                            ctx.width = 40;
-                        },
-                        stacked: true
+                        //beginAtZero: true
                     },
                 },
                 plugins: {
                     legend: {
                         display: false
-                    },
-                    annotation: {
-                        annotations: thresholdValue !== null ? {
-                            thresholdLine: {
-                                type: 'line',
-                                yMin: thresholdValue,
-                                yMax: thresholdValue,
-                                borderColor: '#808080',
-                                borderWidth: 2,
-                                borderDash: [5, 5],
-                                label: {
-                                    content: 'test',
-                                    enabled: true,
-                                    position: 'center',
-                                    yAdjust: -10,
-                                    backgroundColor: 'rgba(0,0,0,0.7)', // optional: label background color
-                                    color: '#fff', // optional: label text color
-                                    font: {
-                                        style: 'bold',
-                                        size: 12, // optional: label text size
-                                    }
-                                }
-                            }
-                        } : {}
-                    },
+                    }
                 }
             },
 
@@ -4670,7 +4561,7 @@ function bindStationDataToBarChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     annotation: {
-                        annotations: thresholdValue ? {
+                        annotations: exceedsThreshold ? {
                             thresholdLine: {
                                 type: 'line',
                                 yMin: thresholdValue,
@@ -4805,38 +4696,23 @@ function bindStationDataToBarChart(filter) {
                     //    },
                     //    stacked: true
                     //},
-                    y: exceedsThreshold ? {
+                    y: {
                         display: false,
-                        ticks: {
-                            display: false
-                        },
+                            ticks: {
+                                display: false
+                            },
                         grid: {
                             display: false,
                         },
                         gridLines: {
-                            drawBorder: false,
-                        },
+                                drawBorder: false,
+                            },                        
                         stacked: true,
                         afterFit: (ctx) => {
+                            //console.log(ctx);
                             ctx.width = 0.3;
-                        }
-                    } : {
-                        min: 0,
-                        max: thresholdValue,
-                        display: false,
-                        ticks: {
-                            display: false
                         },
-                        grid: {
-                            display: false,
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                        },
-                        stacked: true,
-                        afterFit: (ctx) => {
-                            ctx.width = 0.3;
-                        }
+                        //beginAtZero: true
                     },
 
                 },
@@ -4890,24 +4766,22 @@ function bindStationDataToBarChart(filter) {
                         stacked: true,
 
                     },
-                    y: exceedsThreshold ? {
+                    y: {
+                        display: true,
+                        ticks: {
+                            display: true
+                        },
                         grid: {
-                            display: false,
+                            display: false
                         },
+                        gridLines: {
+                            drawBorder: false,
+                        },
+                        stacked: true,
                         afterFit: (ctx) => {
+                            //console.log(ctx);
                             ctx.width = 40;
-                        },
-                        stacked: true
-                    } : {
-                        min: 0,
-                        max: thresholdValue,
-                        grid: {
-                            display: false,
-                        },
-                        afterFit: (ctx) => {
-                            ctx.width = 40;
-                        },
-                        stacked: true
+                        }
                     },
                 },
                 plugins: {

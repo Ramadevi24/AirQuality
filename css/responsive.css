@@ -95,7 +95,7 @@
     }
 
     .banner-section .carousel-caption-banner .h5 {
-        font-size: 23px !important;
+        font-size: 22px !important;
         top: 42px !important;
     }
 
@@ -1065,6 +1065,21 @@
     }
 }
 
+@media (min-width: 700px) and (max-width: 767px) {
+    #section2 .container{
+        max-width: 100%; padding-left: 20px; padding-right: 20px;
+    }
+    #section4 .container{
+        max-width: 100%; padding-left: 20px; padding-right: 20px;
+    }
+    #section3{
+        padding-left: 20px; padding-right: 20px;
+    }
+    header .search-block{padding: 1px 5px 0 0px;}
+    .project-slider .carousel-inner .carousel-item.active {
+        display: flex;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 1199px) {
 .insight .pollutant-toggleBar .ic-top-position{
@@ -2250,7 +2265,12 @@
     .insight .Causes-img {
         gap: 12px;
     }
-
+   .sml-scroll-copyrite{
+        height: 450px;
+    }
+    .copy-mt-8 {
+        margin-top: 4%;
+    }	
     .scroll-info-top {
         height: 150px;
         overflow: auto;
@@ -2305,8 +2325,8 @@
         height: 200px;
     }
 
-    .scrollPolicyShow {
-        height: 355px;
+    .scrollPolicyShow, .scrollPolicyShow-term {
+        height: 455px;
     }
 
     .insight .slide-content ul .modal.fade button.btn-close img {
@@ -3553,6 +3573,9 @@
         }
     }
 
+ @media (min-height: 745px) and (max-height: 955px) and (orientation: landscape) {
+        #playPauseBtn2, #playPauseBtn1, #skipButton, #audioButton{bottom: 75px;}
+    }
 
 @media (min-width: 740px) and (max-width: 745px) {
     .tab-pd-0, #section4 .container {
