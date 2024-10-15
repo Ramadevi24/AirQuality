@@ -1152,10 +1152,20 @@ $(document).ready(function () {
         // Check if it's a small device
         if (window.innerWidth <= 767) {
             $('.dropdown-change').css('top', '52px').css('right', '22px'); // Adjust for small devices
+            $('.equal-station-box-height .metero-dropdown.show').css('top', '40px').css('right', '10px'); 
+            $('.adjust-height-290 .scroll-yearlyDropdown').css('top', '40px').css('right', '0px');
         }
 
         if (window.innerWidth >= 768 && window.innerWidth <= 1199) {
-            $('.dropdown-change').css('top', '70px').css('right', '22px'); // Adjust for tablet devices
+             $('.dropdown-change').css('top', '70px').css('right', '22px');
+            $('.equal-station-box-height .metero-dropdown.show').css('top', '35px').css('right', '13px'); 
+            $('.adjust-height-290 .scroll-yearlyDropdown').css('top', '40px').css('right', '0px');
+        }
+     if (window.innerWidth >= 1355 && window.innerWidth <= 1368 && window.innerHeight >= 595 && window.innerHeight <= 765) {
+            $('.dropdown-change').css('top', '43px').css('right', '16px');
+            $('.adjust-height-290 .scroll-yearlyDropdown').css('top', '40px').css('right', '0px');
+            $('.equal-station-box-height .metero-dropdown.show').css('top', '16px').css('right', '9px'); 
+            $('.equal-station-box-height .st-aqi-dropdown.show').css('top', '16px').css('right', '16px'); 
         }
     });
 });
@@ -2552,7 +2562,7 @@ function bindStationDataToLineChart(filter) {
             }
         }
     });
-    //for AQI vertical line end
+    //for vertical line end
     if (filter !== 'Monthly' && filter !== 'Daily' && filter !== 'Yearly') {
         const iso8601Dates = convertToISO8601(categoriesData);
         const dateTimes = iso8601Dates.map(entry => new Date(entry));
@@ -2858,7 +2868,7 @@ function bindStationDataToLineChart(filter) {
 
         });
     }
-    // Pollutants Line Graph
+
     updatePollutantValues();
     myChart.update();
     var pollutantsLineChartId = "pollutantLineChart";
@@ -4187,7 +4197,7 @@ function bindStationDataToBarChart(filter) {
             }
             box1.style.marginLeft = "-10px";
         }
-        const maxValue = Math.max(...barChartDataSet.flatMap(dataset => dataset.data));
+
         var constructBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
@@ -4221,40 +4231,19 @@ function bindStationDataToBarChart(filter) {
                         // text: 'Chart.js Bar Chart - Stacked'
                     },
                     annotation: {
-                        annotations: {
-                            ...(thresholdValue !== null && {
-                                thresholdLine: {
-                                    type: 'line',
-                                    yMin: thresholdValue,
-                                    yMax: thresholdValue,
-                                    borderColor: '#808080',
-                                    borderWidth: 2,
-                                    borderDash: [5, 5],
-                                    label: {
-                                        content: `Threshold: ${thresholdValue} µg/m³`,
-                                        enabled: true,
-                                        position: 'center',
-                                        backgroundColor: 'rgba(0,0,0,0.7)', // optional: label background color
-                                        color: '#fff', // optional: label text color
-                                        font: {
-                                            style: 'bold',
-                                            size: 12, // optional: label text size
-                                        }
-                                    }
-                                }
-                            }),
-                            maxLine: {
+                        annotations: thresholdValue !== null ? {
+                            thresholdLine: {
                                 type: 'line',
-                                yMin: maxValue, // replace maxValue with your maximum y-axis value
-                                yMax: maxValue, // replace maxValue with your maximum y-axis value
-                                borderColor: '#0a0000', // optional: line color for max value
+                                yMin: thresholdValue,
+                                yMax: thresholdValue,
+                                borderColor: '#808080',
                                 borderWidth: 2,
-                                borderDash: [0, 0],
+                                borderDash: [5, 5],
                                 label: {
-                                    content: `Max Value: ${maxValue} µg/m³`, // replace maxValue with your maximum y-axis value
+                                    content: `Threshold: ${thresholdValue} µg/m³`,
                                     enabled: true,
                                     position: 'center',
-                                    backgroundColor: 'rgba(255,0,0,0.7)', // optional: label background color
+                                    backgroundColor: 'rgba(0,0,0,0.7)', // optional: label background color
                                     color: '#fff', // optional: label text color
                                     font: {
                                         style: 'bold',
@@ -4262,7 +4251,7 @@ function bindStationDataToBarChart(filter) {
                                     }
                                 }
                             }
-                        }
+                        } : {}
                     },
                     tooltip: {
                         enabled: false,

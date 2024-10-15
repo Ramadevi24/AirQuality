@@ -16,14 +16,24 @@
     <link rel="stylesheet" href="./css/material-icon.css" />
     <link href="./css/stylesnew.css" rel="stylesheet">
     <link href="./css/responsive.css" rel="stylesheet">
+
     <!-- Google tag (gtag.js) -->
     <!--<script async src="./js/graphs-js/googlejs.js"></script>-->
-    <script>
+    <!--<script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-529G4HVEPS');
+    </script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6L3V05H1KK"></script> 
+    <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-6L3V05H1KK');
     </script>
+
 </head>
 
 <body class="trysection">
@@ -775,7 +785,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -928,7 +938,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1064,7 +1074,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1185,7 +1195,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1319,7 +1329,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1453,7 +1463,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1587,7 +1597,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -1860,7 +1870,7 @@
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -2019,12 +2029,12 @@
                                                                                         id="barChartFilter">
                                                                                     Hourly
                                                                                 </button>
-                                                                                <div class="date-box calen-box-hide margin-top-0">
+                                                                                <div class="date-box calen-box-hide margin-top-0 st-aq-sml">
                                                                                     <div class="cal-div">
                                                                                         <label for="datepicker">
                                                                                             <input type="text"
                                                                                                    id="datepicker"
-                                                                                                   class="datepicker"
+                                                                                                   class="datepicker form-control"
                                                                                                    autocomplete="off"
                                                                                                    placeholder="Custom">
                                                                                         </label>
@@ -2033,7 +2043,7 @@
                                                                                              class="me-2 datePickImage">
                                                                                     </div>
                                                                                 </div>
-                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown">
+                                                                                <ul class="dropdown-menu dropdown-change dropdown-menu-start metero-dropdown st-aqi-dropdown">
                                                                                     <li>
                                                                                         <a class="dropdown-item  quality-index-dropItem">Hourly</a>
                                                                                     </li>
@@ -3247,13 +3257,13 @@
         if (video1.paused) {
         video1.play();
         playPauseButton1.html('<i class="fa fa-pause fa-2x text-white"></i>');
-        video.muted = false;
+        video2.muted = false;
         video1.muted = false;
         audioButton.querySelector('img').src = './images/new-images/audio-off.png';
         } else {
         video1.pause();
         playPauseButton1.html('<i class="fa fa-play fa-2x text-white"></i>');
-        video.muted = true;
+        video2.muted = true;
         video1.muted = true;
         audioButton.querySelector('img').src = './images/new-images/audio-on.png';
         }
@@ -3263,13 +3273,13 @@
         if (video2.paused) {
         video2.play();
         playPauseButton2.html('<i class="fa fa-pause fa-2x text-white"></i>');
-        video.muted = false;
+        video2.muted = false;
         video1.muted = false;
         audioButton.querySelector('img').src = './images/new-images/audio-off.png';
         } else {
         video2.pause();
         playPauseButton2.html('<i class="fa fa-play fa-2x text-white"></i>');
-        video.muted = true;
+        video2.muted = true;
         video1.muted = true;
         audioButton.querySelector('img').src = './images/new-images/audio-on.png';
         }
