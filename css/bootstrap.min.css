@@ -4626,6 +4626,12 @@ textarea.form-control-lg {
   background-size: var(--bs-accordion-btn-icon-width);
   transition: var(--bs-accordion-btn-icon-transition);
 }
+
+.rtl-accordion::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .accordion-button::after {
     transition: none;

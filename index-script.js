@@ -705,6 +705,7 @@ const statusClassNew1 = {
     VeryUnHealthly: "Very Unhealthy",
     Hazardous: "Hazardous",
 }
+
 const aqiContent = {
     Good: "Enjoy the fresh air",
     Moderate: "Enjoy your day outdoors!",

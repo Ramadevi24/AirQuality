@@ -15,6 +15,9 @@ var nearestStation;
 var hasAccessToLocation = false;
 var boolrankingflag = true;
 var fianlItems;
+var currentStatusClass;
+var currentLanguage;
+
 const pollutantAbbrevations = {
     AQI: "AQI",
     PM10: "PM10",
@@ -453,6 +456,450 @@ const causeStationData = {
     }
 };
 
+  const stations = [
+    { stationId: "EAD_HamdanStreet", en: "Hamdan Street", ar: "شارع حمدان" , regionar:'أبو ظبي', aqi: 35 },
+    { stationId: "EAD_KhadijaSchool", en: "Khadejah School", ar: "مدرسة خديجة", regionar:'أبو ظبي', aqi: 131 },
+    { stationId: "EAD_KhalifaSchool", en: "Khalifa School", ar: "مدرسة خليفة", regionar:'العين', aqi: 64 },
+    { stationId: "EAD_AlMaqta", en: "Al Maqta", ar: "المقطع", regionar:'أبوظبي', aqi: 59 },
+    { stationId: "EAD_KhalifaCity", en: "Khalifa City A", ar: "مدينة خليفة أ", regionar:'أبوظبي', aqi: 63  },
+    { stationId: "EAD_Baniyas", en: "Baniyas School", ar: "مدرسة بني ياس", regionar:'أبوظبي', aqi: 59  },
+    { stationId: "EAD_Mussafah", en: "Mussafah", ar: "مصفح", regionar:'أبوظبي', aqi: 64  },
+    { stationId: "EAD_AlMafraq", en: "Al Mafraq", ar: "المفرق", regionar:'أبوظبي' , aqi: 129 },
+    { stationId: "EAD_AlAinStreet", en: "Al Ain Street", ar: "شارع العين", regionar:'العين', aqi:57  },
+    { stationId: "EAD_AlAinSchool", en: "Alain Islamic Institute", ar: "المعهد الإسلامي العين", regionar:'العين', aqi: 40  },
+    { stationId: "EAD_AlTawia", en: "Al Tawia", ar: "الطوية", regionar:'العين', aqi: 7  },
+    { stationId: "EAD_Zakher", en: "Zakher", ar: "زاخر" , regionar:'العين', aqi: 50 },
+    { stationId: "EAD_Sweihan", en: "Sweihan", ar: "سويحان", regionar:'العين' , aqi: 52 },
+    { stationId: "EAD_AlQuaa", en: "Al Qua’a", ar: "القوع", regionar:'العين', aqi: 37  },
+    { stationId: "EAD_E11Road", en: "E11 Road", ar: "شارع E11", regionar:'الظفرة', aqi: 59  },
+    { stationId: "EAD_BidaZayed", en: "Bida Zayed", ar: "بدع زايد", regionar:'الظفرة', aqi: 19},
+    { stationId: "EAD_Habshan", en: "Habshan South", ar: "جنوب حبشان", regionar:'الظفرة' , aqi: 47 },
+    { stationId: "EAD_RuwaisTransco", en: "Ruwais", ar: "الرويس", regionar:'الظفرة', aqi: 47  },
+    { stationId: "EAD_Gayathi", en: "Gayathi School", ar: "مدرسة غياثي", regionar:'الظفرة' , aqi: 43 },
+    { stationId: "EAD_Liwa", en: "Liwa Oasis", ar: "واحة ليوا", regionar:'الظفرة', aqi: 44  }
+];
+
+const causeStationArabicData = {
+    'شارع حمدان': {
+        'PM10': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],  
+        'PM25': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ]
+    },
+    'مدرسة خديجة': {
+        'PM10': [
+            { 'cause': 'المنشآت التجارية', 'image': 'urban_traffic.png' },
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],   
+        'PM25': [
+            { 'cause': 'المنشآت التجارية', 'image': 'urban_traffic.png' },
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'urban_traffic.png' }
+        ]
+    },
+    'شارع العين': {
+        'PM10': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],   
+        'PM25': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ], 
+        'NO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ]
+    },
+    'مدرسة خليفة': {
+        'PM10': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'النقل', 'image': 'traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'النقل', 'image': 'traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'مصفح': {
+        'PM10': [
+            { 'cause': 'حركة المرور الصناعية', 'image': 'industrial_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور الصناعية', 'image': 'industrial_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور الصناعية', 'image': 'industrial_traffic.png' },
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' }
+        ],
+        'SO2': [
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' }
+        ]
+    },
+    'مدرسة بني ياس': {
+        'PM10': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'النقل', 'image': 'traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'النقل', 'image': 'traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'المقطع': {
+        'PM10': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'النقل', 'image': 'traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'مدينة خليفة أ': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'المفرق': {
+        'PM10': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' }
+        ],
+        'SO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'الانبعاثات الصناعية', 'image': 'industrial_emission.png' }
+        ]
+    },
+    'المعهد الإسلامي العين': {
+        'PM10': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'سويحان': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'الطوية': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ]
+    },
+    'زاخر': {
+        'PM10': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في المناطق الحضرية', 'image': 'urban_traffic.png' }
+        ]
+
+    },
+    'القوع': {
+        'PM10': [
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'لا توجد مصادر محددة في المنطقة المجاورة', 'image': 'null.png' }
+        ],
+        'SO2': [
+            { 'cause': 'لا توجد مصادر محددة في المنطقة المجاورة', 'image': 'null.png' }
+        ],
+        'CO': [
+            { 'cause': 'لا توجد مصادر محددة في المنطقة المجاورة', 'image': 'null.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'بدع زايد': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'مدرسة غياثي': {
+        'PM10': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور السكنية في الضواحي', 'image': 'residential_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'واحة ليوا': {
+        'PM10': [
+            { 'cause': 'حركة المرور الريفية', 'image': 'rural_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور الريفية', 'image': 'rural_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'SO2': [
+            { 'cause': '--', 'image': 'null.png'}
+        ],
+        'NO2': [
+            { 'cause': '--', 'image': 'null.png'}
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'الرويس': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'جنوب حبشان': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    },
+    'شارع E11': {
+        'PM10': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ],
+        'SO2': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ],
+        'CO': [
+            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' }
+        ]
+    },
+    'أبوظبي': {
+        'PM10': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'PM25': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' },
+            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+        ],
+        'NO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' }
+        ],
+        'SO2': [
+            { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
+            { 'cause': 'أنشطة البناء', 'image': 'construction_activities.png' }
+        ],
+        'O3': [
+            { 'cause': 'الملوث الثانوي', 'image': 'secondary_pollutant.png' }
+        ]
+    }
+};
+
 const stationIdforEDB = [
     { stationid: 6, stationName: "EAD_AlAinSchool" },
     { stationid: 7, stationName: "EAD_AlAinStreet" },
@@ -665,7 +1112,194 @@ const stationsWithLocations = [{
     longitude: 54.3773,
 }];
 
-
+const stationsWithLocationsArabic = [{
+    stationId: "EAD_HamdanStreet",
+    stationName: "شارع حمدان",
+    regionName: "أبوظبي",
+    latitude: 24.4889,
+    longitude: 54.3637,
+    stationLocation: "F9Q7+HFG - الدانة - المنطقة 1 - أبوظبي, حركة المرور في المناطق الحضرية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_KhadijaSchool",
+    stationName: "مدرسة خديجة",
+    regionName: "أبوظبي",
+    latitude: 24.4816,
+    longitude: 54.3693,
+    stationLocation: "F9J9+WJ4 - شارع سلطان بن زايد الأول - الدانة - المنطقة 1 - أبوظبي, الخلفية الحضرية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_KhalifaSchool",
+    stationName: "مدرسة خليفة",
+    regionName: "أبوظبي",
+    latitude: 24.4301,
+    longitude: 54.4084,
+    stationLocation: "25-11 شارع الربيع - المشرف - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.O3, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_Mussafah",
+    stationName: "مصفح",
+    regionName: "أبوظبي",
+    latitude: 24.3472,
+    longitude: 54.5029,
+    stationLocation: "8GW3+H6J - مصفح - مصفح الصناعية - أبوظبي, الصناعية في الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_Baniyas",
+    stationName: "مدرسة بني ياس",
+    regionName: "أبوظبي",
+    latitude: 24.3213,
+    longitude: 54.6359,
+    stationLocation: "باني ياس - شرق 4 - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_AlMaqta",
+    stationName: "المقطع",
+    regionName: "أبوظبي",
+    latitude: 24.4035,
+    longitude: 54.5161,
+    stationLocation: "ربدان - أبوظبي, الخلفية الحضرية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_KhalifaCity",
+    stationName: "مدينة خليفة أ",
+    regionName: "أبوظبي",
+    latitude: 24.4199,
+    longitude: 54.5782,
+    stationLocation: "5 شارع عتبة بن غزوان - مدينة خليفة - قطاع 12 - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+},
+{
+    stationId: "EAD_AlMafraq",
+    stationName: "المفرق",
+    regionName: "أبوظبي",
+    latitude: 24.2863,
+    longitude: 54.5889,
+    stationLocation: "جرن يافور - أبوظبي, الصناعية في الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+},
+{
+    stationId: "EAD_AlAinSchool",
+    stationName: "المعهد الإسلامي العين",
+    regionName: "العين",
+    latitude: 24.2191,
+    longitude: 55.7349,
+    stationLocation: "26-48 شارع المكرمه - المعترض - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_AlAinStreet",
+    stationName: "شارع العين",
+    regionName: "العين",
+    latitude: 24.2259,
+    longitude: 55.7658,
+    stationLocation: "المنطقة الوسطى - أبوظبي, حركة المرور في المناطق الحضرية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "EAD_Sweihan",
+    stationName: "سويحان",
+    regionName: "العين",
+    latitude: 24.4667,
+    longitude: 55.3429,
+    stationLocation: "شارع 44 - سويحان - أبوظبي, خلفية الضواحي.",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_AlTawia",
+    stationName: "الطوية",
+    regionName: "العين",
+    latitude: 24.2592,
+    longitude: 55.7049,
+    stationLocation: "الطوية - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_Zakher",
+    stationName: "زاخر",
+    regionName: "العين",
+    latitude: 24.1635,
+    longitude: 55.7021,
+    stationLocation: "شارع الظواهر - زاخر - أبوظبي, الخلفية الحضرية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_AlQuaa",
+    stationName: "القوع",
+    regionName: "العين",
+    latitude: 23.5312,
+    longitude: 55.486,
+    stationLocation: "الوقن - أبوظبي, الريف الإقليمي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_BidaZayed",
+    stationName: "بدع زايد",
+    regionName: "الظفرة",
+    latitude: 23.6523,
+    longitude: 53.7039,
+    stationLocation: "مدينة زايد - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_Gayathi",
+    stationName: "مدرسة غياثي",
+    regionName: "الظفرة",
+    latitude: 23.8355,
+    longitude: 52.8103,
+    stationLocation: " غياثي - أبوظبي, خلفية الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_Liwa",
+    stationName: "واحة ليوا",
+    regionName: "الظفرة",
+    latitude: 23.0958,
+    longitude: 53.6064,
+    stationLocation: "3JW4+8H7 الطرق, أبوظبي, الخلفية الريفية الإقليمية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_RuwaisTransco",
+    stationName: "الرويس",
+    regionName: "الظفرة",
+    latitude: 24.0909,
+    longitude: 52.7548,
+    stationLocation: "مدينة الرويس الصناعية - أبوظبي, الصناعية في الضواحي",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.CO, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_Habshan",
+    stationName: "جنوب حبشان",
+    regionName: "الظفرة",
+    latitude: 23.7504,
+    longitude: 53.7453,
+    stationLocation: "QP2W+44W - حبشان - أبوظبي, الصناعية الريفية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.H2S, pollutantAbbrevations.THC, pollutantAbbrevations.O3, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.O3]
+}, {
+    stationId: "EAD_E11Road",
+    stationName: "شارع E11",
+    regionName: "الظفرة",
+    latitude: 24.0352,
+    longitude: 53.8853,
+    stationLocation: "أم ليله - أبوظبي, حركة المرور الريفية",
+    measuredPolluants: [pollutantAbbrevations.PM10, pollutantAbbrevations.PM25, pollutantAbbrevations.NO2, pollutantAbbrevations.SO2, pollutantAbbrevations.CO, pollutantAbbrevations.BTEX, pollutantAbbrevations.MET, pollutantAbbrevations.Noise],
+    AvailablePolluants: [pollutantAbbrevations.SO2, pollutantAbbrevations.NO2, pollutantAbbrevations.CO, pollutantAbbrevations.PM10, pollutantAbbrevations.PM25]
+}, {
+    stationId: "",
+    stationName: "أبوظبي",
+    latitude: 24.4539,
+    longitude: 54.3773,
+}];
 
 const colorClass = {
     GoodColorClass: "green",
@@ -696,7 +1330,6 @@ const statusClass = {
     Hazardous: "Hazardous Days",
 }
 
-
 const statusClassNew1 = {
     Good: "Good",
     Moderate: "Moderate",
@@ -704,6 +1337,34 @@ const statusClassNew1 = {
     UnHealthly: "Unhealthy",
     VeryUnHealthly: "Very Unhealthy",
     Hazardous: "Hazardous",
+}
+
+const statusClassArabic = {
+    Good: "أيام جيدة",
+    Moderate: "أيام معتدلة",
+    UnHealthlySensitiveGroups: "غير صحي للمجموعات الحساسة",
+    UnHealthly: "أيام غير صحية",
+    VeryUnHealthly: "أيام غير صحية جداً",
+    Hazardous: "أيام خطرة",
+};
+
+
+const statusClassNew1English = {
+    Good: "Good",
+    Moderate: "Moderate",
+    UnHealthlySensitiveGroups: "Unhealthy For Sensitive Groups",
+    UnHealthly: "Unhealthy",
+    VeryUnHealthly: "Very Unhealthy",
+    Hazardous: "Hazardous",
+}
+
+const statusClassNew1Arabic = {
+    Good: "جيد",
+    Moderate: "معتدل",
+    UnHealthlySensitiveGroups: "غير صحي للمجموعات الحساسة",
+    UnHealthly: "غير صحي",
+    VeryUnHealthly: "غير صحي للغاية",
+    Hazardous: "خطرة",
 }
 const aqiContent = {
     Good: "Enjoy the fresh air",
@@ -714,6 +1375,15 @@ const aqiContent = {
     Hazardous: "You should avoid outdoor activities",
 }
 
+const aqiContentArabic = {
+    Good: "استمتع بالهواء النقي",
+    Moderate: "استمتع بيومك في الهواء الطلق!",
+    UnHealthlySensitiveGroups: "يجب على الأطفال والأشخاص الحساسين البقاء في الداخل",
+    UnHealthly: "الأفضل البقاء في الداخل.",
+    VeryUnHealthly: "ليس الوقت المناسب للتواجد في الخارج، اقضِ يومك في الداخل.",
+    Hazardous: "يجب عليك تجنب الأنشطة في الهواء الطلق",
+}
+
 const chartFilter = {
     Hourly: 'Hourly',
     Daily: 'Daily',
@@ -722,7 +1392,7 @@ const chartFilter = {
     Custom: 'Custom'
 }
 
-const pollutantNames = {
+const pollutantNamesEnglish = {
     PM10: "Particulate Matter less than 10 microns",
     PM25: "Particulate Matter less than 2.5 microns",
     NO2: "Nitrogen Dioxide",
@@ -734,7 +1404,24 @@ const pollutantNames = {
     O3: "Ozone",
     THC: "Total Hydrocarbons",
     VOCs: "Volatile Organic Compounds",
-    NGO: "Non-Governmental Organization"
+    NGO: "Non-Governmental Organization",
+    Noise: "Noise"
+}
+
+const pollutantNamesArabic = {
+    PM10: "المواد الجسيمية أقل من 10 ميكرونات",
+    PM25: "المواد الجسيمية أقل من 2.5 ميكرونات",
+    NO2: "ثنائي أكسيد النيتروجين",
+    SO2: "ثنائي أكسيد الكبريت",
+    CO: "أحادي أكسيد الكربون",
+    BTEX: "البنزين، التولوين، الإيثيل بنزين، والزيلين",
+    MET: "الأرصاد الجوية",
+    H2S: "كبريتيد الهيدروجين",
+    O3: "الأوزون",
+    THC: "الهيدروكربونات الكلية",
+    VOCs: "المركبات العضوية المتطايرة",
+    NGO: "منظمة غير حكومية",
+    Noise: "الضوضاء"
 }
 
 const pollutantThresholdLimits = {
@@ -1212,78 +1899,78 @@ function getAqiStatus(value) {
 function getAqiStatusAndColorCode(value) {
     if (value >= 0 && value <= 50) {
         return {
-            status: statusClass.Good,
+            status: currentLanguage === 'arabic' ? statusClassArabic.Good : statusClass.Good,
             color: colorCodes.green,
-            Content: aqiContent.Good
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Good : aqiContent.Good
         };
     } else if (value > 50 && value <= 100) {
         return {
-            status: statusClass.Moderate,
+            status: currentLanguage === 'arabic' ? statusClassArabic.Moderate : statusClass.Moderate,
             color: colorCodes.lightorange,
-            Content: aqiContent.Moderate
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Moderate : aqiContent.Moderate
         };
     } else if (value > 100 && value <= 150) {
         return {
-            status: statusClass.UnHealthlySensitiveGroups,
+            status: currentLanguage === 'arabic' ? statusClassArabic.UnHealthlySensitiveGroups : statusClass.UnHealthlySensitiveGroups,
             color: colorCodes.darkorange,
-            Content: aqiContent.UnHealthlySensitiveGroups
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.UnHealthlySensitiveGroups : aqiContent.UnHealthlySensitiveGroups
         };
     } else if (value > 150 && value <= 200) {
         return {
-            status: statusClass.UnHealthly,
+            status: currentLanguage === 'arabic' ? statusClassArabic.UnHealthly : statusClass.UnHealthly,
             color: colorCodes.peach,
-            Content: aqiContent.UnHealthly
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.UnHealthly : aqiContent.UnHealthly
         };
     } else if (value > 200 && value <= 300) {
         return {
-            status: statusClass.VeryUnHealthly,
+            status: currentLanguage === 'arabic' ? statusClassArabic.VeryUnHealthly : statusClass.VeryUnHealthly,
             color: colorCodes.purple,
-            Content: aqiContent.VeryUnHealthly
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.VeryUnHealthly : aqiContent.VeryUnHealthly
         };
     } else {
         return {
-            status: statusClass.Hazardous,
+            status: currentLanguage === 'arabic' ? statusClassArabic.Hazardous : statusClass.Hazardous,
             color: colorCodes.hazar,
-            Content: aqiContent.Hazardous
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Hazardous : aqiContent.Hazardous
         };
     }
 }
 function getAqiStatusAndColorCodeNew(value) {
     if (value >= 0 && value <= 50) {
         return {
-            status: statusClassNew1.Good,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.Good : statusClassNew1.Good,
             color: colorCodes.green,
-            Content: aqiContent.Good
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Good : aqiContent.Good
         };
     } else if (value > 50 && value <= 100) {
         return {
-            status: statusClassNew1.Moderate,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.Moderate : statusClassNew1.Moderate,
             color: colorCodes.lightorange,
-            Content: aqiContent.Moderate
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Moderate : aqiContent.Moderate
         };
     } else if (value > 100 && value <= 150) {
         return {
-            status: statusClassNew1.UnHealthlySensitiveGroups,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.UnHealthlySensitiveGroups : statusClassNew1.UnHealthlySensitiveGroups,
             color: colorCodes.darkorange,
-            Content: aqiContent.UnHealthlySensitiveGroups
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.UnHealthlySensitiveGroups : aqiContent.UnHealthlySensitiveGroups
         };
     } else if (value > 150 && value <= 200) {
         return {
-            status: statusClassNew1.UnHealthly,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.UnHealthly : statusClassNew1.UnHealthly,
             color: colorCodes.peach,
-            Content: aqiContent.UnHealthly
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.UnHealthly : aqiContent.UnHealthly
         };
     } else if (value > 200 && value <= 300) {
         return {
-            status: statusClassNew1.VeryUnHealthly,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.VeryUnHealthly : statusClassNew1.VeryUnHealthly,
             color: colorCodes.purple,
-            Content: aqiContent.VeryUnHealthly
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.VeryUnHealthly : aqiContent.VeryUnHealthly
         };
     } else {
         return {
-            status: statusClassNew1.Hazardous,
+            status: currentLanguage === 'arabic'? statusClassNew1Arabic.Hazardous : statusClassNew1.Hazardous,
             color: colorCodes.hazar,
-            Content: aqiContent.Hazardous
+            Content: currentLanguage === 'arabic' ? aqiContentArabic.Hazardous : aqiContent.Hazardous
         };
     }
 }
@@ -1341,7 +2028,7 @@ function createRadarData() {
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
-            pointBackgroundColor: 'rgba(250, 207, 57, 1)',
+            // pointBackgroundColor: 'rgba(250, 207, 57, 1)',
             lineTension: 0.2,
             data: pollutantLevels,
         }]
@@ -1414,7 +2101,6 @@ function createRadialGradient3(context) {
 function getCurrentLocation() {
     if ('geolocation' in navigator) {
         navigator.permissions.query({ name: 'geolocation' }).then(function (permissionStatus) {
-           // console.log('Permission status:', permissionStatus.state);
             if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
                 navigator.geolocation.getCurrentPosition(function success(position) {
                     latitude = position.coords.latitude;
@@ -1552,10 +2238,21 @@ function populateSort(sortBy) {
     }
 }
 
+function getStationNameInSelectedLanguage(stationName) {
+    const station = stations.find(st => st.en === stationName);
+    if (!station) return currentStationDetails.stationName; // Fallback to original if not found
+
+    return currentLanguage === "arabic" 
+    ? { stationName: station.ar, regionName: station.regionar, aqi: station.aqi }
+    : { stationName: currentStationDetails.stationName, regionName: currentStationDetails.regionName, aqi: station.aqi };
+}
+
+
 
 function loadStationData(initialRequest = false) {
     const apiUrl = baseUrl + 'GetAirQualityStation?input=' + encodeURIComponent(currentStationDetails.stationId);
-
+    const { stationName, regionName } = getStationNameInSelectedLanguage(currentStationDetails.stationName);
+    const updatedStationData = currentLanguage === "arabic" ? ('المحطة:' +stationName + ',' + regionName): ('Station:' + stationName + ', ' + regionName);
     $.ajax({
         url: apiUrl,
         method: 'GET',
@@ -1566,47 +2263,91 @@ function loadStationData(initialRequest = false) {
                     throw new Error('Invalid data received from API');
                 }
 
-                const aqi = Math.round(data.averageAQI);
+                var aqi = Math.round(data.averageAQI);
                 const aqiDetails = getAqiStatusAndColorCode(aqi);
                 const aqiDetailsNew = getAqiStatusAndColorCodeNew(aqi);
                 const currentYearOverview = new Date().getFullYear();
-
+                const currentStationName = currentStationDetails.stationName;
+                const updateyearlyAirQualityOverview = currentLanguage === "arabic" ? (stationName + ', ' + regionName +  ' نظرة عامة سنوية على جودة الهواء لـ ' + currentYearOverview) : (stationName + ', ' + regionName +  ' Yearly Air Quality Overview for ' + currentYearOverview);
                 // Set text content safely
                 $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
                 $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
-                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
-                $("#airQualitySafetyLevelStation").text('Station: ' + currentStationDetails.stationName + ', ' + currentStationDetails.regionName);
-                $("#yearlyAirQualityOverview").text(currentStationDetails.stationName + ', ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
-                $("#SidebaryearlyAirQualityOverview").text(currentStationDetails.stationName + ' , ' + currentStationDetails.regionName + ' Yearly Air Quality Overview for ' + currentYearOverview);
+                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + stationName + ', ' + regionName);
+                $("#airQualitySafetyLevelStation").text(updatedStationData);
+                $("#yearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
+                $("#SidebaryearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
                 $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
 
                 let mainPollutantNameContent;
+                // switch (data.pollutantName) {
+                //     case "PM10":
+                //         mainPollutantNameContent = `Particulate Matter, PM<sub>10</sub>`;
+                //         break;
+                //     case "PM25":
+                //         mainPollutantNameContent = `Particulate Matter, PM<sub>2.5</sub>`;
+                //         break;
+                //     case "SO2":
+                //         mainPollutantNameContent = `Sulphur Dioxide, SO<sub>2</sub>`;
+                //         break;
+                //     case "O3":
+                //         mainPollutantNameContent = `Ozone, O<sub>3</sub>`;
+                //         break;
+                //     case "NO2":
+                //         mainPollutantNameContent = `Nitrogen dioxide, NO<sub>2</sub>`;
+                //         break;
+                //     case "CO":
+                //         mainPollutantNameContent = `Carbon monoxide, CO`;
+                //         break;
+                //     default:
+                //         mainPollutantNameContent = `Unknown pollutant`;
+                // }
+
                 switch (data.pollutantName) {
                     case "PM10":
-                        mainPollutantNameContent = `Particulate Matter, PM<sub>10</sub>`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `الجسيمات، PM<sub>10</sub>`
+                            : `Particulate Matter, PM<sub>10</sub>`;
                         break;
                     case "PM25":
-                        mainPollutantNameContent = `Particulate Matter, PM<sub>2.5</sub>`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `الجسيمات، PM<sub>2.5</sub>`
+                            : `Particulate Matter, PM<sub>2.5</sub>`;
                         break;
                     case "SO2":
-                        mainPollutantNameContent = `Sulphur Dioxide, SO<sub>2</sub>`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `ثاني أكسيد الكبريت، SO<sub>2</sub>`
+                            : `Sulphur Dioxide, SO<sub>2</sub>`;
                         break;
                     case "O3":
-                        mainPollutantNameContent = `Ozone, O<sub>3</sub>`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `الأوزون، O<sub>3</sub>`
+                            : `Ozone, O<sub>3</sub>`;
                         break;
                     case "NO2":
-                        mainPollutantNameContent = `Nitrogen dioxide, NO<sub>2</sub>`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `ثاني أكسيد النيتروجين، NO<sub>2</sub>`
+                            : `Nitrogen dioxide, NO<sub>2</sub>`;
                         break;
                     case "CO":
-                        mainPollutantNameContent = `Carbon monoxide, CO`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `أول أكسيد الكربون، CO`
+                            : `Carbon monoxide, CO`;
                         break;
                     default:
-                        mainPollutantNameContent = `Unknown pollutant`;
+                        mainPollutantNameContent = currentLanguage === "arabic" 
+                            ? `ملوث غير معروف`
+                            : `Unknown pollutant`;
                 }
 
-                updateCauses(currentStationDetails.stationName, data.pollutantName);
+                // Update the main pollutant name in the UI
+                $("#mainPollutantName").html(mainPollutantNameContent).css({
+                    'background-color': 'rgba(0, 75, 135, 1)',
+                    'color': 'white'
+                });
+                const currentPollutant = data.pollutantName;
+                updateCauses(stationName, data.pollutantName);
                 updateLegendVisibility();
                 updateActivities(aqi);
                 updateHeathReccommendation(aqi);
@@ -1655,6 +2396,7 @@ function loadStationData(initialRequest = false) {
             } catch (error) {
                 console.error('Error processing data in loadStationData:', error);
                 handleApiError(error);
+                reject(error);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -1663,9 +2405,6 @@ function loadStationData(initialRequest = false) {
         }
     });
 }
-
-
-
 
 function getAQILevel(value) {
     if (value >= 0 && value <= 50) return 'good';
@@ -1716,7 +2455,48 @@ function getActivityContent(aqiLevel) {
         ],
     };
 
-    return activities[aqiLevel].map(activity => `
+    const activitiesArabic = {
+        good: [
+            { img: "run_green.png", text: "استمتع بالخارج" },
+            { img: "cycle_green.png", text: "استمتع بركوب الدراجات في الهواء الطلق" },
+            { img: "heart_green.png", text: "يمكن للأطفال والأشخاص الحساسين الاستمتاع بالهواء الطلق." },
+            { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق" },
+        ],
+        moderate: [
+            { img: "run_green.png", text: "استمتع بالخارج" },
+            { img: "cycle_green.png", text: "استمتع بركوب الدراجات في الهواء الطلق" },
+            { img: "heart_orange.png", text: "يجب على الأطفال والأفراد الحساسين توخي الحذر" },
+            { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق" },
+        ],
+        unhealthyForSensitiveGroups: [
+            { img: "run_orange.png", text: "تجنب التعرض لفترات طويلة" },
+            { img: "cycle_orange.png", text: "تجنب التعرض لفترات طويلة" },
+            { img: "heart_red.png", text: "تجنب التعرض لفترات طويلة للأطفال والأفراد الحساسين" },
+            { img: "dinner_orange.png", text: "تجنب التعرض لفترات طويلة" },
+        ],
+        unhealthy: [
+            { img: "run_red.png", text: "استمتع ببعض المرح في الأماكن المغلقة" },
+            { img: "cycle_red.png", text: "جرب ركوب الدراجات في الأماكن المغلقة" },
+            { img: "heart_hazar.png", text: "إن البقاء في الداخل هو الخيار الأفضل للأطفال الرضع والأفراد الحساسين" },
+            { img: "dinner_red.png", text: "استمتع بوجبتك في الداخل، إن أمكن" },
+        ],
+        veryUnhealthy: [
+            { img: "run_hazar.png", text: "تجنب الأنشطة الخارجية" },
+            { img: "cycle_hazar.png", text: "تجنب ركوب الدراجات في الهواء الطلق" },
+            { img: "heart_brown.png", text: "تجنب الخروج في الهواء الطلق للأطفال والأفراد الحساسين" },
+            { img: "dinner_hazar.png", text: "استمتع بوجبتك في الداخل" },
+        ],
+        hazardous: [
+            { img: "run_brown.png", text: "تجنب الأنشطة الخارجية" },
+            { img: "cycle_brown.png", text: "تجنب ركوب الدراجات في الهواء الطلق" },
+            { img: "heart_brown.png", text: "تجنب الخروج في الهواء الطلق للأطفال والأفراد الحساسين" },
+            { img: "dinner_brown.png", text: "استمتع بوجبتك في الداخل" },
+        ],
+    };
+
+    const selectedActivities = currentLanguage === 'arabic' ? activitiesArabic : activities;
+
+    return selectedActivities[aqiLevel].map(activity => `
         <div class="text-center">
             <img src="./images/new-images/${activity.img}" alt="">
             <p class="mt-2 enjoy-mb-8">${activity.text}</p>
@@ -1758,7 +2538,39 @@ function getHealthRecommendationContent(aqiLevel) {
         ],
         // Add definitions for other AQI levels...
     };
-    return recommendations[aqiLevel].map(recommendation => `
+    const recommendationsInArabic ={
+        good: [
+            { img: "mask1.png", title: "استخدام القناع", description: "استمتع بالهواء النقي! لا داعي لارتداء الكمامات عندما تكون جودة الهواء جيدة." },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "لا حاجة لتشغيل جهاز تنقية الهواء." },
+        ],
+        moderate: [
+            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة." },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "توخ الحذر عند تدوير الهواء لضمان جودة هواء داخلية صحية." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عندما يكون هناك أفراد حساسون." },
+        ],
+        unhealthyForSensitiveGroups: [
+            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من التعرض للخارج." },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "توخ الحذر عند تدوير الهواء، وخاصة حول المجموعات الحساسة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عندما يكون هناك أفراد حساسون." },
+        ],
+        unhealthy: [
+            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من التعرض للخارج." },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بتدوير الهواء، وخاصة في المواقف التي تنطوي على أفراد حساسين." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+        ],
+        veryUnhealthy: [
+            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بشدة بتدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+        ],
+        hazardous: [
+            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بشدة بتدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+    ]}
+    const selectedRecommendations = currentLanguage === 'arabic' ? recommendationsInArabic : recommendations;
+    return selectedRecommendations[aqiLevel].map(recommendation => `
         <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(/\s+/g, '')}" data-backdrop="false">
             <div class="bg-gray">
                 <img src="./images/new-images/${recommendation.img}" alt="health-icon">
@@ -1896,10 +2708,11 @@ function updateCauses(station, pollutant) {
     if (station === 'Al Qua’a') {
         station = "Al Quaa";
     }
+    const causeData = currentLanguage === 'arabic' ? causeStationArabicData : causeStationData;
     const causesContainer = document.querySelector('.Causes-img');
     causesContainer.innerHTML = '';
 
-    const causes = causeStationData[station][pollutant];
+    const causes = causeData[station][pollutant];
 
     causes?.forEach(cause => {
         // Create new elements for the cause
@@ -2068,41 +2881,48 @@ function getLiveCityRankingApi(hasAccessToLocation, callback) {
 }
 
 function bindLiveCityRanking() {
-
     $('#stationRankingList, #stationsDropdownMap').empty();
     var stationRankingListDiv = $('#stationRankingList');
     var stationsDropdownMapEl = $('#stationsDropdownMap');
     var stationDetails;
     $.each(liveCityData, function (index, station) {
-        stationDetails = stationsWithLocations.find(x => x.stationId == station.stationName);
-        if (stationDetails) {
+        var stationDetailsWithLocation = currentLanguage === 'arabic' ? (stationsWithLocationsArabic.find(x => x.stationId === station.stationName)) : (stationsWithLocations.find(x => x.stationId === station.stationName));
+        var stationDetails = stations.find(s => s.stationId === station.stationName);
+
+        if (stationDetailsWithLocation && stationDetails) {
             var colorCode = colorCodes[getColorClassForAqi(station.aqi)];
-            station.name = stationDetails.stationName;
-            station.distance = Math.round(calculateDistance(currentStationDetails.latitude, currentStationDetails.longitude, stationDetails.latitude, stationDetails.longitude));
+            
+            var stationName = currentLanguage && currentLanguage == 'arabic' ? stationDetails.ar : stationDetails.en;
+
+            station.name = stationName;
+            station.distance = Math.round(calculateDistance(currentStationDetails.latitude, currentStationDetails.longitude, stationDetailsWithLocation.latitude, stationDetailsWithLocation.longitude));
             var row = `<label class="list-group-item">
-                      <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
-                        <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
-                      </span>
-                      <div class="list-content">
-                        <div class="inner_list-content">
-                          <p>`+ station.name + `</p>
-                          <p style="display: none;">`+ stationDetails.regionName + `</p> 
-                          <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
-                        </div>
-                        <div class="dis-content">
-                          <span>~ `+ station.distance + ` km</span>
-                        </div>
-                      </div>
-                      <input type="radio" name="options" id="`+ stationDetails.stationId + `" value="` + stationDetails.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetails.stationId + `')">
-                    </label>`;
+                          <span class="numbers number" style="border-color:`+ colorCode + ` !important;">
+                            <strong style="color:`+ colorCode + `;">` + station.rank + `</strong>
+                          </span>
+                          <div class="list-content">
+                            <div class="inner_list-content">
+                              <p>`+ station.name + `</p>
+                              <p style="display: none;">`+ stationDetailsWithLocation.regionName + `</p> 
+                              <span style="color:`+ colorCode + `;">AQI ` + station.aqi + `</span>
+                            </div>
+                            <div class="dis-content">
+                              <span>~ `+ station.distance + ` km</span>
+                            </div>
+                          </div>
+                          <input type="radio" name="options" id="`+ stationDetailsWithLocation.stationId + `" value="` + stationDetailsWithLocation.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetailsWithLocation.stationId + `')">
+                        </label>`;
+            
             stationRankingListDiv.append(row);
+
             stationsDropdownMapEl.append(`<li>
-                <span class="station-name">`+ stationDetails.stationName + `</span> 
-                <span class="region-name" style="display: none;">`+ stationDetails.regionName + `</span>
+                <span class="station-name">`+ stationName + `</span> 
+                <span class="region-name" style="display: none;">`+ stationDetailsWithLocation.regionName + `</span>
             </li>`);
         }
 
     });
+
 
     if (currentStationDetails.stationId) {
         $("#" + currentStationDetails.stationId).attr('checked', 'checked');
@@ -2113,14 +2933,13 @@ function bindLiveCityRanking() {
 
 }
 function bindStationInfo() {
+    const pollutantNames = currentLanguage === 'arabic' ? pollutantNamesArabic : pollutantNamesEnglish;
     try {
         if (!currentStationDetails || !Array.isArray(currentStationDetails.measuredPolluants)) {
             throw new Error('currentStationDetails or currentStationDetails.measuredPolluants is undefined or not an array.');
         }
-
         var stationDetails = currentStationDetails;
         var airQualityIndexTooltipPollutantContent = '';
-
         stationDetails.measuredPolluants.forEach(item => {
             if (item !== pollutantAbbrevations.Noise) {
                 airQualityIndexTooltipPollutantContent += `<li>` + pollutantNames[item] + `<span class="blue-bold">
@@ -2132,8 +2951,10 @@ function bindStationInfo() {
             }
         });
 
-        $('.pollutantbar-title').text(stationDetails.stationName);
-        $('.pollutantbar-address').text(stationDetails.stationLocation);
+        const { stationName } = getStationNameInSelectedLanguage(stationDetails.stationName);
+        var stationDetailsWithLocation = currentLanguage === 'arabic' ? (stationsWithLocationsArabic && stationsWithLocationsArabic.find(x => x.stationName === stationName)) : (stationsWithLocations && stationsWithLocations.find(x => x.stationName === stationName));
+        $('.pollutantbar-title').text(stationName);
+        $('.pollutantbar-address').text(stationDetailsWithLocation?.stationLocation);
         $('.pollutantbar-details').empty().html(airQualityIndexTooltipPollutantContent);
 
         // Ensure proper rendering of HTML elements
@@ -2181,6 +3002,44 @@ function selectedStation(stationId) {
 }
 
 
+// function getAirQualitySafetyLevel() {
+//     $.ajax({
+//         url: baseUrl + 'GetDailyCountsAirQualityStation?input=' + currentStationDetails.stationId,
+//         method: 'GET',
+//         dataType: 'json',
+//         success: function (data) {
+//             var aqiStatusDiv = $("#aqiStatusDiv");
+//             var aqiDailyCountsDiv = $("#aqiDailyCountsDiv");
+//             var aqiSmallScreenDailyCounts = $("#aqiSmallScreenDailyCounts");
+//             aqiStatusDiv.empty();
+//             aqiDailyCountsDiv.empty();
+//             aqiSmallScreenDailyCounts.empty();
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
+//             aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass)); // start 19-April-24 changed function name due to counting animation
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass)); // start 19-April-24 changed function name due to counting animation
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass)); // start 19-April-24 changed function name due to counting animation
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
+//             aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass)); // start 19-April-24 changed function name due to counting animation
+
+//             // Append to aqiSmallScreenDailyCounts
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
+//             aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
+
+//         },
+//         error: handleApiError
+//     });
+// }
+
 function getAirQualitySafetyLevel() {
     $.ajax({
         url: baseUrl + 'GetDailyCountsAirQualityStation?input=' + currentStationDetails.stationId,
@@ -2190,30 +3049,33 @@ function getAirQualitySafetyLevel() {
             var aqiStatusDiv = $("#aqiStatusDiv");
             var aqiDailyCountsDiv = $("#aqiDailyCountsDiv");
             var aqiSmallScreenDailyCounts = $("#aqiSmallScreenDailyCounts");
+            
+            // Empty the divs before appending the new content
             aqiStatusDiv.empty();
             aqiDailyCountsDiv.empty();
-            aqiSmallScreenDailyCounts.empty();
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
-            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass)); // start 19-April-24 changed function name due to counting animation
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass)); // start 19-April-24 changed function name due to counting animation
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass)); // start 19-April-24 changed function name due to counting animation
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass)); // start 19-April-24 changed function name due to counting animation
-            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass)); // start 19-April-24 changed function name due to counting animation
+            aqiSmallScreenDailyCounts.empty();            
+            // Append the data in the selected language
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageGoodAQICount, currentStatusClass.Good, colorClass.GoodColorClass));
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageModerateAQICount, currentStatusClass.Moderate, colorClass.ModrateColorClass));
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlySensitiveGroupsAQICount, currentStatusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageUnHealthlyAQICount, currentStatusClass.UnHealthly, colorClass.UnhealthyColorClass));
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageVeryUnHealthlyAQICount, currentStatusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
+            aqiStatusDiv.append(airQualitySafetyLevelDivElements(data.averageHazardousAQICount, currentStatusClass.Hazardous, colorClass.HazardousClass));
 
-            // Append to aqiSmallScreenDailyCounts
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageGoodAQICount, statusClass.Good, colorClass.GoodColorClass));
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageModerateAQICount, statusClass.Moderate, colorClass.ModrateColorClass));
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlySensitiveGroupsAQICount, statusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, statusClass.UnHealthly, colorClass.UnhealthyColorClass));
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, statusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
-            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageHazardousAQICount, statusClass.Hazardous, colorClass.HazardousClass));
-
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageGoodAQICount, currentStatusClass.Good, colorClass.GoodColorClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageModerateAQICount, currentStatusClass.Moderate, colorClass.ModrateColorClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlySensitiveGroupsAQICount, currentStatusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageUnHealthlyAQICount, currentStatusClass.UnHealthly, colorClass.UnhealthyColorClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageVeryUnHealthlyAQICount, currentStatusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
+            aqiDailyCountsDiv.append(DailyCountsDataDivElements1(data.averageHazardousAQICount, currentStatusClass.Hazardous, colorClass.HazardousClass));
+            
+            // Append to aqiSmallScreenDailyCounts for small screens
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageGoodAQICount, currentStatusClass.Good, colorClass.GoodColorClass));
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageModerateAQICount, currentStatusClass.Moderate, colorClass.ModrateColorClass));
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlySensitiveGroupsAQICount, currentStatusClass.UnHealthlySensitiveGroups, colorClass.Unhealthy4peopleColorClass));
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageUnHealthlyAQICount, currentStatusClass.UnHealthly, colorClass.UnhealthyColorClass));
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageVeryUnHealthlyAQICount, currentStatusClass.VeryUnHealthly, colorClass.VeryUnhealthyColorClass));
+            aqiSmallScreenDailyCounts.append(DailyCountsDataDivElements(data.averageHazardousAQICount, currentStatusClass.Hazardous, colorClass.HazardousClass));
         },
         error: handleApiError
     });
@@ -2327,9 +3189,6 @@ function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
     });
 
 }
-
-
-
 
 function getStationChartApi(filter, initialRequest = false) {
     var url;
@@ -3300,8 +4159,6 @@ function bindStationDataToLineChart(filter) {
 
 }
 
-
-
 function updateYAxis(chart) {
     const activeDatasets = chart.data.datasets.filter((dataset, index) => chart.isDatasetVisible(index));
     const isCOVisible = activeDatasets.some(dataset => dataset.label === 'CO');
@@ -3343,7 +4200,6 @@ function updateYAxis(chart) {
     }
     chart.update();
 }
-
 
 function updatePollutantValues(tooltipItems) {
     var index = chartData.length - 1;
@@ -3531,8 +4387,6 @@ function updateAllPollutantValues(tooltipItems, chart) {
     var currentYearOverview = new Date().getFullYear();
     $("#lineChartPollutantValueStatus").text(aqi + ' ' + aqiDetailsNew.status).css('color', aqiDetailsNew.color);
 }
-
-
 
 function getThresholdValue(pollutant, filter) {
     switch (pollutant) {
@@ -5045,42 +5899,176 @@ var imageData = [
     { imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region's first smog-free tower at Surf Abu Dhabi, the world's most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
 ];
 
+var imageDataArabic = [
+    { 
+        imageUrl: "./images/new-images/e_linking.jpg", 
+        content: "الربط الإلكتروني لنظام الرصد المستمر للانبعاثات", 
+        description: "مشروع الربط الإلكتروني لنظام الرصد المستمر للانبعاثات هو مبادرة من حكومة أبوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة. يتضمن هذا المشروع جمع بيانات الانبعاثات من أنظمة الرصد المستمر للانبعاثات (CEMS) من المنشآت الصناعية إلى نظام قاعدة بيانات مركزي في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آليات تقارير يدوية للمنشآت التي لا تحتوي على أنظمة CEMS. سيمكن مشروع الربط الإلكتروني هيئة البيئة - أبوظبي من تطوير قاعدة بيانات شاملة تعتمد على البيانات اللحظية. كما يتضمن المشروع بوابة مصممة ومطبقة لتمكين تصور البيانات في الوقت الفعلي تقريبًا. سيساعد ذلك هيئة البيئة - أبوظبي في تطوير نهج أفضل لمراقبة الانبعاثات وضمان توفر بيانات ذات جودة عالية. يوفر هذا النظام لوحة تحكم تحتوي على ميزات مثل نظم المعلومات الجغرافية (GIS)، نمذجة التشتت، تنبيهات تجاوز الانبعاثات، إعداد التقارير المطلوبة وإدارة سير العمل الخاص بالبيانات. كما ستضمن البوابة جودة البيانات المستلمة (سواء كانت بيانات مؤتمتة أو يدوية) وستُمكّن التواصل مع المنشآت فيما يتعلق بالبيانات المتناقضة."
+    },
+    { 
+        imageUrl: "./images/new-images/Monitoring_network.jpg", 
+        content: "برنامج مراقبة جودة الهواء في أبوظبي", 
+        description: "بدأت هيئة البيئة - أبوظبي مراقبة جودة الهواء في عام 2007. يتألف برنامج المراقبة من 20 محطة و2 محطات متنقلة. تجمع هذه المحطات قراءات حول تركيزات ثاني أكسيد الكبريت (SO2)، ثاني أكسيد النيتروجين (NO2)، الأوزون (O3)، كبريتيد الهيدروجين (H2S)، أول أكسيد الكربون (CO)، الجسيمات المعلقة (PM10، PM2.5)، الميثان (CH4)، والبنزين (BTEX). جميع محطات مراقبة جودة الهواء مزودة بأجهزة استشعار لتسجيل المعلمات المناخية، وهي ضرورية لفهم أنماط جودة الهواء المحيط وظروف الطقس المحلية. المعلمات المناخية التي يتم قياسها تشمل سرعة الرياح، اتجاه الرياح، درجة الحرارة، الرطوبة النسبية، الإشعاع الصافي، وضغط الهواء. تبسط هيئة البيئة حالة جودة الهواء المحيط من خلال حساب مؤشر جودة الهواء (AQI) بناءً على المعايير الوطنية لجودة الهواء لأهم خمسة معايير: الجسيمات المعلقة، الأوزون على مستوى الأرض، ثاني أكسيد الكبريت، ثاني أكسيد النيتروجين وأول أكسيد الكربون."
+    },
+    { 
+        imageUrl: "./images/new-images/quality-monitoring.jpg", 
+        content: "نمذجة جودة الهواء في أبوظبي", 
+        description: "لتعزيز نظام مراقبة جودة الهواء، طورت هيئة البيئة - أبوظبي نظام نمذجة متطور ومتعدد المواضيع لجودة الهواء في أبوظبي. سيدعم هذا النظام التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التطوير العمراني، وتقليل تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء أبوظبي، بينما يساعد في تقييم فعالية خطط العمل والسياسات المستقبلية. سيوفر النظام أيضًا الدعم الفني والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث، وتطوير خرائط جودة الهواء السنوية للإمارة."
+    },
+    { 
+        imageUrl: "./images/new-images/inventory-img.png", 
+        content: "جرد انبعاثات الهواء في أبوظبي", 
+        description: "تركز هيئة البيئة - أبوظبي على إنشاء تحديث لجرد انبعاثات الهواء في أبوظبي يركز على بعض المعايير المحددة: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، و BC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات إنتاج الكهرباء، إنتاج النفط والغاز، العمليات الصناعية، والنقل البري، الذي يأخذ في الاعتبار كل من الانبعاثات العادمة وغير العادمة. بالإضافة إلى ذلك، يشمل المشروع الشحن، الطيران، السكك الحديدية، الزراعة وتربية الحيوانات، النفايات، والبناء. تهدف هذه القاعدة الشاملة إلى تحديد القطاعات الأساسية التي تسهم بشكل كبير في انبعاثات الهواء، مما يوفر وضوحًا حول مناطق التركيز. يتمثل الهدف الأساسي في تعزيز الفهم العام وأهمية جودة الهواء، وتشجيع المسؤولية المجتمعية والمشاركة. ستؤسس البيانات لأساس قوي لنمذجة جودة الهواء بدقة، مما يسهل اتخاذ تدابير تنبؤية ووقائية. من خلال إنشاء قاعدة بيانات مفصلة، ستصبح الجرد أساسيًا لاستراتيجيات البيئة المستقبلية، صنع السياسات، والتخطيط."
+    },
+    { 
+        imageUrl: "./images/new-images/GHG1.jpg", 
+        content: "جرد غازات الاحتباس الحراري والتنبؤ بها", 
+        description: "تماشيًا مع أولوياتها الاستراتيجية لتعزيز مرونة أبوظبي من خلال التخفيف والتكيف مع تغير المناخ وحماية الهواء والمياه البحرية، كانت هيئة البيئة - أبوظبي استباقية في بدء جردات غازات الاحتباس الحراري (GHG) كل عامين كجزء من خطتها الشاملة لمراقبة الانبعاثات الجوية في الإمارة. كانت هذه الجردات أساسية في وضع قاعدة معرفية حول انبعاثات الخط الأساسي والتوقعات في الإمارة، وتعزيز قدرات الجهات المحلية على تتبع انبعاثاتها القطاعية بكفاءة والإبلاغ عنها. يركز جرد غازات الاحتباس الحراري في أبوظبي على تحديد كمية الانبعاثات والإزالة حسب الغاز والمصدر. يركز المشروع على جميع المصادر والمصارف البشرية، بما في ذلك الطاقة، العمليات الصناعية، تغييرات استخدام الأراضي والغابات، الزراعة، والنفايات. يتبع المشروع إرشادات الهيئة الحكومية الدولية المعنية بتغير المناخ (IPCC) لجردات غازات الاحتباس الحراري الوطنية."
+    },
+    { 
+        imageUrl: "./images/new-images/Odor.jpg", 
+        content: "شبكة مراقبة الغازات الكريهة في أبوظبي", 
+        description: "شبكة مراقبة الغازات الكريهة في أبوظبي هي مشروع يمتد على خمس سنوات يشمل مجموعة متنوعة من الأنشطة عبر جميع أنواع الصناعة لضمان عدم تأثيرها سلبًا على البيئة والمجتمع المحلي. سيعمل المشروع كأداة قيمة للكشف المبكر والاستجابة للغازات الكريهة التي تسبب إزعاجًا عامًا. يشمل تشغيل 50 جهازًا ثابتًا و2 جهاز متنقل للكشف عن الروائح لإنشاء إطار لمراقبة وإدارة الروائح. تستجيب هيئة البيئة حاليًا لشكاوى الروائح من خلال نشر جهاز متنقل لمراقبة الروائح لقياس التركيزات اللحظية للغازات الكريهة، بالإضافة إلى محطة مراقبة جودة الهواء المتنقلة لقياس تركيزات ملوثات الهواء في الوقت الفعلي."
+    },
+    { 
+        imageUrl: "./images/new-images/Remote_sensing.jpg", 
+        content: "الاستشعار عن بعد للانبعاثات الفعلية", 
+        description: "سيساهم الاستشعار عن بعد للانبعاثات الفعلية في تحسين فهم جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. يعد تطوير حملة قياس استشعار عن بعد لانبعاثات النقل البري مكونًا أساسيًا في برنامج إدارة جودة الهواء في أبوظبي. ستوفر مخرجات المشروع معلومات أساسية لتصميم تدابير فعالة للحد من الانبعاثات الناتجة عن النقل البري بناءً على معلومات علمية، والتي ستدعم مجلس الوزراء، هيئة البيئة - أبوظبي، وزارة التغير المناخي والبيئة، شرطة أبوظبي، هيئة الصحة - أبوظبي، دائرة النقل، وغيرها من الجهات العامة والخاصة."
+    },
+    { 
+        imageUrl: "./images/new-images/EAD_Research.jpg", 
+        content: "بعثة أبحاث الغلاف الجوي في أبوظبي", 
+        description: "كانت هيئة البيئة - أبوظبي هي أول منظمة في العالم تقوم بإجراء أبحاث حول الغلاف الجوي من إسبانيا إلى أبوظبي، والتي غطت 25 دولة وثمانية بحار ومحيطات على مسافة أكثر من 10,000 كيلومتر. سعت الحملة أيضًا إلى تقييم كيفية نقل التلوث من الخليج العربي إلى مناطق أخرى وتقييم مساهمته في تكوين الأوزون في دولة الإمارات العربية المتحدة."
+    },
+    { 
+        imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", 
+        content: "برج خالٍ من الضباب الدخاني", 
+        description: "افتتحت هيئة البيئة - أبوظبي (EAD) وشركة مدن العقارية أول برج خالٍ من الضباب الدخاني في المنطقة في مشروع Surf Abu Dhabi. يعد هذا البرج ابتكارًا حضريًا لتحسين جودة الهواء في المنطقة وتوفير تجربة ملهمة لمستقبل نظيف وأخضر. يبلغ ارتفاع البرج المصنوع من الألمنيوم سبعة أمتار ويستخدم تقنية التأيين الإيجابي الصديقة للبيئة لتنقية الهواء المحيط، وتنظيف 30,000 متر مكعب من الهواء في الساعة باستخدام 1,170 واط فقط من الكهرباء، وهو ما يعادل الطاقة المستخدمة في غلاية."
+    }
+];
+
 var items1 = document.querySelectorAll('.slide-carol .carol-item');
 
-if (window.innerWidth < 765) {
-    var itemsPerPage = 1;
-    $.each(imageData, function (index, item) {
+// if (window.innerWidth < 765) {
+//     var itemsPerPage = 1;
+//     $.each(imageData, function (index, item) {
+//         if (index % itemsPerPage === 0) {
+//             var carouselItem = $('<div>').addClass('carousel-item carol-item');
+//             if (index === 0) {
+//                 carouselItem.addClass('active');
+//             }
+
+//             // Loop through each item per slide
+//             for (let i = 0; i < itemsPerPage; i++) {
+//                 var dataIndex = index + i;
+//                 if (dataIndex >= imageData.length) {
+//                     // If dataIndex exceeds imageData length, wrap around to the beginning
+//                     dataIndex = dataIndex % imageData.length;
+//                 }
+
+//                 var content = $('<div>').addClass('col-md-3');
+//                 var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+//                 var imageDiv = $('<div>');
+//                 var imageId = 'image_' + dataIndex;
+//                 var imageUrl = imageData[dataIndex].imageUrl;
+
+//                 // Sanitize the image URL            
+//                 //if (!isValidUrl(imageUrl)) {
+//                 //    console.error('Invalid image URL:', imageUrl);
+//                 //    continue; // Skip this item if the URL is not valid
+//                 //}
+
+//                 var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
+//                 var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+//                 var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
+
+//                 // Assemble elements
+//                 imageDiv.append(image);
+//                 mainContent.append(imageDiv, projectContent, projectItemDescription);
+//                 content.append(mainContent);
+//                 carouselItem.append(content);
+//             }
+
+//             $('#recipeCarousel .carousel-inner').append(carouselItem);
+//         }
+//     });
+// } else {
+
+//     var itemsPerPage = 5; // Number of items per slide
+//     // Check window width and adjust itemsPerPage if necessary
+//     if (window.innerWidth < 1099) {
+//         itemsPerPage = 2;
+//     }
+//     $.each(imageData, function (index, item) {
+//         if (index % itemsPerPage === 0) {
+//             var carouselItem = $('<div>').addClass('carousel-item carol-item');
+//             if (index === 0) {
+//                 carouselItem.addClass('active');
+//             }
+
+//             // Loop through each item per slide
+//             for (let i = 0; i < itemsPerPage; i++) {
+//                 var dataIndex = index + i;
+//                 if (dataIndex >= imageData.length) {
+//                     // If dataIndex exceeds imageData length, wrap around to the beginning
+//                     dataIndex = dataIndex % imageData.length;
+//                 }
+
+//                 var content = $('<div>').addClass('col-md-3');
+//                 var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+//                 var imageDiv = $('<div>');
+//                 var imageId = 'image_' + dataIndex;
+//                 var imageUrl = imageData[dataIndex].imageUrl;
+
+//                 // Sanitize the image URL
+//                 //if (!isValidUrl(imageUrl)) {
+//                 //    console.error('Invalid image URL:', imageUrl);
+//                 //    continue; // Skip this item if the URL is not valid
+//                 //}
+
+//                 var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
+//                 var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
+//                 var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
+
+//                 // Assemble elements
+//                 imageDiv.append(image);
+//                 mainContent.append(imageDiv, projectContent, projectItemDescription);
+//                 content.append(mainContent);
+//                 carouselItem.append(content);
+//             }
+
+//             $('#recipeCarousel .carousel-inner').append(carouselItem);
+//         }
+//     });
+
+// }
+
+function loadCarousel(data) {
+    var itemsPerPage = window.innerWidth < 765 ? 1 : (window.innerWidth < 1099 ? 2 : 5);
+    $('#recipeCarousel .carousel-inner').empty();
+    $.each(data, function (index, item) {
         if (index % itemsPerPage === 0) {
             var carouselItem = $('<div>').addClass('carousel-item carol-item');
             if (index === 0) {
                 carouselItem.addClass('active');
             }
 
-            // Loop through each item per slide
             for (let i = 0; i < itemsPerPage; i++) {
                 var dataIndex = index + i;
-                if (dataIndex >= imageData.length) {
-                    // If dataIndex exceeds imageData length, wrap around to the beginning
-                    dataIndex = dataIndex % imageData.length;
+                if (dataIndex >= data.length) {
+                    dataIndex = dataIndex % data.length; // Wrap around if needed
                 }
 
                 var content = $('<div>').addClass('col-md-3');
-                var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
+                var mainContent = $('<div>').addClass('position-relative main-content openSidebar').attr('data-index', dataIndex);
                 var imageDiv = $('<div>');
-                var imageId = 'image_' + dataIndex;
-                var imageUrl = imageData[dataIndex].imageUrl;
+                var imageUrl = data[dataIndex].imageUrl;
 
-                // Sanitize the image URL            
-                //if (!isValidUrl(imageUrl)) {
-                //    console.error('Invalid image URL:', imageUrl);
-                //    continue; // Skip this item if the URL is not valid
-                //}
+                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('alt', 'Image');
+                var projectContent = $('<div>').addClass('project-slide-content').text(data[dataIndex].content);
+                var projectItemDescription = $('<div>').addClass('project-slide-description').text(data[dataIndex].description);
 
-                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
-                var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
-                var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
-
-                // Assemble elements
+                // Append elements
                 imageDiv.append(image);
                 mainContent.append(imageDiv, projectContent, projectItemDescription);
                 content.append(mainContent);
@@ -5090,56 +6078,56 @@ if (window.innerWidth < 765) {
             $('#recipeCarousel .carousel-inner').append(carouselItem);
         }
     });
-} else {
 
-    var itemsPerPage = 5; // Number of items per slide
-    // Check window width and adjust itemsPerPage if necessary
-    if (window.innerWidth < 1099) {
-        itemsPerPage = 2;
-    }
-    $.each(imageData, function (index, item) {
-        if (index % itemsPerPage === 0) {
-            var carouselItem = $('<div>').addClass('carousel-item carol-item');
-            if (index === 0) {
-                carouselItem.addClass('active');
-            }
-
-            // Loop through each item per slide
-            for (let i = 0; i < itemsPerPage; i++) {
-                var dataIndex = index + i;
-                if (dataIndex >= imageData.length) {
-                    // If dataIndex exceeds imageData length, wrap around to the beginning
-                    dataIndex = dataIndex % imageData.length;
-                }
-
-                var content = $('<div>').addClass('col-md-3');
-                var mainContent = $('<div>').addClass('position-relative main-content openSidebar');
-                var imageDiv = $('<div>');
-                var imageId = 'image_' + dataIndex;
-                var imageUrl = imageData[dataIndex].imageUrl;
-
-                // Sanitize the image URL
-                //if (!isValidUrl(imageUrl)) {
-                //    console.error('Invalid image URL:', imageUrl);
-                //    continue; // Skip this item if the URL is not valid
-                //}
-
-                var image = $('<img>').addClass('item').attr('src', imageUrl).attr('id', imageId);
-                var projectContent = $('<div>').addClass('project-slide-content').text(imageData[dataIndex].content);
-                var projectItemDescription = $('<div>').addClass('project-slide-description').text(imageData[dataIndex].description);
-
-                // Assemble elements
-                imageDiv.append(image);
-                mainContent.append(imageDiv, projectContent, projectItemDescription);
-                content.append(mainContent);
-                carouselItem.append(content);
-            }
-
-            $('#recipeCarousel .carousel-inner').append(carouselItem);
-        }
+    // Re-bind click events after carousel reload
+    $('.openSidebar').off('click').on('click', function () {
+        var dataIndex = $(this).attr('data-index');
+        showDescription(data[dataIndex]); // Show description in modal/sidebar
     });
-
 }
+
+
+function showDescription(item) {
+    $('.sidebar img').attr('src', item.imageUrl);
+    $('.projectItemContent').text(item.content);
+    $('.projectItemDescription').text(item.description);
+
+    if (window.innerWidth < 1030) {
+        $(".sidebar").css("width", "97%");
+    } else {
+        $(".sidebar").css("width", "40%");
+    }
+
+    $('.modal-background').addClass('project-modal');
+    $('body').addClass('project-modal-header');
+
+    // Close Sidebar
+    $(".close-btn").off('click').on('click', function () {
+        // $(".sidebar").css("width", "0");
+        // $('.modal-background').removeClass('project-modal');
+        // $('body').removeClass('project-modal-header');
+        closeSidebar();
+    });
+}
+
+function closeSidebar() {
+    // Reset the sidebar width to 0
+    $(".sidebar").css("width", "0");
+
+    // Remove modal-related classes
+    $('.modal-background').removeClass('project-modal');
+    $('body').removeClass('project-modal-header');
+
+    // Clear the sidebar content to prevent showing old data
+    $('.sidebar img').attr('src', '');
+    $('.projectItemContent').text('');
+    $('.projectItemDescription').text('');
+}
+
+$('.close-btn').on('click', function() {
+    $('.modal-background').removeClass('open'); 
+});
+
 function isValidUrl(url) {
     try {
         const parsedUrl = new URL(url);
@@ -5418,6 +6406,73 @@ var accordionContent = [
     },
 ];
 
+var accordionArabicContent = [
+    {
+        question: 'إلى ماذا تشير "جودة الهواء"؟',
+        answer: "تشير جودة الهواء إلى حالة الهواء في بيئتنا، وبشكل خاص وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة."
+    },
+    {
+        question: "ما هي الملوثات الهوائية الشائعة الموجودة في البيئة؟",
+        answer: "تشمل الملوثات الهوائية الشائعة الجسيمات العالقة (PM) وثاني أكسيد النيتروجين (NO2) وثاني أكسيد الكبريت (SO2) والأوزون (O3) وأول أكسيد الكربون (CO)."
+    },
+    {
+        question: "كيف تؤثر جودة الهواء على أنماط الطقس؟",
+        answer: "نعم، يُعتبر أن جودة الهواء تؤثر على أنماط الطقس. على سبيل المثال، يمكن أن تؤثر بعض الملوثات على تكوين السحب والهطول."
+    },
+    {
+        question: "ما هو عدد محطات مراقبة جودة الهواء التي تعمل حاليًا في أبوظبي؟",
+        answer: "تشرف هيئة البيئة – أبوظبي على شبكة تضم 20 محطة ثابتة لمراقبة جودة الهواء موزعة في جميع أنحاء إمارة أبوظبي، بالإضافة إلى محطتان متنقلتان لمراقبة جودة الهواء."
+    },
+    {
+        question: "من يُعتبر ضمن الفئات الحساسة؟",
+        answer: "تتطلب الفئات عالية المخاطر، بما في ذلك الأطفال تحت 18 عامًا، وكبار السن، والأفراد المصابين بأمراض القلب أو الرئة المزمنة، والحوامل، والأشخاص المصابين بالسكري، والبالغين النشطين في الهواء الطلق، اهتمامًا خاصًا. هؤلاء الأفراد أكثر عرضة لتجربة التأثيرات السلبية لجودة الهواء الرديئة، مما يستلزم اتخاذ تدابير استباقية. لحماية هذه الفئات الضعيفة، من الضروري مراقبة جودة الهواء، وتقييد الأنشطة الخارجية خلال ساعات الذروة للتلوث، وضمان وجود مساحات داخلية جيدة التهوية، والالتزام بالنصائح الطبية، خاصة لأولئك الذين لديهم حالات صحية مسبقة. من خلال اتخاذ هذه الخطوات معًا، يمكننا تعزيز مجتمع أكثر صحة ومرونة، مع إعطاء الأولوية لرفاهية الأكثر عرضة لخطر التلوث الهوائي."
+    },
+    {
+        question: "كيف يمكنني التحقق من جودة الهواء في منطقتي؟",
+        answer: "يمكنك التحقق من جودة الهواء في منطقتك من خلال اختيار أقرب محطة مراقبة أو البحث عن منطقتك من خلال قائمة البحث في الخريطة."
+    },
+    {
+        question: "هل تلعب جودة الهواء دورًا في تغير المناخ؟",
+        answer: "نعم، تلعب جودة الهواء دورًا كبيرًا في تغير المناخ. تساهم الملوثات الهوائية المصنفة كغازات دفيئة، مثل الميثان وثاني أكسيد الكربون، في تغير المناخ من خلال زيادة تأثير الاحتباس الحراري وتغيير توازن الطاقة على الأرض."
+    },
+    {
+        question: "كيف يؤثر تغير المناخ على جودة الهواء؟",
+        answer: "مكن أن يؤثر تغير المناخ على أنماط الطقس، مما يؤدي إلى حدوث موجات حر أكثر تكرارًا وشدة، وجفاف، وحرائق غابات. يمكن أن يؤدي ذلك إلى تفاقم جودة الهواء من خلال زيادة مستويات التلوث، مثل الجسيمات العالقة والأوزون على مستوى الأرض. بالإضافة إلى ذلك، يمكن أن تسرع درجات الحرارة المرتفعة من تكوين الأوزون وتزيد من تقلب الملوثات. كما يمكن أن تؤثر التغيرات في الدوران الجوي على جودة الهواء الإقليمية، بينما يمكن أن تؤدي التحولات في الأنظمة البيئية إلى تغيير تركيبة الملوثات الجوية."
+    },
+    {
+        question: "كيف يمكن للأفراد المساهمة في تقليل تلوث الهواء؟ ?",
+        answer: "<ul><li>اختيار وسائل النقل المستدامة.</li> <li>.استخدام الأجهزة الموفرة للطاقة وإيقاف الأجهزة الإلكترونية عند عدم الاستخدام.</li> <li> .اختيار مصادر الطاقة النظيفة مثل الطاقة الشمسية أو طاقة الرياح. </li> <li>.تجنب استخدام المركبات غير الضرورية لتقليل انبعاثات المرور. </li> <li> .استهلاك المنتجات المحلية </li> </ul>"
+    },
+    {
+        question: "ما هي المصادر المختلفة لتلوث الهواء؟",
+        answer: "يمكن تصنيف مصادر تلوث الهواء إلى نوعين رئيسيين: المصادر البشرية والمصادر الطبيعية. المصادر البشرية هي الانبعاثات الناتجة عن الأنشطة البشرية. من أمثلة الأنشطة البشرية الانبعاثات الصناعية، والنقل، والممارسات الزراعية، والأنشطة السكنية. أما المصادر الطبيعية فهي العمليات التي تحدث بشكل طبيعي وتطلق ملوثات في الغلاف الجوي، مثل الثورات البركانية، وحرائق الغابات، والغبار وحبوب اللقاح الناتجة عن تآكل الرياح والنباتات، والانبعاثات البيولوجية من النباتات والأشجار."
+    },
+    {
+        question: "ما هي المخاطر الصحية المرتبطة بتلوث الهواء؟",
+        answer: "يمكن أن يتسبب تلوث الهواء بمستويات عالية والتعرض المطول له في مشاكل تنفسية، ويزيد من تفاقم الحالات الصحية القائمة، ويساهم في مشاكل القلب والأوعية الدموية."
+    },
+    {
+        question: "ما هي الأنواع المختلفة للجسيمات العالقة؟",
+        answer: "تشير الجسيمات العالقة (PM) إلى جزيئات أو قطرات صغيرة في الهواء يمكن استنشاقها إلى الرئتين. تختلف هذه الجزيئات في الحجم، وتصنف بناءً على قطرها. النوعان الرئيسيان من الجسيمات العالقة هما: PM10 وPM2.5."
+    },
+    {
+        question: "ما هو الأوزون (O3)؟ ",
+        answer: "الأوزون (O3) هو جزيء يتكون من ثلاثة ذرات أكسجين. إنه غاز أزرق باهت له رائحة مميزة وحادة. يتواجد الأوزون في كل من الغلاف الجوي العلوي للأرض (الستراتوسفير) وعلى مستوى سطح الأرض (التروبوسفير)، حيث يشكل طبقة الأوزون ويساهم في جودة الهواء على التوالي."
+    },
+    {
+        question: "ما هي أكاسيد النيتروجين (NOx)؟",
+        answer: "تشير أكاسيد النيتروجين (NOx) إلى مجموعة من الغازات التفاعلية التي تتكون من جزيئات النيتروجين والأكسجين. الأكسيدان الرئيسيان من أكاسيد النيتروجين التي تثير القلق البيئي هما أكسيد النيتروجين الأحادي (NO) وأكسيد النيتروجين الثنائي (NO2). الصيغ الكيميائية لهذه الغازات هي NO وNO2، على التوالي. تنتج أكاسيد النيتروجين أثناء عمليات الاحتراق، مثل تلك التي تحدث في المركبات ومحطات الطاقة والمنشآت الصناعية. تشمل المصادر الرئيسية لانبعاثات NOx احتراق الوقود الأحفوري، لا سيما في محركات الاحتراق الداخلي والمراجل الصناعية."
+    },
+    {
+        question: "ما هو ثاني أكسيد الكبريت (SO2)؟",
+        answer: "ثاني أكسيد الكبريت (SO2) هو غاز عديم اللون ذو رائحة لاذعة. يتكون من ذرة واحدة من الكبريت وذرتين من الأكسجين، وصيغته الكيميائية هي SO2. يُنتج ثاني أكسيد الكبريت بشكل رئيسي من حرق الوقود الأحفوري الذي يحتوي على الكبريت، مثل الفحم والنفط، في محطات الطاقة ومن خلال بعض العمليات الصناعية. كما يتم إطلاقه خلال الثورات البركانية."
+    },
+    {
+        question: "ما هو أول أكسيد الكربون (CO)؟",
+        answer: "أول أكسيد الكربون (CO) هو غاز عديم اللون وبدون رائحة وطعم. يتكون من ذرة واحدة من الكربون وذرة واحدة من الأكسجين، وصيغته الكيميائية هي CO. يتم إنتاج أول أكسيد الكربون نتيجة الاحتراق غير الكامل للوقود الذي يحتوي على الكربون، مثل البنزين والغاز الطبيعي والخشب. يمكن أن يُنبعث من المركبات، والعمليات الصناعية، والأجهزة المنزلية. يُعرف أول أكسيد الكربون بخطره المحتمل، حيث إن التركيزات العالية يمكن أن تكون سامة للبشر والحيوانات. في البيئات الداخلية، من المهم ضمان التهوية الجيدة والوظيفة الصحيحة للأجهزة الاحتراقية لمنع تراكم أول أكسيد الكربون."
+    }
+];
+
 
 $.each(accordionContent, function (index, item) {
     // Create accordion item HTML
@@ -5440,7 +6495,28 @@ $.each(accordionContent, function (index, item) {
     $('#myAccordion').append(accordionItem);
 });
 
-// Show the first accordion item by default
+function renderAccordionContent(content) {
+    $('#myAccordion').empty(); // Clear existing content
+    $.each(content, function (index, item) {
+        var accordionItem = '<div class="accordion-item">' +
+            '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
+            '<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse' + (index + 1) + '">' +
+            item.question +
+            '</button>' +
+            '</h2>' +
+            '<div id="collapse' + (index + 1) + '" class="accordion-collapse collapse" data-bs-parent="#myAccordion">' +
+            '<div class="accordion-body pt-1 pb-2 text-justify">' +
+            '<p>' +
+            item.answer +
+            '</p>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        $('#myAccordion').append(accordionItem);
+    });
+}
+
 $('#collapse1').addClass('show');
 $('#heading1 button').toggleClass('collapsed');
 $('.select-pils').on('click', function () {
@@ -5450,4 +6526,663 @@ $('.select-pils').on('click', function () {
     } else if (tabText === ' Pollutant ') {
         $('.changeHeading-pollutant').text('Station Pollutants Trends');
     }
+});
+
+function toggleChangeLanguage(element) {
+    const isChecked = element.checked;
+
+    document.getElementById('language-toggle').checked = isChecked;
+    document.getElementById('language-toggle1').checked = isChecked;
+    document.getElementById('language-toggle1-btn').checked = isChecked;
+    if (isChecked) {
+        console.log("Switched to Arabic");
+    } else {
+        console.log("Switched to English");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtns = document.getElementsByClassName('toggleLanguageBtn');
+    const faqSection = document.getElementById('faq-section');
+    const questionHeader = document.getElementById('questionHeader');
+    const questionHeaderAlt = document.getElementById('questionHeaderAlt');
+    const monitoringHeading = document.getElementById("monitoringHeading");
+    const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
+    const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
+    const navLinkAirQuality = document.getElementById("navLinkAirQuality");
+    const contactHead = document.getElementById('contactus');
+    const heading = document.getElementById('heading');
+    const cnctAddress = document.getElementById('cotact-address');
+    const cnctAddressmobile = document.getElementById('cotact-address-mobile');
+    const agenda = document.getElementById('agenda');
+    const agendamobile = document.getElementById('agenda-mobile');
+    const nameLabel = document.getElementById('yourname');
+    const emailLabel = document.getElementById('youremail');
+    const phoneLabel = document.getElementById('yourphone');
+    const submitBtn = document.getElementById('sumbitbtn');
+    const contactSection = document.getElementById('section5');
+    const Message = document.getElementById('message');
+    const closeButton = document.querySelector('.newcutom-btn');
+    const mobileMenu = document.getElementById('mobile-overlay');
+    const dropMenuMobile = document.getElementsByClassName('.dropdown-item');
+    const prev = document.querySelector('.previous');
+    const next = document.querySelector('.next');
+    const airQualityAssessments = document.querySelectorAll('.chart-f-content p');
+    const dropdownLists = document.querySelectorAll('.dropdown-menu.metero-dropdown');
+    const iaqmElement = document.getElementById('iaqm');
+    const switchingElement = document.getElementById('switching-air-purifier')
+    // const pollutantLegendTextItems = document.querySelectorAll('.pollutants-legend-text .legend li .legend_radar li');
+    currentLanguage = 'english';
+    currentStatusClass = statusClass;
+    getAirQualitySafetyLevel();
+    loadCarousel(imageData);
+    bindLiveCityRanking();
+    loadStationData()
+    updateNavLinksToEnglish();
+    updateFooterLinksToEnglish();
+    for (let i = 0; i < toggleBtns.length; i++) {
+        toggleBtns[i].addEventListener('click', toggleLanguage);
+    }
+     function toggleLanguage() {
+
+        if (currentLanguage === 'english') {
+            currentLanguage = 'arabic';
+            bindLiveCityRanking();
+            bindStationInfo();
+            updateNavLinksToArabic();
+            updateFooterLinksToArabic();
+            loadStationData()
+            // updateCauses('شارع حمدان', 'PM10'); 
+            // const content = getActivityContent('good'); // Get content in Arabic
+            // $('.activities-imgs').empty().append(content);
+            // updateHealthRecommendations();
+            updateAqitoArabic();
+            document.body.setAttribute('dir', 'rtl');
+            updateToArabic();
+
+        } else {
+            currentLanguage = 'english';
+            bindLiveCityRanking();
+            bindStationInfo();
+            updateNavLinksToEnglish();
+            updateFooterLinksToEnglish();
+             loadStationData()
+            // updateHealthRecommendations();
+            // const content = getActivityContent('good'); // Get content in Arabic
+            // $('.activities-imgs').empty().append(content); 
+            // updateCauses('Hamdan Street', 'PM10');
+            updateAqitoEnglish();
+            document.body.setAttribute('dir', 'ltr');
+            updateToEnglish();
+        }
+        
+           }
+
+        //    function updateHealthRecommendations() {
+        //     const aqiLevel = 'good'; // Example AQI level
+            
+        //     const healthRecommendationsContainer = document.querySelector('.healthCommendation-content');
+        //     if (healthRecommendationsContainer) {
+        //         healthRecommendationsContainer.innerHTML = getHealthRecommendationContent(aqiLevel); 
+        //     }
+        // }
+
+function updateToArabic() {
+    renderAccordionContent(accordionArabicContent);
+    loadCarousel(imageDataArabic);
+    currentStatusClass = statusClassArabic;
+    $('.accordion-button').addClass('rtl-accordion');
+    $('.faqscrolling').addClass('rtl-faqscrolling');
+    $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
+    // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
+    // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
+    // $('.me-4').removeClass('me-4').addClass('ms-4');
+    closeSidebar();
+    getAirQualitySafetyLevel();
+    questionHeader.textContent = 'أسئلتك، تمت الإجابة.';
+    questionHeaderAlt.innerHTML = 'أسئلتك، <br> تمت الإجابة.';
+    monitoringHeading.innerText = "مبادرات مراقبة جودة الهواء لدينا";
+    initiativeHeadingContentLg.innerHTML =
+        "انضم إلينا في النضال من أجل سماء أنظف ومجتمعات أكثر صحة. كن وصيًا على غلافنا الجوي واحمِ مستقبلنا.";
+    initiativeHeadingContentSm.innerText =
+        "انضم إلينا في النضال من أجل سماء أنظف ومجتمعات أكثر صحة. كن وصيًا على غلافنا الجوي واحمِ مستقبلنا.";
+    navLinkAirQuality.innerText = "جودة الهواء";
+    document.querySelector('.welcome-text').innerText = "مرحبًا بكم في";
+    document.querySelector('.quotes').innerText = " مراقبة جودة الهواء ";
+    document.querySelector('.emirates-text').innerText = "في أبوظبي";
+    document.querySelector('#AQI-mb-0').innerText = 'مؤشر جودة الهواء';
+    document.querySelector('#AQI-mb-1').innerText = 'مؤشر جودة الهواء';
+    document.querySelectorAll('.AQI-mb-2').forEach((element) => { element.innerText = 'مؤشر جودة الهواء'});
+    document.querySelector('.sort-label').textContent = 'فرز';
+    document.querySelector('.nearest-label').textContent = 'الأقرب إلي';
+    document.querySelector('.aqi-label').textContent = 'تصنيف مؤشر جودة الهواء';
+    document.querySelector('.order-label').textContent = 'ترتيب أبجدي';
+    document.querySelectorAll('.windSpeedHeading').forEach((element) => {element.textContent = 'سرعة الرياح'});
+    document.querySelectorAll('.windDirectionHeading').forEach((element) => {element.textContent = 'اتجاه الرياح'});
+    document.querySelectorAll('.humidityHeading').forEach((element) => {element.textContent = 'الرطوبة'})
+    document.querySelectorAll('.temperatureHeading').forEach((element) => {element.textContent = 'درجة الحرارة'})
+    document.querySelector('.map-disclaimer').innerText = 'تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.'
+    document.querySelector('.sm-map-disclaimer').innerText = 'تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.'
+    document.querySelector('.last-updated-sec').innerText = 'التاريخ والوقت';
+    document.querySelector('.last-updated-sec').style.marginRight = '16px';
+    document.querySelector('.map-disclaimer-air').innerText = 'مؤشر جودة الهواء';
+    document.querySelector('.insight-btn').innerText ='المزيد من الرؤى';
+    document.querySelector('.insight-btn-tab').innerText ='المزيد من الرؤى';
+    // document.querySelector('.fp-next').style.right='auto';
+    contactHead.textContent = "اتصل بنا";
+    heading.textContent = 'أخبرنا برأيك';
+    cnctAddress.innerHTML = `المقر الرئيسي، المعمورة، المبنى A، المبنى 62، <br /> شارع المعمورة، ال نهيان، أبوظبي، الإمارات العربية المتحدة، <br /> الرمز البريدي: 22221، صندوق بريد: 4553`;
+    cnctAddressmobile.innerHTML = `المقر الرئيسي، المعمورة، المبنى A، المبنى 62، شارع المعمورة، ال نهيان، أبوظبي، الإمارات العربية المتحدة، الرمز البريدي: 22221، صندوق بريد: 4553`;
+    agenda.textContent = 'تأسست في عام 1996، وتلتزم هيئة البيئة – أبوظبي (EAD) بحماية وتعزيز جودة الهواء، والمياه الجوفية، بالإضافة إلى التنوع البيولوجي في نظامنا البيئي الصحراوي والبحري. من خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص، والمنظمات غير الحكومية، والوكالات البيئية العالمية، نتبنى أفضل الممارسات الدولية، والابتكار، والعمل الجاد لوضع تدابير سياسية فعالة. نسعى لزيادة الوعي البيئي، وتسهيل التنمية المستدامة، وضمان أن تظل القضايا البيئية من أولويات جدول أعمالنا الوطني.';
+    agendamobile.textContent = 'تأسست في عام 1996، وتلتزم هيئة البيئة – أبوظبي (EAD) بحماية وتعزيز جودة الهواء، والمياه الجوفية، بالإضافة إلى التنوع البيولوجي في نظامنا البيئي الصحراوي والبحري. من خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص، والمنظمات غير الحكومية، والوكالات البيئية العالمية، نتبنى أفضل الممارسات الدولية، والابتكار، والعمل الجاد لوضع تدابير سياسية فعالة. نسعى لزيادة الوعي البيئي، وتسهيل التنمية المستدامة، وضمان أن تظل القضايا البيئية من أولويات جدول أعمالنا الوطني.';
+    nameLabel.textContent = 'اسمك';
+    emailLabel.textContent = 'البريد الإلكتروني';
+    phoneLabel.textContent = 'الهاتف';
+    submitBtn.textContent = 'إرسال';
+    Message.placeholder = 'الرسالة';
+    Message.style.direction = 'ltr';
+    document.getElementById('searchInput').placeholder = 'المحطة بحث';
+    document.getElementById('headerSearchInput').setAttribute('placeholder', 'بحث');
+    document.querySelector('.search-result p').innerText = 'نتائج البحث';
+    document.querySelector('.newcutom-btn').innerText = 'إغلاق';
+    document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'left';
+    document.querySelector('header .search-block .search-collapse .search-result').style.paddingRight = '50px';
+    closeButton.style.textTransform = 'none';
+    document.querySelector('.paratab').innerText = 'عندما يصل مؤشر جودة الهواء (AQI) إلى مستويات البرتقالي أو الأحمر أو الأرجواني أو البني، من الضروري اتخاذ تدابير استباقية لحماية صحتك. اتبع هذه الإرشادات لتقليل تأثير مستويات تلوث الهواء المرتفعة على صحتك.';
+    document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامات';
+    iaqmElement && (iaqmElement.innerText = 'صيانة جودة الهواء الداخلية');
+    switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء الخاص بك');
+    document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'استخدام الكمامات');
+
+
+    document.querySelector('.quality-index-wrapper-h2 .levelmb25').innerText = 'مستوى أمان جودة الهواء';
+    document.getElementById('health-recommendations').innerText = 'التوصيات الصحية';
+    document.querySelector('.main-contributing-pollutant').innerText = 'الملوث الرئيسي المساهم';
+    document.querySelector('.Causes-wrapper h3').innerText = 'الأسباب المحتملة';
+    // 25/10
+    // document.getElementById('enjoy-some-indoor-fun').innerText = 'استمتع ببعض المرح في الأماكن المغلقة';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('enjoy-some-indoor-fun').innerText = 'استمتع ببعض المرح في الأماكن المغلقة';
+    });
+ 
+    // document.querySelector('.imagetext1').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.imagetext1').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    });
+    // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    });
+    // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    });
+    // document.querySelector('.imagetext1').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    document.getElementById('air-quality-index').innerText = 'مؤشر جودة الهواء';
+    document.querySelector('.last-refersh-color').innerText = 'آخر تحديث';
+    document.querySelector('.last-refersh-color').style.direction = 'ltr';
+    document.querySelector('.station-aqi-legend').style.direction='rtl';
+    // document.getElementById('barChartFilter').innerText='كل ساعة';
+    // -------23/10/2024-----
+    document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
+        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي. يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. ابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
+    });
+    document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
+        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`
+    });
+    document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد سنويًا</h2>`
+    document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
+    document.querySelector('.last-refersh').innerText = 'آخر تحديث';
+    document.querySelector('.last-refersh').style.direction = 'ltr';
+    document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
+    document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
+    document.querySelector('.equal-station-box-height').style.direction = 'ltr';
+    document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي. يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. ابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
+    document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
+    document.querySelector('.activity_heading').innerText = 'الأنشطة';
+    airQualityAssessments.forEach((element) => {
+        element.innerText = 'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تقديم تحديثات كل ساعة ويوميا وشهريا وسنويا.';
+    });
+    // document.getElementById('sand-storm').innerText='العاصفة الرملية';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('sand-storm').innerText = 'العاصفة الرملية';
+    });
+    // document.querySelector('.high-traffic').innerText='ارتفاع حركة المرور';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.high-traffic').innerText = 'ارتفاع حركة المرور';
+    });
+    // document.querySelector('.indor-aq-maintenance').innerText='صيانة جودة الهواء الداخلية';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.indor-aq-maintenance').innerText ='صيانة جودة الهواء الداخلية';
+    });
+    // document.querySelector('.switch-on-air-purifier').innerText='تشغيل جهاز تنقية الهواء الخاص بك';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.switch-on-air-purifier').innerText ='تشغيل جهاز تنقية الهواء الخاص بك';
+    });
+    document.querySelectorAll('.measure-pollut').forEach((element) => {
+        element.innerText ='الملوثات المقاسة';
+    });
+    document.querySelector('.material-symbols-outlined').innerText='إغلاق';
+        document.querySelector('.good-label-graph').innerText = 'جيد';
+    // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
+    // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'معتدل' });
+    // document.querySelectorAll('.sensitive-label-graph').forEach((element) => {element.innerText = 'غير صحي للمجموعات الحساسة' });
+    // document.querySelectorAll('.unhealthy-label-graph').forEach((element) => { element.innerText = 'غير صحي' });
+    // document.querySelectorAll('.veryunhealthy-label-graph').forEach((element) => { element.innerText = 'غير صحي للغاية'});
+    // document.querySelectorAll('.hazardous-label-graph').forEach((element) => { element.innerText = 'خطرة' });
+    dropdownLists.forEach((dropdownList) => {
+        // Inside each <ul>, get the dropdown items
+        const dropdownItems = dropdownList.querySelectorAll('.quality-index-dropItem');
+
+        dropdownItems.forEach((item, index) => {
+            switch (index) {
+                case 0:
+                    item.innerText = 'كل ساعة'; // Hourly
+                    break;
+                case 1:
+                    item.innerText = 'يوميا'; // Daily
+                    break;
+                case 2:
+                    item.innerText = 'شهريا'; // Monthly
+                    break;
+                case 3:
+                    item.innerText = 'سنويا'; // Yearly
+                    break;
+                case 4:
+                    item.innerText = 'مخصص'; // Custom
+                    break;
+            }
+        });
+    });
+    const navMobileNew = document.querySelector('.navmobile-new');
+      navMobileNew.style.left = '60px';
+      navMobileNew.style.right = 'auto';
+
+
+    document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
+    document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; // black logo
+    document.querySelector('.dropdown-menu .dropdown-item');
+    prev.querySelector('svg').style.transform = 'rotate(180deg)';  // Flip the previous arrow
+    next.querySelector('svg').style.transform = 'rotate(-180deg)';
+}
+
+function updateToEnglish() {
+    renderAccordionContent(accordionContent);
+    loadCarousel(imageData);
+    currentStatusClass = statusClass;
+    $('.accordion-button').removeClass('rtl-accordion');
+    $('.faqscrolling').removeClass('rtl-faqscrolling');
+    $('.insight .data-list label.list-group-item input').removeClass('rtl-stationsData');
+    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
+    // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
+    // $('.ms-4').removeClass('ms-4').addClass('me-4');
+    closeSidebar();
+    getAirQualitySafetyLevel();
+    questionHeader.textContent = 'Your Questions, Answered.';
+                    questionHeaderAlt.innerHTML = 'Your Questions, <br> Answered.';
+                    monitoringHeading.innerText = "Our Air Quality Monitoring Initiatives";
+                    initiativeHeadingContentLg.innerHTML =
+                        "Join us in the fight for cleaner skies and healthier communities. Become a <br> guardian of our atmosphere and safeguard our future.";
+                    initiativeHeadingContentSm.innerText =
+                        "Join us in the fight for cleaner skies and healthier communities. Become a guardian of our atmosphere and safeguard our future.";
+                    navLinkAirQuality.innerText = "Air Quality";
+                    document.querySelector('.welcome-text').innerText = "WELCOME TO";
+                    document.querySelector('.quotes').innerText = "Air Quality Monitoring";
+                    document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
+                    document.querySelector('#AQI-mb-0').innerText = 'AQI';
+                    document.querySelector('#AQI-mb-1').innerText = 'AQI';
+                    document.querySelectorAll('.AQI-mb-2').forEach((element) => {element.textContent  = 'AQI'});
+                    document.getElementById('searchInput').placeholder = 'Search Station';
+                    document.querySelectorAll('.windSpeedHeading').forEach((element) => {element.textContent = 'Wind Speed'});
+                    document.querySelectorAll('.windDirectionHeading').forEach((element) => {element.textContent = 'Wind Direction'});
+                    document.querySelectorAll('.humidityHeading').forEach((element) => {element.textContent = 'Humidity'})
+                    document.querySelectorAll('.temperatureHeading').forEach((element) => {element.textContent = 'Temperature'});
+                    document.querySelector('.sort-label').textContent = 'Sort';
+                    document.querySelector('.nearest-label').textContent = 'Nearest Station';
+                    document.querySelector('.aqi-label').textContent = 'AQI Ranking';
+                    document.querySelector('.order-label').textContent = 'Alphabetical Order';
+                    document.querySelector('.map-disclaimer').innerText =' Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.';
+                    document.querySelector('.sm-map-disclaimer').innerText = 'Our real-time data, while continuously updated, is subject to ongoing validation, and thereforemay not be entirely accurate.';
+                    document.querySelector('.last-updated-sec').innerText = 'Date & Time';
+                    document.querySelector('.map-disclaimer-air').innerText = 'Air Quality Index';
+                    document.querySelector('.insight-btn').innerText ='More Insights';
+                    document.querySelector('.insight-btn-tab').innerText ='More Insights';
+                    contactHead.textContent = "Contact Us";
+                    heading.textContent = "Let us know what’s on your mind";
+                    cnctAddress.innerHTML = 'Headquarters Al Mamoura, Building A, Building 62,<br /> Al Mamoura St, Al Nayhan, Abu Dhabi, United Arab<br /> Emirates, Postal Code: 22221, P.O Box: 4553';
+                    cnctAddressmobile.innerText = 'Headquarters Al Mamoura, Building A, Building 62,Al Mamoura St, Al Nayhan, Abu Dhabi, United Arab Emirates, Postal Code: 22221, P.O Box: 4553';
+                    agenda.textContent = 'Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures. We seek to raise environmental awareness, facilitate sustainable development, and ensure environmental issues remain one of the top priorities of our national agenda.';
+                    agendamobile.textContent = 'Established in 1996, the Environment Agency – Abu Dhabi (EAD) is committed to protecting and enhancing air quality, groundwater as well as the biodiversity of our desert and marine ecosystem. By partnering with other government entities, the private sector, NGOs, and global environmental agencies, we embrace international best practice, innovation, and hard work to institute effective policy measures. We seek to raise environmental awareness, facilitate sustainable development, and ensure environmental issues remain one of the top priorities of our national agenda.';
+                    nameLabel.textContent = 'Your Name';
+                    emailLabel.textContent = 'Email';
+                    phoneLabel.textContent = 'Phone';
+                    submitBtn.textContent = 'Submit';
+                    Message.placeholder = 'Message';
+                    prev.querySelector('svg').style.transform = 'rotate(360deg)';  // Flip the previous arrow
+                    next.querySelector('svg').style.transform = 'rotate(0)';
+                    document.getElementById('headerSearchInput').setAttribute('placeholder', 'Search');
+                    document.querySelector('.search-result p').innerText = 'Search Results';
+                    document.querySelector('.newcutom-btn').innerText = 'Close';
+                    document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'right';
+                    document.querySelector('header .search-block .search-collapse .search-result').style.paddingLeft = '50px';
+                    document.querySelector('.paratab').innerText = 'When the Air Quality Index (AQI) reaches Orange, Red, Purple, or Brown levels, it is essential to take precautionary measures to protect your health. Follow these guidelines to reduce the impact of high air pollution levels on your health.';
+                    document.querySelector('.mask-hoverEffect').innerText = 'Mask Usage';
+                    iaqmElement && (iaqmElement.innerText = 'Indoor Air Quality Maintenance');
+                    switchingElement && (switchingElement.innerText = 'Switching on your Air Purifier');
+                    document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'Mask Usage');
+                    // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'Good'});
+                    // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'Moderate' });
+                    // document.querySelectorAll('.sensitive-label-graph').forEach((element) => {element.innerText = 'Unhealthy for Sensitive Groups' });
+                    // document.querySelectorAll('.unhealthy-label-graph').forEach((element) => { element.innerText = 'Unhealthy' });
+                    // document.querySelectorAll('.veryunhealthy-label-graph').forEach((element) => { element.innerText = 'Very Unhealthy'});
+                    // document.querySelectorAll('.hazardous-label-graph').forEach((element) => { element.innerText = 'Hazardous' });
+                    document.querySelector('.good-label-graph').innerText = 'Good';
+                    document.querySelector('.quality-index-wrapper-h2 .levelmb25').innerText = 'AIR QUALITY SAFETY LEVEL';
+                    document.getElementById('health-recommendations').innerText = 'HEALTH RECOMMENDATIONS';
+                    document.querySelector('.main-contributing-pollutant').innerText = 'Main Contributing Pollutant';
+                    document.querySelector('.Causes-wrapper h3').innerText = 'Possible Causes';
+                    //25-10
+                    // document.getElementById('enjoy-some-indoor-fun').innerText = 'Enjoy Some Indoor Fun';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.getElementById('enjoy-some-indoor-fun').innerText = 'Enjoy Some Indoor Fun';
+                    });
+                    // ----->mark1
+                    // document.querySelector('.imagetext1').innerText = 'Being indoors is the best option';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.imagetext1').innerText = 'Being indoors is the best option';
+                    });
+ 
+                    // document.querySelector('.imagetext2').innerText = 'Being indoors is the best option';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.imagetext2').innerText = 'Being indoors is the best option';
+                    });
+                    // document.querySelector('.imagetext3').innerText = 'Being indoors is the best option';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.imagetext3').innerText = 'Being indoors is the best option';
+                    });
+                    // document.querySelector('.imagetext1').innerText = 'Being indoors is the best option';
+                    // document.querySelector('.imagetext2').innerText = 'Being indoors is the best option';
+                    // document.querySelector('.imagetext3').innerText = 'Being indoors is the best option';
+                    document.getElementById('air-quality-index').innerText = 'AIR QUALITY INDEX';
+                    document.querySelector('.last-refersh-color').innerText = 'Last refreshed';
+                    // document.getElementById('barChartFilter').innerText='Hourly';
+                    // -------23/10/2024---------
+                    document.getElementById('pills-aqi_lin-tab').innerText = 'AQI';
+                    document.getElementById('pills-profile-tab').innerHTML = 'Pollutant';
+                    document.querySelector('.last-refersh').innerText = 'Last refreshed:';
+                    document.querySelector('.activity_heading').innerText = 'Activities';
+                   // document.getElementById('sand-storm').innerText='Sand Storm';
+                   document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById('sand-storm').innerText = 'Sand Storm';
+                });
+                // document.querySelector('.high-traffic').innerText='High Traffic';
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector('.high-traffic').innerText = 'High Traffic';
+                });
+                // document.querySelector('.indor-aq-maintenance').innerText='Indoor Air Quality Maintenance';
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector('.indor-aq-maintenance').innerText ='Indoor Air Quality Maintenance';
+                });
+                // document.querySelector('.switch-on-air-purifier').innerText='Switching on your Air Purifier ';
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector('.switch-on-air-purifier').innerText ='Switching on your Air Purifier ';
+                });
+                    document.querySelectorAll('.measure-pollut').forEach((element) => {
+                     element.innerText ='Measured pollutants';
+                 });
+                 document.querySelector('.material-symbols-outlined').innerText='Close';
+                    document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
+                        element.innerText = `   Take a swift look at Abu Dhabi City's yearly air quality
+                                                            chart. It shows the number of hours each pollutant was above
+                                                            safe levels. Stay informed on Air quality trends,
+                                                            effortlessly.`});
+                    document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
+                        element.innerText = `      Track Abu Dhabi City's air quality throughout the year with
+                                                            our radar chart. Each colored segment illustrates the
+                                                            frequency of different air conditions, spanning from 'Good'
+                                                            to 'Hazardous'.`});
+                    document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
+                    document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`
+                    document.querySelector('.contact-content-mobile').innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
+                    document.querySelector('.air-analytics-mobile').innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
+                    
+                    // -------------------------
+                    airQualityAssessments.forEach((element) => {
+                        element.innerText = "Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.";
+                    });
+                    dropdownLists.forEach((dropdownList) => {
+                        // Inside each <ul>, get the dropdown items
+                        const dropdownItems = dropdownList.querySelectorAll('.quality-index-dropItem');
+
+                        dropdownItems.forEach((item, index) => {
+                            switch (index) {
+                                case 0:
+                                    item.innerText = 'Hourly'; // Hourly
+                                    break;
+                                case 1:
+                                    item.innerText = ' Daily'; // Daily
+                                    break;
+                                case 2:
+                                    item.innerText = 'Monthly'; // Monthly
+                                    break;
+                                case 3:
+                                    item.innerText = 'Yearly'; // Yearly
+                                    break;
+                                case 4:
+                                    item.innerText = 'Custom'; // Custom
+                                    break;
+                            }
+                        });
+                    });
+                    const navMobileNew = document.querySelector('.navmobile-new');
+                     navMobileNew.style.right = '10px';
+                    navMobileNew.style.left = 'auto';
+
+                    // Loop through all legend items and revert the text to English
+                    //  legendTextItems[0].innerText = 'Good';
+                    // legendTextItems[1].innerText = 'Moderate';
+                    // legendTextItems[2].innerText = 'Unhealthy for Sensitive Groups';
+                    // legendTextItems[3].innerText = 'Unhealthy';
+                    // legendTextItems[4].innerText = 'Very Unhealthy';
+                    // legendTextItems[5].innerText = 'Hazardous';
+
+                    document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
+                    document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; //  black logo
+                    document.querySelector('.dropdown-menu .dropdown-item');
+}
+
+function updateAqitoArabic() {
+    document.querySelectorAll('.good-label-graph, .moderate-label-graph, .sensitive-label-graph, .unhealthy-label-graph, .veryunhealthy-label-graph, .hazardous-label-graph')
+        .forEach(item => {
+            switch (item.textContent.trim()) {
+                case "Good":
+                    item.textContent = 'جيد';
+                    break;
+                case "Moderate":
+                    item.textContent = 'معتدل';
+                    break;
+                case "Unhealthy for Sensitive Groups":
+                case "Unhealthy for sensitive groups": // Handle both cases
+                    item.textContent ='غير صحي للمجموعات الحساسة';
+                    break;
+                case "Unhealthy":
+                    item.textContent = 'غير صحي';
+                    break;
+                case "Very Unhealthy":
+                    item.textContent ='غير صحي للغاية';
+                    break;
+                case "Hazardous":
+                    item.textContent ='خطرة';
+                    break;
+            }
+        });
+}
+
+function updateAqitoEnglish() {
+    document.querySelectorAll('.good-label-graph, .moderate-label-graph, .sensitive-label-graph, .unhealthy-label-graph, .veryunhealthy-label-graph, .hazardous-label-graph')
+        .forEach(item => {
+            switch (item.textContent.trim()) {
+                case 'جيد':
+                    item.textContent = "Good";
+                    break;
+                case 'معتدل':
+                    item.textContent ="Moderate";
+                    break;
+                case 'غير صحي للمجموعات الحساسة':
+             
+                    item.textContent ="Unhealthy for sensitive groups";
+                    break;
+                case 'غير صحي':
+                    item.textContent ="Unhealthy";
+                    break;
+                case 'غير صحي للغاية':
+                    item.textContent ="Very Unhealthy";
+                    break;
+                case 'خطرة':
+                    item.textContent ="Hazardous";
+                    break;
+            }
+        });
+}
+
+function updateFooterLinksToArabic() {
+    document.querySelectorAll('footer h6, footer a, .dropdown button, .dropdown-menu .dropdown-item, .air-analytics-heading h2,#barChartFilter').forEach(link => {
+        switch (link.textContent.trim()) {
+            case 'Our Air Quality':
+                link.textContent = 'جودة الهواء لدينا';
+                break;
+            case 'Insights':
+                link.textContent = 'الرؤية';
+                break;
+            case 'Projects':
+                link.textContent = 'المشاريع';
+                break;
+            case 'FAQ':
+                link.textContent = 'الأسئلة الشائعة';
+                break;
+            case 'Contact Us':
+                link.textContent = 'اتصل بنا';
+                break;
+            case 'Privacy Policy':
+                link.textContent = 'سياسة الخصوصية';
+                break;
+            case 'Terms of Use':
+                link.textContent = 'شروط الاستخدام';
+                break;
+            case 'Copyrights':
+                link.textContent = 'حقوق الطبع والنشر';
+                break;
+            case 'Health Recommendation':
+                link.textContent = 'التوصيات الصحية';
+                break;
+
+            case 'AQI and Pollutant Trends':
+                link.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
+                break;
+            case 'Our Air Analytics':
+                link.textContent = 'تحليلات الهواء لدينا';
+                break;
+            case 'Station AQI and Pollutants Trends':
+                link.textContent = 'محطة AQI واتجاهات الملوثات';
+                break;
+            case 'Hourly':link.textContent='كل ساعة';
+                break;
+        }
+    });
+}
+
+function updateFooterLinksToEnglish() {
+    document.querySelectorAll('footer h6, footer a, .dropdown button, .dropdown-menu .dropdown-item, .air-analytics-heading h2,#barChartFilter').forEach(link => {
+        switch (link.textContent.trim()) {
+            case 'جودة الهواء لدينا':
+                link.textContent = 'Our Air Quality';
+                break;
+            case 'الرؤية':
+                link.textContent = 'Insights';
+                break;
+            case 'المشاريع':
+                link.textContent = 'Projects';
+                break;
+            case 'الأسئلة الشائعة':
+                link.textContent = 'FAQ';
+                break;
+            case 'اتصل بنا':
+                link.textContent = 'Contact Us';
+                break;
+            case 'سياسة الخصوصية':
+                link.textContent = 'Privacy Policy';
+                break;
+            case 'شروط الاستخدام':
+                link.textContent = 'Terms of Use';
+                break;
+            case 'حقوق الطبع والنشر':
+                link.textContent = 'Copyrights';
+                break;
+            case 'التوصيات الصحية':
+                link.textContent = 'Health Recommendation';
+                break;
+
+            case 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات':
+                link.textContent = 'AQI and Pollutant Trends';
+                break;
+
+            case 'تحليلات الهواء لدينا':
+                link.textContent = 'Our Air Analytics';
+                break;
+
+            case 'محطة AQI واتجاهات الملوثات':
+                link.textContent = 'Station AQI and Pollutants Trends';
+                break;
+            case 'كل ساعة':
+                link.textContent='Hourly';
+                break;
+        }
+    });
+}
+
+function updateNavLinksToArabic() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        switch (link.textContent.trim()) {
+            case 'Our Air Quality':
+                link.textContent = 'جودة هوائنا';
+                break;
+            case 'Insights':
+                link.textContent = 'الرؤية';
+                break;
+            case 'Projects':
+                link.textContent = 'المشاريع';
+                break;
+            case 'FAQ':
+                link.textContent = 'الأسئلة الشائعة';
+                break;
+            case 'Contact Us':
+                link.textContent = 'اتصل بنا';
+                break;
+        }
+    });
+}
+
+function updateNavLinksToEnglish() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        switch (link.textContent.trim()) {
+            case 'جودة هوائنا':
+                link.textContent = 'Our Air Quality';
+                break;
+            case 'الرؤية':
+                link.textContent = 'Insights';
+                break;
+            case 'المشاريع':
+                link.textContent = 'Projects';
+                break;
+            case 'الأسئلة الشائعة':
+                link.textContent = 'FAQ';
+                break;
+            case 'اتصل بنا':
+                link.textContent = 'Contact Us';
+                break;
+        }
+    });
+}
 });
