@@ -4128,6 +4128,36 @@ border: none;
 .mask-hoverEffect:hover {
     color: var(--blue) !important;
 }
+
+.mask_modal_body{
+    text-align: left !important;
+}
+
+.search_street{
+    position: absolute;
+    top: 1px;
+    right: 15rem;
+}
+
+.rtl-accordion::after {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .contact-info-data{
+    margin-left: 0px;
+    margin-right: 20px;
+  }
+
+  .sort-toggle{
+    margin-left: 0% !important;
+    margin-right: 33.3%;
+  }
+
+  .graph-direction{
+    direction: ltr !important;
+  }
+
 /* --------------14-03-2024--------------------- */
 .insight .slide-content ul p.mask-use {
     font-weight: 700 !important;

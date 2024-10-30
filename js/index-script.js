@@ -2540,34 +2540,34 @@ function getHealthRecommendationContent(aqiLevel) {
     };
     const recommendationsInArabic ={
         good: [
-            { img: "mask1.png", title: "Mask usage", description: "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة." },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي." },
-            { img: "health_kit3.png", title: "Switching on your air purifier", description: "لا حاجة لتشغيل جهاز تنقية الهواء." },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة." },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "لا حاجة لتشغيل جهاز تنقية الهواء." },
         ],
         moderate: [
-            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة للمجموعات الحساسة." },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "كن حذرًا عند تدوير الهواء لضمان جودة هواء صحية في الداخل" },
-            { img: "health_kit3.png", title: "Switching on your air purifier", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "يوصى بارتداء الكمامة للمجموعات الحساسة." },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "كن حذرًا عند تدوير الهواء لضمان جودة هواء صحية في الداخل" },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
         ],
         unhealthyForSensitiveGroups: [
-            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية." },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "توخَّ الحذر عند تدوير الهواء، خصوصًا في وجود الفئات الحساسة" },
-            { img: "health_kit3.png", title: "Switching on your air purifier", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية." },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "توخَّ الحذر عند تدوير الهواء، خصوصًا في وجود الفئات الحساسة" },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
         ],
         unhealthy: [
-            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة، مع الحد من الأنشطة الخارجية." },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "لا ينصح بتدوير الهواء،  خصوصًا في وجود الفئات الحساسة." },
-            { img: "health_kit3.png", title: "Switching on your air purifier", description: "يُنصح بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "يوصى بارتداء الكمامة، مع الحد من الأنشطة الخارجية." },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "لا ينصح بتدوير الهواء،  خصوصًا في وجود الفئات الحساسة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
         ],
         veryUnhealthy: [
-            { img: "mask1.png", title: "Mask usage", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
-            { img: "health_kit3.png", title: "Switching on your air purifier", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
         ],
         hazardous: [
-            { img: "mask1.png", title: "Mask usage", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
-            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
-            { img: "health_kit3.png", title: "Switching on your air purifierr", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+            { img: "mask1.png", title: "استخدام الكمامة", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "تحسين جودة الهواء الداخلي", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
         ],
     };
     const selectedRecommendations = currentLanguage === 'arabic' ? recommendationsInArabic : recommendations;
@@ -2593,7 +2593,7 @@ function getHealthRecommendationContent(aqiLevel) {
                                     alt="">
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body mask_body mask_modal_body">
                             <img src="./images/new-images/Exaclamation-w.png"
                                 alt="health-icon">
                             <p class="mask-use">${recommendation.title}</p>
@@ -6642,7 +6642,9 @@ function updateToArabic() {
     currentStatusClass = statusClassArabic;
     $('.accordion-button').addClass('rtl-accordion');
     $('.faqscrolling').addClass('rtl-faqscrolling');
+    $('.contact-info-content').addClass('contact-info-data');
     $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
+    $('.insight .sorttoggle button.btn-close').addClass('sort-toggle');
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
     // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
     // $('.me-4').removeClass('me-4').addClass('ms-4');
@@ -6701,6 +6703,9 @@ function updateToArabic() {
     closeButton.style.textTransform = 'none';
     document.querySelector('.paratab').innerText = "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامة';
+    // document.querySelector('.mask_body').addClass('mask_modal_body');
+    $('.modal-body.mask_body').addClass('mask_modal_body');
+    $('.search_name').addClass('search_street');
     iaqmElement && (iaqmElement.innerText = 'تحسين جودة الهواء الداخلي');
     switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء');
     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'استخدام الكمامات');
@@ -6827,6 +6832,9 @@ function updateToEnglish() {
     $('.accordion-button').removeClass('rtl-accordion');
     $('.faqscrolling').removeClass('rtl-faqscrolling');
     $('.insight .data-list label.list-group-item input').removeClass('rtl-stationsData');
+    $('.contact-info-content').removeClass('contact-info-data');
+    $('.search_name').removeClass('search_street');
+    $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
     // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
     // $('.ms-4').removeClass('ms-4').addClass('me-4');
@@ -6946,15 +6954,9 @@ function updateToEnglish() {
                  });
                  document.querySelector('.material-symbols-outlined').innerText='Close';
                     document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
-                        element.innerText = `   Take a swift look at Abu Dhabi City's yearly air quality
-                                                            chart. It shows the number of hours each pollutant was above
-                                                            safe levels. chart-f-contentrmed on Air quality trends,
-                                                            effortlessly.`});
+                        element.innerText = `Take a swift look at Abu Dhabi City's yearly air qualitychart. It shows the number of hours each pollutant was abovesafe levels. chart-f-contentrmed on Air quality trends,effortlessly.`});
                     document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
-                        element.innerText = `      Track Abu Dhabi City's air quality throughout the year with
-                                                            our radar chart. Each colored segment illustrates the
-                                                            frequency of different air conditions, spanning from 'Good'
-                                                            to 'Hazardous'.`});
+                        element.innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`});
                     document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
                     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`
                     document.querySelector('.contact-content-mobile').innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
