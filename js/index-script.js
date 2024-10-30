@@ -6650,6 +6650,12 @@ function updateToArabic() {
     // $('.me-4').removeClass('me-4').addClass('ms-4');
     closeSidebar();
     getAirQualitySafetyLevel();
+
+    // document.querySelector('').classList.add('');
+    $('.fp-next').addClass('next-buttons');
+    $('.fp-next').addClass('animation-next-buttons');
+    console.log(document.querySelector('.fp-next'));
+
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -6706,6 +6712,7 @@ function updateToArabic() {
     // document.querySelector('.mask_body').addClass('mask_modal_body');
     $('.modal-body.mask_body').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
+    document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     iaqmElement && (iaqmElement.innerText = 'تحسين جودة الهواء الداخلي');
     switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء');
     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'استخدام الكمامات');
@@ -6824,6 +6831,10 @@ function updateToArabic() {
     prev.querySelector('svg').style.transform = 'rotate(180deg)';  // Flip the previous arrow
     next.querySelector('svg').style.transform = 'rotate(-180deg)';
 }
+// $('.fp-next').addClass('next-buttons').each(function() {
+//     console.log($(this).attr('class'));  // Logs the classes of each matched element
+// });
+
 
 function updateToEnglish() {
     renderAccordionContent(accordionContent);
@@ -6888,7 +6899,7 @@ function updateToEnglish() {
                     document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'right';
                     document.querySelector('header .search-block .search-collapse .search-result').style.paddingLeft = '50px';
                     document.querySelector('.paratab').innerText = "When the air quality index (AQI) hits orange, red, purple, or maroon levels, it's essential to take proactive measures to safeguard your well-being. Follow these guidelines to minimize the impact of elevated air pollution levels on your health.";
-                    document.querySelector('.mask-hoverEffect').innerText = 'Mask Usage';
+                    document.querySelector('.mask-usage').innerText = 'Mask Usage';
                     iaqmElement && (iaqmElement.innerText = 'Indoor Air Quality Maintenance');
                     switchingElement && (switchingElement.innerText = 'Switching on your Air Purifier');
                     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'Mask Usage');

@@ -3641,4 +3641,30 @@
        
     }
   }
+
+  @media (min-width: 1200px) {
+    .next-buttons{
+        right: 72px;
+        /* content: "\f105"; */
+        
+    }
+    .animation-next-buttons:before {
+        /* content: '';
+        display: block;
+        width: 200%;
+        height: 200%;
+        box-sizing: border-box;
+        margin-left: -50%;
+        margin-top: -50%;
+        border-radius: 50%;
+        background-color: #004B87;
+        text-align: center;
+        animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; */
+        margin-right: -18px;
+
+
+    }
+   
+
+}
  
