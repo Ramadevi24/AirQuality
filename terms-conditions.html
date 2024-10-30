@@ -142,41 +142,17 @@
 
                         <div class="scrollPolicyShow-term" id="dynamic-content" onscroll="adjustOpacity()">
                             <p class="contact-content w-95">
-                                By accessing this website, User will be deemed to have accepted all the terms and
-                                conditions
-                                mentioned below. These terms are governed by and interpreted in line with EAD rules and
-                                regulations and at all times in compliance with the applicable laws of the UAE.
-                                The Terms & Conditions relating to use of this website are divided into a number of
-                                sections: “Terms of Use, “Privacy Policy”, “Cookies” and “Copyright”. Together, these
-                                sections form the “Terms & Conditions”. The Terms & Conditions, as amended unilaterally
-                                by
-                                the Environment Agency – Abu Dhabi from time to time, set out the basis on which you may
-                                use
-                                this website.
+                                By accessing this website, User will be deemed to have accepted all the terms and conditions mentioned below. These terms are governed by and interpreted in line with EAD rules and regulations and at all times in compliance with the applicable laws of the UAE. The Terms & Conditions relating to use of this website are divided into a number of sections: “Terms of Use, “Privacy Policy”, “Cookies” and “Copyright”. Together, these sections form the “Terms & Conditions”. The Terms & Conditions, as amended unilaterally by the Environment Agency – Abu Dhabi from time to time, set out the basis on which you may use this website.
                             </p>
                             <div class="mb-4">
-                                <h6 class="w-95">1. In using this website, you are deemed to have read and agreed to the
-                                    following Terms & Conditions: </h6>
+                                <h6 class="w-95">1. In using this website, you are deemed to have read and agreed to the following Terms & Conditions: </h6>
                                 <p class="contact-content w-95">
-                                    The following terminology applies to these Terms & Conditions: "User", “You” and
-                                    “Your” refers to you, the person accessing this website and accepting the EAD’s
-                                    Terms & Conditions. "EAD", “Ourselves”, “We” and "Us", refers to the Environment
-                                    Agency – Abu Dhabi (“EAD”). All terms refer to accessing this website granted to the
-                                    User by Us in the most appropriate manner, in accordance with and subject to,
-                                    prevailing laws of the United Arab Emirates and the Emirate of Abu Dhabi. Any use of
-                                    the above terminology or other words in the singular, plural, capitalization and/or
-                                    he/she or they, are taken as interchangeable and therefore as referring to it.
-                                    These Terms of Use are the Terms & Conditions on which we provide the text,
-                                    database, format, documents, graphic and written work and all other materials
-                                    published on this website (the "Content") and the basis on which we allow access to
-                                    it. Please read them carefully.
-
+                                    The following terminology applies to these Terms & Conditions: "User", “You” and “Your” refers to you, the person accessing this website and accepting the EAD’s Terms & Conditions. "EAD", “Ourselves”, “We” and "Us", refers to the Environment Agency – Abu Dhabi (“EAD”). All terms refer to accessing this website granted to the User by Us in the most appropriate manner, in accordance with and subject to, prevailing laws of the United Arab Emirates and the Emirate of Abu Dhabi. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to it. These Terms of Use are the Terms & Conditions on which we provide the text, database, format, documents, graphic and written work and all other materials published on this website (the "Content") and the basis on which we allow access to it. Please read them carefully.
                                 </p>
                             </div>
                             <div class="mb-4">
-                                <h6 class="w-95">2. This website is for your own private use. By accessing this website,
-                                    you agree:</h6>
-                                <ul class="greyColor w-95 text-justify">
+                                <h6 class="w-95">2.This website is for your own private use. By accessing this website, you agree:</h6>
+                                <!-- <ul class="greyColor w-95 text-justify">
                                     <li>not to use this website or its Content in contravention of any regulation or
                                         legislation;</li>
                                     <li>not to copy, amend, reproduce or distribute the Content, or disclose the Content
@@ -187,7 +163,14 @@
                                         and that such material is legal, is not offensive and it does not infringe our
                                         rights, those of third parties or the provisions of the Terms & Conditions.</li>
 
-                                </ul>
+                                </ul> -->
+                                <ul class="greyColor w-95 text-justify">
+                                    <li>not to use this website or its Content in contravention of any regulation or legislation;</li>
+                                    <li>not to copy, amend, reproduce or distribute the Content, or disclose the Content to third parties, other than in compliance with our Copyright section.</li>
+                                    <li>not to advertise or sell any goods or services to other users of this website or to benefit commercially from its Content; and</li>
+                                    <li>that you are responsible for any material you send to or upload to this website and that such material is legal, is not offensive and it does not infringe our rights, those of third parties or the provisions of the Terms & Conditions.</li>
+                                   
+                                   </ul>
                             </div>
                             <div class="mb-4">
                                 <h6 class=""> 3. Disclaimer </h6>
@@ -735,16 +718,16 @@
                 document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer,.copy-rights a, .dropdown .dropdown-item, .dropdown button').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
-                        case 'Our Air Quality': item.textContent = 'جودة الهواء لدينا';
+                        case 'Our Air Quality': item.textContent = 'جودة هواءنا';
                             break;
                         case 'Insights':
-                            item.textContent = 'الرؤية';
+                            item.textContent = 'رؤيتنا';
                             break;
                         case 'Projects':
                             item.textContent = 'المشاريع';
                             break;
                         case 'FAQ':
-                            item.textContent = 'الأسئلة الشائعة';
+                            item.textContent ='الأسئلة الشائعة';
                             break;
                         case 'Contact Us':
                             item.textContent = 'اتصل بنا';
@@ -757,7 +740,7 @@
                             item.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
                             break;
                         case 'Our Air Analytics':
-                            item.textContent = 'تحليلات الهواء لدينا';
+                            item.textContent = 'تحليلنا لجودة الهواء';
                             break;
                         case 'Station AQI and Pollutants Trends':
                             item.textContent = 'محطة AQI واتجاهات الملوثات';
@@ -772,7 +755,7 @@
                             item.textContent = 'شروط الاستخدام';
                             break;
                         case 'Copyrights':
-                            item.textContent = 'حقوق الطبع والنشر';
+                            item.textContent = 'حقوق النشر';
                             break;
                     }
                 })
@@ -781,9 +764,9 @@
                 document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown .dropdown-item, .dropdown button').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
-                        case 'جودة الهواء لدينا': item.textContent = 'Our Air Quality';
+                        case 'جودة هواءنا': item.textContent = 'Our Air Quality';
                             break;
-                        case 'الرؤية':
+                        case 'رؤيتنا':
                             item.textContent = 'Insights';
                             break;
                         case 'المشاريع':
@@ -803,7 +786,7 @@
                             item.textContent = 'AQI and Pollutant Trends';
                             break;
 
-                        case 'تحليلات الهواء لدينا':
+                        case 'تحليلنا لجودة الهواء':
                             item.textContent = 'Our Air Analytics';
                             break;
 
@@ -819,7 +802,7 @@
                         case 'شروط الاستخدام':
                             item.textContent = 'Terms of Use';
                             break;
-                        case 'حقوق الطبع والنشر':
+                        case 'حقوق النشر':
                             item.textContent = 'Copyrights';
                             break;
                     }
@@ -840,40 +823,39 @@
                         
                         <div class="scrollPolicyShow-term" id="dynamic-content" onscroll="adjustOpacity()">
                             <p class="contact-content w-95">
-                           من خلال الوصول إلى هذا الموقع، يعتبر المستخدم قد قبل جميع الشروط والأحكام المذكورة أدناه. يتم تنظيم هذه الشروط وتفسيرها وفقًا لقواعد ولوائح هيئة البيئة - أبوظبي وفي جميع الأوقات بما يتوافق مع القوانين السارية في دولة الإمارات العربية المتحدة.
-
-تنقسم الشروط والأحكام المتعلقة باستخدام هذا الموقع إلى عدة أقسام: "شروط الاستخدام"، "سياسة الخصوصية"، "الكوكيز" و"حقوق النشر". تشكل هذه الأقسام معًا "الشروط والأحكام". يتم تعديل الشروط والأحكام من قبل هيئة البيئة - أبوظبي من وقت لآخر من جانب واحد، وتوضح الأساس الذي يمكنك من خلاله استخدام هذا الموقع.
-                            </p>
+                           من خلال الوصول إلى هذا الموقع، يُعتبر المستخدم قد قبل جميع الشروط والأحكام المذكورة أدناه. تخضع هذه الشروط وتُفسر وفقًا لقواعد وأنظمة هيئة البيئة – أبوظبي، وتلتزم في جميع الأوقات بالقوانين المعمول بها في دولة الإمارات العربية المتحدة. تنقسم الشروط والأحكام المتعلقة باستخدام هذا الموقع إلى عدة أقسام: "شروط الاستخدام"، "سياسة الخصوصية"، "ملفات تعريف الارتباط" و"حقوق النشر". تشكل هذه الأقسام مجتمعة "الشروط والأحكام". تحدد الشروط والأحكام، التي يتم تعديلها بشكل أحادي من قبل هيئة البيئة – أبوظبي من وقت لآخر، الأساس الذي يمكنك من خلاله استخدام هذا الموقع.                            </p>
                             <div class="mb-4">
-                                <h6 class="w-95">1.باستخدامك لهذا الموقع، يُعتبر أنك قد قرأت ووافقت على الشروط والأحكام التالية: </h6>
+                                <h6 class="w-95">1. من خلال استخدامك لهذا الموقع، يُعتبر أنك قد قرأت ووافقت على الشروط والأحكام التالية:</h6>
                                 <p class="contact-content w-95">
-                                  تنطبق المصطلحات التالية على هذه الشروط والأحكام: يشير مصطلح "المستخدم"، "أنت" و"لك" إلى الشخص الذي يصل إلى هذا الموقع ويقبل الشروط والأحكام الخاصة بهيئة البيئة - أبوظبي. يشير مصطلح "هيئة البيئة - أبوظبي"، "نحن" و"لنا" إلى هيئة البيئة - أبوظبي ("EAD"). تشير جميع المصطلحات إلى الوصول إلى هذا الموقع الذي يتم منحه للمستخدم من قبلنا بأكثر الطرق المناسبة، وفقًا للقوانين السارية في دولة الإمارات العربية المتحدة وإمارة أبوظبي. يعتبر أي استخدام للمصطلحات المذكورة أعلاه أو غيرها من الكلمات بصيغة المفرد أو الجمع أو الأحرف الكبيرة و/أو هو/هي أو هم على أنها قابلة للتبادل وبالتالي تشير إلى نفس المعنى.
+                               تنطبق المصطلحات التالية على هذه الشروط والأحكام: "المستخدم"، "أنتَ"، و"كافُ المُخَاطَب" تشير إلى الشخص الذي يصل إلى هذا الموقع ويقبل شروط وأحكام هيئة البيئة – أبوظبي. "الهيئة"، "نحنُ"، "أَنْفُسنا" و"لَنا"، تشير إلى هيئة البيئة – أبوظبي ("EAD").تشير جميع المصطلحات إلى حق المستخدم في الوصول إلى هذا الموقع الإلكتروني، والذي نوفره له بطريقة ملائمة، مع مراعاة الالتزام بالقوانين السارية والمعمول بها في دولة الإمارات العربية المتحدة وإمارة أبوظبي. يُعتبر أي استخدام للمصطلحات المذكورة أعلاه أو كلمات أخرى مثل صيغة المفرد أو الجمع، و/أو،  هو/هي أو هم، قابلاً للاستبدال، وبالتالي يُفهم على أنه يشير إلى نفس المعنى. تمثل هذه الشروط العامة، الأحكام والشروط التي نعرض بموجبها: النصوص، قواعد البيانات، التنسيقات، الوثائق، الأعمال الرسومية والكتابية، وجميع المواد الأخرى المتاحة على هذا الموقع ("المحتوى"). وهي الأساس الذي نمنح بموجبه حق الوصول إليها. نرجو منك قراءتها بعناية
 
-تشكل شروط الاستخدام هذه الشروط والأحكام التي نقدم بموجبها النصوص وقواعد البيانات والتنسيق والمستندات والأعمال البيانية والمكتوبة وجميع المواد الأخرى المنشورة على هذا الموقع ("المحتوى") والأساس الذي نسمح من خلاله بالوصول إليه. يرجى قراءتها بعناية.
-                                    
+
                                 </p>
                             </div>
                             <div class="mb-4">
-                                <h6 class="w-95">2.هذا الموقع هو للاستخدام الخاص بك. من خلال الوصول إلى هذا الموقع، فإنك توافق على ما يلي:</h6>
+                                <h6 class="w-95">2. هذا الموقع مخصص للاستخدام الشخصي. من خلال الوصول إلى هذا الموقع، فإنك توافق على:</h6>
                                <ul class="greyColor w-95 text-justify">
-                               <li>عدم استخدام هذا الموقع أو محتواه بما يخالف أي تنظيم أو تشريع؛</li>
-<li>عدم نسخ أو تعديل أو إعادة إنتاج أو توزيع المحتوى، أو الكشف عن المحتوى لأطراف ثالثة، إلا بما يتوافق مع قسم حقوق النشر الخاص بنا.</li>
-<li>عدم الإعلان عن أو بيع أي سلع أو خدمات لمستخدمي هذا الموقع الآخرين أو الاستفادة تجاريًا من محتواه؛</li>
-<li>أنك مسؤول عن أي مواد ترسلها أو ترفعها إلى هذا الموقع وأن هذه المواد قانونية وليست مسيئة ولا تنتهك حقوقنا أو حقوق الأطراف الثالثة أو أحكام الشروط والأحكام.</li>
+                               <li>عدم استخدام هذا الموقع أو محتواه بما يتعارض مع أي تنظيم أو تشريع.</li>
+<li>عدم نسخ المحتوى أو تعديله أو إعادة إنتاجه أو توزيعه، أو الكشف عن المحتوى لأطراف أخرى، بخلاف ما يتوافق مع قسم حقوق الطبع والنشر الخاص بنا.</li>
+<li>عدم الإعلان عن أو بيع أي سلع أو خدمات لمستخدمين آخرين لهذا الموقع أو الاستفادة تجارياً من محتواه./li>
+<li>أنت مسؤول عن أي مادة ترسلها أو تحملها على هذا الموقع وأن هذه المواد قانونية وليست مسيئة ولا تنتهك حقوقنا أو حقوق الجهات الأخرى أو أحكام الشروط والأحكام.</li>
 
                                </ul>
                             </div>
                             <div class="mb-4">
-                                <h6 class=""> 3.إخلاء المسؤولية:</h6>
+                                <h6 class="">3. إخلاء المسؤولية</h6>
                                <ul class="greyColor w-95 text-justify">
-                               <li>يوفر هذا الموقع معلومات شاملة حول هيئة البيئة - أبوظبي.</li>
-<li>يتضمن الموقع روابط لمعلومات منشورة على مواقع خارجية، ولا تضمن هيئة البيئة - أبوظبي دقة المحتوى أو الضمانات والشروط المتعلقة به، حيث إنها مسؤولية المواقع المعنية. علاوة على ذلك، فإن جميع المعلومات المتاحة على موقع هيئة البيئة - أبوظبي منشورة كما وردت من المصادر المعنية.</li>
-<li>قد يتم مراجعة أو تعديل أو حذف المحتوى من وقت لآخر، دون أي إشعار مسبق.</li>
-<li>الإصدارات الإلكترونية من وثائق هيئة البيئة - أبوظبي المنشورة على هذا الموقع هي لأغراض المعلومات فقط.</li>
-<li>الإصدار النهائي لأي وثيقة صادرة عن هيئة البيئة - أبوظبي هو النسخة المطبوعة الأصلية والمعتمدة التي تحتفظ بها هيئة البيئة - أبوظبي. في حال وجود أي اختلاف بين الوثائق، فإن النسخة المحتفظ بها من قبل هيئة البيئة - أبوظبي ستكون هي النسخة المعتمدة على أي نسخة أخرى.</li>
-<li>قد يتم نشر المحتوى باللغتين العربية والإنجليزية. في حال وجود أي اختلافات بين النسختين اللغويتين لنفس المعلومات، فإن النسخة المعتمدة ستكون النسخة التي تم إصدار المعلومات بها في الأصل.</li>
-<li>لن تكون هيئة البيئة - أبوظبي مسؤولة تحت أي ظرف من الظروف عن أي أضرار أو إصابات تنتج عن استخدام المواد على هذا الموقع، ويجب على المستخدم تعويض هيئة البيئة - أبوظبي عن جميع المسؤوليات الناتجة عن فشل المستخدم في الالتزام بهذه الشروط والأحكام.</li>
-<li>لا توجد أي مسؤولية عن أي أضرار مباشرة أو غير مباشرة ناتجة عن زيارة أو استخدام موقع هيئة البيئة - أبوظبي.</li>
+                               <li>يقدم هذا الموقع معلومات شاملة عن هيئة البيئة - أبوظبي</li>
+<li>يتكون الموقع من روابط لمعلومات منشورة على مواقع خارجية، ولا تضمن الهيئة دقة المحتوى وضماناته وشروطه، حيث إنها مسؤولية المواقع الإلكترونية المعنية. علاوة على ذلك، يتم نشر جميع المعلومات المتوفرة على الموقع الإلكتروني لهيئة البيئة كما وردت من المصادر المعنية.</li>
+<li>قد تتم مراجعة المحتوى أو تعديله أو حذفه من حين لآخر، دون أي إشعار.</li>
+<li>النسخ الإلكترونية لوثائق هيئة البيئة – أبوظبي المنشورة على هذا الموقع هي لأغراض المعلومات فقط.</li>
+<li>النسخة النهائية لأي وثيقة من وثائق هيئة البيئة – أبوظبي هي النسخة الأصلية المطبوعة والمعتمدة التي تحتفظ بها الهيئة. في حالة وجود أي اختلاف بين المستندات، فإن النسخة التي تحتفظ بها الهيئة تكون لها الأولوية على أي نسخة أخرى.</li>
+
+<li>ربما يتم نشر المحتوى باللغتين الإنجليزية والعربية. كلما كانت هناك أي اختلافات بين نسختي نفس المعلومات باللغتين، يجب أن تكون النسخة النهائية هي نسخة اللغة التي صدرت بها المعلومات في الأصل.</li>
+
+<li>لن تتحمل الهيئة، تحت أي ظرف من الظروف، المسؤولية عن أي أضرار أو إصابة تنجم عن استخدام المواد الموجودة على هذا الموقع، ويجب على المستخدم تعويض الهيئة لجميع الالتزامات الناتجة عن فشل المستخدم في مراعاة هذه الشروط والأحكام.</li>
+
+<li>لا توجد مسؤولية عن أي أضرار مباشرة أو غير مباشرة نتيجة زيارة أو استخدام موقع الهيئة.</li>
 
                                </ul>
                             </div>
@@ -899,20 +881,12 @@
                         
                         <div class="scrollPolicyShow-term" id="dynamic-content" onscroll="adjustOpacity()">
                             <p class="contact-content w-95">
-                                By accessing this website, User will be deemed to have accepted all the terms and conditions
-                                mentioned below. These terms are governed by and interpreted in line with EAD rules and
-                                regulations and at all times in compliance with the applicable laws of the UAE.
-                                The Terms & Conditions relating to use of this website are divided into a number of
-                                sections: “Terms of Use, “Privacy Policy”, “Cookies” and “Copyright”. Together, these
-                                sections form the “Terms & Conditions”. The Terms & Conditions, as amended unilaterally by
-                                the Environment Agency – Abu Dhabi from time to time, set out the basis on which you may use
-                                this website.
+                              By accessing this website, User will be deemed to have accepted all the terms and conditions mentioned below. These terms are governed by and interpreted in line with EAD rules and regulations and at all times in compliance with the applicable laws of the UAE. The Terms & Conditions relating to use of this website are divided into a number of sections: “Terms of Use, “Privacy Policy”, “Cookies” and “Copyright”. Together, these sections form the “Terms & Conditions”. The Terms & Conditions, as amended unilaterally by the Environment Agency – Abu Dhabi from time to time, set out the basis on which you may use this website.
                             </p>
                             <div class="mb-4">
-                                <h6 class="w-95">1. In using this website, you are deemed to have read and agreed to the following Terms & Conditions: </h6>
+                                <h6 class="w-95">1. In using this website, you are deemed to have read and agreed to the following Terms & Conditions:</h6>
                                 <p class="contact-content w-95">
-                                    The following terminology applies to these Terms & Conditions: "User", “You” and “Your” refers to you, the person accessing this website and accepting the EAD’s Terms & Conditions. "EAD", “Ourselves”, “We” and "Us", refers to the Environment Agency – Abu Dhabi (“EAD”). All terms refer to accessing this website granted to the User by Us in the most appropriate manner, in accordance with and subject to, prevailing laws of the United Arab Emirates and the Emirate of Abu Dhabi. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to it.
-                                    These Terms of Use are the Terms & Conditions on which we provide the text, database, format, documents, graphic and written work and all other materials published on this website (the "Content") and the basis on which we allow access to it. Please read them carefully.
+                                The following terminology applies to these Terms & Conditions: "User", “You” and “Your” refers to you, the person accessing this website and accepting the EAD’s Terms & Conditions. "EAD", “Ourselves”, “We” and "Us", refers to the Environment Agency – Abu Dhabi (“EAD”). All terms refer to accessing this website granted to the User by Us in the most appropriate manner, in accordance with and subject to, prevailing laws of the United Arab Emirates and the Emirate of Abu Dhabi. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to it. These Terms of Use are the Terms & Conditions on which we provide the text, database, format, documents, graphic and written work and all other materials published on this website (the "Content") and the basis on which we allow access to it. Please read them carefully.
                                     
                                 </p>
                             </div>
