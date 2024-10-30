@@ -689,10 +689,10 @@
                 document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
-                        case 'Our Air Quality': item.textContent = 'جودة الهواء لدينا';
+                        case 'Our Air Quality': item.textContent = 'جودة هواءنا';
                             break;
                         case 'Insights':
-                            item.textContent = 'الرؤية';
+                            item.textContent ='رؤيتنا';
                             break;
                         case 'Projects':
                             item.textContent = 'المشاريع';
@@ -711,7 +711,7 @@
                             item.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
                             break;
                         case 'Our Air Analytics':
-                            item.textContent = 'تحليلات الهواء لدينا';
+                            item.textContent = 'تحليلنا لجودة الهواء';
                             break;
                         case 'Station AQI and Pollutants Trends':
                             item.textContent = 'محطة AQI واتجاهات الملوثات';
@@ -726,7 +726,7 @@
                             item.textContent = 'شروط الاستخدام';
                             break;
                         case 'Copyrights':
-                            item.textContent = 'حقوق الطبع والنشر';
+                            item.textContent = 'حقوق النشر';
                             break;
                     }
                 })
@@ -736,9 +736,9 @@
                 document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
-                        case 'جودة الهواء لدينا': item.textContent = 'Our Air Quality';
+                        case 'جودة هواءنا': item.textContent = 'Our Air Quality';
                             break;
-                        case 'الرؤية':
+                        case 'رؤيتنا':
                             item.textContent = 'Insights';
                             break;
                         case 'المشاريع':
@@ -758,7 +758,7 @@
                             item.textContent = 'AQI and Pollutant Trends';
                             break;
 
-                        case 'تحليلات الهواء لدينا':
+                        case 'تحليلنا لجودة الهواء':
                             item.textContent = 'Our Air Analytics';
                             break;
 
@@ -774,7 +774,7 @@
                         case 'شروط الاستخدام':
                             item.textContent = 'Terms of Use';
                             break;
-                        case 'حقوق الطبع والنشر':
+                        case 'حقوق النشر':
                             item.textContent = 'Copyrights';
                             break;
                     }
@@ -787,13 +787,14 @@
                     // Switch to Arabic
                     toggleBtn.textContent = 'Switch to English'; // Change button text to switch back to English
                     dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
-                    dynamicContent.textContent = 'يشكل قسم حقوق النشر جزءًا من الشروط والأحكام وبالتالي الشروط التي نقدم بموجبها الوصول إلى هذا الموقع الإلكتروني. كل محتوى هذا الموقع هو ملك لـ EAD ومحمية بموجب حقوق النشر. تحتفظ EAD بجميع حقوق النشر والعلامات التجارية والبراءات والحقوق الفكرية والأخرى للمعلومات الواردة في هذا الموقع. يحظر تمامًا أي استخدام غير مصرح به أو نسخ أو طباعة للمعلومات والمواد وحقوق الملكية الواردة في هذا الموقع.'; // Change the content to Arabic
+                    dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
+حقوق الملكية الفكرية` // Change the content to Arabic
                     termslist.innerHTML = `     
                             <div class="mb-4">
                                 <h6 class="">1. حقوق الملكية الفكرية</h6>
                                 <ul class="greyColor text-justify">
-                                    <li>Eتمتلك هيئة البيئة - أبوظبي، ومقدمو خدماتنا، ومستشارونا، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
-                                    <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك على سبيل المثال لا الحصر، البيع أو التوزيع أو إعادة نشر المحتوى.</li>
+                                    <li>تمتلك هيئة البيئة - أبوظبي، مقدموا خدماتها، مستشاريها، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
+                                    <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك - على سبيل المثال لا الحصر - البيع أو التوزيع أو إعادة نشر المحتوى.</li>
                                     <li>ما لم يُذكر خلاف ذلك، فإن جميع حقوق الملكية الفكرية (بما في ذلك العلامات التجارية وحقوق النشر) الموجودة على هذا الموقع هي إما مملوكة أو خاضعة لسيطرة أو مرخصة لـ هيئة البيئة - أبوظبي. وبناءً عليه، فإن عملية تجميع وترتيب جميع المحتويات هي ملكية حصرية لـ هيئة البيئة - أبوظبي ومحمية بموجب قوانين حقوق النشر.</li>
                                     <li>تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الملكية الفكرية في جميع المحتويات. الأسماء والعلامات التجارية والشعارات الموجودة على الموقع وفي المواد المتعلقة به هي مملوكة ومرخصة لـ هيئة البيئة - أبوظبي، ما لم يُذكر خلاف ذلك. يُمنع استخدام هذه العلامات التجارية دون الحصول على إذن من هيئة البيئة - أبوظبي.
 </li>
@@ -811,24 +812,14 @@
                     // Switch back to English
                     toggleBtn.textContent = 'التبديل إلى العربية'; // Change button text to switch back to Arabic
                     dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English
-                    dynamicContent.textContent = 'This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.'; // Change the content back to English
+                    dynamicContent.textContent ='This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.Intellectual Property Rights'; // Change the content back to English
                     termslist.innerHTML = ` <div class="mb-4">
                                 <h6 class="">1. Intellectual Property Rights</h6>
                                 <ul class="greyColor text-justify">
-                                    <li>EAD, our service providers, our consultants, or third parties who have granted
-                                        us permission to reproduce their material on this website, own all trademarks,
-                                        copyright and all other intellectual property rights in the Content on this
-                                        website.</li>
-                                    <li>The Content shall not be used for any commercial purposes, including but not
-                                        limited to, selling, distributing, or republishing the Content.</li>
-                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks
-                                        and copyrights) found on this website are either owned, controlled, or licensed
-                                        by [to] EAD. As such, the act of consolidation and arrangement of all Content is
-                                        the sole property of EAD and is protected by copyright laws.</li>
-                                    <li>EAD retains all Intellectual Property Rights in all Content. The names,
-                                        trademarks, and logos found on the website and in the materials therein are
-                                        owned and licensed for EAD, unless otherwise stated. The use of these trademarks
-                                        is prohibited without permission from EAD</li>
+                                    <li>EAD, our service providers, our consultants, or third parties who have granted us permission to reproduce their material on this website, own all trademarks, copyright and all other intellectual property rights in the Content on this website.</li>
+                                    <li>The Content shall not be used for any commercial purposes, including but not limited to, selling, distributing, or republishing the Content.</li>
+                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks and copyrights) found on this website are either owned, controlled, or licensed by [to] EAD. As such, the act of consolidation and arrangement of all Content is the sole property of EAD and is protected by copyright laws.</li>
+                                    <li>EAD retains all Intellectual Property Rights in all Content. The names, trademarks, and logos found on the website and in the materials therein are owned and licensed for EAD, unless otherwise stated. The use of these trademarks is prohibited without permission from EAD.</li>
 
                                 </ul>
                             </div>`

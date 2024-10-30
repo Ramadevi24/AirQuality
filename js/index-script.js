@@ -6695,15 +6695,15 @@ function updateToArabic() {
     document.querySelector('header .search-block .search-collapse .search-result').style.paddingRight = '50px';
     closeButton.style.textTransform = 'none';
     document.querySelector('.paratab').innerText = "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
-    document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامات';
-    iaqmElement && (iaqmElement.innerText = 'صيانة جودة الهواء الداخلية');
-    switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء الخاص بك');
+    document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامة';
+    iaqmElement && (iaqmElement.innerText = 'تحسين جودة الهواء الداخلي');
+    switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء');
     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'استخدام الكمامات');
 
 
     document.querySelector('.quality-index-wrapper-h2 .levelmb25').innerText = 'مستوى أمان جودة الهواء';
     document.getElementById('health-recommendations').innerText = 'التوصيات الصحية';
-    document.querySelector('.main-contributing-pollutant').innerText = 'الملوث الرئيسي المساهم';
+    document.querySelector('.main-contributing-pollutant').innerText = 'الملوث الرئيسي';
     document.querySelector('.Causes-wrapper h3').innerText = 'الأسباب المحتملة';
     // 25/10
     // document.getElementById('enjoy-some-indoor-fun').innerText = 'استمتع ببعض المرح في الأماكن المغلقة';
@@ -6726,6 +6726,7 @@ function updateToArabic() {
     // document.querySelector('.imagetext1').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
+    document.querySelector('.station-aqi-trends-disclaimers').innerText='ابقَ على اطلاع بجودة الهواء في أبوظبي من خلال نظرة سريعة: الرسوم البيانية سهلة الفهم تتعقب مؤشر جودة الهواء ومستويات الملوثات على مر الزمن، مع عرض ظروف السلامة الجوية من جيدة إلى خطرة.'
     document.getElementById('air-quality-index').innerText = 'مؤشر جودة الهواء';
     document.querySelector('.last-refersh-color').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh-color').style.direction = 'ltr';
@@ -6733,10 +6734,10 @@ function updateToArabic() {
     // document.getElementById('barChartFilter').innerText='كل ساعة';
     // -------23/10/2024-----
     document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
-        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي. يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. ابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
+        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
     });
     document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
-        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`
+        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
@@ -6745,11 +6746,11 @@ function updateToArabic() {
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
     document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
     document.querySelector('.equal-station-box-height').style.direction = 'ltr';
-    document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي. يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. ابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
-    document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
+    document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
+    document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
     document.querySelector('.activity_heading').innerText = 'الأنشطة';
     airQualityAssessments.forEach((element) => {
-        element.innerText = 'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تقديم تحديثات كل ساعة ويوميا وشهريا وسنويا.';
+        element.innerText = 'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
     });
     // document.getElementById('sand-storm').innerText='العاصفة الرملية';
     document.addEventListener("DOMContentLoaded", function() {
@@ -6942,7 +6943,7 @@ function updateToEnglish() {
                     document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
                         element.innerText = `   Take a swift look at Abu Dhabi City's yearly air quality
                                                             chart. It shows the number of hours each pollutant was above
-                                                            safe levels. Stay informed on Air quality trends,
+                                                            safe levels. chart-f-contentrmed on Air quality trends,
                                                             effortlessly.`});
                     document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
                         element.innerText = `      Track Abu Dhabi City's air quality throughout the year with
@@ -6953,11 +6954,12 @@ function updateToEnglish() {
                     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`
                     document.querySelector('.contact-content-mobile').innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
                     document.querySelector('.air-analytics-mobile').innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
-                    
+                    document.querySelector('.station-aqi-trends-disclaimers').innerText='Stay informed about air quality in Abu Dhabi with a quick overview: easily comprehensible graphs track AQI and pollutant levels over time, presenting air safety conditions from good to hazardous.'
                     // -------------------------
                     airQualityAssessments.forEach((element) => {
                         element.innerText = "Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.";
                     });
+
                     dropdownLists.forEach((dropdownList) => {
                         // Inside each <ul>, get the dropdown items
                         const dropdownItems = dropdownList.querySelectorAll('.quality-index-dropItem');
