@@ -461,13 +461,13 @@ const causeStationData = {
     { stationId: "EAD_KhadijaSchool", en: "Khadejah School", ar: "مدرسة خديجة", regionar:'أبو ظبي', aqi: 131 },
     { stationId: "EAD_KhalifaSchool", en: "Khalifa School", ar: "مدرسة خليفة", regionar:'العين', aqi: 64 },
     { stationId: "EAD_AlMaqta", en: "Al Maqta", ar: "المقطع", regionar:'أبوظبي', aqi: 59 },
-    { stationId: "EAD_KhalifaCity", en: "Khalifa City A", ar: "مدينة خليفة أ", regionar:'أبوظبي', aqi: 63  },
-    { stationId: "EAD_Baniyas", en: "Baniyas School", ar: "مدرسة بني ياس", regionar:'أبوظبي', aqi: 59  },
+    { stationId: "EAD_KhalifaCity", en: "Khalifa City A", ar:"مدينة خليفة أ", regionar:'أبوظبي', aqi: 63  },
+    { stationId: "EAD_Baniyas", en: "Baniyas School", ar: "مدرسة بني ياس", regionar:'أبوظبي', aqi: 59  },
     { stationId: "EAD_Mussafah", en: "Mussafah", ar: "مصفح", regionar:'أبوظبي', aqi: 64  },
     { stationId: "EAD_AlMafraq", en: "Al Mafraq", ar: "المفرق", regionar:'أبوظبي' , aqi: 129 },
-    { stationId: "EAD_AlAinStreet", en: "Al Ain Street", ar: "شارع العين", regionar:'العين', aqi:57  },
-    { stationId: "EAD_AlAinSchool", en: "Alain Islamic Institute", ar: "المعهد الإسلامي العين", regionar:'العين', aqi: 40  },
-    { stationId: "EAD_AlTawia", en: "Al Tawia", ar: "الطوية", regionar:'العين', aqi: 7  },
+    { stationId: "EAD_AlAinStreet", en: "Al Ain Street", ar:"شارع العين", regionar:'العين', aqi:57  },
+    { stationId: "EAD_AlAinSchool", en: "Alain Islamic Institute", ar:"المعهد الإسلامي العين", regionar:'العين', aqi: 40  },
+    { stationId: "EAD_AlTawia", en: "Al Tawia", ar:"الطوية", regionar:'العين', aqi: 7  },
     { stationId: "EAD_Zakher", en: "Zakher", ar: "زاخر" , regionar:'العين', aqi: 50 },
     { stationId: "EAD_Sweihan", en: "Sweihan", ar: "سويحان", regionar:'العين' , aqi: 52 },
     { stationId: "EAD_AlQuaa", en: "Al Qua’a", ar: "القوع", regionar:'العين', aqi: 37  },
@@ -683,7 +683,7 @@ const causeStationArabicData = {
     'سويحان': {
         'PM10': [
             { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
-            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'PM25': [
             { 'cause': 'حركة المرور في الضواحي', 'image': 'suburban_traffic.png' },
@@ -858,8 +858,8 @@ const causeStationArabicData = {
     },
     'شارع E11': {
         'PM10': [
-            { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
-            { 'cause': 'المصادر الطبيعية', 'image': 'natural_sources.png' }
+            { 'cause': 'Highway traffic emissions', 'image': 'highway_traffic.png' },
+            { 'cause': 'Natural sources', 'image': 'natural_sources.png' }
         ],
         'PM25': [
             { 'cause': 'انبعاثات حركة المرور على الطرق السريعة', 'image': 'highway_traffic.png' },
@@ -1360,11 +1360,11 @@ const statusClassNew1English = {
 
 const statusClassNew1Arabic = {
     Good: "جيد",
-    Moderate: "معتدل",
+    Moderate: "متوسط",
     UnHealthlySensitiveGroups: "غير صحي للمجموعات الحساسة",
     UnHealthly: "غير صحي",
-    VeryUnHealthly: "غير صحي للغاية",
-    Hazardous: "خطرة",
+    VeryUnHealthly: "غير صحي بتاتا",
+    Hazardous: "خطر",
 }
 const aqiContent = {
     Good: "Enjoy the fresh air",
@@ -1377,11 +1377,11 @@ const aqiContent = {
 
 const aqiContentArabic = {
     Good: "استمتع بالهواء النقي",
-    Moderate: "استمتع بيومك في الهواء الطلق!",
+    Moderate: "استمتع بيومك في الخارج!",
     UnHealthlySensitiveGroups: "يجب على الأطفال والأشخاص الحساسين البقاء في الداخل",
-    UnHealthly: "الأفضل البقاء في الداخل.",
-    VeryUnHealthly: "ليس الوقت المناسب للتواجد في الخارج، اقضِ يومك في الداخل.",
-    Hazardous: "يجب عليك تجنب الأنشطة في الهواء الطلق",
+    UnHealthly: "من الأفضل البقاء في الداخل.",
+    VeryUnHealthly: "ليس وقتاً مناسباً للتواجد في الخارج، اقضِ يومك في الداخل.",
+    Hazardous: "يجب عليك تجنب الأنشطة الخارجية ",
 }
 
 const chartFilter = {
@@ -1409,8 +1409,8 @@ const pollutantNamesEnglish = {
 }
 
 const pollutantNamesArabic = {
-    PM10: "المواد الجسيمية أقل من 10 ميكرونات",
-    PM25: "المواد الجسيمية أقل من 2.5 ميكرونات",
+    PM10: "المواد الجسيمية أصغر من 10 ميكرونات",
+    PM25: "المواد الجسيمية أصغر من 2.5 ميكرونات",
     NO2: "ثنائي أكسيد النيتروجين",
     SO2: "ثنائي أكسيد الكبريت",
     CO: "أحادي أكسيد الكربون",
@@ -2307,12 +2307,12 @@ function loadStationData(initialRequest = false) {
                 switch (data.pollutantName) {
                     case "PM10":
                         mainPollutantNameContent = currentLanguage === "arabic" 
-                            ? `الجسيمات، PM<sub>10</sub>`
+                            ? `المواد الجسيمية ,PM<sub>10</sub>`
                             : `Particulate Matter, PM<sub>10</sub>`;
                         break;
                     case "PM25":
                         mainPollutantNameContent = currentLanguage === "arabic" 
-                            ? `الجسيمات، PM<sub>2.5</sub>`
+                            ? `المواد الجسيمية, PM<sub>2.5</sub>`
                             : `Particulate Matter, PM<sub>2.5</sub>`;
                         break;
                     case "SO2":
@@ -2457,16 +2457,16 @@ function getActivityContent(aqiLevel) {
 
     const activitiesArabic = {
         good: [
-            { img: "run_green.png", text: "استمتع بالخارج" },
-            { img: "cycle_green.png", text: "استمتع بركوب الدراجات في الهواء الطلق" },
+            { img: "run_green.png", text: "استمتع بوقتك في الهواء الطلق" },
+            { img: "cycle_green.png", text: "استمتع بركوب الدراجات الهواية" },
             { img: "heart_green.png", text: "يمكن للأطفال والأشخاص الحساسين الاستمتاع بالهواء الطلق." },
-            { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق" },
+            { img: "dinner_green.png", text: "استمتع بوجبتك في الخارج" },
         ],
         moderate: [
-            { img: "run_green.png", text: "استمتع بالخارج" },
-            { img: "cycle_green.png", text: "استمتع بركوب الدراجات في الهواء الطلق" },
-            { img: "heart_orange.png", text: "يجب على الأطفال والأفراد الحساسين توخي الحذر" },
-            { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق" },
+            { img: "run_green.png", text: "استمتع بوقتك في الهواء الطلق" },
+            { img: "cycle_green.png", text: "استمتع بركوب الدراجات الهواية" },
+            { img: "heart_orange.png", text: " على المجموعة الحساسة توخي الحذر" },
+            { img: "dinner_green.png", text: "استمتع بوجبتك في الخارج" },
         ],
         unhealthyForSensitiveGroups: [
             { img: "run_orange.png", text: "تجنب التعرض لفترات طويلة" },
@@ -2475,20 +2475,20 @@ function getActivityContent(aqiLevel) {
             { img: "dinner_orange.png", text: "تجنب التعرض لفترات طويلة" },
         ],
         unhealthy: [
-            { img: "run_red.png", text: "استمتع ببعض المرح في الأماكن المغلقة" },
-            { img: "cycle_red.png", text: "جرب ركوب الدراجات في الأماكن المغلقة" },
+            { img: "run_red.png", text: "استمتع بوقتك في الأماكن المغلقة" },
+            { img: "cycle_red.png", text: "استمتع بركوب الدراجات الهوائية في الأماكن المغلقة" },
             { img: "heart_hazar.png", text: "إن البقاء في الداخل هو الخيار الأفضل للأطفال الرضع والأفراد الحساسين" },
-            { img: "dinner_red.png", text: "استمتع بوجبتك في الداخل، إن أمكن" },
+            { img: "dinner_red.png", text: "استمتع بوجبتك في الداخل" },
         ],
         veryUnhealthy: [
             { img: "run_hazar.png", text: "تجنب الأنشطة الخارجية" },
-            { img: "cycle_hazar.png", text: "تجنب ركوب الدراجات في الهواء الطلق" },
+            { img: "cycle_hazar.png", text: "تجنب ركوب الدراجات الهوائية في الخارج" },
             { img: "heart_brown.png", text: "تجنب الخروج في الهواء الطلق للأطفال والأفراد الحساسين" },
             { img: "dinner_hazar.png", text: "استمتع بوجبتك في الداخل" },
         ],
         hazardous: [
             { img: "run_brown.png", text: "تجنب الأنشطة الخارجية" },
-            { img: "cycle_brown.png", text: "تجنب ركوب الدراجات في الهواء الطلق" },
+            { img: "cycle_brown.png", text: "تجنب ركوب الدراجات الهوائية في الخارج" },
             { img: "heart_brown.png", text: "تجنب الخروج في الهواء الطلق للأطفال والأفراد الحساسين" },
             { img: "dinner_brown.png", text: "استمتع بوجبتك في الداخل" },
         ],
@@ -2540,35 +2540,36 @@ function getHealthRecommendationContent(aqiLevel) {
     };
     const recommendationsInArabic ={
         good: [
-            { img: "mask1.png", title: "استخدام القناع", description: "استمتع بالهواء النقي! لا داعي لارتداء الكمامات عندما تكون جودة الهواء جيدة." },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "لا حاجة لتشغيل جهاز تنقية الهواء." },
+            { img: "mask1.png", title: "Mask usage", description: "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "لا حاجة لتشغيل جهاز تنقية الهواء." },
         ],
         moderate: [
-            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة." },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "توخ الحذر عند تدوير الهواء لضمان جودة هواء داخلية صحية." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عندما يكون هناك أفراد حساسون." },
+            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة للمجموعات الحساسة." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "كن حذرًا عند تدوير الهواء لضمان جودة هواء صحية في الداخل" },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
         ],
         unhealthyForSensitiveGroups: [
-            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من التعرض للخارج." },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "توخ الحذر عند تدوير الهواء، وخاصة حول المجموعات الحساسة." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "استمر في تشغيل جهاز تنقية الهواء عندما يكون هناك أفراد حساسون." },
+            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "توخَّ الحذر عند تدوير الهواء، خصوصًا في وجود الفئات الحساسة" },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة" },
         ],
         unhealthy: [
-            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من التعرض للخارج." },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بتدوير الهواء، وخاصة في المواقف التي تنطوي على أفراد حساسين." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+            { img: "mask1.png", title: "Mask usage", description: "يوصى بارتداء الكمامة، مع الحد من الأنشطة الخارجية." },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "لا ينصح بتدوير الهواء،  خصوصًا في وجود الفئات الحساسة." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "يُنصح بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
         ],
         veryUnhealthy: [
-            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بشدة بتدوير الهواء بسبب المخاطر المحتملة." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+            { img: "mask1.png", title: "Mask usage", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "Switching on your air purifier", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
         ],
         hazardous: [
-            { img: "mask1.png", title: "استخدام القناع", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
-            { img: "health_kit2.png", title: "صيانة جودة الهواء الداخلي", description: "لا ينصح بشدة بتدوير الهواء بسبب المخاطر المحتملة." },
-            { img: "health_kit3.png", title: "تشغيل جهاز تنقية الهواء", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
-    ]}
+            { img: "mask1.png", title: "Mask usage", description: "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!" },
+            { img: "health_kit2.png", title: "Indoor air quality maintenance", description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة." },
+            { img: "health_kit3.png", title: "Switching on your air purifierr", description: "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل." },
+        ],
+    };
     const selectedRecommendations = currentLanguage === 'arabic' ? recommendationsInArabic : recommendations;
     return selectedRecommendations[aqiLevel].map(recommendation => `
         <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(/\s+/g, '')}" data-backdrop="false">
@@ -5887,63 +5888,68 @@ function getPollutantWithUnits(value) {
 
 
 var imageData = [
-    { imageUrl: "./images/new-images/e_linking.jpg", content: "E-linking for Continuous Emission Monitoring System ", description: "E- linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in EAD as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable EAD to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help EAD to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
-    { imageUrl: "./images/new-images/Monitoring_network.jpg", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
+    { imageUrl: "./images/new-images/e_linking.jpg", content: "E- linking for Continuous Emission Monitoring System", description: "E- linking for Continuous Emission Monitoring System project is an Abu Dhabi Government initiative to support improvement of the quality of the environment and protect public health.  This project involves the collection of emission data from continuous emission monitoring systems (CEMS), from industrial facilities, to centralized databased system in EAD as well as establishing manual reporting mechanisms for facilities without CEMS.  E-linking project will enable EAD to develop a comprehensive database based on real time data. The project is also including a portal that is designed and implemented to enable visualization of data in near real time. This will help EAD to develop best practice approach to emissions monitoring and ensure quality data is available. This dashboard provides features such as GIS, dispersion modelling, emission exceedance alerts, producing required reports and manage data workflow. Also, the portal will ensure quality of the received data (automated and manual data) and enable communication with facilities regarding data discrepancies." },
+    { imageUrl: "./images/new-images/Monitoring_network.jpg", content: "Abu Dhabi Air Quality Monitoring Program", description: "The Environment Agency – Abu Dhabi (EAD) started monitoring air quality in 2007. The monitoring network consist of 20 stations and 2 mobile stations. The stations collect readings on concentrations of Sulphur Dioxide (SO2), Nitrogen Dioxide (NO2), Ozone (O3), Hydrogen Sulphide (H2S), Carbon Monoxide (CO), Particulate Matter (PM10, PM2.5), Methan (CH4), BTEX. BTEX is an acronym or expression for a group of volatile organic compounds that include Benzene, Toluene, Ethylbenzene, and Xylenes. These compounds are air pollutants commonly found in emissions from industrial activities, oil refining processes, and vehicle exhaust. All EAD air quality monitoring stations are equipped with sensors to record meteorological parameters, which are essential to understand the ambient air quality patterns and local meteorological conditions. The meteorological parameters measured are wind speed, wind direction, temperature, relative humidity, net radiation and barometric pressure. EAD simplifies the Ambient Air Quality State by calculating the AQI Range based on Air Quality National Standards for the major five parameters; Particulate matter, Ground level ozone, Sulphur dioxide, Nitrogen dioxide and Carbon monoxide." },
     { imageUrl: "./images/new-images/quality-monitoring.jpg", content: "Abu Dhabi Air Quality Modelling", description: "To enhance its air quality monitoring system, the Environment Agency – Abu Dhabi (EAD) has developed and implemented a sophisticated, multi-theme air quality modelling system for Abu Dhabi. The system will support regulation via the assessment of cumulative air quality impacts expected from new facilities and urban development projects, reduce public exposure to air pollution and support the improvement in air quality across Abu Dhabi, while helping to assess the effectiveness of future action plans and policies. It will also provide expert technical support, training and capacity building to enable the identification of pollution hotspots where elevated pollutant concentrations occur, and the development of detailed emirate-wide annual air quality maps." },
     { imageUrl: "./images/new-images/inventory-img.png", content: "Abu Dhabi Air Emissions Inventory", description: "The Environment Agency – Abu Dhabi (EAD) is focused on creating an update to the inventory of air emissions within Abu Dhabi focusing on some specific parameters: SO, NOx, CO, PM10, PM2.5, NMVOC, NH3, CO2, and BC.The project emphasizes the significant contributors to Abu Dhabi's air emissions. These sectors encompass electricity production, oil and gas production, industrial processing, and road transport, which takes into account both exhaust and non-exhaust emissions. Additionally, shipping, aviation, railways, agriculture and livestock, waste, and construction are integral parts of this investigative endeavour. This comprehensive database aims to systematically recognize the primary sectors contributing the most to air emissions, thus offering clarity on areas of focus. An integral goal is to boost public understanding and interest in the significance of air quality, encouraging communal responsibility and involvement. The data will lay a foundation for precise air quality modelling, facilitating both predictive and preventive measures. By establishing a detailed baseline, the inventory will become essential for future environmental strategies, policy-making, and planning. It will also provide guidance for setting clear emission limits and formulating targeted reduction goals. Furthermore, the inventory will enable consistent monitoring of the environmental performance of individual sectors and entities, fostering a culture of accountability. Based on the insights garnered, effective mitigation measures tailored to specific challenges and sectors can be designed, ensuring a holistic approach to preserving and enhancing Abu Dhabi's environment" },//13-May-24
-    { imageUrl: "./images/new-images/GHG1.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
+    { imageUrl: "./images/new-images/GHG1.jpg", content: "Greenhouse Gas Inventory and Forecasting", description: "In line with its strategic priority to secure the resilience of Abu Dhabi through mitigation and adaptation to climate change, and protection of air and marine water, the Environment Agency - Abu Dhabi (EAD) was pro-active in commencing biennial GHG inventories as part of its comprehensive plan for monitoring atmospheric emissions in the emirate. Those inventories were instrumental in laying a foundation of knowledge regarding the baseline emissions and projections in the emirate, and also in strengthening the capacity of local entities for efficiently tracking and reporting their sectors’ emissions.Abu Dhabi GHG inventory implies quantifying GHG emissions and removals by gas and by source or sink. The inventory targets all anthropogenic sources and sinks; namely energy, industrial processes, land-use change and forestry, agriculture, and waste. Following the IPCC Guidelines for National GHG Inventories, the inventory project focuses on the primary gases that directly contribute to global warming such as (CO2, CH4, N2O, HFCs, PFCs, SF6).The GHG project also assesses the potential of future emission reductions by the existing sustainable development plans and mitigation strategies in the Emirate." },
     { imageUrl: "./images/new-images/Odor.jpg", content: "Abu Dhabi Odorous Gases Monitoring Network", description: "Abu Dhabi Odorous Gases Monitoring Network is a five-year project that encompass a variety of activities across all type of industry do not adversely impact the environment and local community and will serve as a valuable tool for early detection and response for odorous gases, which cause a public nuisance.  By operating 50 fixed and 2 mobile detecting devices to establish odour monitoring and management framework. Currently, EAD responds to odour complaints by deploying a portable odour monitoring device to check real-time concentrations of odorous gases, as well as locates a mobile air quality monitoring station to measure real-time concentrations of air pollutants, windspeed and wind direction. Both sets of measuring technologies provide valuable insights into the identity of odorous gases, their concentration in ambient air, sources, and dispersion." },
-    // { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." }, // 13-May-24
-    { imageUrl: "./images/new-images/Remote_sensing.jpg", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders" },
-    { imageUrl: "./images/new-images/EAD_Research.jpg", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates. " },
-    { imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region's first smog-free tower at Surf Abu Dhabi, the world's most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
+    { imageUrl: "./images/new-images/Freepik1.png", content: "Mapping Ambient Noise in Abu Dhabi", description: "The noise project seeks to address significant noise sources pinpointing affected residential districts, rating their impact, and translating findings into a visual map. The project involves data gathering from government entities, utilizing EAD data, conducting additional noise monitoring, and proposing mitigation measures. The aim of this project is to map the Abu Dhabi districts most affected by noise sources." }, // 13-May-24
+    { imageUrl: "./images/new-images/Remote_sensing.jpg", content: "Remote Sensing of Real-World Emissions", description: "The remote sensing of real-world emissions will improve the understanding of the air quality in Abu Dhabi Emirate and UAE. The development of a remote sensing measurement campaign of road transport is a fundamental component of the air quality management program in Abu Dhabi.The outputs of the project will provide essential information for designing effective measures to reduce emissions from road transport with science-based information that will support the General Secretariat of the Executive Council, Environment Agency – Abu Dhabi, Ministry of Climate Change and Environment, Abu Dhabi Police, Health Authority – Abu Dhabi, Department of Transport and other public and private stakeholders." },
+    { imageUrl: "./images/new-images/EAD_Research.jpg", content: "Abu Dhabi Atmospheric Research Expedition", description: "The Agency was the first organisation in the world to conduct atmospheric research from Spain to Abu Dhabi, which covered 25 countries and eight seas and oceans on a journey of more than 10,000 km. The pioneering Atmospheric Research Expedition in the Arabian Gulf undertook a comprehensive examination of the transportation and the subsequent transformation of hydrocarbons and nitrogen oxides. The campaign also sought to assess how pollution from the Arabian Gulf is transported to other regions and to evaluate its contribution to the formation of ozone in the United Arab Emirates." },
+    { imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", content: "Smog-Free Tower", description: "The Environment Agency – Abu Dhabi (EAD) and Modon Properties inaugurated the region’s first smog-free tower at Surf Abu Dhabi, the world’s most advanced artificial wave facility that is taking shape on Hudayriyat Island. The new air purification tower is an urban innovation designed to enhance air quality in the area and provide an inspirational experience of a clean and green future. The seven-meter aluminium tower uses environmentally friendly positive ionization technology to purify surrounding air, cleaning 30,000 m3 of air per hour. The ionization technology produces smog-free air in public spaces, allowing people to breathe and experience clean air, using only 1,170 watts of electricity, comparable to a kettle." },
 ];
 
 var imageDataArabic = [
     { 
         imageUrl: "./images/new-images/e_linking.jpg", 
-        content: "الربط الإلكتروني لنظام الرصد المستمر للانبعاثات", 
-        description: "مشروع الربط الإلكتروني لنظام الرصد المستمر للانبعاثات هو مبادرة من حكومة أبوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة. يتضمن هذا المشروع جمع بيانات الانبعاثات من أنظمة الرصد المستمر للانبعاثات (CEMS) من المنشآت الصناعية إلى نظام قاعدة بيانات مركزي في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آليات تقارير يدوية للمنشآت التي لا تحتوي على أنظمة CEMS. سيمكن مشروع الربط الإلكتروني هيئة البيئة - أبوظبي من تطوير قاعدة بيانات شاملة تعتمد على البيانات اللحظية. كما يتضمن المشروع بوابة مصممة ومطبقة لتمكين تصور البيانات في الوقت الفعلي تقريبًا. سيساعد ذلك هيئة البيئة - أبوظبي في تطوير نهج أفضل لمراقبة الانبعاثات وضمان توفر بيانات ذات جودة عالية. يوفر هذا النظام لوحة تحكم تحتوي على ميزات مثل نظم المعلومات الجغرافية (GIS)، نمذجة التشتت، تنبيهات تجاوز الانبعاثات، إعداد التقارير المطلوبة وإدارة سير العمل الخاص بالبيانات. كما ستضمن البوابة جودة البيانات المستلمة (سواء كانت بيانات مؤتمتة أو يدوية) وستُمكّن التواصل مع المنشآت فيما يتعلق بالبيانات المتناقضة."
-    },
+        content: "الرابط إلكتروني لنظام مراقبة الانبعاثات المستمرة", 
+        description:"مشروع الربط الإلكتروني لنظام مراقبة الانبعاثات المستمرة هو مبادرة من حكومة أبوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة. يشمل هذا المشروع جمع بيانات الانبعاثات من أنظمة مراقبة الانبعاثات المستمرة (CEMS) من المنشآت الصناعية وتخزينها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آليات للإبلاغ اليدوي للمنشآت التي لا تمتلك أنظمة (CEMS). سيمكن مشروع الربط الإلكتروني هيئة البيئة - أبوظبي من تطوير قاعدة بيانات شاملة تعتمد على البيانات في الوقت الفعلي. كما يتضمن المشروع بوابة الكترونية مصممة ومطبقة لتمكين عرض البيانات في وقت قريب جدا من الوقت الفعلي. سيساعد ذلك هيئة البيئة - أبوظبي على تطوير أفضل الممارسات لمراقبة الانبعاثات وضمان توفر بيانات عالية الجودة. توفر هذه المنصة مجموعة من الميزات مثل نظم المعلومات الجغرافية (GIS)، نماذج التشتت، تنبيهات تجاوز الانبعاثات، إنتاج التقارير المطلوبة، وإدارة سير العمل للبيانات. كما ستضمن البوابة اللاكترونية جودة البيانات المستلمة (سواء الآلية أو اليدوية) وتمكن من التواصل مع المنشآت بشأن أي تناقضات في البيانات."     },
     { 
         imageUrl: "./images/new-images/Monitoring_network.jpg", 
-        content: "برنامج مراقبة جودة الهواء في أبوظبي", 
-        description: "بدأت هيئة البيئة - أبوظبي مراقبة جودة الهواء في عام 2007. يتألف برنامج المراقبة من 20 محطة و2 محطات متنقلة. تجمع هذه المحطات قراءات حول تركيزات ثاني أكسيد الكبريت (SO2)، ثاني أكسيد النيتروجين (NO2)، الأوزون (O3)، كبريتيد الهيدروجين (H2S)، أول أكسيد الكربون (CO)، الجسيمات المعلقة (PM10، PM2.5)، الميثان (CH4)، والبنزين (BTEX). جميع محطات مراقبة جودة الهواء مزودة بأجهزة استشعار لتسجيل المعلمات المناخية، وهي ضرورية لفهم أنماط جودة الهواء المحيط وظروف الطقس المحلية. المعلمات المناخية التي يتم قياسها تشمل سرعة الرياح، اتجاه الرياح، درجة الحرارة، الرطوبة النسبية، الإشعاع الصافي، وضغط الهواء. تبسط هيئة البيئة حالة جودة الهواء المحيط من خلال حساب مؤشر جودة الهواء (AQI) بناءً على المعايير الوطنية لجودة الهواء لأهم خمسة معايير: الجسيمات المعلقة، الأوزون على مستوى الأرض، ثاني أكسيد الكبريت، ثاني أكسيد النيتروجين وأول أكسيد الكربون."
+        content: "برنامج أبوظبي لمراقبة جودة الهواء", 
+        description: "بدأ برنامج مراقبة جودة الهواء في أبوظبي عام 2007. تتكون شبكة المراقبة من 20 محطة ثابته ومحطتين متنقلتين. تجمع المحطات قراءات عن تركيزات ثنائي أكسيد الكبريت (SO2)، وثنائي أكسيد النيتروجين (NO2)، والأوزون (O3)، وثنائي كبريتيد الهيدروجين (H2S)، وأول أكسيد الكربون (CO)، والمواد العالقة (PM10، PM2.5)، والميثان (CH4)، ومركبات الـ BTEX. وتعبر الـ BTEX عن مجموعة من المركبات العضوية المتطايرة التي تشمل: البنزين (Benzene)، التولوين (Toluene)، الإيثيل بنزين (Ethylbenzene)، والزيلين (Xylenes). وتعد هذه المركبات من الملوثات الهوائية التي تتواجد غالباً في الانبعاثات الناتجة عن الأنشطة الصناعية وعمليات تكرير النفط، إلى جانب عوادم السيارات. جميع محطات مراقبة جودة الهواء التابعة لهيئة البيئة - أبوظبي مزودة بأجهزة استشعار لتسجيل المعايير الجوية، وهي ضرورية لفهم أنماط جودة الهواء المحيط والظروف الجوية المحلية. تشمل المعايير الجوية المقاسة سرعة الرياح، اتجاه الرياح، درجة الحرارة، الرطوبة النسبية، الإشعاع الصافي، والضغط الجوي. تبسط الهيئة حالة جودة الهواء المحيط من خلال حساب نطاق مؤشر جودة الهواء (AQI) استنادًا إلى المعايير الوطنية لجودة الهواء وفق المعايير الخمس الرئيسية؛ المواد العالقة، الأوزون على مستوى الأرض، وثنائي أكسيد الكبريت، وثنائي أكسيد النيتروجين، وأول أكسيد الكربون."
     },
     { 
         imageUrl: "./images/new-images/quality-monitoring.jpg", 
-        content: "نمذجة جودة الهواء في أبوظبي", 
-        description: "لتعزيز نظام مراقبة جودة الهواء، طورت هيئة البيئة - أبوظبي نظام نمذجة متطور ومتعدد المواضيع لجودة الهواء في أبوظبي. سيدعم هذا النظام التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التطوير العمراني، وتقليل تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء أبوظبي، بينما يساعد في تقييم فعالية خطط العمل والسياسات المستقبلية. سيوفر النظام أيضًا الدعم الفني والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث، وتطوير خرائط جودة الهواء السنوية للإمارة."
+        content: "نظام أبوظبي لنمذجة جودة الهواء", 
+        description: "لتعزيز نظام مراقبة جودة الهواء، طورت هيئة البيئة – أبوظبي نظام نمذجة جودة هواء متقدم متعدد المواضيع لأبوظبي. سيسهم هذا النظام في دعم التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التنمية الحضرية، والحد من تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء أبوظبي، بالإضافة إلى المساعدة في تقييم فعالية الخطط والسياسات المستقبلية. كما سيقدم الدعم الفني المتخصص والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث حيث تحدث تركيزات ملوثة مرتفعة، وتطوير خرائط سنوية مفصلة لجودة الهواء على مستوى الاقليمي والمحلي."
     },
     { 
         imageUrl: "./images/new-images/inventory-img.png", 
         content: "جرد انبعاثات الهواء في أبوظبي", 
-        description: "تركز هيئة البيئة - أبوظبي على إنشاء تحديث لجرد انبعاثات الهواء في أبوظبي يركز على بعض المعايير المحددة: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، و BC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات إنتاج الكهرباء، إنتاج النفط والغاز، العمليات الصناعية، والنقل البري، الذي يأخذ في الاعتبار كل من الانبعاثات العادمة وغير العادمة. بالإضافة إلى ذلك، يشمل المشروع الشحن، الطيران، السكك الحديدية، الزراعة وتربية الحيوانات، النفايات، والبناء. تهدف هذه القاعدة الشاملة إلى تحديد القطاعات الأساسية التي تسهم بشكل كبير في انبعاثات الهواء، مما يوفر وضوحًا حول مناطق التركيز. يتمثل الهدف الأساسي في تعزيز الفهم العام وأهمية جودة الهواء، وتشجيع المسؤولية المجتمعية والمشاركة. ستؤسس البيانات لأساس قوي لنمذجة جودة الهواء بدقة، مما يسهل اتخاذ تدابير تنبؤية ووقائية. من خلال إنشاء قاعدة بيانات مفصلة، ستصبح الجرد أساسيًا لاستراتيجيات البيئة المستقبلية، صنع السياسات، والتخطيط."
+        description: "تركز هيئة البيئة - أبوظبي (EAD) على إنشاء تحديث لاحصاء انبعاثات الهواء داخل أبوظبي مع التركيز على بعض الملوثات: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، وBC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات،، والبناء جزءًا لا يتجزأ من هذا المسعى الاستقصائي. تهدف هذه القاعدة البيانية الشاملة إلى التعرف النظامي على القطاعات الرئيسية التي تساهم بأكبر قدر من الانبعاثات الهوائية، مما يوفر وضوحًا حول مجالات التركيز. الهدف أساسي هو تعزيز الفهم العام والاهتمام بأهمية جودة الهواء، مما يشجع على المسؤولية المجتمعية والمشاركة. ستضع البيانات أساسًا لنمذجة جودة الهواء بدقة، مما يسهل كل من التدابير التنبؤية والوقائية. من خلال إنشاء خط أساس مفصل، سيصبح الجرد ضروريًا لاستراتيجيات البيئة المستقبلية، وصنع السياسات، والتخطيط. كما ستوفر إرشادات لوضع حدود انبعاثات واضحة  وتحديد أهداف للتقليل مستهدفة. علاوة على ذلك، سيمكن الجرد من رصد مستمر للأداء البيئي للقطاعات والكيانات الفردية، مما يعزز ثقافة المساءلة. بناءً على الرؤى المستخلصة، يمكن تصميم تدابير تخفيف فعالة مصممة خصيصًا للتحديات والقطاعات المحددة، مما يضمن نهجًا شاملًا للحفاظ على بيئة أبوظبي وتحسينها."
     },
     { 
         imageUrl: "./images/new-images/GHG1.jpg", 
-        content: "جرد غازات الاحتباس الحراري والتنبؤ بها", 
-        description: "تماشيًا مع أولوياتها الاستراتيجية لتعزيز مرونة أبوظبي من خلال التخفيف والتكيف مع تغير المناخ وحماية الهواء والمياه البحرية، كانت هيئة البيئة - أبوظبي استباقية في بدء جردات غازات الاحتباس الحراري (GHG) كل عامين كجزء من خطتها الشاملة لمراقبة الانبعاثات الجوية في الإمارة. كانت هذه الجردات أساسية في وضع قاعدة معرفية حول انبعاثات الخط الأساسي والتوقعات في الإمارة، وتعزيز قدرات الجهات المحلية على تتبع انبعاثاتها القطاعية بكفاءة والإبلاغ عنها. يركز جرد غازات الاحتباس الحراري في أبوظبي على تحديد كمية الانبعاثات والإزالة حسب الغاز والمصدر. يركز المشروع على جميع المصادر والمصارف البشرية، بما في ذلك الطاقة، العمليات الصناعية، تغييرات استخدام الأراضي والغابات، الزراعة، والنفايات. يتبع المشروع إرشادات الهيئة الحكومية الدولية المعنية بتغير المناخ (IPCC) لجردات غازات الاحتباس الحراري الوطنية."
+        content: "جرد غازات الدفيئة وتوقعاتها", 
+        description:`تماشيًا مع أولوياتها الاستراتيجية لضمان مرونة أبوظبي من خلال التخفيف والتكيف مع تغير المناخ، وحماية الهواء والمياه البحرية، كانت هيئة البيئة - أبوظبي (EAD) نشطة في بدء جرد انبعاثات غازات الدفيئة كل عامين كجزء من خطتها الشاملة لرصد الانبعاثات الجوية في الإمارة. كانت هذه الاحصاءات فعالة في وضع أساس للمعرفة بشأن الانبعاثات الأساسية والتوقعات في الإمارة، وكذلك في تعزيز قدرة الكيانات المحلية على التتبع والإبلاغ بكفاءة عن انبعاثاتها في القطاعات.
+يشير جرد غازات الدفيئة في أبوظبي إلى تقدير انبعاثات غازات الدفيئة وإزالتها حسب الغاز وحسب المصدر أو المصب. يستهدف الجرد جميع المصادر والمصبات البشرية المنشأ؛ وهي الطاقة، العمليات الصناعية، تغيير استخدام الأراضي والغابات، الزراعة، والنفايات. وفقًا لإرشادات الهيئة الحكومية الدولية المعنية بتغير المناخ للجرد الوطني للغازات الدفيئة، يركز مشروع الجرد على غازات الرئيسية التي تساهم بشكل مباشر في الاحتباس الحراري مثل (CO2، CH4، N2O، HFCs، PFCs، SF6).
+كما يقيم مشروع غازات الدفيئة إمكانية تخفيض الانبعاثات المستقبلية من خلال الخطط الحالية للتنمية المستدامة واستراتيجيات التخفيف في الإمارة.`
     },
     { 
         imageUrl: "./images/new-images/Odor.jpg", 
-        content: "شبكة مراقبة الغازات الكريهة في أبوظبي", 
-        description: "شبكة مراقبة الغازات الكريهة في أبوظبي هي مشروع يمتد على خمس سنوات يشمل مجموعة متنوعة من الأنشطة عبر جميع أنواع الصناعة لضمان عدم تأثيرها سلبًا على البيئة والمجتمع المحلي. سيعمل المشروع كأداة قيمة للكشف المبكر والاستجابة للغازات الكريهة التي تسبب إزعاجًا عامًا. يشمل تشغيل 50 جهازًا ثابتًا و2 جهاز متنقل للكشف عن الروائح لإنشاء إطار لمراقبة وإدارة الروائح. تستجيب هيئة البيئة حاليًا لشكاوى الروائح من خلال نشر جهاز متنقل لمراقبة الروائح لقياس التركيزات اللحظية للغازات الكريهة، بالإضافة إلى محطة مراقبة جودة الهواء المتنقلة لقياس تركيزات ملوثات الهواء في الوقت الفعلي."
+        content: "شبكة مراقبة الروائح في إمارة أبوظبي ", 
+        description:`شبكة مراقبة الغازات المزعجة في إمارة أبوظبي هو مشروع مدته خمس سنوات يضم مجموعة متنوعة من الأنشطة عبر جميع أنواع الصناعات التي قد تؤثر سلبًا على البيئة والمجتمع، وستكون هذه الشبكة أداة قيمة للكشف المبكر والاستجابة للغازات ذات الروائح المزعجة، والتي تسبب إزعاجًا عامًا، وذلك من خلال تشغيل 50 جهاز استشعار ثابت ومحطتين متنقلين لإنشاء إطار عمل لمراقبة وإدارة الروائح. حاليًا، تستجيب هيئة البيئة - أبوظبي  لشكاوى الروائح من خلال تركيب جهاز مراقبة الروائح المحمول للتحقق من تركيزات الغازات ذات الروائح المزعجة في الوقت الفعلي، بالإضافة إلى الإعتماد على محطات مراقبة جودة الهواء المتنقلة لقياس تركيزات ملوثات الهواء في الوقت الفعلي، وسرعة واتجاه الرياح. توفر كلا التقنيتين رؤى قيمة حول خصائص الغازات ذات الروائح، وتركيزها في الهواء المحيط، ومصادرها، وتشتتها.`
     },
+    { imageUrl: "./images/new-images/Freepik1.png", 
+      content: "رسم خريطة الضوضاء المحيطة في أبوظبي", 
+      description: `يهدف مشروع الضوضاء إلى تحديد مصادر الضوضاء الكبيرة من خلال تحديد المناطق السكنية المتأثرة، وتقييم تأثيرها، وترجمة النتائج إلى خريطة بصرية. يتضمن المشروع جمع البيانات من الجهات الحكومية، واستخدام بيانات هيئة البيئة - أبوظبي، وإجراء مراقبة إضافية للضوضاء، واقتراح تدابير للتخفيف. الهدف من هذا المشروع هو رسم خريطة للمناطق اللأكثر  تأثرًا بمصادر الضوضاء في أبوظبي.` },
     { 
         imageUrl: "./images/new-images/Remote_sensing.jpg", 
-        content: "الاستشعار عن بعد للانبعاثات الفعلية", 
-        description: "سيساهم الاستشعار عن بعد للانبعاثات الفعلية في تحسين فهم جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. يعد تطوير حملة قياس استشعار عن بعد لانبعاثات النقل البري مكونًا أساسيًا في برنامج إدارة جودة الهواء في أبوظبي. ستوفر مخرجات المشروع معلومات أساسية لتصميم تدابير فعالة للحد من الانبعاثات الناتجة عن النقل البري بناءً على معلومات علمية، والتي ستدعم مجلس الوزراء، هيئة البيئة - أبوظبي، وزارة التغير المناخي والبيئة، شرطة أبوظبي، هيئة الصحة - أبوظبي، دائرة النقل، وغيرها من الجهات العامة والخاصة."
+        content: "الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات", 
+        description: `سيؤدي الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات إلى تحسين فهم جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. يعد تطوير حملة قياس انبعاثات النقل البري عن طريق  الاستشعار عن بعد مكونا أساسيا لبرنامج إدارة جودة الهواء في أبوظبي.
+وستوفر مخرجات المشروع معلومات أساسية لتصميم تدابير فعالة للحد من الانبعاثات الناتجة عن النقل البري مع معلومات علمية قيمة ستدعم الأمانة العامة للمجلس التنفيذي، وهيئة البيئة - أبوظبي، ووزارة التغير المناخي والبيئة، وشرطة أبوظبي، وهيئة الصحة - أبوظبي، ودائرة النقل، وغيرهم من الجهات من القطاعين العام والخاص.`
     },
     { 
         imageUrl: "./images/new-images/EAD_Research.jpg", 
-        content: "بعثة أبحاث الغلاف الجوي في أبوظبي", 
-        description: "كانت هيئة البيئة - أبوظبي هي أول منظمة في العالم تقوم بإجراء أبحاث حول الغلاف الجوي من إسبانيا إلى أبوظبي، والتي غطت 25 دولة وثمانية بحار ومحيطات على مسافة أكثر من 10,000 كيلومتر. سعت الحملة أيضًا إلى تقييم كيفية نقل التلوث من الخليج العربي إلى مناطق أخرى وتقييم مساهمته في تكوين الأوزون في دولة الإمارات العربية المتحدة."
+        content: "بعثة أبوظبي لأبحاث الغلاف الجوي", 
+        description: "كانت الهيئة الأولى في العالم إجراء أبحاثًا جوية تمتد من إسبانيا إلى أبوظبي، حيث غطت 25 دولة وثمانية بحار ومحيطات في رحلة تجاوزت 10,000 كم. وقامت البعثة الرائدة للبحث الجوي في الخليج العربي بإجراء فحص شامل لنقل وتحويل الهيدروكربونات وأكاسيد النيتروجين. كما سعت الحملة إلى تقييم كيفية تنقل التلوث من الخليج العربي إلى مناطق أخرى، وتقدير مساهمته في تكون الأوزون في دولة الإمارات العربية المتحدة."
     },
     { 
         imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg", 
-        content: "برج خالٍ من الضباب الدخاني", 
-        description: "افتتحت هيئة البيئة - أبوظبي (EAD) وشركة مدن العقارية أول برج خالٍ من الضباب الدخاني في المنطقة في مشروع Surf Abu Dhabi. يعد هذا البرج ابتكارًا حضريًا لتحسين جودة الهواء في المنطقة وتوفير تجربة ملهمة لمستقبل نظيف وأخضر. يبلغ ارتفاع البرج المصنوع من الألمنيوم سبعة أمتار ويستخدم تقنية التأيين الإيجابي الصديقة للبيئة لتنقية الهواء المحيط، وتنظيف 30,000 متر مكعب من الهواء في الساعة باستخدام 1,170 واط فقط من الكهرباء، وهو ما يعادل الطاقة المستخدمة في غلاية."
+        content: "برج خال من الضباب الدخاني", 
+        description: `افتتحت هيئة البيئة - أبوظبي بالتعاون مع مجموعة مدن أول برج خالٍ من الضباب الدخاني في المنطقة في سيرف أبوظبي، وهي أحدث منشأة لركوب الأمواج الاصطناعية في العالم، وتتشكل على جزيرة الحديريات. يعد البرج الجديد لتنقية الهواء ابتكارًا حضاريًا مصممًا لتحسين جودة الهواء في المنطقة ويوفير تجربة ملهمة لمستقبل نظيف وخالٍ من التلوث. يستخدم البرج المصنوع من الألمنيوم والذي يبلغ ارتفاعه سبعة أمتار تقنية التأين الإيجابي الصديقة للبيئة لتنقية الهواء المحيط، حيث يقوم بتنظيف 30,000 متر مكعب من الهواء في الساعة. تنتج تقنية التأين هواءً خاليًا من الضباب الدخاني في الأماكن العامة، مما يسمح للناس بتنفس هواء نقي، باستخدام 1,170 واط فقط من الكهرباء، وهو ما يعادل استهلاك غلاية الماء.`
     }
 ];
 
@@ -6688,7 +6694,7 @@ function updateToArabic() {
     document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'left';
     document.querySelector('header .search-block .search-collapse .search-result').style.paddingRight = '50px';
     closeButton.style.textTransform = 'none';
-    document.querySelector('.paratab').innerText = 'عندما يصل مؤشر جودة الهواء (AQI) إلى مستويات البرتقالي أو الأحمر أو الأرجواني أو البني، من الضروري اتخاذ تدابير استباقية لحماية صحتك. اتبع هذه الإرشادات لتقليل تأثير مستويات تلوث الهواء المرتفعة على صحتك.';
+    document.querySelector('.paratab').innerText = "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامات';
     iaqmElement && (iaqmElement.innerText = 'صيانة جودة الهواء الداخلية');
     switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء الخاص بك');
@@ -6702,7 +6708,7 @@ function updateToArabic() {
     // 25/10
     // document.getElementById('enjoy-some-indoor-fun').innerText = 'استمتع ببعض المرح في الأماكن المغلقة';
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('enjoy-some-indoor-fun').innerText = 'استمتع ببعض المرح في الأماكن المغلقة';
+        document.getElementById('enjoy-some-indoor-fun').innerText = "استمتع بوقتك في الأماكن المغلقة";
     });
  
     // document.querySelector('.imagetext1').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
@@ -6867,7 +6873,7 @@ function updateToEnglish() {
                     document.querySelector('.newcutom-btn').innerText = 'Close';
                     document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'right';
                     document.querySelector('header .search-block .search-collapse .search-result').style.paddingLeft = '50px';
-                    document.querySelector('.paratab').innerText = 'When the Air Quality Index (AQI) reaches Orange, Red, Purple, or Brown levels, it is essential to take precautionary measures to protect your health. Follow these guidelines to reduce the impact of high air pollution levels on your health.';
+                    document.querySelector('.paratab').innerText = "When the air quality index (AQI) hits orange, red, purple, or maroon levels, it's essential to take proactive measures to safeguard your well-being. Follow these guidelines to minimize the impact of elevated air pollution levels on your health.";
                     document.querySelector('.mask-hoverEffect').innerText = 'Mask Usage';
                     iaqmElement && (iaqmElement.innerText = 'Indoor Air Quality Maintenance');
                     switchingElement && (switchingElement.innerText = 'Switching on your Air Purifier');
