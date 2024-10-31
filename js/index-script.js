@@ -6645,6 +6645,7 @@ function updateToArabic() {
     $('.contact-info-content').addClass('contact-info-data');
     $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
     $('.insight .sorttoggle button.btn-close').addClass('sort-toggle');
+    $('.switch1 > span.on').addClass('arabic-switch1');
     // $('.open').addClass('hamberger-cross-icon');
     
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
@@ -6656,8 +6657,6 @@ function updateToArabic() {
     // document.querySelector('').classList.add('');
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
-    console.log(document.querySelector('.fp-next'));
-
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -6761,6 +6760,7 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
+    document.querySelector('.mobile-language').innerText = 'لغة';
     document.querySelector('.last-refersh').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh').style.direction = 'ltr';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
@@ -6852,6 +6852,9 @@ function updateToEnglish() {
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
     // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
     // $('.ms-4').removeClass('ms-4').addClass('me-4');
+    $('.fp-next').removeClass('next-buttons');
+    $('.fp-next').removeClass('animation-next-buttons');
+    $('.switch1 > span.on').removeClass('arabic-switch1');
     closeSidebar();
     getAirQualitySafetyLevel();
     questionHeader.textContent = 'Your Questions, Answered.';
@@ -6867,6 +6870,7 @@ function updateToEnglish() {
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
                     document.querySelector('#AQI-mb-0').innerText = 'AQI';
                     document.querySelector('#AQI-mb-1').innerText = 'AQI';
+                    document.querySelector('.mobile-language').innerText = 'LANGUAGE';
                     document.querySelectorAll('.AQI-mb-2').forEach((element) => {element.textContent  = 'AQI'});
                     document.getElementById('searchInput').placeholder = 'Search Station';
                     document.querySelectorAll('.windSpeedHeading').forEach((element) => {element.textContent = 'Wind Speed'});
@@ -7188,6 +7192,8 @@ function updateNavLinksToArabic() {
             case 'Contact Us':
                 link.textContent = 'اتصل بنا';
                 break;
+            case 'LANGUAGE':
+                link.textContent = 'لغة'
         }
     });
 }
@@ -7210,6 +7216,8 @@ function updateNavLinksToEnglish() {
             case 'اتصل بنا':
                 link.textContent = 'Contact Us';
                 break;
+            case 'لغة':
+                link.textContent = 'LANGUAGE';
         }
     });
 }

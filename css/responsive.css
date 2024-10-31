@@ -3608,6 +3608,7 @@
         /* margin-left: -7px; */
         width: 50px;
         height: 23px;
+        margin-top: 5px;
     }
     input.check-toggle-round-flat1 + label {
         padding: 2px;
@@ -3615,8 +3616,8 @@
         /* height: 29px; */
         background-color: #004B87;
         border-radius: 60px;
-       width: 45px;
-    height: 23px;
+       width: 43px;
+    height: 24px;
     /* margin-top: -5px; */
     /* margin-left: 56px; */
     }
@@ -3624,12 +3625,12 @@
      
         bottom: 4px;
         width: 25px;
-        height: 21px;
+        height: 24px;
      
     }
     .switch1 > span {
    
-        top: 5px;
+        top: 3px;
  
     }
     .switch1 > span {
@@ -3638,11 +3639,16 @@
      
     }
     input.check-toggle-round-flat1:checked + label:after {
-        margin-left: 18px;
+        margin-left: 19px;
     }
     .switch1 > span.off {
-        right: 2px;
+        right: 4px;
     }
+
+    .arabic-switch1{
+        left:2px !important;
+    }
+   
     .navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
      
       flex-wrap: nowrap ;
@@ -3653,24 +3659,10 @@
   @media (min-width: 1200px) {
     .next-buttons{
         right: 72px;
-        /* content: "\f105"; */
         
     }
     .animation-next-buttons:before {
-        /* content: '';
-        display: block;
-        width: 200%;
-        height: 200%;
-        box-sizing: border-box;
-        margin-left: -50%;
-        margin-top: -50%;
-        border-radius: 50%;
-        background-color: #004B87;
-        text-align: center;
-        animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; */
-        margin-right: -18px;
-
-
+        margin-right: 0px;
     }
    
 
