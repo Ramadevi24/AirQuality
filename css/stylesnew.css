@@ -799,6 +799,9 @@ header .search-block .search-collapse .search-result {
     align-items: center;
 }
 
+/* .hamberger-cross-icon{
+  margin-left: -32px;
+} */
     #hamburger.open div {
         background: transparent;
     }
@@ -847,7 +850,7 @@ header .search-block .search-collapse .search-result {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     height: 100vh;
     top: 0;
     left: 0;
@@ -5562,20 +5565,20 @@ input[type="search"]::-webkit-search-cancel-button {
  
   .switch > span.off {
     right: 0;
-    padding-right: 4px;
+    padding-right: 2px;
     /* color: #fff; */
     color: #004B87;
   }
  
   .switch1 > span.on {
     left: 0;
-    padding-left: 1px;
+    padding-left: 4px;
     color: #004B87;
   }
  
   .switch1 > span.off {
     right: 0;
-    padding-right: 4px;
+    padding-right: 2px;
     color: #fff;
   }
  
@@ -5666,7 +5669,7 @@ input[type="search"]::-webkit-search-cancel-button {
   }
  
   input.check-toggle-round-flat1:checked + label:after {
-    margin-left: 18px;
+    margin-left: 20px;
   }
 
 

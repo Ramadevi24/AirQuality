@@ -3609,13 +3609,15 @@
         /* height: 29px; */
         background-color: #004B87;
         border-radius: 60px;
-        height: 23px;
-        width: 51px;
+       width: 45px;
+    height: 23px;
+    /* margin-top: -5px; */
+    /* margin-left: 56px; */
     }
     input.check-toggle-round-flat1 + label:after {
      
         bottom: 4px;
-        width: 26px;
+        width: 25px;
         height: 21px;
      
     }
@@ -3630,10 +3632,10 @@
      
     }
     input.check-toggle-round-flat1:checked + label:after {
-        margin-left: 21px;
+        margin-left: 18px;
     }
     .switch1 > span.off {
-        right: -1px;
+        right: 2px;
     }
     .navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
      

@@ -6645,6 +6645,8 @@ function updateToArabic() {
     $('.contact-info-content').addClass('contact-info-data');
     $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
     $('.insight .sorttoggle button.btn-close').addClass('sort-toggle');
+    // $('.open').addClass('hamberger-cross-icon');
+    
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
     // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
     // $('.me-4').removeClass('me-4').addClass('ms-4');
@@ -6712,6 +6714,7 @@ function updateToArabic() {
     // document.querySelector('.mask_body').addClass('mask_modal_body');
     $('.modal-body.mask_body').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
+    
     document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     iaqmElement && (iaqmElement.innerText = 'تحسين جودة الهواء الداخلي');
     switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء');
