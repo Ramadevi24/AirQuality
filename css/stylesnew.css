@@ -5679,4 +5679,23 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 
 
+  .toggle-text{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+
+  }
+  .toggle-text1{
+    color:#004B87;
+    padding: 10px 10px ;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-transform: uppercase;
+  }
 

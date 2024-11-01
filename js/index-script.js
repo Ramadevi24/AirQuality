@@ -6537,17 +6537,32 @@ $('.select-pils').on('click', function () {
     }
 });
 
-function toggleChangeLanguage(element) {
-    const isChecked = element.checked;
+// function toggleChangeLanguage(element) {
+//     const isChecked = element.checked;
 
-    document.getElementById('language-toggle').checked = isChecked;
-    document.getElementById('language-toggle1').checked = isChecked;
-    document.getElementById('language-toggle1-btn').checked = isChecked;
-    if (isChecked) {
-        console.log("Switched to Arabic");
-    } else {
-        console.log("Switched to English");
-    }
+//     document.getElementById('language-toggle').checked = isChecked;
+//     document.getElementById('language-toggle1').checked = isChecked;
+//     document.getElementById('language-toggle1-btn').checked = isChecked;
+//     if (isChecked) {
+//         console.log("Switched to Arabic");
+//     } else {
+//         console.log("Switched to English");
+//     }
+// }
+
+function toggleChangeLanguage() {
+    // Get references to both buttons
+    const button1 = document.getElementById('language-toggle');
+    const button2 = document.getElementById('language-toggle1');
+
+    // Determine the current language based on one button's text
+    const isArabic = button1.innerText === "عربي";
+
+    // Toggle the text for both buttons
+    button1.innerText = isArabic ? "English" : "عربي";
+    button2.innerText = isArabic ? "English" : "عربي";
+
+    console.log(isArabic ? "Switched to Arabic" : "Switched to English");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
