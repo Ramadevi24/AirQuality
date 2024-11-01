@@ -2028,7 +2028,7 @@ function createRadarData() {
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
-            // pointBackgroundColor: 'rgba(250, 207, 57, 1)',
+            pointBackgroundColor: 'rgba(250, 207, 57, 1)',
             lineTension: 0.2,
             data: pollutantLevels,
         }]
@@ -6555,6 +6555,7 @@ function toggleChangeLanguage() {
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
     const button3 = document.getElementById('privacy-policy-toggleLanguageBtn');
+    const button3 = document.getElementById('language-toggle1-btn');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
@@ -6789,6 +6790,7 @@ function updateToArabic() {
     document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
     document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
     document.querySelector('.activity_heading').innerText = 'الأنشطة';
+    // document.getElementById('language-toggle1-btn').innerHTML ='عربي';
     airQualityAssessments.forEach((element) => {
         element.innerText = 'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
     });
@@ -6807,6 +6809,7 @@ function updateToArabic() {
     // document.querySelector('.switch-on-air-purifier').innerText='تشغيل جهاز تنقية الهواء الخاص بك';
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.switch-on-air-purifier').innerText ='تشغيل جهاز تنقية الهواء الخاص بك';
+
     });
     document.querySelectorAll('.measure-pollut').forEach((element) => {
         element.innerText ='الملوثات التي يتم قياسها';
@@ -6875,6 +6878,7 @@ function updateToEnglish() {
     $('.fp-next').removeClass('next-buttons');
     $('.fp-next').removeClass('animation-next-buttons');
     $('.switch1 > span.on').removeClass('arabic-switch1');
+    // document.getElementById('language-toggle1-btn').innerHTML ='English';
     closeSidebar();
     getAirQualitySafetyLevel();
     questionHeader.textContent = 'Your Questions, Answered.';

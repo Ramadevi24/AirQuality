@@ -2478,6 +2478,13 @@ border: none;
     margin-top: 0px;
 }
 
+.responsive_toggle{
+    background-color: #004B87 !important;
+    color: white;
+    padding: 5px;
+    border: 1px solid #004B87;
+}
+
 .insight .responsive-mapping-section .map-block iframe {
     height: 100%;
 }
