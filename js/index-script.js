@@ -6827,7 +6827,7 @@ function updateToArabic() {
         });
     });
     const navMobileNew = document.querySelector('.navmobile-new');
-      navMobileNew.style.left = '60px';
+      navMobileNew.style.left = '55px';
       navMobileNew.style.right = 'auto';
 
 
