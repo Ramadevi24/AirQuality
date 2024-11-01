@@ -6714,7 +6714,10 @@ function updateToArabic() {
     $('.modal-body.mask_body').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
     
-    document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
+    // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
+    });
     iaqmElement && (iaqmElement.innerText = 'تحسين جودة الهواء الداخلي');
     switchingElement && (switchingElement.innerText = 'تشغيل جهاز تنقية الهواء');
     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'استخدام الكمامات');
@@ -6906,7 +6909,10 @@ function updateToEnglish() {
                     document.querySelector('header .search-block .search-collapse .card-body .container-fluid .close').style.float = 'right';
                     document.querySelector('header .search-block .search-collapse .search-result').style.paddingLeft = '50px';
                     document.querySelector('.paratab').innerText = "When the air quality index (AQI) hits orange, red, purple, or maroon levels, it's essential to take proactive measures to safeguard your well-being. Follow these guidelines to minimize the impact of elevated air pollution levels on your health.";
-                    document.querySelector('.mask-usage').innerText = 'Mask Usage';
+                    // document.querySelector('.mask-usage').innerText = 'Mask Usage';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.mask-usage').innerText = 'Mask Usage';
+                    });
                     iaqmElement && (iaqmElement.innerText = 'Indoor Air Quality Maintenance');
                     switchingElement && (switchingElement.innerText = 'Switching on your Air Purifier');
                     document.getElementById('maskusage-model') && (document.getElementById('maskusage-model').innerText = 'Mask Usage');
