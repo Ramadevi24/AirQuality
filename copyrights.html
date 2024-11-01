@@ -802,7 +802,9 @@
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
                     // Switch to Arabic
+                    toggleBtn.classList.add('english-style'); 
                     toggleBtn.textContent = 'English'; // Change button text to switch back to English
+                  
                     dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
                     dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
 حقوق الملكية الفكرية` // Change the content to Arabic
@@ -826,6 +828,7 @@
                     updateMenuArabic();
 
                 } else {
+                    toggleBtn.classList.remove('english-style'); 
                     // Switch back to English
                     toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
                     dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English

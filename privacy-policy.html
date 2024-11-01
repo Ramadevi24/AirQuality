@@ -554,6 +554,7 @@
 
         tog_btn.addEventListener('click', () => {
             if(isEnglish) {
+                tog_btn.classList.add('english-style'); 
                 tog_btn.textContent = "English"
                 dyn_hd.textContent = "قسم الأسئلة الشائعة"
                 faq_sec.innerHTML = `<div class="row">
@@ -616,6 +617,7 @@
             }
 
             else {
+                tog_btn.classList.remove('english-style');
                 tog_btn.textContent = "عربي"
                 dyn_hd.textContent = "Privacy Policy"
                 faq_sec.innerHTML = `<div class="row">
@@ -671,7 +673,7 @@ If you have any questions or concerns about this Privacy Policy or our practices
                   
             </div>
         </div>`
-        $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
+        // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
         // faq_sec.style.direction='ltr';
         document.body.setAttribute('dir', 'ltr');
         updateMenuEnglish()

@@ -6554,8 +6554,7 @@ function toggleChangeLanguage() {
     // Get references to all three buttons
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
-    // const button3 = document.getElementById('privacy-policy-toggleLanguageBtn');
-    const button3 = document.getElementById('language-toggle1-btn');
+    // const button3 = document.getElementById('language-toggle1-btn');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
@@ -6563,9 +6562,24 @@ function toggleChangeLanguage() {
     // Toggle the text for all buttons
     button1.innerText = isArabic ? "English" : "عربي";
     button2.innerText = isArabic ? "English" : "عربي";
-    button3.innerText = isArabic ? "English" : "عربي";
-    // button4.innerText = isArabic ? "English" : "عربي";
+    // button3.innerText = isArabic ? "English" : "عربي";
+
+    // Toggle the class based on the language
+    if (!isArabic) {
+        // If switched to Arabic, remove the 'english-mode' class
+        button1.classList.remove('english-mode');
+        button2.classList.remove('english-mode1');
+        // button3.classList.remove('english-mode');
+    } else {
+        // If switched to English, add the 'english-mode' class
+        button1.classList.add('english-mode');
+        button2.classList.add('english-mode1');
+        // button3.classList.add('english-mode');
+    }
+
+    console.log(isArabic ? "Switched to Arabic" : "Switched to English");
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const toggleBtns = document.getElementsByClassName('toggleLanguageBtn');
@@ -6780,7 +6794,7 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
-    document.querySelector('.mobile-language').innerText = 'لغة';
+    // document.querySelector('.mobile-language').innerText = 'لغة';
     document.querySelector('.last-refersh').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh').style.direction = 'ltr';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
@@ -6893,7 +6907,7 @@ function updateToEnglish() {
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
                     document.querySelector('#AQI-mb-0').innerText = 'AQI';
                     document.querySelector('#AQI-mb-1').innerText = 'AQI';
-                    document.querySelector('.mobile-language').innerText = 'LANGUAGE';
+                    // document.querySelector('.mobile-language').innerText = 'LANGUAGE';
                     document.querySelectorAll('.AQI-mb-2').forEach((element) => {element.textContent  = 'AQI'});
                     document.getElementById('searchInput').placeholder = 'Search Station';
                     document.querySelectorAll('.windSpeedHeading').forEach((element) => {element.textContent = 'Wind Speed'});
