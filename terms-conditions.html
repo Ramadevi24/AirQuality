@@ -94,18 +94,20 @@
                         <li class="nav-item" data-menuanchor="slide5">
                             <a class="nav-link" href="index.html#slide5">Contact Us</a>
                         </li>
+                        <div class="switch1 d-none d-sm-none d-md-block">
+                            <!-- <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
+                            <label for="toggleLanguageBtn"></label>
+                            <span class="on">EN</span>
+                            <span class="off">AR</span> -->
+                            <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
+                        </div>
                     </ul>
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
                         aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="switch1 d-none d-sm-none d-md-block">
-                    <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
-                    <label for="toggleLanguageBtn"></label>
-                    <span class="on">EN</span>
-                    <span class="off">AR</span>
-                </div>
+           
                 <!-- ================================Sachin html for Search start 03-April-24 ===================== -->
                 <!-- <div class="switch1">
                     <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
@@ -735,7 +737,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById("toggleLanguageBtn");
+            const toggleBtn = document.getElementById("ltoggleLanguageBtn");
             const dynamicHeading = document.getElementById("dynamic-heading");
             const faqsection = document.getElementById("faq-section");
             let isEnglish = true;
@@ -842,7 +844,7 @@
 
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
-                    toggleBtn.textContent = 'Switch to English';
+                    toggleBtn.textContent = 'English';
                     dynamicHeading.textContent = 'شروط الاستخدام';
                     faqsection.innerHTML = `  <div class="row">
                     <div class="col-lg-4">
@@ -900,7 +902,7 @@
                     updateMenuArabic();
                 }
                 else {
-                    toggleBtn.textContent = 'التبديل إلى العربية';
+                    toggleBtn.textContent ='عربي';
                     dynamicHeading.textContent = 'Terms of use';
                     faqsection.innerHTML = `<div class="row">
                     <div class="col-lg-4">

@@ -6551,16 +6551,18 @@ $('.select-pils').on('click', function () {
 // }
 
 function toggleChangeLanguage() {
-    // Get references to both buttons
+    // Get references to all three buttons
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
+    const button3 = document.getElementById('privacy-policy-toggleLanguageBtn');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
 
-    // Toggle the text for both buttons
+    // Toggle the text for all buttons
     button1.innerText = isArabic ? "English" : "عربي";
     button2.innerText = isArabic ? "English" : "عربي";
+    button3.innerText = isArabic ? "English" : "عربي";
 
     console.log(isArabic ? "Switched to Arabic" : "Switched to English");
 }

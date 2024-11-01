@@ -85,6 +85,13 @@
                         <li class="nav-item" data-menuanchor="slide5">
                             <a class="nav-link" href="index.html#slide5">Contact Us</a>
                         </li>
+                        <div class="switch1 d-none d-sm-none d-md-block">
+                            <!-- <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
+                            <label for="toggleLanguageBtn"></label>
+                            <span class="on">EN</span>
+                            <span class="off">AR</span> -->
+                            <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
+                        </div>
                     </ul>
 
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
@@ -92,12 +99,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="switch1 d-none d-sm-none d-md-block">
-                    <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
-                    <label for="toggleLanguageBtn"></label>
-                    <span class="on">EN</span>
-                    <span class="off">AR</span>
-                </div>
+               
                 <div class="search-block">
                     <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
@@ -690,7 +692,7 @@
     <!-- End 09-April-24 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('toggleLanguageBtn');
+            const toggleBtn = document.getElementById('ltoggleLanguageBtn');
             const faqSection = document.getElementById('faq-section');
             const dynamicHeading = document.getElementById('dynamic-heading');
             const dynamicContent = document.getElementById('dynamic-content');
@@ -800,7 +802,7 @@
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
                     // Switch to Arabic
-                    toggleBtn.textContent = 'Switch to English'; // Change button text to switch back to English
+                    toggleBtn.textContent = 'English'; // Change button text to switch back to English
                     dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
                     dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
 حقوق الملكية الفكرية` // Change the content to Arabic
@@ -825,7 +827,7 @@
 
                 } else {
                     // Switch back to English
-                    toggleBtn.textContent = 'التبديل إلى العربية'; // Change button text to switch back to Arabic
+                    toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
                     dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English
                     dynamicContent.textContent ='This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.Intellectual Property Rights'; // Change the content back to English
                     termslist.innerHTML = ` <div class="mb-4">

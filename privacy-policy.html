@@ -91,21 +91,21 @@
             <li class="nav-item" data-menuanchor="slide5">
               <a class="nav-link" href="index.html#slide5">Contact Us</a>
             </li>
+            <div class="switch1 d-none d-sm-none d-md-block">
+                <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1" style="cursor: pointer;">عربي</div>
+            </div>
           </ul>
           
           <button type="button" class="close header-close-icon d-block d-sm-block d-md-none" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
-        </div>
-        <!-- <div class="switch1 d-none d-sm-none d-md-block">
-            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
-            <label for="toggleLanguageBtn"></label>
-            <span class="on">EN</span>
-            <span class="off">AR</span>
-        </div> -->
-        <div>
-            <div id="toggleLanguageBtn" class="toggleLanguageBtn toggle-text1" onclick="toggleChangeLanguage(this)" >عربي</div>
-        </div>
+        <!-- </div>
+            <div class="switch1 d-none d-sm-none d-md-block">
+                <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
+                <label for="toggleLanguageBtn"></label>
+                <span class="on">EN</span>
+                <span class="off">AR</span>
+            </div> -->
         
         <!-- ================================Sachin html for Search start 03-April-24 ===================== -->
           <div class="search-block">
@@ -448,7 +448,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () =>{
-        const tog_btn =  document.getElementById('toggleLanguageBtn');
+        const tog_btn =  document.getElementById('ltoggleLanguageBtn');
         const dyn_hd = document.getElementById('dynamic-heading');
         const faq_sec =  document.getElementById('faq-section');
         let isEnglish = true;
@@ -554,7 +554,7 @@
 
         tog_btn.addEventListener('click', () => {
             if(isEnglish) {
-                tog_btn.textContent = "Switch to English"
+                tog_btn.textContent = "English"
                 dyn_hd.textContent = "قسم الأسئلة الشائعة"
                 faq_sec.innerHTML = `<div class="row">
             <div class="col-lg-4">
@@ -616,7 +616,7 @@
             }
 
             else {
-                tog_btn.textContent = "التبديل إلى اللغة العربية"
+                tog_btn.textContent = "عربي"
                 dyn_hd.textContent = "Privacy Policy"
                 faq_sec.innerHTML = `<div class="row">
             <div class="col-lg-4">
