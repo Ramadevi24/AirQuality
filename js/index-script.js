@@ -6551,10 +6551,8 @@ $('.select-pils').on('click', function () {
 // }
 
 function toggleChangeLanguage() {
-    // Get references to all three buttons
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
-    // const button3 = document.getElementById('language-toggle1-btn');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
@@ -6562,22 +6560,18 @@ function toggleChangeLanguage() {
     // Toggle the text for all buttons
     button1.innerText = isArabic ? "English" : "عربي";
     button2.innerText = isArabic ? "English" : "عربي";
-    // button3.innerText = isArabic ? "English" : "عربي";
 
     // Toggle the class based on the language
     if (!isArabic) {
         // If switched to Arabic, remove the 'english-mode' class
         button1.classList.remove('english-mode');
         button2.classList.remove('english-mode1');
-        // button3.classList.remove('english-mode');
     } else {
         // If switched to English, add the 'english-mode' class
         button1.classList.add('english-mode');
         button2.classList.add('english-mode1');
         // button3.classList.add('english-mode');
     }
-
-    console.log(isArabic ? "Switched to Arabic" : "Switched to English");
 }
 
 

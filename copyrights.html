@@ -697,6 +697,15 @@
     const button1 = document.getElementById('language-toggle1-btn');
     const isArabic = button1.innerText === "عربي";
     button1.innerText = isArabic ? "English" : "عربي";
+    if (!isArabic) {
+        // If switched to Arabic, remove the 'english-mode' class
+        button1.classList.remove('english-mode');
+        button1.classList.remove('english-mode1');
+    } else {
+        // If switched to English, add the 'english-mode' class
+        button1.classList.add('english-mode');
+        button1.classList.add('english-mode1');
+    }
 }
      </script>
     <script>
