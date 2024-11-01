@@ -50,19 +50,22 @@
                 <div class="mobile-menu" id="mobile-overlay">
                     <div>
                     <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
-                    <div class="switch1">
-                        <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                            type="checkbox">
-                        <label for="toggleLanguageBtn"></label>
-                        <span class="on">EN</span>
-                        <span class="off">AR</span>
-                    </div>
                 </div>
                     <a href="index.html#demo" class="nav-link">Our Air Quality</a>
                     <a href="index.html#section2" class="nav-link">Insights</a>
                     <a href="index.html#section3" class="nav-link">Projects</a>
                     <a href="index.html#section4" class="nav-link">FAQ</a>
                     <a href="index.html#section5" class="nav-link">Contact Us</a>
+                    <div class="d-md-none" style="display: flex; margin-top: 5px;">
+                        <a class="nav-link mobile mobile-language">LANGUAGE:</a>
+                        <div class="switch1">
+                            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
+                                type="checkbox" onchange="toggleChangeLanguage(this)">
+                            <label for="toggleLanguageBtn"></label>
+                            <span class="on">EN</span>
+                            <span class="off">AR</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- End 05-April-24 -->
                 <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
@@ -89,13 +92,12 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <!-- <div class="switch1">
-                    <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                        type="checkbox">
+                <div class="switch1 d-sm-none d-md-block">
+                    <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
                     <label for="toggleLanguageBtn"></label>
                     <span class="on">EN</span>
                     <span class="off">AR</span>
-                </div> -->
+                </div>
                 <div class="search-block">
                     <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
@@ -695,6 +697,8 @@
             const termslist = document.getElementById('terms-list');
             let isEnglish = true; // Default language state is English
             function updateMenuArabic() {
+                document.querySelector('.mobile-language').innerText = 'لغة'
+                $('.switch1 > span.on').addClass('arabic-switch1');
                 document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
@@ -742,6 +746,8 @@
             }
 
             function updateMenuEnglish() {
+                document.querySelector('.mobile-language').innerText = 'LANGUAGE';
+                $('.switch1 > span.on').removeClass('arabic-switch1');
                 document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
                     switch (text) {
