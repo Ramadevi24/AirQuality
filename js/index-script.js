@@ -6555,7 +6555,7 @@ function toggleChangeLanguage() {
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
     const button3 = document.getElementById('privacy-policy-toggleLanguageBtn');
-    const button3 = document.getElementById('language-toggle1-btn');
+    const button4 = document.getElementById('language-toggle1-btn');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
@@ -6564,8 +6564,7 @@ function toggleChangeLanguage() {
     button1.innerText = isArabic ? "English" : "عربي";
     button2.innerText = isArabic ? "English" : "عربي";
     button3.innerText = isArabic ? "English" : "عربي";
-
-    console.log(isArabic ? "Switched to Arabic" : "Switched to English");
+    button4.innerText = isArabic ? "English" : "عربي";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
