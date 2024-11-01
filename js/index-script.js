@@ -6555,7 +6555,7 @@ function toggleChangeLanguage() {
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
     const button3 = document.getElementById('privacy-policy-toggleLanguageBtn');
-    const button3 = document.getElementById('language-toggle1-btn');
+    
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
