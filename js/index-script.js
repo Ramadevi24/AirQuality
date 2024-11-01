@@ -2028,7 +2028,7 @@ function createRadarData() {
             backgroundColor: function (context) {
                 return createRadialGradient3(context);
             },
-            // pointBackgroundColor: 'rgba(250, 207, 57, 1)',
+            pointBackgroundColor: 'rgba(250, 207, 57, 1)',
             lineTension: 0.2,
             data: pollutantLevels,
         }]
