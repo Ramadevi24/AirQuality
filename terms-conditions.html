@@ -851,6 +851,7 @@
 
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
+                    toggleBtn.classList.add('english-style'); 
                     toggleBtn.textContent = 'English';
                     dynamicHeading.textContent = 'شروط الاستخدام';
                     faqsection.innerHTML = `  <div class="row">
@@ -909,6 +910,7 @@
                     updateMenuArabic();
                 }
                 else {
+                    toggleBtn.classList.remove('english-style');
                     toggleBtn.textContent ='عربي';
                     dynamicHeading.textContent = 'Terms of use';
                     faqsection.innerHTML = `<div class="row">
