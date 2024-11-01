@@ -6780,7 +6780,6 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
-    document.querySelector('.mobile-language').innerText = 'لغة';
     document.querySelector('.last-refersh').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh').style.direction = 'ltr';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
@@ -6893,7 +6892,6 @@ function updateToEnglish() {
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
                     document.querySelector('#AQI-mb-0').innerText = 'AQI';
                     document.querySelector('#AQI-mb-1').innerText = 'AQI';
-                    document.querySelector('.mobile-language').innerText = 'LANGUAGE';
                     document.querySelectorAll('.AQI-mb-2').forEach((element) => {element.textContent  = 'AQI'});
                     document.getElementById('searchInput').placeholder = 'Search Station';
                     document.querySelectorAll('.windSpeedHeading').forEach((element) => {element.textContent = 'Wind Speed'});

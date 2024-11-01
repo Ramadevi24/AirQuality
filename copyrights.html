@@ -50,13 +50,15 @@
                 <div class="mobile-menu" id="mobile-overlay">
                     <div>
                     <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
+                    <button class="toggleLanguageBtn responsive_toggle" id="language-toggle1-btn" onclick="toggleChangeLanguage()">عربي</button>
+
                 </div>
                     <a href="index.html#demo" class="nav-link">Our Air Quality</a>
                     <a href="index.html#section2" class="nav-link">Insights</a>
                     <a href="index.html#section3" class="nav-link">Projects</a>
                     <a href="index.html#section4" class="nav-link">FAQ</a>
                     <a href="index.html#section5" class="nav-link">Contact Us</a>
-                    <div class="d-md-none" style="display: flex; margin-top: 5px;">
+                    <!-- <div class="d-md-none" style="display: flex; margin-top: 5px;">
                         <a class="nav-link mobile mobile-language">LANGUAGE:</a>
                         <div class="switch1">
                             <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
@@ -65,7 +67,7 @@
                             <span class="on">EN</span>
                             <span class="off">AR</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- End 05-April-24 -->
                 <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
@@ -690,16 +692,23 @@
         });
     </script>
     <!-- End 09-April-24 -->
+     <script>
+        function toggleChangeLanguage() {
+    const button1 = document.getElementById('language-toggle1-btn');
+    const isArabic = button1.innerText === "عربي";
+    button1.innerText = isArabic ? "English" : "عربي";
+}
+     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('ltoggleLanguageBtn');
+            const toggleBtn2 = document.getElementById('language-toggle1-btn');
             const faqSection = document.getElementById('faq-section');
             const dynamicHeading = document.getElementById('dynamic-heading');
             const dynamicContent = document.getElementById('dynamic-content');
             const termslist = document.getElementById('terms-list');
             let isEnglish = true; // Default language state is English
             function updateMenuArabic() {
-                document.querySelector('.mobile-language').innerText = 'لغة'
                 $('.switch1 > span.on').addClass('arabic-switch1');
                 document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
@@ -748,7 +757,6 @@
             }
 
             function updateMenuEnglish() {
-                document.querySelector('.mobile-language').innerText = 'LANGUAGE';
                 $('.switch1 > span.on').removeClass('arabic-switch1');
                 document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
@@ -849,7 +857,59 @@
                 // Toggle the language state
                 isEnglish = !isEnglish;
             });
+
+        toggleBtn2.addEventListener('click', () => {
+                if (isEnglish) {
+                    // Switch to Arabic
+                    toggleBtn.textContent = 'English'; // Change button text to switch back to English
+                    dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
+                    dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
+حقوق الملكية الفكرية` // Change the content to Arabic
+                    termslist.innerHTML = `     
+                            <div class="mb-4">
+                                <h6 class="">1. حقوق الملكية الفكرية</h6>
+                                <ul class="greyColor text-justify">
+                                    <li>تمتلك هيئة البيئة - أبوظبي، مقدموا خدماتها، مستشاريها، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
+                                    <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك - على سبيل المثال لا الحصر - البيع أو التوزيع أو إعادة نشر المحتوى.</li>
+                                    <li>ما لم يُذكر خلاف ذلك، فإن جميع حقوق الملكية الفكرية (بما في ذلك العلامات التجارية وحقوق النشر) الموجودة على هذا الموقع هي إما مملوكة أو خاضعة لسيطرة أو مرخصة لـ هيئة البيئة - أبوظبي. وبناءً عليه، فإن عملية تجميع وترتيب جميع المحتويات هي ملكية حصرية لـ هيئة البيئة - أبوظبي ومحمية بموجب قوانين حقوق النشر.</li>
+                                    <li>تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الملكية الفكرية في جميع المحتويات. الأسماء والعلامات التجارية والشعارات الموجودة على الموقع وفي المواد المتعلقة به هي مملوكة ومرخصة لـ هيئة البيئة - أبوظبي، ما لم يُذكر خلاف ذلك. يُمنع استخدام هذه العلامات التجارية دون الحصول على إذن من هيئة البيئة - أبوظبي.
+</li>
+
+                                </ul>
+                            </div>`
+
+                    // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');$('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9');$('.me-4').removeClass('me-4').addClass('ms-4');
+                    // Change text direction to RTL (right-to-left)
+                    // faqSection.style.direction = 'rtl';
+                    document.body.setAttribute('dir', 'rtl');
+                    updateMenuArabic();
+
+                } else {
+                    // Switch back to English
+                    toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
+                    dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English
+                    dynamicContent.textContent ='This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.Intellectual Property Rights'; // Change the content back to English
+                    termslist.innerHTML = ` <div class="mb-4">
+                                <h6 class="">1. Intellectual Property Rights</h6>
+                                <ul class="greyColor text-justify">
+                                    <li>EAD, our service providers, our consultants, or third parties who have granted us permission to reproduce their material on this website, own all trademarks, copyright and all other intellectual property rights in the Content on this website.</li>
+                                    <li>The Content shall not be used for any commercial purposes, including but not limited to, selling, distributing, or republishing the Content.</li>
+                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks and copyrights) found on this website are either owned, controlled, or licensed by [to] EAD. As such, the act of consolidation and arrangement of all Content is the sole property of EAD and is protected by copyright laws.</li>
+                                    <li>EAD retains all Intellectual Property Rights in all Content. The names, trademarks, and logos found on the website and in the materials therein are owned and licensed for EAD, unless otherwise stated. The use of these trademarks is prohibited without permission from EAD.</li>
+
+                                </ul>
+                            </div>`
+                    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
+                    // Change text direction to LTR (left-to-right)
+                    // faqSection.style.direction = 'ltr';
+                    document.body.setAttribute('dir', 'ltr');
+                    updateMenuEnglish()
+                }
+                // Toggle the language state
+                isEnglish = !isEnglish;
+            });
         });
+
 
     </script>
 </body>
