@@ -6215,6 +6215,279 @@ function isFirstSlideActive() {
     let firstSlide = items1[0];
     return activeSlide === firstSlide;
 }
+// $('#myForm').submit(function (e) {
+//     e.preventDefault();
+//     var name = $('#inputField').val();
+//     var email = $('#emailField').val();
+//     var phone = $('#phoneField').val();
+
+//     // Regular expressions for validation
+//     var nameRegex = /^[a-zA-Z\s]*$/;
+//     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
+
+//     // Function to trim spaces without using the trim() method
+//     function trimSpaces(str) {
+//         return str.replace(/^\s+|\s+$/g, '');
+//     }
+
+//     var isValidForm = true;
+//     // Name validation
+//     if (trimSpaces(name) === '') {
+//         $('#nameError').text('Name is required');
+//         isValidForm = false;
+//     } else if (!nameRegex.test(name)) {
+//         $('#nameError').text('Please enter a valid name');
+//         isValidForm = false;
+//     } else {
+//         $('#nameError').text('');
+//     }
+
+//     // Email validation
+//     if (trimSpaces(email) === '') {
+//         $('#emailError').text('Email is required');
+//         isValidForm = false;
+//     } else if (!emailRegex.test(email)) {
+//         $('#emailError').text('Please enter a valid email address');
+//         isValidForm = false;
+//     } else {
+//         $('#emailError').text('');
+//     }
+
+//     // Phone validation
+//     if (trimSpaces(phone) === '') {
+//         $('#phoneError').text('Phone is required');
+//         isValidForm = false;
+//     } else if (!phoneRegex.test(phone)) {
+//         $('#phoneError').text('Please enter a valid 10-digit phone number');
+//         isValidForm = false;
+//     } else {
+//         $('#phoneError').text('');
+//     }
+
+//     if (isValidForm) {
+//         var inputData = {};
+//         $(this).find('input, textarea').each(function (index, item) {
+//             inputData[item.name] = item.value;
+//         });
+
+//         $.ajax({
+//             url: baseUrl + 'Submit',
+//             method: 'POST',
+//             dataType: 'json',
+//             contentType: "application/json; charset=utf-8",
+//             data: JSON.stringify(inputData),
+//             success: function (result) {
+//                 if (result.mailSent) {
+//                     $(this).find('input, textarea').val('');
+//                     $('#submitStatus').html('Submitted Successfully.').removeClass('error-message').addClass('success-message');
+//                     document.querySelector(".contact-form").style.display = "none";
+//                     document.querySelector(".thankyou-form").style.display = "block";
+//                 } else {
+//                     $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
+//                 }
+//             },
+//             error: function () {
+//                 $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
+//             }
+//         });
+//     }
+// });
+
+
+// // Add event listeners to input fields for real-time validation
+// $('#inputField').on('input', function () {
+//     var name = $(this).val();
+//     var nameRegex = /^[a-zA-Z\s'-]+$/;
+//     var trimmedName = name.replace(/^\s+|\s+$/g, ''); // Remove leading and trailing spaces using regex
+//     if (trimmedName !== name) {
+//         $('#nameError').text('No leading or trailing spaces are allowed');
+//     } else if (!nameRegex.test(name)) {
+//         $('#nameError').text('Please enter a valid name');
+//     } else {
+//         $('#nameError').text('');
+//     }
+// });
+
+
+
+// $('#emailField').on('input', function () {
+//     var email = $(this).val();
+//     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     var specialCharRegex = /^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/;
+//     var parts = email.split('@');
+//     if (!emailRegex.test(email)) {
+//         $('#emailError').text('Please enter a valid email address');
+//     } else if (specialCharRegex.test(email)) {
+//         $('#emailError').text('Email cannot start or end with a special character');
+//     } else if (/([^a-zA-Z0-9])\1{1,}/.test(email)) {
+//         $('#emailError').text('Email cannot contain consecutive repeating special characters');
+//     } else if (email.indexOf('@gmail.com@gmail.com') !== -1) {
+//         $('#emailError').text('Invalid email address');
+//     } else if (parts.length === 2 && parts[0] === parts[1]) {
+//         $('#emailError').text('Please enter a valid email address');
+//     } else if (parts[0].includes(parts[1])) {
+//         $('#emailError').text('Invalid email address');
+//     } else {
+//         $('#emailError').text('');
+//     }
+// });
+// $('#phoneField').on('input', function () {
+//     var phone = $(this).val();
+//     // Remove any non-digit characters from the phone number
+//     var cleanedPhone = phone.replace(/\D/g, '');
+//     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
+//     var undesiredFormatRegex = /^(1234567890|0{10,12}|9710{9}|0123456789)$/;
+
+//     if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
+//         $('#phoneError').text('Please enter a valid phone number. For UAE, use 971 followed by 9 digits or 0 followed by 9 digits.');
+//     } else {
+//         $('#phoneError').text('');
+//     }
+// });
+
+// $('#myForm').submit(function (e) {
+//     e.preventDefault();
+//     var name = $('#inputField').val();
+//     var email = $('#emailField').val();
+//     var phone = $('#phoneField').val();
+
+//     // Regular expressions for validation
+//     var nameRegex = /^[a-zA-Z\s]*$/;
+//     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
+
+//     // Function to trim spaces without using the trim() method
+//     function trimSpaces(str) {
+//         return str.replace(/^\s+|\s+$/g, '');
+//     }
+
+//     var isValidForm = true;
+
+//     // Name validation
+//     if (trimSpaces(name) === '') {
+//         $('#nameError').text('الاسم مطلوب');
+//         isValidForm = false;
+//     } else if (!nameRegex.test(name)) {
+//         $('#nameError').text('يرجى إدخال اسم صالح');
+//         isValidForm = false;
+//     } else {
+//         $('#nameError').text('');
+//     }
+
+//     // Email validation
+//     if (trimSpaces(email) === '') {
+//         $('#emailError').text('البريد الإلكتروني مطلوب');
+//         isValidForm = false;
+//     } else if (!emailRegex.test(email)) {
+//         $('#emailError').text('يرجى إدخال بريد إلكتروني صالح');
+//         isValidForm = false;
+//     } else {
+//         $('#emailError').text('');
+//     }
+
+//     // Phone validation
+//     if (trimSpaces(phone) === '') {
+//         $('#phoneError').text('الهاتف مطلوب');
+//         isValidForm = false;
+//     } else if (!phoneRegex.test(phone)) {
+//         $('#phoneError').text('يرجى إدخال رقم هاتف صالح مكون من 10 أرقام');
+//         isValidForm = false;
+//     } else {
+//         $('#phoneError').text('');
+//     }
+
+//     if (isValidForm) {
+//         var inputData = {};
+//         $(this).find('input, textarea').each(function (index, item) {
+//             inputData[item.name] = item.value;
+//         });
+
+//         $.ajax({
+//             url: baseUrl + 'Submit',
+//             method: 'POST',
+//             dataType: 'json',
+//             contentType: "application/json; charset=utf-8",
+//             data: JSON.stringify(inputData),
+//             success: function (result) {
+//                 if (result.mailSent) {
+//                     $(this).find('input, textarea').val('');
+//                     $('#submitStatus').html('تم الإرسال بنجاح').removeClass('error-message').addClass('success-message');
+//                     document.querySelector(".contact-form").style.display = "none";
+//                     document.querySelector(".thankyou-form").style.display = "block";
+//                 } else {
+//                     $('#submitStatus').html('يرجى المحاولة مرة أخرى').removeClass('success-message').addClass('error-message');
+//                 }
+//             },
+//             error: function () {
+//                 $('#submitStatus').html('يرجى المحاولة مرة أخرى').removeClass('success-message').addClass('error-message');
+//             }
+//         });
+//     }
+// });
+
+// // Real-time validation in Arabic
+// $('#inputField').on('input', function () {
+//     var name = $(this).val();
+//     var nameRegex = /^[a-zA-Z\s'-]+$/;
+//     var trimmedName = name.replace(/^\s+|\s+$/g, '');
+//     if (trimmedName !== name) {
+//         $('#nameError').text('لا يُسمح بوجود مسافات في البداية أو النهاية');
+//     } else if (!nameRegex.test(name)) {
+//         $('#nameError').text('يرجى إدخال اسم صالح');
+//     } else {
+//         $('#nameError').text('');
+//     }
+// });
+
+// $('#emailField').on('input', function () {
+//     var email = $(this).val();
+//     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     var specialCharRegex = /^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/;
+//     var parts = email.split('@');
+//     if (!emailRegex.test(email)) {
+//         $('#emailError').text('يرجى إدخال بريد إلكتروني صالح');
+//     } else if (specialCharRegex.test(email)) {
+//         $('#emailError').text('لا يمكن أن يبدأ البريد الإلكتروني أو ينتهي بحرف خاص');
+//     } else if (/([^a-zA-Z0-9])\1{1,}/.test(email)) {
+//         $('#emailError').text('لا يمكن أن يحتوي البريد الإلكتروني على حروف خاصة متتالية');
+//     } else if (email.indexOf('@gmail.com@gmail.com') !== -1) {
+//         $('#emailError').text('عنوان بريد إلكتروني غير صالح');
+//     } else if (parts.length === 2 && parts[0] === parts[1]) {
+//         $('#emailError').text('يرجى إدخال بريد إلكتروني صالح');
+//     } else if (parts[0].includes(parts[1])) {
+//         $('#emailError').text('عنوان بريد إلكتروني غير صالح');
+//     } else {
+//         $('#emailError').text('');
+//     }
+// });
+
+// $('#phoneField').on('input', function () {
+//     var phone = $(this).val();
+//     var cleanedPhone = phone.replace(/\D/g, '');
+//     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
+//     var undesiredFormatRegex = /^(1234567890|0{10,12}|9710{9}|0123456789)$/;
+
+//     if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
+//         $('#phoneError').text('يرجى إدخال رقم هاتف صالح. لاستخدام الإمارات، استخدم 971 متبوعًا بـ 9 أرقام أو 0 متبوعًا بـ 9 أرقام.');
+//     } else {
+//         $('#phoneError').text('');
+//     }
+// });
+
+
+var currentLanguage = 'english';
+
+function toggleLanguage() {
+    if (currentLanguage === 'english') {
+        currentLanguage = 'arabic';
+        document.body.setAttribute('dir', 'rtl');
+    } else {
+        currentLanguage = 'english';
+        document.body.setAttribute('dir', 'ltr');
+    }
+}
+
 $('#myForm').submit(function (e) {
     e.preventDefault();
     var name = $('#inputField').val();
@@ -6222,22 +6495,32 @@ $('#myForm').submit(function (e) {
     var phone = $('#phoneField').val();
 
     // Regular expressions for validation
-    var nameRegex = /^[a-zA-Z\s]*$/;
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var nameRegex = /^[a-zA-Z\s'-]+$/;
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
 
-    // Function to trim spaces without using the trim() method
     function trimSpaces(str) {
         return str.replace(/^\s+|\s+$/g, '');
     }
 
     var isValidForm = true;
+
+    // Define error messages in both languages
+    var messages = {
+        nameRequired: currentLanguage === 'english' ? 'Name is required' : 'الاسم مطلوب',
+        invalidName: currentLanguage === 'english' ? 'Please enter a valid name' : 'يرجى إدخال اسم صالح',
+        emailRequired: currentLanguage === 'english' ? 'Email is required' : 'البريد الإلكتروني مطلوب',
+        invalidEmail: currentLanguage === 'english' ? 'Please enter a valid email address' : 'يرجى إدخال بريد إلكتروني صالح',
+        phoneRequired: currentLanguage === 'english' ? 'Phone is required' : 'الهاتف مطلوب',
+        invalidPhone: currentLanguage === 'english' ? 'Please enter a valid phone number' : 'يرجى إدخال رقم هاتف صالح'
+    };
+
     // Name validation
     if (trimSpaces(name) === '') {
-        $('#nameError').text('Name is required');
+        $('#nameError').text(messages.nameRequired);
         isValidForm = false;
     } else if (!nameRegex.test(name)) {
-        $('#nameError').text('Please enter a valid name');
+        $('#nameError').text(messages.invalidName);
         isValidForm = false;
     } else {
         $('#nameError').text('');
@@ -6245,10 +6528,10 @@ $('#myForm').submit(function (e) {
 
     // Email validation
     if (trimSpaces(email) === '') {
-        $('#emailError').text('Email is required');
+        $('#emailError').text(messages.emailRequired);
         isValidForm = false;
     } else if (!emailRegex.test(email)) {
-        $('#emailError').text('Please enter a valid email address');
+        $('#emailError').text(messages.invalidEmail);
         isValidForm = false;
     } else {
         $('#emailError').text('');
@@ -6256,10 +6539,10 @@ $('#myForm').submit(function (e) {
 
     // Phone validation
     if (trimSpaces(phone) === '') {
-        $('#phoneError').text('Phone is required');
+        $('#phoneError').text(messages.phoneRequired);
         isValidForm = false;
     } else if (!phoneRegex.test(phone)) {
-        $('#phoneError').text('Please enter a valid 10-digit phone number');
+        $('#phoneError').text(messages.invalidPhone);
         isValidForm = false;
     } else {
         $('#phoneError').text('');
@@ -6280,71 +6563,68 @@ $('#myForm').submit(function (e) {
             success: function (result) {
                 if (result.mailSent) {
                     $(this).find('input, textarea').val('');
-                    $('#submitStatus').html('Submitted Successfully.').removeClass('error-message').addClass('success-message');
+                    $('#submitStatus').html(currentLanguage === 'english' ? 'Submitted Successfully.' : 'تم الإرسال بنجاح').removeClass('error-message').addClass('success-message');
                     document.querySelector(".contact-form").style.display = "none";
                     document.querySelector(".thankyou-form").style.display = "block";
                 } else {
-                    $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
+                    $('#submitStatus').html(currentLanguage === 'english' ? 'Please try after sometime.' : 'يرجى المحاولة مرة أخرى').removeClass('success-message').addClass('error-message');
                 }
             },
             error: function () {
-                $('#submitStatus').html('Please try after sometime.').removeClass('success-message').addClass('error-message');
+                $('#submitStatus').html(currentLanguage === 'english' ? 'Please try after sometime.' : 'يرجى المحاولة مرة أخرى').removeClass('success-message').addClass('error-message');
             }
         });
     }
 });
 
-
-// Add event listeners to input fields for real-time validation
+// Real-time validation for name field
 $('#inputField').on('input', function () {
     var name = $(this).val();
     var nameRegex = /^[a-zA-Z\s'-]+$/;
-    var trimmedName = name.replace(/^\s+|\s+$/g, ''); // Remove leading and trailing spaces using regex
+    var trimmedName = name.replace(/^\s+|\s+$/g, '');
+
     if (trimmedName !== name) {
-        $('#nameError').text('No leading or trailing spaces are allowed');
+        $('#nameError').text(currentLanguage === 'english' ? 'No leading or trailing spaces are allowed' : 'لا يُسمح بوجود مسافات في البداية أو النهاية');
     } else if (!nameRegex.test(name)) {
-        $('#nameError').text('Please enter a valid name');
+        $('#nameError').text(currentLanguage === 'english' ? 'Please enter a valid name' : 'يرجى إدخال اسم صالح');
     } else {
         $('#nameError').text('');
     }
 });
 
-
-
+// Real-time validation for email field
 $('#emailField').on('input', function () {
     var email = $(this).val();
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     var specialCharRegex = /^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/;
     var parts = email.split('@');
+
     if (!emailRegex.test(email)) {
-        $('#emailError').text('Please enter a valid email address');
+        $('#emailError').text(currentLanguage === 'english' ? 'Please enter a valid email address' : 'يرجى إدخال بريد إلكتروني صالح');
     } else if (specialCharRegex.test(email)) {
-        $('#emailError').text('Email cannot start or end with a special character');
+        $('#emailError').text(currentLanguage === 'english' ? 'Email cannot start or end with a special character' : 'لا يمكن أن يبدأ البريد الإلكتروني أو ينتهي بحرف خاص');
     } else if (/([^a-zA-Z0-9])\1{1,}/.test(email)) {
-        $('#emailError').text('Email cannot contain consecutive repeating special characters');
-    } else if (email.indexOf('@gmail.com@gmail.com') !== -1) {
-        $('#emailError').text('Invalid email address');
-    } else if (parts.length === 2 && parts[0] === parts[1]) {
-        $('#emailError').text('Please enter a valid email address');
-    } else if (parts[0].includes(parts[1])) {
-        $('#emailError').text('Invalid email address');
+        $('#emailError').text(currentLanguage === 'english' ? 'Email cannot contain consecutive repeating special characters' : 'لا يمكن أن يحتوي البريد الإلكتروني على حروف خاصة متتالية');
     } else {
         $('#emailError').text('');
     }
 });
+
+// Real-time validation for phone field
 $('#phoneField').on('input', function () {
     var phone = $(this).val();
-    // Remove any non-digit characters from the phone number
     var cleanedPhone = phone.replace(/\D/g, '');
     var phoneRegex = /^((971[0-9]{9})|(0[0-9]{9}))$/;
     var undesiredFormatRegex = /^(1234567890|0{10,12}|9710{9}|0123456789)$/;
 
     if (!phoneRegex.test(cleanedPhone) || undesiredFormatRegex.test(cleanedPhone)) {
-        $('#phoneError').text('Please enter a valid phone number. For UAE, use 971 followed by 9 digits or 0 followed by 9 digits.');
+        $('#phoneError').text(currentLanguage === 'english' ? 'Please enter a valid phone number. For UAE, use 971 followed by 9 digits or 0 followed by 9 digits.' : 'يرجى إدخال رقم هاتف صالح. لاستخدام الإمارات، استخدم 971 متبوعًا بـ 9 أرقام أو 0 متبوعًا بـ 9 أرقام.');
     } else {
         $('#phoneError').text('');
     }
 });
+
+
 var accordionContent = [
     {
         question: "What does ‘Air Quality’ refer to?",
@@ -6694,6 +6974,13 @@ function updateToArabic() {
     initiativeHeadingContentLg.innerHTML =  "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     initiativeHeadingContentSm.innerText =  "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     navLinkAirQuality.innerText = "جودة الهواء";
+    //03-11
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.thankyou-submit-msg').innerText = 'شكرا لتواصلك معنا!';
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.getback-msg').innerText = "لقد تم استلام رسالتك. سوف نعود اليكم قريبا"
+    });
     document.querySelector('.welcome-text').innerText = "مرحبًا بكم في";
     document.querySelector('.quotes').innerText = " مراقبة جودة الهواء ";
     document.querySelector('.emirates-text').innerText = "في أبوظبي";
@@ -6904,6 +7191,13 @@ function updateToEnglish() {
                     initiativeHeadingContentSm.innerText =
                         "Join us in the fight for cleaner skies and healthier communities. Become a guardian of our atmosphere and safeguard our future.";
                     navLinkAirQuality.innerText = "Air Quality";
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.thankyou-submit-msg').innerText = 'Thank you for reaching out!'
+                    });
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector('.getback-msg').innerText = "Your message has been received. We'll get back to you shortly."
+                    });
+                    getback-msg
                     document.querySelector('.welcome-text').innerText = "WELCOME TO";
                     document.querySelector('.quotes').innerText = "Air Quality Monitoring";
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
