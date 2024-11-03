@@ -50,7 +50,7 @@
                 <div class="mobile-menu" id="mobile-overlay">
                     <div>
                     <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
-                    <button class="toggleLanguageBtn responsive_toggle" id="language-toggle1-btn" onclick="toggleChangeLanguage()">عربي</button>
+                    <!-- <button class="toggleLanguageBtn responsive_toggle" id="language-toggle1-btn" onclick="toggleChangeLanguage()">عربي</button> -->
 
                 </div>
                     <a href="index.html#demo" class="nav-link">Our Air Quality</a>
@@ -58,6 +58,7 @@
                     <a href="index.html#section3" class="nav-link">Projects</a>
                     <a href="index.html#section4" class="nav-link">FAQ</a>
                     <a href="index.html#section5" class="nav-link">Contact Us</a>
+                    <div   id="language-toggle1-btn" class="toggleLanguageBtn toggle-text-mobile" onclick="toggleChangeLanguage()" >عربي</div>
                     <!-- <div class="d-md-none" style="display: flex; margin-top: 5px;">
                         <a class="nav-link mobile mobile-language">LANGUAGE:</a>
                         <div class="switch1">
@@ -763,6 +764,7 @@
                             break;
                     }
                 })
+                addArabicLinkActiveClass();
             }
 
             function updateMenuEnglish() {
@@ -814,6 +816,7 @@
                     }
 
                 })
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
             }
 
             toggleBtn.addEventListener('click', () => {
@@ -922,6 +925,18 @@
             });
         });
 
+        function addArabicLinkActiveClass() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            // Remove active class from other links
+            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+            // Add active class to the clicked link
+            if (currentLanguage === 'arabic') {
+                link.classList.add('active-arabic');
+            }
+        });
+    });
+}
 
     </script>
 </body>

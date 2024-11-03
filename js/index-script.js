@@ -6992,7 +6992,7 @@ function updateToArabic() {
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
         $('.air-qality-info').addClass('air-quality-cross-icon');
-        $('.search-station-sidebar').addClass('sidebar-search-station');
+        // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -7198,7 +7198,7 @@ function updateToEnglish() {
     $('.search_name').removeClass('search_street');
     $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
     $('.air-qality-info').removeClass('air-quality-cross-icon');
-    $('.search-station-sidebar').removeClass('sidebar-search-station');
+    // $('.search-station-sidebar').removeClass('sidebar-search-station');
 
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
     // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
@@ -7224,7 +7224,7 @@ function updateToEnglish() {
                     document.addEventListener("DOMContentLoaded", function() {
                         document.querySelector('.getback-msg').innerText = "Your message has been received. We'll get back to you shortly."
                     });
-                    getback-msg
+                  
                     document.querySelector('.welcome-text').innerText = "WELCOME TO";
                     document.querySelector('.quotes').innerText = "Air Quality Monitoring";
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
@@ -7558,6 +7558,7 @@ function updateNavLinksToArabic() {
                 link.textContent = 'لغة'
         }
     });
+    addArabicLinkActiveClass();
 }
 
 function updateNavLinksToEnglish() {
@@ -7582,5 +7583,19 @@ function updateNavLinksToEnglish() {
                 link.textContent = 'LANGUAGE';
         }
     });
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
 }
 });
+
+function addArabicLinkActiveClass() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            // Remove active class from other links
+            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+            // Add active class to the clicked link
+            if (currentLanguage === 'arabic') {
+                link.classList.add('active-arabic');
+            }
+        });
+    });
+}
