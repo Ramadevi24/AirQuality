@@ -121,10 +121,8 @@
                             <a class="nav-link large-webmenu" href="#slide5">Contact Us</a>
                             <a class="nav-link tablet-menu" href="#section5">Contact Us</a>
                         </li>
-                        <div class="switch1 blue-hide">
-                            <div id="language-toggle1" class="toggleLanguageBtn toggle-text1" onclick="toggleChangeLanguage()" >عربي</div>
-                        </div>
-                        <div   id="language-toggle" class="toggleLanguageBtn toggle-text" onclick="toggleChangeLanguage()" >عربي</div>
+                    
+                       
                     </ul>
                     <!-- <div class="switch whitesearch-hide">
                         <input id="language-toggle" class="toggleLanguageBtn check-toggle check-toggle-round-flat"
@@ -140,7 +138,16 @@
                         <span class="on">EN</span>
                         <span class="off">AR</span>
                     </div> -->
-                  
+
+
+
+                    <div   id="language-toggle" class="toggleLanguageBtn toggle-text" onclick="toggleChangeLanguage()" >عربي</div>
+                    <div class="switch1 blue-hide">
+                        <div id="language-toggle1" class="toggleLanguageBtn toggle-text1" onclick="toggleChangeLanguage()" >عربي</div>
+                    </div>
+            
+                   
+                    
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
                         aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -430,7 +437,7 @@
                             <div class="wheather-widget">
                                 <h6 class="text-white text-center" id="sidebarNearestStation"> </h6>
                                 <div class="mb-2 mt-2 position-relative map-bg-opacity text-center">
-                                    <img src="./images/new-images/mapCircular.png" class="img-fluid sidebar-Image"
+                                    <img src="./images/new-images/mapCircular.png"  class="img-fluid sidebar-Image"
                                         id="sideBarAQIImage">
                                     <div class="weather-card-map">
                                         <h2 class="mb-0" id="sideBarAqiStatus">Moderate</h2>
@@ -487,7 +494,7 @@
         <div class="section insight" id="section2">
             <div class="row align-items-flexstart insight_section margin-tab0">
                 <div class="col-lg-3 col-md-12">
-                    <div id="sidebar">
+                    <div id="sidebar" class="search-station-sidebar">
                         <div id="sidebar-btn">
                             <div class="coll-icon">
                                 <img src="./images/new-images/collapse.png" alt="icon">
@@ -969,7 +976,7 @@
                                                                         class="iconimg">
                                                                     <div class="info-popup">
 
-                                                                        <div class="mb-2 text-right">
+                                                                        <div class="mb-2 text-right air-qality-info">
                                                                             <img class="crossicon"
                                                                                 src="./images/new-images/Arrow-right.png"
                                                                                 width="35" height="35">
@@ -2859,14 +2866,14 @@
                                 <div class="row">
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <input type="text" name="name" class="form-control" id="inputField">
+                                            <input type="text" name="name" class="form-control form-direction" id="inputField">
                                             <label for="inputField" id="yourname">Your Name</label>
                                             <div class="error-message" id="nameError"></div>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <input type="email" name="emailAddress" class="form-control"
+                                            <input type="email" name="emailAddress" class="form-control form-direction"
                                                 id="emailField">
                                             <label for="emailField" id="youremail">Email</label>
                                             <div class="error-message" id="emailError"></div>
@@ -2874,14 +2881,14 @@
                                     </div>
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <input type="tel" name="phoneNumber" class="form-control" id="phoneField">
+                                            <input type="tel" name="phoneNumber" class="form-control form-direction" id="phoneField">
                                             <label for="phoneField" id="yourphone">Phone</label>
                                             <div class="error-message" id="phoneError"></div>
                                         </div>
                                     </div>
                                     <div class="col-xl-9">
                                         <div class="form-group material-style mb-3">
-                                            <textarea rows="4" name="message" id="message" class="form-control"
+                                            <textarea rows="4" name="message" id="message" class="form-control form-direction"
                                                 placeholder="Message"></textarea>
 
                                         </div>

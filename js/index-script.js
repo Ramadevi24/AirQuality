@@ -6671,6 +6671,10 @@ function updateToArabic() {
     $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
     $('.insight .sorttoggle button.btn-close').addClass('sort-toggle');
     $('.switch1 > span.on').addClass('arabic-switch1');
+    $('.form-direction').css({
+        'text-align': 'left',
+        'direction': 'ltr'
+    });
     // $('.open').addClass('hamberger-cross-icon');
     
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
@@ -6682,6 +6686,8 @@ function updateToArabic() {
     // document.querySelector('').classList.add('');
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
+        $('.air-qality-info').addClass('air-quality-cross-icon');
+        $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -6820,7 +6826,7 @@ function updateToArabic() {
     document.querySelectorAll('.measure-pollut').forEach((element) => {
         element.innerText ='الملوثات التي يتم قياسها';
     });
-    document.querySelector('.material-symbols-outlined').innerText='إغلاق';
+    // document.querySelector('.material-symbols-outlined').innerText='إغلاق';
         document.querySelector('.good-label-graph').innerText = 'جيد';
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
     // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'معتدل' });
@@ -6878,6 +6884,9 @@ function updateToEnglish() {
     $('.contact-info-content').removeClass('contact-info-data');
     $('.search_name').removeClass('search_street');
     $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
+    $('.air-qality-info').removeClass('air-quality-cross-icon');
+    $('.search-station-sidebar').removeClass('sidebar-search-station');
+
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
     // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
     // $('.ms-4').removeClass('ms-4').addClass('me-4');
@@ -7002,7 +7011,7 @@ function updateToEnglish() {
                     document.querySelectorAll('.measure-pollut').forEach((element) => {
                      element.innerText ='Measured pollutants';
                  });
-                 document.querySelector('.material-symbols-outlined').innerText='Close';
+                //  document.querySelector('.material-symbols-outlined').innerText='Close';
                     document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
                         element.innerText = `Take a swift look at Abu Dhabi City's yearly air qualitychart. It shows the number of hours each pollutant was abovesafe levels. chart-f-contentrmed on Air quality trends,effortlessly.`});
                     document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
