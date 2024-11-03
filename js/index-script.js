@@ -6504,16 +6504,41 @@ $.each(accordionContent, function (index, item) {
     $('#myAccordion').append(accordionItem);
 });
 
+// function renderAccordionContent(content) {
+//     $('#myAccordion').empty(); // Clear existing content
+//     $.each(content, function (index, item) {
+//         var accordionItem = '<div class="accordion-item">' +
+//             '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
+//             '<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse' + (index + 1) + '">' +
+//             item.question +
+//             '</button>' +
+//             '</h2>' +
+//             '<div id="collapse' + (index + 1) + '" class="accordion-collapse collapse" data-bs-parent="#myAccordion">' +
+//             '<div class="accordion-body pt-1 pb-2 text-justify">' +
+//             '<p>' +
+//             item.answer +
+//             '</p>' +
+//             '</div>' +
+//             '</div>' +
+//             '</div>';
+
+//         $('#myAccordion').append(accordionItem);
+//     });
+// }
+
 function renderAccordionContent(content) {
     $('#myAccordion').empty(); // Clear existing content
     $.each(content, function (index, item) {
+        var isOpen = index === 0 ? 'show' : ''; // Open only the first item by default
+        var isCollapsed = index === 0 ? '' : 'collapsed'; // Remove 'collapsed' from the first button
+        
         var accordionItem = '<div class="accordion-item">' +
             '<h2 class="accordion-header" id="heading' + (index + 1) + '">' +
-            '<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse' + (index + 1) + '">' +
+            '<button type="button" class="accordion-button ' + isCollapsed + '" data-bs-toggle="collapse" data-bs-target="#collapse' + (index + 1) + '">' +
             item.question +
             '</button>' +
             '</h2>' +
-            '<div id="collapse' + (index + 1) + '" class="accordion-collapse collapse" data-bs-parent="#myAccordion">' +
+            '<div id="collapse' + (index + 1) + '" class="accordion-collapse collapse ' + isOpen + '" data-bs-parent="#myAccordion">' +
             '<div class="accordion-body pt-1 pb-2 text-justify">' +
             '<p>' +
             item.answer +
@@ -6525,6 +6550,7 @@ function renderAccordionContent(content) {
         $('#myAccordion').append(accordionItem);
     });
 }
+
 
 $('#collapse1').addClass('show');
 $('#heading1 button').toggleClass('collapsed');
@@ -6737,6 +6763,7 @@ function updateToArabic() {
     document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامة';
     // document.querySelector('.mask_body').addClass('mask_modal_body');
     $('.modal-body.mask_body').addClass('mask_modal_body');
+    $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
     
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
@@ -6884,6 +6911,7 @@ function updateToEnglish() {
     $('.fp-next').removeClass('next-buttons');
     $('.fp-next').removeClass('animation-next-buttons');
     $('.switch1 > span.on').removeClass('arabic-switch1');
+    $('.bar-section-info').addClass('mask_modal_body');
     // document.getElementById('language-toggle1-btn').innerHTML ='English';
     closeSidebar();
     getAirQualitySafetyLevel();
