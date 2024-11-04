@@ -2229,6 +2229,11 @@ border: none;
         margin-top: 1%;
     }
 
+    .slide-dv-position{
+        padding-left: 40px !important;
+        padding-right: 0px !important;
+    }
+
         .insight .silde-dv button.carousel-control-next.active, .insight .silde-dv button.carousel-control-prev.active {
             border-color: var(--blue);
         }
@@ -2852,6 +2857,14 @@ border: none;
     border-radius: 0px;
     padding: 10px;
     background: rgba(255, 255, 255, 1);
+    left:-12% ;
+}
+.left-zero {
+   inset:0px auto auto 0px !important;
+    left: 0% !important;
+}
+.left-minus-twelve {
+    inset:0px auto auto 0px !important;
     left: -12% !important;
 }
 
@@ -4149,7 +4162,7 @@ border: none;
 .search_street{
     position: absolute;
     top: 1px;
-    right: 11rem;
+    right: 15rem;
 }
 
 .rtl-accordion::after {

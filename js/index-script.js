@@ -6980,6 +6980,11 @@ function updateToArabic() {
         'text-align': 'left',
         'direction': 'ltr'
     });
+    $('.insight .silde-dv').addClass('slide-dv-position');
+    $('#fp-nav').addClass('fp-left');
+    $('#fp-nav').removeClass('fp-right');
+    $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-zero')
+    $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
     // $('.open').addClass('hamberger-cross-icon');
     
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
@@ -7198,6 +7203,12 @@ function updateToEnglish() {
     $('.search_name').removeClass('search_street');
     $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
     $('.air-qality-info').removeClass('air-quality-cross-icon');
+    $('.insight .silde-dv').removeClass('slide-dv-position');
+    $('#fp-nav').removeClass('fp-left');
+    $('#fp-nav').addClass('fp-right');
+    $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
+    $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
+
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
 
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');

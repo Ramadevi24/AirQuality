@@ -93,6 +93,10 @@ html.fp-enabled,
 #fp-nav.fp-left {
     left: 17px;
 }
+
+.fp-left {
+    left: 17px !important;
+}
 .fp-slidesNav{
     position: absolute;
     z-index: 4;

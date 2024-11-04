@@ -674,7 +674,7 @@
     }
 
     .formobile-fading .blue-hide {
-        display: block;
+        display: block !important;
     }
 }
 
@@ -3667,4 +3667,3 @@
    
 
 }
- 
