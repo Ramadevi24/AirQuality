@@ -1383,13 +1383,20 @@ const aqiContentArabic = {
     VeryUnHealthly: "ليس وقتاً مناسباً للتواجد في الخارج، اقضِ يومك في الداخل.",
     Hazardous: "يجب عليك تجنب الأنشطة الخارجية ",
 }
-
 const chartFilter = {
-    Hourly: 'Hourly',
+    Hourly:  'Hourly',
     Daily: 'Daily',
-    Monthly: 'Monthly',
-    Yearly: 'Yearly',
+    Monthly:  'Monthly',
+    Yearly:  'Yearly',
     Custom: 'Custom'
+}
+
+const chartFilterArabic = {
+    Hourly:  'كل ساعة',
+    Daily:  'يومي',
+    Monthly:  'شهري',
+    Yearly:  'سنويا',
+    Custom:  'مخصص'
 }
 
 const pollutantNamesEnglish = {
@@ -1830,7 +1837,7 @@ $(document).ready(function () {
         $('.dropdown-change li a').removeClass("active");
         el.find('.quality-index-dropItem:first').addClass("active");
         $('.datepicker').val('');
-        updateCharts(chartFilter.Hourly);
+        updateCharts(chartFilter.Hourly);   
         // Remove show class when quality-index-dropItem is clicked
         $('.dropdown-change li a').click(function () {
             $('.dropdown-change').removeClass('show').css('top', '');
@@ -3195,10 +3202,10 @@ function getStationChartApi(filter, initialRequest = false) {
     var url;
     var station;
     switch (filter) {
-        case chartFilter.Daily:
+        case currentLanguage === 'arabic' ? chartFilterArabic.Daily : chartFilter.Daily:
             url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
             break;
-        case chartFilter.Monthly:
+        case currentLanguage === 'arabic' ? chartFilterArabic.Monthly: chartFilter.Monthly:
             var airQualityStationid = currentStationDetails.stationId;
             station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
             if (station) {
@@ -3207,14 +3214,14 @@ function getStationChartApi(filter, initialRequest = false) {
             var edbStationid = currentStationDetails.stationId;
             url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
             break;
-        case chartFilter.Yearly:
+        case currentLanguage === 'arabic' ? chartFilterArabic.Yearly: chartFilter.Yearly:
             station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
             if (station) {
                 currentStationDetails.stationId = station.stationid;
             }
             url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
             break;
-        case chartFilter.Custom:
+        case currentLanguage === 'arabic' ? chartFilterArabic.Custom: chartFilter.Custom:
             var selectedDate = $('.datepicker').val();
             var splitDateArray = selectedDate.split('-');
             var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
@@ -3339,25 +3346,25 @@ function bindStationDataToLineChart(filter) {
     fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
     
     switch (filter) {
-        case chartFilter.Daily:
+        case currentLanguage === 'arabic' ? chartFilterArabic.Daily : chartFilter.Daily:
             //categoriesData = chartData.map(t => { return t.day.split(' '); });
             chartData.forEach(item => {
                 categoriesData.push(item.day.split(' '));
             });
             break;
-        case chartFilter.Monthly:
+            case currentLanguage === 'arabic' ? chartFilterArabic.Monthly : chartFilter.Monthly:
             chartData.forEach(item => {
                 categoriesData.push(item.month);
             });
             //categoriesData = chartData.map(t => { return t.month; });
             break;
-        case chartFilter.Yearly:
+            case currentLanguage === 'arabic' ? chartFilterArabic.Yearly :  chartFilter.Yearly:
             //categoriesData = chartData.map(t => { return t.year; });
             chartData.forEach(item => {
                 categoriesData.push(item.year);
             });
             break;
-        case chartFilter.Custom:
+            case currentLanguage === 'arabic' ? chartFilterArabic.Custom :  chartFilter.Custom:
             //categoriesData = chartData.map(t => { return t.hour.split(' '); });
             chartData.map(item => {
                 const dateParts = item.recordedDate.split('/');
@@ -5833,8 +5840,9 @@ function updateCharts(selectedFilter) {
     // Do not remove below code starts---------------------------------
     $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiPm25Value, #lineChartAqiO3Value").text('');
     $('button.quality-button-dropdown').text(selectedFilter);
-    if (selectedFilter != chartFilter.Custom) {
-        getStationChartApi(selectedFilter);
+    const filterData = currentLanguage === 'arabic' ? chartFilterArabic.Custom : chartFilter.Custom
+    if (selectedFilter != filterData) {
+         getStationChartApi(selectedFilter);
     }
     // Do not remove below code ends---------------------------------
 }
@@ -6915,6 +6923,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const iaqmElement = document.getElementById('iaqm');
     const switchingElement = document.getElementById('switching-air-purifier')
     // const pollutantLegendTextItems = document.querySelectorAll('.pollutants-legend-text .legend li .legend_radar li');
+    const lastRefreshTimeElement = document.getElementById('aqilastrefreshtime');
+    activePollutant = pollutantAbbrevations.AQI;
     currentLanguage = 'english';
     currentStatusClass = statusClass;
     getAirQualitySafetyLevel();
@@ -6927,7 +6937,6 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleBtns[i].addEventListener('click', toggleLanguage);
     }
      function toggleLanguage() {
-
         if (currentLanguage === 'english') {
             currentLanguage = 'arabic';
             bindLiveCityRanking();
@@ -6941,8 +6950,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // updateHealthRecommendations();
             updateAqitoArabic();
             document.body.setAttribute('dir', 'rtl');
-            updateToArabic();
-
+            updateToArabic(); 
+            lastRefreshTimeElement.innerText = showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
+            updateCharts(chartFilterArabic.Hourly);   
         } else {
             currentLanguage = 'english';
             bindLiveCityRanking();
@@ -6957,6 +6967,8 @@ document.addEventListener("DOMContentLoaded", () => {
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();
+            lastRefreshTimeElement.innerText = showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
+            updateCharts(chartFilter.Hourly); 
         }        
            }
 
@@ -7080,6 +7092,14 @@ function updateToArabic() {
     $('.dropdown-menu.sorttoggle').removeClass('showText');
 
    
+    $('.footer-social-icons').addClass('social-media-icons');
+    $('.copy-right-para').addClass('copy-right-para-footer');
+    $('.copy-right-contents').addClass('copy-right-contents-footer');
+    $('.contact-us-alignment').addClass('contact-us-alignment-style');
+    $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
+    $('.next-btn-arb').addClass('next-btn-arb-alignment');
+
+
 
     
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
@@ -7125,7 +7145,6 @@ function updateToArabic() {
     document.querySelectorAll('.last-refersh-color').forEach(element => {
         element.innerText ='آخر تحديث'
     });
-    // document.querySelector('.last-refersh-color').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh-color').style.direction = 'ltr';
     document.querySelector('.station-aqi-legend').style.direction='rtl';
     // document.getElementById('barChartFilter').innerText='كل ساعة';
@@ -7209,8 +7228,15 @@ function updateToArabic() {
         });
     });
     const navMobileNew = document.querySelector('.navmobile-new');
-      navMobileNew.style.left = '55px';
+      navMobileNew.style.left = '10px';
       navMobileNew.style.right = 'auto';
+
+      const blueHideIcons = document.querySelectorAll('.blue-hide');
+blueHideIcons.forEach(icon => {
+    icon.style.setProperty('left', '37px', 'important');
+    icon.style.setProperty('right', 'auto', 'important');
+});
+
 
 
     document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
@@ -7243,6 +7269,7 @@ function updateToEnglish() {
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
     // $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
     $('.monitoring-heading').removeClass('arabic-monitoring-heading')
+    $('.footer-our-airquality').removeClass('footer-our-airquality-alignment');
     $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
     $('.dropdown-menu.sorttoggle').addClass('showText');
     
@@ -7259,6 +7286,9 @@ function updateToEnglish() {
     $('.footer-logo').removeClass('footer-logo-arabic');
     $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
+    $('.copy-right-contents').removeClass('copy-right-contents-footer');
+    $('.contact-us-alignment').removeClass('contact-us-alignment-style');
+    $('.next-btn-arb').removeClass('next-btn-arb-alignment');
     $('.air-quality-pill').removeClass('air-quality-btn');
     $('.prev-btn').removeClass('previous-btn');
     $('.next-btn').removeClass('next-button');
@@ -7447,6 +7477,14 @@ function updateToEnglish() {
                     const navMobileNew = document.querySelector('.navmobile-new');
                      navMobileNew.style.right = '10px';
                     navMobileNew.style.left = 'auto';
+                    // navMobileNew.style.marginRight = '10px';
+
+
+                    const blueHideIcons = document.querySelectorAll('.blue-hide');
+blueHideIcons.forEach(icon => {
+    icon.style.setProperty('left', 'auto', 'important');
+    icon.style.setProperty('right', '10px', 'important');
+});
 
                     // Loop through all legend items and revert the text to English
                     //  legendTextItems[0].innerText = 'Good';
@@ -7460,6 +7498,8 @@ function updateToEnglish() {
                     document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; //  black logo
                     document.querySelector('.dropdown-menu .dropdown-item');
                     // document.querySelector('.last-updated-sec').innerText = 'Date & Time';
+                    $('.footer-insights-alignment').addClass('col-xl-3');
+                    $('.footer-insights-alignment').removeClass('col-xl-4');
 }
 
 function updateAqitoArabic() {
