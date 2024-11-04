@@ -1779,6 +1779,15 @@ body.map-viwer-enabled {
         padding-left: 350px;
     }
 
+ 
+    .sidebar-nav-arabic.toggled {
+        left: -350px;
+        }
+
+    .page-content-wrapper-arabic.toggled {
+            left: 0%;
+            }
+            
 #sidebar-wrapper {
     z-index: 1000;
     /* position: fixed; */
