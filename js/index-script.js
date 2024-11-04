@@ -7007,6 +7007,9 @@ function updateToArabic() {
         $('.footer-logo').addClass('footer-logo-arabic');
         $('.footer-social-icons').addClass('social-media-icons');
         $('.copy-right-para').addClass('copy-right-para-footer');
+    
+        $('.prev-btn').addClass('previous-btn');
+        $('.next-btn').addClass('next-button');
         
         // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
@@ -7071,6 +7074,7 @@ function updateToArabic() {
     $('.modal-body.mask_body').addClass('mask_modal_body');
     $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
+    $('.air-quality-pill').addClass('air-quality-btn');
    
 
     
@@ -7246,6 +7250,10 @@ function updateToEnglish() {
     $('.footer-logo').removeClass('footer-logo-arabic');
     $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
+    $('.air-quality-pill').removeClass('air-quality-btn');
+    $('.prev-btn').remove('previous-btn');
+    $('.next-btn').remove('next-button');
+   
    
     // document.getElementById('language-toggle1-btn').innerHTML ='English';
     closeSidebar();

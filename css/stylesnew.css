@@ -5771,6 +5771,15 @@ input[type="search"]::-webkit-search-cancel-button {
 .arabic-monitoring-heading{
     margin-right: 18px;
 }
+.air-quality-btn{
+    margin-right: -30px;
+}
+.previous-btn{
+    margin-right: 13px;
+}
+.next-button{
+    margin-right: 25px;
+}
 
 
     
