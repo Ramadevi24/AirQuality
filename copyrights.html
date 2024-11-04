@@ -200,9 +200,9 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-xl-3 position-relative">
                                 <a href="https://www.ead.gov.ae/" target="_blank" class="brand-logo">
-                                    <img src="./images/ead-logo.png" class="img-fluid">
+                                    <img src="./images/ead-logo.png" class="img-fluid footer-logo">
                                 </a>
-                                <div class="social-small-links d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                                <div class="social-small-links d-none d-sm-none d-md-none d-lg-none d-xl-block footer-social-icons">
                                     <div class="left">
                                         <ul class="social-media">
                                             <li class="icon-pd-15">
@@ -237,7 +237,7 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-xl-9">
                                 <div class="row">
-                                    <div class="col-xl-3 col-sm-12 col-md-4">
+                                    <div class="col-xl-3 col-sm-12 col-md-4 footer-links-arabic">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
                                                 <a href="index.html#slide0" class="footermobile-none">Our Air Quality</a>
@@ -363,7 +363,7 @@
                     <!-- start 03-April-24 -->
                     <div class="footer-2-sec">
                         <div class="copy-rights">
-                            <p class="sm-pd-left11">&#xa9 Abu Dhabi All Rights Reserved 2024</p>
+                            <p class="sm-pd-left11 copy-right-para">&#xa9 Abu Dhabi All Rights Reserved 2024</p>
                             <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block ">
                                 <li>
                                     <a href="privacy-policy.html">Privacy Policy</a>
@@ -850,9 +850,16 @@
                     // faqSection.style.direction = 'rtl';
                     document.body.setAttribute('dir', 'rtl');
                     updateMenuArabic();
+                    $('.footer-logo').addClass('footer-logo-arabic');
+        $('.footer-social-icons').addClass('social-media-icons');
+        $('.copy-right-para').addClass('copy-right-para-footer');
 
                 } else {
-                    toggleBtn.classList.remove('english-style'); 
+                    $('.footer-logo').removeClass('footer-logo-arabic');
+                 $('.footer-social-icons').removeClass('social-media-icons');
+    $('.copy-right-para').removeClass('copy-right-para-footer');
+                tog_btn.classList.remove('english-style');
+                    // toggleBtn.classList.remove('english-style'); 
                     // Switch back to English
                     toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
                     dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English

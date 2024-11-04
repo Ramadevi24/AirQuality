@@ -7002,6 +7002,8 @@ function updateToArabic() {
         $('.air-qality-info').addClass('air-quality-cross-icon');
         $('.monitoring-heading').addClass('arabic-monitoring-heading')
         $('.footer-logo').addClass('footer-logo-arabic');
+        $('.footer-social-icons').addClass('social-media-icons');
+        $('.copy-right-para').addClass('copy-right-para-footer');
         
         // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
@@ -7067,8 +7069,7 @@ function updateToArabic() {
     $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
    
-    $('.footer-social-icons').addClass('social-media-icons');
-    $('.copy-right-para').addClass('copy-right-para-footer');
+
     
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function() {
