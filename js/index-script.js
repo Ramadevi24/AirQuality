@@ -6999,7 +6999,8 @@ function updateToArabic() {
     // document.querySelector('').classList.add('');
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
-        $('.air-qality-info').addClass('air-quality-cross-icon');
+    $('.fp-prev').removeClass('.silde-dv .fp-arrow.fp-controlArrow.fp-prev').addClass('fa-move-next-arrow');
+    $('.air-qality-info').addClass('air-quality-cross-icon');
         
         // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
@@ -7075,6 +7076,10 @@ function updateToArabic() {
 
 
     document.querySelector('.quality-index-wrapper-h2 .levelmb25').innerText = 'مستوى أمان جودة الهواء';
+    document.querySelectorAll('.pollutant-graph-title').forEach(element => {
+        element.innerText =  'اتجاهات التلوث';
+    });
+    // document.querySelector('.pollutant-graph-title').innerText = 'اتجاهات التلوث';
     document.getElementById('health-recommendations').innerText = 'التوصيات الصحية';
     document.querySelector('.main-contributing-pollutant').innerText = 'الملوث الرئيسي';
     document.querySelector('.Causes-wrapper h3').innerText = 'الأسباب المحتملة';
@@ -7101,7 +7106,10 @@ function updateToArabic() {
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     document.querySelector('.station-aqi-trends-disclaimers').innerText='ابقَ على اطلاع بجودة الهواء في أبوظبي من خلال نظرة سريعة: الرسوم البيانية سهلة الفهم تتعقب مؤشر جودة الهواء ومستويات الملوثات على مر الزمن، مع عرض ظروف السلامة الجوية من جيدة إلى خطرة.'
     document.getElementById('air-quality-index').innerText = 'مؤشر جودة الهواء';
-    document.querySelector('.last-refersh-color').innerText = 'آخر تحديث';
+    document.querySelectorAll('.last-refersh-color').forEach(element => {
+        element.innerText ='آخر تحديث'
+    });
+    // document.querySelector('.last-refersh-color').innerText = 'آخر تحديث';
     document.querySelector('.last-refersh-color').style.direction = 'ltr';
     document.querySelector('.station-aqi-legend').style.direction='rtl';
     // document.getElementById('barChartFilter').innerText='كل ساعة';
@@ -7114,7 +7122,9 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
-    document.querySelector('.last-refersh').innerText = 'آخر تحديث';
+    document.querySelectorAll('.last-refersh').forEach(element => {
+        element.innerText = 'آخر تحديث';
+    });
     document.querySelector('.last-refersh').style.direction = 'ltr';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
     document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
@@ -7210,6 +7220,7 @@ function updateToEnglish() {
     $('.insight .silde-dv').removeClass('slide-dv-position');
     $('#fp-nav').removeClass('fp-left');
     $('#fp-nav').addClass('fp-right');
+    $('.fp-prev').removeClass('fa-move-next-arrow');
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
 
@@ -7294,6 +7305,10 @@ function updateToEnglish() {
                     // document.querySelectorAll('.hazardous-label-graph').forEach((element) => { element.innerText = 'Hazardous' });
                     document.querySelector('.good-label-graph').innerText = 'Good';
                     document.querySelector('.quality-index-wrapper-h2 .levelmb25').innerText = 'AIR QUALITY SAFETY LEVEL';
+                    // document.querySelector('.pollutant-graph-title').innerText = 'POLLUTANT TRENDS';
+                    document.querySelectorAll('.pollutant-graph-title').forEach(element => {
+                        element.innerText = 'POLLUTANT TRENDS';
+                    });
                     document.getElementById('health-recommendations').innerText = 'HEALTH RECOMMENDATIONS';
                     document.querySelector('.main-contributing-pollutant').innerText = 'Main Contributing Pollutant';
                     document.querySelector('.Causes-wrapper h3').innerText = 'Possible Causes';
@@ -7320,12 +7335,16 @@ function updateToEnglish() {
                     // document.querySelector('.imagetext2').innerText = 'Being indoors is the best option';
                     // document.querySelector('.imagetext3').innerText = 'Being indoors is the best option';
                     document.getElementById('air-quality-index').innerText = 'AIR QUALITY INDEX';
-                    document.querySelector('.last-refersh-color').innerText = 'Last refreshed';
+                    document.querySelectorAll('.last-refersh-color').forEach(element => {
+                        element.innerText = 'Last refreshed';
+                    });
                     // document.getElementById('barChartFilter').innerText='Hourly';
                     // -------23/10/2024---------
                     document.getElementById('pills-aqi_lin-tab').innerText = 'AQI';
                     document.getElementById('pills-profile-tab').innerHTML = 'Pollutant';
-                    document.querySelector('.last-refersh').innerText = 'Last refreshed:';
+                    document.querySelectorAll('.last-refersh').forEach(element => {
+                        element.innerText = 'Last refreshed:';
+                    });
                     document.querySelector('.activity_heading').innerText = 'Activities';
                    // document.getElementById('sand-storm').innerText='Sand Storm';
                    document.addEventListener("DOMContentLoaded", function() {
