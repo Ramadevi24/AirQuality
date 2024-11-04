@@ -6988,6 +6988,7 @@ function updateToArabic() {
     $('#fp-nav').removeClass('fp-right');
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-zero')
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
+    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
     // $('.open').addClass('hamberger-cross-icon');
     
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
@@ -7231,6 +7232,7 @@ function updateToEnglish() {
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
     $('.monitoring-heading').removeClass('arabic-monitoring-heading')
+    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
 
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
 
