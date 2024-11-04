@@ -4453,7 +4453,7 @@ table {
 
 .contact-section {
     padding-left: 60px;
-    padding-right: 60px;
+    padding-right: 76px;
     margin-top: 5%;
 }
 
@@ -5760,6 +5760,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .active-arabic{
     transition: none !important;
     font-size: 15px !important;
+}
+.arabic-monitoring-heading{
+    margin-right: 18px;
 }
 
 

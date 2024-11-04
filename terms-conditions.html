@@ -97,18 +97,23 @@
                         <li class="nav-item" data-menuanchor="slide5">
                             <a class="nav-link" href="index.html#slide5">Contact Us</a>
                         </li>
-                        <div class="switch1 d-none d-sm-none d-md-block">
-                            <!-- <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
+                        <!-- <div class="switch1 d-none d-sm-none d-md-block">
+                            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
                             <label for="toggleLanguageBtn"></label>
                             <span class="on">EN</span>
-                            <span class="off">AR</span> -->
+                            <span class="off">AR</span>
                             <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
-                        </div>
+                            
+                        </div> -->
                     </ul>
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
                         aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
+                </div>
+                <div class="switch1 d-none d-sm-none d-md-block">
+                    <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
+                    
                 </div>
            
                 <!-- ================================Sachin html for Search start 03-April-24 ===================== -->
@@ -920,6 +925,7 @@
                     updateMenuArabic();
                 }
                 else {
+                    toggleBtn.classList.remove('english-style');
                     toggleBtn.textContent ='عربي';
                     dynamicHeading.textContent = 'Terms of use';
                     faqsection.innerHTML = `<div class="row">

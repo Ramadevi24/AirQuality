@@ -3665,5 +3665,15 @@
         margin-right: 0px;
     }
    
-
+    .footer-logo-arabic{
+        margin-right: -26px;
+    }
+    .social-media-icons{
+        position: absolute;
+        left: 33px;
+    }
+    .copy-right-para-footer{
+        margin-right: 54px;
+    }
 }
+
