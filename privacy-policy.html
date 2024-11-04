@@ -117,7 +117,7 @@
           <div class="search-block">
             <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch">
-                <img src="./images/new-images/search-blue.png" class="" width="16">
+                <img src="./images/new-images/search-blue.png" class="blue-hide" width="16">
             </button>
             <div class="collapse search-collapse" id="mainSearch">
                 <div class="card card-body">
@@ -383,7 +383,7 @@
         <div class="footer-2-sec">
             <div class="copy-rights">
                 <p class="sm-pd-left11">&#xa9 Abu Dhabi All Rights Reserved 2024</p>
-                <ul class="d-block d-sm-block d-md-none d-lg-none d-xl-block">
+                <ul class="copy-right-contents d-block d-sm-block d-md-none d-lg-none d-xl-block">
                     <li>
                         <a href="privacy-policy.html">Privacy Policy</a>
                     </li>
@@ -524,6 +524,22 @@
                     }
             })
             addArabicLinkActiveClass();
+            const navMobileNew = document.querySelector('.navmobile-new');
+      navMobileNew.style.left = '10px';
+      navMobileNew.style.right = 'auto';
+
+      const blueHideIcons = document.querySelectorAll('.blue-hide');
+blueHideIcons.forEach(icon => {
+    icon.style.setProperty('left', '37px', 'important');
+    icon.style.setProperty('right', 'auto', 'important');
+});
+
+const footerMenuUi = document.querySelector('.copy-right-contents');
+footerMenuUi.style.setProperty('margin-right', '-38px');
+
+
+// This removes the margin-right style
+
             }
             function updateMenuEnglish(){
                 $('.switch1 > span.on').removeClass('arabic-switch1');
@@ -575,6 +591,14 @@
 
             })
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
+            const navMobileNew = document.querySelector('.navmobile-new');
+                     navMobileNew.style.right = '10px';
+                    navMobileNew.style.left = 'auto';
+
+                    const footerMenuUi = document.querySelector('.copy-right-contents');
+                    footerMenuUi.style.removeProperty('margin-right');
+
+
         }
 
 
