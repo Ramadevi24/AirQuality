@@ -4149,7 +4149,7 @@ border: none;
 .search_street{
     position: absolute;
     top: 1px;
-    right: 11rem;
+    right: 15rem;
 }
 
 .rtl-accordion::after {
