@@ -5758,9 +5758,6 @@ input[type="search"]::-webkit-search-cancel-button {
     padding: 10px 10px ;
     /* text-underline-offset: 7px; */
 }
-.air-quality-cross-icon{
-    float:right
-}
 /* .sidebar-search-station{
     position: absolute;
     right: 70px;

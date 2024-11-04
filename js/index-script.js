@@ -7001,8 +7001,6 @@ function updateToArabic() {
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
     $('.fp-prev').removeClass('.silde-dv .fp-arrow.fp-controlArrow.fp-prev').addClass('fa-move-next-arrow');
-    $('.air-qality-info').addClass('air-quality-cross-icon');
-        $('.air-qality-info').addClass('air-quality-cross-icon');
         $('.monitoring-heading').addClass('arabic-monitoring-heading')
         $('.footer-logo').addClass('footer-logo-arabic');
         $('.footer-social-icons').addClass('social-media-icons');
@@ -7231,7 +7229,6 @@ function updateToEnglish() {
     $('.contact-info-content').removeClass('contact-info-data');
     $('.search_name').removeClass('search_street');
     $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
-    $('.air-qality-info').removeClass('air-quality-cross-icon');
     $('.insight .silde-dv').removeClass('slide-dv-position');
     $('#fp-nav').removeClass('fp-left');
     $('#fp-nav').addClass('fp-right');
