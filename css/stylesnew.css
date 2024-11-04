@@ -1821,6 +1821,7 @@ body.map-viwer-enabled {
 .sidebar-nav {
     position: absolute;
     top: 0;
+
     width: 350px;
     height: 100%;
     margin: 0;
@@ -3848,8 +3849,14 @@ border: none;
 
 .insight .silde-dv .fp-arrow.fp-controlArrow.fp-next, .silde-dv .fp-arrow.fp-controlArrow.fp-prev {
     position: absolute;
-    left: 85% !important;
+    left: 85%;
     top: 50px;
+}
+
+.fa-move-next-arrow{
+    position: absolute;
+    top: 50px;
+    left:90% !important
 }
 
 .insight .silde-dv .fp-arrow.fp-controlArrow.fp-next {
@@ -3879,7 +3886,7 @@ border: none;
         font-family: 'FontAwesome';
         font-size: 30px;
         line-height: 35px;
-        padding: 0px 10px 10px 11px;
+        padding: 0px 13px 10px 11px;
     }
 
 .animate-blinking:before {
@@ -4123,6 +4130,7 @@ border: none;
 .insight .last-refersh-color {
     color: var(--grey);
     margin-bottom: 7px;
+    text-align: left;
 }
 
 .insight .number-exceedance .number-exceedance-content {
@@ -5758,9 +5766,6 @@ input[type="search"]::-webkit-search-cancel-button {
     padding: 10px 10px ;
     /* text-underline-offset: 7px; */
 }
-.air-quality-cross-icon{
-    float:left
-}
 /* .sidebar-search-station{
     position: absolute;
     right: 70px;
@@ -5790,5 +5795,20 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 
+.air-quality-btn{
+    margin-right: -30px;
+}
+.previous-btn{
+    margin-right: 13px;
+}
+.next-button{
+    margin-right: 25px;
+}
+.sidebar-nav-arabic{
+    left:0;
+}
+.page-content-wrapper-arabic{
+    left:350px
+}
 
     
