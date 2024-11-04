@@ -1817,6 +1817,7 @@ body.map-viwer-enabled {
 .sidebar-nav {
     position: absolute;
     top: 0;
+
     width: 350px;
     height: 100%;
     margin: 0;
@@ -5780,6 +5781,11 @@ input[type="search"]::-webkit-search-cancel-button {
 .next-button{
     margin-right: 25px;
 }
-
+.sidebar-nav-arabic{
+    left:0;
+}
+.page-content-wrapper-arabic{
+    left:350px
+}
 
     

@@ -7011,7 +7011,10 @@ function updateToArabic() {
         $('.prev-btn').addClass('previous-btn');
         $('.next-btn').addClass('next-button');
         
-        // $('.search-station-sidebar').addClass('sidebar-search-station');
+        $('.sidebar-nav').addClass('sidebar-nav-arabic');
+        $('#page-content-wrapper').addClass('page-content-wrapper-arabic');
+        
+        $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -7251,8 +7254,11 @@ function updateToEnglish() {
     $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
     $('.air-quality-pill').removeClass('air-quality-btn');
-    $('.prev-btn').remove('previous-btn');
-    $('.next-btn').remove('next-button');
+    $('.prev-btn').removeClass('previous-btn');
+    $('.next-btn').removeClass('next-button');
+    $('.sidebar-nav').removeClass('sidebar-nav-arabic');
+    
+    $('#page-content-wrapper').removeClass('page-content-wrapper-arabic');
    
    
     // document.getElementById('language-toggle1-btn').innerHTML ='English';
