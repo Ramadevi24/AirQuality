@@ -6859,6 +6859,7 @@ $('.select-pils').on('click', function () {
 function toggleChangeLanguage() {
     const button1 = document.getElementById('language-toggle');
     const button2 = document.getElementById('language-toggle1');
+    const button3=document.getElementById('llanguage-toggle');
 
     // Determine the current language based on one button's text
     const isArabic = button1.innerText === "عربي";
@@ -6866,17 +6867,19 @@ function toggleChangeLanguage() {
     // Toggle the text for all buttons
     button1.innerText = isArabic ? "English" : "عربي";
     button2.innerText = isArabic ? "English" : "عربي";
+    button3.innerText = isArabic ? "English" : "عربي";
 
     // Toggle the class based on the language
     if (!isArabic) {
         // If switched to Arabic, remove the 'english-mode' class
         button1.classList.remove('english-mode');
         button2.classList.remove('english-mode1');
+        button3.classList.remove('english-mode1');
     } else {
         // If switched to English, add the 'english-mode' class
         button1.classList.add('english-mode');
         button2.classList.add('english-mode1');
-        // button3.classList.add('english-mode');
+        button3.classList.add('english-mode');
     }
 }
 
@@ -6997,6 +7000,7 @@ function updateToArabic() {
     $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
         $('.air-qality-info').addClass('air-quality-cross-icon');
+        
         // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
