@@ -3683,6 +3683,10 @@
     .copy-right-para-footer{
         margin-right: 54px;
     }
+    /* .station-arabic{
+        text-align: right !important;
+        margin-right: 213px;
+    } */
     
 }
 
@@ -3705,3 +3709,10 @@
     }
 }
 
+/* @media (min-width:1200){
+    .station-arabic {
+        text-align: right !important;
+        margin-right: 328px !important;
+    }
+    
+} */

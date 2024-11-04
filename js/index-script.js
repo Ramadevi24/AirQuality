@@ -7053,7 +7053,7 @@ function updateToArabic() {
     document.querySelectorAll('.windDirectionHeading').forEach((element) => {element.textContent = 'اتجاه الرياح'});
     document.querySelectorAll('.humidityHeading').forEach((element) => {element.textContent = 'الرطوبة'})
     document.querySelectorAll('.temperatureHeading').forEach((element) => {element.textContent = 'درجة الحرارة'})
-    document.querySelector('.map-disclaimer').innerText = 'على الرغم من تحديث بياناتنا في الوقت الحالي باستمرار وخضوعها لعمليات المراجعة المتواصلة، فقد لا تكون دقيقة تمامًا.',
+    document.querySelector('.map-disclaimer-content').innerText = 'على الرغم من تحديث بياناتنا في الوقت الحالي باستمرار وخضوعها لعمليات المراجعة المتواصلة، فقد لا تكون دقيقة تمامًا.',
     document.querySelector('.sm-map-disclaimer').innerText = 'تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.'
     document.querySelector('.map-disclaimer-air').innerText = 'مؤشر جودة الهواء';
     document.querySelector('.insight-btn').innerText ='المزيد من الرؤى';
@@ -7098,10 +7098,17 @@ function updateToArabic() {
     $('.contact-us-alignment').addClass('contact-us-alignment-style');
     $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
     $('.next-btn-arb').addClass('next-btn-arb-alignment');
+    // $('#airQualitySafetyLevelStation').addClass('station-arabic');
+   
+
+    
 
 
 
     
+ 
+        document.querySelector('.date-time').innerText = 'التاريخ والوقت';
+   
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
@@ -7195,6 +7202,15 @@ function updateToArabic() {
     document.querySelector('.Expand-Panel-tab').innerText='قم بتوسيع اللوحة';
     // document.querySelector('.material-symbols-outlined').innerText='إغلاق';
         document.querySelector('.good-label-graph').innerText = 'جيد';
+
+        document.querySelectorAll('.material-style label').forEach(function(label) {
+            label.style.left = '';      // Clear the left style
+            label.style.right = '0px';  // Set to right alignment
+        });
+
+        // Also adjust the input placeholder alignment for Arabic
+        document.querySelector('#message').style.textAlign = 'right';
+        
        
         
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
@@ -7222,7 +7238,7 @@ function updateToArabic() {
                     item.innerText = 'سنويا'; // Yearly
                     break;
                 case 4:
-                    item.innerText = 'مخصص'; // Custom
+                    item.innerText = 'مخصص';
                     break;
             }
         });
@@ -7314,7 +7330,9 @@ function updateToEnglish() {
                     document.addEventListener("DOMContentLoaded", function() {
                         document.querySelector('.getback-msg').innerText = "Your message has been received. We'll get back to you shortly."
                     });
-                  
+                   
+                        document.querySelector('.date-time').innerText = 'Date & Time : ';
+                        document.querySelector('#message').style.textAlign = 'left';
                     document.querySelector('.welcome-text').innerText = "WELCOME TO";
                     document.querySelector('.quotes').innerText = "Air Quality Monitoring";
                     document.querySelector('.emirates-text').innerText = "In Abu Dhabi";
@@ -7330,11 +7348,12 @@ function updateToEnglish() {
                     document.querySelector('.nearest-label').textContent = 'Nearest Station';
                     document.querySelector('.aqi-label').textContent = 'AQI Ranking';
                     document.querySelector('.order-label').textContent = 'Alphabetical Order';
-                    document.querySelector('.map-disclaimer').innerText =' Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.';
+                    document.querySelector('.map-disclaimer-content').innerText =' Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.';
                     document.querySelector('.sm-map-disclaimer').innerText = 'Our real-time data, while continuously updated, is subject to ongoing validation, and thereforemay not be entirely accurate.';
                     document.querySelector('.map-disclaimer-air').innerText = 'Air Quality Index';
                     document.querySelector('.insight-btn').innerText ='More Insights';
                     document.querySelector('.insight-btn-tab').innerText ='More Insights';
+                    
                     contactHead.textContent = "Contact Us";
                     heading.textContent = "Let us know what’s on your mind";
                     cnctAddress.innerHTML = 'Headquarters Al Mamoura, Building A, Building 62,<br /> Al Mamoura St, Al Nayhan, Abu Dhabi, United Arab<br /> Emirates, Postal Code: 22221, P.O Box: 4553';
@@ -7469,7 +7488,7 @@ function updateToEnglish() {
                                     item.innerText = 'Yearly'; // Yearly
                                     break;
                                 case 4:
-                                    item.innerText = 'Custom'; // Custom
+                                    item.innerText = 'Custom';
                                     break;
                             }
                         });
