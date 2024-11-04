@@ -2858,12 +2858,15 @@ border: none;
     border-radius: 0px;
     padding: 10px;
     background: rgba(255, 255, 255, 1);
-    left:-12% ;
+   /* // left:-12% !important; */
 }
-.left-zero {
+.showText {
+    left:-12% !important;
+}
+/* .left-zero {
    inset:0px auto auto 0px !important;
     left: 0% !important;
-}
+} */
 .left-minus-twelve {
     inset:0px auto auto 0px !important;
     left: -12% !important;
@@ -4170,7 +4173,7 @@ border: none;
 .search_street{
     position: absolute;
     top: 1px;
-    right: 15rem;
+    right: 14rem;
 }
 
 .rtl-accordion::after {
@@ -5783,6 +5786,10 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 .page-content-wrapper-arabic{
     left:350px
+}
+.contact-submit-btn{
+margin-top: 20px;
+margin-bottom: 20px;
 }
 
     

@@ -6987,7 +6987,7 @@ function updateToArabic() {
     $('#fp-nav').addClass('fp-left');
     $('#fp-nav').removeClass('fp-right');
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-zero')
-    $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
+    // $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
     $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
     // $('.open').addClass('hamberger-cross-icon');
     
@@ -7013,6 +7013,7 @@ function updateToArabic() {
         $('#page-content-wrapper').addClass('page-content-wrapper-arabic');
         
         $('.search-station-sidebar').addClass('sidebar-search-station');
+       
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
     questionHeaderAlt.innerHTML = 'الأسئلة الأكثر شيوعا';
     monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
@@ -7076,6 +7077,8 @@ function updateToArabic() {
     $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
     $('.air-quality-pill').addClass('air-quality-btn');
+    $('.dropdown-menu.sorttoggle').removeClass('showText');
+
    
 
     
@@ -7169,8 +7172,12 @@ function updateToArabic() {
     document.querySelectorAll('.measure-pollut').forEach((element) => {
         element.innerText ='الملوثات التي يتم قياسها';
     });
+    document.querySelector('.Expand-Panel-mobile').innerText='قم بتوسيع اللوحة'
+    document.querySelector('.Expand-Panel-tab').innerText='قم بتوسيع اللوحة';
     // document.querySelector('.material-symbols-outlined').innerText='إغلاق';
         document.querySelector('.good-label-graph').innerText = 'جيد';
+       
+        
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
     // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'معتدل' });
     // document.querySelectorAll('.sensitive-label-graph').forEach((element) => {element.innerText = 'غير صحي للمجموعات الحساسة' });
@@ -7234,9 +7241,11 @@ function updateToEnglish() {
     $('#fp-nav').addClass('fp-right');
     $('.fp-prev').removeClass('fa-move-next-arrow');
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
-    $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
+    // $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
     $('.monitoring-heading').removeClass('arabic-monitoring-heading')
     $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+    $('.dropdown-menu.sorttoggle').addClass('showText');
+    
 
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
 
@@ -7399,11 +7408,17 @@ function updateToEnglish() {
                     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`
                     document.querySelector('.contact-content-mobile').innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
                     document.querySelector('.air-analytics-mobile').innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
-                    document.querySelector('.station-aqi-trends-disclaimers').innerText='Stay informed about air quality in Abu Dhabi with a quick overview: easily comprehensible graphs track AQI and pollutant levels over time, presenting air safety conditions from good to hazardous.'
+                    document.querySelector('.station-aqi-trends-disclaimers').innerText='Stay informed about air quality in Abu Dhabi with a quick overview: easily comprehensible graphs track AQI and pollutant levels over time, presenting air safety conditions from good to hazardous.';
+                    document.querySelector('.Expand-Panel-mobile').innerText='Expand Panel';
+                  
+                    document.querySelector('.Expand-Panel-tab').innerText='Expand Panel';
+
+                    
                     // -------------------------
                     airQualityAssessments.forEach((element) => {
                         element.innerText = "Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.";
                     });
+
 
                     dropdownLists.forEach((dropdownList) => {
                         // Inside each <ul>, get the dropdown items

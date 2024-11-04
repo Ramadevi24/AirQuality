@@ -229,7 +229,12 @@
 
     .insight ul.dropdown-menu.sorttoggle.show {
         left: auto !important;
+        
     }
+    [dir="rtl"] .insight ul.dropdown-menu.sorttoggle.show {
+        left: 0px !important; /* Removes the left alignment */
+    }
+    
 
     .insight .number-exceedance .number-exceedance-heading {
         font-size: 23px;
@@ -1226,6 +1231,9 @@
 
     .insight ul.dropdown-menu.sorttoggle.show {
         left: -45% !important;
+    }
+    [dir="rtl"] .insight ul.dropdown-menu.sorttoggle.show {
+        left:0px !important; /* Removes the left alignment */
     }
 
     .banner-section .carousel-caption-banner {
@@ -3575,7 +3583,7 @@
         }
 
         .data-sort_sidebar.hidden {
-            padding: 18px 15px;
+            padding: 18px 37px;
         }
     }
 
