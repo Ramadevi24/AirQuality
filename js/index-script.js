@@ -6922,9 +6922,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdownLists = document.querySelectorAll('.dropdown-menu.metero-dropdown');
     const iaqmElement = document.getElementById('iaqm');
     const switchingElement = document.getElementById('switching-air-purifier')
-    // const pollutantLegendTextItems = document.querySelectorAll('.pollutants-legend-text .legend li .legend_radar li');
-    const lastRefreshTimeElement = document.getElementById('aqilastrefreshtime');
-    activePollutant = pollutantAbbrevations.AQI;
     currentLanguage = 'english';
     currentStatusClass = statusClass;
     getAirQualitySafetyLevel();
@@ -6951,7 +6948,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateAqitoArabic();
             document.body.setAttribute('dir', 'rtl');
             updateToArabic(); 
-            lastRefreshTimeElement.innerText = showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
             updateCharts(chartFilterArabic.Hourly);   
         } else {
             currentLanguage = 'english';
@@ -6967,7 +6963,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();
-            lastRefreshTimeElement.innerText = showHideToggleDiv(activePollutant.toLowerCase() + 'Tab', activePollutant);
             updateCharts(chartFilter.Hourly); 
         }        
            }
@@ -7149,10 +7144,14 @@ function updateToArabic() {
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     document.querySelector('.station-aqi-trends-disclaimers').innerText='ابقَ على اطلاع بجودة الهواء في أبوظبي من خلال نظرة سريعة: الرسوم البيانية سهلة الفهم تتعقب مؤشر جودة الهواء ومستويات الملوثات على مر الزمن، مع عرض ظروف السلامة الجوية من جيدة إلى خطرة.'
     document.getElementById('air-quality-index').innerText = 'مؤشر جودة الهواء';
-    document.querySelectorAll('.last-refersh-color').forEach(element => {
-        element.innerText ='آخر تحديث'
-    });
-    document.querySelector('.last-refersh-color').style.direction = 'ltr';
+    document.querySelector('.refreshed-time-aqip').innerHTML = `<b class="refreshed-time-aqi"> آخر تحديث :</b> <span id="aqilastrefreshtime"></span>`;
+    document.querySelector('.refreshed-time-pm10-para').innerHTML = `<b class="refreshed-time-pm10">آخر تحديث :</b> <span id="pm10lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-pm25-para').innerHTML = `<b class="refreshed-time-pm25">آخر تحديث :</b> <span id="pm25lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-s02-para').innerHTML = `<b class="refreshed-time-s02">آخر تحديث :</b> <span id="so2lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-co-para').innerHTML = `<b class="refreshed-time-co">آخر تحديث :</b> <span id="colastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-03-para').innerHTML = `<b class="refreshed-time-03">آخر تحديث :</b> <span id="o3lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-no2-para').innerHTML = `<b class="refreshed-time-no2">آخر تحديث :</b> <span id="no2lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-staqi-para').innerHTML = `<b class="refreshed-time-staqi">آخر تحديث :</b> <span id="StAQIlastrefreshtime"></span>`;
     document.querySelector('.station-aqi-legend').style.direction='rtl';
     // document.getElementById('barChartFilter').innerText='كل ساعة';
     // -------23/10/2024-----
@@ -7164,17 +7163,12 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
-    document.querySelectorAll('.last-refersh').forEach(element => {
-        element.innerText = 'آخر تحديث';
-    });
-    document.querySelector('.last-refersh').style.direction = 'ltr';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
     document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
     document.querySelector('.equal-station-box-height').style.direction = 'ltr';
     document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
     document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
     document.querySelector('.activity_heading').innerText = 'الأنشطة';
-    // document.getElementById('language-toggle1-btn').innerHTML ='عربي';
     airQualityAssessments.forEach((element) => {
         element.innerText = 'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
     });
@@ -7418,16 +7412,18 @@ function updateToEnglish() {
                     // document.querySelector('.imagetext2').innerText = 'Being indoors is the best option';
                     // document.querySelector('.imagetext3').innerText = 'Being indoors is the best option';
                     document.getElementById('air-quality-index').innerText = 'AIR QUALITY INDEX';
-                    document.querySelectorAll('.last-refersh-color').forEach(element => {
-                        element.innerText = 'Last refreshed';
-                    });
+                    document.querySelector('.refreshed-time-aqip').innerHTML = `<b class="refreshed-time-aqi">Last refreshed :</b> <span id="aqilastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-pm10-para').innerHTML = `<b class="refreshed-time-pm10">Last refreshed :</b> <span id="pm10lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-pm25-para').innerHTML = `<b class="refreshed-time-pm25">Last refreshed :</b> <span id="pm25lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-s02-para').innerHTML = `<b class="refreshed-time-s02">Last refreshed :</b> <span id="so2lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-co-para').innerHTML = `<b class="refreshed-time-co">Last refreshed :</b> <span id="colastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-03-para').innerHTML = `<b class="refreshed-time-03">Last refreshed :</b> <span id="o3lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-no2-para').innerHTML = `<b class="refreshed-time-no2">Last refreshed :</b> <span id="no2lastrefreshtime"></span>`;
+                    document.querySelector('.refreshed-time-staqi-para').innerHTML = `<b class="refreshed-time-staqi">Last refreshed :</b> <span id="StAQIlastrefreshtime"></span>`;
                     // document.getElementById('barChartFilter').innerText='Hourly';
                     // -------23/10/2024---------
                     document.getElementById('pills-aqi_lin-tab').innerText = 'AQI';
                     document.getElementById('pills-profile-tab').innerHTML = 'Pollutant';
-                    document.querySelectorAll('.last-refersh').forEach(element => {
-                        element.innerText = 'Last refreshed:';
-                    });
                     document.querySelector('.activity_heading').innerText = 'Activities';
                    // document.getElementById('sand-storm').innerText='Sand Storm';
                    document.addEventListener("DOMContentLoaded", function() {
