@@ -320,6 +320,10 @@ a {
     border-color: transparent;
 }
 
+.blue-hide {
+    position: relative;
+}
+
 .blue-hide, .fadeout .whitesearch-hide {
     display: none !important;
 }
@@ -5207,6 +5211,10 @@ footer {
         /* border-top: 1px solid #fff; */
     }
 
+    .copy-rights .copy-right-contents-footer {
+        margin-right: -40px;
+    }
+
         footer .copy-rights ul, footer .copy-rights p {
             margin-bottom: 0;
         }
@@ -5769,6 +5777,24 @@ input[type="search"]::-webkit-search-cancel-button {
 .arabic-monitoring-heading{
     margin-right: 18px;
 }
+
+.contact-us-alignment-style {
+    margin-right: -91px;
+}
+
+.row .footer-our-airquality {
+    margin-left: -187px;
+}
+
+.next-btn-arb-alignment {
+    margin-right: 15px;
+}
+
+#hamburger {
+    margin-right: 10px;
+}
+
+
 .air-quality-btn{
     margin-right: -30px;
 }

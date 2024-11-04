@@ -7089,6 +7089,14 @@ function updateToArabic() {
     $('.search_name').addClass('search_street');
     $('.air-quality-pill').addClass('air-quality-btn');
    
+    $('.footer-social-icons').addClass('social-media-icons');
+    $('.copy-right-para').addClass('copy-right-para-footer');
+    $('.copy-right-contents').addClass('copy-right-contents-footer');
+    $('.contact-us-alignment').addClass('contact-us-alignment-style');
+    $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
+    $('.next-btn-arb').addClass('next-btn-arb-alignment');
+
+
 
     
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
@@ -7213,8 +7221,15 @@ function updateToArabic() {
         });
     });
     const navMobileNew = document.querySelector('.navmobile-new');
-      navMobileNew.style.left = '55px';
+      navMobileNew.style.left = '10px';
       navMobileNew.style.right = 'auto';
+
+      const blueHideIcons = document.querySelectorAll('.blue-hide');
+blueHideIcons.forEach(icon => {
+    icon.style.setProperty('left', '37px', 'important');
+    icon.style.setProperty('right', 'auto', 'important');
+});
+
 
 
     document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
@@ -7247,6 +7262,7 @@ function updateToEnglish() {
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
     $('.monitoring-heading').removeClass('arabic-monitoring-heading')
+    $('.footer-our-airquality').removeClass('footer-our-airquality-alignment');
     $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
 
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
@@ -7261,6 +7277,9 @@ function updateToEnglish() {
     $('.footer-logo').removeClass('footer-logo-arabic');
     $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
+    $('.copy-right-contents').removeClass('copy-right-contents-footer');
+    $('.contact-us-alignment').removeClass('contact-us-alignment-style');
+    $('.next-btn-arb').removeClass('next-btn-arb-alignment');
     $('.air-quality-pill').removeClass('air-quality-btn');
     $('.prev-btn').removeClass('previous-btn');
     $('.next-btn').removeClass('next-button');
@@ -7443,6 +7462,14 @@ function updateToEnglish() {
                     const navMobileNew = document.querySelector('.navmobile-new');
                      navMobileNew.style.right = '10px';
                     navMobileNew.style.left = 'auto';
+                    // navMobileNew.style.marginRight = '10px';
+
+
+                    const blueHideIcons = document.querySelectorAll('.blue-hide');
+blueHideIcons.forEach(icon => {
+    icon.style.setProperty('left', 'auto', 'important');
+    icon.style.setProperty('right', '10px', 'important');
+});
 
                     // Loop through all legend items and revert the text to English
                     //  legendTextItems[0].innerText = 'Good';
@@ -7456,6 +7483,8 @@ function updateToEnglish() {
                     document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; //  black logo
                     document.querySelector('.dropdown-menu .dropdown-item');
                     // document.querySelector('.last-updated-sec').innerText = 'Date & Time';
+                    $('.footer-insights-alignment').addClass('col-xl-3');
+                    $('.footer-insights-alignment').removeClass('col-xl-4');
 }
 
 function updateAqitoArabic() {

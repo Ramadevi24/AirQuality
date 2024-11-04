@@ -849,7 +849,7 @@
     .exceeded-box .contact-content p {
         font-size: 14px;
         margin-top: -20px !important;
-        margin-right: 25px;
+        margin-right: 41px;
     }
     /* .date_row {
         padding: 1px;
@@ -3676,5 +3676,24 @@
         margin-right: 54px;
     }
     
+}
+
+@media (min-width: 320px) and (max-width:767px) {
+    #monitoringHeading {
+        margin-right: -16px;
+    }
+
+    .mon-head-res {
+        margin-right: -15px;
+    }
+    #air-quality-btn-res {
+        margin-right: -23px;
+    }
+    #blue-hide-icon {
+        right: 10px;
+    }
+    #blue-hide-icon {
+        right: 15px;
+    }
 }
 
