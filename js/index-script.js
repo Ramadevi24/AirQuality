@@ -6957,8 +6957,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();
-        }
-        
+        }        
            }
 
         //    function updateHealthRecommendations() {
@@ -7027,8 +7026,6 @@ function updateToArabic() {
     document.querySelectorAll('.temperatureHeading').forEach((element) => {element.textContent = 'درجة الحرارة'})
     document.querySelector('.map-disclaimer').innerText = 'على الرغم من تحديث بياناتنا في الوقت الحالي باستمرار وخضوعها لعمليات المراجعة المتواصلة، فقد لا تكون دقيقة تمامًا.',
     document.querySelector('.sm-map-disclaimer').innerText = 'تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.'
-    document.querySelector('.last-updated-sec').innerText = 'التاريخ والوقت';
-    document.querySelector('.last-updated-sec').style.marginRight = '16px';
     document.querySelector('.map-disclaimer-air').innerText = 'مؤشر جودة الهواء';
     document.querySelector('.insight-btn').innerText ='المزيد من الرؤى';
     document.querySelector('.insight-btn-tab').innerText ='المزيد من الرؤى';
@@ -7187,6 +7184,8 @@ function updateToArabic() {
     prev.querySelector('svg').style.transform = 'rotate(180deg)';  // Flip the previous arrow
     next.querySelector('svg').style.transform = 'rotate(-180deg)';
 }
+// document.querySelector('.last-updated-sec').innerText = 'التاريخ والوقت';
+// document.querySelector('.last-updated-sec').style.marginRight = '16px';
 // $('.fp-next').addClass('next-buttons').each(function() {
 //     console.log($(this).attr('class'));  // Logs the classes of each matched element
 // });
@@ -7247,7 +7246,6 @@ function updateToEnglish() {
                     document.querySelector('.order-label').textContent = 'Alphabetical Order';
                     document.querySelector('.map-disclaimer').innerText =' Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.';
                     document.querySelector('.sm-map-disclaimer').innerText = 'Our real-time data, while continuously updated, is subject to ongoing validation, and thereforemay not be entirely accurate.';
-                    document.querySelector('.last-updated-sec').innerText = 'Date & Time';
                     document.querySelector('.map-disclaimer-air').innerText = 'Air Quality Index';
                     document.querySelector('.insight-btn').innerText ='More Insights';
                     document.querySelector('.insight-btn-tab').innerText ='More Insights';
@@ -7391,6 +7389,7 @@ function updateToEnglish() {
                     document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
                     document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; //  black logo
                     document.querySelector('.dropdown-menu .dropdown-item');
+                    // document.querySelector('.last-updated-sec').innerText = 'Date & Time';
 }
 
 function updateAqitoArabic() {
