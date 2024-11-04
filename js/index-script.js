@@ -7001,6 +7001,11 @@ function updateToArabic() {
     $('.fp-next').addClass('animation-next-buttons');
     $('.fp-prev').removeClass('.silde-dv .fp-arrow.fp-controlArrow.fp-prev').addClass('fa-move-next-arrow');
     $('.air-qality-info').addClass('air-quality-cross-icon');
+        $('.air-qality-info').addClass('air-quality-cross-icon');
+        $('.monitoring-heading').addClass('arabic-monitoring-heading')
+        $('.footer-logo').addClass('footer-logo-arabic');
+        $('.footer-social-icons').addClass('social-media-icons');
+        $('.copy-right-para').addClass('copy-right-para-footer');
         
         // $('.search-station-sidebar').addClass('sidebar-search-station');
     questionHeader.textContent = 'الأسئلة الأكثر شيوعا';
@@ -7065,6 +7070,8 @@ function updateToArabic() {
     $('.modal-body.mask_body').addClass('mask_modal_body');
     $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
+   
+
     
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function() {
@@ -7223,6 +7230,7 @@ function updateToEnglish() {
     $('.fp-prev').removeClass('fa-move-next-arrow');
     $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-zero')
     $('.insight ul.dropdown-menu.sorttoggle.show').addClass('left-minus-twelve')
+    $('.monitoring-heading').removeClass('arabic-monitoring-heading')
 
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
 
@@ -7233,6 +7241,10 @@ function updateToEnglish() {
     $('.fp-next').removeClass('animation-next-buttons');
     $('.switch1 > span.on').removeClass('arabic-switch1');
     $('.bar-section-info').addClass('mask_modal_body');
+    $('.footer-logo').removeClass('footer-logo-arabic');
+    $('.footer-social-icons').removeClass('social-media-icons');
+    $('.copy-right-para').removeClass('copy-right-para-footer');
+   
     // document.getElementById('language-toggle1-btn').innerHTML ='English';
     closeSidebar();
     getAirQualitySafetyLevel();
