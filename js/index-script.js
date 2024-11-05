@@ -1393,8 +1393,8 @@ const chartFilter = {
 
 const chartFilterArabic = {
     Hourly:  'كل ساعة',
-    Daily:  'يومي',
-    Monthly:  'شهري',
+    Daily:  'يوميا',
+    Monthly:  'شهريا',
     Yearly:  'سنويا',
     Custom:  'مخصص'
 }
@@ -1649,7 +1649,8 @@ $(document).ready(function () {
     $('.datepicker').on('change', function () {
         $('.datepicker').val($(this).val());
         $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value,#lineChartAqiPm25Value, #lineChartAqiO3Value").text('');
-        getStationChartApi(chartFilter.Custom);
+        // getStationChartApi(chartFilter.Custom);
+        getStationChartApi(currentLanguage === 'arabic' ? chartFilterArabic.Custom : chartFilter.Custom);
     });
 
 
@@ -3201,36 +3202,49 @@ function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
 function getStationChartApi(filter, initialRequest = false) {
     var url;
     var station;
-    switch (filter) {
-        case currentLanguage === 'arabic' ? chartFilterArabic.Daily : chartFilter.Daily:
-            url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
-            break;
-        case currentLanguage === 'arabic' ? chartFilterArabic.Monthly: chartFilter.Monthly:
-            var airQualityStationid = currentStationDetails.stationId;
-            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
-            if (station) {
-                currentStationDetails.stationId = station.stationid;
-            }
-            var edbStationid = currentStationDetails.stationId;
-            url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
-            break;
-        case currentLanguage === 'arabic' ? chartFilterArabic.Yearly: chartFilter.Yearly:
-            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
-            if (station) {
-                currentStationDetails.stationId = station.stationid;
-            }
-            url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
-            break;
-        case currentLanguage === 'arabic' ? chartFilterArabic.Custom: chartFilter.Custom:
-            var selectedDate = $('.datepicker').val();
-            var splitDateArray = selectedDate.split('-');
-            var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
-            url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' +  currentStationDetails.stationId ;
-            break;
-        default:
-            url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
-            break;
-    }
+    // Determine the appropriate filter value based on the current language
+ const selectedFilter = currentLanguage === 'arabic' ? chartFilterArabic[filter] : chartFilter[filter];
+ console.log(chartFilterArabic[filter], 'chartFilterArabic[filter]')
+ console.log('selectedFilter', selectedFilter);
+
+switch (selectedFilter) {
+    case chartFilterArabic.Daily:
+    case chartFilter.Daily:
+        url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
+        break;
+        
+    case chartFilterArabic.Monthly:
+    case chartFilter.Monthly:
+        var airQualityStationid = currentStationDetails.stationId;
+        station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+        if (station) {
+            currentStationDetails.stationId = station.stationid;
+        }
+        var edbStationid = currentStationDetails.stationId;
+        url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
+        break;
+        
+    case chartFilterArabic.Yearly:
+    case chartFilter.Yearly:
+        station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+        if (station) {
+            currentStationDetails.stationId = station.stationid;
+        }
+        url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
+        break;
+        
+    case chartFilterArabic.Custom:
+    case chartFilter.Custom:
+        var selectedDate = $('.datepicker').val();
+        var splitDateArray = selectedDate.split('-');
+        var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
+        url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' +  currentStationDetails.stationId;
+        break;
+        
+    default:
+        url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
+        break;
+}
 
     $.ajax({
         url: url,
@@ -3345,49 +3359,93 @@ function bindStationDataToLineChart(filter) {
     const labelsToFind = currentStationDetails?.AvailablePolluants; // Array containing labels you want to find    
     fianlItems = dataArray.filter(item => labelsToFind.includes(item.label));
     
-    switch (filter) {
-        case currentLanguage === 'arabic' ? chartFilterArabic.Daily : chartFilter.Daily:
-            //categoriesData = chartData.map(t => { return t.day.split(' '); });
-            chartData.forEach(item => {
-                categoriesData.push(item.day.split(' '));
-            });
-            break;
-            case currentLanguage === 'arabic' ? chartFilterArabic.Monthly : chartFilter.Monthly:
-            chartData.forEach(item => {
-                categoriesData.push(item.month);
-            });
-            //categoriesData = chartData.map(t => { return t.month; });
-            break;
-            case currentLanguage === 'arabic' ? chartFilterArabic.Yearly :  chartFilter.Yearly:
-            //categoriesData = chartData.map(t => { return t.year; });
-            chartData.forEach(item => {
-                categoriesData.push(item.year);
-            });
-            break;
-            case currentLanguage === 'arabic' ? chartFilterArabic.Custom :  chartFilter.Custom:
-            //categoriesData = chartData.map(t => { return t.hour.split(' '); });
-            chartData.map(item => {
-                const dateParts = item.recordedDate.split('/');
-                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+    // switch (filter) {
+    //     case currentLanguage === 'arabic' ? chartFilterArabic.Daily : chartFilter.Daily:
+    //         //categoriesData = chartData.map(t => { return t.day.split(' '); });
+    //         chartData.forEach(item => {
+    //             categoriesData.push(item.day.split(' '));
+    //         });
+    //         break;
+    //         case currentLanguage === 'arabic' ? chartFilterArabic.Monthly : chartFilter.Monthly:
+    //         chartData.forEach(item => {
+    //             categoriesData.push(item.month);
+    //         });
+    //         //categoriesData = chartData.map(t => { return t.month; });
+    //         break;
+    //         case currentLanguage === 'arabic' ? chartFilterArabic.Yearly :  chartFilter.Yearly:
+    //         //categoriesData = chartData.map(t => { return t.year; });
+    //         chartData.forEach(item => {
+    //             categoriesData.push(item.year);
+    //         });
+    //         break;
+    //         case currentLanguage === 'arabic' ? chartFilterArabic.Custom :  chartFilter.Custom:
+    //         //categoriesData = chartData.map(t => { return t.hour.split(' '); });
+    //         chartData.map(item => {
+    //             const dateParts = item.recordedDate.split('/');
+    //             const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
-                // Combine the formatted date with the hour, separated by a semicolon
-                const formattedString = `${formattedDate};${item.hour}`;
-                categoriesData.push(formattedString);
-            });
-            break;
-        default:
-            //categoriesData = chartData.map(t => { return t.hour.split(' '); });
-            chartData.map(item => {
-                const dateParts = item.recordedDate.split('/');
-                const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+    //             // Combine the formatted date with the hour, separated by a semicolon
+    //             const formattedString = `${formattedDate};${item.hour}`;
+    //             categoriesData.push(formattedString);
+    //         });
+    //         break;
+    //     default:
+    //         //categoriesData = chartData.map(t => { return t.hour.split(' '); });
+    //         chartData.map(item => {
+    //             const dateParts = item.recordedDate.split('/');
+    //             const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
 
-                // Combine the formatted date with the hour, separated by a semicolon
-                const formattedString = `${formattedDate};${item.hour}`;
-                categoriesData.push(formattedString);
-            });
-            break;
+    //             // Combine the formatted date with the hour, separated by a semicolon
+    //             const formattedString = `${formattedDate};${item.hour}`;
+    //             categoriesData.push(formattedString);
+    //         });
+    //         break;
 
-    }
+    // }
+
+    const selectedFilter = currentLanguage === 'arabic' ? chartFilterArabic[filter] : chartFilter[filter];
+console.log('bindinfo', selectedFilter);
+switch (selectedFilter) {
+    case chartFilterArabic.Daily:
+    case chartFilter.Daily:
+        chartData.forEach(item => {
+            categoriesData.push(item.day.split(' '));
+        });
+        break;
+
+    case chartFilterArabic.Monthly:
+    case chartFilter.Monthly:
+        chartData.forEach(item => {
+            categoriesData.push(item.month);
+        });
+        break;
+
+    case chartFilterArabic.Yearly:
+    case chartFilter.Yearly:
+        chartData.forEach(item => {
+            categoriesData.push(item.year);
+        });
+        break;
+
+    case chartFilterArabic.Custom:
+    case chartFilter.Custom:
+        chartData.forEach(item => {
+            const dateParts = item.recordedDate.split('/');
+            const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+            const formattedString = `${formattedDate};${item.hour}`;
+            categoriesData.push(formattedString);
+        });
+        break;
+
+    default:
+        chartData.forEach(item => {
+            const dateParts = item.recordedDate.split('/');
+            const formattedDate = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`;
+            const formattedString = `${formattedDate};${item.hour}`;
+            categoriesData.push(formattedString);
+        });
+        break;
+}
     var pollutantLineChartId = "aqiLineChart";
     var chartStatus = Chart.getChart(pollutantLineChartId); // <canvas> id
     if (chartStatus != undefined) {
@@ -7232,7 +7290,7 @@ function updateToArabic() {
                     item.innerText = 'سنويا'; // Yearly
                     break;
                 case 4:
-                    item.innerText = 'مخصص';
+                    item.innerText = 'مخصص'; //custom
                     break;
             }
         });
@@ -7475,7 +7533,7 @@ function updateToEnglish() {
                                     item.innerText = 'Hourly'; // Hourly
                                     break;
                                 case 1:
-                                    item.innerText = ' Daily'; // Daily
+                                    item.innerText = 'Daily'; // Daily
                                     break;
                                 case 2:
                                     item.innerText = 'Monthly'; // Monthly
