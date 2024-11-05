@@ -7305,6 +7305,25 @@ blueHideIcons.forEach(icon => {
     icon.style.setProperty('right', 'auto', 'important');
 });
 
+const playPauseButtons = document.querySelectorAll('.play-pause-btn');
+playPauseButtons.forEach(button => {
+    button.style.right = '10px';
+    button.style.left = 'auto';
+});
+
+const skipButton = document.querySelectorAll('.skip-btn');
+skipButton.forEach(button => {
+    button.style.right = '40px';
+    button.style.left = 'auto';
+});
+
+const audioButton = document.querySelectorAll('.audio-btn');
+audioButton.forEach(button => {
+    button.style.right = '80px';
+    button.style.left = 'auto';
+});
+
+
 
 
     document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
@@ -7558,6 +7577,26 @@ blueHideIcons.forEach(icon => {
     icon.style.setProperty('left', 'auto', 'important');
     icon.style.setProperty('right', '10px', 'important');
 });
+
+const playPauseButtons = document.querySelectorAll('.play-pause-btn');
+
+playPauseButtons.forEach(button => {
+    button.style.right = ''; 
+    button.style.left = '';  
+});
+
+const skipButton = document.querySelectorAll('.skip-btn');
+skipButton.forEach(button => {
+    button.style.right = '';
+    button.style.left = '';
+});
+
+const audioButton = document.querySelectorAll('.audio-btn');
+audioButton.forEach(button => {
+    button.style.right = '';
+    button.style.left = '';
+});
+
 
                     // Loop through all legend items and revert the text to English
                     //  legendTextItems[0].innerText = 'Good';
