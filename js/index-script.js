@@ -3202,68 +3202,80 @@ function DailyCountsDataDivElements1(aqiValue, aqiStatus, aqiColorStatus) {
 function getStationChartApi(filter, initialRequest = false) {
     var url;
     var station;
-    // Determine the appropriate filter value based on the current language
- const selectedFilter = currentLanguage === 'arabic' ? chartFilterArabic[filter] : chartFilter[filter];
- console.log(chartFilterArabic[filter], 'chartFilterArabic[filter]')
- console.log('selectedFilter', selectedFilter);
+    
+    // Arabic-to-English dictionary for reverse lookup
+    const chartFilterEnglish = {
+        'كل ساعة': 'Hourly',
+        'يوميا': 'Daily',
+        'شهريا': 'Monthly',
+        'سنويا': 'Yearly',
+        'مخصص': 'Custom'
+    };
 
-switch (selectedFilter) {
-    case chartFilterArabic.Daily:
-    case chartFilter.Daily:
-        url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
-        break;
-        
-    case chartFilterArabic.Monthly:
-    case chartFilter.Monthly:
-        var airQualityStationid = currentStationDetails.stationId;
-        station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
-        if (station) {
-            currentStationDetails.stationId = station.stationid;
-        }
-        var edbStationid = currentStationDetails.stationId;
-        url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
-        break;
-        
-    case chartFilterArabic.Yearly:
-    case chartFilter.Yearly:
-        station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
-        if (station) {
-            currentStationDetails.stationId = station.stationid;
-        }
-        url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
-        break;
-        
-    case chartFilterArabic.Custom:
-    case chartFilter.Custom:
-        var selectedDate = $('.datepicker').val();
-        var splitDateArray = selectedDate.split('-');
-        var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
-        url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' +  currentStationDetails.stationId;
-        break;
-        
-    default:
-        url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
-        break;
-}
+    // Determine the appropriate filter based on the current language
+    const selectedFilter = currentLanguage === 'arabic'
+        ? chartFilterEnglish[filter] || 'Hourly' // Fallback to 'Hourly' if filter is undefined
+        : filter;
 
+    console.log('chartFilterArabic[filter]', chartFilterArabic[filter]);
+    console.log('selectedFilter', selectedFilter);
+
+    // Select URL based on the resolved English filter value
+    switch (selectedFilter) {
+        case 'Daily':
+            url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
+            break;
+        
+        case 'Monthly':
+            var airQualityStationid = currentStationDetails.stationId;
+            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+            if (station) {
+                currentStationDetails.stationId = station.stationid;
+            }
+            var edbStationid = currentStationDetails.stationId;
+            url = baseUrl + 'GetMonthlyStationChart?airQualityStationid=' + airQualityStationid + '&edbStationid=' + edbStationid;
+            break;
+        
+        case 'Yearly':
+            station = stationIdforEDB.find(station => station.stationName === currentStationDetails.stationId);
+            if (station) {
+                currentStationDetails.stationId = station.stationid;
+            }
+            url = baseUrl + 'GetYearlyStationChart?stationId=' + currentStationDetails.stationId;
+            break;
+        
+        case 'Custom':
+            var selectedDate = $('.datepicker').val();
+            var splitDateArray = selectedDate.split('-');
+            var formatedDate = splitDateArray[1] + '/' + splitDateArray[0] + '/' + splitDateArray[2];
+            url = baseUrl + 'GetSelectedDateStationChart?selectedDate=' + formatedDate + '&stationName=' + currentStationDetails.stationId;
+            break;
+        
+        default:
+            url = baseUrl + 'GetHourlyStationChart?stationName=' + currentStationDetails.stationId;
+            break;
+    }
+
+    // Make AJAX request
     $.ajax({
         url: url,
         method: 'GET',
         dataType: 'json',
         success: function (data) {
             chartData = data;
-            bindStationDataToBarChart(filter);
-            bindStationDataToLineChart(filter);
+            bindStationDataToBarChart(selectedFilter);
+            bindStationDataToLineChart(selectedFilter);
         },
         error: handleApiError
     });
+
+    // Restore original station name after data is fetched
     let updatedStation = stationIdforEDB.find(station => station.stationid === currentStationDetails.stationId);
     if (updatedStation) {
-        // Assign the stationName to currentStationDetails
         currentStationDetails.stationId = updatedStation.stationName;
     }
-
 }
+
 
 function bindStationDataToLineChart(filter) {
 
