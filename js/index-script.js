@@ -7163,6 +7163,8 @@ function updateToArabic() {
     $('.contact-us-alignment').addClass('contact-us-alignment-style');
     $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
     $('.next-btn-arb').addClass('next-btn-arb-alignment');
+    $('.main-box').addClass('main-box-arabic');
+    $('.tab_shado').addClass('main-box-arabic-box');
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
    
 
@@ -7450,8 +7452,9 @@ function updateToEnglish() {
     $('.prev-btn').removeClass('previous-btn');
     $('.next-btn').removeClass('next-button');
     $('.sidebar-nav').removeClass('sidebar-nav-arabic');
-    
     $('#page-content-wrapper').removeClass('page-content-wrapper-arabic');
+    $('.main-box').removeClass('main-box-arabic');
+    $('.tab_shado').removeClass('main-box-arabic-box');
    
     const filterButtons = document.querySelectorAll('.insight .graph-duration-filters .btn');
 

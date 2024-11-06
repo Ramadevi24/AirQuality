@@ -696,6 +696,7 @@
     .equal-air-box-height{
         height: 540px;
         margin-right: 25px;
+        width: 100%;
     }
     .project-slider #recipeCarousel .carol-item .col-md-3 {
         padding-right: 0px;
@@ -788,6 +789,7 @@
     .equal-station-box-height {
         height: auto;
         margin-bottom: 5px;
+        width: 333px;
     }
 
     .insight .pollutant-toggleBar .ic-top-position {
@@ -908,7 +910,11 @@
     .insight .main-box {
         padding: 0.8rem;
         margin-bottom: 35px;
-        margin-right: 35px;
+    }
+
+    .main-box-arabic {
+        margin-right: 30px;
+        width: 321px;
     }
 
     .insight ul#myTabs {
@@ -971,7 +977,7 @@
     }
 
     .insight #radarChart {
-        width: 320px !important;
+        width: 266px !important;
         /* height: 340px !important; */
     }
 
