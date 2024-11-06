@@ -1165,7 +1165,7 @@ video {
     font-size: 15px;
     color: #fff;
     z-index: 1;
-
+    font-style: italic;
 }
 
 .sm-map-disclaimer {
@@ -2283,6 +2283,10 @@ border: none;
             border: 2px solid rgba(255, 255, 255, 1);
             opacity: 1;
             background: none;
+        }
+
+        .health-cross-icon{
+            float:left !important;
         }
 
             .insight .slide-content ul .modal.fade button.btn-close:hover {
@@ -4217,6 +4221,10 @@ border: none;
     font-family: 'GothamMedium';
 }
 
+.mask_use_title{
+    text-align:right !important;
+}
+
 .insight .slide-content ul .modal.fade button.btn-close:hover {
     border: 2px solid rgba(255, 255, 255, 1);
 }
@@ -4294,6 +4302,10 @@ border: none;
 
 .calen-box-hide {
     display: none;
+}
+
+.pollutant-align-right {
+    padding-right: 0rem !important;
 }
 
 #ui-datepicker-div {
@@ -5828,6 +5840,9 @@ margin-bottom: 20px;
 }
 .text-left-arabic{
 text-align: left !important;
+}
+.cross-icon{
+    left: -96%;
 }
 
 
