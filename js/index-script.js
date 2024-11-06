@@ -7075,7 +7075,7 @@ function updateToArabic() {
     getAirQualitySafetyLevel();
 
     // document.querySelector('').classList.add('');
-    $('.fp-next').addClass('next-buttons');
+    // $('.fp-next').addClass('next-buttons');
     $('.fp-next').addClass('animation-next-buttons');
     $('.fp-prev').removeClass('.silde-dv .fp-arrow.fp-controlArrow.fp-prev').addClass('fa-move-next-arrow');
         $('.monitoring-heading').addClass('arabic-monitoring-heading')
@@ -7175,6 +7175,15 @@ function updateToArabic() {
     
  
         document.querySelector('.date-time').innerText = 'التاريخ والوقت';
+
+        const multivaluetab = document.querySelectorAll('.mult-value-tab');
+        multivaluetab.forEach(item => {
+            item.style.setProperty('right','23%'); 
+            item.style.setProperty('left','auto'); 
+            
+        });
+
+
    
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function() {
@@ -7237,7 +7246,7 @@ function updateToArabic() {
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
     document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
-    document.querySelector('.equal-station-box-height').style.direction = 'ltr';
+    // document.querySelector('.equal-station-box-height').style.direction = 'ltr';
     document.querySelector('.contact-content-mobile').innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`
     document.querySelector('.air-analytics-mobile').innerText = 'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
     document.querySelector('.activity_heading').innerText = 'الأنشطة';
@@ -7299,7 +7308,56 @@ const iinfo = document.querySelectorAll('.bar-section-info');
 iinfo.forEach(item => {
     item.style.setProperty('text-align', 'right'); // Correct property and value
 });
+//today
+$('.fp-prev').addClass('direction-arabic');
+const stationNameinsights=document.querySelectorAll('.insightStation h3');
+stationNameinsights.forEach(item=>{
+    item.style.setProperty('text-align','right')
+})
 
+const graphsheading=document.querySelectorAll('.insight .quality-index-wrapper-h2 h2');
+graphsheading.forEach(item=>{
+    item.style.setProperty('text-align','right')
+})
+
+const refresheddate=document.querySelectorAll('.insight .last-refersh-color');
+refresheddate.forEach(item=>{
+    item.style.setProperty('text-align','right')
+})
+
+  const pollutantgridvalues= document.querySelectorAll('.insight .grid-value');
+  pollutantgridvalues.forEach(item=>{
+    item.style.setProperty('direction','rtl')
+  })
+ 
+  const antgridvaluesmg3= document.querySelectorAll('.insight .grid-upper .mg-m3');
+  antgridvaluesmg3.forEach(item=>{
+    item.style.setProperty('margin-right','33px')
+  })
+
+  document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
+
+
+// $('.mult-value-tab').addClass('multivaluetab');
+
+// const multitab = document.querySelectorAll('.insight .aqi-content');
+// multitab.forEach(item => {
+//    item.classList.add('multivaluetab')
+// });
+
+
+ 
+// const previousbutton=document.querySelectorAll('.fa-move-next-arrow');
+// previousbutton.forEach(item=>{
+//     item.classList.add('prev-arrow-arabic')
+// })
+
+const graphNextButton=document.querySelectorAll('.fp-next');
+graphNextButton.forEach(item=>{
+    item.classList.add('arabic-fp-next')
+})
+ 
+// $('.fp-next').classList.add('arabic-fp-next')
         
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
     // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'معتدل' });
@@ -7379,14 +7437,19 @@ filterButtons.forEach(button => {
 });
 
 
-// const durationfilters = document.querySelectorAll('.graph-duration-filters');
-// durationfilters.forEach(item => {
-//     item.style.setProperty('float','left'); 
-//     item.style.setProperty('right','auto'); 
+const durationfilters = document.querySelectorAll('.insight #aiq_line .row.pollutant-dropdown-show.graph-duration-filters');
+durationfilters.forEach(item => {
+    item.style.setProperty('right','auto'); 
+    item.style.setProperty('left','0'); 
+});
+
+const AirIndexFilter = document.querySelectorAll('.insight .polutenat_bar .tab_shado .graph-duration-filters');
+AirIndexFilter.forEach(item => {
+    item.style.setProperty('float','left'); 
+});
 
 
-// });
-// document.querySelector('.station-aqi-pill').style.float='right';
+document.querySelector('.station-aqi-pill').style.padding='0';
 
 
 
@@ -7438,7 +7501,7 @@ function updateToEnglish() {
     // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');
     // $('.col-xl-9').removeClass('col-xl-9').addClass('col-xl-8');
     // $('.ms-4').removeClass('ms-4').addClass('me-4');
-    $('.fp-next').removeClass('next-buttons');
+    // $('.fp-next').removeClass('next-buttons');
     $('.fp-next').removeClass('animation-next-buttons');
     $('.switch1 > span.on').removeClass('arabic-switch1');
     $('.bar-section-info').addClass('mask_modal_body');
@@ -7455,6 +7518,14 @@ function updateToEnglish() {
     $('#page-content-wrapper').removeClass('page-content-wrapper-arabic');
     $('.main-box').removeClass('main-box-arabic');
     $('.tab_shado').removeClass('main-box-arabic-box');
+    const multivaluetab = document.querySelectorAll('.mult-value-tab');
+multivaluetab.forEach(item => {
+    item.style.setProperty('right','', 'important'); 
+    item.style.setProperty('left','', 'important'); 
+});
+
+
+
    
     const filterButtons = document.querySelectorAll('.insight .graph-duration-filters .btn');
 
@@ -7627,13 +7698,18 @@ rightsidebar.style.setProperty('left', 'auto', 'important'); // Set the left pro
 dropdownItems.forEach(item => {
     item.style.textAlign = 'left';
 });
-// const durationfilters = document.querySelectorAll('.graph-duration-filters');
-// durationfilters.forEach(item => {
-//     item.style.setProperty('float','right'); 
-//     item.style.setProperty('right','0'); 
 
+const durationfilters = document.querySelectorAll('.insight #aiq_line .row.pollutant-dropdown-show.graph-duration-filters');
+durationfilters.forEach(item => {
+    item.style.setProperty('left','auto'); 
+    item.style.setProperty('right','0'); 
+});
 
-// });
+const AirIndexFilter = document.querySelectorAll('.insight .polutenat_bar .tab_shado .graph-duration-filters');
+AirIndexFilter.forEach(item => {
+    item.style.setProperty('float',''); 
+});
+
 const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg');
 iicon.forEach(item => {
     item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
@@ -7655,9 +7731,53 @@ iinfo.forEach(item => {
     item.style.setProperty('text-align', 'left'); // Correct property and value
 });
 
+//today
+$('.fp-prev').removeClass('direction-arabic');
+const stationNameinsights=document.querySelectorAll('.insightStation h3');
+stationNameinsights.forEach(item=>{
+    item.style.setProperty('text-align','left')
+})
+const graphsheading=document.querySelectorAll('.insight .quality-index-wrapper-h2 h2');
+graphsheading.forEach(item=>{
+    item.style.setProperty('text-align','left')
+})
+
+const refresheddate=document.querySelectorAll('.insight .last-refersh-color');
+refresheddate.forEach(item=>{
+    item.style.setProperty('text-align','left')
+})
+    const pollutantgridvalues= document.querySelectorAll('.insight .grid-value');
+    pollutantgridvalues.forEach(item=>{
+    item.style.setProperty('direction','ltr')
+    })
+    const antgridvaluesmg3= document.querySelectorAll('.insight .grid-upper .mg-m3');
+    antgridvaluesmg3.forEach(item=>{
+      item.style.setProperty('margin-right','')
+    })
+    document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'ltr', 'important');
+
+// const previousbutton=document.querySelectorAll('.fa-move-next-arrow');
+// previousbutton.forEach(item=>{
+//  item.classList.remove('prev-arrow-arabic');
+// })
+
+const graphNextButton=document.querySelectorAll('.fp-next');
+graphNextButton.forEach(item=>{
+    item.classList.remove('arabic-fp-next')
+})
+
+$('.fp-next').classList.remove('arabic-fp-next')
+
+// $('.mult-value-tab').removeClass('multivaluetab');
+
+// const multitab = document.querySelectorAll('.insight .aqi-content.mult-value-tab');
+    // const multitab = document.querySelectorAll('.insight.aqi-content');
+    // multitab.forEach(item => {
+    //     item.classList.remove('multivaluetab');
+    // });
 
 
-// document.querySelector('.station-aqi-pill').style.float='left';
+document.querySelector('.station-aqi-pill').style.padding='0';
 
 
                     dropdownLists.forEach((dropdownList) => {

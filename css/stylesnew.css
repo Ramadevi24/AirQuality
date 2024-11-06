@@ -3876,6 +3876,11 @@ border: none;
     transition: all 0.3s;
 }
 
+.arabic-fp-next{
+    right:86% !important;
+    left:0 !important
+}
+
 .insight .silde-dv {
     position: relative;
 }
@@ -5828,6 +5833,9 @@ margin-bottom: 20px;
 }
 .text-left-arabic{
 text-align: left !important;
+}
+.direction-arabic{
+    left:5% !important
 }
 
 
