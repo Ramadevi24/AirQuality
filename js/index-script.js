@@ -7275,7 +7275,29 @@ function updateToArabic() {
         // Also adjust the input placeholder alignment for Arabic
         document.querySelector('#message').style.textAlign = 'right';
         
-       
+    
+        const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg');
+        iicon.forEach(item => {
+            item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
+            item.style.setProperty('left','0','important')
+        });
+        const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
+infocontent.forEach(item => {
+    item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('left','0','important')
+});
+
+const stationiicon = document.querySelectorAll('.insight .pollutant-toggleBar .ic-top-position');
+stationiicon.forEach(item => {
+    item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('left','0','important')
+});
+
+const iinfo = document.querySelectorAll('.bar-section-info');
+iinfo.forEach(item => {
+    item.style.setProperty('text-align', 'right'); // Correct property and value
+});
+
         
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
     // document.querySelectorAll('.moderate-label-graph').forEach((element) => {element.innerText = 'معتدل' });
@@ -7335,6 +7357,39 @@ audioButton.forEach(button => {
     button.style.left = 'auto';
 });
 
+const rightsidebar = document.querySelector('.sidebar');
+rightsidebar.style.setProperty('right','auto', 'important'); // Remove the right property with !important
+rightsidebar.style.setProperty('left', '0px', 'important'); // Set the left property to 0px with !important
+
+
+$('.text-right').addClass('text-left-arabic');
+const dropdownItems = document.querySelectorAll('.dropdown-item');
+dropdownItems.forEach(item => {
+    item.style.textAlign = 'right';
+});
+
+const filterButtons = document.querySelectorAll('.insight .graph-duration-filters .btn');
+
+// Apply Arabic styles dynamically
+filterButtons.forEach(button => {
+    button.style.setProperty('background-position', 'left 6px center', 'important'); // Move background image to the left
+    button.style.setProperty('text-align', 'right', 'important'); // Align text to the right
+});
+
+
+// const durationfilters = document.querySelectorAll('.graph-duration-filters');
+// durationfilters.forEach(item => {
+//     item.style.setProperty('float','left'); 
+//     item.style.setProperty('right','auto'); 
+
+
+// });
+// document.querySelector('.station-aqi-pill').style.float='right';
+
+
+
+
+
 
 
 
@@ -7351,10 +7406,13 @@ audioButton.forEach(button => {
 // });
 
 
+//englishtransulation
+
 function updateToEnglish() {
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
+    $('.text-right').removeClass('text-left-arabic');
     $('.accordion-button').removeClass('rtl-accordion');
     $('.faqscrolling').removeClass('rtl-faqscrolling');
     $('.insight .data-list label.list-group-item input').removeClass('rtl-stationsData');
@@ -7395,7 +7453,14 @@ function updateToEnglish() {
     
     $('#page-content-wrapper').removeClass('page-content-wrapper-arabic');
    
-   
+    const filterButtons = document.querySelectorAll('.insight .graph-duration-filters .btn');
+
+    // Apply Arabic styles dynamically
+    filterButtons.forEach(button => {
+        button.style.setProperty('background-position', 'right 6px center', 'important'); // Move background image to the left
+        button.style.setProperty('text-align', 'left', 'important'); // Align text to the right
+    });
+    
     // document.getElementById('language-toggle1-btn').innerHTML ='English';
     closeSidebar();
     getAirQualitySafetyLevel();
@@ -7546,12 +7611,50 @@ function updateToEnglish() {
                     document.querySelector('.Expand-Panel-mobile').innerText='Expand Panel';
                   
                     document.querySelector('.Expand-Panel-tab').innerText='Expand Panel';
+                    const rightsidebar = document.querySelector('.sidebar');
+rightsidebar.style.setProperty('right','0', 'important'); // Remove the right property with !important
+rightsidebar.style.setProperty('left', 'auto', 'important'); // Set the left property to 0px with !important
 
                     
                     // -------------------------
                     airQualityAssessments.forEach((element) => {
                         element.innerText = "Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.";
                     });
+                    const dropdownItems = document.querySelectorAll('.dropdown-item');
+dropdownItems.forEach(item => {
+    item.style.textAlign = 'left';
+});
+// const durationfilters = document.querySelectorAll('.graph-duration-filters');
+// durationfilters.forEach(item => {
+//     item.style.setProperty('float','right'); 
+//     item.style.setProperty('right','0'); 
+
+
+// });
+const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg');
+iicon.forEach(item => {
+    item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('right','0','important')
+});
+
+const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
+infocontent.forEach(item => {
+    item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('right','0','important')
+});
+const stationiicon = document.querySelectorAll('.insight .pollutant-toggleBar .ic-top-position');
+stationiicon.forEach(item => {
+    item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('right','0','important')
+});
+const iinfo = document.querySelectorAll('.bar-section-info');
+iinfo.forEach(item => {
+    item.style.setProperty('text-align', 'left'); // Correct property and value
+});
+
+
+
+// document.querySelector('.station-aqi-pill').style.float='left';
 
 
                     dropdownLists.forEach((dropdownList) => {
@@ -7590,12 +7693,11 @@ blueHideIcons.forEach(icon => {
     icon.style.setProperty('right', '10px', 'important');
 });
 
-const playPauseButtons = document.querySelectorAll('.play-pause-btn');
 
-playPauseButtons.forEach(button => {
-    button.style.right = ''; 
-    button.style.left = '';  
-});
+
+
+
+
 
 const skipButton = document.querySelectorAll('.skip-btn');
 skipButton.forEach(button => {
@@ -7608,6 +7710,8 @@ audioButton.forEach(button => {
     button.style.right = '';
     button.style.left = '';
 });
+
+// document.querySelector('.sidebar').style.left='0px'
 
 
                     // Loop through all legend items and revert the text to English

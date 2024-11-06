@@ -3716,3 +3716,8 @@
     }
     
 } */
+@media (min-width:320px) {
+    .page-content-wrapper-arabic{
+        left: unset;
+    }
+}
