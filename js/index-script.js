@@ -1816,7 +1816,7 @@ $(document).ready(function () {
     $('.quality-index-dropItem').click(function () {
 
         var el = $('.btn-group-filter');
-        if ($(this).text() == chartFilter.Custom) {
+        if ($(this).text() == chartFilter.Custom || $(this).text() == chartFilterArabic.Custom) {
             el.find('.date-box').removeClass('calen-box-hide');
             el.find('.quality-button-dropdown').hide();
             var datepickerEl = $(this).closest('.btn-group-filter').find('#datepicker');
@@ -2594,17 +2594,17 @@ function getHealthRecommendationContent(aqiLevel) {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div>
-                            <button type="button" class="btn-close "
+                            <button type="button" class="btn-close ${currentLanguage === 'arabic' ? 'health-cross-icon' : ''} "
                                     data-bs-dismiss="modal"
                                     aria-label="Close">
                                 <img src="./images/new-images/modal_close.png"
                                     alt="">
                             </button>
                         </div>
-                        <div class="modal-body mask_body mask_modal_body">
+                        <div class="modal-body mask_body">
                             <img src="./images/new-images/Exaclamation-w.png"
                                 alt="health-icon">
-                            <p class="mask-use">${recommendation.title}</p>
+                            <p class="mask-use ${currentLanguage === 'arabic' ? 'mask_use_title' : ''} ">${recommendation.title}</p>
                             <p> ${recommendation.description}  </p>
                         </div>
                     </div>
@@ -3961,9 +3961,18 @@ switch (selectedFilter) {
                                     'PM10': 'PM10'
                                     // Add more mappings if needed
                                 };
+                                const labelArabicMap = {
+                                    'PM10': 'PM10',
+                                    'SO2': 'SO2',
+                                    'NO2': 'NO2',
+                                    'O3': 'O3',
+                                    'CO': 'CO',
+                                    'PM25': 'PM2.5'
+                                    // Add more mappings if needed
+                                };
                                 return fianlItems.map((dataset, i) => {
                                     const label = dataset.label || `Dataset ${i + 1}`;
-                                    const customLabel = labelMap[label] || label;
+                                    const customLabel = currentLanguage === 'arabic' ? labelArabicMap[label] : labelMap[label] || label;
                                     return {
                                         text: customLabel,
                                         fillStyle: dataset.backgroundColor,
@@ -5907,6 +5916,7 @@ function convertToISO8601(dateTimeStrings) {
 }
 
 function updateCharts(selectedFilter) {
+    console.log('Selected Filter:', selectedFilter);    
     // Do not remove below code starts---------------------------------
     $("#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiPm25Value, #lineChartAqiO3Value").text('');
     $('button.quality-button-dropdown').text(selectedFilter);
@@ -7149,9 +7159,6 @@ function updateToArabic() {
     closeButton.style.textTransform = 'none';
     document.querySelector('.paratab').innerText = "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector('.mask-hoverEffect').innerText = 'استخدام الكمامة';
-    // document.querySelector('.mask_body').addClass('mask_modal_body');
-    $('.modal-body.mask_body').addClass('mask_modal_body');
-    $('.bar-section-info').addClass('mask_modal_body');
     $('.search_name').addClass('search_street');
     $('.air-quality-pill').addClass('air-quality-btn');
     $('.dropdown-menu.sorttoggle').removeClass('showText');
@@ -7166,7 +7173,8 @@ function updateToArabic() {
     $('.main-box').addClass('main-box-arabic');
     $('.tab_shado').addClass('main-box-arabic-box');
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
-   
+    
+    $('.icon-circle-xmark-regular').addClass('cross-icon');
 
     
 
@@ -7245,6 +7253,14 @@ function updateToArabic() {
     });
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
+    $('.select-pils').on('click', function () {
+        var tabText = $(this).text().trim();                    
+        if (tabText === 'AQI' || tabText ==='مؤشر جودة الهواء') {
+            document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
+        } if (tabText === 'Pollutant'|| tabText === 'الملوثات') {
+            document.querySelector('.changeHeading-pollutant').innerText =  'اتجاهات ملوثات المحطة';
+        }
+    });
     document.getElementById('pills-aqi_lin-tab').innerText = 'مؤشر جودة الهواء';
     document.getElementById('pills-profile-tab').innerHTML = 'الملوثات';
     // document.querySelector('.equal-station-box-height').style.direction = 'ltr';
@@ -7291,12 +7307,33 @@ function updateToArabic() {
         const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg');
         iicon.forEach(item => {
             item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
-            item.style.setProperty('left','0','important')
+            item.style.setProperty('left','0','important');
+            item.style.setProperty('margin-right','0','important');
+            item.style.setProperty('margin-left','20px','important');
+        });
+        const pollutantinfoIcon = document.querySelectorAll('.pollutant-toggleBar .pollu-top-position');
+        pollutantinfoIcon.forEach(item => {
+            item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
+            item.style.setProperty('left','0','important');
         });
         const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
 infocontent.forEach(item => {
     item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
     item.style.setProperty('left','0','important')
+});
+
+// const HealthcrossAlign =document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
+// HealthcrossAlign.forEach((item) => { item.style.setProperty('float', 'left', 'important'); });
+
+$('.insight .slide-content ul .modal.fade button.btn-close').addClass('health-cross-icon');
+// const crossiconmaskusage = document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
+// crossiconmaskusage.forEach(item => {
+//     item.style.setProperty('float','left','important'); 
+// });
+
+const infocontentAlign = document.querySelectorAll('.ps-0');
+infocontentAlign.forEach(item => {
+    item.classList.add('pollutant-align-right'); 
 });
 
 const stationiicon = document.querySelectorAll('.insight .pollutant-toggleBar .ic-top-position');
@@ -7478,6 +7515,7 @@ function updateToEnglish() {
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
+    $('.icon-circle-xmark-regular').removeClass('cross-icon');
     $('.text-right').removeClass('text-left-arabic');
     $('.accordion-button').removeClass('rtl-accordion');
     $('.faqscrolling').removeClass('rtl-faqscrolling');
@@ -7505,7 +7543,6 @@ function updateToEnglish() {
     // $('.fp-next').removeClass('next-buttons');
     $('.fp-next').removeClass('animation-next-buttons');
     $('.switch1 > span.on').removeClass('arabic-switch1');
-    $('.bar-section-info').addClass('mask_modal_body');
     $('.footer-logo').removeClass('footer-logo-arabic');
     $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
@@ -7679,6 +7716,14 @@ multivaluetab.forEach(item => {
                     document.querySelectorAll('.our-air-analytics-desclimer').forEach(element => {
                         element.innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`});
                     document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
+                    $('.select-pils').on('click', function () {
+                        var tabText = $(this).text().trim();                    
+                        if (tabText === 'AQI' || tabText ==='مؤشر جودة الهواء') {
+                            document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
+                        } else if (tabText === 'Pollutant'|| tabText === 'الملوثات') {
+                            document.querySelector('.changeHeading-pollutant').innerText =  'STATION POLLUTANT TRENDS';
+                        }
+                    });
                     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`
                     document.querySelector('.contact-content-mobile').innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
                     document.querySelector('.air-analytics-mobile').innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
@@ -7715,16 +7760,41 @@ const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg'
 iicon.forEach(item => {
     item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
     item.style.setProperty('right','0','important')
+    item.style.setProperty('margin-right','20px','important');
+    item.style.setProperty('margin-left','0','important');
+});
+const pollutantinfoIcon = document.querySelectorAll('.pollutant-toggleBar .pollu-top-position');
+pollutantinfoIcon.forEach(item => {
+    item.style.setProperty('right', '0', 'important'); 
+    item.style.setProperty('left','auto','important');
 });
 
 const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
 infocontent.forEach(item => {
-    item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('left', 'auto', 'important'); 
     item.style.setProperty('right','0','important')
 });
+
+// const HealthcrossAlign =document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
+// HealthcrossAlign.forEach((item) => { item.style.setProperty('float', '', 'important'); });
+
+$('.insight .slide-content ul .modal.fade button.btn-close').removeClass('health-cross-icon');
+
+const infocontentAlign = document.querySelectorAll('.ps-0');
+infocontentAlign.forEach(item => {
+    item.classList.remove('pollutant-align-right'); 
+});
+// const crossiconmaskusage = document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
+// crossiconmaskusage.forEach(item => {
+//     item.style.setProperty('float','right','important'); 
+// });
+
+
+
+
 const stationiicon = document.querySelectorAll('.insight .pollutant-toggleBar .ic-top-position');
 stationiicon.forEach(item => {
-    item.style.setProperty('left', 'auto', 'important'); // Set 'right: auto !important'
+    item.style.setProperty('left', 'auto', 'important'); 
     item.style.setProperty('right','0','important')
 });
 const iinfo = document.querySelectorAll('.bar-section-info');
