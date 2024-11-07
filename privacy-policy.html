@@ -258,7 +258,7 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-xl-9">
                     <div class="row">
-                        <div class="col-xl-3 col-sm-12 col-md-4">
+                        <div class="col-xl-3 col-sm-12 col-md-4 footer-change-col">
                             <div class="d-inline-block text-sm-start">
                                 <h6>
                                     <a href="index.html#slide0" class="footermobile-none">Our Air Quality</a>
@@ -604,6 +604,8 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
 
         tog_btn.addEventListener('click', () => {
             if(isEnglish) {
+                $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                document.body.classList.toggle('arabic-mode');
                 tog_btn.classList.add('english-style'); 
                 tog_btn.textContent = "English"
                 dyn_hd.textContent = "قسم الأسئلة الشائعة"
@@ -670,6 +672,8 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
             }
 
             else {
+                $('.footer-change-col').addClass('col-xl-3').removeClass('col-xl-2');
+                document.body.classList.remove('arabic-mode');
                 $('.footer-logo').removeClass('footer-logo-arabic');
                  $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
@@ -740,6 +744,8 @@ If you have any questions or concerns about this Privacy Policy or our practices
 
         tog_btn2.addEventListener('click', () => {
             if(isEnglish) {
+                $('.footer-change-col').addClass('col-xl-2').removeClass('col-xl-3');
+                
                 tog_btn.classList.add('english-style'); 
                 tog_btn.textContent = "English"
                 dyn_hd.textContent = "قسم الأسئلة الشائعة"
@@ -803,6 +809,7 @@ If you have any questions or concerns about this Privacy Policy or our practices
             }
 
             else {
+                $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
                 tog_btn.classList.remove('english-style');
                 tog_btn.textContent = "عربي"
                 dyn_hd.textContent = "Privacy Policy"

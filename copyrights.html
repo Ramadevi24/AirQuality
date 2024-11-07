@@ -237,7 +237,7 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-xl-9">
                                 <div class="row">
-                                    <div class="col-xl-3 col-sm-12 col-md-4">
+                                    <div class="col-xl-3 col-sm-12 col-md-4 footer-change-col">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
                                                 <a href="index.html#slide0" class="footermobile-none">Our Air Quality</a>
@@ -843,6 +843,9 @@ if (footerMenuUi) {
 
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
+                    document.body.classList.toggle('arabic-mode');
+                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
                     // Switch to Arabic
                     toggleBtn.classList.add('english-style'); 
                     toggleBtn.textContent = 'English'; // Change button text to switch back to English
@@ -873,6 +876,9 @@ if (footerMenuUi) {
         $('.copy-right-para').addClass('copy-right-para-footer');
 
                 } else {
+                    document.body.classList.remove('arabic-mode');
+                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
                     $('.footer-logo').removeClass('footer-logo-arabic');
         $('.footer-social-icons').removeClass('social-media-icons');
         $('.copy-right-para').removeClass('copy-right-para-footer');
@@ -903,6 +909,9 @@ if (footerMenuUi) {
 
         toggleBtn2.addEventListener('click', () => {
                 if (isEnglish) {
+                    document.body.classList.toggle('arabic-mode');
+                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
                     // Switch to Arabic
                     toggleBtn.textContent = 'English'; // Change button text to switch back to English
                     dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
@@ -928,6 +937,9 @@ if (footerMenuUi) {
                     updateMenuArabic();
 
                 } else {
+                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                    document.body.classList.remove('arabic-mode');
+                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
                     // Switch back to English
                     toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
                     dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English

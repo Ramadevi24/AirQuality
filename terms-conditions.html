@@ -285,7 +285,7 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-xl-9">
                                 <div class="row">
-                                    <div class="col-xl-3 col-sm-12 col-md-4">
+                                    <div class="col-xl-3 col-sm-12 col-md-4 footer-change-col">
                                         <div class="d-inline-block text-sm-start">
                                             <h6>
                                                 <a href="index.html#slide0" class="footermobile-none">Our Air Quality</a>
@@ -878,6 +878,9 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
 
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
+                    document.body.classList.toggle('arabic-mode');
+                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
                     toggleBtn.classList.add('english-style');
                     toggleBtn.textContent = 'English';
                     dynamicHeading.textContent = 'شروط الاستخدام';
@@ -940,6 +943,9 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
         $('.copy-right-para').addClass('copy-right-para-footer');
                 }
                 else {
+                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                    document.body.classList.remove('arabic-mode');
                     $('.footer-logo').removeClass('footer-logo-arabic');
                  $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
@@ -1001,6 +1007,9 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
             });
             toggleBtn2.addEventListener('click', () => {
                 if (isEnglish) {
+                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
+                    document.body.classList.toggle('arabic-mode');
                     toggleBtn.textContent = 'English';
                     dynamicHeading.textContent = 'شروط الاستخدام';
                     faqsection.innerHTML = `  <div class="row">
@@ -1059,6 +1068,9 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
                     updateMenuArabic();
                 }
                 else {
+                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                    document.body.classList.remove('arabic-mode');
                     toggleBtn.textContent ='عربي';
                     dynamicHeading.textContent = 'Terms of use';
                     faqsection.innerHTML = `<div class="row">
