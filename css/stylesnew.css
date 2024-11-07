@@ -5887,7 +5887,15 @@ text-align: left !important;
 .arabic-mode #sideBarAqiStatus,
 .arabic-mode #SidebaryearlyAirQualityOverview,
 .arabic-mode #yearlyAirQualityOverview,
-.arabic-mode .list-item span
+.arabic-mode .list-item span,
+.arabic-mode .darkorange,
+.arabic-mode .lightorange,
+.arabic-mode .green,
+.arabic-mode .peach,
+.arabic-mode .purple,
+.arabic-mode .hazar,
+.arabic-mode .insight-btn-tab,
+.arabic-mode .insight-btn
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
@@ -5944,8 +5952,10 @@ text-align: left !important;
  .arabic-mode .exceed-height,
  .arabic-mode .inner_list-content p,
  .arabic-mode .measure-pollut,
- .arabic-mode .pollutantbar-title
- 
+ .arabic-mode .pollutantbar-title,
+ .arabic-mode .toggle-text1,
+ .arabic-mode .toggle-text,
+ .arabic-mode .nav-item .active a
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;

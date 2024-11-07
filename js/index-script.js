@@ -7041,6 +7041,7 @@ function updateToArabic() {
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
     currentStatusClass = statusClassArabic;
+    // document.querySelector('#language-toggle').removeClass('arabic-mode');
     document.body.classList.toggle('arabic-mode');
     $('.accordion-button').addClass('rtl-accordion');
     $('.faqscrolling').addClass('rtl-faqscrolling');
@@ -7494,6 +7495,7 @@ document.querySelector('.station-aqi-pill').style.padding='0';
 
 
 function updateToEnglish() {
+    // document.querySelector('#language-toggle').addClass('arabic-mode');
     document.body.classList.remove('arabic-mode');
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
