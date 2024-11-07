@@ -7022,7 +7022,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loadStationData()
             updateAqitoArabic();
             document.body.setAttribute('dir', 'rtl');
-            document.body.classList.add('arabic-mode');
+          
             updateToArabic(); 
             updateCharts(chartFilterArabic.Hourly);   
         } else {
@@ -7032,7 +7032,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateNavLinksToEnglish();
             updateFooterLinksToEnglish();
              loadStationData()
-            document.body.classList.remove('arabic-mode');
+        
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();

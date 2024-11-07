@@ -5861,7 +5861,9 @@ text-align: left !important;
 .arabic-mode .paratab,
 .arabic-mode .pollutants-legend-text,
 .arabic-mode .chart-f-content,
-.arabic-mode .marker_legend
+.arabic-mode .marker_legend,
+.arabic-mode #searchInput::placeholder,
+.arabic-mode .pollutantbar-details li
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
@@ -5879,6 +5881,7 @@ text-align: left !important;
 .arabic-mode #pills-profile-tab,
 .arabic-mode #pills-aqi_lin-tab,
 .arabic-mode .dropdown-item
+
  
 {
     font-family: 'Cairo', sans-serif !important;
@@ -5911,7 +5914,10 @@ text-align: left !important;
 .arabic-mode .levelmb25,
 .arabic-mode #air-quality-index,
 .arabic-mode .changeHeading-pollutant,
- .arabic-mode .exceed-height
+ .arabic-mode .exceed-height,
+ .arabic-mode .inner_list-content p,
+ .arabic-mode .measure-pollut,
+ .arabic-mode .pollutantbar-title
  
 {
     font-family: 'Cairo', sans-serif !important;
