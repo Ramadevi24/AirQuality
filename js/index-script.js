@@ -2230,7 +2230,7 @@ function populateSort(sortBy) {
                 input.id = stationDetails.stationId;
                 input.value = stationDetails.stationId;
                 input.autocomplete = 'off';
-                input.className = 'float-end';
+                input.className = 'float-end' + (currentLanguage === 'arabic' ? ' rtl-stationsData' : '');
                 input.onclick = function () { selectedStation(stationDetails.stationId); };
 
                 label.appendChild(spanNumber);
@@ -2921,7 +2921,7 @@ function bindLiveCityRanking() {
                               <span>~ `+ station.distance + ` km</span>
                             </div>
                           </div>
-                          <input type="radio" name="options" id="`+ stationDetailsWithLocation.stationId + `" value="` + stationDetailsWithLocation.stationId + `" autocomplete="off" class="float-end" onClick="selectedStation('` + stationDetailsWithLocation.stationId + `')">
+                          <input type="radio" name="options" class="${currentLanguage === 'arabic' ? 'rtl-stationsData' : ''}" id="${stationDetailsWithLocation.stationId}" value="${stationDetailsWithLocation.stationId}" autocomplete="off" class="float-end" onClick="selectedStation('${stationDetailsWithLocation.stationId}')">
                         </label>`;
             
             stationRankingListDiv.append(row);
@@ -7003,7 +7003,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdownLists = document.querySelectorAll('.dropdown-menu.metero-dropdown');
     const iaqmElement = document.getElementById('iaqm');
     const switchingElement = document.getElementById('switching-air-purifier')
+    const $inputElements = $('.insight .data-list label.list-group-item input');
     currentLanguage = 'english';
+    if (currentLanguage === 'arabic') {
+        $inputElements.addClass('rtl-stationsData');
+    } else {
+        $inputElements.removeClass('rtl-stationsData');
+    }
     currentStatusClass = statusClass;
     getAirQualitySafetyLevel();
     loadCarousel(imageData);
@@ -7049,7 +7055,7 @@ function updateToArabic() {
     $('.accordion-button').addClass('rtl-accordion');
     $('.faqscrolling').addClass('rtl-faqscrolling');
     $('.contact-info-content').addClass('contact-info-data');
-    $('.insight .data-list label.list-group-item input').addClass('rtl-stationsData');
+    $inputElements.addClass('rtl-stationsData');
     $('.insight .sorttoggle button.btn-close').addClass('sort-toggle');
     $('.switch1 > span.on').addClass('arabic-switch1');
     $('.form-direction').css({
@@ -7391,7 +7397,7 @@ graphNextButton.forEach(item=>{
 })
 
 
-document.querySelector('.footer-2-sec').style.setProperty('padding-left', '16px');
+document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
 
 // $('.fp-next').classList.add('arabic-fp-next')
         
@@ -7512,7 +7518,7 @@ function updateToEnglish() {
     $('.text-right').removeClass('text-left-arabic');
     $('.accordion-button').removeClass('rtl-accordion');
     $('.faqscrolling').removeClass('rtl-faqscrolling');
-    $('.insight .data-list label.list-group-item input').removeClass('rtl-stationsData');
+    $inputElements.removeClass('rtl-stationsData')
     $('.contact-info-content').removeClass('contact-info-data');
     $('.search_name').removeClass('search_street');
     $('.insight .sorttoggle button.btn-close').removeClass('sort-toggle');
@@ -7877,6 +7883,12 @@ skipButton.forEach(button => {
 
 const audioButton = document.querySelectorAll('.audio-btn');
 audioButton.forEach(button => {
+    button.style.right = '';
+    button.style.left = '';
+});
+
+const playPauseButtons = document.querySelectorAll('.play-pause-btn');
+playPauseButtons.forEach(button => {
     button.style.right = '';
     button.style.left = '';
 });
