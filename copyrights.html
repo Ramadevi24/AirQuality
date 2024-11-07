@@ -843,7 +843,7 @@ if (footerMenuUi) {
 
             toggleBtn.addEventListener('click', () => {
                 if (isEnglish) {
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
                     document.body.classList.toggle('arabic-mode');
                     $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
                     // Switch to Arabic
@@ -911,7 +911,7 @@ if (footerMenuUi) {
                 if (isEnglish) {
                     document.body.classList.toggle('arabic-mode');
                     $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
+                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
                     // Switch to Arabic
                     toggleBtn.textContent = 'English'; // Change button text to switch back to English
                     dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
