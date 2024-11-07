@@ -5880,7 +5880,12 @@ text-align: left !important;
 .arabic-mode .paratab,
 .arabic-mode .pollutants-legend-text,
 .arabic-mode .chart-f-content,
-.arabic-mode .marker_legend
+.arabic-mode .marker_legend,
+.arabic-mode #averageAqiStatus,
+.arabic-mode #sideBarAqiStatus,
+.arabic-mode #SidebaryearlyAirQualityOverview,
+.arabic-mode #yearlyAirQualityOverview,
+.arabic-mode .list-item span
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
@@ -5897,8 +5902,10 @@ text-align: left !important;
 .arabic-mode #barChartFilter,
 .arabic-mode #pills-profile-tab,
 .arabic-mode #pills-aqi_lin-tab,
-.arabic-mode .dropdown-item
- 
+.arabic-mode .dropdown-item,
+.arabic-mode .emirates-text,
+.arabic-mode .date-time,
+.arabic-mode .map-disclaimer-content
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
