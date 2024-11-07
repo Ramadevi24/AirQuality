@@ -7170,7 +7170,11 @@ function updateToArabic() {
     });
     
 
-    
+    const searchstation=document.querySelectorAll('.insight .inner_list-content span');
+    searchstation.forEach(item=>{
+      item.style.setProperty('float','right','important');
+    })
+  
  
         document.querySelector('.date-time').innerText = 'التاريخ والوقت';
 
@@ -7362,6 +7366,7 @@ refresheddate.forEach(item=>{
   antgridvaluesmg3.forEach(item=>{
     item.style.setProperty('margin-right','33px')
   })
+
 
   document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
 

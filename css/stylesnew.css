@@ -5959,7 +5959,10 @@ text-align: left !important;
  .arabic-mode .measure-pollut,
  .arabic-mode .pollutantbar-title,
  .arabic-mode #dynamic-heading,
- .arabic-mode .active-arabic a
+ .arabic-mode .active-arabic a,
+ .arabic-mode .mult-value p,
+ .arabic-mode .mg-m3,
+ .arabic-mode .ug-m3
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;
