@@ -7847,7 +7847,7 @@ graphNextButton.forEach(item=>{
     item.classList.remove('arabic-fp-next')
 })
 
-$('.fp-next').classList.remove('arabic-fp-next')
+$('.fp-next').removeClass('arabic-fp-next')
 
 // $('.mult-value-tab').removeClass('multivaluetab');
 
