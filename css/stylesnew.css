@@ -1,7 +1,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
 
-
 @font-face {
     font-family: 'GothamMedium';
     src:  url('../fonts/Gotham-Font/GothamMedium.otf') format('opentype'),
@@ -5858,12 +5857,37 @@ text-align: left !important;
 .arabic-mode p,
 .arabic-mode .footer_link a,
 .arabic-mode .copy-right-contents-footer a,
+.arabic-mode #initiativeHeadingContentLg,
+.arabic-mode #navLinkAirQuality,
+.arabic-mode .windSpeedHeading,
+.arabic-mode .windDirectionHeading,
+.arabic-mode .temperatureHeading,
+.arabic-mode .humidityHeading,
+.arabic-mode #insightsAqiStatus{
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 300 !important; /* Cairo Light for paragraphs and content */
+}
+
+.arabic-mode h6,
+.arabic-mode .project-slide-content,
+.arabic-mode .nav-item a,
+.arabic-mode .welcome-text{
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400 !important; /* Cairo Light for paragraphs and content */
+}
+
+.arabic-mode .accordion-button,
 .arabic-mode .paratab,
 .arabic-mode .pollutants-legend-text,
 .arabic-mode .chart-f-content,
 .arabic-mode .marker_legend,
 .arabic-mode #searchInput::placeholder,
-.arabic-mode .pollutantbar-details li
+.arabic-mode .pollutantbar-details li,
+.arabic-mode #averageAqiStatus,
+.arabic-mode #sideBarAqiStatus,
+.arabic-mode #SidebaryearlyAirQualityOverview,
+.arabic-mode #yearlyAirQualityOverview,
+.arabic-mode .list-item span
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
@@ -5880,9 +5904,10 @@ text-align: left !important;
 .arabic-mode #barChartFilter,
 .arabic-mode #pills-profile-tab,
 .arabic-mode #pills-aqi_lin-tab,
-.arabic-mode .dropdown-item
-
- 
+.arabic-mode .dropdown-item,
+.arabic-mode .emirates-text,
+.arabic-mode .date-time,
+.arabic-mode .map-disclaimer-content
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
@@ -5910,6 +5935,8 @@ text-align: left !important;
 .arabic-mode #sumbitbtn,
 .arabic-mode #contactus,
 .arabic-mode #questionHeaderAlt,
+.arabic-mode #monitoringHeading,
+.arabic-mode .nav-item .active,
 .arabic-mode .quotes,
 .arabic-mode .levelmb25,
 .arabic-mode #air-quality-index,
