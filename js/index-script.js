@@ -2282,7 +2282,10 @@ function loadStationData(initialRequest = false) {
                 $("#averageAqi, #airQualitySafetyLevelAqi, #insightsAqi, #sideBarAqi, #mobileAQILevelValue").text(aqi).css('color', aqiDetails.color);
                 $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
-                $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + stationName + ', ' + regionName);
+                if (stationName && regionName) {
+                    console.log('stationName:', stationName, 'regionName:', regionName);
+                    $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + stationName + ', ' + regionName);
+                }
                 $("#airQualitySafetyLevelStation").text(updatedStationData);
                 $("#yearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
                 $("#SidebaryearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
@@ -7017,12 +7020,9 @@ document.addEventListener("DOMContentLoaded", () => {
             updateNavLinksToArabic();
             updateFooterLinksToArabic();
             loadStationData()
-            // updateCauses('شارع حمدان', 'PM10'); 
-            // const content = getActivityContent('good'); // Get content in Arabic
-            // $('.activities-imgs').empty().append(content);
-            // updateHealthRecommendations();
             updateAqitoArabic();
             document.body.setAttribute('dir', 'rtl');
+            document.body.classList.add('arabic-mode');
             updateToArabic(); 
             updateCharts(chartFilterArabic.Hourly);   
         } else {
@@ -7032,25 +7032,13 @@ document.addEventListener("DOMContentLoaded", () => {
             updateNavLinksToEnglish();
             updateFooterLinksToEnglish();
              loadStationData()
-            // updateHealthRecommendations();
-            // const content = getActivityContent('good'); // Get content in Arabic
-            // $('.activities-imgs').empty().append(content); 
-            // updateCauses('Hamdan Street', 'PM10');
+            document.body.classList.remove('arabic-mode');
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();
             updateCharts(chartFilter.Hourly); 
         }        
            }
-
-        //    function updateHealthRecommendations() {
-        //     const aqiLevel = 'good'; // Example AQI level
-            
-        //     const healthRecommendationsContainer = document.querySelector('.healthCommendation-content');
-        //     if (healthRecommendationsContainer) {
-        //         healthRecommendationsContainer.innerHTML = getHealthRecommendationContent(aqiLevel); 
-        //     }
-        // }
 
 function updateToArabic() {
     renderAccordionContent(accordionArabicContent);
@@ -7506,14 +7494,7 @@ document.querySelector('.station-aqi-pill').style.padding='0';
     prev.querySelector('svg').style.transform = 'rotate(180deg)';  // Flip the previous arrow
     next.querySelector('svg').style.transform = 'rotate(-180deg)';
 }
-// document.querySelector('.last-updated-sec').innerText = 'التاريخ والوقت';
-// document.querySelector('.last-updated-sec').style.marginRight = '16px';
-// $('.fp-next').addClass('next-buttons').each(function() {
-//     console.log($(this).attr('class'));  // Logs the classes of each matched element
-// });
 
-
-//englishtransulation
 
 function updateToEnglish() {
     document.body.classList.remove('arabic-mode');
@@ -7744,10 +7725,7 @@ multivaluetab.forEach(item => {
                     document.querySelector('.Expand-Panel-tab').innerText='Expand Panel';
                     const rightsidebar = document.querySelector('.sidebar');
 rightsidebar.style.setProperty('right','0', 'important'); // Remove the right property with !important
-rightsidebar.style.setProperty('left', 'auto', 'important'); // Set the left property to 0px with !important
-
-                    
-                    // -------------------------
+rightsidebar.style.setProperty('left', 'auto', 'important'); 
                     airQualityAssessments.forEach((element) => {
                         element.innerText = "Efficiently assess air quality with our color-coded bars, ranging from 'Good' to 'Hazardous', delivering hourly, daily, monthly, and yearly updates.";
                     });
@@ -7786,8 +7764,6 @@ infocontent.forEach(item => {
     item.style.setProperty('right','0','important')
 });
 
-// const HealthcrossAlign =document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
-// HealthcrossAlign.forEach((item) => { item.style.setProperty('float', '', 'important'); });
 
 $('.insight .slide-content ul .modal.fade button.btn-close').removeClass('health-cross-icon');
 
@@ -7795,13 +7771,6 @@ const infocontentAlign = document.querySelectorAll('.ps-0');
 infocontentAlign.forEach(item => {
     item.classList.remove('pollutant-align-right'); 
 });
-// const crossiconmaskusage = document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
-// crossiconmaskusage.forEach(item => {
-//     item.style.setProperty('float','right','important'); 
-// });
-
-
-
 
 const stationiicon = document.querySelectorAll('.insight .pollutant-toggleBar .ic-top-position');
 stationiicon.forEach(item => {
@@ -7837,26 +7806,12 @@ refresheddate.forEach(item=>{
     })
     document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'ltr', 'important');
 
-// const previousbutton=document.querySelectorAll('.fa-move-next-arrow');
-// previousbutton.forEach(item=>{
-//  item.classList.remove('prev-arrow-arabic');
-// })
-
 const graphNextButton=document.querySelectorAll('.fp-next');
 graphNextButton.forEach(item=>{
     item.classList.remove('arabic-fp-next')
 })
 
 $('.fp-next').removeClass('arabic-fp-next')
-
-// $('.mult-value-tab').removeClass('multivaluetab');
-
-// const multitab = document.querySelectorAll('.insight .aqi-content.mult-value-tab');
-    // const multitab = document.querySelectorAll('.insight.aqi-content');
-    // multitab.forEach(item => {
-    //     item.classList.remove('multivaluetab');
-    // });
-
 
 document.querySelector('.station-aqi-pill').style.padding='0';
 
@@ -7917,22 +7872,9 @@ audioButton.forEach(button => {
     button.style.right = '';
     button.style.left = '';
 });
-
-// document.querySelector('.sidebar').style.left='0px'
-
-
-                    // Loop through all legend items and revert the text to English
-                    //  legendTextItems[0].innerText = 'Good';
-                    // legendTextItems[1].innerText = 'Moderate';
-                    // legendTextItems[2].innerText = 'Unhealthy for Sensitive Groups';
-                    // legendTextItems[3].innerText = 'Unhealthy';
-                    // legendTextItems[4].innerText = 'Very Unhealthy';
-                    // legendTextItems[5].innerText = 'Hazardous';
-
                     document.querySelector('.navbar-brand.white img').src = './images/ead-logo.png'; //  logo
                     document.querySelector('.navbar-brand.black img').src = './images/ead-logo-b.svg'; //  black logo
                     document.querySelector('.dropdown-menu .dropdown-item');
-                    // document.querySelector('.last-updated-sec').innerText = 'Date & Time';
                     $('.footer-insights-alignment').addClass('col-xl-3');
                     $('.footer-insights-alignment').removeClass('col-xl-4');
 }
