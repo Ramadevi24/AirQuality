@@ -7044,6 +7044,7 @@ function updateToArabic() {
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
     currentStatusClass = statusClassArabic;
+    document.body.classList.toggle('arabic-mode');
     $('.accordion-button').addClass('rtl-accordion');
     $('.faqscrolling').addClass('rtl-faqscrolling');
     $('.contact-info-content').addClass('contact-info-data');
@@ -7496,6 +7497,7 @@ document.querySelector('.station-aqi-pill').style.padding='0';
 
 
 function updateToEnglish() {
+    document.body.classList.remove('arabic-mode');
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
@@ -7878,6 +7880,7 @@ audioButton.forEach(button => {
 }
 
 function updateAqitoArabic() {
+
     document.querySelectorAll('.good-label-graph, .moderate-label-graph, .sensitive-label-graph, .unhealthy-label-graph, .veryunhealthy-label-graph, .hazardous-label-graph')
         .forEach(item => {
             switch (item.textContent.trim()) {
