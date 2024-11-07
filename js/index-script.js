@@ -7180,6 +7180,7 @@ function updateToArabic() {
         multivaluetab.forEach(item => {
             item.style.setProperty('right','23%'); 
             item.style.setProperty('left','auto'); 
+            item.style.setProperty('direction','ltr');
             
         });
 
