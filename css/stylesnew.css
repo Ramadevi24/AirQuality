@@ -2394,7 +2394,7 @@ border: none;
         position: relative;
         display: inline-block;
         cursor: pointer;
-        margin-right: 3px;
+        margin-left: 5px;
         border-style: solid;
         height: 12px;
         width: 12px;
@@ -2407,7 +2407,7 @@ border: none;
     .insight .pollutants-legend-text {
         position: relative;
         padding-left: 15px;
-        margin-left: -15px;
+        margin-left: -10px;
         color: rgb(55, 61, 63);
         font-size: 13px;
         font-weight: 400;

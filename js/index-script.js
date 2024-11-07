@@ -3212,15 +3212,10 @@ function getStationChartApi(filter, initialRequest = false) {
         'مخصص': 'Custom'
     };
 
-    // Determine the appropriate filter based on the current language
     const selectedFilter = currentLanguage === 'arabic'
         ? chartFilterEnglish[filter] || 'Hourly' // Fallback to 'Hourly' if filter is undefined
         : filter;
 
-    console.log('chartFilterArabic[filter]', chartFilterArabic[filter]);
-    console.log('selectedFilter', selectedFilter);
-
-    // Select URL based on the resolved English filter value
     switch (selectedFilter) {
         case 'Daily':
             url = baseUrl + 'GetDailyStationChart?stationName=' + currentStationDetails.stationId;
@@ -3416,7 +3411,6 @@ function bindStationDataToLineChart(filter) {
     // }
 
     const selectedFilter = currentLanguage === 'arabic' ? chartFilterArabic[filter] : chartFilter[filter];
-console.log('bindinfo', selectedFilter);
 switch (selectedFilter) {
     case chartFilterArabic.Daily:
     case chartFilter.Daily:
@@ -3959,7 +3953,6 @@ switch (selectedFilter) {
                                     'NO2': 'NO2',
                                     'SO2': 'SO2',
                                     'PM10': 'PM10'
-                                    // Add more mappings if needed
                                 };
                                 const labelArabicMap = {
                                     'PM10': 'PM10',
@@ -3968,9 +3961,8 @@ switch (selectedFilter) {
                                     'O3': 'O3',
                                     'CO': 'CO',
                                     'PM25': 'PM2.5'
-                                    // Add more mappings if needed
                                 };
-                                return fianlItems.map((dataset, i) => {
+                                let items = fianlItems.map((dataset, i) => {
                                     const label = dataset.label || `Dataset ${i + 1}`;
                                     const customLabel = currentLanguage === 'arabic' ? labelArabicMap[label] : labelMap[label] || label;
                                     return {
@@ -3986,7 +3978,11 @@ switch (selectedFilter) {
                                         pointStyle: dataset.pointStyle || 'circle', // Default pointStyle
                                         datasetIndex: i
                                     };
-                                });
+                                });                      
+                                if (currentLanguage === 'arabic') {
+                                    items.reverse();
+                                }
+                                return items;
                             }
                         },
                         onClick: function (e, legendItem, legend) {
@@ -7253,7 +7249,7 @@ function updateToArabic() {
     document.querySelector('.hours-exceed-heading').innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`
     document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
     $('.select-pils').on('click', function () {
-        var tabText = $(this).text().trim();                    
+        var tabText = $('.select-pils.active').text().trim();                  
         if (tabText === 'AQI' || tabText ==='مؤشر جودة الهواء') {
             document.querySelector('.changeHeading-pollutant').innerText = 'اتجاهات مؤشر جودة الهواء للمحطة';
         } if (tabText === 'Pollutant'|| tabText === 'الملوثات') {
@@ -7716,7 +7712,7 @@ multivaluetab.forEach(item => {
                         element.innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`});
                     document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
                     $('.select-pils').on('click', function () {
-                        var tabText = $(this).text().trim();                    
+                        var tabText = $('.select-pils.active').text().trim();             
                         if (tabText === 'AQI' || tabText ==='مؤشر جودة الهواء') {
                             document.querySelector('.changeHeading-pollutant').innerText = 'Station AQI TRENDS';
                         } else if (tabText === 'Pollutant'|| tabText === 'الملوثات') {
