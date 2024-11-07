@@ -5877,29 +5877,64 @@ text-align: left !important;
 }
 
 .arabic-mode .accordion-button,
-.{
+.arabic-mode .paratab,
+.arabic-mode .pollutants-legend-text,
+.arabic-mode .chart-f-content,
+.arabic-mode .marker_legend
+{
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 300 !important; /* Cairo Light for paragraphs and content */
+}
+ 
+.arabic-mode h6,
+.arabic-mode .mask-usage,
+.arabic-mode #iaqm,
+.arabic-mode #switching-air-purifier,
+.arabic-mode .main-contributing-pollutant,
+.arabic-mode .Causes-wrapper h3,
+.arabic-mode .activity_heading,
+.arabic-mode #airQualitySafetyLevelStation,
+.arabic-mode #barChartFilter,
+.arabic-mode #pills-profile-tab,
+.arabic-mode #pills-aqi_lin-tab,
+.arabic-mode .dropdown-item
+ 
+{
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 400 !important; /* Cairo Light for paragraphs and content */
+}
+ 
+.arabic-mode .accordion-button{
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500; */
 }
-
+/* contactus */
 .arabic-mode #cotact-address{
     font-family: 'Cairo', sans-serif;
     font-weight: 500 !important;
 }
-
-
+.arabic-mode #yourname,
+.arabic-mode #youremail,
+.arabic-mode #yourphone,
+.arabic-mode #message::placeholder{
+    font-family: 'Cairo', sans-serif;
+    /* font-weight: 500 !important; */
+}
+ 
+ 
 .arabic-mode #heading,
 .arabic-mode #sumbitbtn,
 .arabic-mode #contactus,
 .arabic-mode #questionHeaderAlt,
 .arabic-mode #monitoringHeading,
-.arabic-mode .nav-item .active
+.arabic-mode .nav-item .active,
+.arabic-mode .quotes,
+.arabic-mode .levelmb25,
+.arabic-mode #air-quality-index,
+.arabic-mode .changeHeading-pollutant,
+ .arabic-mode .exceed-height
+ 
 {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;
 }
-
-
-
-
-    

@@ -7808,7 +7808,7 @@ graphNextButton.forEach(item=>{
     item.classList.remove('arabic-fp-next')
 })
 
-$('.fp-next').classList.remove('arabic-fp-next')
+$('.fp-next').removeClass('arabic-fp-next')
 
 document.querySelector('.station-aqi-pill').style.padding='0';
 
