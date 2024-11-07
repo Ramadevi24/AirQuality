@@ -2244,7 +2244,7 @@ border: none;
     }
 
     .slide-dv-position{
-        padding-left: 40px !important;
+        padding-left: 70px !important;
         padding-right: 0px !important;
     }
 
@@ -5837,7 +5837,7 @@ input[type="search"]::-webkit-search-cancel-button {
     left:0;
 }
 .page-content-wrapper-arabic{
-    left:22%
+    left:350px;
 }
 .contact-submit-btn{
 margin-top: 15px;

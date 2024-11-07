@@ -7178,7 +7178,11 @@ function updateToArabic() {
 
     
 
-
+    const stationnamearabic = document.querySelectorAll('.insightStation h3');
+    stationnamearabic.forEach(item => {
+        item.style.setProperty('padding', '0 14px');
+    });
+    
 
     
  
@@ -7242,7 +7246,7 @@ function updateToArabic() {
                     document.querySelector('.refreshed-time-03-para').innerHTML = `<b class="refreshed-time-03">آخر تحديث :</b> <span id="o3lastrefreshtime"></span>`;
                     document.querySelector('.refreshed-time-no2-para').innerHTML = `<b class="refreshed-time-no2">آخر تحديث :</b> <span id="no2lastrefreshtime"></span>`;
                     document.querySelector('.refreshed-time-staqi-para').innerHTML = `<b class="refreshed-time-staqi">آخر تحديث :</b> <span id="StAQIlastrefreshtime"></span>`;
-    document.querySelector('.station-aqi-legend').style.direction='rtl';
+    // document.querySelector('.station-aqi-legend').style.direction='rtl';
     // document.getElementById('barChartFilter').innerText='كل ساعة';
     // -------23/10/2024-----
     document.querySelectorAll('.hours-exceedance-peryear-desclimer').forEach(element => {
@@ -7394,7 +7398,10 @@ const graphNextButton=document.querySelectorAll('.fp-next');
 graphNextButton.forEach(item=>{
     item.classList.add('arabic-fp-next')
 })
- 
+
+
+document.querySelector('.footer-2-sec').style.setProperty('padding-left', '16px');
+
 // $('.fp-next').classList.add('arabic-fp-next')
         
     // document.querySelectorAll('.good-label-graph').forEach((element) => { element.innerText = 'جيد'});
@@ -7566,6 +7573,12 @@ multivaluetab.forEach(item => {
 
    
     const filterButtons = document.querySelectorAll('.insight .graph-duration-filters .btn');
+    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+
+    const stationnamearabic = document.querySelectorAll('.insightStation h3');
+    stationnamearabic.forEach(item => {
+        item.style.removeProperty('padding', '0 40px');
+    });
 
     // Apply Arabic styles dynamically
     filterButtons.forEach(button => {
@@ -7802,7 +7815,6 @@ iinfo.forEach(item => {
     item.style.setProperty('text-align', 'left'); // Correct property and value
 });
 
-//today
 $('.fp-prev').removeClass('direction-arabic');
 const stationNameinsights=document.querySelectorAll('.insightStation h3');
 stationNameinsights.forEach(item=>{
@@ -7849,6 +7861,9 @@ $('.fp-next').classList.remove('arabic-fp-next')
 
 
 document.querySelector('.station-aqi-pill').style.padding='0';
+
+
+
 
 
                     dropdownLists.forEach((dropdownList) => {
