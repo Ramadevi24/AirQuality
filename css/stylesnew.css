@@ -5801,7 +5801,7 @@ input[type="search"]::-webkit-search-cancel-button {
     position: absolute;
     right: 70px;
 } */
-.active-arabic{
+.arabic-mode .active-arabic a{
     transition: none !important;
     font-size: 14px !important;
   
@@ -5871,6 +5871,7 @@ text-align: left !important;
 }
 
 .arabic-mode h6,
+.arabic-mode .accordion-button,
 .arabic-mode .project-slide-content,
 .arabic-mode .nav-item a,
 .arabic-mode .welcome-text{
@@ -5878,7 +5879,7 @@ text-align: left !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
 
-.arabic-mode .accordion-button,
+
 .arabic-mode .paratab,
 .arabic-mode .pollutants-legend-text,
 .arabic-mode .chart-f-content,
@@ -5959,8 +5960,7 @@ text-align: left !important;
  .arabic-mode .measure-pollut,
  .arabic-mode .pollutantbar-title,
  .arabic-mode #dynamic-heading,
- .arabic-mode .active-arabic
- 
+ .arabic-mode .active-arabic a
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;

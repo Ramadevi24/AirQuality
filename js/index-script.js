@@ -6568,6 +6568,8 @@ function toggleLanguage() {
     if (currentLanguage === 'english') {
         currentLanguage = 'arabic';
         document.body.setAttribute('dir', 'rtl');
+   
+
     } else {
         currentLanguage = 'english';
         document.body.setAttribute('dir', 'ltr');
@@ -6971,6 +6973,7 @@ function toggleChangeLanguage() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    
     const toggleBtns = document.getElementsByClassName('toggleLanguageBtn');
     const faqSection = document.getElementById('faq-section');
     const questionHeader = document.getElementById('questionHeader');
@@ -7824,6 +7827,7 @@ document.querySelector('.station-aqi-pill').style.padding='0';
 
 
 
+
                     dropdownLists.forEach((dropdownList) => {
                         // Inside each <ul>, get the dropdown items
                         const dropdownItems = dropdownList.querySelectorAll('.quality-index-dropItem');
@@ -8086,15 +8090,16 @@ function updateNavLinksToEnglish() {
                 link.textContent = 'LANGUAGE';
         }
     });
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
+
+    document.querySelectorAll('.nav-item').forEach(link => link.classList.remove('active-arabic'));
 }
 });
 
 function addArabicLinkActiveClass() {
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-item').forEach(link => {
         link.addEventListener('click', function() {
             // Remove active class from other links
-            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active-arabic'));
             // Add active class to the clicked link
             if (currentLanguage === 'arabic') {
                 link.classList.add('active-arabic');
