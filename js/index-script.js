@@ -7382,7 +7382,7 @@ graphNextButton.forEach(item=>{
 })
 
 
-document.querySelector('.footer-2-sec').style.setProperty('padding-left', '16px');
+document.querySelector('.footer-2-sec').style.setProperty('padding-left', '28px');
 
 // $('.fp-next').classList.add('arabic-fp-next')
         

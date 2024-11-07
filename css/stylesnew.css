@@ -5802,7 +5802,8 @@ input[type="search"]::-webkit-search-cancel-button {
 } */
 .active-arabic{
     transition: none !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
+  
 }
 .arabic-monitoring-heading{
     margin-right: 18px;
@@ -5887,7 +5888,9 @@ text-align: left !important;
 .arabic-mode #sideBarAqiStatus,
 .arabic-mode #SidebaryearlyAirQualityOverview,
 .arabic-mode #yearlyAirQualityOverview,
-.arabic-mode .list-item span
+.arabic-mode .list-item span,
+.arabic-mode .greyColor,
+.arabic-mode .footer-2-sec
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
@@ -5907,7 +5910,8 @@ text-align: left !important;
 .arabic-mode .dropdown-item,
 .arabic-mode .emirates-text,
 .arabic-mode .date-time,
-.arabic-mode .map-disclaimer-content
+.arabic-mode .map-disclaimer-content,
+.arabic-mode .listSearch li
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
@@ -5944,7 +5948,9 @@ text-align: left !important;
  .arabic-mode .exceed-height,
  .arabic-mode .inner_list-content p,
  .arabic-mode .measure-pollut,
- .arabic-mode .pollutantbar-title
+ .arabic-mode .pollutantbar-title,
+ .arabic-mode #dynamic-heading,
+ .arabic-mode .active-arabic
  
 {
     font-family: 'Cairo', sans-serif !important;
