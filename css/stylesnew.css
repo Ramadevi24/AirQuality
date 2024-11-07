@@ -1,7 +1,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
 
-
 @font-face {
     font-family: 'GothamMedium';
     src:  url('../fonts/Gotham-Font/GothamMedium.otf') format('opentype'),
@@ -5857,17 +5856,28 @@ text-align: left !important;
 
 .arabic-mode p,
 .arabic-mode .footer_link a,
-.arabic-mode .copy-right-contents-footer a{
-    font-family: 'Cairo', sans-serif;
+.arabic-mode .copy-right-contents-footer a,
+.arabic-mode #initiativeHeadingContentLg,
+.arabic-mode #navLinkAirQuality,
+.arabic-mode .windSpeedHeading,
+.arabic-mode .windDirectionHeading,
+.arabic-mode .temperatureHeading,
+.arabic-mode .humidityHeading,
+.arabic-mode #insightsAqiStatus{
+    font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
 }
 
-.arabic-mode h6{
+.arabic-mode h6,
+.arabic-mode .project-slide-content,
+.arabic-mode .nav-item a,
+.arabic-mode .welcome-text{
     font-family: 'Cairo', sans-serif;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
 
-.arabic-mode .accordion-button{
+.arabic-mode .accordion-button,
+.{
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500; */
 }
@@ -5881,8 +5891,9 @@ text-align: left !important;
 .arabic-mode #heading,
 .arabic-mode #sumbitbtn,
 .arabic-mode #contactus,
-.arabic-mode #questionHeaderAlt
-
+.arabic-mode #questionHeaderAlt,
+.arabic-mode #monitoringHeading,
+.arabic-mode .nav-item .active
 {
     font-family: 'Cairo', sans-serif;
     font-weight: 700 !important;

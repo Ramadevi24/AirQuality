@@ -2283,12 +2283,11 @@ function loadStationData(initialRequest = false) {
                 $("#averageAqiStatus, #insightsAqiStatus, #sideBarAqiStatus, #mobileAQIStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 $("#airQualitySafetyLevelAqiStatus").text(aqiDetailsNew.status).css('color', aqiDetailsNew.color);
                 if (stationName && regionName) {
-                    console.log('stationName:', stationName, 'regionName:', regionName);
                     $("#aqiNearestStation, #insightNearestStation, #sidebarNearestStation, #mobileNearestStation").text((hasAccessToLocation ? ' ' : ' ') + stationName + ', ' + regionName);
+                    $("#airQualitySafetyLevelStation").text(updatedStationData);
+                    $("#yearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
+                    $("#SidebaryearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
                 }
-                $("#airQualitySafetyLevelStation").text(updatedStationData);
-                $("#yearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
-                $("#SidebaryearlyAirQualityOverview").text(updateyearlyAirQualityOverview);
                 $("#airContent").text(aqiDetails.Content).css('color', aqiDetails.color);
 
                 let mainPollutantNameContent;
@@ -7022,7 +7021,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loadStationData()
             updateAqitoArabic();
             document.body.setAttribute('dir', 'rtl');
-            document.body.classList.add('arabic-mode');
             updateToArabic(); 
             updateCharts(chartFilterArabic.Hourly);   
         } else {
@@ -7032,7 +7030,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateNavLinksToEnglish();
             updateFooterLinksToEnglish();
              loadStationData()
-            document.body.classList.remove('arabic-mode');
             updateAqitoEnglish();
             document.body.setAttribute('dir', 'ltr');
             updateToEnglish();
