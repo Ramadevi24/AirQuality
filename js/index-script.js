@@ -8920,6 +8920,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "text-align": "left",
       direction: "ltr",
     });
+    $('.insight #sidebar-btn').addClass('expandpanelipad')
+    // $('.insight .coll-icon').addClass('expandpanelairpro')
+    $('.iconimg').addClass('infoiconmobile')
+    $('.equal-station-box-height ').addClass('pollutent-graph')
     $(".insight .silde-dv").addClass("slide-dv-position");
     $("#fp-nav").addClass("fp-left");
     $("#fp-nav").removeClass("fp-right");
@@ -9041,14 +9045,26 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
 
-    $(".footer-social-icons").addClass("social-media-icons");
-    $(".copy-right-para").addClass("copy-right-para-footer");
-    $(".copy-right-contents").addClass("copy-right-contents-footer");
-    $(".contact-us-alignment").addClass("contact-us-alignment-style");
-    $(".footer-our-airquality").addClass("footer-our-airquality-alignment");
-    $(".next-btn-arb").addClass("next-btn-arb-alignment");
-    $(".main-box").addClass("main-box-arabic");
-    $(".tab_shado").addClass("main-box-arabic-box");
+   
+    $('.footer-social-icons').addClass('social-media-icons');
+    $('.copy-right-para').addClass('copy-right-para-footer');
+    $('.copy-right-contents').addClass('copy-right-contents-footer');
+    $('.contact-us-alignment').addClass('contact-us-alignment-style');
+    $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
+    $('.next-btn-arb').addClass('next-btn-arb-alignment');
+    $('.main-box').addClass('main-box-arabic');
+    $('.tab_shado').addClass('main-box-arabic-box');
+    $('.responsive-align').removeClass('pad_r')
+    // document.querySelectorAll('.insight .silde-dv').forEach(item => {
+    //     item.style.removeProperty('margin','1rem','1rem','importent');
+    // });
+    document.querySelectorAll('.insight .silde-dv').forEach(item => {
+        item.style.setProperty('margin', '1rem', 'important');
+  
+    });
+    
+ $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
+    
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
 
     $(".icon-circle-xmark-regular").addClass("cross-icon");
@@ -9058,7 +9074,13 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.setProperty("padding", "0 14px");
     });
 
-    document.querySelector(".date-time").innerText = "التاريخ والوقت";
+    const searchstation=document.querySelectorAll('.insight .inner_list-content span');
+    searchstation.forEach(item=>{
+      item.style.setProperty('float','right','important');
+    })
+  
+ 
+        document.querySelector('.date-time').innerText = 'التاريخ والوقت';
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
@@ -9225,7 +9247,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     iicon.forEach((item) => {
       item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
-      item.style.setProperty("left", "0", "important");
+      item.style.setProperty("left", "0");
       item.style.setProperty("margin-right", "0", "important");
       item.style.setProperty("margin-left", "20px", "important");
     });
@@ -9309,6 +9331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelector(".footer-2-sec")
       .style.setProperty("padding-left", "60px");
+
+  document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
 
     // $('.fp-next').classList.add('arabic-fp-next')
 
@@ -9426,6 +9450,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
+    $('.iconimg').removeClass('infoiconmobile')
     $(".icon-circle-xmark-regular").removeClass("cross-icon");
     $(".text-right").removeClass("text-left-arabic");
     $(".accordion-button").removeClass("rtl-accordion");
@@ -9443,6 +9468,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".footer-our-airquality").removeClass("footer-our-airquality-alignment");
     $(".footer-change-col").removeClass("col-xl-2").addClass("col-xl-3");
     $(".dropdown-menu.sorttoggle").addClass("showText");
+    $('.responsive-align').addClass('pad_r')
     $(".fp-next").removeClass("animation-next-buttons");
     $(".switch1 > span.on").removeClass("arabic-switch1");
     $(".footer-logo").removeClass("footer-logo-arabic");
@@ -10123,3 +10149,7 @@ function addArabicLinkActiveClass() {
     });
   });
 }
+
+
+
+  

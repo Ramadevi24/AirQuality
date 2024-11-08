@@ -695,8 +695,8 @@
     }
     .equal-air-box-height{
         height: 540px;
-        margin-right: 25px;
-        width: 100%;
+        /* margin-right: 25px; */
+        width: 350px;
     }
     .project-slider #recipeCarousel .carol-item .col-md-3 {
         padding-right: 0px;
@@ -791,7 +791,18 @@
         margin-bottom: 5px;
         width: 333px;
     }
-
+    .pollutent-graph{
+        width: 351px !important;
+        padding: 0px !important;
+        margin-right: -30px !important;
+    }
+    .infoiconmobile{
+        left: -108px !important;
+    }
+    .mobileinfocnt{
+        left:-74px !important;
+        width:125% !important;
+    }
     .insight .pollutant-toggleBar .ic-top-position {
         top: -20px;
         right: 1px;
@@ -856,7 +867,7 @@
     .exceeded-box .contact-content p {
         font-size: 14px;
         margin-top: -20px !important;
-        margin-right: 41px;
+        /* margin-right: 41px; */
     }
     /* .date_row {
         padding: 1px;
@@ -913,8 +924,8 @@
     }
 
     .main-box-arabic {
-        margin-right: 30px;
-        width: 321px;
+        margin-right: 0;
+        width: 350px;
     }
 
     .insight ul#myTabs {
@@ -1850,6 +1861,9 @@
         z-index: 99;
         left: 0px;
     }
+    .expandpanelipad{
+        left: 7% !important;
+    }
 
     .insight .coll-icon {
         width: 35px;
@@ -1863,7 +1877,9 @@
         top: 0px;
         height: 100vh;
     }
-
+        /* .expandpanelairpro{
+            left: -56px !important ;
+        } */
         .insight .coll-icon img {
             width: 90px;
             position: absolute;
