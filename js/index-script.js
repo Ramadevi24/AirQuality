@@ -8818,7 +8818,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const switchingElement = document.getElementById("switching-air-purifier");
   const $inputElements = $(".insight .data-list label.list-group-item input");
    currentLanguage = localStorage.getItem("language") 
-   let currentStatusClass = statusClass;
+   currentStatusClass = statusClass;
 
   // Initial setup
   getAirQualitySafetyLevel();
