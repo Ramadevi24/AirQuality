@@ -46,6 +46,9 @@ body {
     font-family: 'Gothamlight';
     font-size: 13px;
 }
+.air-map-container{
+    overflow: auto;
+}
 
 
 /* Safari-specific styles */
@@ -5921,7 +5924,11 @@ text-align: left !important;
 .arabic-mode .emirates-text,
 .arabic-mode .date-time,
 .arabic-mode .map-disclaimer-content,
-.arabic-mode .listSearch li
+.arabic-mode .listSearch li,
+.arabic-mode .sm-map-disclaimer,
+.arabic-mode .contactus-mobile,
+.arabic-mode .insights-mobile,
+.arabic-mode .mobile-menu a
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
@@ -5963,7 +5970,9 @@ text-align: left !important;
  .arabic-mode .active-arabic a,
  .arabic-mode .mult-value p,
  .arabic-mode .mg-m3,
- .arabic-mode .ug-m3
+ .arabic-mode .ug-m3,
+ .arabic-mode .Expand-Panel-mobile
+ 
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;

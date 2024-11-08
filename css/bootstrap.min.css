@@ -9767,9 +9767,9 @@ textarea.form-control-lg {
     -moz-column-gap: 3rem !important;
     column-gap: 3rem !important;
   }
-  .text-sm-start {
+  /* .text-sm-start {
     text-align: left !important;
-  }
+  } */
   .text-sm-end {
     text-align: right !important;
   }

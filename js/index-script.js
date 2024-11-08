@@ -6567,12 +6567,12 @@ var currentLanguage = 'english';
 function toggleLanguage() {
     if (currentLanguage === 'english') {
         currentLanguage = 'arabic';
-        document.body.setAttribute('dir', 'rtl');
+        // document.body.setAttribute('dir', 'rtl');
    
 
     } else {
         currentLanguage = 'english';
-        document.body.setAttribute('dir', 'ltr');
+        // document.body.setAttribute('dir', 'ltr');
     }
 }
 
@@ -6711,6 +6711,7 @@ $('#phoneField').on('input', function () {
         $('#phoneError').text('');
     }
 });
+
 
 
 var accordionContent = [
@@ -7047,10 +7048,15 @@ document.addEventListener("DOMContentLoaded", () => {
            }
 
 function updateToArabic() {
+    
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
     currentStatusClass = statusClassArabic;
     // document.querySelector('#language-toggle').removeClass('arabic-mode');
+    $('.insight #sidebar-btn').addClass('expandpanelipad')
+    // $('.insight .coll-icon').addClass('expandpanelairpro')
+    $('.iconimg').addClass('infoiconmobile')
+    $('.equal-station-box-height ').addClass('pollutent-graph')
     document.body.classList.toggle('arabic-mode');
     $('.accordion-button').addClass('rtl-accordion');
     $('.faqscrolling').addClass('rtl-faqscrolling');
@@ -7164,6 +7170,17 @@ function updateToArabic() {
     $('.next-btn-arb').addClass('next-btn-arb-alignment');
     $('.main-box').addClass('main-box-arabic');
     $('.tab_shado').addClass('main-box-arabic-box');
+    $('.responsive-align').removeClass('pad_r')
+    // document.querySelectorAll('.insight .silde-dv').forEach(item => {
+    //     item.style.removeProperty('margin','1rem','1rem','importent');
+    // });
+    document.querySelectorAll('.insight .silde-dv').forEach(item => {
+        item.style.setProperty('margin', '1rem', 'important');
+  
+    });
+    
+ $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
+    
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
     
     $('.icon-circle-xmark-regular').addClass('cross-icon');
@@ -7307,7 +7324,7 @@ function updateToArabic() {
         const iicon = document.querySelectorAll('.insight .pollutant-toggleBar .iconimg');
         iicon.forEach(item => {
             item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
-            item.style.setProperty('left','0','important');
+            item.style.setProperty('left','0');
             item.style.setProperty('margin-right','0','important');
             item.style.setProperty('margin-left','20px','important');
         });
@@ -7319,7 +7336,7 @@ function updateToArabic() {
         const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
 infocontent.forEach(item => {
     item.style.setProperty('right', 'auto', 'important'); // Set 'right: auto !important'
-    item.style.setProperty('left','0','important')
+    item.style.setProperty('left','0')
 });
 
 // const HealthcrossAlign =document.querySelectorAll('.insight .slide-content ul .modal.fade button.btn-close');
@@ -7510,10 +7527,15 @@ document.querySelector('.station-aqi-pill').style.padding='0';
 
 function updateToEnglish() {
     // document.querySelector('#language-toggle').addClass('arabic-mode');
+    $('.insight #sidebar-btn').removeClass('expandpanelipad');
+    // $('.insight .coll-icon').removeClass('expandpanelairpro')
+    $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').removeClass('mobileinfocnt');
+    
     document.body.classList.remove('arabic-mode');
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
+    $('.iconimg').removeClass('infoiconmobile')
     $('.icon-circle-xmark-regular').removeClass('cross-icon');
     $('.text-right').removeClass('text-left-arabic');
     $('.accordion-button').removeClass('rtl-accordion');
@@ -7532,6 +7554,7 @@ function updateToEnglish() {
     $('.footer-our-airquality').removeClass('footer-our-airquality-alignment');
     $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
     $('.dropdown-menu.sorttoggle').addClass('showText');
+    $('.responsive-align').addClass('pad_r')
     
 
     // $('.search-station-sidebar').removeClass('sidebar-search-station');
@@ -7555,6 +7578,13 @@ function updateToEnglish() {
     $('#page-content-wrapper').removeClass('page-content-wrapper-arabic');
     $('.main-box').removeClass('main-box-arabic');
     $('.tab_shado').removeClass('main-box-arabic-box');
+ $('.equal-station-box-height ').removeClass('pollutent-graph')
+    document.querySelectorAll('.insight .silde-dv').forEach(item => {
+        item.style.removeProperty('margin', '1rem', 'important');
+  
+    });
+
+
     const multivaluetab = document.querySelectorAll('.mult-value-tab');
 multivaluetab.forEach(item => {
     item.style.setProperty('right','', 'important'); 
@@ -7771,9 +7801,10 @@ pollutantinfoIcon.forEach(item => {
     item.style.setProperty('left','auto','important');
 });
 
+
 const infocontent = document.querySelectorAll('.pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 ');
 infocontent.forEach(item => {
-    item.style.setProperty('left', 'auto', 'important'); 
+    item.style.setProperty('left', 'auto','important'); 
     item.style.setProperty('right','0','important')
 });
 
@@ -8071,6 +8102,7 @@ function updateNavLinksToArabic() {
         }
     });
     addArabicLinkActiveClass();
+
 }
 
 function updateNavLinksToEnglish() {
@@ -8112,3 +8144,7 @@ function addArabicLinkActiveClass() {
         });
     });
 }
+
+
+
+  
