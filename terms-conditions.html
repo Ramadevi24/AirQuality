@@ -52,15 +52,6 @@
                 <div class="mobile-menu" id="mobile-overlay">
                     <div>
                     <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
-                    <!-- <div class="switch1">
-                        <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                            type="checkbox">
-                        <label for="toggleLanguageBtn"></label>
-                        <span class="on">EN</span>
-                        <span class="off">AR</span>
-                    </div> -->
-                    <!-- <button class="toggleLanguageBtn responsive_toggle" id="language-toggle1-btn" onclick="toggleChangeLanguage()">عربي</button> -->
-
                 </div>
                     <a href="index.html#demo" class="nav-link">Our Air Quality</a>
                     <a href="index.html#section2" class="nav-link">Insights</a>
@@ -68,16 +59,6 @@
                     <a href="index.html#section4" class="nav-link">FAQ</a>
                     <a href="index.html#section5" class="nav-link">Contact Us</a>
                     <div   id="language-toggle1-btn" class="toggleLanguageBtn toggle-text-mobile" onclick="toggleChangeLanguage()" >عربي</div>
-                    <!-- <div class="d-md-none" style="display: flex; margin-top: 5px;">
-                        <a class="nav-link mobile mobile-language">LANGUAGE:</a>
-                        <div class="switch1">
-                            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                                type="checkbox" onchange="toggleChangeLanguage(this)">
-                            <label for="toggleLanguageBtn"></label>
-                            <span class="on">EN</span>
-                            <span class="off">AR</span>
-                        </div>
-                    </div> -->
                 </div>
                 <!-- End 05-April-24 -->
                 <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
@@ -97,14 +78,6 @@
                         <li class="nav-item" data-menuanchor="slide5">
                             <a class="nav-link" href="index.html#slide5">Contact Us</a>
                         </li>
-                        <!-- <div class="switch1 d-none d-sm-none d-md-block">
-                            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1" type="checkbox">
-                            <label for="toggleLanguageBtn"></label>
-                            <span class="on">EN</span>
-                            <span class="off">AR</span>
-                            <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
-                            
-                        </div> -->
                     </ul>
                     <button type="button" class="close header-close-icon d-block d-sm-block d-md-none"
                         aria-label="Close">
@@ -115,15 +88,6 @@
                     <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
                     
                 </div>
-           
-                <!-- ================================Sachin html for Search start 03-April-24 ===================== -->
-                <!-- <div class="switch1">
-                    <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                        type="checkbox">
-                    <label for="toggleLanguageBtn"></label>
-                    <span class="on">EN</span>
-                    <span class="off">AR</span>
-                </div> -->
                 <div class="search-block">
                     <!-- <button class="btn btn-nobg mobicon-search pt-0" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainSearch" aria-expanded="false" aria-controls="mainSearch"> -->
@@ -762,128 +726,116 @@
             const toggleBtn2 = document.getElementById('language-toggle1-btn')
             const dynamicHeading = document.getElementById("dynamic-heading");
             const faqsection = document.getElementById("faq-section");
-            let isEnglish = true;
+            let isEnglish = localStorage.getItem('language') !== 'arabic';
+            setLanguageContent(isEnglish ? 'english' : 'arabic');
+            toggleBtn.addEventListener('click', toggleLanguage);
+            toggleBtn2.addEventListener('click', toggleLanguage);
+
+            function toggleLanguage() {
+            isEnglish = !isEnglish;
+            const language = isEnglish ? 'english' : 'arabic';
+            localStorage.setItem('language', language);
+            setLanguageContent(language);
+        }
+
+        function updateLanguage(isEnglish) {
+            if (isEnglish) {
+                updateMenuEnglish();
+            } else {
+                updateMenuArabic();
+            }
+            document.body.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
+        }
+
             function updateMenuArabic() {
                 $('.switch1 > span.on').addClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer,.copy-rights a, .dropdown .dropdown-item, .dropdown button').forEach(item => {
-                    const text = item.textContent.trim();
-                    switch (text) {
-                        case 'Our Air Quality': item.textContent = 'جودة هواءنا';
-                            break;
-                        case 'Insights':
-                            item.textContent = 'رؤيتنا';
-                            break;
-                        case 'Projects':
-                            item.textContent = 'المشاريع';
-                            break;
-                        case 'FAQ':
-                            item.textContent ='الأسئلة الشائعة';
-                            break;
-                        case 'Contact Us':
-                            item.textContent = 'اتصل بنا';
-                            break;
-                        case 'Health Recommendation':
-                            item.textContent = 'التوصيات الصحية';
-                            break;
+            translateMenuText({
+                'Our Air Quality': 'جودة هواءنا',
+                'Insights': 'رؤيتنا',
+                'Projects': 'المشاريع',
+                'FAQ': 'الأسئلة الشائعة',
+                'Contact Us': 'اتصل بنا',
+                'Health Recommendation': 'التوصيات الصحية',
+                'AQI and Pollutant Trends': 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات',
+                'Our Air Analytics': 'تحليلنا لجودة الهواء',
+                'Station AQI and Pollutants Trends': 'محطة AQI واتجاهات الملوثات',
+                'Privacy Policy': 'سياسة الخصوصية',
+                'Terms of Use': 'شروط الاستخدام',
+                'Copyrights': 'حقوق النشر'
+            });
+            applyArabicStyles();
+            addArabicLinkActiveClass();
+        }
 
-                        case 'AQI and Pollutant Trends':
-                            item.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
-                            break;
-                        case 'Our Air Analytics':
-                            item.textContent = 'تحليلنا لجودة الهواء';
-                            break;
-                        case 'Station AQI and Pollutants Trends':
-                            item.textContent = 'محطة AQI واتجاهات الملوثات';
-                            break;
-                        case 'Contact Us':
-                            item.textContent = 'اتصل بنا';
-                            break;
-                        case 'Privacy Policy':
-                            item.textContent = 'سياسة الخصوصية';
-                            break;
-                        case 'Terms of Use':
-                            item.textContent = 'شروط الاستخدام';
-                            break;
-                        case 'Copyrights':
-                            item.textContent = 'حقوق النشر';
-                            break;
-                    }
-                })
-                addArabicLinkActiveClass();
-                const navMobileNew = document.querySelector('.navmobile-new');
+        function applyArabicStyles() {
+            const navMobileNew = document.querySelector('.navmobile-new');
       navMobileNew.style.left = '10px';
       navMobileNew.style.right = 'auto';
 
       const footerMenuUi = document.querySelector('.copy-right-contents');
 footerMenuUi.style.setProperty('margin-right', '-38px');
-            }
-            function updateMenuEnglish() {
-                $('.switch1 > span.on').removeClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown .dropdown-item, .dropdown button').forEach(item => {
-                    const text = item.textContent.trim();
-                    switch (text) {
-                        case 'جودة هواءنا': item.textContent = 'Our Air Quality';
-                            break;
-                        case 'رؤيتنا':
-                            item.textContent = 'Insights';
-                            break;
-                        case 'المشاريع':
-                            item.textContent = 'Projects';
-                            break;
-                        case 'الأسئلة الشائعة':
-                            item.textContent = 'FAQ';
-                            break;
-                        case 'اتصل بنا':
-                            item.textContent = 'Contact Us';
-                            break;
-                        case 'التوصيات الصحية':
-                            item.textContent = 'Health Recommendation';
-                            break;
+        }
 
-                        case 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات':
-                            item.textContent = 'AQI and Pollutant Trends';
-                            break;
-
-                        case 'تحليلنا لجودة الهواء':
-                            item.textContent = 'Our Air Analytics';
-                            break;
-
-                        case 'محطة AQI واتجاهات الملوثات':
-                            item.textContent = 'Station AQI and Pollutants Trends';
-                            break;
-                        case 'اتصل بنا':
-                            item.textContent = 'Contact Us';
-                            break;
-                        case 'سياسة الخصوصية':
-                            item.textContent = 'Privacy Policy';
-                            break;
-                        case 'شروط الاستخدام':
-                            item.textContent = 'Terms of Use';
-                            break;
-                        case 'حقوق النشر':
-                            item.textContent = 'Copyrights';
-                            break;
-                    }
-
-                })
-                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
-                const navMobileNew = document.querySelector('.navmobile-new');
+        function applyEnglishStyles() {
+            const navMobileNew = document.querySelector('.navmobile-new');
                      navMobileNew.style.right = '10px';
                     navMobileNew.style.left = 'auto';
 
                     const footerMenuUi = document.querySelector('.copy-right-contents');
                     footerMenuUi.style.removeProperty('margin-right');
+        }
+
+
+            
+            function updateMenuEnglish() {
+                $('.switch1 > span.on').removeClass('arabic-switch1');
+            translateMenuText({
+                'جودة هواءنا': 'Our Air Quality',
+                'رؤيتنا': 'Insights',
+                'المشاريع': 'Projects',
+                'الأسئلة الشائعة': 'FAQ',
+                'اتصل بنا': 'Contact Us',
+                'التوصيات الصحية': 'Health Recommendation',
+                'مؤشر جودة الهواء (AQI) واتجاهات الملوثات': 'AQI and Pollutant Trends',
+                'تحليلنا لجودة الهواء': 'Our Air Analytics',
+                'محطة AQI واتجاهات الملوثات': 'Station AQI and Pollutants Trends',
+                'سياسة الخصوصية': 'Privacy Policy',
+                'شروط الاستخدام': 'Terms of Use',
+                'حقوق النشر': 'Copyrights'
+            });
+            applyEnglishStyles();
             }
 
+            function translateMenuText(translations) {
+            document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none, .insights-footer, .footer_link a, .contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
+                const text = item.textContent.trim();
+                if (translations[text]) {
+                    item.textContent = translations[text];
+                }
+            });
+        }
 
-            toggleBtn.addEventListener('click', () => {
-                if (isEnglish) {
-                    document.body.classList.toggle('arabic-mode');
-                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
-                    toggleBtn.classList.add('english-style');
-                    toggleBtn.textContent = 'English';
-                    dynamicHeading.textContent = 'شروط الاستخدام';
+        function addArabicLinkActiveClass() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+                    if (!isEnglish) link.classList.add('active-arabic');
+                });
+            });
+        }
+
+        function setLanguageContent(language) {
+            if (language === 'arabic') {
+                document.body.classList.add('arabic-mode');
+                document.body.setAttribute('dir', 'rtl');
+
+                toggleBtn.textContent = 'English';
+                toggleBtn2.textContent = 'English';
+                toggleBtn.classList.add('english-style');
+                $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
+
+                dynamicHeading.textContent = 'شروط الاستخدام';
                     faqsection.innerHTML = `  <div class="row">
                     <div class="col-lg-4">
                         <h4 class="me-4 mt-2" id="dynamic-heading">شروط الاستخدام</h4>
@@ -934,24 +886,23 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
                 </div>`
 
                     $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2'); $('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9'); $('.me-4').removeClass('me-4').addClass('ms-4');
-
-                    // faqsection.style.direction='rtl';
-                    document.body.setAttribute('dir', 'rtl');
-                    updateMenuArabic();
                     $('.footer-logo').addClass('footer-logo-arabic');
         $('.footer-social-icons').addClass('social-media-icons');
         $('.copy-right-para').addClass('copy-right-para-footer');
-                }
-                else {
-                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
-                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
-                    document.body.classList.remove('arabic-mode');
-                    $('.footer-logo').removeClass('footer-logo-arabic');
+                updateMenuArabic();
+            } else {
+                document.body.classList.remove('arabic-mode');
+                document.body.setAttribute('dir', 'ltr');
+
+                toggleBtn.textContent = 'عربي';
+                toggleBtn2.textContent = 'عربي';
+                toggleBtn.classList.remove('english-style');
+                $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                $('.footer-logo').removeClass('footer-logo-arabic');
                  $('.footer-social-icons').removeClass('social-media-icons');
     $('.copy-right-para').removeClass('copy-right-para-footer');
-                    toggleBtn.classList.remove('english-style');
-                    toggleBtn.textContent ='عربي';
-                    dynamicHeading.textContent = 'Terms of use';
+    dynamicHeading.textContent = 'Terms of use';
                     faqsection.innerHTML = `<div class="row">
                     <div class="col-lg-4">
                         <h4 class="me-4 mt-2" id="dynamic-heading">Terms of use</h4>
@@ -996,150 +947,10 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
 
                     </div>
                 </div>`
-                    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-                    // faqsection.style.direction='ltr';
-                    document.body.setAttribute('dir', 'ltr');
-                    updateMenuEnglish()
-
-
-                }
-                isEnglish = !isEnglish;
-            });
-            toggleBtn2.addEventListener('click', () => {
-                if (isEnglish) {
-                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
-                    document.body.classList.toggle('arabic-mode');
-                    toggleBtn.textContent = 'English';
-                    dynamicHeading.textContent = 'شروط الاستخدام';
-                    faqsection.innerHTML = `  <div class="row">
-                    <div class="col-lg-4">
-                        <h4 class="me-4 mt-2" id="dynamic-heading">شروط الاستخدام</h4>
-                    </div>
-                    <div class="col-lg-8">
-                        
-                        <div class="scrollPolicyShow-term" id="dynamic-content" onscroll="adjustOpacity()">
-                            <p class="contact-content w-95">
-                           من خلال الوصول إلى هذا الموقع، يُعتبر المستخدم قد قبل جميع الشروط والأحكام المذكورة أدناه. تخضع هذه الشروط وتُفسر وفقًا لقواعد وأنظمة هيئة البيئة – أبوظبي، وتلتزم في جميع الأوقات بالقوانين المعمول بها في دولة الإمارات العربية المتحدة. تنقسم الشروط والأحكام المتعلقة باستخدام هذا الموقع إلى عدة أقسام: "شروط الاستخدام"، "سياسة الخصوصية"، "ملفات تعريف الارتباط" و"حقوق النشر". تشكل هذه الأقسام مجتمعة "الشروط والأحكام". تحدد الشروط والأحكام، التي يتم تعديلها بشكل أحادي من قبل هيئة البيئة – أبوظبي من وقت لآخر، الأساس الذي يمكنك من خلاله استخدام هذا الموقع.                            </p>
-                            <div class="mb-4">
-                                <h6 class="w-95">1. من خلال استخدامك لهذا الموقع، يُعتبر أنك قد قرأت ووافقت على الشروط والأحكام التالية:</h6>
-                                <p class="contact-content w-95">
-                               تنطبق المصطلحات التالية على هذه الشروط والأحكام: "المستخدم"، "أنتَ"، و"كافُ المُخَاطَب" تشير إلى الشخص الذي يصل إلى هذا الموقع ويقبل شروط وأحكام هيئة البيئة – أبوظبي. "الهيئة"، "نحنُ"، "أَنْفُسنا" و"لَنا"، تشير إلى هيئة البيئة – أبوظبي ("EAD").تشير جميع المصطلحات إلى حق المستخدم في الوصول إلى هذا الموقع الإلكتروني، والذي نوفره له بطريقة ملائمة، مع مراعاة الالتزام بالقوانين السارية والمعمول بها في دولة الإمارات العربية المتحدة وإمارة أبوظبي. يُعتبر أي استخدام للمصطلحات المذكورة أعلاه أو كلمات أخرى مثل صيغة المفرد أو الجمع، و/أو،  هو/هي أو هم، قابلاً للاستبدال، وبالتالي يُفهم على أنه يشير إلى نفس المعنى. تمثل هذه الشروط العامة، الأحكام والشروط التي نعرض بموجبها: النصوص، قواعد البيانات، التنسيقات، الوثائق، الأعمال الرسومية والكتابية، وجميع المواد الأخرى المتاحة على هذا الموقع ("المحتوى"). وهي الأساس الذي نمنح بموجبه حق الوصول إليها. نرجو منك قراءتها بعناية
-
-
-                                </p>
-                            </div>
-                            <div class="mb-4">
-                                <h6 class="w-95">2. هذا الموقع مخصص للاستخدام الشخصي. من خلال الوصول إلى هذا الموقع، فإنك توافق على:</h6>
-                               <ul class="greyColor w-95 text-justify">
-                               <li>عدم استخدام هذا الموقع أو محتواه بما يتعارض مع أي تنظيم أو تشريع.</li>
-<li>عدم نسخ المحتوى أو تعديله أو إعادة إنتاجه أو توزيعه، أو الكشف عن المحتوى لأطراف أخرى، بخلاف ما يتوافق مع قسم حقوق الطبع والنشر الخاص بنا.</li>
-<li>عدم الإعلان عن أو بيع أي سلع أو خدمات لمستخدمين آخرين لهذا الموقع أو الاستفادة تجارياً من محتواه./li>
-<li>أنت مسؤول عن أي مادة ترسلها أو تحملها على هذا الموقع وأن هذه المواد قانونية وليست مسيئة ولا تنتهك حقوقنا أو حقوق الجهات الأخرى أو أحكام الشروط والأحكام.</li>
-
-                               </ul>
-                            </div>
-                            <div class="mb-4">
-                                <h6 class="">3. إخلاء المسؤولية</h6>
-                               <ul class="greyColor w-95 text-justify">
-                               <li>يقدم هذا الموقع معلومات شاملة عن هيئة البيئة - أبوظبي</li>
-<li>يتكون الموقع من روابط لمعلومات منشورة على مواقع خارجية، ولا تضمن الهيئة دقة المحتوى وضماناته وشروطه، حيث إنها مسؤولية المواقع الإلكترونية المعنية. علاوة على ذلك، يتم نشر جميع المعلومات المتوفرة على الموقع الإلكتروني لهيئة البيئة كما وردت من المصادر المعنية.</li>
-<li>قد تتم مراجعة المحتوى أو تعديله أو حذفه من حين لآخر، دون أي إشعار.</li>
-<li>النسخ الإلكترونية لوثائق هيئة البيئة – أبوظبي المنشورة على هذا الموقع هي لأغراض المعلومات فقط.</li>
-<li>النسخة النهائية لأي وثيقة من وثائق هيئة البيئة – أبوظبي هي النسخة الأصلية المطبوعة والمعتمدة التي تحتفظ بها الهيئة. في حالة وجود أي اختلاف بين المستندات، فإن النسخة التي تحتفظ بها الهيئة تكون لها الأولوية على أي نسخة أخرى.</li>
-
-<li>ربما يتم نشر المحتوى باللغتين الإنجليزية والعربية. كلما كانت هناك أي اختلافات بين نسختي نفس المعلومات باللغتين، يجب أن تكون النسخة النهائية هي نسخة اللغة التي صدرت بها المعلومات في الأصل.</li>
-
-<li>لن تتحمل الهيئة، تحت أي ظرف من الظروف، المسؤولية عن أي أضرار أو إصابة تنجم عن استخدام المواد الموجودة على هذا الموقع، ويجب على المستخدم تعويض الهيئة لجميع الالتزامات الناتجة عن فشل المستخدم في مراعاة هذه الشروط والأحكام.</li>
-
-<li>لا توجد مسؤولية عن أي أضرار مباشرة أو غير مباشرة نتيجة زيارة أو استخدام موقع الهيئة.</li>
-
-                               </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>`
-
-                    $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2'); $('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9'); $('.me-4').removeClass('me-4').addClass('ms-4');
-
-                    // faqsection.style.direction='rtl';
-                    document.body.setAttribute('dir', 'rtl');
-                    updateMenuArabic();
-                }
-                else {
-                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
-                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
-                    document.body.classList.remove('arabic-mode');
-                    toggleBtn.textContent ='عربي';
-                    dynamicHeading.textContent = 'Terms of use';
-                    faqsection.innerHTML = `<div class="row">
-                    <div class="col-lg-4">
-                        <h4 class="me-4 mt-2" id="dynamic-heading">Terms of use</h4>
-                    </div>
-                    <div class="col-lg-8">
-                        
-                        <div class="scrollPolicyShow-term" id="dynamic-content" onscroll="adjustOpacity()">
-                            <p class="contact-content w-95">
-                              By accessing this website, User will be deemed to have accepted all the terms and conditions mentioned below. These terms are governed by and interpreted in line with EAD rules and regulations and at all times in compliance with the applicable laws of the UAE. The Terms & Conditions relating to use of this website are divided into a number of sections: “Terms of Use, “Privacy Policy”, “Cookies” and “Copyright”. Together, these sections form the “Terms & Conditions”. The Terms & Conditions, as amended unilaterally by the Environment Agency – Abu Dhabi from time to time, set out the basis on which you may use this website.
-                            </p>
-                            <div class="mb-4">
-                                <h6 class="w-95">1. In using this website, you are deemed to have read and agreed to the following Terms & Conditions:</h6>
-                                <p class="contact-content w-95">
-                                The following terminology applies to these Terms & Conditions: "User", “You” and “Your” refers to you, the person accessing this website and accepting the EAD’s Terms & Conditions. "EAD", “Ourselves”, “We” and "Us", refers to the Environment Agency – Abu Dhabi (“EAD”). All terms refer to accessing this website granted to the User by Us in the most appropriate manner, in accordance with and subject to, prevailing laws of the United Arab Emirates and the Emirate of Abu Dhabi. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to it. These Terms of Use are the Terms & Conditions on which we provide the text, database, format, documents, graphic and written work and all other materials published on this website (the "Content") and the basis on which we allow access to it. Please read them carefully.
-                                    
-                                </p>
-                            </div>
-                            <div class="mb-4">
-                                <h6 class="w-95">2. This website is for your own private use. By accessing this website, you agree:</h6>
-                               <ul class="greyColor w-95 text-justify">
-                                <li>not to use this website or its Content in contravention of any regulation or legislation;</li>
-                                <li>not to copy, amend, reproduce or distribute the Content, or disclose the Content to third parties, other than in compliance with our Copyright section.</li>
-                                <li>not to advertise or sell any goods or services to other users of this website or to benefit commercially from its Content; and</li>
-                                <li>that you are responsible for any material you send to or upload to this website and that such material is legal, is not offensive and it does not infringe our rights, those of third parties or the provisions of the Terms & Conditions.</li>
-                               
-                               </ul>
-                            </div>
-                            <div class="mb-4">
-                                <h6 class=""> 3. Disclaimer </h6>
-                               <ul class="greyColor w-95 text-justify">
-                                <li>This website provides comprehensive information about EAD.</li>
-                                <li>The website consists of links to information published on external websites, EAD does not guarantee the accuracy of the Content, as well as its warranties and conditions, since it is the responsibility of the concerned websites. Moreover, all information available on EAD’s website is published as received from the respective sources.</li>
-                                <li>The Content may be revised, amended, or deleted occasionally, without any notice.</li>
-                                <li>The electronic versions of EAD documents published on this website are for information purposes only.</li>
-                                <li>The definitive version of any EAD document is the original printed and approved version held by EAD. In the case of any difference between documents, the version so held by the EAD shall take precedence over any other version.</li>
-                                <li>The Content may have been published in both English and in Arabic. Whenever there are any differences between the two language versions of the same information, the definitive version shall be the language version in which the information was originally issued.</li>
-                                <li>Under no circumstances will EAD be liable for any damages or injury that result from the use of the materials on this website and the user shall indemnify EAD from and against all liabilities resulting from the user's failure to observe these terms and conditions.</li>
-                                <li>There is no liability for any direct or indirect damages as a result of visiting or using EAD website.</li>
-                               </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>`
-                    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-                    // faqsection.style.direction='ltr';
-                    document.body.setAttribute('dir', 'ltr');
-                    updateMenuEnglish()
-
-
-                }
-                isEnglish = !isEnglish;
-            });
-        });
-
-        function addArabicLinkActiveClass() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            // Remove active class from other links
-            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
-            // Add active class to the clicked link
-            if (currentLanguage === 'arabic') {
-                link.classList.add('active-arabic');
+                updateMenuEnglish();
             }
-        });
+        }
     });
-}
     </script>
 
 </body>

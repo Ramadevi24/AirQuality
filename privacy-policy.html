@@ -64,7 +64,7 @@
             <a href="index.html#section3" class="nav-link mobile">Projects</a>
             <a href="index.html#section4" class="nav-link mobile">FAQ</a>
             <a href="index.html#section5" class="nav-link mobile">Contact Us</a>
-            <div   id="language-toggle1-btn" class="toggleLanguageBtn toggle-text-mobile" onclick="toggleChangeLanguages()" >عربي</div>
+            <div id="language-toggle1-btn" class="toggleLanguageBtn toggle-text-mobile" onclick="toggleChangeLanguages()" >عربي</div>
             <!-- <div class="d-md-none" style="display: flex; margin-top: 5px;">
                 <a class="nav-link mobile mobile-language">LANGUAGE:</a>
                 <div class="switch1">
@@ -468,429 +468,259 @@
     }
      </script>
 
-
 <script>
-    document.addEventListener('DOMContentLoaded', () =>{
-        const tog_btn =  document.getElementById('ltoggleLanguageBtn');
+    document.addEventListener('DOMContentLoaded', () => {
+        const tog_btn = document.getElementById('ltoggleLanguageBtn');
         const tog_btn2 = document.getElementById('language-toggle1-btn');
         const dyn_hd = document.getElementById('dynamic-heading');
-        const faq_sec =  document.getElementById('faq-section');
-        let isEnglish = true;
+        const faq_sec = document.getElementById('faq-section');
+        let isEnglish = localStorage.getItem('language') !== 'arabic';
+        
+        setLanguageContent(isEnglish ? 'english' : 'arabic');
 
-        function updateMenuArabic(){
-            $('.switch1 > span.on').addClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer,.copy-rights a, .dropdown button, .dropdown .dropdown-item').forEach(item=>{
-                    const text=item.textContent.trim();
-                    switch(text){
-                        case 'Our Air Quality':item.textContent='جودة هواءنا';
-                        break;
-                        case 'Insights':
-                        item.textContent = 'رؤيتنا';
-                        break;
-                        case 'Projects':
-                        item.textContent= 'المشاريع';
-                        break;
-                    case 'FAQ':
-                    item.textContent = 'الأسئلة الشائعة';
-                        break;
-                    case 'Contact Us':
-                    item.textContent = 'اتصل بنا';
-                        break;
-                        case 'Health Recommendation':
-                        item.textContent = 'التوصيات الصحية';
-                        break;
+        tog_btn.addEventListener('click', toggleLanguage);
+        tog_btn2.addEventListener('click', toggleLanguage);
 
-                    case 'AQI and Pollutant Trends':
-                    item.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
-                        break;
-                    case 'Our Air Analytics':
-                    item.textContent= 'تحليلنا لجودة الهواء';
-                        break;  
-                    case 'Station AQI and Pollutants Trends':
-                    item.textContent = 'محطة AQI واتجاهات الملوثات';
-                        break;
-                        case 'Contact Us':
-                        item.textContent='اتصل بنا';
-                        break;
-                    case 'Privacy Policy':
-                    item.textContent = 'سياسة الخصوصية';
-                        break;
-                    case 'Terms of Use':
-                    item.textContent = 'شروط الاستخدام';
-                        break;
-                    case 'Copyrights':
-                    item.textContent ='حقوق النشر';
-                        break;
-                    }
-            })
-            addArabicLinkActiveClass();
-            const navMobileNew = document.querySelector('.navmobile-new');
-      navMobileNew.style.left = '10px';
-      navMobileNew.style.right = 'auto';
-
-      const blueHideIcons = document.querySelectorAll('.blue-hide');
-blueHideIcons.forEach(icon => {
-    icon.style.setProperty('left', '37px', 'important');
-    icon.style.setProperty('right', 'auto', 'important');
-});
-
-const footerMenuUi = document.querySelector('.copy-right-contents');
-footerMenuUi.style.setProperty('margin-right', '-38px');
-
-
-// This removes the margin-right style
-
-            }
-            function updateMenuEnglish(){
-                $('.switch1 > span.on').removeClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer,.copy-rights a, .dropdown button, .dropdown .dropdown-item').forEach(item=>{
-                    const text=item.textContent.trim();
-                    switch(text){
-                        case 'جودة هواءنا':item.textContent='Our Air Quality';
-                        break;
-                        case  'رؤيتنا': 
-                        item.textContent ='Insights';
-                        break;
-                        case 'المشاريع':
-                        item.textContent= 'Projects' ;
-                        break;
-                    case 'الأسئلة الشائعة':
-                    item.textContent = 'FAQ';
-                        break;
-                    case 'اتصل بنا':
-                    item.textContent = 'Contact Us';
-                        break;
-                        case 'التوصيات الصحية':
-                        item.textContent= 'Health Recommendation';
-                        break;
-
-                    case 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات':
-                    item.textContent = 'AQI and Pollutant Trends';
-                        break;
-
-                    case 'تحليلنا لجودة الهواء':
-                    item.textContent = 'Our Air Analytics';
-                        break;
-
-                    case 'محطة AQI واتجاهات الملوثات':
-                    item.textContent = 'Station AQI and Pollutants Trends';
-                        break;
-                        case 'اتصل بنا':
-                        item.textContent = 'Contact Us';
-                        break;
-                    case 'سياسة الخصوصية':
-                        item.textContent = 'Privacy Policy';
-                        break;
-                    case 'شروط الاستخدام':
-                        item.textContent = 'Terms of Use';
-                        break;
-                    case 'حقوق النشر':
-                        item.textContent = 'Copyrights';
-                        break;
-                    }
-
-            })
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
-            const navMobileNew = document.querySelector('.navmobile-new');
-                     navMobileNew.style.right = '10px';
-                    navMobileNew.style.left = 'auto';
-
-                    const footerMenuUi = document.querySelector('.copy-right-contents');
-                    footerMenuUi.style.removeProperty('margin-right');
-
-
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            const language = isEnglish ? 'english' : 'arabic';
+            localStorage.setItem('language', language);
+            setLanguageContent(language);
         }
 
+        function updateLanguage(isEnglish) {
+            if (isEnglish) {
+                updateMenuEnglish();
+            } else {
+                updateMenuArabic();
+            }
+            document.body.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
+        }
 
-        tog_btn.addEventListener('click', () => {
-            if(isEnglish) {
+        function updateMenuArabic() {
+            $('.switch1 > span.on').addClass('arabic-switch1');
+            translateMenuText({
+                'Our Air Quality': 'جودة هواءنا',
+                'Insights': 'رؤيتنا',
+                'Projects': 'المشاريع',
+                'FAQ': 'الأسئلة الشائعة',
+                'Contact Us': 'اتصل بنا',
+                'Health Recommendation': 'التوصيات الصحية',
+                'AQI and Pollutant Trends': 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات',
+                'Our Air Analytics': 'تحليلنا لجودة الهواء',
+                'Station AQI and Pollutants Trends': 'محطة AQI واتجاهات الملوثات',
+                'Privacy Policy': 'سياسة الخصوصية',
+                'Terms of Use': 'شروط الاستخدام',
+                'Copyrights': 'حقوق النشر'
+            });
+            applyArabicStyles();
+            addArabicLinkActiveClass();
+        }
+
+        function applyArabicStyles() {
+            const navMobileNew = document.querySelector('.navmobile-new');
+            navMobileNew.style.left = '10px';
+            navMobileNew.style.right = 'auto';
+
+            const blueHideIcons = document.querySelectorAll('.blue-hide');
+            blueHideIcons.forEach(icon => {
+                icon.style.setProperty('left', '37px', 'important');
+                icon.style.setProperty('right', 'auto', 'important');
+            });
+
+            const footerMenuUi = document.querySelector('.copy-right-contents');
+            footerMenuUi.style.setProperty('margin-right', '-38px');
+        }
+
+        function applyEnglishStyles() {
+            const navMobileNew = document.querySelector('.navmobile-new');
+            navMobileNew.style.right = '10px';
+            navMobileNew.style.left = 'auto';
+
+            const footerMenuUi = document.querySelector('.copy-right-contents');
+            footerMenuUi.style.removeProperty('margin-right');
+        }
+
+        function updateMenuEnglish() {
+            $('.switch1 > span.on').removeClass('arabic-switch1');
+            translateMenuText({
+                'جودة هواءنا': 'Our Air Quality',
+                'رؤيتنا': 'Insights',
+                'المشاريع': 'Projects',
+                'الأسئلة الشائعة': 'FAQ',
+                'اتصل بنا': 'Contact Us',
+                'التوصيات الصحية': 'Health Recommendation',
+                'مؤشر جودة الهواء (AQI) واتجاهات الملوثات': 'AQI and Pollutant Trends',
+                'تحليلنا لجودة الهواء': 'Our Air Analytics',
+                'محطة AQI واتجاهات الملوثات': 'Station AQI and Pollutants Trends',
+                'سياسة الخصوصية': 'Privacy Policy',
+                'شروط الاستخدام': 'Terms of Use',
+                'حقوق النشر': 'Copyrights'
+            });
+            applyEnglishStyles();
+        }
+
+        function setLanguageContent(language) {
+            if (language === 'arabic') {
+                document.body.classList.add('arabic-mode');
+                document.body.setAttribute('dir', 'rtl');
+
+                tog_btn.textContent = 'English';
+                tog_btn2.textContent = 'English';
+                tog_btn.classList.add('english-style');
                 $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                document.body.classList.toggle('arabic-mode');
-                tog_btn.classList.add('english-style'); 
-                tog_btn.textContent = "English"
-                dyn_hd.textContent = "قسم الأسئلة الشائعة"
-                faq_sec.innerHTML = `<div class="row">
-            <div class="col-lg-4">
-                <h4 class="me-4 mt-2" id="dynamic-heading">قسم الأسئلة الشائعة</h4>
-            </div>
-            <div class="col-lg-8">
-                <div class="scrollPolicyShow" onscroll="adjustOpacity()">
-                    <p class="contact-content w-95">
-                       سياسة الخصوصية هذه توضح كيفية جمع واستخدام وكشف وحماية معلوماتك الشخصية عند استخدامك لخدماتنا. نحن ملتزمون بحماية خصوصيتك وضمان أمان بياناتك الشخصية.             
-                    </p>
-                  <div class="mb-4">
-                    <h6 class="">1. المعلومات التي نجمعها</h6>
-                    <p class="contact-content w-95">
-                        
-
-قد نجمع معلومات شخصية مثل اسمك، عنوان بريدك الإلكتروني، تفاصيل الاتصال، وأي معلومات أخرى تقدمها لنا طوعًا. بالإضافة إلى ذلك، قد نجمع تلقائيًا بعض المعلومات عندما تستخدم خدماتنا، بما في ذلك عنوان IP الخاص بك، نوع المتصفح، معرفات الجهاز، وبيانات الاستخدام.
-                    </p>
-                  </div>  
-                  <div class="mb-4">
-                      <h6 class="">2. كيف نستخدم معلوماتك</h6>
-                      <p class="contact-content w-95">
-                         لا نقوم ببيع أو تبادل أو نقل معلوماتك الشخصية إلى أطراف ثالثة دون موافقتك، باستثناء ما هو موصوف في سياسة الخصوصية هذه. قد نشارك معلوماتك مع مزودي خدمات موثوقين من الأطراف الثالثة الذين يساعدوننا في تشغيل منصتنا، أو إدارة أعمالنا، أو تقديم الخدمات لك.</p>
-                  </div>  
-            
-                  <div class="mb-4">
-                      <h6 class=""> 3. أمان البيانات </h6>
-                      <p class="contact-content w-95">
-                        ننفذ تدابير فنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به، أو التغيير، أو الكشف، أو التدمير. ومع ذلك، يرجى أن تكون على علم بأنه لا توجد طريقة نقل عبر الإنترنت أو تخزين إلكتروني آمنة بنسبة 100%، ولا يمكننا ضمان الأمان المطلق.</p>            
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 4. حقوقك</h6>
-                      <p class="contact-content w-95">
-                          لديك الحق في الوصول إلى معلوماتك الشخصية التي نحتفظ بها، وتصحيحها، أو حذفها. قد يكون لديك أيضًا الحق في تقييد أو الاعتراض على بعض أنشطة المعالجة أو الحصول على نسخة من بياناتك بتنسيق منظم وقابل للقراءة آليًا. إذا كان لديك أي أسئلة أو طلبات تتعلق بمعلوماتك الشخصية، يرجى الاتصال بنا باستخدام المعلومات المقدمة أدناه. </p>           
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 5. خصوصية الأطفال</h6>
-                      <p class="contact-content w-95">
-                         خدماتنا ليست موجهة للأطفال دون سن 13 عامًا، ولا نقوم عن علم بجمع معلومات شخصية من الأطفال. إذا كنت ولي أمر أو وصيًا وتعتقد أن طفلك قد زودنا بمعلومات شخصية، يرجى الاتصال بنا، وسنتخذ خطوات لإزالة تلك المعلومات من أنظمتنا.         
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 6.التغييرات على سياسة الخصوصية هذه</h6>
-                      <p class="contact-content w-95">
-                         نحتفظ بالحق في تحديث أو تعديل سياسة الخصوصية هذه في أي وقت. ستكون أي تغييرات سارية المفعول على الفور عند نشر سياسة الخصوصية المعدلة في هذه الصفحة. نشجعك على مراجعة سياسة الخصوصية هذه بشكل دوري للاطلاع على أي تحديثات.               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 7.اتصل بنا</h6>
-                      <p class="contact-content w-95">
-                         إذا كان لديك أي أسئلة أو استفسارات بشأن سياسة الخصوصية أو ممارساتنا المتعلقة بمعلوماتك الشخصية، يرجى الاتصال بنا على:
- customerhappiness@ead.gov.ae or 800555               
-                  </div> 
-                </div>
-                  
-            </div>
-        </div>`
-        // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');$('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9');$('.me-4').removeClass('me-4').addClass('ms-4');
-        // faq_sec.style.direction='rtl';
-        document.body.setAttribute('dir', 'rtl');
-        updateMenuArabic();
-        $('.footer-logo').addClass('footer-logo-arabic');
-        $('.footer-social-icons').addClass('social-media-icons');
-        $('.copy-right-para').addClass('copy-right-para-footer');
-            }
-
-            else {
-                $('.footer-change-col').addClass('col-xl-3').removeClass('col-xl-2');
-                document.body.classList.remove('arabic-mode');
-                $('.footer-logo').removeClass('footer-logo-arabic');
-                 $('.footer-social-icons').removeClass('social-media-icons');
-    $('.copy-right-para').removeClass('copy-right-para-footer');
-                tog_btn.classList.remove('english-style');
-                tog_btn.textContent = "عربي"
-                dyn_hd.textContent = "Privacy Policy"
-                faq_sec.innerHTML = `<div class="row">
-            <div class="col-lg-4">
-                <h4 class="me-4 mt-2" id="dynamic-heading">Privacy Policy</h4>
-            </div>
-            <div class="col-lg-8">
-                <div class="scrollPolicyShow" onscroll="adjustOpacity()">
-                    <p class="contact-content w-95">
-                   This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you use our services. We are committed to safeguarding your privacy and ensuring the security of your personal data. 
-                    </p>
-                  <div class="mb-4">
-                    <h6 class=""> 1. Information We Collect</h6>
-                    <p class="contact-content w-95">
-                       We may collect personal information such as your name, email address, contact details, and any other information you provide to us voluntarily. Additionally, we may automatically collect certain information when you use our services, including your IP address, browser type, device identifiers, and usage data.
-                    </p>
-                  </div>  
-                  <div class="mb-4">
-                      <h6 class=""> 2. How We Use Your Information</h6>
-                      <p class="contact-content w-95">
-                        We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this Privacy Policy. We may share your information with trusted third-party service providers who assist us in operating our platform, conducting our business, or servicing you. </p>
-                  </div>  
-         
-                  <div class="mb-4">
-                      <h6 class=""> 3. Data Security</h6>
-                      <p class="contact-content w-95">
-                          We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.                
-
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 4. Your Rights</h6>
-                      <p class="contact-content w-95">
-                          You have the right to access, correct, or delete your personal information held by us. You may also have the right to restrict or object to certain processing activities or to receive a copy of your data in a structured, machine-readable format. If you have any questions or requests regarding your personal information, please contact us using the information provided below.               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 5. Children's Privacy </h6>
-                      <p class="contact-content w-95">
-                          Our services are not directed to children under the age of 13, and we do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us, and we will take steps to remove that information from our systems. </p>               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 6. Changes to this Privacy Policy. Changes to this Privacy Policy</h6>
-                      <p class="contact-content w-95">
-                          We reserve the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon posting the revised Privacy Policy on this page. We encourage you to review this Privacy Policy periodically for any updates                
-
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class="">7. Contact Us</h6>
-                      <p class="contact-content w-95">
-If you have any questions or concerns about this Privacy Policy or our practices regarding your personal information, please contact us at customerhappiness@ead.gov.ae or 
-800555.           
-                  </div> 
-                </div>
-                  
-            </div>
-        </div>`
-        // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-        // faq_sec.style.direction='ltr';
-        document.body.setAttribute('dir', 'ltr');
-        updateMenuEnglish()
-            }
-            isEnglish = !isEnglish;
-        })
-
-
-        tog_btn2.addEventListener('click', () => {
-            if(isEnglish) {
-                $('.footer-change-col').addClass('col-xl-2').removeClass('col-xl-3');
+                document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
+                dyn_hd.textContent = "قسم الأسئلة الشائعة";
+                faq_sec.innerHTML = `
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h4 class="me-4 mt-2" id="dynamic-heading">قسم الأسئلة الشائعة</h4>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="scrollPolicyShow" onscroll="adjustOpacity()">
+                                <p class="contact-content w-95">
+                                    سياسة الخصوصية هذه توضح كيفية جمع واستخدام وكشف وحماية معلوماتك الشخصية عند استخدامك لخدماتنا. نحن ملتزمون بحماية خصوصيتك وضمان أمان بياناتك الشخصية.
+                                </p>
+                                <div class="mb-4">
+                                    <h6>1. المعلومات التي نجمعها</h6>
+                                    <p class="contact-content w-95">
+                                        قد نجمع معلومات شخصية مثل اسمك، عنوان بريدك الإلكتروني، تفاصيل الاتصال، وأي معلومات أخرى تقدمها لنا طوعًا. بالإضافة إلى ذلك، قد نجمع تلقائيًا بعض المعلومات عندما تستخدم خدماتنا، بما في ذلك عنوان IP الخاص بك، نوع المتصفح، معرفات الجهاز، وبيانات الاستخدام.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>2. كيف نستخدم معلوماتك</h6>
+                                    <p class="contact-content w-95">
+                                        لا نقوم ببيع أو تبادل أو نقل معلوماتك الشخصية إلى أطراف ثالثة دون موافقتك، باستثناء ما هو موصوف في سياسة الخصوصية هذه. قد نشارك معلوماتك مع مزودي خدمات موثوقين من الأطراف الثالثة الذين يساعدوننا في تشغيل منصتنا، أو إدارة أعمالنا، أو تقديم الخدمات لك.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>3. أمان البيانات</h6>
+                                    <p class="contact-content w-95">
+                                        ننفذ تدابير فنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به، أو التغيير، أو الكشف، أو التدمير. ومع ذلك، يرجى أن تكون على علم بأنه لا توجد طريقة نقل عبر الإنترنت أو تخزين إلكتروني آمنة بنسبة 100%، ولا يمكننا ضمان الأمان المطلق.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>4. حقوقك</h6>
+                                    <p class="contact-content w-95">
+                                        لديك الحق في الوصول إلى معلوماتك الشخصية التي نحتفظ بها، وتصحيحها، أو حذفها. قد يكون لديك أيضًا الحق في تقييد أو الاعتراض على بعض أنشطة المعالجة أو الحصول على نسخة من بياناتك بتنسيق منظم وقابل للقراءة آليًا. إذا كان لديك أي أسئلة أو طلبات تتعلق بمعلوماتك الشخصية، يرجى الاتصال بنا باستخدام المعلومات المقدمة أدناه.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>5. خصوصية الأطفال</h6>
+                                    <p class="contact-content w-95">
+                                        خدماتنا ليست موجهة للأطفال دون سن 13 عامًا، ولا نقوم عن علم بجمع معلومات شخصية من الأطفال. إذا كنت ولي أمر أو وصيًا وتعتقد أن طفلك قد زودنا بمعلومات شخصية، يرجى الاتصال بنا، وسنتخذ خطوات لإزالة تلك المعلومات من أنظمتنا.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>6. التغييرات على سياسة الخصوصية هذه</h6>
+                                    <p class="contact-content w-95">
+                                        نحتفظ بالحق في تحديث أو تعديل سياسة الخصوصية هذه في أي وقت. ستكون أي تغييرات سارية المفعول على الفور عند نشر سياسة الخصوصية المعدلة في هذه الصفحة. نشجعك على مراجعة سياسة الخصوصية هذه بشكل دوري للاطلاع على أي تحديثات.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>7. اتصل بنا</h6>
+                                    <p class="contact-content w-95">
+                                        إذا كان لديك أي أسئلة أو استفسارات بشأن سياسة الخصوصية أو ممارساتنا المتعلقة بمعلوماتك الشخصية، يرجى الاتصال بنا على: customerhappiness@ead.gov.ae or 800555
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
                 
-                tog_btn.classList.add('english-style'); 
-                tog_btn.textContent = "English"
-                dyn_hd.textContent = "قسم الأسئلة الشائعة"
-                faq_sec.innerHTML = `<div class="row">
-            <div class="col-lg-4">
-                <h4 class="me-4 mt-2" id="dynamic-heading">قسم الأسئلة الشائعة</h4>
-            </div>
-            <div class="col-lg-8">
-                <div class="scrollPolicyShow" onscroll="adjustOpacity()">
-                    <p class="contact-content w-95">
-                       سياسة الخصوصية هذه توضح كيفية جمع واستخدام وكشف وحماية معلوماتك الشخصية عند استخدامك لخدماتنا. نحن ملتزمون بحماية خصوصيتك وضمان أمان بياناتك الشخصية.             
-                    </p>
-                  <div class="mb-4">
-                    <h6 class="">1. المعلومات التي نجمعها</h6>
-                    <p class="contact-content w-95">
-                        
+                $('.footer-logo').addClass('footer-logo-arabic');
+                $('.footer-social-icons').addClass('social-media-icons');
+                $('.copy-right-para').addClass('copy-right-para-footer');
 
-قد نجمع معلومات شخصية مثل اسمك، عنوان بريدك الإلكتروني، تفاصيل الاتصال، وأي معلومات أخرى تقدمها لنا طوعًا. بالإضافة إلى ذلك، قد نجمع تلقائيًا بعض المعلومات عندما تستخدم خدماتنا، بما في ذلك عنوان IP الخاص بك، نوع المتصفح، معرفات الجهاز، وبيانات الاستخدام.
-                    </p>
-                  </div>  
-                  <div class="mb-4">
-                      <h6 class="">2. كيف نستخدم معلوماتك</h6>
-                      <p class="contact-content w-95">
-                         لا نقوم ببيع أو تبادل أو نقل معلوماتك الشخصية إلى أطراف ثالثة دون موافقتك، باستثناء ما هو موصوف في سياسة الخصوصية هذه. قد نشارك معلوماتك مع مزودي خدمات موثوقين من الأطراف الثالثة الذين يساعدوننا في تشغيل منصتنا، أو إدارة أعمالنا، أو تقديم الخدمات لك.</p>
-                  </div>  
-            
-                  <div class="mb-4">
-                      <h6 class=""> 3. أمان البيانات </h6>
-                      <p class="contact-content w-95">
-                        ننفذ تدابير فنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به، أو التغيير، أو الكشف، أو التدمير. ومع ذلك، يرجى أن تكون على علم بأنه لا توجد طريقة نقل عبر الإنترنت أو تخزين إلكتروني آمنة بنسبة 100%، ولا يمكننا ضمان الأمان المطلق.</p>            
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 4. حقوقك</h6>
-                      <p class="contact-content w-95">
-                          لديك الحق في الوصول إلى معلوماتك الشخصية التي نحتفظ بها، وتصحيحها، أو حذفها. قد يكون لديك أيضًا الحق في تقييد أو الاعتراض على بعض أنشطة المعالجة أو الحصول على نسخة من بياناتك بتنسيق منظم وقابل للقراءة آليًا. إذا كان لديك أي أسئلة أو طلبات تتعلق بمعلوماتك الشخصية، يرجى الاتصال بنا باستخدام المعلومات المقدمة أدناه. </p>           
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 5. خصوصية الأطفال</h6>
-                      <p class="contact-content w-95">
-                         خدماتنا ليست موجهة للأطفال دون سن 13 عامًا، ولا نقوم عن علم بجمع معلومات شخصية من الأطفال. إذا كنت ولي أمر أو وصيًا وتعتقد أن طفلك قد زودنا بمعلومات شخصية، يرجى الاتصال بنا، وسنتخذ خطوات لإزالة تلك المعلومات من أنظمتنا.         
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 6.التغييرات على سياسة الخصوصية هذه</h6>
-                      <p class="contact-content w-95">
-                         نحتفظ بالحق في تحديث أو تعديل سياسة الخصوصية هذه في أي وقت. ستكون أي تغييرات سارية المفعول على الفور عند نشر سياسة الخصوصية المعدلة في هذه الصفحة. نشجعك على مراجعة سياسة الخصوصية هذه بشكل دوري للاطلاع على أي تحديثات.               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 7.اتصل بنا</h6>
-                      <p class="contact-content w-95">
-                         إذا كان لديك أي أسئلة أو استفسارات بشأن سياسة الخصوصية أو ممارساتنا المتعلقة بمعلوماتك الشخصية، يرجى الاتصال بنا على:
- customerhappiness@ead.gov.ae or 800555               
-                  </div> 
-                </div>
-                  
-            </div>
-        </div>`
-        // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');$('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9');$('.me-4').removeClass('me-4').addClass('ms-4');
-        // faq_sec.style.direction='rtl';
-        document.body.setAttribute('dir', 'rtl');
-        updateMenuArabic();
-            }
+                updateMenuArabic();
+            } else {
+                document.body.classList.remove('arabic-mode');
+                document.body.setAttribute('dir', 'ltr');
 
-            else {
-                $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                tog_btn.textContent = 'عربي';
+                tog_btn2.textContent = 'عربي';
                 tog_btn.classList.remove('english-style');
-                tog_btn.textContent = "عربي"
-                dyn_hd.textContent = "Privacy Policy"
-                faq_sec.innerHTML = `<div class="row">
-            <div class="col-lg-4">
-                <h4 class="me-4 mt-2" id="dynamic-heading">Privacy Policy</h4>
-            </div>
-            <div class="col-lg-8">
-                <div class="scrollPolicyShow" onscroll="adjustOpacity()">
-                    <p class="contact-content w-95">
-                   This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you use our services. We are committed to safeguarding your privacy and ensuring the security of your personal data. 
-                    </p>
-                  <div class="mb-4">
-                    <h6 class=""> 1. Information We Collect</h6>
-                    <p class="contact-content w-95">
-                       We may collect personal information such as your name, email address, contact details, and any other information you provide to us voluntarily. Additionally, we may automatically collect certain information when you use our services, including your IP address, browser type, device identifiers, and usage data.
-                    </p>
-                  </div>  
-                  <div class="mb-4">
-                      <h6 class=""> 2. How We Use Your Information</h6>
-                      <p class="contact-content w-95">
-                        We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this Privacy Policy. We may share your information with trusted third-party service providers who assist us in operating our platform, conducting our business, or servicing you. </p>
-                  </div>  
-         
-                  <div class="mb-4">
-                      <h6 class=""> 3. Data Security</h6>
-                      <p class="contact-content w-95">
-                          We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.                
+                $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                dyn_hd.textContent = "Privacy Policy";
+                faq_sec.innerHTML = `
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h4 class="me-4 mt-2" id="dynamic-heading">Privacy Policy</h4>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="scrollPolicyShow" onscroll="adjustOpacity()">
+                                <p class="contact-content w-95">
+                                    This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you use our services. We are committed to safeguarding your privacy and ensuring the security of your personal data.
+                                </p>
+                                <div class="mb-4">
+                                    <h6>1. Information We Collect</h6>
+                                    <p class="contact-content w-95">
+                                        We may collect personal information such as your name, email address, contact details, and any other information you provide to us voluntarily. Additionally, we may automatically collect certain information when you use our services, including your IP address, browser type, device identifiers, and usage data.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>2. How We Use Your Information</h6>
+                                    <p class="contact-content w-95">
+                                        We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this Privacy Policy. We may share your information with trusted third-party service providers who assist us in operating our platform, conducting our business, or servicing you.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>3. Data Security</h6>
+                                    <p class="contact-content w-95">
+                                        We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>4. Your Rights</h6>
+                                    <p class="contact-content w-95">
+                                        You have the right to access, correct, or delete your personal information held by us. You may also have the right to restrict or object to certain processing activities or to receive a copy of your data in a structured, machine-readable format. If you have any questions or requests regarding your personal information, please contact us using the information provided below.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>5. Children's Privacy</h6>
+                                    <p class="contact-content w-95">
+                                        Our services are not directed to children under the age of 13, and we do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us, and we will take steps to remove that information from our systems.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>6. Changes to this Privacy Policy</h6>
+                                    <p class="contact-content w-95">
+                                        We reserve the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon posting the revised Privacy Policy on this page. We encourage you to review this Privacy Policy periodically for any updates.
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6>7. Contact Us</h6>
+                                    <p class="contact-content w-95">
+                                        If you have any questions or concerns about this Privacy Policy or our practices regarding your personal information, please contact us at customerhappiness@ead.gov.ae or 800555.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
 
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 4. Your Rights</h6>
-                      <p class="contact-content w-95">
-                          You have the right to access, correct, or delete your personal information held by us. You may also have the right to restrict or object to certain processing activities or to receive a copy of your data in a structured, machine-readable format. If you have any questions or requests regarding your personal information, please contact us using the information provided below.               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 5. Children's Privacy </h6>
-                      <p class="contact-content w-95">
-                          Our services are not directed to children under the age of 13, and we do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us, and we will take steps to remove that information from our systems. </p>               
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class=""> 6. Changes to this Privacy Policy. Changes to this Privacy Policy</h6>
-                      <p class="contact-content w-95">
-                          We reserve the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon posting the revised Privacy Policy on this page. We encourage you to review this Privacy Policy periodically for any updates                
+                updateMenuEnglish();
+            }
+        }
 
-                  </div> 
-                  <div class="mb-4">
-                      <h6 class="">7. Contact Us</h6>
-                      <p class="contact-content w-95">
-If you have any questions or concerns about this Privacy Policy or our practices regarding your personal information, please contact us at customerhappiness@ead.gov.ae or 
-800555.           
-                  </div> 
-                </div>
-                  
-            </div>
-        </div>`
-        // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-        // faq_sec.style.direction='ltr';
-        document.body.setAttribute('dir', 'ltr');
-        updateMenuEnglish()
-            }
-            isEnglish = !isEnglish;
-        })
-    })
-    function addArabicLinkActiveClass() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            // Remove active class from other links
-            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
-            // Add active class to the clicked link
-            if (currentLanguage === 'arabic') {
-                link.classList.add('active-arabic');
-            }
-        });
+        function translateMenuText(translations) {
+            document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none, .insights-footer, .footer_link a, .contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
+                const text = item.textContent.trim();
+                if (translations[text]) {
+                    item.textContent = translations[text];
+                }
+            });
+        }
+
+        function addArabicLinkActiveClass() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+                    if (!isEnglish) link.classList.add('active-arabic');
+                });
+            });
+        }
     });
-}
 </script>
-
-
-
-	
 
 <!-------------------------------- Script Sections------------------->
 <script src="./js/jquery-2.2.4.min.js"></script>

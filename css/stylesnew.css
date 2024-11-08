@@ -1414,6 +1414,8 @@ video {
     margin: 0 auto;
     padding: 10px 0 0 0;
     border-radius: 5px;
+    overflow-y: auto !important;
+    scrollbar-width: none;
     /* background-color: #f0f0f0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 }
@@ -2034,6 +2036,10 @@ border: none;
     text-align: left;
     float: left;
     /* color: var(--green); */
+}
+
+.aqi-content-span{
+    float:right !important;
 }
 
 .insight .quality-index-wrapper h3 {

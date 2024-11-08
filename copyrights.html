@@ -50,8 +50,6 @@
                 <div class="mobile-menu" id="mobile-overlay">
                     <div>
                     <img src="./images/ead-logo-b.svg" alt="" class="mb-2 mt-0 ms-auto me-auto" height="50">
-                    <!-- <button class="toggleLanguageBtn responsive_toggle" id="language-toggle1-btn" onclick="toggleChangeLanguage()">عربي</button> -->
-
                 </div>
                     <a href="index.html#demo" class="nav-link">Our Air Quality</a>
                     <a href="index.html#section2" class="nav-link">Insights</a>
@@ -59,16 +57,6 @@
                     <a href="index.html#section4" class="nav-link">FAQ</a>
                     <a href="index.html#section5" class="nav-link">Contact Us</a>
                     <div   id="language-toggle1-btn" class="toggleLanguageBtn toggle-text-mobile" onclick="toggleChangeLanguage()" >عربي</div>
-                    <!-- <div class="d-md-none" style="display: flex; margin-top: 5px;">
-                        <a class="nav-link mobile mobile-language">LANGUAGE:</a>
-                        <div class="switch1">
-                            <input id="toggleLanguageBtn" class="toggleLanguageBtn check-toggle check-toggle-round-flat1"
-                                type="checkbox" onchange="toggleChangeLanguage(this)">
-                            <label for="toggleLanguageBtn"></label>
-                            <span class="on">EN</span>
-                            <span class="off">AR</span>
-                        </div>
-                    </div> -->
                 </div>
                 <!-- End 05-April-24 -->
                 <div class="collapse navbar-collapse d-none d-sm-none d-md-block" id="mainMenu">
@@ -104,7 +92,7 @@
                 </div>
 
                 <div class="switch1 d-none d-sm-none d-md-block">
-                    <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1">عربي</div>
+                    <div id="ltoggleLanguageBtn" class="toggleLanguageBtn toggle-text1" onclick="toggleChangeLanguage()">عربي</div>
                 </div>
                
                 <div class="search-block">
@@ -696,23 +684,6 @@
             });
         });
     </script>
-    <!-- End 09-April-24 -->
-     <script>
-        function toggleChangeLanguage() {
-    const button1 = document.getElementById('language-toggle1-btn');
-    const isArabic = button1.innerText === "عربي";
-    button1.innerText = isArabic ? "English" : "عربي";
-    if (!isArabic) {
-        // If switched to Arabic, remove the 'english-mode' class
-        button1.classList.remove('english-mode');
-        button1.classList.remove('english-mode1');
-    } else {
-        // If switched to English, add the 'english-mode' class
-        button1.classList.add('english-mode');
-        button1.classList.add('english-mode1');
-    }
-}
-     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('ltoggleLanguageBtn');
@@ -721,264 +692,174 @@
             const dynamicHeading = document.getElementById('dynamic-heading');
             const dynamicContent = document.getElementById('dynamic-content');
             const termslist = document.getElementById('terms-list');
-            let isEnglish = true; // Default language state is English
+            let isEnglish = localStorage.getItem('language') !== 'arabic';
+    
+            setLanguageContent(isEnglish ? 'english' : 'arabic');
+    
+            toggleBtn.addEventListener('click', toggleLanguage);
+            toggleBtn2.addEventListener('click', toggleLanguage);
+    
+            function toggleLanguage() {
+                isEnglish = !isEnglish;
+                const language = isEnglish ? 'english' : 'arabic';
+                localStorage.setItem('language', language);
+                setLanguageContent(language);
+            }
+    
+            function updateLanguage(isEnglish) {
+                if (isEnglish) {
+                    updateMenuEnglish();
+                } else {
+                    updateMenuArabic();
+                }
+                document.body.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
+            }
+    
             function updateMenuArabic() {
                 $('.switch1 > span.on').addClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
-                    const text = item.textContent.trim();
-                    switch (text) {
-                        case 'Our Air Quality': item.textContent = 'جودة هواءنا';
-                            break;
-                        case 'Insights':
-                            item.textContent ='رؤيتنا';
-                            break;
-                        case 'Projects':
-                            item.textContent = 'المشاريع';
-                            break;
-                        case 'FAQ':
-                            item.textContent = 'الأسئلة الشائعة';
-                            break;
-                        case 'Contact Us':
-                            item.textContent = 'اتصل بنا';
-                            break;
-                        case 'Health Recommendation':
-                            item.textContent = 'التوصيات الصحية';
-                            break;
-
-                        case 'AQI and Pollutant Trends':
-                            item.textContent = 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات';
-                            break;
-                        case 'Our Air Analytics':
-                            item.textContent = 'تحليلنا لجودة الهواء';
-                            break;
-                        case 'Station AQI and Pollutants Trends':
-                            item.textContent = 'محطة AQI واتجاهات الملوثات';
-                            break;
-                        case 'Contact Us':
-                            item.textContent = 'اتصل بنا';
-                            break;
-                        case 'Privacy Policy':
-                            item.textContent = 'سياسة الخصوصية';
-                            break;
-                        case 'Terms of Use':
-                            item.textContent = 'شروط الاستخدام';
-                            break;
-                        case 'Copyrights':
-                            item.textContent = 'حقوق النشر';
-                            break;
-                    }
-                })
+                translateMenuText({
+                    'Our Air Quality': 'جودة هواءنا',
+                    'Insights': 'رؤيتنا',
+                    'Projects': 'المشاريع',
+                    'FAQ': 'الأسئلة الشائعة',
+                    'Contact Us': 'اتصل بنا',
+                    'Health Recommendation': 'التوصيات الصحية',
+                    'AQI and Pollutant Trends': 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات',
+                    'Our Air Analytics': 'تحليلنا لجودة الهواء',
+                    'Station AQI and Pollutants Trends': 'محطة AQI واتجاهات الملوثات',
+                    'Privacy Policy': 'سياسة الخصوصية',
+                    'Terms of Use': 'شروط الاستخدام',
+                    'Copyrights': 'حقوق النشر'
+                });
+                applyArabicStyles();
                 addArabicLinkActiveClass();
-                const navMobileNew = document.querySelector('.navmobile-new');
-      navMobileNew.style.left = '10px';
-      navMobileNew.style.right = 'auto';
-
-      const footerMenuUi = document.querySelector('.copy-right-contents');
-if (footerMenuUi) {
-    footerMenuUi.style.setProperty('margin-right', '-38px');
-} else {
-    console.warn("Element '.copy-right-contents' not found.");
-}
-
             }
-
+    
             function updateMenuEnglish() {
                 $('.switch1 > span.on').removeClass('arabic-switch1');
-                document.querySelectorAll('.nav-link, .footermobile-show,.footermobile-none,.insights-footer,.footer_link a,.contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
+                translateMenuText({
+                    'جودة هواءنا': 'Our Air Quality',
+                    'رؤيتنا': 'Insights',
+                    'المشاريع': 'Projects',
+                    'الأسئلة الشائعة': 'FAQ',
+                    'اتصل بنا': 'Contact Us',
+                    'التوصيات الصحية': 'Health Recommendation',
+                    'مؤشر جودة الهواء (AQI) واتجاهات الملوثات': 'AQI and Pollutant Trends',
+                    'تحليلنا لجودة الهواء': 'Our Air Analytics',
+                    'محطة AQI واتجاهات الملوثات': 'Station AQI and Pollutants Trends',
+                    'سياسة الخصوصية': 'Privacy Policy',
+                    'شروط الاستخدام': 'Terms of Use',
+                    'حقوق النشر': 'Copyrights'
+                });
+                applyEnglishStyles();
+            }
+
+            function setLanguageContent(language) {
+            if (language === 'arabic') {
+                document.body.classList.add('arabic-mode');
+                document.body.setAttribute('dir', 'rtl');
+
+                toggleBtn.textContent = 'English';
+                toggleBtn2.textContent = 'English';
+                toggleBtn.classList.add('english-style');
+
+                dynamicHeading.textContent = 'حقوق النشر';
+                dynamicContent.textContent = `يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام...`;
+                termslist.innerHTML = `     
+                    <div class="mb-4">
+                        <h6>1. حقوق الملكية الفكرية</h6>
+                        <ul class="greyColor text-justify">
+                            <li>تمتلك هيئة البيئة - أبوظبي، مقدموا خدماتها، مستشاريها، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
+                            <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك - على سبيل المثال لا الحصر - البيع أو التوزيع أو إعادة نشر المحتوى.</li>
+                            <li>ما لم يُذكر خلاف ذلك، فإن جميع حقوق الملكية الفكرية (بما في ذلك العلامات التجارية وحقوق النشر) الموجودة على هذا الموقع هي إما مملوكة أو خاضعة لسيطرة أو مرخصة لـ هيئة البيئة - أبوظبي. وبناءً عليه، فإن عملية تجميع وترتيب جميع المحتويات هي ملكية حصرية لـ هيئة البيئة - أبوظبي ومحمية بموجب قوانين حقوق النشر.</li>
+                            <li>تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الملكية الفكرية في جميع المحتويات. الأسماء والعلامات التجارية والشعارات الموجودة على الموقع وفي المواد المتعلقة به هي مملوكة ومرخصة لـ هيئة البيئة - أبوظبي، ما لم يُذكر خلاف ذلك. يُمنع استخدام هذه العلامات التجارية دون الحصول على إذن من هيئة البيئة - أبوظبي.</li>
+                        </ul>
+                    </div>`;
+
+                // Apply Arabic-specific styles
+                document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
+                $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
+                $('.footer-logo').addClass('footer-logo-arabic');
+                $('.footer-social-icons').addClass('social-media-icons');
+                $('.copy-right-para').addClass('copy-right-para-footer');
+                
+                updateMenuArabic();
+
+            } else {
+                document.body.classList.remove('arabic-mode');
+                document.body.setAttribute('dir', 'ltr');
+
+                toggleBtn.textContent = 'عربي';
+                toggleBtn2.textContent = 'عربي';
+                toggleBtn.classList.remove('english-style');
+
+                dynamicHeading.textContent = 'Copyrights';
+                dynamicContent.textContent = `This Copyright section forms part of the Terms & Conditions...`;
+                termslist.innerHTML = `
+                    <div class="mb-4">
+                        <h6>1. Intellectual Property Rights</h6>
+                        <ul class="greyColor text-justify">
+                            <li>EAD, our service providers, our consultants, or third parties who have granted us permission to reproduce their material on this website, own all trademarks, copyright and all other intellectual property rights in the Content on this website.</li>
+                            <li>The Content shall not be used for any commercial purposes, including but not limited to, selling, distributing, or republishing the Content.</li>
+                            <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks and copyrights) found on this website are either owned, controlled, or licensed by [to] EAD. As such, the act of consolidation and arrangement of all Content is the sole property of EAD and is protected by copyright laws.</li>
+                            <li>EAD retains all Intellectual Property Rights in all Content. The names, trademarks, and logos found on the website and in the materials therein are owned and licensed for EAD, unless otherwise stated. The use of these trademarks is prohibited without permission from EAD.</li>
+                        </ul>
+                    </div>`;
+
+                // Apply English-specific styles
+                document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
+                $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
+                $('.footer-logo').removeClass('footer-logo-arabic');
+                $('.footer-social-icons').removeClass('social-media-icons');
+                $('.copy-right-para').removeClass('copy-right-para-footer');
+
+                updateMenuEnglish();
+            }
+        }
+    
+            function translateMenuText(translations) {
+                document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none, .insights-footer, .footer_link a, .contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                     const text = item.textContent.trim();
-                    switch (text) {
-                        case 'جودة هواءنا': item.textContent = 'Our Air Quality';
-                            break;
-                        case 'رؤيتنا':
-                            item.textContent = 'Insights';
-                            break;
-                        case 'المشاريع':
-                            item.textContent = 'Projects';
-                            break;
-                        case 'الأسئلة الشائعة':
-                            item.textContent = 'FAQ';
-                            break;
-                        case 'اتصل بنا':
-                            item.textContent = 'Contact Us';
-                            break;
-                        case 'التوصيات الصحية':
-                            item.textContent = 'Health Recommendation';
-                            break;
-
-                        case 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات':
-                            item.textContent = 'AQI and Pollutant Trends';
-                            break;
-
-                        case 'تحليلنا لجودة الهواء':
-                            item.textContent = 'Our Air Analytics';
-                            break;
-
-                        case 'محطة AQI واتجاهات الملوثات':
-                            item.textContent = 'Station AQI and Pollutants Trends';
-                            break;
-                        case 'اتصل بنا':
-                            item.textContent = 'Contact Us';
-                            break;
-                        case 'سياسة الخصوصية':
-                            item.textContent = 'Privacy Policy';
-                            break;
-                        case 'شروط الاستخدام':
-                            item.textContent = 'Terms of Use';
-                            break;
-                        case 'حقوق النشر':
-                            item.textContent = 'Copyrights';
-                            break;
+                    if (translations[text]) {
+                        item.textContent = translations[text];
                     }
-
-                })
-                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-arabic'));
+                });
+            }
+    
+            function applyArabicStyles() {
                 const navMobileNew = document.querySelector('.navmobile-new');
-                     navMobileNew.style.right = '10px';
-                    navMobileNew.style.left = 'auto';
-
-                    const footerMenuUi = document.querySelector('.copy-right-contents');
+                const footerMenuUi = document.querySelector('.copy-right-contents');
+                navMobileNew.style.left = '10px';
+                navMobileNew.style.right = 'auto';
+    
+                if (footerMenuUi) {
+                    footerMenuUi.style.setProperty('margin-right', '-38px');
+                } else {
+                    console.warn("Element '.copy-right-contents' not found.");
+                }
+            }
+    
+            function applyEnglishStyles() {
+                const navMobileNew = document.querySelector('.navmobile-new');
+                const footerMenuUi = document.querySelector('.copy-right-contents');
+                navMobileNew.style.right = '10px';
+                navMobileNew.style.left = 'auto';
+                if (footerMenuUi) {
                     footerMenuUi.style.removeProperty('margin-right');
-
+                }
             }
-
-            toggleBtn.addEventListener('click', () => {
-                if (isEnglish) {
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
-                    document.body.classList.toggle('arabic-mode');
-                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                    // Switch to Arabic
-                    toggleBtn.classList.add('english-style'); 
-                    toggleBtn.textContent = 'English'; // Change button text to switch back to English
-                  
-                    dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
-                    dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
-حقوق الملكية الفكرية` // Change the content to Arabic
-                    termslist.innerHTML = `     
-                            <div class="mb-4">
-                                <h6 class="">1. حقوق الملكية الفكرية</h6>
-                                <ul class="greyColor text-justify">
-                                    <li>تمتلك هيئة البيئة - أبوظبي، مقدموا خدماتها، مستشاريها، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
-                                    <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك - على سبيل المثال لا الحصر - البيع أو التوزيع أو إعادة نشر المحتوى.</li>
-                                    <li>ما لم يُذكر خلاف ذلك، فإن جميع حقوق الملكية الفكرية (بما في ذلك العلامات التجارية وحقوق النشر) الموجودة على هذا الموقع هي إما مملوكة أو خاضعة لسيطرة أو مرخصة لـ هيئة البيئة - أبوظبي. وبناءً عليه، فإن عملية تجميع وترتيب جميع المحتويات هي ملكية حصرية لـ هيئة البيئة - أبوظبي ومحمية بموجب قوانين حقوق النشر.</li>
-                                    <li>تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الملكية الفكرية في جميع المحتويات. الأسماء والعلامات التجارية والشعارات الموجودة على الموقع وفي المواد المتعلقة به هي مملوكة ومرخصة لـ هيئة البيئة - أبوظبي، ما لم يُذكر خلاف ذلك. يُمنع استخدام هذه العلامات التجارية دون الحصول على إذن من هيئة البيئة - أبوظبي.
-</li>
-
-                                </ul>
-                            </div>`
-
-                    // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');$('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9');$('.me-4').removeClass('me-4').addClass('ms-4');
-                    // Change text direction to RTL (right-to-left)
-                    // faqSection.style.direction = 'rtl';
-                    document.body.setAttribute('dir', 'rtl');
-                    updateMenuArabic();
-                      $('.footer-logo').addClass('footer-logo-arabic');
-        $('.footer-social-icons').addClass('social-media-icons');
-        $('.copy-right-para').addClass('copy-right-para-footer');
-
-                } else {
-                    document.body.classList.remove('arabic-mode');
-                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
-                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
-                    $('.footer-logo').removeClass('footer-logo-arabic');
-        $('.footer-social-icons').removeClass('social-media-icons');
-        $('.copy-right-para').removeClass('copy-right-para-footer');
-                    toggleBtn.classList.remove('english-style'); 
-                    // Switch back to English
-                    toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
-                    dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English
-                    dynamicContent.textContent ='This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.Intellectual Property Rights'; // Change the content back to English
-                    termslist.innerHTML = ` <div class="mb-4">
-                                <h6 class="">1. Intellectual Property Rights</h6>
-                                <ul class="greyColor text-justify">
-                                    <li>EAD, our service providers, our consultants, or third parties who have granted us permission to reproduce their material on this website, own all trademarks, copyright and all other intellectual property rights in the Content on this website.</li>
-                                    <li>The Content shall not be used for any commercial purposes, including but not limited to, selling, distributing, or republishing the Content.</li>
-                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks and copyrights) found on this website are either owned, controlled, or licensed by [to] EAD. As such, the act of consolidation and arrangement of all Content is the sole property of EAD and is protected by copyright laws.</li>
-                                    <li>EAD retains all Intellectual Property Rights in all Content. The names, trademarks, and logos found on the website and in the materials therein are owned and licensed for EAD, unless otherwise stated. The use of these trademarks is prohibited without permission from EAD.</li>
-
-                                </ul>
-                            </div>`
-                    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-                    // Change text direction to LTR (left-to-right)
-                    // faqSection.style.direction = 'ltr';
-                    document.body.setAttribute('dir', 'ltr');
-                    updateMenuEnglish()
-                }
-                // Toggle the language state
-                isEnglish = !isEnglish;
-            });
-
-        toggleBtn2.addEventListener('click', () => {
-                if (isEnglish) {
-                    document.body.classList.toggle('arabic-mode');
-                    $('.footer-change-col').removeClass('col-xl-3').addClass('col-xl-2');
-                    document.querySelector('.footer-2-sec').style.setProperty('padding-left', '60px');
-                    // Switch to Arabic
-                    toggleBtn.textContent = 'English'; // Change button text to switch back to English
-                    dynamicHeading.textContent = 'حقوق النشر'; // Change the heading to Arabic
-                    dynamicContent.textContent =`يشكل هذا القسم المتعلق بحقوق النشر جزءًا من الشروط والأحكام، وبالتالي الشروط التي بموجبها نسمح بالوصول إلى هذا الموقع الإلكتروني. جميع محتويات هذا الموقع هي ملك لـ هيئة البيئة - أبوظبي ومحفوظة بحقوق النشر. تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الطبع والنشر والعلامات التجارية وبراءات الاختراع والحقوق الفكرية وغيرها من حقوق الملكية المتعلقة بالمعلومات الواردة في هذا الموقع. يُمنع منعًا باتًا أي استخدام غير مصرح به أو إعادة إنتاج أو طباعة للمعلومات والمواد وحقوق الملكية الموجودة في هذا الموقع.
-حقوق الملكية الفكرية` // Change the content to Arabic
-                    termslist.innerHTML = `     
-                            <div class="mb-4">
-                                <h6 class="">1. حقوق الملكية الفكرية</h6>
-                                <ul class="greyColor text-justify">
-                                    <li>تمتلك هيئة البيئة - أبوظبي، مقدموا خدماتها، مستشاريها، أو الأطراف الثالثة التي منحتنا إذنًا لإعادة إنتاج موادها على هذا الموقع، جميع العلامات التجارية وحقوق النشر وجميع حقوق الملكية الفكرية الأخرى المتعلقة بالمحتوى الموجود على هذا الموقع.</li>
-                                    <li>لا يجوز استخدام المحتوى لأي أغراض تجارية، بما في ذلك - على سبيل المثال لا الحصر - البيع أو التوزيع أو إعادة نشر المحتوى.</li>
-                                    <li>ما لم يُذكر خلاف ذلك، فإن جميع حقوق الملكية الفكرية (بما في ذلك العلامات التجارية وحقوق النشر) الموجودة على هذا الموقع هي إما مملوكة أو خاضعة لسيطرة أو مرخصة لـ هيئة البيئة - أبوظبي. وبناءً عليه، فإن عملية تجميع وترتيب جميع المحتويات هي ملكية حصرية لـ هيئة البيئة - أبوظبي ومحمية بموجب قوانين حقوق النشر.</li>
-                                    <li>تحتفظ هيئة البيئة - أبوظبي بجميع حقوق الملكية الفكرية في جميع المحتويات. الأسماء والعلامات التجارية والشعارات الموجودة على الموقع وفي المواد المتعلقة به هي مملوكة ومرخصة لـ هيئة البيئة - أبوظبي، ما لم يُذكر خلاف ذلك. يُمنع استخدام هذه العلامات التجارية دون الحصول على إذن من هيئة البيئة - أبوظبي.
-</li>
-
-                                </ul>
-                            </div>`
-
-                    // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');$('.col-lg-8').removeClass('col-lg-8').addClass('col-lg-9');$('.me-4').removeClass('me-4').addClass('ms-4');
-                    // Change text direction to RTL (right-to-left)
-                    // faqSection.style.direction = 'rtl';
-                    document.body.setAttribute('dir', 'rtl');
-                    updateMenuArabic();
-
-                } else {
-                    document.querySelector('.footer-2-sec').style.removeProperty('padding-left');
-                    document.body.classList.remove('arabic-mode');
-                    $('.footer-change-col').removeClass('col-xl-2').addClass('col-xl-3');
-                    // Switch back to English
-                    toggleBtn.textContent = 'عربي'; // Change button text to switch back to Arabic
-                    dynamicHeading.textContent = 'Copyrights'; // Change the heading back to English
-                    dynamicContent.textContent ='This Copyright section forms part of the Terms & Conditions and therefore the terms on which we provide and allow access to this website. All the Content of this website is the property of EAD and is protected by copyright. EAD reserves all copyright, trademark, patent, intellectual and other property rights of the information contained in this website. Any unauthorized use, reproduction or printing of the information, materials and proprietary rights contained in this website is strictly prohibited.Intellectual Property Rights'; // Change the content back to English
-                    termslist.innerHTML = ` <div class="mb-4">
-                                <h6 class="">1. Intellectual Property Rights</h6>
-                                <ul class="greyColor text-justify">
-                                    <li>EAD, our service providers, our consultants, or third parties who have granted us permission to reproduce their material on this website, own all trademarks, copyright and all other intellectual property rights in the Content on this website.</li>
-                                    <li>The Content shall not be used for any commercial purposes, including but not limited to, selling, distributing, or republishing the Content.</li>
-                                    <li>Unless otherwise stated, all Intellectual Property Rights (including trademarks and copyrights) found on this website are either owned, controlled, or licensed by [to] EAD. As such, the act of consolidation and arrangement of all Content is the sole property of EAD and is protected by copyright laws.</li>
-                                    <li>EAD retains all Intellectual Property Rights in all Content. The names, trademarks, and logos found on the website and in the materials therein are owned and licensed for EAD, unless otherwise stated. The use of these trademarks is prohibited without permission from EAD.</li>
-
-                                </ul>
-                            </div>`
-                    // $('.col-lg-2').removeClass('col-lg-2').addClass('col-lg-4');$('.col-lg-9').removeClass('col-lg-9').addClass('col-lg-8');$('.ms-4').removeClass('ms-4').addClass('me-4');
-                    // Change text direction to LTR (left-to-right)
-                    // faqSection.style.direction = 'ltr';
-                    document.body.setAttribute('dir', 'ltr');
-                    updateMenuEnglish()
-                }
-                // Toggle the language state
-                isEnglish = !isEnglish;
-            });
-        });
-
-        function addArabicLinkActiveClass() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            // Remove active class from other links
-            document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
-            // Add active class to the clicked link
-            if (currentLanguage === 'arabic') {
-                link.classList.add('active-arabic');
+    
+            function addArabicLinkActiveClass() {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active-arabic'));
+                        if (!isEnglish) link.classList.add('active-arabic');
+                    });
+                });
             }
         });
-    });
-}
-
     </script>
+    
 </body>
 
 </html>
