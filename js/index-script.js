@@ -7542,7 +7542,6 @@ function convertToISO8601(dateTimeStrings) {
 }
 
 function updateCharts(selectedFilter) {
-  console.log("Selected Filter:", selectedFilter);
   // Do not remove below code starts---------------------------------
   $(
     "#lineChartAqiSo2Value, #lineChartAqiNo2Value, #lineChartAqiCoValue, #lineChartAqiPm10Value, #lineChartAqiPm25Value, #lineChartAqiO3Value"
@@ -8786,124 +8785,85 @@ function toggleChangeLanguage() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
-  const faqSection = document.getElementById("faq-section");
-  const questionHeader = document.getElementById("questionHeader");
-  const questionHeaderAlt = document.getElementById("questionHeaderAlt");
-  const monitoringHeading = document.getElementById("monitoringHeading");
-  const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
-  const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
-  const navLinkAirQuality = document.getElementById("navLinkAirQuality");
-  const contactHead = document.getElementById("contactus");
-  const heading = document.getElementById("heading");
-  const cnctAddress = document.getElementById("cotact-address");
-  const cnctAddressmobile = document.getElementById("cotact-address-mobile");
-  const agenda = document.getElementById("agenda");
-  const agendamobile = document.getElementById("agenda-mobile");
-  const nameLabel = document.getElementById("yourname");
-  const emailLabel = document.getElementById("youremail");
-  const phoneLabel = document.getElementById("yourphone");
-  const submitBtn = document.getElementById("sumbitbtn");
-  const contactSection = document.getElementById("section5");
-  const Message = document.getElementById("message");
-  const closeButton = document.querySelector(".newcutom-btn");
-  const mobileMenu = document.getElementById("mobile-overlay");
-  const dropMenuMobile = document.getElementsByClassName(".dropdown-item");
-  const prev = document.querySelector(".previous");
-  const next = document.querySelector(".next");
-  const airQualityAssessments = document.querySelectorAll(".chart-f-content p");
-  const dropdownLists = document.querySelectorAll(".dropdown-menu.metero-dropdown");
-  const iaqmElement = document.getElementById("iaqm");
-  const switchingElement = document.getElementById("switching-air-purifier");
-  const $inputElements = $(".insight .data-list label.list-group-item input");
-   currentLanguage = localStorage.getItem("language") 
-   currentStatusClass = statusClass;
-
-  // Initial setup
-  getAirQualitySafetyLevel();
-  loadCarousel(imageData);
-  bindLiveCityRanking();
-  loadStationData();
-  updateNavLinksToEnglish();
-  updateFooterLinksToEnglish();
-
-  // Add event listeners for toggle buttons
-  for (let i = 0; i < toggleBtns.length; i++) {
-    toggleBtns[i].addEventListener("click", toggleLanguage);
-  }
-
-  console.log("Current language: ", currentLanguage);
-
-  // function toggleLanguage() {
-  //   if (currentLanguage === "english") {
-  //     currentLanguage = "arabic";
-  //     localStorage.setItem("language", currentLanguage);
-
-  //     bindLiveCityRanking();
-  //     bindStationInfo();
-  //     updateNavLinksToArabic();
-  //     updateFooterLinksToArabic();
-  //     loadStationData();
-  //     updateAqitoArabic();
-
-  //     document.body.setAttribute("dir", "rtl");
-  //     $inputElements.addClass("rtl-stationsData");
-  //     updateToArabic();
-  //     updateCharts(chartFilterArabic.Hourly);
-
-  //   } else {
-  //     currentLanguage = "english";
-  //     localStorage.setItem("language", currentLanguage);
-
-  //     bindLiveCityRanking();
-  //     bindStationInfo();
-  //     updateNavLinksToEnglish();
-  //     updateFooterLinksToEnglish();
-  //     loadStationData();
-  //     updateAqitoEnglish();
-
-  //     document.body.setAttribute("dir", "ltr");
-  //     $inputElements.removeClass("rtl-stationsData");
-  //     updateToEnglish();
-  //     updateCharts(chartFilter.Hourly);
-  //   }
-  // }
-
-  function toggleLanguage() {
-    currentLanguage = currentLanguage === "english" ? "arabic" : "english";
-    localStorage.setItem("language", currentLanguage);
-    setLanguageContent(currentLanguage);
-  }
-
-  function setLanguageContent(language) {
-    if (language === "arabic") {
-      document.body.setAttribute("dir", "rtl");
-      toggleBtns[0].textContent = "English";
-      $inputElements.addClass("rtl-stationsData");
-      updateToArabic();
-      bindLiveCityRanking();
-      bindStationInfo();
-      updateNavLinksToArabic();
-      updateFooterLinksToArabic();
-      loadStationData();
-      updateAqitoArabic();
-      updateCharts(chartFilterArabic.Hourly);
-    } else {
-      document.body.setAttribute("dir", "ltr");
-      toggleBtns[0].textContent = "عربي";
-      $inputElements.removeClass("rtl-stationsData");
-      updateToEnglish();
-      bindLiveCityRanking();
-      bindStationInfo();
-      updateNavLinksToEnglish();
-      updateFooterLinksToEnglish();
-      loadStationData();
-      updateAqitoEnglish();
-      updateCharts(chartFilter.Hourly);
-      // Add other English-specific updates here...
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
+    const faqSection = document.getElementById("faq-section");
+    const questionHeader = document.getElementById("questionHeader");
+    const questionHeaderAlt = document.getElementById("questionHeaderAlt");
+    const monitoringHeading = document.getElementById("monitoringHeading");
+    const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
+    const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
+    const navLinkAirQuality = document.getElementById("navLinkAirQuality");
+    const contactHead = document.getElementById("contactus");
+    const heading = document.getElementById("heading");
+    const cnctAddress = document.getElementById("cotact-address");
+    const cnctAddressmobile = document.getElementById("cotact-address-mobile");
+    const agenda = document.getElementById("agenda");
+    const agendamobile = document.getElementById("agenda-mobile");
+    const nameLabel = document.getElementById("yourname");
+    const emailLabel = document.getElementById("youremail");
+    const phoneLabel = document.getElementById("yourphone");
+    const submitBtn = document.getElementById("sumbitbtn");
+    const contactSection = document.getElementById("section5");
+    const Message = document.getElementById("message");
+    const closeButton = document.querySelector(".newcutom-btn");
+    const mobileMenu = document.getElementById("mobile-overlay");
+    const dropMenuMobile = document.getElementsByClassName(".dropdown-item");
+    const prev = document.querySelector(".previous");
+    const next = document.querySelector(".next");
+    const airQualityAssessments = document.querySelectorAll(".chart-f-content p");
+    const dropdownLists = document.querySelectorAll(".dropdown-menu.metero-dropdown");
+    const iaqmElement = document.getElementById("iaqm");
+    const switchingElement = document.getElementById("switching-air-purifier");
+    const $inputElements = $(".insight .data-list label.list-group-item input");
+    currentLanguage = localStorage.getItem("language") || "english";
+    currentStatusClass = statusClass;
+  
+    // Initial setup
+    getAirQualitySafetyLevel();
+    loadCarousel(imageData);
+    bindLiveCityRanking();
+    loadStationData();
+    setLanguageContent(currentLanguage); // Set content based on the current language
+  
+    // Add event listeners for toggle buttons
+    for (let i = 0; i < toggleBtns.length; i++) {
+      toggleBtns[i].addEventListener("click", toggleLanguage);
     }
-  }
+  
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === "english" ? "arabic" : "english";
+      localStorage.setItem("language", currentLanguage);
+      setLanguageContent(currentLanguage);
+    }
+  
+    function setLanguageContent(language) {
+      if (language === "arabic") {
+        document.body.setAttribute("dir", "rtl");
+        toggleBtns[0].textContent = "English";
+        $inputElements.addClass("rtl-stationsData");
+        updateToArabic();
+        bindLiveCityRanking();
+        bindStationInfo();
+        updateNavLinksToArabic();
+        updateFooterLinksToArabic();
+        loadStationData();
+        updateAqitoArabic();
+        updateCharts(chartFilterArabic.Hourly);
+      } else {
+        document.body.setAttribute("dir", "ltr");
+        toggleBtns[0].textContent = "عربي";
+        $inputElements.removeClass("rtl-stationsData");
+        updateToEnglish();
+        bindLiveCityRanking();
+        bindStationInfo();
+        updateNavLinksToEnglish();
+        updateFooterLinksToEnglish();
+        loadStationData();
+        updateAqitoEnglish();
+        updateCharts(chartFilter.Hourly);
+      }
+    }
   function updateToArabic() {
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
@@ -8948,7 +8908,8 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".footer-logo").addClass("footer-logo-arabic");
     $(".footer-social-icons").addClass("social-media-icons");
     $(".copy-right-para").addClass("copy-right-para-footer");
-
+    $(".Newsearch-box ul").css("right", "38px");
+    // $('.insight .date-box .cal-div input').css('padding-left', '0');
     $(".prev-btn").addClass("previous-btn");
     $(".next-btn").addClass("next-button");
 
@@ -9026,6 +8987,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Message.placeholder = "الرسالة";
     Message.style.direction = "ltr";
     document.getElementById("searchInput").placeholder = "المحطة بحث";
+    document.getElementById("stationsDropdownMapSearch").placeholder =  "المحطة بحث";
     document
       .getElementById("headerSearchInput")
       .setAttribute("placeholder", "بحث");
@@ -9079,8 +9041,10 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.setProperty('float','right','important');
     })
   
- 
-        document.querySelector('.date-time').innerText = 'التاريخ والوقت';
+        document.querySelectorAll('.date-time').forEach(element =>{
+          element.innerText = 'التاريخ والوقت';
+        });
+      document.querySelector('.nearest-heading').innerHTML = 'أقرب محطة: مدينة خليفة';
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
@@ -9456,6 +9420,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".accordion-button").removeClass("rtl-accordion");
     $(".faqscrolling").removeClass("rtl-faqscrolling");
     $inputElements.removeClass("rtl-stationsData");
+    // $('.insight .date-box .cal-div input').css('padding-left', '10px');
     $(".contact-info-content").removeClass("contact-info-data");
     $(".search_name").removeClass("search_street");
     $(".insight .sorttoggle button.btn-close").removeClass("sort-toggle");
@@ -9474,6 +9439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".footer-logo").removeClass("footer-logo-arabic");
     $(".footer-social-icons").removeClass("social-media-icons");
     $(".copy-right-para").removeClass("copy-right-para-footer");
+    $(".Newsearch-box ul").css("left", "2px");
     $(".copy-right-contents").removeClass("copy-right-contents-footer");
     $(".contact-us-alignment").removeClass("contact-us-alignment-style");
     $(".next-btn-arb").removeClass("next-btn-arb-alignment");
@@ -9532,7 +9498,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Your message has been received. We'll get back to you shortly.";
     });
 
-    document.querySelector(".date-time").innerText = "Date & Time : ";
+    document.querySelectorAll('.date-time').forEach(element =>{
+      element.innerText  = "Date & Time :" });
+    document.querySelector('.nearest-heading').innerHTML = 'Nearest Station: Khalifa City';
     document.querySelector("#message").style.textAlign = "left";
     document.querySelector(".welcome-text").innerText = "WELCOME TO";
     document.querySelector(".quotes").innerText = "Air Quality Monitoring";
@@ -9543,6 +9511,7 @@ document.addEventListener("DOMContentLoaded", () => {
       element.textContent = "AQI";
     });
     document.getElementById("searchInput").placeholder = "Search Station";
+    document.getElementById("stationsDropdownMapSearch").placeholder = "Search Station";
     document.querySelectorAll(".windSpeedHeading").forEach((element) => {
       element.textContent = "Wind Speed";
     });

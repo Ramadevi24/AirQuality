@@ -1172,6 +1172,14 @@ video {
     font-style: italic;
 }
 
+.sm-last-updated {
+    background: #978239;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #c0bfbf;
+}
+
 .sm-map-disclaimer {
     background: #978239;
     color: #fff;

@@ -460,6 +460,7 @@
     .myContentHeight {
         margin-top: 10%;
         height: auto;
+        overflow-y: inherit;
     }
 
     .contact-section h6 {
@@ -531,6 +532,12 @@
     footer .copy-rights {
         display: grid;
     }
+
+    .footer-2-sec{
+        padding-left: 0px !important;
+    }
+
+    
 
         footer .copy-rights ul {
             padding-left: 0;
