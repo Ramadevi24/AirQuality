@@ -161,7 +161,10 @@
 
     .nearest-section .station-details .legend-value {
         position: absolute;
-        bottom: 13px;
+    }
+
+    .aqi-legend-value{
+        bottom: -11px;
     }
 
     .station-details .m-0 .col-5 {

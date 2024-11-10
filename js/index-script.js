@@ -9298,6 +9298,7 @@ function toggleChangeLanguage() {
       .style.setProperty("padding-left", "60px");
 
   document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
+  $('.nearest-section .station-details .legend-value').addClass("aqi-legend-value");
 
     // $('.fp-next').classList.add('arabic-fp-next')
 
@@ -9452,6 +9453,7 @@ function toggleChangeLanguage() {
     $("#page-content-wrapper").removeClass("page-content-wrapper-arabic");
     $(".main-box").removeClass("main-box-arabic");
     $(".tab_shado").removeClass("main-box-arabic-box");
+    $('.nearest-section .station-details .legend-value').removeClass("aqi-legend-value");
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
       item.style.setProperty("right", "", "important");
