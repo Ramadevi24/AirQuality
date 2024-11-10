@@ -5384,6 +5384,8 @@ function bindStationDataToLineChart(filter) {
       scales.y1 = y1AxisConfig;
     }
 
+    let legendVisibility = {};
+
     const myPollutantChart = new Chart(pollutantLineChart, {
       type: "line",
       data: {
@@ -5427,10 +5429,15 @@ function bindStationDataToLineChart(filter) {
                     currentLanguage === "arabic"
                       ? labelArabicMap[label]
                       : labelMap[label] || label;
+
+                      if (legendVisibility[i] === undefined) {
+                        legendVisibility[i] = !chart.isDatasetVisible(i);
+                      }
                   return {
                     text: customLabel,
                     fillStyle: dataset.backgroundColor,
-                    hidden: !chart.isDatasetVisible(i),
+                    // hidden: !chart.isDatasetVisible(i),
+                    hidden: legendVisibility[i],
                     lineCap: dataset.borderCapStyle,
                     lineDash: dataset.borderDash,
                     lineDashOffset: dataset.borderDashOffset,
@@ -5439,11 +5446,10 @@ function bindStationDataToLineChart(filter) {
                     strokeStyle: dataset.borderColor,
                     pointStyle: dataset.pointStyle || "circle", // Default pointStyle
                     datasetIndex: i,
+                    displayOrder: currentLanguage === "arabic" ? fianlItems.length - 1 - i : i, 
                   };
                 });
-                if (currentLanguage === "arabic") {
-                  items.reverse();
-                }
+                items.sort((a, b) => a.displayOrder - b.displayOrder);
                 return items;
               },
             },
@@ -5451,23 +5457,32 @@ function bindStationDataToLineChart(filter) {
               const index = legendItem.datasetIndex;
               const chart = legend.chart;
               const meta = chart.getDatasetMeta(index);
-              meta.hidden =
-                meta.hidden === null
-                  ? !chart.data.datasets[index].hidden
-                  : null;
-              chart.update();
+              meta.hidden = !meta.hidden;
+  legendVisibility[index] = meta.hidden;
+              legendItem.hidden = meta.hidden;
+              // meta.hidden =
+              //   meta.hidden === null
+              //     ? !chart.data.datasets[index].hidden
+              //     : null;
+              // chart.update();
               updateYAxis(chart);
               updateAllPollutantValues(null, chart);
               var legendItems = chart.legend.legendItems;
-              for (var i = 0; i < legendItems.length; i++) {
-                if (i === index) {
-                  if (meta.hidden) {
-                    legend.legendItems[i].hidden = true;
-                  } else {
-                    legend.legendItems[i].hidden = false;
-                  }
+              // for (var i = 0; i < legendItems.length; i++) {
+              //   if (i === index) {
+              //     if (meta.hidden) {
+              //       legend.legendItems[i].hidden = true;
+              //     } else {
+              //       legend.legendItems[i].hidden = false;
+              //     }
+              //   }
+              // }
+              for (let i = 0; i < legendItems.length; i++) {
+                if (legendItems[i].datasetIndex === index) {
+                  legendItems[i].hidden = meta.hidden;
                 }
               }
+              // chart.legend.draw();
             },
           },
           tooltip: {
