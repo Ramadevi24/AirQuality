@@ -1491,6 +1491,10 @@
         margin-bottom: 40px;
     }
 
+.questions-heading-ipad{
+    float:right !important
+}    
+
     .faq-section .accordion-button {
         font-size: 18px;
     }

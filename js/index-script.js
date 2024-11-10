@@ -8877,8 +8877,8 @@ function toggleChangeLanguage() {
     $(".insight .sorttoggle button.btn-close").addClass("sort-toggle");
     $(".switch1 > span.on").addClass("arabic-switch1");
     $(".form-direction").css({
-      "text-align": "left",
-      direction: "ltr",
+      "text-align": "right",
+      direction: "rtl",
     });
     $('.insight #sidebar-btn').addClass('expandpanelipad')
     // $('.insight .coll-icon').addClass('expandpanelairpro')
@@ -8891,6 +8891,7 @@ function toggleChangeLanguage() {
     // $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
     $(".footer-change-col").removeClass("col-xl-3").addClass("col-xl-2");
     // $('.open').addClass('hamberger-cross-icon');
+    $('.faq-section h4').addClass('questions-heading-ipad')
 
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
     // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
@@ -9410,6 +9411,7 @@ function toggleChangeLanguage() {
   }
 
   function updateToEnglish() {
+    $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
@@ -9454,6 +9456,10 @@ function toggleChangeLanguage() {
     multivaluetab.forEach((item) => {
       item.style.setProperty("right", "", "important");
       item.style.setProperty("left", "", "important");
+    });
+    $(".form-direction").css({
+      "text-align": "left",
+      direction: "ltr",
     });
 
     const filterButtons = document.querySelectorAll(

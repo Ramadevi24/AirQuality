@@ -5985,7 +5985,8 @@ text-align: left !important;
  .arabic-mode .mult-value p,
  .arabic-mode .mg-m3,
  .arabic-mode .ug-m3,
- .arabic-mode .Expand-Panel-mobile
+ .arabic-mode .Expand-Panel-mobile,
+ .arabic-mode #questionHeader
  
 {
     font-family: 'Cairo', sans-serif !important;
