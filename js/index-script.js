@@ -9052,7 +9052,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".search_name").addClass("search_street");
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
-
+  $("#language-toggle1").addClass('btn-name-english');
    
     $('.footer-social-icons').addClass('social-media-icons');
     $('.copy-right-para').addClass('copy-right-para-footer');
@@ -9501,6 +9501,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".tab_shado").removeClass("main-box-arabic-box");
     $(".insight .ug_content ").removeClass("ug_content-arabic");
     $('.nearest-section .station-details .legend-value').removeClass("aqi-legend-value");
+    $("#language-toggle1").removeClass('btn-name-english');
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
       item.style.setProperty("right", "", "important");

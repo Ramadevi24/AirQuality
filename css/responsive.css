@@ -706,7 +706,7 @@
     .equal-air-box-height{
         height: 540px;
         /* margin-right: 25px; */
-        width: 287px;
+        /* width: 287px; */
     }
     .project-slider #recipeCarousel .carol-item .col-md-3 {
         padding-right: 0px;
@@ -799,15 +799,16 @@
     .equal-station-box-height {
         height: auto;
         margin-bottom: 5px;
-        width: 272px;
+        width: 366px;
     }
     .pollutent-graph{
-        width: 290px !important;
+        /* width: 290px !important; */
+        width:347px;
         padding: 0px !important;
         margin-right: -30px !important;
     }
     .infoiconmobile{
-        left: -108px !important;
+        /* left: -108px !important; */
     }
     .mobileinfocnt{
         left:-74px !important;
@@ -931,6 +932,7 @@
     .insight .main-box {
         padding: 0.8rem;
         margin-bottom: 35px;
+        width:353px;
     }
 
     .main-box-arabic {
