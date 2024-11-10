@@ -703,7 +703,7 @@
     .equal-air-box-height{
         height: 540px;
         /* margin-right: 25px; */
-        width: 350px;
+        width: 287px;
     }
     .project-slider #recipeCarousel .carol-item .col-md-3 {
         padding-right: 0px;
@@ -796,10 +796,10 @@
     .equal-station-box-height {
         height: auto;
         margin-bottom: 5px;
-        width: 333px;
+        width: 272px;
     }
     .pollutent-graph{
-        width: 351px !important;
+        width: 290px !important;
         padding: 0px !important;
         margin-right: -30px !important;
     }
@@ -932,7 +932,7 @@
 
     .main-box-arabic {
         margin-right: 0;
-        width: 350px;
+        width: 286px;
     }
 
     .insight ul#myTabs {

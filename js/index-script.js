@@ -8758,32 +8758,72 @@ $(".select-pils").on("click", function () {
 //     }
 // }
 
-function toggleChangeLanguage() {
-  const button1 = document.getElementById("language-toggle");
-  const button2 = document.getElementById("language-toggle1");
-  const button3 = document.getElementById("llanguage-toggle");
 
-  // Determine the current language based on one button's text
-  const isArabic = button1.innerText === "عربي";
 
-  // Toggle the text for all buttons
-  button1.innerText = isArabic ? "English" : "عربي";
-  button2.innerText = isArabic ? "English" : "عربي";
-  button3.innerText = isArabic ? "English" : "عربي";
+// function toggleChangeLanguage() {
+//   const button1 = document.getElementById("language-toggle");
+//   const button2 = document.getElementById("language-toggle1");
+//   const button3 = document.getElementById("llanguage-toggle");
 
-  // Toggle the class based on the language
-  if (!isArabic) {
-    // If switched to Arabic, remove the 'english-mode' class
-    button1.classList.remove("english-mode");
-    button2.classList.remove("english-mode1");
-    button3.classList.remove("english-mode1");
-  } else {
-    // If switched to English, add the 'english-mode' class
-    button1.classList.add("english-mode");
-    button2.classList.add("english-mode1");
-    button3.classList.add("english-mode");
-  }
+//   // Determine the current language based on one button's text
+//   const isArabic = button1.innerText === "عربي";
+
+//   // Toggle the text for all buttons
+//   button1.innerText = isArabic ? "English" : "عربي";
+//   button2.innerText = isArabic ? "English" : "عربي";
+//   button3.innerText = isArabic ? "English" : "عربي";
+
+//   // Toggle the class based on the language
+//   if (!isArabic) {
+//     // If switched to Arabic, remove the 'english-mode' class
+//     button1.classList.remove("english-mode");
+//     button2.classList.remove("english-mode1");
+//     button3.classList.remove("english-mode1");
+//   } else {
+//     // If switched to English, add the 'english-mode' class
+//     button1.classList.add("english-mode");
+//     button2.classList.add("english-mode1");
+//     button3.classList.add("english-mode");
+//   }
+// }
+// Function to initialize button text based on localStorage
+function initializeLanguageButton() {
+    const button1= document.getElementById("language-toggle");
+    const button2= document.getElementById("language-toggle1");
+ const button3 = document.getElementById("llanguage-toggle");
+    const currentLanguage = localStorage.getItem("language") || "english";
+
+    // Set button text based on the language
+    button1.innerText = currentLanguage === "english" ? "عربي" : "English";
+    button2.innerText = currentLanguage === "english" ? "عربي" : "English";
+    button3.innerText = currentLanguage === "english" ? "عربي" : "English";
 }
+
+// Function to toggle the language and update localStorage
+function toggleChangeLanguage() {
+    const button1 = document.getElementById("language-toggle");
+    const button2= document.getElementById("language-toggle1");
+    const button3 = document.getElementById("llanguage-toggle");
+    
+    const currentLanguage = localStorage.getItem("language") || "english";
+
+    // Toggle the language
+    const newLanguage = currentLanguage === "english" ? "arabic" : "english";
+
+    // Update button text
+    button1.innerText = newLanguage === "english" ? "عربي" : "English";
+    button2.innerText = newLanguage === "english" ? "عربي" : "English";
+    button3.innerText = newLanguage === "english" ? "عربي" : "English";
+
+    // Update the language in localStorage
+    localStorage.setItem("language", newLanguage);
+}
+
+// Initialize button text on page load
+document.addEventListener("DOMContentLoaded", initializeLanguageButton);
+
+
+
 
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
@@ -8918,6 +8958,11 @@ function toggleChangeLanguage() {
     $("#page-content-wrapper").addClass("page-content-wrapper-arabic");
 
     $(".search-station-sidebar").addClass("sidebar-search-station");
+    $(".insight .ug_content ").addClass("ug_content-arabic");
+    document.getElementById('mainPollutantName').style.textAlign='right';
+    // document.querySelector('.insight .ug_content ').style.left='-130px'
+
+
 
     questionHeader.textContent = "الأسئلة الأكثر شيوعا";
     questionHeaderAlt.innerHTML = "الأسئلة الأكثر شيوعا";
@@ -9411,6 +9456,7 @@ function toggleChangeLanguage() {
   }
 
   function updateToEnglish() {
+    document.getElementById('mainPollutantName').style.textAlign='left';
     $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
     renderAccordionContent(accordionContent);
@@ -9452,6 +9498,7 @@ function toggleChangeLanguage() {
     $("#page-content-wrapper").removeClass("page-content-wrapper-arabic");
     $(".main-box").removeClass("main-box-arabic");
     $(".tab_shado").removeClass("main-box-arabic-box");
+    $(".insight .ug_content ").removeClass("ug_content-arabic");
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
       item.style.setProperty("right", "", "important");

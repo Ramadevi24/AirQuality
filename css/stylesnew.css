@@ -3213,6 +3213,7 @@ border: none;
 
 .insight span.marker_legend {
     position: relative;
+    display: flex;
 }
 
 .insight ul.legend li span.marker_mod:before {
@@ -5872,6 +5873,10 @@ text-align: left !important;
 .direction-arabic{
     left:7% !important
 }
+.ug_content-arabic{
+    position: relative;
+    left: -130px;
+}
 
 .arabic-mode p,
 .arabic-mode .footer_link a,
@@ -5987,7 +5992,8 @@ text-align: left !important;
  .arabic-mode .mg-m3,
  .arabic-mode .ug-m3,
  .arabic-mode .Expand-Panel-mobile,
- .arabic-mode #questionHeader
+ .arabic-mode #questionHeader,
+ .arabic-mode .pollutant-graph-title
  
 {
     font-family: 'Cairo', sans-serif !important;
