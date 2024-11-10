@@ -5996,7 +5996,8 @@ text-align: left !important;
  .arabic-mode .ug-m3,
  .arabic-mode .Expand-Panel-mobile,
  .arabic-mode #questionHeader,
- .arabic-mode .pollutant-graph-title
+ .arabic-mode .pollutant-graph-title,
+ .arabic-mode .Expand-Panel-tab
 
 {
     font-family: 'Cairo', sans-serif !important;
