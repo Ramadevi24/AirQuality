@@ -2336,6 +2336,7 @@ $(document).ready(function () {
     $("body").removeClass("project-modal-header");
   });
 
+  
   var quotes = $(".quotes");
   var quoteIndex = -1;
   var hasShown = false;
@@ -9114,6 +9115,23 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       item.style.setProperty("direction", "ltr");
     });
 
+    const responsiveCross = document.querySelector('.responsive-cross');
+    responsiveCross.classList.add('responsive-cross-css');
+    responsiveCross.classList.remove('responsive-cross-css-english');
+
+    const modalBackgroundImg = document.querySelector('.modal-background img');
+    modalBackgroundImg.classList.add('modal-padding');
+    modalBackgroundImg.classList.remove('modal-padding-english');
+
+    const projectModalItemContent = document.querySelector('.projectItemContent');
+    projectModalItemContent.classList.add('modal-padding');
+    projectModalItemContent.classList.remove('modal-padding-english');
+
+    const projectModalItemDescription = document.querySelector('.projectItemDescription');
+    projectModalItemDescription.classList.add('modal-padding');
+    projectModalItemDescription.classList.remove('modal-padding-english');
+
+    $('.sidebar button').addClass('close-modal-button');
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".mask-usage").innerText = "استخدام الكمامة";
@@ -9274,7 +9292,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
       item.style.setProperty("left", "0");
       item.style.setProperty("margin-right", "0", "important");
-      item.style.setProperty("margin-left", "20px", "important");
+      item.style.setProperty("margin-left", "20px");
     });
     const pollutantinfoIcon = document.querySelectorAll(
       ".pollutant-toggleBar .pollu-top-position"
@@ -9288,8 +9306,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     );
     infocontent.forEach((item) => {
       item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
-      item.style.setProperty("left", "0", "important");
+      item.style.setProperty("left", "0");
     });
+
+    
     $(".insight .slide-content ul .modal.fade button.btn-close").addClass(
       "health-cross-icon"
     );
@@ -9766,6 +9786,27 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
           "STATION POLLUTANT TRENDS";
       }
     });
+
+    const responsiveCross = document.querySelector('.responsive-cross');
+        responsiveCross.classList.remove('responsive-cross-css');
+        responsiveCross.classList.add('responsive-cross-css-english');
+
+        const modalBackgroundImg = document.querySelector('.modal-background img');
+        modalBackgroundImg.classList.remove('modal-padding');
+        modalBackgroundImg.classList.add('modal-padding-english');
+    
+        const projectModalItemContent = document.querySelector('.projectItemContent');
+        projectModalItemContent.classList.remove('modal-padding');
+        projectModalItemContent.classList.add('modal-padding-english');
+    
+        const projectModalItemDescription = document.querySelector('.projectItemDescription');
+        projectModalItemDescription.classList.remove('modal-padding');
+        projectModalItemDescription.classList.add('modal-padding-english');
+
+    // $('.modal-background img').removeClass('modal-padding');
+    // $('.projectItemContent').removeClass('modal-padding');
+    // $('.projectItemDescription').removeClass('modal-padding');
+    $('.sidebar button').removeClass('close-modal-button');
     document.querySelector(
       ".hours-exceed-heading"
     ).innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`;
