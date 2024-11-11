@@ -2610,16 +2610,18 @@
             </div>
             <div class="modal-background">
                 <div class="sidebar">
-                    <div class="col-sm-12 p12">
+                    <div class="col-sm-12 p12 responsive-cross">
                         <div class="text-right mb-3">
                             <button type="button" class="close-btn">
                                 <span class="material-symbols-outlined"> close </span>
                             </button>
                         </div>
+                        <div>
                         <img src="" class="img-fluid mb-3 ProjectbgImage">
                         <h6 class="mb-3 projectItemContent"></h6>
                         <p class="text-justify h-200-scroll projectItemDescription">
                         </p>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -3879,6 +3881,26 @@
             });
         });
     </script>
+<!-- <script>
+  $(document).ready(function () {
+    // Open Sidebar
+    $(".openSidebar").click(function () {
+        $(".sidebar").css("width", "40%"); // Adjust width as needed
+        $(".modal-background").addClass("project-modal");
+        $("body").addClass("project-modal-header");
+        $(".close-btn").removeClass("hidden-close-icon"); // Show the close button
+    });
+
+    // Close Sidebar
+    $(".close-btn").click(function () {
+        $(".sidebar").css("width", "0"); // Close the sidebar
+        $(".modal-background").removeClass("project-modal");
+        $("body").removeClass("project-modal-header");
+        $(".close-btn").addClass("hidden-close-icon"); // Hide the close button
+    });
+});
+</script> -->
+
     <script>
         (function () {
             console.log('hello');

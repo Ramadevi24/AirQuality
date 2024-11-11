@@ -811,8 +811,9 @@
         /* left: -108px !important; */
     }
     .mobileinfocnt{
-        left:-74px !important;
-        width:125% !important;
+        left:auto !important;
+        right:0px !important;
+        width:350px !important;
     }
     .insight .pollutant-toggleBar .ic-top-position {
         top: -20px;
@@ -1155,7 +1156,7 @@
     }
 
     .map-disclaimer {
-        bottom: 30px;
+        bottom: 5px;
         padding: 0px 31px;
     }
 
@@ -3757,5 +3758,48 @@
 @media (min-width: 320px) and (max-width:767px) {
     .page-content-wrapper-arabic{
         left: unset;
+    }
+
+    .polutenat_bar{
+    width: 350px;
+    padding: 2px;
+    overflow: hidden;
+}
+
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .iconimg {
+        left:-30% !important
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .responsive-cross-css{
+        margin-right:-56px !important;
+    }
+    .responsive-cross-css-english {
+        margin-left: -42px !important;
+    }
+    .modal-padding{
+        padding-right: 36px !important;
+    }
+
+    .modal-padding-english{
+        padding-left: 29px !important;
+    }
+
+    .close-modal-button{
+        margin-top: 45px !important;
+       margin-left: -24px !important;
+    }
+
+    .hidden-close-icon{
+        display: none !important;
+    }
+
+    .hidden-open-icon{
+        display: block !important;
     }
 }
