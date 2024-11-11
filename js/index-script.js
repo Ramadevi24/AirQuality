@@ -9220,6 +9220,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       .forEach((element) => {
         element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`;
       });
+      const calenderarabic = document.querySelectorAll(".cal-div");
+      calenderarabic.forEach((item) => {
+        item.style.setProperty("direction","rtl");
+      });
     document.querySelector(
       ".hours-exceed-heading"
     ).innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`;
@@ -9775,6 +9779,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       .querySelectorAll(".our-air-analytics-desclimer")
       .forEach((element) => {
         element.innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
+      });
+      const calenderarabic = document.querySelectorAll(".cal-div");
+      calenderarabic.forEach((item) => {
+        item.style.setProperty("direction","ltr");
       });
     document.querySelector(".changeHeading-pollutant").innerText =
       "Station AQI TRENDS";
