@@ -1608,7 +1608,7 @@
     }
 
     .expand-panel {
-        left: 50%;
+        left: 31%;
         transform: translate(-50%, -50%) rotate(270deg);
         top: 50%;
         position: absolute;
@@ -1883,6 +1883,9 @@
         left: 7% !important;
     } */
 
+    .ipad-expand-panel{
+        right: 0px !important;
+    }
     .insight .coll-icon {
         width: 35px;
         height: 100px;

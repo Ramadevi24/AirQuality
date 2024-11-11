@@ -8931,6 +8931,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".contact-info-content").addClass("contact-info-data");
     $inputElements.addClass("rtl-stationsData");
     $(".insight .sorttoggle button.btn-close").addClass("sort-toggle");
+    $('.insight #sidebar-btn').addClass('ipad-expand-panel')
     $(".switch1 > span.on").addClass("arabic-switch1");
     $(".form-direction").css({
       "text-align": "right",
@@ -9508,6 +9509,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".contact-info-content").removeClass("contact-info-data");
     $(".search_name").removeClass("search_street");
     $(".insight .sorttoggle button.btn-close").removeClass("sort-toggle");
+    $('.insight #sidebar-btn').removeClass('ipad-expand-panel')
     $(".insight .silde-dv").removeClass("slide-dv-position");
     $("#fp-nav").removeClass("fp-left");
     $("#fp-nav").addClass("fp-right");
