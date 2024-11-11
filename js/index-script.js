@@ -9293,7 +9293,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
       item.style.setProperty("left", "0");
       item.style.setProperty("margin-right", "0", "important");
-      item.style.setProperty("margin-left", "20px", "important");
+      item.style.setProperty("margin-left", "20px");
     });
     const pollutantinfoIcon = document.querySelectorAll(
       ".pollutant-toggleBar .pollu-top-position"
@@ -9306,8 +9306,8 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       ".pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 "
     );
     infocontent.forEach((item) => {
-      // item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
-      // item.style.setProperty("left", "0", "important");
+      item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
+      item.style.setProperty("left", "0");
     });
 
     

@@ -1458,6 +1458,7 @@
 
     .insight .aqi-content {
         padding: 3px 12px;
+        right: 43% !important;
     }
 
     .insight .hour_box ul li span {
@@ -3749,6 +3750,7 @@
     #blue-hide-icon {
         right: 15px;
     }
+ 
 }
 
 /* @media (min-width:1200){
@@ -3774,6 +3776,10 @@
 @media (min-width: 320px) and (max-width: 500px) {
     .iconimg {
         left:-30% !important
+        
+    }
+    .infoiconmobile{
+        margin-left: -28px !important;
     }
 }
 
