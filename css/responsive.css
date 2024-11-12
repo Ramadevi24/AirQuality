@@ -3761,9 +3761,9 @@
     
 } */
 @media (min-width: 320px) and (max-width:767px) {
-    .page-content-wrapper-arabic{
+    /* .page-content-wrapper-arabic{
         left: unset;
-    }
+    } */
 
     .polutenat_bar{
     width: 350px;
