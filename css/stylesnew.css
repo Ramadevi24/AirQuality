@@ -6009,3 +6009,7 @@ text-align: left !important;
     font-family: 'Cairo', sans-serif !important;
     font-weight: 700 !important;
 }
+
+.accordion-align-content{
+    text-align: right;
+  }

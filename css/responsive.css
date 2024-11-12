@@ -3791,9 +3791,9 @@
     
 } */
 @media (min-width: 320px) and (max-width:767px) {
-    .page-content-wrapper-arabic{
+    /* .page-content-wrapper-arabic{
         left: unset;
-    }
+    } */
 
     .polutenat_bar{
     width: 350px;
@@ -3842,3 +3842,18 @@
         display: block !important;
     }
 }
+
+@media (min-width: 992px) {
+    .hide-large-img-footer {
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px),
+       only screen and (min-width: 800px) and (max-width: 1280px) {
+    .myContentHeight {
+        height: 550px;
+    }
+}
+

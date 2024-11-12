@@ -8995,6 +8995,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     // document.querySelector('#language-toggle').removeClass('arabic-mode');
     document.body.classList.toggle("arabic-mode");
     $(".accordion-button").addClass("rtl-accordion");
+    $(".accordion-button").addClass("accordion-align-content");
     $(".faqscrolling").addClass("rtl-faqscrolling");
     $(".contact-info-content").addClass("contact-info-data");
     $inputElements.addClass("rtl-stationsData");
@@ -9074,9 +9075,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     document.querySelector(".quotes").innerText = " مراقبة جودة الهواء ";
     document.querySelector(".emirates-text").innerText = "في أبوظبي";
     document.querySelector("#AQI-mb-0").innerText = "مؤشر جودة الهواء";
-    document.querySelector("#AQI-mb-1").innerText = "مؤشر جودة الهواء";
+    document.querySelector("#AQI-mb-1").innerText = "AQI";
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
-      element.innerText = "مؤشر جودة الهواء";
+      element.innerText = "AQI";
     });
     document.querySelector(".sort-label").textContent = "فرز";
     document.querySelector(".nearest-label").textContent = "الأقرب إلي";
@@ -9584,6 +9585,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".icon-circle-xmark-regular").removeClass("cross-icon");
     $(".text-right").removeClass("text-left-arabic");
     $(".accordion-button").removeClass("rtl-accordion");
+    $(".accordion-button").removeClass("accordion-align-content");
     $(".faqscrolling").removeClass("rtl-faqscrolling");
     $inputElements.removeClass("rtl-stationsData");
     // $('.insight .date-box .cal-div input').css('padding-left', '10px');
@@ -10169,7 +10171,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "جودة هواءنا";
             break;
           case "Insights":
-            link.textContent = "رؤيتنا";
+            link.innerHTML = 'رؤيتنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Projects":
             link.textContent = "المشاريع";
@@ -10178,7 +10180,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "الأسئلة الشائعة";
             break;
           case "Contact Us":
-            link.textContent = "اتصل بنا";
+            link.innerHTML = 'اتصل بنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Privacy Policy":
             link.textContent = "سياسة الخصوصية";
@@ -10219,7 +10221,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "Our Air Quality";
             break;
           case "رؤيتنا":
-            link.textContent = "Insights";
+            link.innerHTML = 'Insights <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "المشاريع":
             link.textContent = "Projects";
@@ -10228,7 +10230,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "FAQ";
             break;
           case "اتصل بنا":
-            link.textContent = "Contact Us";
+            link.innerHTML = 'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "سياسة الخصوصية":
             link.textContent = "Privacy Policy";
