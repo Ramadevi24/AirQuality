@@ -10082,7 +10082,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "جودة هواءنا";
             break;
           case "Insights":
-            link.textContent = "رؤيتنا";
+            link.innerHTML = 'رؤيتنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Projects":
             link.textContent = "المشاريع";
@@ -10091,7 +10091,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "الأسئلة الشائعة";
             break;
           case "Contact Us":
-            link.textContent = "اتصل بنا";
+            link.innerHTML = 'اتصل بنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Privacy Policy":
             link.textContent = "سياسة الخصوصية";
@@ -10132,7 +10132,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "Our Air Quality";
             break;
           case "رؤيتنا":
-            link.textContent = "Insights";
+            link.innerHTML = 'Insights <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "المشاريع":
             link.textContent = "Projects";
@@ -10141,7 +10141,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
             link.textContent = "FAQ";
             break;
           case "اتصل بنا":
-            link.textContent = "Contact Us";
+            link.innerHTML = 'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "سياسة الخصوصية":
             link.textContent = "Privacy Policy";

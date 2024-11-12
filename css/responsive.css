@@ -3812,3 +3812,9 @@
         display: block !important;
     }
 }
+
+@media (min-width: 992px) {
+    .hide-large-img-footer {
+        display: none;
+    }
+}
