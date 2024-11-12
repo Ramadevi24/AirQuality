@@ -5775,7 +5775,7 @@ input[type="search"]::-webkit-search-cancel-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
+    font-size: 16px;
     margin-top: -5px;
     cursor: pointer;
     /* text-decoration: underline;
@@ -5872,15 +5872,19 @@ margin-bottom: 20px;
 .text-left-arabic{
 text-align: left !important;
 }
-.cross-icon{
+/* .cross-icon{
     left: -96%;
-}
+} */
 .direction-arabic{
     left:7% !important
 }
 .ug_content-arabic{
     position: relative;
     left: -130px;
+}
+
+.footer-content{
+    font-weight: 300 !important;
 }
 
 .arabic-mode p,
