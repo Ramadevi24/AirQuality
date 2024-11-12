@@ -751,10 +751,10 @@
                 $('.switch1 > span.on').addClass('arabic-switch1');
             translateMenuText({
                 'Our Air Quality': 'جودة هواءنا',
-                'Insights': 'رؤيتنا',
+                'Insights': 'رؤيتنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">',
                 'Projects': 'المشاريع',
                 'FAQ': 'الأسئلة الشائعة',
-                'Contact Us': 'اتصل بنا',
+                'Contact Us': 'اتصل بنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">',
                 'Health Recommendation': 'التوصيات الصحية',
                 'AQI and Pollutant Trends': 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات',
                 'Our Air Analytics': 'تحليلنا لجودة الهواء',
@@ -794,10 +794,10 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
                 $('.switch1 > span.on').removeClass('arabic-switch1');
             translateMenuText({
                 'جودة هواءنا': 'Our Air Quality',
-                'رؤيتنا': 'Insights',
+                'رؤيتنا': 'Insights <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">',
                 'المشاريع': 'Projects',
                 'الأسئلة الشائعة': 'FAQ',
-                'اتصل بنا': 'Contact Us',
+                'اتصل بنا': 'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">',
                 'التوصيات الصحية': 'Health Recommendation',
                 'مؤشر جودة الهواء (AQI) واتجاهات الملوثات': 'AQI and Pollutant Trends',
                 'تحليلنا لجودة الهواء': 'Our Air Analytics',
@@ -817,8 +817,12 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
             document.querySelectorAll('.nav-link, .footermobile-show, .footermobile-none, .insights-footer, .footer_link a, .contactus-footer, .copy-rights a, .dropdown button, .dropdown-menu .dropdown-item').forEach(item => {
                 const text = item.textContent.trim();
                 if (translations[text]) {
-                    item.textContent = translations[text];
-                }
+            if (translations[text].includes('<img')) {
+                item.innerHTML = translations[text];
+            } else {
+                item.textContent = translations[text];
+            }
+        }
             });
         }
 

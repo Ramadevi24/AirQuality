@@ -648,7 +648,7 @@ header .search-block .search-collapse .card input {
     line-height: 2.5 !important;
 }
 
-header .search-block .search-collapse form input[type='reset'] {
+/* header .search-block .search-collapse form input[type='reset'] {
     width: 40px;
     height: 100%;
     outline: none !important;
@@ -661,43 +661,64 @@ header .search-block .search-collapse form input[type='reset'] {
     top: 0;
     bottom: 0;
     color: transparent;
-}
+} */
 
-header .search-block .search-collapse form i.icon-circle-xmark-regular {
-    color: var(--blue) !important;
-    font-size: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 0;
+/* .reset-button{
+    outline: none !important;
+    background: transparent;
+    border: none !important;
+}
+.reset-button i.icon-circle-xmark-regular{
+    color: #004B87 !important;
+    font-size: 20px ;
+    position: absolute !important;
+    left: 30px;
+    top: 10px;
     margin: auto;
     pointer-events: none;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     display: none;
 }
 
-header .search-block .search-collapse .card input:focus + input[type="reset"] {
+.form-control:focus + .reset-button i.icon-circle-xmark-regular,
+.form-control:not(:placeholder-shown) + .reset-button i.icon-circle-xmark-regular {
     display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0;
+} */
+
+.form-inline {
+    position: relative;
 }
 
-header .search-block .search-collapse .card input:focus ~ i.icon-circle-xmark-regular {
-    display: block;
+.form-control {
+    padding-right: 30px; /* Adjust padding to make space for the icon */
+}
+
+.reset-button {
     position: absolute;
-    right: 11px;
-    top: 0;
-    bottom: -2px;
-    height: 100%;
-    display: flex;
+    /* right: 10px; */
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.reset-button i.icon-circle-xmark-regular {
+    color: #004B87 !important;
+    font-size: 20px;
+    pointer-events: auto;
+    display: none;
     align-items: center;
     justify-content: center;
-    padding: 0;
+}
+
+.form-control:focus + .reset-button i.icon-circle-xmark-regular,
+.form-control:not(:placeholder-shown) + .reset-button i.icon-circle-xmark-regular {
+    display: flex;
 }
 
 header .search-block .search-collapse .card input {

@@ -127,12 +127,14 @@
                                     </button>
                                     <input class="form-control mr-sm-2" type="search" placeholder="Search"
                                         id="headerSearchInput" aria-label="Search">
-                                    <input type="reset" value="x">
-                                    <i class="icon-circle-xmark-regular"></i>
+                                    <!-- <input type="reset" value="x">
+                                    <i class="icon-circle-xmark-regular"></i> -->
+                                    <button type="reset" class="reset-button">
+                                        <i class="icon-circle-xmark-regular"></i>
+                                    </button>
                                 </form>
                                 <div class="search-result">
                                     <p class="opacity-1 ms-0">Search Results</p>
-
                                     <ul id="searchResults" class="searchItem searchHeaderScroll ps-0">
                                     </ul>
                                 </div>
@@ -866,10 +868,10 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div
+                                                                        <!-- <div
                                                                             class="ug_content indexbar-ugcontent hidden-set">
                                                                             <p><sup>ug/m<sup>3</sup></sup></p>
-                                                                        </div>
+                                                                        </div> -->
 
                                                                         <div class="canvas-graphs-bar-main">
                                                                             <div id="AqiBarchart1"
@@ -3482,15 +3484,19 @@
             const searchInput = document.getElementById('headerSearchInput');
             const searchResults = document.getElementById('searchResults');
             const searchModal = document.getElementById('mainSearch');
-            const resetButton = document.querySelector('.form-inline input[type="reset"]');
+            // const resetButton = document.querySelector('.form-inline input[type="reset"]');
+            const resetButton = document.querySelector('.reset-button');
+            const resetIcon = resetButton.querySelector('i.icon-circle-xmark-regular');
             let inputClicked = false;
 
             searchInput.addEventListener('input', function () {
                 const searchTerm = this.value.trim().toLowerCase();
                 searchResults.innerHTML = '';
                 if (searchTerm.length < 3) {
+                    resetIcon.style.display = 'none';
                     return;
                 }
+                resetIcon.style.display = 'flex';
                 let resultsFound = false;
 
                 document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, li:not(li > a)').forEach(function (element) {
@@ -3529,9 +3535,17 @@
                 inputClicked = true;
             });
 
-            resetButton.addEventListener('click', function () {
-                searchResults.innerHTML = '';
-            });
+            // resetButton.addEventListener('click', function () {
+            //     searchResults.innerHTML = '';
+            // });
+
+            resetIcon.addEventListener('click', function (event) {
+            event.preventDefault();
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+            resetIcon.style.display = 'none';
+            inputClicked = false;
+        });
 
             searchResults.addEventListener('click', function (event) {
                 const target = event.target;

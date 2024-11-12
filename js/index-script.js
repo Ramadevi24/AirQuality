@@ -9037,6 +9037,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".footer-social-icons").addClass("social-media-icons");
     $(".copy-right-para").addClass("copy-right-para-footer");
     $(".Newsearch-box ul").css("right", "38px");
+    $('.reset-button').css({'left': '10px', 'right': ''});
     // $('.insight .date-box .cal-div input').css('padding-left', '0');
     $(".prev-btn").addClass("previous-btn");
     $(".next-btn").addClass("next-button");
@@ -9614,6 +9615,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     } else {
       $(".Newsearch-box ul").css("left", "2px");
     }
+    $('.reset-button').css({'left': '', 'right': '10px'});
     $(".copy-right-contents").removeClass("copy-right-contents-footer");
     $(".contact-us-alignment").removeClass("contact-us-alignment-style");
     $(".next-btn-arb").removeClass("next-btn-arb-alignment");
