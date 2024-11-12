@@ -9531,7 +9531,12 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".footer-logo").removeClass("footer-logo-arabic");
     $(".footer-social-icons").removeClass("social-media-icons");
     $(".copy-right-para").removeClass("copy-right-para-footer");
-    $(".Newsearch-box ul").css("left", "2px");
+    // $(".Newsearch-box ul").css("left", "2px");
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      $(".Newsearch-box ul").css("left", "35px");
+    } else {
+      $(".Newsearch-box ul").css("left", "2px");
+    }
     $(".copy-right-contents").removeClass("copy-right-contents-footer");
     $(".contact-us-alignment").removeClass("contact-us-alignment-style");
     $(".next-btn-arb").removeClass("next-btn-arb-alignment");
