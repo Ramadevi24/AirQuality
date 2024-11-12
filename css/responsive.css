@@ -792,9 +792,9 @@
         right: 0 !important;
     }
 
-    .insight ul.aqi-legend-pd-0 {
+    /* .insight ul.aqi-legend-pd-0 {
         padding-left: 0;
-    }
+    } */
 
     .equal-station-box-height {
         height: auto;
@@ -1153,6 +1153,7 @@
     }
     .project-modal, .project-modal .sidebar{
         position: fixed;
+        right:0;
     }
     /* Arisha Start */
     /* start for disclaimer text purpose */
@@ -1265,7 +1266,7 @@
         margin-bottom: 5px;
     }
     .pollutant-graph-ipad{
-        width: 670px;
+        width: 730px;
     }
 
     .insight .pollutant-toggleBar .pollutantbar-title {
@@ -1449,10 +1450,10 @@
         margin-bottom: 35px;
     }
     .insightbox-tabmini{
-        width:700px;
+        width:730px;
     }
     .polutenat_bar {
-        width: 670px;
+        width: 730px;
         padding: 2px;
         overflow: hidden;
     }
@@ -1924,7 +1925,7 @@
         text-align: center;
         /* border: 1px solid #ccc; */
         position: absolute;
-        left: 0px;
+        /* left: 0px; */
         top: 0px;
         height: 100vh;
     }

@@ -5978,7 +5978,10 @@ text-align: left !important;
 .arabic-mode .contactus-mobile,
 .arabic-mode .insights-mobile,
 .arabic-mode .mobile-menu a,
-.arabic-mode .aqi-mobile
+.arabic-mode .aqi-mobile,
+.arabic-mode .insight-privacypolicy,
+.arabic-mode .tab-footer-link,
+.arabic-mode .tab-privacy-section ul a
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
@@ -6025,6 +6028,7 @@ text-align: left !important;
  .arabic-mode #questionHeader,
  .arabic-mode .pollutant-graph-title,
  .arabic-mode .Expand-Panel-tab
+
 
 {
     font-family: 'Cairo', sans-serif !important;

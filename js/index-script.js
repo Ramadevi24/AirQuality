@@ -9063,6 +9063,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     initiativeHeadingContentSm.innerText =
       "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     navLinkAirQuality.innerText = "جودة الهواء";
+
+
+    
     //03-11
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".thankyou-submit-msg").innerText =
@@ -9529,6 +9532,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     const rightsidebar = document.querySelector(".sidebar");
     rightsidebar.style.setProperty("right", "auto", "important"); // Remove the right property with !important
     rightsidebar.style.setProperty("left", "0px", "important"); // Set the left property to 0px with !important
+    rightsidebar.style.setProperty("padding-right", "16px", "important");
+
+
 
     $(".text-right").addClass("text-left-arabic");
     const dropdownItems = document.querySelectorAll(".dropdown-item");
