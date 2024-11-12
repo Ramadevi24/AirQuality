@@ -8803,37 +8803,105 @@ $(".select-pils").on("click", function () {
 //   }
 // }
 // Function to initialize button text based on localStorage
-function initializeLanguageButton() {
-    const button1= document.getElementById("language-toggle");
-    const button2= document.getElementById("language-toggle1");
- const button3 = document.getElementById("llanguage-toggle");
-    const currentLanguage = localStorage.getItem("language") || "english";
+// function initializeLanguageButton() {
+//     const button1= document.getElementById("language-toggle");
+//     const button2= document.getElementById("language-toggle1");
+//  const button3 = document.getElementById("llanguage-toggle");
+//     const currentLanguage = localStorage.getItem("language") || "english";
+// const arabictext="عربي" ;
 
-    // Set button text based on the language
-    button1.innerText = currentLanguage === "english" ? "عربي" : "English";
-    button2.innerText = currentLanguage === "english" ? "عربي" : "English";
-    button3.innerText = currentLanguage === "english" ? "عربي" : "English";
+//     // Set button text based on the language
+//     button1.innerText = currentLanguage === "english" ?arabictext : "English";
+//     button2.innerText = currentLanguage === "english" ? arabictext : "English";
+//     button3.innerText = currentLanguage === "english" ? arabictext : "English";
+// }
+function initializeLanguageButton() {
+  const button1 = document.getElementById("language-toggle");
+  const button2 = document.getElementById("language-toggle1");
+  const button3 = document.getElementById("llanguage-toggle");
+  const currentLanguage = localStorage.getItem("language") || "english";
+  const arabicText = "عربي";
+  const arabicFontFamily = "'Cairo', sans-serif";
+  const englishFontfamily='Gothamlight'; // Specify the Arabic font family here
+
+  // Set button text and font based on the language
+  if (currentLanguage === "english") {
+      button1.innerText = arabicText;
+      button2.innerText = arabicText;
+      button3.innerText = arabicText;
+
+      // Apply Arabic font family
+      button1.style.fontFamily = arabicFontFamily;
+      button2.style.fontFamily = arabicFontFamily;
+      button3.style.fontFamily = arabicFontFamily;
+  } else {
+      button1.innerText = "English";
+      button2.innerText = "English";
+      button3.innerText = "English";
+
+      // Reset to default font family (optional)
+      button1.style.fontFamily = englishFontfamily;
+      button2.style.fontFamily = englishFontfamily;
+      button3.style.fontFamily = englishFontfamily;
+  }
 }
+
 
 // Function to toggle the language and update localStorage
-function toggleChangeLanguage() {
-    const button1 = document.getElementById("language-toggle");
-    const button2= document.getElementById("language-toggle1");
-    const button3 = document.getElementById("llanguage-toggle");
+// function toggleChangeLanguage() {
+//     const button1 = document.getElementById("language-toggle");
+//     const button2= document.getElementById("language-toggle1");
+//     const button3 = document.getElementById("llanguage-toggle");
     
-    const currentLanguage = localStorage.getItem("language") || "english";
+//     const currentLanguage = localStorage.getItem("language") || "english";
 
-    // Toggle the language
-    const newLanguage = currentLanguage === "english" ? "arabic" : "english";
+//     // Toggle the language
+//     const newLanguage = currentLanguage === "english" ? "arabic" : "english";
 
-    // Update button text
-    button1.innerText = newLanguage === "english" ? "عربي" : "English";
-    button2.innerText = newLanguage === "english" ? "عربي" : "English";
-    button3.innerText = newLanguage === "english" ? "عربي" : "English";
+//     // Update button text
+//     button1.innerText = newLanguage === "english" ? "عربي" : "English";
+//     button2.innerText = newLanguage === "english" ? "عربي" : "English";
+//     button3.innerText = newLanguage === "english" ? "عربي" : "English";
 
-    // Update the language in localStorage
-    localStorage.setItem("language", newLanguage);
+//     // Update the language in localStorage
+//     localStorage.setItem("language", newLanguage);
+// }
+function toggleChangeLanguage() {
+  const button1 = document.getElementById("language-toggle");
+  const button2 = document.getElementById("language-toggle1");
+  const button3 = document.getElementById("llanguage-toggle");
+  
+  const currentLanguage = localStorage.getItem("language") || "english";
+
+  // Toggle the language
+  const newLanguage = currentLanguage === "english" ? "arabic" : "english";
+  const arabicFontFamily ="'Cairo', sans-serif"; // Specify the Arabic font family here
+
+  // Update button text and font family based on the language
+  if (newLanguage === "english") {
+      button1.innerText = "عربي";
+      button2.innerText = "عربي";
+      button3.innerText = "عربي";
+      
+      // Apply Arabic font family
+      button1.style.fontFamily = arabicFontFamily;
+      button2.style.fontFamily = arabicFontFamily;
+      button3.style.fontFamily = arabicFontFamily;
+  } else {
+      button1.innerText = "English";
+      button2.innerText = "English";
+      button3.innerText = "English";
+      
+      // Reset font family to default (optional)
+      button1.style.fontFamily = "";
+      button2.style.fontFamily = "";
+      button3.style.fontFamily = "";
+  }
+
+  // Update the language in localStorage
+  localStorage.setItem("language", newLanguage);
 }
+
 
 // Initialize button text on page load
 document.addEventListener("DOMContentLoaded", initializeLanguageButton);
@@ -8950,6 +9018,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".footer-change-col").removeClass("col-xl-3").addClass("col-xl-2");
     // $('.open').addClass('hamberger-cross-icon');
     $('.faq-section h4').addClass('questions-heading-ipad')
+    $('.insight ul.nav.twobar-tabs').addClass('graph-tabs-arabic')
 
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
     // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
@@ -8979,6 +9048,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".insight .ug_content ").addClass("ug_content-arabic");
     document.getElementById('mainPollutantName').style.textAlign='right';
     // document.querySelector('.insight .ug_content ').style.left='-130px'
+    $('.insight .chart-f-content p').addClass('aqi-content-arabic');
+    $('.station-aqi-trends-disclaimers').addClass('station-aqi-desclimer-mobile');
+    $('.exceeded-box .contact-content p ').addClass('hours-exceedance-disclaimer-mobile');
 
 
 
@@ -9080,13 +9152,22 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $('.next-btn-arb').addClass('next-btn-arb-alignment');
     $('.main-box').addClass('main-box-arabic');
     $('.tab_shado').addClass('main-box-arabic-box');
-    $('.responsive-align').removeClass('pad_r')
+    $('.responsive-align').removeClass('pad_r');
+    $('.contact-section .contact-info-item .contact-info-content a').addClass('footer-content');
+    $('.insight .main-box').addClass('insightbox-tabmini');
+    $('.equal-station-box-height').addClass('pollutant-graph-ipad');
+    // document.querySelector('.cal-div').style.direction='rtl';
     // document.querySelectorAll('.insight .silde-dv').forEach(item => {
     //     item.style.removeProperty('margin','1rem','1rem','importent');
     // });
     document.querySelectorAll('.insight .silde-dv').forEach(item => {
         item.style.setProperty('margin', '1rem', 'important');
   
+    });
+
+    const calenderarabic = document.querySelectorAll(".cal-div");
+    calenderarabic.forEach((item) => {
+      item.style.setProperty("direction","rtl");
     });
     
  $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
@@ -9220,10 +9301,6 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       .querySelectorAll(".our-air-analytics-desclimer")
       .forEach((element) => {
         element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`;
-      });
-      const calenderarabic = document.querySelectorAll(".cal-div");
-      calenderarabic.forEach((item) => {
-        item.style.setProperty("direction","rtl");
       });
     document.querySelector(
       ".hours-exceed-heading"
@@ -9545,6 +9622,22 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".insight .ug_content ").removeClass("ug_content-arabic");
     $('.nearest-section .station-details .legend-value').removeClass("aqi-legend-value");
     $("#language-toggle1").removeClass('btn-name-english');
+    $('.insight ul.nav.twobar-tabs').removeClass('graph-tabs-arabic');
+    $('.contact-section .contact-info-item .contact-info-content a').removeClass('footer-content');
+    $('.insight .chart-f-content p').removeClass('aqi-content-arabic');
+    $('.station-aqi-trends-disclaimers').removeClass('station-aqi-desclimer-mobile');
+    $('.exceeded-box .contact-content p ').removeClass('hours-exceedance-disclaimer-mobile');
+    $('.insight .main-box').removeClass('insightbox-tabmini');
+    $('.equal-station-box-height').removeClass('pollutant-graph-ipad');
+
+
+    
+    // document.querySelector('.cal-div').style.direction='ltr';
+    const calenderarabic = document.querySelectorAll(".cal-div");
+    calenderarabic.forEach((item) => {
+      item.style.setProperty("direction","ltr");
+    });
+
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
       item.style.setProperty("right", "", "important");
@@ -9781,10 +9874,6 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       .querySelectorAll(".our-air-analytics-desclimer")
       .forEach((element) => {
         element.innerText = `Track Abu Dhabi City's air quality throughout the year with our radar chart. Each colored segment illustrates the frequency of different air conditions, spanning from 'Good' to 'Hazardous'.`;
-      });
-      const calenderarabic = document.querySelectorAll(".cal-div");
-      calenderarabic.forEach((item) => {
-        item.style.setProperty("direction","ltr");
       });
     document.querySelector(".changeHeading-pollutant").innerText =
       "Station AQI TRENDS";
