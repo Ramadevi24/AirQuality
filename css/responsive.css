@@ -362,7 +362,7 @@
     }
 
         .Newsearch-box:hover > .search-txt, .Newsearch-box:hover > .listSearch {
-            margin-left: 110px;
+            margin-left: -37px;
         }
 
     .air-map-container .air-map-col ul.map-hori-tools li .btn span {
