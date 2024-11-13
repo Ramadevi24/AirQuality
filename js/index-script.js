@@ -603,7 +603,7 @@ const causeStationArabicData = {
     ],
     CO: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
@@ -625,18 +625,18 @@ const causeStationArabicData = {
   },
   مصفح: {
     PM10: [
-      { cause: "حركة المرور الصناعية", image: "industrial_traffic.png" },
+      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
-      { cause: "حركة المرور الصناعية", image: "industrial_traffic.png" },
+      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
-      { cause: "حركة المرور الصناعية", image: "industrial_traffic.png" },
-      { cause: "الانبعاثات الصناعية", image: "industrial_emission.png" },
+      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
+      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
     ],
-    SO2: [{ cause: "الانبعاثات الصناعية", image: "industrial_emission.png" }],
+    SO2: [{ cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" }],
   },
   "مدرسة بني ياس": {
     PM10: [
@@ -662,19 +662,19 @@ const causeStationArabicData = {
     ],
     NO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
     SO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
     CO: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
@@ -704,33 +704,33 @@ const causeStationArabicData = {
   المفرق: {
     PM10: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "الانبعاثات الصناعية", image: "industrial_emission.png" },
+      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "الانبعاثات الصناعية", image: "industrial_emission.png" },
+      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "الانبعاثات الصناعية", image: "industrial_emission.png" },
+      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
     ],
     SO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "الانبعاثات الصناعية", image: "industrial_emission.png" },
+      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
     ],
   },
   "المعهد الإسلامي العين": {
@@ -903,31 +903,31 @@ const causeStationArabicData = {
   },
   "شارع E11": {
     PM10: [
-      { cause: "Highway traffic emissions", image: "highway_traffic.png" },
+      { cause: "انبعاثات حركة المرور في الطرق السريعة", image: "highway_traffic.png" },
       { cause: "Natural sources", image: "natural_sources.png" },
     ],
     PM25: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
     SO2: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
     CO: [
       {
-        cause: "انبعاثات حركة المرور على الطرق السريعة",
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
     ],
@@ -2064,9 +2064,9 @@ const statusClassNew1 = {
 const statusClassArabic = {
   Good: "أيام جيدة",
   Moderate: "أيام معتدلة",
-  UnHealthlySensitiveGroups: "غير صحي للمجموعات الحساسة",
+  UnHealthlySensitiveGroups: "غير صحي للفئة الحساسة",
   UnHealthly: "أيام غير صحية",
-  VeryUnHealthly: "أيام غير صحية جداً",
+  VeryUnHealthly: "غير صحي للغاية",
   Hazardous: "أيام خطرة",
 };
 
@@ -2082,9 +2082,9 @@ const statusClassNew1English = {
 const statusClassNew1Arabic = {
   Good: "جيد",
   Moderate: "متوسط",
-  UnHealthlySensitiveGroups: "غير صحي للمجموعات الحساسة",
+  UnHealthlySensitiveGroups: "غير صحي للفئة الحساسة",
   UnHealthly: "غير صحي",
-  VeryUnHealthly: "غير صحي بتاتا",
+  VeryUnHealthly: "غير صحي للغاية",
   Hazardous: "خطر",
 };
 const aqiContent = {
@@ -2138,8 +2138,8 @@ const pollutantNamesEnglish = {
 };
 
 const pollutantNamesArabic = {
-  PM10: "المواد الجسيمية أصغر من 10 ميكرونات",
-  PM25: "المواد الجسيمية أصغر من 2.5 ميكرونات",
+  PM10: "الجسيمات الدقيقة أصغر من 10 ميكرونات",
+  PM25: "الجسيمات الدقيقة أصغر من 2.5 ميكرونات",
   NO2: "ثنائي أكسيد النيتروجين",
   SO2: "ثنائي أكسيد الكبريت",
   CO: "أحادي أكسيد الكربون",
@@ -3215,13 +3215,13 @@ function loadStationData(initialRequest = false) {
           case "PM10":
             mainPollutantNameContent =
               currentLanguage === "arabic"
-                ? `المواد الجسيمية ,PM<sub>10</sub>`
+                ? `الجسيمات الدقيقة ,PM<sub>10</sub>`
                 : `Particulate Matter, PM<sub>10</sub>`;
             break;
           case "PM25":
             mainPollutantNameContent =
               currentLanguage === "arabic"
-                ? `المواد الجسيمية, PM<sub>2.5</sub>`
+                ? `الجسيمات الدقيقة, PM<sub>2.5</sub>`
                 : `Particulate Matter, PM<sub>2.5</sub>`;
             break;
           case "SO2":
@@ -10157,13 +10157,13 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
           case "معتدل":
             item.textContent = "Moderate";
             break;
-          case "غير صحي للمجموعات الحساسة":
+          case "غير صحي للفئة الحساسة":
             item.textContent = "Unhealthy for sensitive groups";
             break;
           case "غير صحي":
             item.textContent = "Unhealthy";
             break;
-          case "غير صحي للغاية":
+          case "غير صحي للغاية ":
             item.textContent = "Very Unhealthy";
             break;
           case "خطرة":
