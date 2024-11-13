@@ -8508,7 +8508,7 @@ var accordionContent = [
   {
     question: "How does air quality influence weather patterns?",
     answer:
-      "Yes (remove), air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.",
+      "Air quality is seen to influence weather patterns. For example, certain pollutants can affect cloud formation and precipitation.",
   },
   {
     question:
