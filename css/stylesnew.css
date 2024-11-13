@@ -5930,6 +5930,10 @@ text-align: left !important;
     font-family: 'Cairo', sans-serif;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
+.arabic-mode .text-center p{
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600 !important; 
+}
 
 
 .arabic-mode .paratab,
