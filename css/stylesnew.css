@@ -5991,10 +5991,14 @@ text-align: left !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
  
-.arabic-mode .accordion-button,
-.arabic-mode .list-item span{
+.arabic-mode .accordion-button
+{
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500; */
+}
+.arabic-mode .list-item span{
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
 }
 /* contactus */
 .arabic-mode #cotact-address{
