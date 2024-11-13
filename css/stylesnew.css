@@ -5942,7 +5942,6 @@ text-align: left !important;
 .arabic-mode #sideBarAqiStatus,
 .arabic-mode #SidebaryearlyAirQualityOverview,
 .arabic-mode #yearlyAirQualityOverview,
-.arabic-mode .list-item span,
 .arabic-mode .darkorange,
 .arabic-mode .lightorange,
 .arabic-mode .green,
@@ -5981,13 +5980,15 @@ text-align: left !important;
 .arabic-mode .aqi-mobile,
 .arabic-mode .insight-privacypolicy,
 .arabic-mode .tab-footer-link,
-.arabic-mode .tab-privacy-section ul a
+.arabic-mode .tab-privacy-section ul a,
+.arabic-mode  #datepicker::placeholder
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
  
-.arabic-mode .accordion-button{
+.arabic-mode .accordion-button,
+.arabic-mode .list-item span{
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500; */
 }
@@ -5999,7 +6000,8 @@ text-align: left !important;
 .arabic-mode #yourname,
 .arabic-mode #youremail,
 .arabic-mode #yourphone,
-.arabic-mode #message::placeholder{
+.arabic-mode #message::placeholder
+{
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500 !important; */
 }
@@ -6027,7 +6029,9 @@ text-align: left !important;
  .arabic-mode .Expand-Panel-mobile,
  .arabic-mode #questionHeader,
  .arabic-mode .pollutant-graph-title,
- .arabic-mode .Expand-Panel-tab
+ .arabic-mode .Expand-Panel-tab,
+ .arabic-mode .list-item p,
+ .arabic-mode .weather-card-map h5
 
 
 {
