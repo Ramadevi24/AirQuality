@@ -6055,6 +6055,9 @@ text-align: left !important;
     font-family: 'Cairo', sans-serif;
     /* font-weight: 500; */
 }
+.arabic-mode .list-item span
+.arabic-mode .weather-card-map h6,
+.arabic-mode #aqiSmallScreenDailyCounts span,
 .arabic-mode .list-item span{
     font-family: 'Cairo', sans-serif;
     font-weight: 500;
@@ -6098,7 +6101,10 @@ text-align: left !important;
  .arabic-mode .pollutant-graph-title,
  .arabic-mode .Expand-Panel-tab,
  .arabic-mode .list-item p,
- .arabic-mode .weather-card-map h5
+ .arabic-mode .weather-card-map h5,
+ .arabic-mode #aqiSmallScreenDailyCounts p,
+ .arabic-mode #averageAqi,
+ .arabic-mode #airQualitySafetyLevelAqi
 
 
 {
