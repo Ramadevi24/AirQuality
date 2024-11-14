@@ -9151,6 +9151,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامة";
     $(".search_name").addClass("search_street");
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      $(".search_name").css("right", "17rem");
+    }
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
   $("#language-toggle1").addClass('btn-name-english');
@@ -9469,7 +9472,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
 
     document
       .querySelector(".footer-2-sec")
-      .style.setProperty("padding-left", "60px");
+      .style.setProperty("padding-left", "20px");
 
   document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
   $('.nearest-section .station-details .legend-value').addClass("aqi-legend-value");
@@ -9605,6 +9608,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     // $('.insight .date-box .cal-div input').css('padding-left', '10px');
     $(".contact-info-content").removeClass("contact-info-data");
     $(".search_name").removeClass("search_street");
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      $(".search_name").css("right", "0rem");
+    }
     $(".insight .sorttoggle button.btn-close").removeClass("sort-toggle");
     $('.insight #sidebar-btn').removeClass('ipad-expand-panel')
     $(".insight .silde-dv").removeClass("slide-dv-position");

@@ -3903,7 +3903,8 @@ border: none;
     border: 2px solid rgba(0, 75, 135, 1);
 }
 
-.insight .silde-dv .fp-arrow.fp-controlArrow.fp-next, .silde-dv .fp-arrow.fp-controlArrow.fp-prev {
+.insight .silde-dv .fp-arrow.fp-controlArrow.fp-next, 
+.silde-dv .fp-arrow.fp-controlArrow.fp-prev {
     position: absolute;
     left: 85%;
     top: 50px;
@@ -3950,8 +3951,37 @@ border: none;
         padding: 0px 13px 10px 11px;
     }
 
-.animate-blinking:before {
+/* .animate-blinking:before {
     content: '';
+    display: block;
+    width: 200%;
+    height: 200%;
+    box-sizing: border-box;
+    margin-left: -50%;
+    margin-top: -50%;
+    border-radius: 50%;
+    background-color: #004B87;
+    text-align: center;
+    animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+} */
+
+/* .animate-blinking:after {
+    content: "\f104";
+    color: rgba(0, 75, 135, 1);
+    font-family: 'FontAwesome';
+    font-size: 30px;
+    line-height: 35px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+} */
+
+.fp-pev.animate-blinking:after {
+    content: '\f104';
     display: block;
     width: 200%;
     height: 200%;
@@ -3964,7 +3994,36 @@ border: none;
     animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
-.animate-blinking:after {
+.fp-next.animate-blinking:after {
+    content: '\f104';
+    display: block;
+    width: 200%;
+    height: 200%;
+    box-sizing: border-box;
+    margin-left: -50%;
+    margin-top: -50%;
+    border-radius: 50%;
+    background-color: #004B87;
+    text-align: center;
+    animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.fp-next .animate-blinking:after {
+    content: "\f104";
+    color: rgba(0, 75, 135, 1);
+    font-family: 'FontAwesome';
+    font-size: 30px;
+    line-height: 35px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.fp-pev .animate-blinking:after {
     content: "\f105";
     color: rgba(0, 75, 135, 1);
     font-family: 'FontAwesome';
@@ -4235,7 +4294,7 @@ border: none;
 .search_street{
     position: absolute;
     top: 1px;
-    right: 14rem;
+    right: 15rem;
 }
 
 .rtl-accordion::after {

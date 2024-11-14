@@ -2957,7 +2957,7 @@
                             <div class="col-sm-12 col-md-12 col-xl-9">
                                 <div class="row">
                                     <div class="col-xl-3 col-sm-12 col-md-4 footer-change-col">
-                                        <div class="d-inline-block text-sm-start">
+                                        <div class="d-inline-block ">
                                             <h6>
                                                 <a href="#slide0" class="footermobile-none">Our Air Quality</a>
                                                 <a href="#demo" class="footermobile-show">Our Air Quality</a>
@@ -2967,7 +2967,7 @@
 
                                     <div
                                         class="col-lg-3 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
-                                        <!-- <div class="d-inline-block text-sm-start">
+                                        <!-- <div class="d-inline-block ">
                                             <h6 class=""><a href="#slide2">Insights</a></h6>
                                             <ul class="links footer_link">
                                                 <li>
@@ -2984,7 +2984,7 @@
                                                 </li>
                                             </ul>
                                         </div> -->
-                                        <div class="d-inline-block text-sm-start">
+                                        <div class="d-inline-block ">
                                             <h6 class=""><a href="#slide2" class="footer mobile-insights">Insights</a>
                                             </h6>
                                             <ul class="links footer_link">
@@ -3005,7 +3005,7 @@
                                     </div>
 
                                     <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
-                                        <div class="d-inline-block text-sm-start w-100">
+                                        <div class="d-inline-block  w-100">
                                             <!-- <div class="dropdown">
                                                 <button type="button" class="btn btn-primary dropdown-toggle mb-23"
                                                     data-bs-toggle="dropdown">
@@ -3070,7 +3070,7 @@
                                     </div>
 
                                     <div class="col-xl-2 col-sm-12 col-md-12">
-                                        <div class="d-inline-block text-sm-start">
+                                        <div class="d-inline-block ">
                                             <h6>
                                                 <a href="#slide3" class="footermobile-none"> Projects</a>
                                                 <a href="#section3" class="footermobile-show"> Projects</a>
@@ -3078,7 +3078,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-2 col-sm-12 col-md-12">
-                                        <div class="d-inline-block text-sm-start">
+                                        <div class="d-inline-block ">
                                             <h6>
                                                 <a href="#slide4" class="footermobile-none">FAQ</a>
                                                 <a href="#section4" class="footermobile-show">FAQ</a>
@@ -3087,7 +3087,7 @@
                                     </div>
                                     <div
                                         class="col-lg-2 col-sm-12 col-md-12 d-none d-sm-none d-md-none d-lg-none d-xl-block">
-                                        <div class="d-inline-block text-sm-start">
+                                        <div class="d-inline-block ">
                                             <h6 class=""><a href="#slide6">Contact Us</a></h6>
                                             <ul class="links">
                                                 <li>
@@ -3102,7 +3102,7 @@
                                     </div>
 
                                     <div class="col-12 col-sm-12 d-block d-sm-block d-md-block d-lg-block d-xl-none">
-                                        <div class="d-inline-block text-sm-start w-100">
+                                        <div class="d-inline-block  w-100">
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-primary dropdown-toggle contactus-mobile"
                                                     data-bs-toggle="dropdown">
@@ -3314,26 +3314,42 @@
 
                     if (destination.index === 0) {
                         $('.fp-prev').addClass('disabled');
-                        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                        $('.fp-next').removeClass('disabled')
+                        // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
                     } else if (destination.index === 3) {
                         $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+                        $('.fp-next').addClass('disabled')
+                        // $('.fp-next').addClass('disabled').removeClass('animate-blinking');
                     } else {
                         $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                        $('.fp-next').removeClass('disabled')
+                        // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
                     }
                 }
             });
-            if (slideIndexS == 0) {
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            } else if (slideIndexS == 2) {
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
-            } else {
-                $('.fp-prev').removeClass('disabled');
-                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            }
+            // if (slideIndexS == 0) {
+            //     $('.fp-prev').addClass('disabled');
+            //     $('.fp-next').removeClass('disabled')
+            //     // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            // } else if (slideIndexS == 2) {
+            //     $('.fp-prev').addClass('disabled');
+            //     $('.fp-next').removeClass('disabled')
+            //     // $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
+            // } else {
+            //     $('.fp-prev').removeClass('disabled');
+            //     $('.fp-next').addClass('disabled');
+            //     // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            // }
+
+            $('.fp-prev').click(function() {
+        $(this).addClass('animate-blinking');
+        $('.fp-next').removeClass('animate-blinking');
+    });
+
+    $('.fp-next').click(function() {
+        $(this).addClass('animate-blinking');
+        $('.fp-prev').removeClass('animate-blinking');
+    });
 
 
             const mapBlock = document.getElementById('mapBlock');
