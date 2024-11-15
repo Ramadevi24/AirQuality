@@ -8819,6 +8819,10 @@ $(".select-pils").on("click", function () {
 //     button2.innerText = currentLanguage === "english" ? arabictext : "English";
 //     button3.innerText = currentLanguage === "english" ? arabictext : "English";
 // }
+
+
+
+
 function initializeLanguageButton() {
   const button1 = document.getElementById("language-toggle");
   const button2 = document.getElementById("language-toggle1");
@@ -9199,11 +9203,14 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
 
     $('.insight .polutenat_bar .tab_shado .graph-duration-filters').removeClass('filter-arabic');
 
-
-    document.querySelectorAll('.insight .silde-dv').forEach(item => {
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      document.querySelectorAll('.insight .silde-dv').forEach(item => {  
         item.style.setProperty('margin', '1rem', 'important');
-  
     });
+    }
+
+
+    
 
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
@@ -9569,8 +9576,8 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     const rightsidebar = document.querySelector(".sidebar");
     rightsidebar.style.setProperty("right", "auto", "important"); // Remove the right property with !important
     rightsidebar.style.setProperty("left", "0px", "important"); // Set the left property to 0px with !important
-    // rightsidebar.style.setProperty("padding-right", "16px", "important");
-    rightsidebar.style.setProperty("padding", "10px", "important");
+    rightsidebar.style.setProperty("padding-right", "16px", "important");
+    // rightsidebar.style.setProperty("padding", "10px", "important");
 
 
 
@@ -9704,10 +9711,16 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     calenderarabic.forEach((item) => {
       item.style.setProperty("direction","ltr");
     });
-    document.querySelectorAll('.insight .silde-dv').forEach(item => {
-      item.style.removeProperty('margin', '1rem', 'important');
+  //   document.querySelectorAll('.insight .silde-dv').forEach(item => {
+  //     item.style.removeProperty('margin', '1rem', 'important');
 
+  // });
+
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    document.querySelectorAll('.insight .silde-dv').forEach(item => {  
+      item.style.removeProperty('margin', '1rem', 'important');
   });
+  }
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {

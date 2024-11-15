@@ -3943,6 +3943,118 @@ $(document).on("click", ".close-btn", function () {
   </script>
   
 
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const prevButton = document.querySelector('#prev');
+    const nextButton = document.querySelector('#next');
+    const carousel = document.querySelector('#recipeCarousel');
+
+    // Function to update button states
+    function updateButtonStates() {
+        if (prevButton.disabled) {
+            prevButton.classList.remove('animate-blinking-carousel');
+            nextButton.classList.add('animate-blinking-carousel')
+        }
+        if (nextButton.disabled) {
+            nextButton.classList.remove('animate-blinking-carousel');
+            prevButton.classList.add('animate-blinking-carousel');
+        }
+    }
+
+    // Event listener for the carousel slide event
+    carousel.addEventListener('slid.bs.carousel', function () {
+        // Logic to enable/disable buttons based on active slide
+        const activeSlide = carousel.querySelector('.carousel-item.active');
+        const slides = carousel.querySelectorAll('.carousel-item');
+        const activeIndex = Array.from(slides).indexOf(activeSlide);
+
+        prevButton.disabled = activeIndex === 0;
+        nextButton.disabled = activeIndex === slides.length - 1;
+
+        updateButtonStates(); // Update blinking classes
+    });
+
+    // Event listener for the previous button
+    prevButton.addEventListener('click', function () {
+        if (!prevButton.disabled) {
+            prevButton.classList.add('animate-blinking-carousel');
+            nextButton.classList.remove('animate-blinking-carousel');
+        }
+    });
+
+    // Event listener for the next button
+    nextButton.addEventListener('click', function () {
+        if (!nextButton.disabled) {
+            nextButton.classList.add('animate-blinking-carousel');
+            prevButton.classList.remove('animate-blinking-carousel');
+        }
+    });
+});
+
+ </script>
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const prevButton = document.querySelector('#prev');
+    const nextButton = document.querySelector('#next');
+    const carousel = document.querySelector('#recipeCarousel');
+
+    // Helper function to check if a button is disabled
+    function isButtonDisabled(button) {
+        return button.hasAttribute('disabled') || button.style.pointerEvents === 'none' || button.style.opacity === '0.5';
+    }
+
+    // Function to update blinking effect based on button states
+    function updateBlinkingEffect() {
+        if (isButtonDisabled(prevButton)) {
+            // Disable blinking for the previous button
+            prevButton.classList.remove('animate-blinking');
+            // Enable blinking for the next button if not disabled
+            if (!isButtonDisabled(nextButton)) {
+                nextButton.classList.add('animate-blinking');
+            }
+        } else if (isButtonDisabled(nextButton)) {
+            // Disable blinking for the next button
+            nextButton.classList.remove('animate-blinking');
+            // Enable blinking for the previous button if not disabled
+            if (!isButtonDisabled(prevButton)) {
+                prevButton.classList.add('animate-blinking');
+            }
+        } else {
+            // If neither button is disabled, reset blinking on both buttons
+            prevButton.classList.remove('animate-blinking');
+            nextButton.classList.remove('animate-blinking');
+        }
+    }
+
+    // Add event listeners for clicks
+    prevButton.addEventListener('click', function () {
+        if (!isButtonDisabled(prevButton)) {
+            prevButton.classList.add('animate-blinking');
+            nextButton.classList.remove('animate-blinking');
+        }
+        updateBlinkingEffect();
+    });
+
+    nextButton.addEventListener('click', function () {
+        if (!isButtonDisabled(nextButton)) {
+            nextButton.classList.add('animate-blinking');
+            prevButton.classList.remove('animate-blinking');
+        }
+        updateBlinkingEffect();
+    });
+
+    // Initial state check for blinking effect
+    updateBlinkingEffect();
+
+    // Optional: Update states dynamically if buttons change due to carousel events
+    carousel.addEventListener('slide.bs.carousel', function () {
+        updateBlinkingEffect();
+    });
+});
+
+</script> -->
+
     <script>
         (function () {
             console.log('hello');
