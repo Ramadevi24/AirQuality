@@ -847,6 +847,11 @@
         right: 10px;
     }
 
+    .arabic-mode .insight .graph-duration-filters .two-one-top{
+        top:10px;
+        right:auto;
+    }
+
     .canvas-graphs-height {
         margin-bottom: 0px;
     }
