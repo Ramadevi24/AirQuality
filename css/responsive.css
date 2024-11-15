@@ -796,9 +796,7 @@
         padding-left: 0;
     } */
 
-    /* #ui-datepicker-div{
-        top:2405.25px !important;
-    } */
+ 
 
     .equal-station-box-height {
         height: auto;
@@ -1043,8 +1041,11 @@
 
     .insight .polutenat_bar .tab_shado .graph-duration-filters {
         position: absolute;
-        right: 0;
+        /* right:0;  */
         top: 0;
+    }
+    .filter-arabic{
+        right:0; 
     }
 
     .insight .aqi-content.mult-value-tab {
@@ -1825,8 +1826,11 @@
 
     .insight .polutenat_bar .tab_shado .graph-duration-filters {
         position: absolute;
-        right: 0px;
+        /* right: 0px; */
         top: -4%;
+    }
+    .filter-arabic{
+        right:0; 
     }
 
     .insight ul#myTabs {
@@ -1958,6 +1962,21 @@
         left: 50%;
     }
 
+   /* .expand-panel-arabic{
+       left:auto !important;
+       right:50% !important;
+    } */
+/* expand panel for arabic */
+    .arabic-mode .insight #sidebar.visible #sidebar-btn
+    {
+        left:auto !important;
+        right:50% !important;
+
+    }
+    #sidebar.visible #sidebar-btn.expand-panel-arabic {
+        left: auto; /* Removes left: 50% */
+        right: 50% !important; /* Adds right: 50% with !important */
+    }
     .insight .data-sort_sidebar {
         position: relative;
         width: 50%;
