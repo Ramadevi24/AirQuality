@@ -9198,6 +9198,8 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     // });
 
     $('.insight .polutenat_bar .tab_shado .graph-duration-filters').removeClass('filter-arabic');
+
+
     document.querySelectorAll('.insight .silde-dv').forEach(item => {
         item.style.setProperty('margin', '1rem', 'important');
   
@@ -9702,6 +9704,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     calenderarabic.forEach((item) => {
       item.style.setProperty("direction","ltr");
     });
+    document.querySelectorAll('.insight .silde-dv').forEach(item => {
+      item.style.removeProperty('margin', '1rem', 'important');
+
+  });
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {

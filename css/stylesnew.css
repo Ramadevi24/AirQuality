@@ -2421,7 +2421,7 @@ border: none;
     .insight .pollutants-legend-heading {
         display: flex;
         overflow: auto;
-        padding: 0 10px;
+        /* padding: 0 10px; */
         flex-wrap: wrap;
         justify-content: center;
         bottom: 25px;
@@ -6016,7 +6016,9 @@ text-align: left !important;
 .circular-width-arabic{
     transform: rotate(180deg);
 }
-
+.twobar-tabs{
+    padding: 0;
+}
 
 
 

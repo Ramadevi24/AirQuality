@@ -847,6 +847,11 @@
         right: 10px;
     }
 
+    .arabic-mode .insight .graph-duration-filters .two-one-top{
+        top:10px;
+        right:auto;
+    }
+
     .canvas-graphs-height {
         margin-bottom: 0px;
     }
@@ -1047,6 +1052,8 @@
     .filter-arabic{
         right:0; 
     }
+
+   
 
     .insight .aqi-content.mult-value-tab {
         top: 0;
@@ -3900,11 +3907,12 @@
 @media (min-width: 768px) and (max-width: 1024px),
        (min-width: 600px) and (max-width: 768px) {
     .chartjs-tooltip {
-        transform: translate(-10%, 340%); 
+        transform: translate(-20%, -100%); 
         pointer-events: none; 
         position: absolute;
         transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease; 
         opacity: 0;
+        z-index: 10;
     }
 
     
