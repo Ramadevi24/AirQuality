@@ -9036,6 +9036,16 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $(".fp-prev")
       .removeClass(".silde-dv .fp-arrow.fp-controlArrow.fp-prev")
       .addClass("fa-move-next-arrow");
+    //   document.querySelectorAll('.fp-prev.animate-blinking,.fp-next.animate-blinking').forEach(element => {
+    //     console.log(element);
+    //     element.classList.add('arabic-animate-blinking');
+    // });
+
+    // document.querySelectorAll('.fp-prev.animate-blinking, .fp-next.animate-blinking').forEach(element => {
+    //   element.classList.add('arabic-animate-blinking')});
+    document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
+      element.classList.add('arabic-animate')});
+
     $(".monitoring-heading").addClass("arabic-monitoring-heading");
     $(".footer-logo").addClass("footer-logo-arabic");
     $(".footer-social-icons").addClass("social-media-icons");
@@ -9159,9 +9169,11 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     document.querySelector(".paratab").innerText =
       "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامة";
-    $(".search_name").addClass("search_street");
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      $(".search_name").css("right", "17rem");
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      $(".insight .search-box .p-input span").css({"right": "auto", "left": "12px"});
+    }
+    else if (window.matchMedia("(min-width: 768px)").matches) {
+      $(".insight .search-box .p-input span").css({"right": "auto", "left": "12px"});
     }
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
@@ -9398,10 +9410,11 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       ".insight .pollutant-toggleBar .iconimg"
     );
     iicon.forEach((item) => {
-      item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
-      item.style.setProperty("left", "0");
-      item.style.setProperty("margin-right", "0", "important");
+      // item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
+      item.style.setProperty("left", "7px");
+      item.style.setProperty("right", "auto");
       item.style.setProperty("margin-left", "20px");
+      item.style.setProperty("margin-right", "auto");
     });
     const pollutantinfoIcon = document.querySelectorAll(
       ".pollutant-toggleBar .pollu-top-position"
@@ -9619,9 +9632,11 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $inputElements.removeClass("rtl-stationsData");
     // $('.insight .date-box .cal-div input').css('padding-left', '10px');
     $(".contact-info-content").removeClass("contact-info-data");
-    $(".search_name").removeClass("search_street");
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      $(".search_name").css("right", "0rem");
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      $(".insight .search-box .p-input span").css({"right": "15px", "left": "auto"});
+    }
+    else if (window.matchMedia("(min-width: 768px)").matches) {
+      $(".insight .search-box .p-input span").css({"right": "15px", "left": "auto"});
     }
       // $('#sidebar-btn').removeClass('expand-panel-arabic');
     //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
@@ -9634,6 +9649,12 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $("#fp-nav").removeClass("fp-left");
     $("#fp-nav").addClass("fp-right");
     $(".fp-prev").removeClass("fa-move-next-arrow");
+  //   document.querySelectorAll('.fp-prev').forEach(element => {
+  //     element.classList.remove('arabic-animate-blinking');
+  // });
+  document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
+    element.classList.remove('arabic-animate')});
+
     $(".insight ul.dropdown-menu.sorttoggle.show").removeClass("left-zero");
     $(".monitoring-heading").removeClass("arabic-monitoring-heading");
     $(".footer-our-airquality").removeClass("footer-our-airquality-alignment");
@@ -9999,10 +10020,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       ".insight .pollutant-toggleBar .iconimg"
     );
     iicon.forEach((item) => {
-      item.style.setProperty("left", "auto", "important"); // Set 'right: auto !important'
-      item.style.setProperty("right", "0", "important");
-      item.style.setProperty("margin-right", "20px", "important");
-      item.style.setProperty("margin-left", "0", "important");
+      item.style.setProperty("left", "auto");
+      item.style.setProperty("right", "7px", "important");
+      item.style.setProperty("margin-left", "auto");
+      item.style.setProperty("margin-right", "20px");
     });
     const pollutantinfoIcon = document.querySelectorAll(
       ".pollutant-toggleBar .pollu-top-position"
@@ -10190,13 +10211,13 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
           case "معتدل":
             item.textContent = "Moderate";
             break;
-          case "غير صحي للفئة الحساسة":
+          case "غير صحي للمجموعات الحساسة":
             item.textContent = "Unhealthy for sensitive groups";
             break;
           case "غير صحي":
             item.textContent = "Unhealthy";
             break;
-          case "غير صحي للغاية ":
+          case "غير صحي للغاية":
             item.textContent = "Very Unhealthy";
             break;
           case "خطرة":

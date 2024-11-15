@@ -3312,19 +3312,32 @@
 
                 onSlideLeave: function (section, origin, destination, direction) {
 
-                    if (destination.index === 0) {
-                        $('.fp-prev').addClass('disabled');
-                        $('.fp-next').removeClass('disabled')
-                        // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-                    } else if (destination.index === 3) {
-                        $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').addClass('disabled')
-                        // $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-                    } else {
-                        $('.fp-prev').removeClass('disabled');
-                        $('.fp-next').removeClass('disabled')
-                        // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-                    }
+    //                 if (destination.index === 0) {
+    //     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+    //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+    // } else if (destination.index === 3) {
+    //     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+    //     $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+    // } else {
+    //     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+    //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+    // }
+
+    if (destination.index === 0) {
+        // First slide: Disable Prev, remove its blinking, enable Next with blinking
+        $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+    } else if (destination.index === 1 || destination.index === 2) {
+        // Last slide: Disable Next, remove its blinking, enable Prev with blinking
+        $('.fp-prev').removeClass('disabled');
+        $('.fp-next').removeClass('disabled');
+    } 
+    else if (destination.index === 3) {
+        // Last slide: Disable Next, remove its blinking, enable Prev with blinking
+        $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+        $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+    } 
+
                 }
             });
             // if (slideIndexS == 0) {
@@ -3341,16 +3354,19 @@
             //     // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
             // }
 
-            $('.fp-prev').click(function() {
+         $('.fp-prev').click(function() {
+    if (!$(this).hasClass('disabled')) { // Ensure it's not disabled before adding blinking
         $(this).addClass('animate-blinking');
         $('.fp-next').removeClass('animate-blinking');
-    });
+    }
+});
 
-    $('.fp-next').click(function() {
+$('.fp-next').click(function() {
+    if (!$(this).hasClass('disabled')) { // Ensure it's not disabled before adding blinking
         $(this).addClass('animate-blinking');
         $('.fp-prev').removeClass('animate-blinking');
-    });
-
+    }
+});
 
             const mapBlock = document.getElementById('mapBlock');
             mapBlock.addEventListener('mouseenter', disableScroll);
