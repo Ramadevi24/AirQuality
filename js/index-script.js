@@ -9576,8 +9576,8 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     const rightsidebar = document.querySelector(".sidebar");
     rightsidebar.style.setProperty("right", "auto", "important"); // Remove the right property with !important
     rightsidebar.style.setProperty("left", "0px", "important"); // Set the left property to 0px with !important
-    rightsidebar.style.setProperty("padding-right", "16px", "important");
-    // rightsidebar.style.setProperty("padding", "10px", "important");
+    // rightsidebar.style.setProperty("padding-right", "16px", "important");
+    rightsidebar.style.setProperty("padding", "10px", "important");
 
 
 
