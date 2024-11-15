@@ -9066,15 +9066,6 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $('.insight .chart-f-content p').addClass('aqi-content-arabic');
     $('.station-aqi-trends-disclaimers').addClass('station-aqi-desclimer-mobile');
     $('.exceeded-box .contact-content p ').addClass('hours-exceedance-disclaimer-mobile');
-    // $('#sidebar-btn').addClass('expand-panel-arabic');;
-  //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
-  //     element.classList.add('expand-panel-arabic');
-  //     console.log("classsssssisaddedd")
-  // });
-
-  $('.circular-width').addClass('circular-width-arabic');
-
-
 
 
 
@@ -9191,13 +9182,10 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $('.contact-section .contact-info-item .contact-info-content a').addClass('footer-content');
     $('.insight .main-box').addClass('insightbox-tabmini');
     $('.equal-station-box-height').addClass('pollutant-graph-ipad');
- 
     // document.querySelector('.cal-div').style.direction='rtl';
     // document.querySelectorAll('.insight .silde-dv').forEach(item => {
     //     item.style.removeProperty('margin','1rem','1rem','importent');
     // });
-
-    $('.insight .polutenat_bar .tab_shado .graph-duration-filters').removeClass('filter-arabic');
     document.querySelectorAll('.insight .silde-dv').forEach(item => {
         item.style.setProperty('margin', '1rem', 'important');
   
@@ -9638,11 +9626,6 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     else if (window.matchMedia("(min-width: 768px)").matches) {
       $(".insight .search-box .p-input span").css({"right": "15px", "left": "auto"});
     }
-      // $('#sidebar-btn').removeClass('expand-panel-arabic');
-    //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
-    //     element.classList.remove('expand-panel-arabic');
-    // }); 
-
     $(".insight .sorttoggle button.btn-close").removeClass("sort-toggle");
     $('.insight #sidebar-btn').removeClass('ipad-expand-panel')
     $(".insight .silde-dv").removeClass("slide-dv-position");
@@ -9693,9 +9676,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     $('.exceeded-box .contact-content p ').removeClass('hours-exceedance-disclaimer-mobile');
     $('.insight .main-box').removeClass('insightbox-tabmini');
     $('.equal-station-box-height').removeClass('pollutant-graph-ipad');
-    $('.insight .polutenat_bar .tab_shado .graph-duration-filters').addClass('filter-arabic');
 
-    $('.circular-width').removeClass('circular-width-arabic');
+
+    
     // document.querySelector('.cal-div').style.direction='ltr';
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
@@ -10352,7 +10335,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
           link.textContent = "لغة";
       }
     });
-    // addArabicLinkActiveClass();
+    addArabicLinkActiveClass();
   }
 
   function updateNavLinksToEnglish() {
@@ -10378,26 +10361,26 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       }
     });
 
-    // document
-    //   .querySelectorAll(".nav-item")
-    //   .forEach((link) => link.classList.remove("active-arabic"));
+    document
+      .querySelectorAll(".nav-item")
+      .forEach((link) => link.classList.remove("active-arabic"));
   }
 });
 
-// function addArabicLinkActiveClass() {
-//   document.querySelectorAll(".nav-item").forEach((link) => {
-//     link.addEventListener("click", function () {
-//       // Remove active class from other links
-//       document
-//         .querySelectorAll(".nav-item")
-//         .forEach((item) => item.classList.remove("active-arabic"));
-//       // Add active class to the clicked link
-//       if (currentLanguage === "arabic") {
-//         link.classList.add("active-arabic");
-//       }
-//     });
-//   });
-// }
+function addArabicLinkActiveClass() {
+  document.querySelectorAll(".nav-item").forEach((link) => {
+    link.addEventListener("click", function () {
+      // Remove active class from other links
+      document
+        .querySelectorAll(".nav-item")
+        .forEach((item) => item.classList.remove("active-arabic"));
+      // Add active class to the clicked link
+      if (currentLanguage === "arabic") {
+        link.classList.add("active-arabic");
+      }
+    });
+  });
+}
 
 
 

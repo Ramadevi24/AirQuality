@@ -1023,15 +1023,6 @@ video {
     right: -15px;
 }
 
-/* for Arabic */
-.arabic-mode .section1-dateshift .date-shift{
-  left:-35px
-}
-
-.arabic-mode #currentDate{
-    direction:ltr;
-}
-
 .weather-card h2, .weather-card-map h2 {
     font-size: 13px;
     color: var(--yellow);
@@ -5646,7 +5637,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .chartjs-tooltip {
     z-index: 9999 !important;
     position: absolute;
- 
     background: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 5px;
@@ -5654,7 +5644,6 @@ input[type="search"]::-webkit-search-cancel-button {
     pointer-events: none;
     transform: translate(-50%, -100%);
     white-space: nowrap;
-    
 }
 
     .chartjs-tooltip:after {
@@ -5919,15 +5908,11 @@ input[type="search"]::-webkit-search-cancel-button {
     position: absolute;
     right: 70px;
 } */
-/* .arabic-mode .active-arabic a{
+.arabic-mode .active-arabic a{
     transition: none !important;
     font-size: 14px !important;
   
-} */
-/* .arabic-mode .navbar-nav .active .nav-link{
-    transition: none !important;
-    font-size: 14px !important;
-} */
+}
 .arabic-monitoring-heading{
     margin-right: 18px;
 }
@@ -5985,40 +5970,6 @@ text-align: left !important;
 .footer-content{
     font-weight: 300 !important;
 }
-
-
-.arabic-mode .navbar-nav .active .nav-link{
-    /* color: #004B87 !important; */
-    font-size: 14px !important;
-    font-weight: 700 !important;
-}
-.arabic-mode .navbar-nav .active .our-air-quality
-{
-    color:#ffffff !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-}
-
-.arabic-mode header nav.navbar .navbar-nav li.active{
-    color:#ffffff !important;
-    font-weight: 700;
-}
-
-/* nav items for mobile menu */
-.arabic-mode .mobile-menu .active, 
-.arabic-mode .mobile-menu .active a {
-    color: #004B87 !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-}
-
-/* for circular image in airquality */
-.circular-width-arabic{
-    transform: rotate(180deg);
-}
-
-
-
 
 .arabic-mode p,
 .arabic-mode .footer_link a,
@@ -6097,8 +6048,7 @@ text-align: left !important;
 .arabic-mode .insight-privacypolicy,
 .arabic-mode .tab-footer-link,
 .arabic-mode .tab-privacy-section ul a,
-.arabic-mode  #datepicker::placeholder,
-.arabic-mode   #averageAqiStatus
+.arabic-mode  #datepicker::placeholder
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
