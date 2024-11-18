@@ -6030,6 +6030,9 @@ text-align: left !important;
 .circular-width-arabic{
     transform: rotate(180deg);
 }
+.arabic-mode .img-fluid-aqi{
+    transform: rotate(180deg);
+}
 .twobar-tabs{
     padding: 0;
 }
@@ -6236,3 +6239,4 @@ button[disabled].animate-blinking {
 .accordion-align-content{
     text-align: right;
   }
+
