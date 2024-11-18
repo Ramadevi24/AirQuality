@@ -3,22 +3,19 @@
 
 @font-face {
     font-family: 'GothamMedium';
-    src:  url('../fonts/Gotham-Font/GothamMedium.otf') format('opentype'),
-    url('https://eadairqualitytest.azurewebsites.net/AirQualityUI/fonts/Gotham-Font/GothamMedium.otf') format('opentype'),
-        url('../fonts/Gotham-Font/GothamMedium.ttf') format('truetype');
+    src:  url('../fonts/Gotham-Font/GothamMedium.otf') format('opentype'),     
+      url('../fonts/Gotham-Font/GothamMedium.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Gothambold';
     src:  url('../fonts/Gotham-Font/Gotham-Bold.otf') format('opentype'),
-    url('https://eadairqualitytest.azurewebsites.net/AirQualityUI/fonts/Gotham-Font/Gotham-Bold.otf') format('opentype'),
         url('../fonts/Gotham-Font/GothamBold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Gothamlight';
-    src: url('../fonts/Gotham-Font/Gotham-Light.otf') format('opentype'),
-    url('https://eadairqualitytest.azurewebsites.net/AirQualityUI/fonts/Gotham-Font/Gotham-Light.otf') format('opentype');
+    src: url('../fonts/Gotham-Font/Gotham-Light.otf') format('opentype'); 
 }
 
 @font-face {
@@ -33,8 +30,7 @@
 
 @font-face {
     font-family: 'Gothamblack';
-    src: url('../fonts/Gotham-Font/Gotham-Black.otf') format('opentype'),
-    url('https://eadairqualitytest.azurewebsites.net/AirQualityUI/fonts/Gotham-Font/Gotham-Black.otf') format('opentype');
+    src: url('../fonts/Gotham-Font/Gotham-Black.otf') format('opentype');
 }
 
 html {
@@ -6034,6 +6030,9 @@ text-align: left !important;
 .circular-width-arabic{
     transform: rotate(180deg);
 }
+.arabic-mode .img-fluid-aqi{
+    transform: rotate(180deg);
+}
 .twobar-tabs{
     padding: 0;
 }
@@ -6240,3 +6239,4 @@ button[disabled].animate-blinking {
 .accordion-align-content{
     text-align: right;
   }
+
