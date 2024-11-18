@@ -475,8 +475,9 @@
     }
 
     .contact-section .contact-form {
-        padding-left: 10px;
-        padding-right: 10px;
+        /* padding-left: 10px;
+        padding-right: 10px; */
+        padding: 25px;
         margin-top: -15px
     }
 
@@ -909,7 +910,7 @@
         /* margin-right: 20px; */
     }
     .station-aqi-desclimer-mobile{
-        margin-right: -30px;
+        /* margin-right: -30px; */
         /* width: 341px; */
     }
     .aqi-content-arabic{
@@ -1914,8 +1915,15 @@
         .insight #sidebar.visible {
             right: 0px;
             transition: right 0.7s ease;
+            /* right: auto;
+               left: 0px;
+            transition: left 0.7s ease; */
         }
-
+        .arabic-mode .insight #sidebar.visible{
+            right: auto;
+            left: 0px;
+         transition: left 0.7s ease;
+        }
     .insight #sidebar-btn {
         display: block;
         /* vertical-align: middle; */
@@ -1964,7 +1972,7 @@
         }
 
     .insight #sidebar.visible #sidebar-btn {
-        transition: right 0.9s ease;
+        /* transition: right 0.9s ease; */
         top: 0px;
         position: absolute;
         left: 50%;
@@ -3947,6 +3955,7 @@
    .hidden-close-icon{
        display: none !important;
    }
+   
 }
 @media (min-width:1200px) {
     .slide-dv-position{
