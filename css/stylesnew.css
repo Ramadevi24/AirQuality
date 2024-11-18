@@ -6073,7 +6073,14 @@ text-align: left !important;
 .animate-blinking-carousel {
     position: relative;
     z-index: 1;
+    /* animation: pulse-ring-carousel 1s infinite; */
 }
+button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 
 /* button[disabled],
 button[disabled].animate-blinking {

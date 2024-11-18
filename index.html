@@ -3995,7 +3995,8 @@ $(document).on("click", ".close-btn", function () {
 });
 
  </script> -->
- <script>
+
+ <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const prevButton = document.querySelector('#prev');
         const nextButton = document.querySelector('#next');
@@ -4050,6 +4051,63 @@ $(document).on("click", ".close-btn", function () {
             }
         });
     });
+</script> -->
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const prevButton = document.querySelector('#prev');
+    const nextButton = document.querySelector('#next');
+    const carousel = document.querySelector('#recipeCarousel');
+
+    // Function to handle button blinking
+    function setBlinking(buttonToBlink, buttonToStop) {
+        buttonToBlink.classList.add('animate-blinking-carousel');
+        buttonToStop.classList.remove('animate-blinking-carousel');
+    }
+
+    // Function to update button states and manage blinking
+    function updateButtonStates() {
+        const slides = carousel.querySelectorAll('.carousel-item');
+        const activeSlide = carousel.querySelector('.carousel-item.active');
+        const activeIndex = Array.from(slides).indexOf(activeSlide);
+
+        // Disable/Enable buttons based on active slide
+        prevButton.disabled = activeIndex === 0;
+        nextButton.disabled = activeIndex === slides.length - 1;
+
+        // Manage blinking classes based on button state
+        if (prevButton.disabled) {
+            setBlinking(nextButton, prevButton); // Blink next button if prev is disabled
+        } else if (nextButton.disabled) {
+            setBlinking(prevButton, nextButton); // Blink prev button if next is disabled
+        }
+    }
+
+    // Initialize blinking and disable the previous button on page load
+    prevButton.disabled = true;
+    prevButton.style.opacity = '0.5';
+    prevButton.style.pointerEvents = 'none';
+    setBlinking(nextButton, prevButton); // Blink next button initially
+
+    // Update button states on carousel slide change
+    carousel.addEventListener('slid.bs.carousel', function () {
+        updateButtonStates();
+    });
+
+    // Event listener for the previous button
+    prevButton.addEventListener('click', function () {
+        if (!prevButton.disabled) {
+            setBlinking(prevButton, nextButton); // Blink the clicked button
+        }
+    });
+
+    // Event listener for the next button
+    nextButton.addEventListener('click', function () {
+        if (!nextButton.disabled) {
+            setBlinking(nextButton, prevButton); // Blink the clicked button
+        }
+    });
+});
+
 </script>
 
 
