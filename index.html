@@ -4001,7 +4001,6 @@ $(document).on("click", ".close-btn", function () {
         const nextButton = document.querySelector('#next');
         const carousel = document.querySelector('#recipeCarousel');
 
-        // Function to update button states and apply blinking
         function updateButtonStates() {
             const slides = carousel.querySelectorAll('.carousel-item');
             const activeSlide = carousel.querySelector('.carousel-item.active');
@@ -4022,19 +4021,12 @@ $(document).on("click", ".close-btn", function () {
                 nextButton.classList.remove('animate-blinking-carousel');
             }
         }
-
-        // Disable the previous button on initial page load
         prevButton.disabled = true;
         prevButton.style.opacity = '0.5';
         prevButton.style.pointerEvents = 'none';
-
-        // Initialize button states and blinking on page load
         updateButtonStates();
-
-        // Update states on slide change
         carousel.addEventListener('slid.bs.carousel', updateButtonStates);
 
-        // Event listener for the previous button
         prevButton.addEventListener('click', function () {
             if (!prevButton.disabled) {
                 prevButton.classList.add('animate-blinking-carousel');
@@ -4042,7 +4034,6 @@ $(document).on("click", ".close-btn", function () {
             }
         });
 
-        // Event listener for the next button
         nextButton.addEventListener('click', function () {
             if (!nextButton.disabled) {
                 nextButton.classList.add('animate-blinking-carousel');
