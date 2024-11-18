@@ -3254,9 +3254,26 @@
             }
         });
 
+      
+
         function initializeFullPage() {
+            function initializeButtonStates() {
+        // Set initial button states
+        if (slideIndexS == 0) {
+            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+        } else if (slideIndexS == 3) {
+            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+        } else {
+            $('.fp-prev').removeClass('disabled');
+            $('.fp-next').removeClass('disabled');
+        }
+    }
             var sliding = false;
             var slideIndexS = localStorage.getItem('slideIndexS') || 0;
+    initializeButtonStates();
+           
             var myFullpage = new fullpage('#fullpagediv', {
                 anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6'],
                 sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
@@ -3309,64 +3326,51 @@
                         $('header').addClass('fadeout');
                     }
                 },
-
+                
                 onSlideLeave: function (section, origin, destination, direction) {
-
-    //                 if (destination.index === 0) {
-    //     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-    //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    // } else if (destination.index === 3) {
-    //     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-    //     $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-    // } else {
-    //     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-    //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    // }
-
-    if (destination.index === 0) {
-        // First slide: Disable Prev, remove its blinking, enable Next with blinking
-        $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-        $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    } else if (destination.index === 1 || destination.index === 2) {
-        // Last slide: Disable Next, remove its blinking, enable Prev with blinking
-        $('.fp-prev').removeClass('disabled');
-        $('.fp-next').removeClass('disabled');
-    } 
-    else if (destination.index === 3) {
-        // Last slide: Disable Next, remove its blinking, enable Prev with blinking
-        $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-        $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-    } 
-
+                if (destination.index === 0) {
+                    // First slide: Disable Prev, remove its blinking, enable Next with blinking
+                    $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+                    $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                } else if (destination.index === 1 || destination.index === 2) {
+                    // Last slide: Disable Next, remove its blinking, enable Prev with blinking
+                    $('.fp-prev').removeClass('disabled');
+                    $('.fp-next').removeClass('disabled');
+                } 
+                else if (destination.index === 3) {
+                    // Last slide: Disable Next, remove its blinking, enable Prev with blinking
+                    $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+                    $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+                } 
                 }
             });
-            // if (slideIndexS == 0) {
-            //     $('.fp-prev').addClass('disabled');
-            //     $('.fp-next').removeClass('disabled')
-            //     // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            // } else if (slideIndexS == 2) {
-            //     $('.fp-prev').addClass('disabled');
-            //     $('.fp-next').removeClass('disabled')
-            //     // $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
-            // } else {
-            //     $('.fp-prev').removeClass('disabled');
-            //     $('.fp-next').addClass('disabled');
-            //     // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            // }
+            if (slideIndexS == 0) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            } else if (slideIndexS == 2) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled')
+                // $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
+            } else {
+                $('.fp-prev').removeClass('disabled');
+                $('.fp-next').addClass('disabled');
+                // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            }
 
-         $('.fp-prev').click(function() {
-    if (!$(this).hasClass('disabled')) { // Ensure it's not disabled before adding blinking
-        $(this).addClass('animate-blinking');
-        $('.fp-next').removeClass('animate-blinking');
-    }
-});
+            $('.fp-prev').click(function() {
+            if (!$(this).hasClass('disabled')) {
+                $(this).addClass('animate-blinking');
+                $('.fp-next').removeClass('animate-blinking');
+            }
+            });
 
-$('.fp-next').click(function() {
-    if (!$(this).hasClass('disabled')) { // Ensure it's not disabled before adding blinking
-        $(this).addClass('animate-blinking');
-        $('.fp-prev').removeClass('animate-blinking');
-    }
-});
+           $('.fp-next').click(function() {
+            if (!$(this).hasClass('disabled')) {
+                $(this).addClass('animate-blinking');
+                $('.fp-prev').removeClass('animate-blinking');
+            }
+            });
 
             const mapBlock = document.getElementById('mapBlock');
             mapBlock.addEventListener('mouseenter', disableScroll);
@@ -3943,7 +3947,7 @@ $(document).on("click", ".close-btn", function () {
   </script>
   
 
- <script>
+ <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
     const prevButton = document.querySelector('#prev');
     const nextButton = document.querySelector('#next');
@@ -3961,7 +3965,6 @@ $(document).on("click", ".close-btn", function () {
         }
     }
 
-    // Event listener for the carousel slide event
     carousel.addEventListener('slid.bs.carousel', function () {
         // Logic to enable/disable buttons based on active slide
         const activeSlide = carousel.querySelector('.carousel-item.active');
@@ -3991,71 +3994,66 @@ $(document).on("click", ".close-btn", function () {
     });
 });
 
- </script>
-
-<!-- <script>
+ </script> -->
+ <script>
     document.addEventListener('DOMContentLoaded', function () {
-    const prevButton = document.querySelector('#prev');
-    const nextButton = document.querySelector('#next');
-    const carousel = document.querySelector('#recipeCarousel');
+        const prevButton = document.querySelector('#prev');
+        const nextButton = document.querySelector('#next');
+        const carousel = document.querySelector('#recipeCarousel');
 
-    // Helper function to check if a button is disabled
-    function isButtonDisabled(button) {
-        return button.hasAttribute('disabled') || button.style.pointerEvents === 'none' || button.style.opacity === '0.5';
-    }
+        // Function to update button states and apply blinking
+        function updateButtonStates() {
+            const slides = carousel.querySelectorAll('.carousel-item');
+            const activeSlide = carousel.querySelector('.carousel-item.active');
+            const activeIndex = Array.from(slides).indexOf(activeSlide);
 
-    // Function to update blinking effect based on button states
-    function updateBlinkingEffect() {
-        if (isButtonDisabled(prevButton)) {
-            // Disable blinking for the previous button
-            prevButton.classList.remove('animate-blinking');
-            // Enable blinking for the next button if not disabled
-            if (!isButtonDisabled(nextButton)) {
-                nextButton.classList.add('animate-blinking');
+            prevButton.disabled = activeIndex === 0;
+            nextButton.disabled = activeIndex === slides.length - 1;
+
+            // Add or remove blinking classes based on button state
+            if (prevButton.disabled) {
+                prevButton.classList.remove('animate-blinking-carousel');
+                nextButton.classList.add('animate-blinking-carousel');
+            } else if (nextButton.disabled) {
+                nextButton.classList.remove('animate-blinking-carousel');
+                prevButton.classList.add('animate-blinking-carousel');
+            } else {
+                prevButton.classList.remove('animate-blinking-carousel');
+                nextButton.classList.remove('animate-blinking-carousel');
             }
-        } else if (isButtonDisabled(nextButton)) {
-            // Disable blinking for the next button
-            nextButton.classList.remove('animate-blinking');
-            // Enable blinking for the previous button if not disabled
-            if (!isButtonDisabled(prevButton)) {
-                prevButton.classList.add('animate-blinking');
+        }
+
+        // Disable the previous button on initial page load
+        prevButton.disabled = true;
+        prevButton.style.opacity = '0.5';
+        prevButton.style.pointerEvents = 'none';
+
+        // Initialize button states and blinking on page load
+        updateButtonStates();
+
+        // Update states on slide change
+        carousel.addEventListener('slid.bs.carousel', updateButtonStates);
+
+        // Event listener for the previous button
+        prevButton.addEventListener('click', function () {
+            if (!prevButton.disabled) {
+                prevButton.classList.add('animate-blinking-carousel');
+                nextButton.classList.remove('animate-blinking-carousel');
             }
-        } else {
-            // If neither button is disabled, reset blinking on both buttons
-            prevButton.classList.remove('animate-blinking');
-            nextButton.classList.remove('animate-blinking');
-        }
-    }
+        });
 
-    // Add event listeners for clicks
-    prevButton.addEventListener('click', function () {
-        if (!isButtonDisabled(prevButton)) {
-            prevButton.classList.add('animate-blinking');
-            nextButton.classList.remove('animate-blinking');
-        }
-        updateBlinkingEffect();
+        // Event listener for the next button
+        nextButton.addEventListener('click', function () {
+            if (!nextButton.disabled) {
+                nextButton.classList.add('animate-blinking-carousel');
+                prevButton.classList.remove('animate-blinking-carousel');
+            }
+        });
     });
+</script>
 
-    nextButton.addEventListener('click', function () {
-        if (!isButtonDisabled(nextButton)) {
-            nextButton.classList.add('animate-blinking');
-            prevButton.classList.remove('animate-blinking');
-        }
-        updateBlinkingEffect();
-    });
 
-    // Initial state check for blinking effect
-    updateBlinkingEffect();
-
-    // Optional: Update states dynamically if buttons change due to carousel events
-    carousel.addEventListener('slide.bs.carousel', function () {
-        updateBlinkingEffect();
-    });
-});
-
-</script> -->
-
-    <script>
+  <script>
         (function () {
             console.log('hello');
             var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
