@@ -2031,26 +2031,49 @@
       /*jshint validthis:true */
       var section = closest(this, SECTION_SEL);
       /*jshint validthis:true */
+      const currentLanguage = localStorage.getItem("language")
+if(currentLanguage === "english"){
+  if (hasClass(this, SLIDES_PREV)) {
+    if (getIsScrollAllowed().m.left) {
+      setState({
+        scrollTrigger: 'slideArrow'
+      });
+      EventEmitter.emit(events.moveSlideLeft, {
+        section: section
+      });
+    }
+  } else {
+    if (getIsScrollAllowed().m.right) {
+      setState({
+        scrollTrigger: 'slideArrow'
+      });
+      EventEmitter.emit(events.moveSlideRight, {
+        section: section
+      });
+    }
+  }
+}else{
+  if (hasClass(this, SLIDES_PREV)) {
+    if (getIsScrollAllowed().m.right) {
+      setState({
+        scrollTrigger: 'slideArrow'
+      });
+      EventEmitter.emit(events.moveSlideRight, {
+        section: section
+      });
+    }
+  } else {
+    if (getIsScrollAllowed().m.left) {
+      setState({
+        scrollTrigger: 'slideArrow'
+      });
+      EventEmitter.emit(events.moveSlideLeft, {
+        section: section
+      });
+    }
+  }
+}
 
-      if (hasClass(this, SLIDES_PREV)) {
-        if (getIsScrollAllowed().m.left) {
-          setState({
-            scrollTrigger: 'slideArrow'
-          });
-          EventEmitter.emit(events.moveSlideLeft, {
-            section: section
-          });
-        }
-      } else {
-        if (getIsScrollAllowed().m.right) {
-          setState({
-            scrollTrigger: 'slideArrow'
-          });
-          EventEmitter.emit(events.moveSlideRight, {
-            section: section
-          });
-        }
-      }
     }
     /**
     * Creates the control arrows for the given section
