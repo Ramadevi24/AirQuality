@@ -3765,6 +3765,9 @@ border: none;
     padding: 12px 12px;
     min-width: 80px;
 }
+.arabic-mode .insight .nav-pills .nav-link{
+    padding: 12px 7px;
+}
 
 .insight #pills-tab {
     border-radius: 3px;
@@ -6253,3 +6256,14 @@ button[disabled].animate-blinking {
     text-align: right;
   }
 
+  .arabic-mode .me-2 {
+    margin-right: 0.4rem !important;
+    margin-left: 0.5rem !important;
+}
+
+.arabic-mode .insight .date-box .cal-div {
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 3px;
+}
