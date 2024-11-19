@@ -3309,17 +3309,46 @@
                     }
                 },         
                 onSlideLeave: function (section, origin, destination, direction) {
-                if (destination.index === 0) {
-                    $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-                    $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-                } else if (destination.index === 1 || destination.index === 2) {
-                    $('.fp-prev').removeClass('disabled');
-                    $('.fp-next').removeClass('disabled');
-                } 
-                else if (destination.index === 3) {
-                    $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-                    $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-                } 
+                    var language = localStorage.getItem('language');
+                    if (language === 'arabic') {
+                    
+        // Logic for Arabic
+        if (destination.index === 0) {
+            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+        } else if (destination.index === 1 || destination.index === 2) {
+            $('.fp-prev').removeClass('disabled');
+            $('.fp-next').removeClass('disabled');
+        } else if (destination.index === 3) {
+            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+        }
+    }
+    else{
+   
+        if (destination.index === 0) {
+            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+        } else if (destination.index === 1 || destination.index === 2) {
+            $('.fp-prev').removeClass('disabled');
+            $('.fp-next').removeClass('disabled');
+        } else if (destination.index === 3) {
+            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+        }
+    }
+    
+                // if (destination.index === 0) {
+                //     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+                //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                // } else if (destination.index === 1 || destination.index === 2) {
+                //     $('.fp-prev').removeClass('disabled');
+                //     $('.fp-next').removeClass('disabled');
+                // } 
+                // else if (destination.index === 3) {
+                //     $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+                //     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+                // } 
                 }
             });
             // if (slideIndexS == 0) {

@@ -1917,15 +1917,21 @@
 
         .insight #sidebar.visible {
             right: 0px;
-            transition: right 0.7s ease;
+            transition: right 0.8s ease;
             /* right: auto;
                left: 0px;
             transition: left 0.7s ease; */
         }
-        .arabic-mode .insight #sidebar.visible{
-            right: auto;
+        .arabic-mode .insight #sidebar.visible {
             left: 0px;
-         transition: left 0.7s ease;
+            right: auto; 
+            transition: left 0.8s ease;
+        }
+        
+        .arabic-mode .insight #sidebar {
+            left: 800px;
+            right: auto; 
+            transition: left 0.8s ease;
         }
     .insight #sidebar-btn {
         display: block;
@@ -3966,3 +3972,41 @@
         /* padding-right: 26px !important; */
     }
 }
+
+
+/* Air Quality Index Bar */
+
+@media (min-width: 360px) and (max-width: 480px) {
+    .air-map-container .air-map-col .level-legends .levels {
+        display: flex;
+        justify-content: space-between; 
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .air-map-container .air-map-col .level-legends .levels {
+        display: flex;
+        justify-content: space-evenly; 
+    }   
+}
+
+@media (min-width: 769px) and (max-width: 916px) {
+    .air-map-container .air-map-col .level-legends .levels {
+        display: flex;
+        justify-content: space-around; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .air-map-container .air-map-col .level-legends .levels {
+        justify-content: space-evenly; 
+    }
+}
+
+@media (min-width: 1440px) {
+    .air-map-container .air-map-col .level-legends .levels {
+        justify-content: space-around; 
+    }
+}
+
+

@@ -1451,11 +1451,24 @@ video {
     text-transform: uppercase;
 }
 
+.air-map-container .air-map-col .level-legends .levels {
+    display: flex;
+    justify-content: space-between; 
+}
+
 .air-map-container .overview-heading {
     color: var(--grey);
     text-align: center;
     font-size: 15px;
 }
+
+.arabic-mode .level-three {
+    right: 8px !important
+    }
+    
+    .arabic-mode .level-five {
+    right: 8px !important
+    }
 
 /* 10-July-24 */
 .air-map-container .list-container {
@@ -4433,7 +4446,7 @@ border: none;
         border: 1px solid #e6edf3;
         width: 90px;
         height: 36px;
-        padding: 2px 2px 2px 10px;
+        padding: 2px 2px 2px 3px;
         outline: none;
     }
 
