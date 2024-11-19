@@ -4962,6 +4962,7 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
+        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
         $("#StAQIlastrefreshtime").text(lastrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
@@ -5349,6 +5350,7 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
+        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
         $("#StAQIlastrefreshtime").text(lastrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
@@ -6722,7 +6724,7 @@ function bindStationDataToBarChart(filter) {
             minute: "2-digit",
           }
         );
-
+        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
         $("#" + lastrefreshtime).text(lastrefreshdate);
         $("#colastrefreshtime").text(lastrefreshdate);
         $("#o3lastrefreshtime").text(lastrefreshdate);
@@ -6865,20 +6867,34 @@ function bindStationDataToBarChart(filter) {
                 }
               },
               label: function (context) {
+                const storedContextArray = [];
                 // Return the value for the tooltip
-                let value = context.raw;
-                if (value === null) {
-                  value = 0;
+                let uniqueKey = `${context.label}-${context.raw}`;
+                console.log(context, 'context');
+
+                // Check if the `uniqueKey` already exists in the array
+                if (!storedContextArray.some(item => `${item.label}-${item.raw}` === uniqueKey)) {
+                    // Add the unique context object to the array
+                    storedContextArray.push({
+                        label: context.label,
+                        raw: context.raw,
+                    });
+                  }
+                    console.log(storedContextArray, 'storedContextArray');
+                  let value = context.raw;
+                  if (value === null) {
+                    value = 0;
+                  }
+                  if (pollutantBarChartId == "ADstationAqiBarGraph"){
+                    return value === 0 ? "0" : value;
+                  }
+                  else if (pollutantBarChartId == "ADstationCoBarGraph") {
+                    return value + " mg/m³";
+                  } else {
+                    return value + " ug/m³";
+                  }
                 }
-                if (pollutantBarChartId == "ADstationAqiBarGraph")
-                  if (value == 0) {
-                    return "0";
-                  } else return value;
-                else if (pollutantBarChartId == "ADstationCoBarGraph")
-                  return value + " mg/m³";
-                else return value + " ug/m³";
               },
-            },
             external: function (context) {
               // Tooltip Element
               var tooltipEl = document.getElementById("chartjs-tooltip");

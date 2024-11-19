@@ -1199,6 +1199,9 @@ video {
     font-size: 15px;
     color: #fff;
     z-index: 1;
+}
+
+.map-disclaimer-content{
     font-style: italic;
 }
 
