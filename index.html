@@ -1953,7 +1953,7 @@
                                         <div class="col-lg-12 d-flex flex-column justify-content-start"
                                             id="footerStation-trends">
                                             <div>
-                                                <div class="container pad_r tab-pd-0">
+                                                <div class="container pad_r tab-pd-0 scroll-data">
                                                     <div id="aiq_line">
 
                                                         <div class="quality-index-wrapper-h2 sm-screen-mtb air_p">
@@ -3254,26 +3254,9 @@
             }
         });
 
-      
-
         function initializeFullPage() {
-            function initializeButtonStates() {
-        // Set initial button states
-        if (slideIndexS == 0) {
-            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-        } else if (slideIndexS == 3) {
-            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-        } else {
-            $('.fp-prev').removeClass('disabled');
-            $('.fp-next').removeClass('disabled');
-        }
-    }
             var sliding = false;
-            var slideIndexS = localStorage.getItem('slideIndexS') || 0;
-    initializeButtonStates();
-           
+            var slideIndexS = localStorage.getItem('slideIndexS') || 0;           
             var myFullpage = new fullpage('#fullpagediv', {
                 anchors: ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6'],
                 sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
@@ -3319,46 +3302,68 @@
                         return false;
                     }
 
-                    // Check scroll position and apply fadeout effect
                     if (destination.index === 0) {
                         $('header').removeClass('fadeout');
                     } else {
                         $('header').addClass('fadeout');
                     }
-                },
-                
+                },         
                 onSlideLeave: function (section, origin, destination, direction) {
                 if (destination.index === 0) {
-                    // First slide: Disable Prev, remove its blinking, enable Next with blinking
                     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
                     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
                 } else if (destination.index === 1 || destination.index === 2) {
-                    // Last slide: Disable Next, remove its blinking, enable Prev with blinking
                     $('.fp-prev').removeClass('disabled');
                     $('.fp-next').removeClass('disabled');
                 } 
                 else if (destination.index === 3) {
-                    // Last slide: Disable Next, remove its blinking, enable Prev with blinking
                     $('.fp-next').addClass('disabled').removeClass('animate-blinking');
                     $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
                 } 
                 }
             });
-            if (slideIndexS == 0) {
+            // if (slideIndexS == 0) {
+            //     $('.fp-prev').addClass('disabled');
+            //     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            // } else if (slideIndexS == 2) {
+            //     $('.fp-prev').addClass('disabled');
+            //     $('.fp-next').removeClass('disabled')
+            // } else {
+            //     $('.fp-prev').removeClass('disabled');
+            //     $('.fp-next').addClass('disabled');
+            // }
+
+        var isArabic = localStorage.getItem('language') === 'arabic';
+        var isEnglish = localStorage.getItem('language') === 'english';
+        console.log('isArabic', isArabic);
+
+        if (slideIndexS == 0) {
+            if (isArabic) {
+                $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+                $('.fp-next').addClass('disabled');
+            } else if (isEnglish){
                 $('.fp-prev').addClass('disabled');
                 $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-                // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            } else if (slideIndexS == 2) {
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled')
-                // $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
-            } else {
+            }
+        } else if (slideIndexS == 2) {
+            if (isArabic) {
                 $('.fp-prev').removeClass('disabled');
                 $('.fp-next').addClass('disabled');
-                // $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+            } else if (isEnglish) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled');
             }
-
-            $('.fp-prev').click(function() {
+        } else {
+            if (isArabic) {
+                $('.fp-prev').addClass('disabled');
+                $('.fp-next').removeClass('disabled');
+            } else if (isEnglish){
+                $('.fp-prev').removeClass('disabled');
+                $('.fp-next').addClass('disabled');
+            }
+        }
+            
+        $('.fp-prev').click(function() {
             if (!$(this).hasClass('disabled')) {
                 $(this).addClass('animate-blinking');
                 $('.fp-next').removeClass('animate-blinking');

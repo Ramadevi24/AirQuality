@@ -3935,23 +3935,51 @@ function getFormattedDate(dateValue) {
   var day = dateValue.getDate();
   var month = dateValue.getMonth() + 1;
   var hours = dateValue.getHours();
-  var hoursFormat = hours >= 12 ? "PM" : "AM";
+  var hoursFormat = hours >= 12 ? (currentLanguage === "arabic" ? "م" : "PM") : (currentLanguage === "arabic" ? "ص" : "AM");
   hours = hours % 12;
-  return (
-    (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
-    " " +
-    (day >= 10 ? day : "0" + day) +
-    "/" +
-    (month >= 10 ? month : "0" + month) +
-    "/" +
-    dateValue.getFullYear().toString().substring(2) +
-    ",<br>" +
+  // return (
+  //   (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
+  //   " " +
+  //   (day >= 10 ? day : "0" + day) +
+  //   "/" +
+  //   (month >= 10 ? month : "0" + month) +
+  //   "/" +
+  //   dateValue.getFullYear().toString().substring(2) +
+  //   ",<br>" +
+  //   (hours ? hours : 12) +
+  //   " " +
+  //   hoursFormat
+  // );
+  if (currentLanguage === "arabic") {
+    return (
+      (day >= 10 ? day : "0" + day) +
+      "/" +
+      (month >= 10 ? month : "0" + month) +
+      "/" +
+      dateValue.getFullYear().toString().substring(2) + " " +
+      arabicWeekDays[dateValue.getDay()] +
+      " " +
+     "<br>" +
     (hours ? hours : 12) +
     " " +
     hoursFormat
   );
+  } else {
+    return (
+      (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
+      " " +
+      (day >= 10 ? day : "0" + day) +
+      "/" +
+      (month >= 10 ? month : "0" + month) +
+      "/" +
+      dateValue.getFullYear().toString().substring(2) +
+      ",<br>" +
+      (hours ? hours : 12) +
+      " " +
+      hoursFormat
+    );
+  }
 }
-console.log(getFormattedDate(new Date()), 'jj', currentLanguage);
 function getFormattedDate1(dateValue) {
   var day = dateValue.getDate();
   var month = dateValue.getMonth() + 1;
@@ -8983,8 +9011,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
         loadStationData();
         updateAqitoArabic();
         updateCharts(chartFilterArabic.Hourly);
-        getFormattedDate(new Date());
-        getFormattedDate1(new Date())
+        $("#currentDate").html(getFormattedDate(new Date()));
+        $("#last-updatedTime").html(getFormattedDate1(new Date()));
+        $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
       } else {
         document.body.setAttribute("dir", "ltr");
         toggleBtns[0].textContent = "عربي";
@@ -8997,8 +9026,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
         loadStationData();
         updateAqitoEnglish();
         updateCharts(chartFilter.Hourly);
-        getFormattedDate(new Date());
-        getFormattedDate1(new Date())
+        $("#currentDate").html(getFormattedDate(new Date()));
+        $("#last-updatedTime").html(getFormattedDate1(new Date()));
+        $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
       }
     }
   function updateToArabic() {
@@ -9581,9 +9611,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     const rightsidebar = document.querySelector(".sidebar");
     rightsidebar.style.setProperty("right", "auto", "important"); // Remove the right property with !important
     rightsidebar.style.setProperty("left", "0px", "important"); // Set the left property to 0px with !important
-    if (window.matchMedia("(min-width: 768px) and (max-width: 1199px)").matches) {
-      rightsidebar.style.setProperty("padding", "20px", "important"); // Adjust padding as needed
-    }
+    // rightsidebar.style.setProperty("padding-right", "16px", "important");
+    rightsidebar.style.setProperty("padding", "10px", "important");
+
 
 
     $(".text-right").addClass("text-left-arabic");

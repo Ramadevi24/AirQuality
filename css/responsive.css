@@ -1132,6 +1132,9 @@
     .insight .date-box {
         margin: 10px;
     }
+    .insight .nav-pills .nav-link {
+        font-size: 10px;
+    }
 }
 
 @media (min-width: 700px) and (max-width: 767px) {
