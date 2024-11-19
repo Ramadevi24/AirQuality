@@ -1199,6 +1199,9 @@ video {
     font-size: 15px;
     color: #fff;
     z-index: 1;
+}
+
+.map-disclaimer-content{
     font-style: italic;
 }
 
@@ -1448,11 +1451,24 @@ video {
     text-transform: uppercase;
 }
 
+.air-map-container .air-map-col .level-legends .levels {
+    display: flex;
+    justify-content: space-between; 
+}
+
 .air-map-container .overview-heading {
     color: var(--grey);
     text-align: center;
     font-size: 15px;
 }
+
+.arabic-mode .level-three {
+    right: 8px !important
+    }
+    
+    .arabic-mode .level-five {
+    right: 8px !important
+    }
 
 /* 10-July-24 */
 .air-map-container .list-container {
