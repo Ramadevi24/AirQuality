@@ -9686,7 +9686,7 @@ $('.fp-next').addClass('disabled').removeClass('animate-blinking');
     $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    $('.fp-prev').addClass('disablesd').removeClass('animate-blinking');
+    $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
 
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
