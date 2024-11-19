@@ -8904,9 +8904,11 @@ function initializeLanguageButton() {
 //     localStorage.setItem("language", newLanguage);
 // }
 function toggleChangeLanguage() {
+ 
   const button1 = document.getElementById("language-toggle");
   const button2 = document.getElementById("language-toggle1");
   const button3 = document.getElementById("llanguage-toggle");
+
   
   const currentLanguage = localStorage.getItem("language") || "english";
 
@@ -9037,6 +9039,8 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     currentStatusClass = statusClassArabic;
     // document.querySelector('#language-toggle').removeClass('arabic-mode');
     document.body.classList.toggle("arabic-mode");
+    $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+$('.fp-next').addClass('disabled').removeClass('animate-blinking');
     $(".accordion-button").addClass("rtl-accordion");
     $(".accordion-button").addClass("accordion-align-content");
     $(".faqscrolling").addClass("rtl-faqscrolling");
@@ -9665,6 +9669,9 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
     document.getElementById('mainPollutantName').style.textAlign='left';
     $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
+    $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+    $('.fp-prev').addClass('disablesd').removeClass('animate-blinking');
+
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
