@@ -1417,10 +1417,18 @@ video {
     border-radius: 2px;
 }
 
+.arabic-mode .air-map-container .air-map-col .level-legends .levels {
+    background: linear-gradient(to left, #9CD84E 16.6%, #FACF39 16.6% 33.2%, #F99049 33.2% 49.8%, #F65E5F 49.8% 66.4%, #A070B6 66.4% 83%, #A06A7B 83% 100%);
+}
+
 .air-map-container .air-map-col .level-legends span {
     width: 40px;
     display: inline-block;
     position: relative;
+}
+
+.arabic-mode .air-map-container .air-map-col .level-legends span em {
+    right: 0 !important;
 }
 
     .air-map-container .air-map-col .level-legends span em {
@@ -1459,6 +1467,11 @@ video {
     scrollbar-width: none;
     /* background-color: #f0f0f0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+}
+
+.arabic-mode .scroll-data{
+    overflow-y: auto !important;
+    scrollbar-width: none;
 }
 
 .air-map-container .list-item {
