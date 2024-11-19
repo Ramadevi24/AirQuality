@@ -3752,6 +3752,9 @@ border: none;
     padding: 12px 12px;
     min-width: 80px;
 }
+.arabic-mode .insight .nav-pills .nav-link{
+    padding: 12px 7px;
+}
 
 .insight #pills-tab {
     border-radius: 3px;
