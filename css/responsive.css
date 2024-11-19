@@ -1914,15 +1914,21 @@
 
         .insight #sidebar.visible {
             right: 0px;
-            transition: right 0.7s ease;
+            transition: right 0.8s ease;
             /* right: auto;
                left: 0px;
             transition: left 0.7s ease; */
         }
-        .arabic-mode .insight #sidebar.visible{
-            right: auto;
+        .arabic-mode .insight #sidebar.visible {
             left: 0px;
-         transition: left 0.7s ease;
+            right: auto; 
+            transition: left 0.8s ease;
+        }
+        
+        .arabic-mode .insight #sidebar {
+            left: 800px;
+            right: auto; 
+            transition: left 0.8s ease;
         }
     .insight #sidebar-btn {
         display: block;
