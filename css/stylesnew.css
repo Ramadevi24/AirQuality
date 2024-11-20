@@ -4038,7 +4038,7 @@ border: none;
 }
 
 .fp-prev.animate-blinking::after{
-    margin-top: -140% ;
+    margin-top: -145% ;
 }
 
 /* .fp-prev.animate-blinking.arabic-animate-blinking::after,
@@ -4050,7 +4050,7 @@ border: none;
 .fp-prev.arabic-animate.animate-blinking::after,
 .fp-next.arabic-animate.animate-blinking::after {
     margin-left: 0 !important;
-    margin-right: -48% !important;
+    margin-right: -49% !important;
 }
 
 .fp-next .animate-blinking:after {

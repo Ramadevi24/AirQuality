@@ -9060,8 +9060,8 @@ var slideIndexS = localStorage.getItem('slideIndexS') || 0;
   $('.fp-next').removeClass('disabled').addClass('animate-blinking');
 }
 else if (indexdes == 1 || indexdes == 2) {
-  $('.fp-prev').removeClass('disabled');
-  $('.fp-next').removeClass('disabled');
+  $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+  $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
 }
 else{
   $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
@@ -9705,8 +9705,8 @@ else{
       $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
   }
   else if (indexdes == 1 || indexdes == 2) {
-    $('.fp-prev').removeClass('disabled');
-    $('.fp-next').removeClass('disabled');
+    $('.fp-prev').removeClass('disabled').removeClass('animate-blinking');
+    $('.fp-next').removeClass('disabled').addClass('animate-blinking  ');
   }
   else{
     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
