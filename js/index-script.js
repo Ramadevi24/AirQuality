@@ -8962,7 +8962,7 @@ function toggleChangeLanguage() {
 document.addEventListener("DOMContentLoaded", initializeLanguageButton);
 
 
-
+var slideIndexS = localStorage.getItem('slideIndexS') || 0;
 
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
@@ -9050,13 +9050,23 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
       }
     }
   function updateToArabic() {
+    let indexdes = localStorage.getItem('destinationIndex')
+
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
     currentStatusClass = statusClassArabic;
     // document.querySelector('#language-toggle').removeClass('arabic-mode');
     document.body.classList.toggle("arabic-mode");
-    $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-$('.fp-next').addClass('disabled').removeClass('animate-blinking');
+//for insights animation buttons
+ if (indexdes == 3) {
+
+  $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+  $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+}
+else{
+  $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+  $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+}
     $(".accordion-button").addClass("rtl-accordion");
     $(".accordion-button").addClass("accordion-align-content");
     $(".faqscrolling").addClass("rtl-faqscrolling");
@@ -9682,11 +9692,22 @@ $('.fp-next').addClass('disabled').removeClass('animate-blinking');
   }
 
   function updateToEnglish() {
+ 
     document.getElementById('mainPollutantName').style.textAlign='left';
     $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
+    let indexdes = localStorage.getItem('destinationIndex')
+    
+
+    if (indexdes == 3) {
+  
+      $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+  }
+  else{
     $('.fp-next').removeClass('disabled').addClass('animate-blinking');
     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+  }
 
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);

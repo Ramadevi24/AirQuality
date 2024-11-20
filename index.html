@@ -3309,34 +3309,35 @@
                     }
                 },         
                 onSlideLeave: function (section, origin, destination, direction) {
+                    localStorage.setItem("destinationIndex", destination.index);
                     var language = localStorage.getItem('language');
                     if (language === 'arabic') {
-                    
-        // Logic for Arabic
-        if (destination.index === 0) {
-            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-        } else if (destination.index === 1 || destination.index === 2) {
-            $('.fp-prev').removeClass('disabled');
-            $('.fp-next').removeClass('disabled');
-        } else if (destination.index === 3) {
-            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-        }
-    }
-    else{
-   
-        if (destination.index === 0) {
-            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-        } else if (destination.index === 1 || destination.index === 2) {
-            $('.fp-prev').removeClass('disabled');
-            $('.fp-next').removeClass('disabled');
-        } else if (destination.index === 3) {
-            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-        }
-    }
+                     // Logic for Arabic
+                     localStorage.setItem("destinationIndex", destination.index);
+                        if (destination.index === 0) {
+                            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+                            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+                        } else if (destination.index === 1 || destination.index === 2) {
+                            $('.fp-prev').removeClass('disabled');
+                            $('.fp-next').removeClass('disabled');
+                        } else if (destination.index === 3) {
+                            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+                            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                        }
+                    }
+                else{
+                    localStorage.setItem("destinationIndex", destination.index);
+                        if (destination.index === 0) {
+                            $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+                            $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+                        } else if (destination.index === 1 || destination.index === 2) {
+                            $('.fp-prev').removeClass('disabled');
+                            $('.fp-next').removeClass('disabled');
+                        } else if (destination.index === 3) {
+                            $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+                            $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+                        }
+                    }
     
                 // if (destination.index === 0) {
                 //     $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
@@ -3362,35 +3363,35 @@
             //     $('.fp-next').addClass('disabled');
             // }
 
-        var isArabic = localStorage.getItem('language') === 'arabic';
-        var isEnglish = localStorage.getItem('language') === 'english';
-        console.log('isArabic', isArabic);
+        // var isArabic = localStorage.getItem('language') === 'arabic';
+        // var isEnglish = localStorage.getItem('language') === 'english';
+        // console.log('isArabic', isArabic);
 
-        if (slideIndexS == 0) {
-            if (isArabic) {
-                $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-                $('.fp-next').addClass('disabled');
-            } else if (isEnglish){
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-            }
-        } else if (slideIndexS == 2) {
-            if (isArabic) {
-                $('.fp-prev').removeClass('disabled');
-                $('.fp-next').addClass('disabled');
-            } else if (isEnglish) {
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled');
-            }
-        } else {
-            if (isArabic) {
-                $('.fp-prev').addClass('disabled');
-                $('.fp-next').removeClass('disabled');
-            } else if (isEnglish){
-                $('.fp-prev').removeClass('disabled');
-                $('.fp-next').addClass('disabled');
-            }
-        }
+        // if (slideIndexS == 0) {
+        //     if (isArabic) {
+        //         $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+        //         $('.fp-next').addClass('disabled');
+        //     } else if (isEnglish){
+        //         $('.fp-prev').addClass('disabled');
+        //         $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+        //     }
+        // } else if (slideIndexS == 2) {
+        //     if (isArabic) {
+        //         $('.fp-prev').removeClass('disabled');
+        //         $('.fp-next').addClass('disabled');
+        //     } else if (isEnglish) {
+        //         $('.fp-prev').addClass('disabled');
+        //         $('.fp-next').removeClass('disabled');
+        //     }
+        // } else {
+        //     if (isArabic) {
+        //         $('.fp-prev').addClass('disabled');
+        //         $('.fp-next').removeClass('disabled');
+        //     } else if (isEnglish){
+        //         $('.fp-prev').removeClass('disabled');
+        //         $('.fp-next').addClass('disabled');
+        //     }
+        // }
             
         $('.fp-prev').click(function() {
             if (!$(this).hasClass('disabled')) {
