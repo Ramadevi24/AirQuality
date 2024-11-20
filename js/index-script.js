@@ -4962,8 +4962,11 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
-        $("#StAQIlastrefreshtime").text(lastrefreshdate);
+          var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
+            return match === "AM" ? "ص" : "م";
+          });
+          var lastEnglishrefreshdate = lastrefreshdate;
+        $("#StAQIlastrefreshtime").text(currentLanguage === 'arabic' ? lastArabicrefreshdate : lastEnglishrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -5350,8 +5353,11 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
-        $("#StAQIlastrefreshtime").text(lastrefreshdate);
+        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
+          return match === "AM" ? "ص" : "م";
+        });
+        var lastEnglishrefreshdate = lastrefreshdate;
+        $("#StAQIlastrefreshtime").text(currentLanguage === 'arabic' ? lastArabicrefreshdate : lastEnglishrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -6724,10 +6730,13 @@ function bindStationDataToBarChart(filter) {
             minute: "2-digit",
           }
         );
-        lastrefreshdate = lastrefreshdate.replace("AM", "ص").replace("PM", "م");
-        $("#" + lastrefreshtime).text(lastrefreshdate);
-        $("#colastrefreshtime").text(lastrefreshdate);
-        $("#o3lastrefreshtime").text(lastrefreshdate);
+        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
+          return match === "AM" ? "ص" : "م";
+        });
+        var lastEnglishrefreshdate = lastrefreshdate;
+        $("#" + lastrefreshtime).text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
+        $("#colastrefreshtime").text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
+        $("#o3lastrefreshtime").text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -6867,20 +6876,7 @@ function bindStationDataToBarChart(filter) {
                 }
               },
               label: function (context) {
-                const storedContextArray = [];
-                // Return the value for the tooltip
-                let uniqueKey = `${context.label}-${context.raw}`;
-                console.log(context, 'context');
-
-                // Check if the `uniqueKey` already exists in the array
-                if (!storedContextArray.some(item => `${item.label}-${item.raw}` === uniqueKey)) {
-                    // Add the unique context object to the array
-                    storedContextArray.push({
-                        label: context.label,
-                        raw: context.raw,
-                    });
-                  }
-                    console.log(storedContextArray, 'storedContextArray');
+                 // Return the value for the tooltip
                   let value = context.raw;
                   if (value === null) {
                     value = 0;
