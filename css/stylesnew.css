@@ -4200,6 +4200,10 @@ border: none;
     padding-right: 10px
 }
 
+.arabic-mode .sidebar-dataScroll {
+    padding-right: 0px;
+}
+
 .pollutant-toggleBar .info-popup, .pollutant-toggleBar .info-topPosition, .pollutant-toggleBar .info-topPosition1 {
     display: none;
     position: absolute;
@@ -6282,4 +6286,8 @@ button[disabled].animate-blinking {
     align-items: center;
     padding-left: 4px;
     padding-right: 3px;
+}
+
+.arabic-mode #barChartFilter {
+    font-weight: 800 !important;
 }
