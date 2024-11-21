@@ -5528,6 +5528,8 @@ function bindStationDataToLineChart(filter) {
             displayColors: false,
             usePointStyle: false, // Do not use point style
             caretSize: 0,
+            ltr: true, // Enables Right-to-Left direction
+            textDirection: "ltr",
             callbacks: {
               title: function (tooltipItems) {
                 if (tooltipItems && tooltipItems.length > 0) {
@@ -5550,9 +5552,9 @@ function bindStationDataToLineChart(filter) {
 
                     // Check if the hour is in 24-hour format and adjust accordingly
                     if (hour >= 12) {
-                      meridiem = "PM";
+                      meridiem =  currentLanguage === "arabic" ? "م" : "PM";
                     } else {
-                      meridiem = "AM";
+                      meridiem = currentLanguage === "arabic" ? "ص" : "AM";
                     }
 
                     // Convert to 12-hour format
@@ -9558,7 +9560,7 @@ else{
       ".insight .grid-upper .mg-m3"
     );
     antgridvaluesmg3.forEach((item) => {
-      item.style.setProperty("margin-right", "33px");
+      item.style.setProperty("margin-right", "59px");
     });
 
     document

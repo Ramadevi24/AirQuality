@@ -6112,6 +6112,33 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.arabic-mode #temperature{
+    direction: ltr;
+}
+.arabic-mode #windSpeed{
+    direction: ltr;
+}
+.arabic-mode #relativeHumidity{
+    direction: ltr;
+
+}
+.data-item-english{
+    margin-right: 15px;
+}
+.arabic-station-data{
+    margin-right: 15px;
+}
+.insight .mult-value strong{
+    color:#33333366;
+}
+.arabic-mode .insight .mult-value strong{
+color:#33333366;
+font-family: 'Cairo', sans-serif !important;
+}
+#datepicker:focus {
+    box-shadow: none !important; /* Adds a custom border */
+  /* Optional: Rounded corners */
+}
 
 /* button[disabled],
 button[disabled].animate-blinking {
@@ -6169,7 +6196,8 @@ button[disabled].animate-blinking {
 .arabic-mode .insight-btn-tab,
 .arabic-mode .insight-btn,
 .arabic-mode .greyColor,
-.arabic-mode .footer-2-sec
+.arabic-mode .footer-2-sec,
+.arabic-mode #stationsDropdownMapSearch
 {
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
