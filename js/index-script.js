@@ -4779,6 +4779,8 @@ function bindStationDataToLineChart(filter) {
       pointHoverRadius: 8,
       tension: 0.4,
       borderWidth: 3,
+   
+
     },
     {
       label: "PM25",
@@ -9173,11 +9175,12 @@ else{
       document.querySelector(".getback-msg").innerText =
         "لقد تم استلام رسالتك. سوف نعود اليكم قريبا";
     });
-    document.querySelector(".welcome-text").innerText = "مرحبًا بكم في";
-    document.querySelector(".quotes").innerText = " مراقبة جودة الهواء ";
-    document.querySelector(".emirates-text").innerText = "في أبوظبي";
+    document.querySelector(".welcome-text").innerText ="مرحبًـــا بكـــم فـــي";
+    document.querySelector(".quotes").innerText = "مراقبـــة جـــودة الهـــواء";
+    document.querySelector(".emirates-text").innerText = "فـــي أبوظبـــي";
     document.querySelector("#AQI-mb-0").innerText = "مؤشر جودة الهواء";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
+    document.querySelector(".copy-right-para").innerText="© 2021 حكومة أبوظبي جميع الحقوق محفوظة."
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.innerText = "AQI";
     });
@@ -9870,6 +9873,7 @@ else{
     document.querySelector(".welcome-text").innerText = "WELCOME TO";
     document.querySelector(".quotes").innerText = "Air Quality Monitoring";
     document.querySelector(".emirates-text").innerText = "In Abu Dhabi";
+    document.querySelector(".copy-right-para").innerText="© Abu Dhabi All Rights Reserved 2024"
     document.querySelector("#AQI-mb-0").innerText = "AQI";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
