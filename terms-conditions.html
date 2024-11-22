@@ -900,6 +900,8 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
                     $('.footer-logo').addClass('footer-logo-arabic');
         $('.footer-social-icons').addClass('social-media-icons');
         $('.copy-right-para').addClass('copy-right-para-footer');
+        document.querySelector(".copy-right-para").innerText="© 2021 حكومة أبوظبي جميع الحقوق محفوظة."
+
                 updateMenuArabic();
             } else {
                 document.body.classList.remove('arabic-mode');
@@ -958,6 +960,7 @@ footerMenuUi.style.setProperty('margin-right', '-38px');
 
                     </div>
                 </div>`
+                 document.querySelector(".copy-right-para").innerText="© Abu Dhabi All Rights Reserved 2024"
                 updateMenuEnglish();
             }
         }
