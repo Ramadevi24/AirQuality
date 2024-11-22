@@ -3952,12 +3952,14 @@ function getFormattedDate(dateValue) {
   // );
   if (currentLanguage === "arabic") {
     return (
+      arabicWeekDays[dateValue.getDay()] + " " +
       (day >= 10 ? day : "0" + day) +
       "/" +
       (month >= 10 ? month : "0" + month) +
       "/" +
-      dateValue.getFullYear().toString().substring(2) + " " +
-      arabicWeekDays[dateValue.getDay()] +
+      dateValue.getFullYear().toString().substring(-2) + 
+      // " " +
+      // arabicWeekDays[dateValue.getDay()] +
       " " +
      "<br>" +
     (hours ? hours : 12) +
@@ -3972,7 +3974,7 @@ function getFormattedDate(dateValue) {
       "/" +
       (month >= 10 ? month : "0" + month) +
       "/" +
-      dateValue.getFullYear().toString().substring(2) +
+      dateValue.getFullYear().toString().substring(-2) +
       ",<br>" +
       (hours ? hours : 12) +
       " " +
@@ -5031,6 +5033,8 @@ function bindStationDataToLineChart(filter) {
           tooltip: {
             //id: "single",
             enabled: true,
+            ltr: true, // Enables Right-to-Left direction
+            textDirection: "ltr",
             displayColors: false,
             usePointStyle: false, // Do not use point style
             caretSize: 0,
@@ -5069,9 +5073,9 @@ function bindStationDataToLineChart(filter) {
                     // Convert back to 12-hour format and adjust meridiem
                     let displayHour = hour % 12;
                     displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
-
+                    let localizedMeridiem = currentLanguage === "arabic" ? meridiem === "AM" ? "ص" : "م" : meridiem;
                     // Return the formatted string without leading zeros
-                    return `${displayHour} ${meridiem}`;
+                    return `${displayHour} ${localizedMeridiem}`;
                   } else if (hourMatch) {
                     let hour = parseInt(hourMatch[1], 10);
 
@@ -5079,8 +5083,8 @@ function bindStationDataToLineChart(filter) {
                     let displayMeridiem = hour >= 12 ? "PM" : "AM";
                     let displayHour = hour % 12;
                     displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
-
-                    return `${displayHour} ${displayMeridiem}`;
+                    let localizedMeridiem = currentLanguage === "arabic" ? displayMeridiem === "AM" ? "ص" : "م" : displayMeridiem;
+                    return `${displayHour} ${localizedMeridiem}`;
                   } else {
                     // Fallback for any unexpected format
                     return fullTimestamp;
@@ -5128,7 +5132,7 @@ function bindStationDataToLineChart(filter) {
             grid: {
               display: false,
             },
-            //reverse: true
+            // reverse: true
           },
           x2: {
             type: "time",
