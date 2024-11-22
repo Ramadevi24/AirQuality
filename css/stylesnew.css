@@ -6231,7 +6231,7 @@ button[disabled].animate-blinking {
 .arabic-mode .insight-privacypolicy,
 .arabic-mode .tab-footer-link,
 .arabic-mode .tab-privacy-section ul a,
-.arabic-mode  #datepicker::placeholder,
+
 .arabic-mode   #averageAqiStatus
 {
     font-family: 'Cairo', sans-serif !important;
@@ -6292,8 +6292,8 @@ button[disabled].animate-blinking {
  .arabic-mode .weather-card-map h5,
  .arabic-mode #aqiSmallScreenDailyCounts p,
  .arabic-mode #averageAqi,
- .arabic-mode #airQualitySafetyLevelAqi
-
+ .arabic-mode #airQualitySafetyLevelAqi,
+ .arabic-mode  #datepicker::placeholder
 
 {
     font-family: 'Cairo', sans-serif !important;
