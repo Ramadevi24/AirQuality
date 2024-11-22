@@ -6149,7 +6149,9 @@ button[disabled].animate-blinking {
     animation: none;
 } */
 
-
+.bold-black-text{
+    color: #33333366 !important;
+}
 
 
 
