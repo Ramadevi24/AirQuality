@@ -3592,7 +3592,8 @@
 
                 if (!resultsFound) {
                     const li = document.createElement('li');
-                    li.textContent = 'No results found';
+                    const currentLanguage = localStorage.getItem('language');
+                    li.textContent = currentLanguage === "arabic" ? 'لا يوجد إجابة':'No results found';
                     const searchResultDiv = document.querySelector('.search-result');
                     searchResultDiv.classList.add('results-found-block');
                     searchResults.appendChild(li);
