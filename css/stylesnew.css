@@ -6161,6 +6161,7 @@ button[disabled].animate-blinking {
 
 
 
+
 .arabic-mode p,
 .arabic-mode .footer_link a,
 .arabic-mode .copy-right-contents-footer a,
@@ -6184,7 +6185,10 @@ button[disabled].animate-blinking {
     font-family: 'Cairo', sans-serif;
     font-weight: 400 !important; /* Cairo Light for paragraphs and content */
 }
-.arabic-mode .text-center p{
+.arabic-mode .text-center p,
+.arabic-mode #pills-profile-tab,
+.arabic-mode #pills-aqi_lin-tab,
+.arabic-mode #lineChartAqiValueStatus{
     font-family: 'Cairo', sans-serif;
     font-weight: 600 !important; 
 }
@@ -6225,8 +6229,8 @@ button[disabled].animate-blinking {
 .arabic-mode .activity_heading,
 .arabic-mode #airQualitySafetyLevelStation,
 .arabic-mode #barChartFilter,
-.arabic-mode #pills-profile-tab,
-.arabic-mode #pills-aqi_lin-tab,
+
+
 .arabic-mode .dropdown-item,
 .arabic-mode .emirates-text,
 .arabic-mode .date-time,
