@@ -1028,9 +1028,9 @@ video {
   left:-35px
 }
 
-.arabic-mode #currentDate{
+/* .arabic-mode #currentDate{
     direction:ltr;
-}
+} */
 
 .weather-card h2, .weather-card-map h2 {
     font-size: 13px;
