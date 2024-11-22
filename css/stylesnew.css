@@ -6162,7 +6162,8 @@ button[disabled].animate-blinking {
 .arabic-mode .windDirectionHeading,
 .arabic-mode .temperatureHeading,
 .arabic-mode .humidityHeading,
-.arabic-mode #insightsAqiStatus{
+.arabic-mode #insightsAqiStatus,
+.arabic-mode #currentDate{
     font-family: 'Cairo', sans-serif !important;
     font-weight: 300 !important; /* Cairo Light for paragraphs and content */
 }
