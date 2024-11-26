@@ -2118,7 +2118,7 @@ const chartFilterArabic = {
   Daily: "يوميا",
   Monthly: "شهريا",
   Yearly: "سنويا",
-  Custom: "مخصص",
+  Custom: " إنشاء مخصص",
 };
 
 const pollutantNamesEnglish = {
@@ -4623,7 +4623,7 @@ function getStationChartApi(filter, initialRequest = false) {
     يوميا: "Daily",
     شهريا: "Monthly",
     سنويا: "Yearly",
-    مخصص: "Custom",
+   " إنشاء مخصص": "Custom",
   };
 
   const selectedFilter =
@@ -9157,7 +9157,7 @@ else{
 
     questionHeader.textContent = "الأسئلة الشائعة";
     questionHeaderAlt.innerHTML = "الأسئلة الشائعة";
-    monitoringHeading.innerText = "مبادراتنا مراقبة جودة الهواء";
+    monitoringHeading.innerText = "مبادراتنا لمراقبة جودة الهواء";
     initiativeHeadingContentLg.innerHTML =
       "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     initiativeHeadingContentSm.innerText =
@@ -9201,15 +9201,15 @@ else{
       element.textContent = "درجة الحرارة";
     });
     (document.querySelector(".map-disclaimer-content").innerText =
-      "على الرغم من تحديث بياناتنا في الوقت الحالي باستمرار وخضوعها لعمليات المراجعة المتواصلة، فقد لا تكون دقيقة تمامًا."),
+     "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا."),
       (document.querySelector(".sm-map-disclaimer").innerText =
         "تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.");
     document.querySelector(".map-disclaimer-air").innerText =
       "مؤشر جودة الهواء";
-    document.querySelector(".insight-btn").innerText = "المزيد من الرؤى";
+    document.querySelector(".insight-btn").innerText = "المزيد من المعلومات";
     document.querySelector(".insight-btn-tab").innerText = "المزيد من الرؤى";
     // document.querySelector('.fp-next').style.right='auto';
-    contactHead.textContent = "اتصل بنا";
+    contactHead.textContent = "تواصل معنا";
     heading.textContent = "أخبرنا برأيك";
     // cnctAddress.innerHTML = `المقر الرئيسي، المعمورة، المبنى A، المبنى 62، <br /> شارع المعمورة، ال نهيان، أبوظبي، الإمارات العربية المتحدة، <br /> الرمز البريدي: 22221، صندوق بريد: 4553`;
     cnctAddress.innerHTML = `المقر الرئيسي مبنى المعمورة (أ) مبنى رقم (62) ،<br/> شارع المعمورة ، آل نهيان ، أبوظبي ،<br/> الإمارات العربية المتحدة، الرمز البريدي: 22221، ص.ب : 45553`;
@@ -9233,7 +9233,7 @@ else{
       .getElementById("headerSearchInput")
       .setAttribute("placeholder", "بحث");
 
-      document.querySelectorAll('.datepicker').forEach((element)=>element.placeholder= "مخصص");
+      document.querySelectorAll('.datepicker').forEach((element)=>element.placeholder= " إنشاء مخصص");
 
     document.querySelector(".search-result p").innerText = "نتائج البحث";
     document.querySelector(".newcutom-btn").innerText = "إغلاق";
@@ -9384,7 +9384,7 @@ else{
     // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     document.querySelector(".station-aqi-trends-disclaimers").innerText =
-      "ابقَ على اطلاع بجودة الهواء في أبوظبي من خلال نظرة سريعة: الرسوم البيانية سهلة الفهم تتعقب مؤشر جودة الهواء ومستويات الملوثات على مر الزمن، مع عرض ظروف السلامة الجوية من جيدة إلى خطرة.";
+     "تابع جودة الهواء في أبوظبي بشكل مستمر من خلال نظرة سريعة: الرسوم البيانية الواضحة تتابع مستويات مؤشر جودة الهواء (AQI) والملوثات مع مرور الوقت، وتعرض حالة الهواء من الجيد إلى الخطير.";
     document.getElementById("air-quality-index").innerText = "مؤشر جودة الهواء";
     document.querySelector(
       ".refreshed-time-aqip"
@@ -9444,13 +9444,13 @@ else{
     // document.querySelector('.equal-station-box-height').style.direction = 'ltr';
     document.querySelector(
       ".contact-content-mobile"
-    ).innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`;
+    ).innerText =`قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة.`;
     document.querySelector(".air-analytics-mobile").innerText =
-      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
+    'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".'
     document.querySelector(".activity_heading").innerText = "الأنشطة";
     airQualityAssessments.forEach((element) => {
       element.innerText =
-        'يمكنك تقييم جودة الهواء بكفاءة من خلال الأشرطة الملونة، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
+      'يمكنك تقييم جودة الهواء بكفاءة من خلال رمز تصنيف الألوان، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
     });
     // document.getElementById('sand-storm').innerText='العاصفة الرملية';
     document.addEventListener("DOMContentLoaded", function () {
@@ -9614,7 +9614,7 @@ else{
             item.innerText = "سنويا"; // Yearly
             break;
           case 4:
-            item.innerText = "مخصص"; //custom
+            item.innerText = " إنشاء مخصص"; //custom
             break;
         }
       });
@@ -10360,7 +10360,7 @@ else{
             link.textContent = "الأسئلة الشائعة";
             break;
           case "Contact Us":
-            link.innerHTML = 'اتصل بنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
+            link.innerHTML = 'تواصل معنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Privacy Policy":
             link.textContent = "سياسة الخصوصية";
@@ -10409,7 +10409,7 @@ else{
           case "الأسئلة الشائعة":
             link.textContent = "FAQ";
             break;
-          case "اتصل بنا":
+          case "تواصل معنا":
             link.innerHTML = 'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "سياسة الخصوصية":
@@ -10459,7 +10459,7 @@ else{
           link.textContent = "الأسئلة الشائعة";
           break;
         case "Contact Us":
-          link.textContent = "اتصل بنا";
+          link.textContent = "تواصل معنا";
           break;
         case "LANGUAGE":
           link.textContent = "لغة";
@@ -10483,7 +10483,7 @@ else{
         case "الأسئلة الشائعة":
           link.textContent = "FAQ";
           break;
-        case "اتصل بنا":
+        case "تواصل معنا":
           link.textContent = "Contact Us";
           break;
         case "لغة":
