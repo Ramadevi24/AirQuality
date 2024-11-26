@@ -3842,6 +3842,11 @@ border: none;
         margin-left: 3px;
         margin-bottom: 0px;
     }
+    .arabic-mode .insight .ug_content p{
+        font-size: 15px;
+        font-weight:400 !important;
+        padding:5px;
+    }
 
 .insight .search-box.d-flex .d-flex {
     justify-content: end;
