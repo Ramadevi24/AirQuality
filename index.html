@@ -3461,9 +3461,17 @@
 
     </script>
 
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('language') === null) {
         localStorage.setItem('language', 'english');
-    </script>
+    } else {
+        localStorage.getItem('language')
+    }
+});
+localStorage.setItem("destinationIndex",'0');
+</script>
+
 
     <script>
 
