@@ -3598,7 +3598,8 @@ function getHealthRecommendationContent(aqiLevel) {
     good: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description:
           "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
       },
@@ -3616,7 +3617,8 @@ function getHealthRecommendationContent(aqiLevel) {
     moderate: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description: "يوصى بارتداء الكمامة للمجموعات الحساسة.",
       },
       {
@@ -3633,7 +3635,8 @@ function getHealthRecommendationContent(aqiLevel) {
     unhealthyForSensitiveGroups: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description:
           "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية.",
       },
@@ -3652,7 +3655,8 @@ function getHealthRecommendationContent(aqiLevel) {
     unhealthy: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description: "يوصى بارتداء الكمامة، مع الحد من الأنشطة الخارجية.",
       },
       {
@@ -3670,7 +3674,8 @@ function getHealthRecommendationContent(aqiLevel) {
     veryUnhealthy: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description:
           "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
@@ -3689,7 +3694,8 @@ function getHealthRecommendationContent(aqiLevel) {
     hazardous: [
       {
         img: "mask1.png",
-        title: "استخدام الكمامة",
+        // title: "استخدام الكمامة",
+        title: "استخدام الكمامات",
         description:
           "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
@@ -9246,7 +9252,7 @@ else{
     closeButton.style.textTransform = "none";
     document.querySelector(".paratab").innerText =
       "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
-    document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامة";
+    document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامات";
     if (window.matchMedia("(max-width: 767px)").matches) {
       $(".insight .search-box .p-input span").css({"right": "auto", "left": "12px"});
     }
@@ -9338,7 +9344,7 @@ else{
     $('.sidebar button').addClass('close-modal-button');
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector(".mask-usage").innerText = "استخدام الكمامة";
+      document.querySelector(".mask-usage").innerText = "استخدام الكمامات";
     });
     iaqmElement && (iaqmElement.innerText = "تحسين جودة الهواء الداخلي");
     switchingElement &&
