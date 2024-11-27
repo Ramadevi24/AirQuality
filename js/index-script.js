@@ -1071,7 +1071,7 @@ const stationsWithLocations = [
       pollutantAbbrevations.SO2,
       pollutantAbbrevations.H2S,
       pollutantAbbrevations.THC,
-      pollutantAbbrevations.BTEX,
+      // pollutantAbbrevations.BTEX,
       pollutantAbbrevations.MET,
       pollutantAbbrevations.Noise,
     ],
@@ -1301,7 +1301,7 @@ const stationsWithLocations = [
       pollutantAbbrevations.NO2,
       pollutantAbbrevations.SO2,
       pollutantAbbrevations.H2S,
-      pollutantAbbrevations.O3,
+      // pollutantAbbrevations.O3,
       pollutantAbbrevations.MET,
       pollutantAbbrevations.Noise,
     ],
@@ -1310,7 +1310,7 @@ const stationsWithLocations = [
       pollutantAbbrevations.NO2,
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
-      pollutantAbbrevations.O3,
+      // pollutantAbbrevations.O3,
     ],
   },
   {
@@ -1595,7 +1595,7 @@ const stationsWithLocationsArabic = [
       pollutantAbbrevations.SO2,
       pollutantAbbrevations.H2S,
       pollutantAbbrevations.THC,
-      pollutantAbbrevations.BTEX,
+      // pollutantAbbrevations.BTEX,
       pollutantAbbrevations.MET,
       pollutantAbbrevations.Noise,
     ],
@@ -1824,7 +1824,7 @@ const stationsWithLocationsArabic = [
       pollutantAbbrevations.NO2,
       pollutantAbbrevations.SO2,
       pollutantAbbrevations.H2S,
-      pollutantAbbrevations.O3,
+      // pollutantAbbrevations.O3,
       pollutantAbbrevations.MET,
       pollutantAbbrevations.Noise,
     ],
@@ -1833,7 +1833,7 @@ const stationsWithLocationsArabic = [
       pollutantAbbrevations.NO2,
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
-      pollutantAbbrevations.O3,
+      // pollutantAbbrevations.O3,
     ],
   },
   {
@@ -9000,6 +9000,7 @@ var slideIndexS = localStorage.getItem('slideIndexS') || 0;
     const switchingElement = document.getElementById("switching-air-purifier");
     const $inputElements = $(".insight .data-list label.list-group-item input");
     currentLanguage = localStorage.getItem("language") || "english";
+    const skipButtonImg = document.querySelector("#skipButton img");
     currentStatusClass = statusClass;
   
     // Initial setup
@@ -9036,6 +9037,7 @@ var slideIndexS = localStorage.getItem('slideIndexS') || 0;
         $("#currentDate").html(getFormattedDate(new Date()));
         $("#last-updatedTime").html(getFormattedDate1(new Date()));
         $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
+        skipButtonImg.src = "./images/new-images/skip-icon-arabic.svg";
       } else {
         document.body.setAttribute("dir", "ltr");
         toggleBtns[0].textContent = "عربي";
@@ -9051,6 +9053,7 @@ var slideIndexS = localStorage.getItem('slideIndexS') || 0;
         $("#currentDate").html(getFormattedDate(new Date()));
         $("#last-updatedTime").html(getFormattedDate1(new Date()));
         $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
+        skipButtonImg.src = "./images/new-images/skip-icon.svg";
       }
     }
   function updateToArabic() {
