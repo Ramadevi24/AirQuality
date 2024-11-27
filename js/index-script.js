@@ -2062,12 +2062,12 @@ const statusClassNew1 = {
 };
 
 const statusClassArabic = {
-  Good: "أيام جيدة",
-  Moderate: "أيام معتدلة",
-  UnHealthlySensitiveGroups: "غير صحي للفئة الحساسة",
-  UnHealthly: "أيام غير صحية",
-  VeryUnHealthly: "غير صحي للغاية",
-  Hazardous: "أيام خطرة",
+  Good: "يوم جيد",
+  Moderate: "يوم معتدل",
+  UnHealthlySensitiveGroups: "يوم غير صحي للفئة  الحساسة",
+  UnHealthly: "يوم غير صحي",
+  VeryUnHealthly: "يوم غير صحي للغاية",
+  Hazardous: "يوم خطر",
 };
 
 const statusClassNew1English = {
@@ -3147,7 +3147,7 @@ function loadStationData(initialRequest = false) {
             ? stationName +
               ", " +
               regionName +
-              " نظرة عامة سنوية على جودة الهواء لـ " +
+              "نظرة عامة سنوية على جودة الهواء" +
               currentYearOverview
             : stationName +
               ", " +
