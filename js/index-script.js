@@ -9421,7 +9421,7 @@ else{
     document
       .querySelectorAll(".our-air-analytics-desclimer")
       .forEach((element) => {
-        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار ظروف الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`;
+        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`;
       });
     document.querySelector(
       ".hours-exceed-heading"
