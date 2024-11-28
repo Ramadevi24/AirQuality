@@ -2238,8 +2238,10 @@ $(window).scroll(function () {
   var scroll = $(window).scrollTop();
   if (scroll >= 600) {
     $("header").addClass("fadeout");
+    $('.toggle-text').css('display', 'none');
   } else {
     $("header").removeClass("fadeout");
+    $('.toggle-text').css('display', 'block');
   }
 });
 

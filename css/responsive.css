@@ -4015,4 +4015,10 @@
     }
 }
 
+@media screen and (min-width:768px){
+   .arabic-mode .navbar-expand-md .navbar-nav{
+        padding-right: 0px !important;
+    }
+}
+
 

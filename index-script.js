@@ -823,6 +823,7 @@ $(window).scroll(function () {
     if (scroll >= 600) {
         $('header').addClass('fadeout');
 
+
     } else {
         $('header').removeClass('fadeout');
     }
