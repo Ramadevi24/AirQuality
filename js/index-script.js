@@ -443,7 +443,7 @@ const stations = [
   {
     stationId: "EAD_Baniyas",
     en: "Baniyas School",
-    ar: "مدرسة بني ياس",
+    ar: "مدرسة بني ياس",
     regionar: "أبوظبي",
     aqi: 59,
   },
@@ -470,7 +470,7 @@ const stations = [
   },
   {
     stationId: "EAD_AlAinSchool",
-    en: "Alain Islamic Institute",
+    en: "Al Ain Islamic Institute",
     ar: "المعهد الإسلامي العين",
     regionar: "العين",
     aqi: 40,
@@ -540,7 +540,7 @@ const stations = [
   },
   {
     stationId: "EAD_Liwa",
-    en: "Liwa Oasis",
+    en: "Liwa",
     ar: "واحة ليوا",
     regionar: "الظفرة",
     aqi: 44,
