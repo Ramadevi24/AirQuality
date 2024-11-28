@@ -443,7 +443,7 @@ const stations = [
   {
     stationId: "EAD_Baniyas",
     en: "Baniyas School",
-    ar: "مدرسة بني ياس",
+    ar: "مدرسة بني ياس",
     regionar: "أبوظبي",
     aqi: 59,
   },
@@ -470,7 +470,7 @@ const stations = [
   },
   {
     stationId: "EAD_AlAinSchool",
-    en: "Alain Islamic Institute",
+    en: "Al Ain Islamic Institute",
     ar: "المعهد الإسلامي العين",
     regionar: "العين",
     aqi: 40,
@@ -540,7 +540,7 @@ const stations = [
   },
   {
     stationId: "EAD_Liwa",
-    en: "Liwa Oasis",
+    en: "Liwa",
     ar: "واحة ليوا",
     regionar: "الظفرة",
     aqi: 44,
@@ -3410,13 +3410,13 @@ function getActivityContent(aqiLevel) {
         img: "heart_green.png",
         text: "يمكن للأطفال والأشخاص الحساسين الاستمتاع بالهواء الطلق.",
       },
-      { img: "dinner_green.png", text: "استمتع بوجبتك في الخارج" },
+      { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق " },
     ],
     moderate: [
       { img: "run_green.png", text: "استمتع بوقتك في الهواء الطلق" },
       { img: "cycle_green.png", text: "استمتع بركوب الدراجات الهواية" },
       { img: "heart_orange.png", text: " على المجموعة الحساسة توخي الحذر" },
-      { img: "dinner_green.png", text: "استمتع بوجبتك في الخارج" },
+      { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق " },
     ],
     unhealthyForSensitiveGroups: [
       { img: "run_orange.png", text: "تجنب التعرض لفترات طويلة" },
@@ -8638,8 +8638,9 @@ var accordionContent = [
 var accordionArabicContent = [
   {
     question: '  ماذا يعني مصطلح "جودة الهواء"؟',
-    answer:
-      "تشير جودة الهواء إلى حالة الهواء المحيط ونقائه. حيث تتعلق جودة الهواء بتركيز الملوثات الجوية المختلفة التي قد تكون ضارة بصحة الانسان والبيئة. ",
+    // answer:
+      // "تشير جودة الهواء إلى حالة الهواء المحيط ونقائه. حيث تتعلق جودة الهواء بتركيز الملوثات الجوية المختلفة التي قد تكون ضارة بصحة الانسان والبيئة. ",
+      answer: " جودة الهواء يشير إلى حالة الهواء المحيط ونقائه. وبشكل خاص إلى وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة",
   },
   {
     question: "ما هي ملوثات الهواء الرئيسية الموجودة في البيئة؟",
@@ -9427,7 +9428,8 @@ else{
     document
       .querySelectorAll(".hours-exceedance-peryear-desclimer")
       .forEach((element) => {
-        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`;
+        // element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`;
+        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة`;
       });
     document
       .querySelectorAll(".our-air-analytics-desclimer")
@@ -10059,7 +10061,7 @@ else{
     document
       .querySelectorAll(".hours-exceedance-peryear-desclimer")
       .forEach((element) => {
-        element.innerText = `Take a swift look at Abu Dhabi City's yearly air qualitychart. It shows the number of hours each pollutant was abovesafe levels. chart-f-contentrmed on Air quality trends,effortlessly.`;
+        element.innerText = `Take a swift look at Abu Dhabi City's yearly air quality chart. It shows the number of hours each pollutant was above safe levels. Stay informed on Air quality trends, effortlessly.`;
       });
     document
       .querySelectorAll(".our-air-analytics-desclimer")

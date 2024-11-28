@@ -529,7 +529,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
         queryObject.outFields = ["*"];
 
         function LoadAirQualityData() {
-            const apiUrl = AirQualityService + "GetAirQualityStation";
+            const apiUrl = AirQualityService + "GetAirQualityMapStation";
 
 
             $.ajax({
