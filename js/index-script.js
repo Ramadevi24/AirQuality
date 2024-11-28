@@ -3127,8 +3127,8 @@ function loadStationData(initialRequest = false) {
   );
   const updatedStationData =
     currentLanguage === "arabic"
-      ? "المحطة:" + stationName + "," + regionName
-      : "Station:" + stationName + ", " + regionName;
+      ? "المحطة:" + " " + stationName + "," + regionName
+      : "Station:" + " " +stationName + ", " + regionName;
   $.ajax({
     url: apiUrl,
     method: "GET",
