@@ -3253,7 +3253,6 @@
                 }
             }
         });
-
         function initializeFullPage() {
             var sliding = false;
             var slideIndexS = localStorage.getItem('slideIndexS') || 0;           
@@ -3447,7 +3446,14 @@
                 document.head.appendChild(scriptTag);
             }
         }
-
+		$(document).on("wheel", function () {
+                $(".datepicker").each(function () {
+                    if ($(this).datepicker("widget").is(":visible")) {
+                        $(this).datepicker("hide");
+                        $(this).blur(); // Remove focus to ensure it can be reopened
+                    }
+                });
+            });
     </script>
 
 
