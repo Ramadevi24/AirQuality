@@ -8968,7 +8968,30 @@ function toggleChangeLanguage() {
 
   // Update the language in localStorage
   localStorage.setItem("language", newLanguage);
+  updateSliderDirection();
 }
+
+// Function to get current translateX value
+function getTranslateX(transformValue) {
+    const match = transformValue.match(/translate3d\((-?\d+)px, 0px, 0px\)/);
+    return match ? parseInt(match[1], 10) : 0;
+}
+
+// Function to update the slider direction
+function updateSliderDirection() {
+    const slidesContainer = document.querySelector('.fp-slidesContainer'); // Update the selector
+    const language = localStorage.getItem('language'); // Get current language
+    const isArabic = language === 'arabic';
+    const directionMultiplier = isArabic ? 1 : -1;
+
+    const currentTransform = slidesContainer.style.transform; // Get the current transform
+    const currentX = getTranslateX(currentTransform); // Extract the X translation value
+
+    // Calculate the new transform
+    const newX = directionMultiplier * Math.abs(currentX);
+    slidesContainer.style.transform = `translate3d(${newX}px, 0px, 0px)`;
+}
+
 
 
 // Initialize button text on page load
