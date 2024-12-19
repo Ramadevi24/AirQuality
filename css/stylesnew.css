@@ -6332,3 +6332,7 @@ button[disabled].animate-blinking {
 .arabic-mode #barChartFilter {
     font-weight: 800 !important;
 }
+
+.arabic-mode .weather-card-map {
+    left: 48% !important;
+}
