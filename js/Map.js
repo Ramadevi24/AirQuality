@@ -85,7 +85,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             nextBasemap: customBasemap
         });
         toggle.watch('activeBasemap', function (basemap) {
-          
+
             if (FeatureCollectionlyr.visible === true) {
                 view.zoom = view.zoom; // This effectively does nothing, might want to set a specific zoom level or remove this line
             }
@@ -97,7 +97,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             else if (pollutantGrpLyr_EmirateLvl.visible === true) {
                 view.zoom = 7;
             }
-            
+
         });
 
         // Add widget to the top right corner of the view
@@ -294,7 +294,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             }
         });
         $("#mapLocation").click(function (event) {
-            
+
             ZoomToLocation(nearestStation.stationName);
         });
 
@@ -399,14 +399,14 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                                 color: "white",
                                 haloColor: "#505050",
                                 haloSize: "1px",
-                                text: feature.attributes['Name'],
+                                text: currentLanguage == 'arabic' ? feature.attributes['NameAr'] : feature.attributes['Name'],
                                 xoffset: 10,
                                 yoffset: 10,
-                                font: {
-                                    size: 10,
-                                    family: "roboto",
-                                    weight: "bold"
-                                }
+                                // font: {
+                                //     size: 10,
+                                //     family: "roboto",
+                                //     weight: "bold"
+                                // }
                             };
                             const pointGraphic = new Graphic({
                                 geometry: point,
@@ -432,7 +432,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
         });
 
         function updateSelectedCity1(cityKey, Value) {
-            ZoomToLocation(Value);           
+            ZoomToLocation(Value);
         }
 
         function ZoomToLocation(searchValue) {
@@ -447,7 +447,7 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
             featureLayer.queryFeatures(query).then(function (result) {
                 // Access the features in the result
                 var features = result.features;
-               // console.log("Queried Features:", features);
+                // console.log("Queried Features:", features);
                 // Do something with the queried features, e.g., highlight on the map
                 if (features.length > 0) {
                     //console.log("First Feature Details:", features[0]);
@@ -539,10 +539,10 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                 success: function (data) {
                     const selectedStationObj = {
                         averageAQI: data.averageAQI,
-                       //pollutantName: data.pollutantName,
+                        //pollutantName: data.pollutantName,
                         //pollutantValue: data.pollutantValue,
-                         stationsList: data.stationsList,
-                       // pollutantName: data.pollutantName
+                        stationsList: data.stationsList,
+                        // pollutantName: data.pollutantName
                     };
                     for (var x = 0; x < StationsObject.length; x++) {
                         var stationobj = data.stationsList.filter(item => item.stationName == StationsObject[x].KeyName);
@@ -557,6 +557,118 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                     $('.page-loader').fadeOut('slow');
                 },
                 error: handleApiError
+            });
+        }
+        function handleApiError(error) {
+            console.error('Error occurred while fetching data from API', error);
+            $('.page-loader').fadeOut('slow');
+        }
+        document.addEventListener('languageChange', function(event) {
+            // Call the addGraphics function when the language changes
+            addGraphics();
+        });
+        function addGraphics() {
+            view?.graphics?.removeAll();
+            var esriquery = FeatureCollectionlyr?.createQuery();
+            esriquery.where = "1=1";
+            esriquery.returnGeometry = true;
+            esriquery.outFields = ["*"];
+            FeatureCollectionlyr?.queryFeatures(esriquery).then(function (results) {
+                // if (lastSelectedGraphic) {
+                //     // Reset the outline of the last selected graphic symbol
+                //     lastSelectedGraphic.symbol.outline.color = [0, 0, 0, 0]; // Assuming the default outline color is transparent or matches the map
+                //     lastSelectedGraphic.symbol.outline.width = 0;
+                //     // Remove the label if it exists
+                //     view.graphics.remove(lastSelectedGraphic.labelGraphic);
+                // }
+                var classBreakInfos = [
+                    {
+                        minValue: 1,
+                        maxValue: 50,
+                        symbol: Indexunder50,
+                        label: "< 50"
+                    }, {
+                        minValue: 51,
+                        maxValue: 100,
+                        symbol: Index51_100,
+                        label: "51 - 100"
+                    }, {
+                        minValue: 101,
+                        maxValue: 150,
+                        symbol: Index101_150,
+                        label: "101 - 150"
+                    }, {
+                        minValue: 151,
+                        maxValue: 200,
+                        symbol: Index151_200,
+                        label: "151 - 200"
+                    }, {
+                        minValue: 201,
+                        maxValue: 300,
+                        symbol: Index201_300,
+                        label: "201 - 300"
+                    }, {
+                        minValue: 301,
+                        maxValue: 1000,
+                        symbol: Index301_500,
+                        label: ">300"
+                    }
+                ]
+
+                results.features.forEach(feature => {
+                    // if ($(event.target).text() === feature.attributes['Name']) {
+                    if (currentStationDetails.stationName === feature.attributes['Name']) {
+                        view.graphics.removeAll()
+                        const aqi = parseInt(feature.attributes['AQI']);
+                        let selectedSymbol;
+                        classBreakInfos.forEach(info => {
+                            if (aqi >= info.minValue && aqi < info.maxValue) {
+                                selectedSymbol = info.symbol;
+                                selectedSymbol.outline.color = 'white';
+                                selectedSymbol.outline.width = 2;
+                            }
+                        });
+                        // for (let i = 0; i < classBreakInfos.length; i++) {
+                        //     if (parseInt(results.features[index].attributes['AQI']) > classBreakInfos[i].minValue && parseInt(results.features[index].attributes['AQI']) < classBreakInfos[i].maxValue) {
+                        //         var selectedsymbol = classBreakInfos[i].symbol
+                        //         selectedsymbol.outline.color = 'white'
+                        //         selectedsymbol.outline.width = 2
+                        //         }
+                        //     }
+                        const point = {
+                            type: "point",
+                            longitude: feature.geometry.longitude,
+                            latitude: feature.geometry.latitude
+                        };
+                        const newGraphic = new Graphic({
+                            geometry: point,
+                            symbol: selectedSymbol
+                        });
+                        const textSymbol = {
+                            type: "text",
+                            color: "white",
+                            haloColor: "#505050",
+                            haloSize: "1px",
+                            text: currentLanguage == 'arabic' ? feature.attributes['NameAr'] : feature.attributes['Name'],
+                            xoffset: 10,
+                            yoffset: 10,
+                            // font: {
+                            //   size: 10,
+                            //   family: "roboto",
+                            //   weight: "bold"
+                            // }
+                        };
+                        const pointGraphic = new Graphic({
+                            geometry: point,
+                            symbol: textSymbol
+                        });
+                        // lastSelectedGraphic = newGraphic;
+                        // lastSelectedGraphic.labelGraphic = pointGraphic;  // Store the label graphic for removal later
+
+                        view.graphics.add(newGraphic);
+                        view.graphics.add(pointGraphic);
+                    }
+                });
             });
         }
 
@@ -838,14 +950,14 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
                                         color: "white",
                                         haloColor: "#505050",
                                         haloSize: "1px",
-                                        text: results.features[index].attributes['Name'],
+                                        text: currentLanguage == 'arabic' ? results.features[index].attributes['NameAr'] : results.features[index].attributes['Name'],
                                         xoffset: 10,
                                         yoffset: 10,
-                                        font: {  // autocasts as new Font()
-                                            size: 10,
-                                            family: "roboto",
-                                            weight: "bold"
-                                        }
+                                        // font: {  // autocasts as new Font()
+                                        //     size: 10,
+                                        //     family: "roboto",
+                                        //     weight: "bold"
+                                        // }
                                     };
                                     const point = {
                                         type: "point",  // autocasts as new Point()
@@ -870,8 +982,8 @@ require(["esri/Map", "esri/config", "esri/renderers/ClassBreaksRenderer", "esri/
 
         }
 
-     
-       
+
+
 
         function Createpollutants() {
 

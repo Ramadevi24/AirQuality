@@ -2338,7 +2338,7 @@ $(document).ready(function () {
     $("body").removeClass("project-modal-header");
   });
 
-  
+
   var quotes = $(".quotes");
   var quoteIndex = -1;
   var hasShown = false;
@@ -2832,9 +2832,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
@@ -3060,7 +3060,7 @@ function populateSort(sortBy) {
 
         var spanAQI = document.createElement("span");
         spanAQI.style.color = colorCode;
-        spanAQI.className = (currentLanguage === "arabic" ? "aqi-content-span" : ""); 
+        spanAQI.className = (currentLanguage === "arabic" ? "aqi-content-span" : "");
         spanAQI.textContent = "AQI " + station.aqi;
         innerListContent.appendChild(spanAQI);
 
@@ -3106,15 +3106,15 @@ function getStationNameInSelectedLanguage(stationName) {
 
   return currentLanguage === "arabic"
     ? {
-        stationName: station.ar,
-        regionName: station.regionar,
-        aqi: station.aqi,
-      }
+      stationName: station.ar,
+      regionName: station.regionar,
+      aqi: station.aqi,
+    }
     : {
-        stationName: currentStationDetails.stationName,
-        regionName: currentStationDetails.regionName,
-        aqi: station.aqi,
-      };
+      stationName: currentStationDetails.stationName,
+      regionName: currentStationDetails.regionName,
+      aqi: station.aqi,
+    };
 }
 
 function loadStationData(initialRequest = false) {
@@ -3128,7 +3128,7 @@ function loadStationData(initialRequest = false) {
   const updatedStationData =
     currentLanguage === "arabic"
       ? "المحطة:" + " " + stationName + "," + regionName
-      : "Station:" + " " +stationName + ", " + regionName;
+      : "Station:" + " " + stationName + ", " + regionName;
   $.ajax({
     url: apiUrl,
     method: "GET",
@@ -3147,15 +3147,15 @@ function loadStationData(initialRequest = false) {
         const updateyearlyAirQualityOverview =
           currentLanguage === "arabic"
             ? stationName +
-              ", " +
-              regionName +
-              "نظرة عامة سنوية على جودة الهواء" +
-              currentYearOverview
+            ", " +
+            regionName +
+            "نظرة عامة سنوية على جودة الهواء" +
+            currentYearOverview
             : stationName +
-              ", " +
-              regionName +
-              " Yearly Air Quality Overview for " +
-              currentYearOverview;
+            ", " +
+            regionName +
+            " Yearly Air Quality Overview for " +
+            currentYearOverview;
         // Set text content safely
         $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus")
           .text(aqi + " " + aqiDetailsNew.status)
@@ -3720,32 +3720,30 @@ function getHealthRecommendationContent(aqiLevel) {
     .map(
       (recommendation) => `
         <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(
-          /\s+/g,
-          ""
-        )}" data-backdrop="false">
+        /\s+/g,
+        ""
+      )}" data-backdrop="false">
             <div class="bg-gray">
-                <img src="./images/new-images/${
-                  recommendation.img
-                }" alt="health-icon">
+                <img src="./images/new-images/${recommendation.img
+        }" alt="health-icon">
             </div>
             <p class="mask-hoverEffect">${recommendation.title}</p>
             <span>
                 <img src="./images/new-images/Exclamation.png" alt="img">
             </span>
             <div class="modal fade" id="${recommendation.title.replace(
-              /\s+/g,
-              ""
-            )}" tabindex="-1"
+          /\s+/g,
+          ""
+        )}" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true"
                 data-mdb-backdrop="false" data-mdb-keyboard="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div>
-                            <button type="button" class="btn-close ${
-                              currentLanguage === "arabic"
-                                ? "health-cross-icon"
-                                : ""
-                            } "
+                            <button type="button" class="btn-close ${currentLanguage === "arabic"
+          ? "health-cross-icon"
+          : ""
+        } "
                                     data-bs-dismiss="modal"
                                     aria-label="Close">
                                 <img src="./images/new-images/modal_close.png"
@@ -3755,11 +3753,10 @@ function getHealthRecommendationContent(aqiLevel) {
                         <div class="modal-body mask_body">
                             <img src="./images/new-images/Exaclamation-w.png"
                                 alt="health-icon">
-                            <p class="mask-use ${
-                              currentLanguage === "arabic"
-                                ? "mask_use_title"
-                                : ""
-                            } ">${recommendation.title}</p>
+                            <p class="mask-use ${currentLanguage === "arabic"
+          ? "mask_use_title"
+          : ""
+        } ">${recommendation.title}</p>
                             <p> ${recommendation.description}  </p>
                         </div>
                     </div>
@@ -3939,7 +3936,7 @@ function handleApiError(error) {
 
 function getFormattedDate(dateValue) {
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const arabicWeekDays =["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"]
+  const arabicWeekDays = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"]
   var day = dateValue.getDate();
   var month = dateValue.getMonth() + 1;
   var hours = dateValue.getHours();
@@ -3965,15 +3962,15 @@ function getFormattedDate(dateValue) {
       "/" +
       (month >= 10 ? month : "0" + month) +
       "/" +
-      dateValue.getFullYear().toString().substring(-2) + 
+      dateValue.getFullYear().toString().substring(-2) +
       // " " +
       // arabicWeekDays[dateValue.getDay()] +
       " " +
-     "<br>" +
-    (hours ? hours : 12) +
-    " " +
-    hoursFormat
-  );
+      "<br>" +
+      (hours ? hours : 12) +
+      " " +
+      hoursFormat
+    );
   } else {
     return (
       (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
@@ -4131,11 +4128,11 @@ function bindLiveCityRanking() {
     var stationDetailsWithLocation =
       currentLanguage === "arabic"
         ? stationsWithLocationsArabic.find(
-            (x) => x.stationId === station.stationName
-          )
+          (x) => x.stationId === station.stationName
+        )
         : stationsWithLocations.find(
-            (x) => x.stationId === station.stationName
-          );
+          (x) => x.stationId === station.stationName
+        );
     var stationDetails = stations.find(
       (s) => s.stationId === station.stationName
     );
@@ -4176,10 +4173,9 @@ function bindLiveCityRanking() {
                               <p style="display: none;">` +
         stationDetailsWithLocation.regionName +
         `</p> 
-        <span class="${
-          currentLanguage === "arabic"
-            ? "aqi-content-span"
-            : ""
+        <span class="${currentLanguage === "arabic"
+          ? "aqi-content-span"
+          : ""
         }" style="color:${colorCode};">AQI ${station.aqi}</span>
                             </div>
                             <div class="dis-content">
@@ -4187,16 +4183,12 @@ function bindLiveCityRanking() {
         station.distance + (currentLanguage === "arabic" ? " كم" : " km") + `</span>
                             </div>
                           </div>
-                          <input type="radio" name="options" class="${
-                            currentLanguage === "arabic"
-                              ? "rtl-stationsData"
-                              : ""
-                          }" id="${
-          stationDetailsWithLocation.stationId
-        }" value="${
-          stationDetailsWithLocation.stationId
-        }" autocomplete="off" class="float-end" onClick="selectedStation('${
-          stationDetailsWithLocation.stationId
+                          <input type="radio" name="options" class="${currentLanguage === "arabic"
+          ? "rtl-stationsData"
+          : ""
+        }" id="${stationDetailsWithLocation.stationId
+        }" value="${stationDetailsWithLocation.stationId
+        }" autocomplete="off" class="float-end" onClick="selectedStation('${stationDetailsWithLocation.stationId
         }')">
                         </label>`;
 
@@ -4205,11 +4197,11 @@ function bindLiveCityRanking() {
       stationsDropdownMapEl.append(
         `<li>
                 <span class="station-name">` +
-          stationName +
-          `</span> 
+        stationName +
+        `</span> 
                 <span class="region-name" style="display: none;">` +
-          stationDetailsWithLocation.regionName +
-          `</span>
+        stationDetailsWithLocation.regionName +
+        `</span>
             </li>`
       );
     }
@@ -4257,9 +4249,9 @@ function bindStationInfo() {
     var stationDetailsWithLocation =
       currentLanguage === "arabic"
         ? stationsWithLocationsArabic &&
-          stationsWithLocationsArabic.find((x) => x.stationName === stationName)
+        stationsWithLocationsArabic.find((x) => x.stationName === stationName)
         : stationsWithLocations &&
-          stationsWithLocations.find((x) => x.stationName === stationName);
+        stationsWithLocations.find((x) => x.stationName === stationName);
     $(".pollutantbar-title").text(stationName);
     $(".pollutantbar-address").text(
       stationDetailsWithLocation?.stationLocation
@@ -4631,7 +4623,7 @@ function getStationChartApi(filter, initialRequest = false) {
     يوميا: "Daily",
     شهريا: "Monthly",
     سنويا: "Yearly",
-   " إنشاء مخصص": "Custom",
+    " إنشاء مخصص": "Custom",
   };
 
   const selectedFilter =
@@ -4787,7 +4779,7 @@ function bindStationDataToLineChart(filter) {
       pointHoverRadius: 8,
       tension: 0.4,
       borderWidth: 3,
-   
+
 
     },
     {
@@ -4974,10 +4966,10 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-          var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
-            return match === "AM" ? "ص" : "م";
-          });
-          var lastEnglishrefreshdate = lastrefreshdate;
+        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
+          return match === "AM" ? "ص" : "م";
+        });
+        var lastEnglishrefreshdate = lastrefreshdate;
         $("#StAQIlastrefreshtime").text(currentLanguage === 'arabic' ? lastArabicrefreshdate : lastEnglishrefreshdate);
       }
       minDate = new Date(Math.min(...dateTimes));
@@ -5367,7 +5359,7 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
+        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
           return match === "AM" ? "ص" : "م";
         });
         var lastEnglishrefreshdate = lastrefreshdate;
@@ -5482,9 +5474,9 @@ function bindStationDataToLineChart(filter) {
                       ? labelArabicMap[label]
                       : labelMap[label] || label;
 
-                      if (legendVisibility[i] === undefined) {
-                        legendVisibility[i] = !chart.isDatasetVisible(i);
-                      }
+                  if (legendVisibility[i] === undefined) {
+                    legendVisibility[i] = !chart.isDatasetVisible(i);
+                  }
                   return {
                     text: customLabel,
                     fillStyle: dataset.backgroundColor,
@@ -5498,7 +5490,7 @@ function bindStationDataToLineChart(filter) {
                     strokeStyle: dataset.borderColor,
                     pointStyle: dataset.pointStyle || "circle", // Default pointStyle
                     datasetIndex: i,
-                    displayOrder: currentLanguage === "arabic" ? fianlItems.length - 1 - i : i, 
+                    displayOrder: currentLanguage === "arabic" ? fianlItems.length - 1 - i : i,
                   };
                 });
                 items.sort((a, b) => a.displayOrder - b.displayOrder);
@@ -5510,7 +5502,7 @@ function bindStationDataToLineChart(filter) {
               const chart = legend.chart;
               const meta = chart.getDatasetMeta(index);
               meta.hidden = !meta.hidden;
-  legendVisibility[index] = meta.hidden;
+              legendVisibility[index] = meta.hidden;
               legendItem.hidden = meta.hidden;
               // meta.hidden =
               //   meta.hidden === null
@@ -5566,7 +5558,7 @@ function bindStationDataToLineChart(filter) {
 
                     // Check if the hour is in 24-hour format and adjust accordingly
                     if (hour >= 12) {
-                      meridiem =  currentLanguage === "arabic" ? "م" : "PM";
+                      meridiem = currentLanguage === "arabic" ? "م" : "PM";
                     } else {
                       meridiem = currentLanguage === "arabic" ? "ص" : "AM";
                     }
@@ -6746,7 +6738,7 @@ function bindStationDataToBarChart(filter) {
             minute: "2-digit",
           }
         );
-        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function(match) {
+        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
           return match === "AM" ? "ص" : "م";
         });
         var lastEnglishrefreshdate = lastrefreshdate;
@@ -6847,26 +6839,26 @@ function bindStationDataToBarChart(filter) {
             annotations:
               thresholdValue !== null
                 ? {
-                    thresholdLine: {
-                      type: "line",
-                      yMin: thresholdValue,
-                      yMax: thresholdValue,
-                      borderColor: "#808080",
-                      borderWidth: 2,
-                      borderDash: [5, 5],
-                      label: {
-                        content: `Threshold: ${thresholdValue} µg/m³`,
-                        enabled: true,
-                        position: "center",
-                        backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
-                        color: "#fff", // optional: label text color
-                        font: {
-                          style: "bold",
-                          size: 12, // optional: label text size
-                        },
+                  thresholdLine: {
+                    type: "line",
+                    yMin: thresholdValue,
+                    yMax: thresholdValue,
+                    borderColor: "#808080",
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    label: {
+                      content: `Threshold: ${thresholdValue} µg/m³`,
+                      enabled: true,
+                      position: "center",
+                      backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
+                      color: "#fff", // optional: label text color
+                      font: {
+                        style: "bold",
+                        size: 12, // optional: label text size
                       },
                     },
-                  }
+                  },
+                }
                 : {},
           },
           tooltip: {
@@ -6892,21 +6884,21 @@ function bindStationDataToBarChart(filter) {
                 }
               },
               label: function (context) {
-                 // Return the value for the tooltip
-                  let value = context.raw;
-                  if (value === null) {
-                    value = 0;
-                  }
-                  if (pollutantBarChartId == "ADstationAqiBarGraph"){
-                    return value === 0 ? "0" : value;
-                  }
-                  else if (pollutantBarChartId == "ADstationCoBarGraph") {
-                    return value + " mg/m³";
-                  } else {
-                    return value + " ug/m³";
-                  }
+                // Return the value for the tooltip
+                let value = context.raw;
+                if (value === null) {
+                  value = 0;
                 }
-              },
+                if (pollutantBarChartId == "ADstationAqiBarGraph") {
+                  return value === 0 ? "0" : value;
+                }
+                else if (pollutantBarChartId == "ADstationCoBarGraph") {
+                  return value + " mg/m³";
+                } else {
+                  return value + " ug/m³";
+                }
+              }
+            },
             external: function (context) {
               // Tooltip Element
               var tooltipEl = document.getElementById("chartjs-tooltip");
@@ -7032,77 +7024,77 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
+              display: false,
+              ticks: {
                 display: false,
-                ticks: {
-                  display: false,
-                },
-                grid: {
-                  display: false,
-                },
-                gridLines: {
-                  drawBorder: false,
-                },
-                afterFit: (ctx) => {
-                  //console.log(ctx);
-                  ctx.width = 0.3;
-                },
-                stacked: true,
-                //beginAtZero: true
-              }
-            : {
-                display: false,
-                min: 0,
-                max: thresholdValue,
-                ticks: {
-                  display: false,
-                },
-                grid: {
-                  display: false,
-                },
-                gridLines: {
-                  drawBorder: false,
-                },
-                afterFit: (ctx) => {
-                  //console.log(ctx);
-                  ctx.width = 0.3;
-                },
-                stacked: true,
-                //beginAtZero: true
               },
+              grid: {
+                display: false,
+              },
+              gridLines: {
+                drawBorder: false,
+              },
+              afterFit: (ctx) => {
+                //console.log(ctx);
+                ctx.width = 0.3;
+              },
+              stacked: true,
+              //beginAtZero: true
+            }
+            : {
+              display: false,
+              min: 0,
+              max: thresholdValue,
+              ticks: {
+                display: false,
+              },
+              grid: {
+                display: false,
+              },
+              gridLines: {
+                drawBorder: false,
+              },
+              afterFit: (ctx) => {
+                //console.log(ctx);
+                ctx.width = 0.3;
+              },
+              stacked: true,
+              //beginAtZero: true
+            },
 
           y1: exceedsThreshold
             ? {
-                display: false,
-                ticks: {
-                  beginAtZero: true,
-                  callback: function (value) {
-                    return value;
-                  },
-                },
-                grid: {
-                  drawOnChartArea: false,
-                },
-                stacked: true,
-                type: "linear",
-                position: "left",
-              }
-            : {
-                display: false,
-                min: 0,
-                max: thresholdValue,
-                type: "linear",
-                position: "left",
-                stacked: true,
-                ticks: {
-                  beginAtZero: true,
-                  callback: function (value) {
-                    return value;
-                  },
-                },
-                grid: {
-                  drawOnChartArea: false,
+              display: false,
+              ticks: {
+                beginAtZero: true,
+                callback: function (value) {
+                  return value;
                 },
               },
+              grid: {
+                drawOnChartArea: false,
+              },
+              stacked: true,
+              type: "linear",
+              position: "left",
+            }
+            : {
+              display: false,
+              min: 0,
+              max: thresholdValue,
+              type: "linear",
+              position: "left",
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                callback: function (value) {
+                  return value;
+                },
+              },
+              grid: {
+                drawOnChartArea: false,
+              },
+            },
         },
 
         animations: {
@@ -7151,25 +7143,25 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
-                grid: {
-                  display: false,
-                },
-                afterFit: (ctx) => {
-                  ctx.width = 40;
-                },
-                stacked: true,
-              }
-            : {
-                min: 0,
-                max: thresholdValue,
-                grid: {
-                  display: false,
-                },
-                afterFit: (ctx) => {
-                  ctx.width = 40;
-                },
-                stacked: true,
+              grid: {
+                display: false,
               },
+              afterFit: (ctx) => {
+                ctx.width = 40;
+              },
+              stacked: true,
+            }
+            : {
+              min: 0,
+              max: thresholdValue,
+              grid: {
+                display: false,
+              },
+              afterFit: (ctx) => {
+                ctx.width = 40;
+              },
+              stacked: true,
+            },
         },
         plugins: {
           legend: {
@@ -7179,27 +7171,27 @@ function bindStationDataToBarChart(filter) {
             annotations:
               thresholdValue !== null
                 ? {
-                    thresholdLine: {
-                      type: "line",
-                      yMin: thresholdValue,
-                      yMax: thresholdValue,
-                      borderColor: "#808080",
-                      borderWidth: 2,
-                      borderDash: [5, 5],
-                      label: {
-                        content: "test",
-                        enabled: true,
-                        position: "center",
-                        yAdjust: -10,
-                        backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
-                        color: "#fff", // optional: label text color
-                        font: {
-                          style: "bold",
-                          size: 12, // optional: label text size
-                        },
+                  thresholdLine: {
+                    type: "line",
+                    yMin: thresholdValue,
+                    yMax: thresholdValue,
+                    borderColor: "#808080",
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    label: {
+                      content: "test",
+                      enabled: true,
+                      position: "center",
+                      yAdjust: -10,
+                      backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
+                      color: "#fff", // optional: label text color
+                      font: {
+                        style: "bold",
+                        size: 12, // optional: label text size
                       },
                     },
-                  }
+                  },
+                }
                 : {},
           },
         },
@@ -7291,20 +7283,20 @@ function bindStationDataToBarChart(filter) {
           annotation: {
             annotations: thresholdValue
               ? {
-                  thresholdLine: {
-                    type: "line",
-                    yMin: thresholdValue,
-                    yMax: thresholdValue,
-                    borderColor: "#808080",
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    label: {
-                      content: "Threshold: ${thresholdValue} µg/m³",
-                      enabled: true,
-                      position: "end",
-                    },
+                thresholdLine: {
+                  type: "line",
+                  yMin: thresholdValue,
+                  yMax: thresholdValue,
+                  borderColor: "#808080",
+                  borderWidth: 2,
+                  borderDash: [5, 5],
+                  label: {
+                    content: "Threshold: ${thresholdValue} µg/m³",
+                    enabled: true,
+                    position: "end",
                   },
-                }
+                },
+              }
               : {},
           },
           tooltip: {
@@ -7435,39 +7427,39 @@ function bindStationDataToBarChart(filter) {
           //},
           y: exceedsThreshold
             ? {
+              display: false,
+              ticks: {
                 display: false,
-                ticks: {
-                  display: false,
-                },
-                grid: {
-                  display: false,
-                },
-                gridLines: {
-                  drawBorder: false,
-                },
-                stacked: true,
-                afterFit: (ctx) => {
-                  ctx.width = 0.3;
-                },
-              }
-            : {
-                min: 0,
-                max: thresholdValue,
-                display: false,
-                ticks: {
-                  display: false,
-                },
-                grid: {
-                  display: false,
-                },
-                gridLines: {
-                  drawBorder: false,
-                },
-                stacked: true,
-                afterFit: (ctx) => {
-                  ctx.width = 0.3;
-                },
               },
+              grid: {
+                display: false,
+              },
+              gridLines: {
+                drawBorder: false,
+              },
+              stacked: true,
+              afterFit: (ctx) => {
+                ctx.width = 0.3;
+              },
+            }
+            : {
+              min: 0,
+              max: thresholdValue,
+              display: false,
+              ticks: {
+                display: false,
+              },
+              grid: {
+                display: false,
+              },
+              gridLines: {
+                drawBorder: false,
+              },
+              stacked: true,
+              afterFit: (ctx) => {
+                ctx.width = 0.3;
+              },
+            },
         },
         //plugins,
         animations: {
@@ -7518,25 +7510,25 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
-                grid: {
-                  display: false,
-                },
-                afterFit: (ctx) => {
-                  ctx.width = 40;
-                },
-                stacked: true,
-              }
-            : {
-                min: 0,
-                max: thresholdValue,
-                grid: {
-                  display: false,
-                },
-                afterFit: (ctx) => {
-                  ctx.width = 40;
-                },
-                stacked: true,
+              grid: {
+                display: false,
               },
+              afterFit: (ctx) => {
+                ctx.width = 40;
+              },
+              stacked: true,
+            }
+            : {
+              min: 0,
+              max: thresholdValue,
+              grid: {
+                display: false,
+              },
+              afterFit: (ctx) => {
+                ctx.width = 40;
+              },
+              stacked: true,
+            },
         },
         plugins: {
           legend: {
@@ -7639,10 +7631,10 @@ function bindYearsToDropDown() {
       `<li>
             <a class="dropdown-item" href="javascript: void(0)"
             onclick="onClickYearOfAirAnalytics(` +
-        startYear +
-        `)">` +
-        startYear +
-        `</a>
+      startYear +
+      `)">` +
+      startYear +
+      `</a>
         </li>`
     );
     ++startYear;
@@ -7749,27 +7741,27 @@ var imageData = [
 var imageDataArabic = [
   {
     imageUrl: "./images/new-images/e_linking.jpg",
-    content: "الرابط إلكتروني لنظام مراقبة الانبعاثات المستمرة",
-    description:
-    "مشروع الربط الإلكتروني لنظام مراقبة الانبعاثات المستمرة هو مبادرة من حكومية لدعم تحسين جودة البيئة وحماية الصحة العامة. يشمل هذا المشروع جمع بيانات الانبعاثات من أنظمة مراقبة الانبعاثات المستمرة (CEMS) من المنشآت الصناعية وتخزينها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آليات تقارير يدوية للمنشآت التي لا تمتلك أنظمة (CEMS). سيمكن مشروع الربط الإلكتروني هيئة البيئة - أبوظبي في تطوير قاعدة بيانات شاملة تعتمد على البيانات في الوقت الفعلي. كما يتضمن المشروع بوابة الكترونية مصممة ومطبقة لتمكين عرض البيانات في الوقت الفعلي. سيساهم على تطوير أفضل الممارسات لمراقبة الانبعاثات وضمان توفر بيانات عالية الجودة. توفر هذه المنصة مجموعة من الميزات مثل نظم المعلومات الجغرافية (GIS)، نماذج التشتت، تنبيهات تجاوز الانبعاثات، إنتاج التقارير المطلوبة، وإدارة سير العمل للبيانات. كما ستضمن البوابة اللاكترونية جودة البيانات المستلمة (سواء الآلية أو اليدوية) وتمكن من التواصل المستمر مع المنشآت بشأن  البيانات."
+    content: "الربط الإلكتروني لأنظمة المراقبة المستمرة لمداخن المنشآت الصناعية",
+    description:"مشروع الربط الإلكتروني لأنظمة مراقبة الانبعاثات المستمرة هو مبادرة من حكومة ابوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة في الامارة. يقوم المشروع بجمع بيانات أنظمة مراقبة الانبعاثات المستمرة (CEMS)  لمداخن المنشآت الصناعية وحفظها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آلية لرفع  تقارير الانبعاثات للمنشآت التي لا تمتلك أنظمة مراقبة مستمرة بشكل يدوي. كما سيمكن مشروع الربط الإلكتروني الهيئة من تطوير قاعدة بيانات دقيقة ومتكاملة وفي الوقت الفعلي للانبعاثات الصناعية ويتضمن  بوابة إلكترونية مصممة لعرض هذه البيانات بشكل شامل ودقيق يساهم في تطوير ممارسات أفضل للمراقبة  تضمن توفير بيانات عالية الجودة من القطاع الصناعي في امارة ابوظبي. وتوفر المنصة مجموعة من الميزات الفنية المساعدة مثل نظم المعلومات الجغرافية (GIS) ونماذج تشتت الانبعاثات ونظام للتنبيهات عن تجاوز الانبعاثات الحدود الوطنية، بلاضافةالى ميزة إصدار التقارير الفنية وإدارة تدفق البيانات وغيرها. كما ستعنى المنصة بجودة البيانات المستلمة (الآلية و اليدوية) وتمكين  التواصل المستمر والمباشر مع المنشآت الصناعية حول كافة البيانات والمعلومات الفنية."
+  
   },
   {
     imageUrl: "./images/new-images/Monitoring_network.jpg",
-    content: "برنامج أبوظبي لمراقبة جودة الهواء",
+    content: "برنامج مراقبة جودة الهواء في امارة ابوظبي",
     description:
-       "بدأ برنامج مراقبة جودة الهواء في أبوظبي عام 2007. تتكون شبكة المراقبة من 20 محطة ثابته ومحطتين متنقلتين. تجمع المحطات قراءات عن تركيزات ثنائي أكسيد الكبريت (SO2)، وثنائي أكسيد النيتروجين (NO2)، والأوزون (O3)، وثنائي كبريتيد الهيدروجين (H2S)، وأول أكسيد الكربون (CO)، والمواد العالقة (PM10، PM2.5)، والميثان (CH4)، وBTEX. جميع محطات مراقبة جودة الهواء التابعة لهيئة البيئة - أبوظبي مزودة بأجهزة استشعار لتسجيل المعايير الجوية، لأهميتها في فهم أنماط جودة الهواء المحيط والظروف الجوية المحيطة. تشمل المعايير الجوية المقاسة سرعة الرياح، اتجاه الرياح، درجة الحرارة، الرطوبة النسبية، الإشعاع الصافي، والضغط الجوي. تبسط الهيئة حالة جودة الهواء المحيط من خلال حساب  مؤشر جودة الهواء (AQI) استنادًا إلى المعايير الوطنية لجودة الهواء وفق المعايير الخمس الرئيسية؛ المواد العالقة، الأوزون على مستوى الأرض، وثنائي أكسيد الكبريت، وثنائي أكسيد النيتروجين، وأول أكسيد الكربون."
+     "بدأ برنامج مراقبة جودة الهواء في امارة أبوظبي في عام 2007 من خلال بناء شبكة مكونة من 20 محطة ثابتة ومحطتين متنقلتين لرصد تراكيز الملوثات الرئيسية مثل ثاني  أكسيد الكبريت (SO2) وثاني أكسيد النيتروجين (NO2) والأوزون الارضي (O3) وكبريتيد الهيدروجين (H2S) وأول أكسيد الكربون (CO) والمواد العالقة بنوعيها (PM10و PM2.5) والميثان (CH4) والمواد العطرية المتطايرة مثل BTEX وغيرها. كما ان جميع محطات المراقبة مزودة بأجهزة لقياس الارصاد الجوية وذلك لأهميتها في فهم الأنماط المختلفة لملوثات الهواء المحيط بالنظر الى الظروف الجوية المحيطة بها. حيث ترصد كل محطة سرعة الرياح واتجاه الرياح ودرجة الحرارة والرطوبة وإشعاع الشمس والضغط الجوي بشكل مستمر. ولتبسيط حالة جودة الهواء المحيط في الامارة للجمهور تقوم الهيئة بحساب مؤشر جودة الهواء (AQI) بشكل آلي واعطاء كل درجة للمؤشر  لون مختلف استنادًا إلى المعايير الوطنية ووفق مستوى تراكيز الملوثات الخمسة الرئيسية المرصودة  في الشبكة وهي المواد العالقة والأوزون الارضي وثاني أكسيد الكبريت وثاني أكسيد النيتروجين وأول أكسيد الكربون."
   },
   {
     imageUrl: "./images/new-images/quality-monitoring.jpg",
     content: "نظام أبوظبي لنمذجة جودة الهواء",
     description:
-    "لتعزيز نظام مراقبة جودة الهواء، قامت هيئة البيئة – أبوظبي بتطوير نظام نمذجة جودة هواء متقدم متعدد المجالات لأبوظبي. سيسهم هذا النظام في دعم التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التنمية الحضرية، والحد من تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء إمارة أبوظبي، بالإضافة إلى المساعدة في تقييم فعالية الخطط والسياسات المستقبلية. كما سيقدم الدعم الفني المتخصص والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث حيث تحدث تركيزات ملوثة مرتفعة، وتطوير خرائط سنوية مفصلة لجودة الهواء على مستوى الاقليمي والمحلي."
+      "لتعزيز نظام مراقبة جودة الهواء، قامت هيئة البيئة – أبوظبي بتطوير نظام نمذجة جودة هواء متقدم متعدد المجالات لأبوظبي. سيسهم هذا النظام في دعم التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التنمية الحضرية، والحد من تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء إمارة أبوظبي، بالإضافة إلى المساعدة في تقييم فعالية الخطط والسياسات المستقبلية. كما سيقدم الدعم الفني المتخصص والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث حيث تحدث تركيزات ملوثة مرتفعة، وتطوير خرائط سنوية مفصلة لجودة الهواء على مستوى الاقليمي والمحلي."
   },
   {
     imageUrl: "./images/new-images/inventory-img.png",
     content: "جرد انبعاثات الهواء في أبوظبي",
     description:
-    "تركز هيئة البيئة - أبوظبي (EAD) على إنشاء تحديث لاحصاء انبعاثات الهواء داخل أبوظبي مع التركيز على بعض الملوثات: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، وBC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات،، والبناء جزءًا لا يتجزأ من هذا المسعى الاستقصائي. تهدف هذه القاعدة البيانية الشاملة إلى التعرف النظامي على القطاعات الرئيسية التي تساهم بأكبر قدر من الانبعاثات الهوائية، مما يوفر وضوحًا حول مجالات التركيز. الهدف أساسي هو تعزيز الفهم العام والاهتمام بأهمية جودة الهواء، مما يشجع على المسؤولية المجتمعية والمشاركة. ستضع البيانات أساسًا لنمذجة جودة الهواء بدقة، مما يسهل كل من التدابير التنبؤية والوقائية. من خلال إنشاء خط أساس مفصل، سيصبح الجرد ضروريًا لاستراتيجيات البيئة المستقبلية، وصنع السياسات، والتخطيط. كما ستوفر إرشادات لوضع حدود انبعاثات واضحة  وتحديد أهداف للتقليل مستهدفة. علاوة على ذلك، سيمكن الجرد من رصد مستمر للأداء البيئي للقطاعات والكيانات الفردية، مما يعزز ثقافة المساءلة. بناءً على الرؤى المستخلصة، يمكن تصميم تدابير تخفيف فعالة مصممة خصيصًا للتحديات والقطاعات المحددة، مما يضمن نهجًا شاملًا للحفاظ على بيئة أبوظبي وتحسينها."
+      "تركز هيئة البيئة - أبوظبي (EAD) على إنشاء تحديث لاحصاء انبعاثات الهواء داخل أبوظبي مع التركيز على بعض الملوثات: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، وBC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات،، والبناء جزءًا لا يتجزأ من هذا المسعى الاستقصائي. تهدف هذه القاعدة البيانية الشاملة إلى التعرف النظامي على القطاعات الرئيسية التي تساهم بأكبر قدر من الانبعاثات الهوائية، مما يوفر وضوحًا حول مجالات التركيز. الهدف أساسي هو تعزيز الفهم العام والاهتمام بأهمية جودة الهواء، مما يشجع على المسؤولية المجتمعية والمشاركة. ستضع البيانات أساسًا لنمذجة جودة الهواء بدقة، مما يسهل كل من التدابير التنبؤية والوقائية. من خلال إنشاء خط أساس مفصل، سيصبح الجرد ضروريًا لاستراتيجيات البيئة المستقبلية، وصنع السياسات، والتخطيط. كما ستوفر إرشادات لوضع حدود انبعاثات واضحة  وتحديد أهداف للتقليل مستهدفة. علاوة على ذلك، سيمكن الجرد من رصد مستمر للأداء البيئي للقطاعات والكيانات الفردية، مما يعزز ثقافة المساءلة. بناءً على الرؤى المستخلصة، يمكن تصميم تدابير تخفيف فعالة مصممة خصيصًا للتحديات والقطاعات المحددة، مما يضمن نهجًا شاملًا للحفاظ على بيئة أبوظبي وتحسينها."
   },
   {
     imageUrl: "./images/new-images/GHG1.jpg",
@@ -7780,10 +7772,10 @@ var imageDataArabic = [
   },
   {
     imageUrl: "./images/new-images/Odor.jpg",
-    content:"شبكة مراقبة الروائح في إمارة أبوظبي ",
+    content: "شبكة مراقبة الروائح في إمارة أبوظبي ",
     description: "شبكة مراقبة الغازات المزعجة في إمارة أبوظبي هو مشروع مدته خمس سنوات يضم مجموعة متنوعة من الأنشطة عبر جميع أنواع الصناعات التي قد تؤثر سلبًا على البيئة والمجتمع، وستكون هذه الشبكة أداة قيمة للكشف المبكر والاستجابة للغازات ذات الروائح المزعجة، والتي تسبب إزعاجًا عامًا، وذلك من خلال تشغيل 50 جهاز استشعار ثابت ومحطتين متنقلين لإنشاء إطار عمل لمراقبة وإدارة الروائح. حاليًا، تستجيب هيئة البيئة - أبوظبي  لشكاوى الروائح من خلال تركيب جهاز مراقبة الروائح المحمول للتحقق من تركيزات الغازات ذات الروائح المزعجة في الوقت الفعلي، بالإضافة إلى الإعتماد على محطات مراقبة جودة الهواء المتنقلة لقياس تركيزات ملوثات الهواء في الوقت الفعلي، وسرعة واتجاه الرياح. توفر كلا التقنيتين رؤى قيمة حول خصائص الغازات ذات الروائح، وتركيزها في الهواء المحيط، ومصادرها، وتشتتها."
   },
-    {
+  {
     imageUrl: "./images/new-images/Freepik1.png",
     content: "رسم خريطة الضوضاء المحيطة في أبوظبي",
     description: "يهدف مشروع الضوضاء إلى تحديد مصادر الضوضاء الكبيرة من خلال تحديد المناطق السكنية المتأثرة، وتقييم تأثيرها، وترجمة النتائج إلى خريطة بصرية. يتضمن المشروع جمع البيانات من الجهات الحكومية، واستخدام بيانات هيئة البيئة - أبوظبي، وإجراء مراقبة إضافية للضوضاء، واقتراح تدابير للتخفيف. الهدف من هذا المشروع هو رسم خريطة للمناطق اللأكثر  تأثرًا بمصادر الضوضاء في أبوظبي."
@@ -8639,8 +8631,8 @@ var accordionArabicContent = [
   {
     question: '  ماذا يعني مصطلح "جودة الهواء"؟',
     // answer:
-      // "تشير جودة الهواء إلى حالة الهواء المحيط ونقائه. حيث تتعلق جودة الهواء بتركيز الملوثات الجوية المختلفة التي قد تكون ضارة بصحة الانسان والبيئة. ",
-      answer: " جودة الهواء يشير إلى حالة الهواء المحيط ونقائه. وبشكل خاص إلى وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة",
+    // "تشير جودة الهواء إلى حالة الهواء المحيط ونقائه. حيث تتعلق جودة الهواء بتركيز الملوثات الجوية المختلفة التي قد تكون ضارة بصحة الانسان والبيئة. ",
+    answer: " جودة الهواء يشير إلى حالة الهواء المحيط ونقائه. وبشكل خاص إلى وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة",
   },
   {
     question: "ما هي ملوثات الهواء الرئيسية الموجودة في البيئة؟",
@@ -8888,27 +8880,27 @@ function initializeLanguageButton() {
   const currentLanguage = localStorage.getItem("language") || "english";
   const arabicText = "عربي";
   const arabicFontFamily = "'Cairo', sans-serif";
-  const englishFontfamily='Gothamlight'; // Specify the Arabic font family here
+  const englishFontfamily = 'Gothamlight'; // Specify the Arabic font family here
 
   // Set button text and font based on the language
   if (currentLanguage === "english") {
-      button1.innerText = arabicText;
-      button2.innerText = arabicText;
-      button3.innerText = arabicText;
+    button1.innerText = arabicText;
+    button2.innerText = arabicText;
+    button3.innerText = arabicText;
 
-      // Apply Arabic font family
-      button1.style.fontFamily = arabicFontFamily;
-      button2.style.fontFamily = arabicFontFamily;
-      button3.style.fontFamily = arabicFontFamily;
+    // Apply Arabic font family
+    button1.style.fontFamily = arabicFontFamily;
+    button2.style.fontFamily = arabicFontFamily;
+    button3.style.fontFamily = arabicFontFamily;
   } else {
-      button1.innerText = "English";
-      button2.innerText = "English";
-      button3.innerText = "English";
+    button1.innerText = "English";
+    button2.innerText = "English";
+    button3.innerText = "English";
 
-      // Reset to default font family (optional)
-      button1.style.fontFamily = englishFontfamily;
-      button2.style.fontFamily = englishFontfamily;
-      button3.style.fontFamily = englishFontfamily;
+    // Reset to default font family (optional)
+    button1.style.fontFamily = englishFontfamily;
+    button2.style.fontFamily = englishFontfamily;
+    button3.style.fontFamily = englishFontfamily;
   }
 }
 
@@ -8918,7 +8910,7 @@ function initializeLanguageButton() {
 //     const button1 = document.getElementById("language-toggle");
 //     const button2= document.getElementById("language-toggle1");
 //     const button3 = document.getElementById("llanguage-toggle");
-    
+
 //     const currentLanguage = localStorage.getItem("language") || "english";
 
 //     // Toggle the language
@@ -8933,63 +8925,64 @@ function initializeLanguageButton() {
 //     localStorage.setItem("language", newLanguage);
 // }
 function toggleChangeLanguage() {
- 
+
   const button1 = document.getElementById("language-toggle");
   const button2 = document.getElementById("language-toggle1");
   const button3 = document.getElementById("llanguage-toggle");
 
-  
+
   const currentLanguage = localStorage.getItem("language") || "english";
 
   // Toggle the language
   const newLanguage = currentLanguage === "english" ? "arabic" : "english";
-  const arabicFontFamily ="'Cairo', sans-serif"; // Specify the Arabic font family here
+  const arabicFontFamily = "'Cairo', sans-serif"; // Specify the Arabic font family here
 
   // Update button text and font family based on the language
   if (newLanguage === "english") {
-      button1.innerText = "عربي";
-      button2.innerText = "عربي";
-      button3.innerText = "عربي";
-      
-      // Apply Arabic font family
-      button1.style.fontFamily = arabicFontFamily;
-      button2.style.fontFamily = arabicFontFamily;
-      button3.style.fontFamily = arabicFontFamily;
+    button1.innerText = "عربي";
+    button2.innerText = "عربي";
+    button3.innerText = "عربي";
+
+    // Apply Arabic font family
+    button1.style.fontFamily = arabicFontFamily;
+    button2.style.fontFamily = arabicFontFamily;
+    button3.style.fontFamily = arabicFontFamily;
   } else {
-      button1.innerText = "English";
-      button2.innerText = "English";
-      button3.innerText = "English";
-      
-      // Reset font family to default (optional)
-      button1.style.fontFamily = "";
-      button2.style.fontFamily = "";
-      button3.style.fontFamily = "";
+    button1.innerText = "English";
+    button2.innerText = "English";
+    button3.innerText = "English";
+
+    // Reset font family to default (optional)
+    button1.style.fontFamily = "";
+    button2.style.fontFamily = "";
+    button3.style.fontFamily = "";
   }
 
   // Update the language in localStorage
   localStorage.setItem("language", newLanguage);
-  updateSliderDirection();
+ //updateSliderDirection();
+ location.reload();
 }
 
 // Function to get current translateX value
 function getTranslateX(transformValue) {
-    const match = transformValue.match(/translate3d\((-?\d+)px, 0px, 0px\)/);
-    return match ? parseInt(match[1], 10) : 0;
+  const match = transformValue.match(/translate3d\((-?\d+)px, 0px, 0px\)/);
+  return match ? parseInt(match[1], 10) : 0;
 }
 
 // Function to update the slider direction
 function updateSliderDirection() {
-    const slidesContainer = document.querySelector('.fp-slidesContainer'); // Update the selector
-    const language = localStorage.getItem('language'); // Get current language
-    const isArabic = language === 'arabic';
-    const directionMultiplier = isArabic ? 1 : -1;
+  const slidesContainer = document.querySelector('.fp-slidesContainer'); // Update the selector
+  const language = localStorage.getItem('language'); // Get current language
+  const isArabic = language === 'arabic';
+  const directionMultiplier = isArabic ? 1 : -1;
 
-    const currentTransform = slidesContainer.style.transform; // Get the current transform
-    const currentX = getTranslateX(currentTransform); // Extract the X translation value
+  const currentTransform = slidesContainer.style.transform; // Get the current transform
+  const currentX = getTranslateX(currentTransform); // Extract the X translation value
 
-    // Calculate the new transform
-    const newX = directionMultiplier * Math.abs(currentX);
-    slidesContainer.style.transform = `translate3d(${newX}px, 0px, 0px)`;
+  // Calculate the new transform
+  const newX = directionMultiplier * Math.abs(currentX);
+  slidesContainer.style.transform = `translate3d(${newX}px, 0px, 0px)`;
 }
 
 
@@ -9000,94 +8993,94 @@ document.addEventListener("DOMContentLoaded", initializeLanguageButton);
 
 var slideIndexS = localStorage.getItem('slideIndexS') || 0;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
-    const faqSection = document.getElementById("faq-section");
-    const questionHeader = document.getElementById("questionHeader");
-    const questionHeaderAlt = document.getElementById("questionHeaderAlt");
-    const monitoringHeading = document.getElementById("monitoringHeading");
-    const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
-    const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
-    const navLinkAirQuality = document.getElementById("navLinkAirQuality");
-    const contactHead = document.getElementById("contactus");
-    const heading = document.getElementById("heading");
-    const cnctAddress = document.getElementById("cotact-address");
-    const cnctAddressmobile = document.getElementById("cotact-address-mobile");
-    const agenda = document.getElementById("agenda");
-    const agendamobile = document.getElementById("agenda-mobile");
-    const nameLabel = document.getElementById("yourname");
-    const emailLabel = document.getElementById("youremail");
-    const phoneLabel = document.getElementById("yourphone");
-    const submitBtn = document.getElementById("sumbitbtn");
-    const contactSection = document.getElementById("section5");
-    const Message = document.getElementById("message");
-    const closeButton = document.querySelector(".newcutom-btn");
-    const mobileMenu = document.getElementById("mobile-overlay");
-    const dropMenuMobile = document.getElementsByClassName(".dropdown-item");
-    const prev = document.querySelector(".previous");
-    const next = document.querySelector(".next");
-    const airQualityAssessments = document.querySelectorAll(".chart-f-content p");
-    const dropdownLists = document.querySelectorAll(".dropdown-menu.metero-dropdown");
-    const iaqmElement = document.getElementById("iaqm");
-    const switchingElement = document.getElementById("switching-air-purifier");
-    const $inputElements = $(".insight .data-list label.list-group-item input");
-    currentLanguage = localStorage.getItem("language") || "english";
-    const skipButtonImg = document.querySelector("#skipButton img");
-    currentStatusClass = statusClass;
-  
-    // Initial setup
-    getAirQualitySafetyLevel();
-    loadCarousel(imageData);
-    bindLiveCityRanking();
-    loadStationData();
-    setLanguageContent(currentLanguage); // Set content based on the current language
-  
-    // Add event listeners for toggle buttons
-    for (let i = 0; i < toggleBtns.length; i++) {
-      toggleBtns[i].addEventListener("click", toggleLanguage);
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
+  const faqSection = document.getElementById("faq-section");
+  const questionHeader = document.getElementById("questionHeader");
+  const questionHeaderAlt = document.getElementById("questionHeaderAlt");
+  const monitoringHeading = document.getElementById("monitoringHeading");
+  const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
+  const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
+  const navLinkAirQuality = document.getElementById("navLinkAirQuality");
+  const contactHead = document.getElementById("contactus");
+  const heading = document.getElementById("heading");
+  const cnctAddress = document.getElementById("cotact-address");
+  const cnctAddressmobile = document.getElementById("cotact-address-mobile");
+  const agenda = document.getElementById("agenda");
+  const agendamobile = document.getElementById("agenda-mobile");
+  const nameLabel = document.getElementById("yourname");
+  const emailLabel = document.getElementById("youremail");
+  const phoneLabel = document.getElementById("yourphone");
+  const submitBtn = document.getElementById("sumbitbtn");
+  const contactSection = document.getElementById("section5");
+  const Message = document.getElementById("message");
+  const closeButton = document.querySelector(".newcutom-btn");
+  const mobileMenu = document.getElementById("mobile-overlay");
+  const dropMenuMobile = document.getElementsByClassName(".dropdown-item");
+  const prev = document.querySelector(".previous");
+  const next = document.querySelector(".next");
+  const airQualityAssessments = document.querySelectorAll(".chart-f-content p");
+  const dropdownLists = document.querySelectorAll(".dropdown-menu.metero-dropdown");
+  const iaqmElement = document.getElementById("iaqm");
+  const switchingElement = document.getElementById("switching-air-purifier");
+  const $inputElements = $(".insight .data-list label.list-group-item input");
+  currentLanguage = localStorage.getItem("language") || "english";
+  const skipButtonImg = document.querySelector("#skipButton img");
+  currentStatusClass = statusClass;
+
+  // Initial setup
+  getAirQualitySafetyLevel();
+  loadCarousel(imageData);
+  bindLiveCityRanking();
+  loadStationData();
+  setLanguageContent(currentLanguage); // Set content based on the current language
+
+  // Add event listeners for toggle buttons
+  for (let i = 0; i < toggleBtns.length; i++) {
+    toggleBtns[i].addEventListener("click", toggleLanguage);
+  }
+
+  function toggleLanguage() {
+    currentLanguage = currentLanguage === "english" ? "arabic" : "english";
+    localStorage.setItem("language", currentLanguage);
+    setLanguageContent(currentLanguage);
+  }
+
+  function setLanguageContent(language) {
+    if (language === "arabic") {
+      document.body.setAttribute("dir", "rtl");
+      toggleBtns[0].textContent = "English";
+      $inputElements.addClass("rtl-stationsData");
+      updateToArabic();
+      bindLiveCityRanking();
+      bindStationInfo();
+      updateNavLinksToArabic();
+      updateFooterLinksToArabic();
+      loadStationData();
+      updateAqitoArabic();
+      updateCharts(chartFilterArabic.Hourly);
+      $("#currentDate").html(getFormattedDate(new Date()));
+      $("#last-updatedTime").html(getFormattedDate1(new Date()));
+      $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
+      skipButtonImg.src = "./images/new-images/skip-icon-arabic.svg";
+    } else {
+      document.body.setAttribute("dir", "ltr");
+      toggleBtns[0].textContent = "عربي";
+      $inputElements.removeClass("rtl-stationsData");
+      updateToEnglish();
+      bindLiveCityRanking();
+      bindStationInfo();
+      updateNavLinksToEnglish();
+      updateFooterLinksToEnglish();
+      loadStationData();
+      updateAqitoEnglish();
+      updateCharts(chartFilter.Hourly);
+      $("#currentDate").html(getFormattedDate(new Date()));
+      $("#last-updatedTime").html(getFormattedDate1(new Date()));
+      $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
+      skipButtonImg.src = "./images/new-images/skip-icon.svg";
     }
-  
-    function toggleLanguage() {
-      currentLanguage = currentLanguage === "english" ? "arabic" : "english";
-      localStorage.setItem("language", currentLanguage);
-      setLanguageContent(currentLanguage);
-    }
-  
-    function setLanguageContent(language) {
-      if (language === "arabic") {
-        document.body.setAttribute("dir", "rtl");
-        toggleBtns[0].textContent = "English";
-        $inputElements.addClass("rtl-stationsData");
-        updateToArabic();
-        bindLiveCityRanking();
-        bindStationInfo();
-        updateNavLinksToArabic();
-        updateFooterLinksToArabic();
-        loadStationData();
-        updateAqitoArabic();
-        updateCharts(chartFilterArabic.Hourly);
-        $("#currentDate").html(getFormattedDate(new Date()));
-        $("#last-updatedTime").html(getFormattedDate1(new Date()));
-        $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
-        skipButtonImg.src = "./images/new-images/skip-icon-arabic.svg";
-      } else {
-        document.body.setAttribute("dir", "ltr");
-        toggleBtns[0].textContent = "عربي";
-        $inputElements.removeClass("rtl-stationsData");
-        updateToEnglish();
-        bindLiveCityRanking();
-        bindStationInfo();
-        updateNavLinksToEnglish();
-        updateFooterLinksToEnglish();
-        loadStationData();
-        updateAqitoEnglish();
-        updateCharts(chartFilter.Hourly);
-        $("#currentDate").html(getFormattedDate(new Date()));
-        $("#last-updatedTime").html(getFormattedDate1(new Date()));
-        $("#last-updatedTime-sm").html(getFormattedDate1(new Date()));
-        skipButtonImg.src = "./images/new-images/skip-icon.svg";
-      }
-    }
+  }
   function updateToArabic() {
     let indexdes = localStorage.getItem('destinationIndex')
 
@@ -9096,20 +9089,20 @@ var slideIndexS = localStorage.getItem('slideIndexS') || 0;
     currentStatusClass = statusClassArabic;
     // document.querySelector('#language-toggle').removeClass('arabic-mode');
     document.body.classList.toggle("arabic-mode");
-//for insights animation buttons
- if (indexdes == 3) {
+    //for insights animation buttons
+    if (indexdes == 3) {
 
-  $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-  $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-}
-else if (indexdes == 1 || indexdes == 2) {
-  $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-  $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
-}
-else{
-  $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-  $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-}
+      $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+      $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+    }
+    else if (indexdes == 1 || indexdes == 2) {
+      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+      $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
+    }
+    else {
+      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
+      $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+    }
     $(".accordion-button").addClass("rtl-accordion");
     $(".accordion-button").addClass("accordion-align-content");
     $(".faqscrolling").addClass("rtl-faqscrolling");
@@ -9156,14 +9149,15 @@ else{
     // document.querySelectorAll('.fp-prev.animate-blinking, .fp-next.animate-blinking').forEach(element => {
     //   element.classList.add('arabic-animate-blinking')});
     document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
-      element.classList.add('arabic-animate')});
+      element.classList.add('arabic-animate')
+    });
 
     $(".monitoring-heading").addClass("arabic-monitoring-heading");
     $(".footer-logo").addClass("footer-logo-arabic");
     $(".footer-social-icons").addClass("social-media-icons");
     $(".copy-right-para").addClass("copy-right-para-footer");
     $(".Newsearch-box ul").css("right", "38px");
-    $('.reset-button').css({'left': '10px', 'right': ''});
+    $('.reset-button').css({ 'left': '10px', 'right': '' });
     // $('.insight .date-box .cal-div input').css('padding-left', '0');
     $(".prev-btn").addClass("previous-btn");
     $(".next-btn").addClass("next-button");
@@ -9173,18 +9167,18 @@ else{
 
     $(".search-station-sidebar").addClass("sidebar-search-station");
     $(".insight .ug_content ").addClass("ug_content-arabic");
-    document.getElementById('mainPollutantName').style.textAlign='right';
+    document.getElementById('mainPollutantName').style.textAlign = 'right';
     // document.querySelector('.insight .ug_content ').style.left='-130px'
     $('.insight .chart-f-content p').addClass('aqi-content-arabic');
     $('.station-aqi-trends-disclaimers').addClass('station-aqi-desclimer-mobile');
     $('.exceeded-box .contact-content p ').addClass('hours-exceedance-disclaimer-mobile');
     // $('#sidebar-btn').addClass('expand-panel-arabic');;
-  //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
-  //     element.classList.add('expand-panel-arabic');
-  //     console.log("classsssssisaddedd")
-  // });
+    //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
+    //     element.classList.add('expand-panel-arabic');
+    //     console.log("classsssssisaddedd")
+    // });
 
-  $('.circular-width').addClass('circular-width-arabic');
+    $('.circular-width').addClass('circular-width-arabic');
 
 
 
@@ -9200,7 +9194,7 @@ else{
     navLinkAirQuality.innerText = "جودة الهواء";
 
 
-    
+
     //03-11
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".thankyou-submit-msg").innerText =
@@ -9210,12 +9204,12 @@ else{
       document.querySelector(".getback-msg").innerText =
         "لقد تم استلام رسالتك. سوف نعود اليكم قريبا";
     });
-    document.querySelector(".welcome-text").innerText ="مرحبًـــا بكـــم فـــي";
+    document.querySelector(".welcome-text").innerText = "مرحبًـــا بكـــم فـــي";
     document.querySelector(".quotes").innerText = "مراقبـــة جـــودة الهـــواء";
     document.querySelector(".emirates-text").innerText = "فـــي أبوظبـــي";
     document.querySelector("#AQI-mb-0").innerText = "مؤشر جودة الهواء";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
-    document.querySelector(".copy-right-para").innerText="© 2021 حكومة أبوظبي جميع الحقوق محفوظة."
+    document.querySelector(".copy-right-para").innerText = "© 2021 حكومة أبوظبي جميع الحقوق محفوظة."
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.innerText = "AQI";
     });
@@ -9236,7 +9230,7 @@ else{
       element.textContent = "درجة الحرارة";
     });
     (document.querySelector(".map-disclaimer-content").innerText =
-     "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا."),
+      "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا."),
       (document.querySelector(".sm-map-disclaimer").innerText =
         "تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.");
     document.querySelector(".map-disclaimer-air").innerText =
@@ -9263,12 +9257,12 @@ else{
     Message.placeholder = "الرسالة";
     Message.style.direction = "ltr";
     document.getElementById("searchInput").placeholder = "المحطة بحث";
-    document.getElementById("stationsDropdownMapSearch").placeholder =  "المحطة بحث";
+    document.getElementById("stationsDropdownMapSearch").placeholder = "المحطة بحث";
     document
       .getElementById("headerSearchInput")
       .setAttribute("placeholder", "بحث");
 
-      document.querySelectorAll('.datepicker').forEach((element)=>element.placeholder= " إنشاء مخصص");
+    document.querySelectorAll('.datepicker').forEach((element) => element.placeholder = " إنشاء مخصص");
 
     document.querySelector(".search-result p").innerText = "نتائج البحث";
     document.querySelector(".newcutom-btn").innerText = "إغلاق";
@@ -9283,15 +9277,15 @@ else{
       "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامات";
     if (window.matchMedia("(max-width: 767px)").matches) {
-      $(".insight .search-box .p-input span").css({"right": "auto", "left": "12px"});
+      $(".insight .search-box .p-input span").css({ "right": "auto", "left": "12px" });
     }
     else if (window.matchMedia("(min-width: 768px)").matches) {
-      $(".insight .search-box .p-input span").css({"right": "auto", "left": "12px"});
+      $(".insight .search-box .p-input span").css({ "right": "auto", "left": "12px" });
     }
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
-  $("#language-toggle1").addClass('btn-name-english');
-   
+    $("#language-toggle1").addClass('btn-name-english');
+
     $('.footer-social-icons').addClass('social-media-icons');
     $('.copy-right-para').addClass('copy-right-para-footer');
     $('.copy-right-contents').addClass('copy-right-contents-footer');
@@ -9304,7 +9298,7 @@ else{
     $('.contact-section .contact-info-item .contact-info-content a').addClass('footer-content');
     $('.insight .main-box').addClass('insightbox-tabmini');
     $('.equal-station-box-height').addClass('pollutant-graph-ipad');
- 
+
     // document.querySelector('.cal-div').style.direction='rtl';
     // document.querySelectorAll('.insight .silde-dv').forEach(item => {
     //     item.style.removeProperty('margin','1rem','1rem','importent');
@@ -9313,21 +9307,21 @@ else{
     $('.insight .polutenat_bar .tab_shado .graph-duration-filters').removeClass('filter-arabic');
 
     if (window.matchMedia("(max-width: 767px)").matches) {
-      document.querySelectorAll('.insight .silde-dv').forEach(item => {  
+      document.querySelectorAll('.insight .silde-dv').forEach(item => {
         item.style.setProperty('margin', '1rem', 'important');
-    });
+      });
     }
 
 
-    
+
 
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
-      item.style.setProperty("direction","rtl");
+      item.style.setProperty("direction", "rtl");
     });
-    
- $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
-    
+
+    $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
+
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
 
     $(".icon-circle-xmark-regular").addClass("cross-icon");
@@ -9337,15 +9331,15 @@ else{
       item.style.setProperty("padding", "0 14px");
     });
 
-    const searchstation=document.querySelectorAll('.insight .inner_list-content span');
-    searchstation.forEach(item=>{
-      item.style.setProperty('float','right','important');
+    const searchstation = document.querySelectorAll('.insight .inner_list-content span');
+    searchstation.forEach(item => {
+      item.style.setProperty('float', 'right', 'important');
     })
-  
-        document.querySelectorAll('.date-time').forEach(element =>{
-          element.innerText = 'التاريخ والوقت';
-        });
-      document.querySelector('.nearest-heading').innerHTML = 'أقرب محطة: مدينة خليفة';
+
+    document.querySelectorAll('.date-time').forEach(element => {
+      element.innerText = 'التاريخ والوقت';
+    });
+    document.querySelector('.nearest-heading').innerHTML = 'أقرب محطة: مدينة خليفة';
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
@@ -9419,7 +9413,7 @@ else{
     // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     document.querySelector(".station-aqi-trends-disclaimers").innerText =
-     "تابع جودة الهواء في أبوظبي بشكل مستمر من خلال نظرة سريعة: الرسوم البيانية الواضحة تتابع مستويات مؤشر جودة الهواء (AQI) والملوثات مع مرور الوقت، وتعرض حالة الهواء من الجيد إلى الخطير.";
+      "تابع جودة الهواء في أبوظبي بشكل مستمر من خلال نظرة سريعة: الرسوم البيانية الواضحة تتابع مستويات مؤشر جودة الهواء (AQI) والملوثات مع مرور الوقت، وتعرض حالة الهواء من الجيد إلى الخطير.";
     document.getElementById("air-quality-index").innerText = "مؤشر جودة الهواء";
     document.querySelector(
       ".refreshed-time-aqip"
@@ -9480,13 +9474,13 @@ else{
     // document.querySelector('.equal-station-box-height').style.direction = 'ltr';
     document.querySelector(
       ".contact-content-mobile"
-    ).innerText =`قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة.`;
+    ).innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة.`;
     document.querySelector(".air-analytics-mobile").innerText =
-    'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".'
+      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".'
     document.querySelector(".activity_heading").innerText = "الأنشطة";
     airQualityAssessments.forEach((element) => {
       element.innerText =
-      'يمكنك تقييم جودة الهواء بكفاءة من خلال رمز تصنيف الألوان، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
+        'يمكنك تقييم جودة الهواء بكفاءة من خلال رمز تصنيف الألوان، والتي تتراوح من "جيد" إلى "خطير"، ويتم تحديثها كل ساعة، إضافة إلى التحديثات اليومية والشهرية والسنوية.';
     });
     // document.getElementById('sand-storm').innerText='العاصفة الرملية';
     document.addEventListener("DOMContentLoaded", function () {
@@ -9550,7 +9544,7 @@ else{
       item.style.setProperty("left", "0");
     });
 
-    
+
     $(".insight .slide-content ul .modal.fade button.btn-close").addClass(
       "health-cross-icon"
     );
@@ -9618,8 +9612,8 @@ else{
       .querySelector(".footer-2-sec")
       .style.setProperty("padding-left", "20px");
 
-  document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
-  $('.nearest-section .station-details .legend-value').addClass("aqi-legend-value");
+    document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
+    $('.nearest-section .station-details .legend-value').addClass("aqi-legend-value");
 
     // $('.fp-next').classList.add('arabic-fp-next')
 
@@ -9707,7 +9701,7 @@ else{
         "left 6px center",
         "important"
       );
-      button.style.setProperty("text-align", "right", "important"); 
+      button.style.setProperty("text-align", "right", "important");
     });
 
     const durationfilters = document.querySelectorAll(
@@ -9734,29 +9728,33 @@ else{
     document.querySelector(".dropdown-menu .dropdown-item");
     prev.querySelector("svg").style.transform = "rotate(180deg)"; // Flip the previous arrow
     next.querySelector("svg").style.transform = "rotate(-180deg)";
+
+    const event = new CustomEvent('languageChange', { detail: { language: currentLanguage } });
+    document.dispatchEvent(event);
+
   }
 
   function updateToEnglish() {
- 
-    document.getElementById('mainPollutantName').style.textAlign='left';
+
+    document.getElementById('mainPollutantName').style.textAlign = 'left';
     $('.faq-section h4').removeClass('questions-heading-ipad')
     document.body.classList.remove("arabic-mode");
     let indexdes = localStorage.getItem('destinationIndex')
-    
+
 
     if (indexdes == 3) {
-  
+
       $('.fp-next').addClass('disabled').removeClass('animate-blinking');
       $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-  }
-  else if (indexdes == 1 || indexdes == 2) {
-    $('.fp-prev').removeClass('disabled').removeClass('animate-blinking');
-    $('.fp-next').removeClass('disabled').addClass('animate-blinking  ');
-  }
-  else{
-    $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-  }
+    }
+    else if (indexdes == 1 || indexdes == 2) {
+      $('.fp-prev').removeClass('disabled').removeClass('animate-blinking');
+      $('.fp-next').removeClass('disabled').addClass('animate-blinking  ');
+    }
+    else {
+      $('.fp-next').removeClass('disabled').addClass('animate-blinking');
+      $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+    }
 
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
@@ -9771,12 +9769,12 @@ else{
     // $('.insight .date-box .cal-div input').css('padding-left', '10px');
     $(".contact-info-content").removeClass("contact-info-data");
     if (window.matchMedia("(max-width: 767px)").matches) {
-      $(".insight .search-box .p-input span").css({"right": "15px", "left": "auto"});
+      $(".insight .search-box .p-input span").css({ "right": "15px", "left": "auto" });
     }
     else if (window.matchMedia("(min-width: 768px)").matches) {
-      $(".insight .search-box .p-input span").css({"right": "15px", "left": "auto"});
+      $(".insight .search-box .p-input span").css({ "right": "15px", "left": "auto" });
     }
-      // $('#sidebar-btn').removeClass('expand-panel-arabic');
+    // $('#sidebar-btn').removeClass('expand-panel-arabic');
     //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
     //     element.classList.remove('expand-panel-arabic');
     // }); 
@@ -9787,11 +9785,12 @@ else{
     $("#fp-nav").removeClass("fp-left");
     $("#fp-nav").addClass("fp-right");
     $(".fp-prev").removeClass("fa-move-next-arrow");
-  //   document.querySelectorAll('.fp-prev').forEach(element => {
-  //     element.classList.remove('arabic-animate-blinking');
-  // });
-  document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
-    element.classList.remove('arabic-animate')});
+    //   document.querySelectorAll('.fp-prev').forEach(element => {
+    //     element.classList.remove('arabic-animate-blinking');
+    // });
+    document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
+      element.classList.remove('arabic-animate')
+    });
 
     $(".insight ul.dropdown-menu.sorttoggle.show").removeClass("left-zero");
     $(".monitoring-heading").removeClass("arabic-monitoring-heading");
@@ -9810,7 +9809,7 @@ else{
     } else {
       $(".Newsearch-box ul").css("left", "2px");
     }
-    $('.reset-button').css({'left': '', 'right': '10px'});
+    $('.reset-button').css({ 'left': '', 'right': '10px' });
     $(".copy-right-contents").removeClass("copy-right-contents-footer");
     $(".contact-us-alignment").removeClass("contact-us-alignment-style");
     $(".next-btn-arb").removeClass("next-btn-arb-alignment");
@@ -9837,18 +9836,18 @@ else{
     // document.querySelector('.cal-div').style.direction='ltr';
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
-      item.style.setProperty("direction","ltr");
+      item.style.setProperty("direction", "ltr");
     });
-  //   document.querySelectorAll('.insight .silde-dv').forEach(item => {
-  //     item.style.removeProperty('margin', '1rem', 'important');
+    //   document.querySelectorAll('.insight .silde-dv').forEach(item => {
+    //     item.style.removeProperty('margin', '1rem', 'important');
 
-  // });
+    // });
 
-  if (window.matchMedia("(max-width: 767px)").matches) {
-    document.querySelectorAll('.insight .silde-dv').forEach(item => {  
-      item.style.removeProperty('margin', '1rem', 'important');
-  });
-  }
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      document.querySelectorAll('.insight .silde-dv').forEach(item => {
+        item.style.removeProperty('margin', '1rem', 'important');
+      });
+    }
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
@@ -9902,22 +9901,23 @@ else{
         "Your message has been received. We'll get back to you shortly.";
     });
 
-    document.querySelectorAll('.date-time').forEach(element =>{
-      element.innerText  = "Date & Time :" });
+    document.querySelectorAll('.date-time').forEach(element => {
+      element.innerText = "Date & Time :"
+    });
     document.querySelector('.nearest-heading').innerHTML = 'Nearest Station: Khalifa City';
     document.querySelector("#message").style.textAlign = "left";
     document.querySelector(".welcome-text").innerText = "WELCOME TO";
     document.querySelector(".quotes").innerText = "Air Quality Monitoring";
     document.querySelector(".emirates-text").innerText = "In Abu Dhabi";
-    document.querySelector(".copy-right-para").innerText="© Abu Dhabi All Rights Reserved 2024"
+    document.querySelector(".copy-right-para").innerText = "© Abu Dhabi All Rights Reserved 2024"
     document.querySelector("#AQI-mb-0").innerText = "AQI";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.textContent = "AQI";
     });
 
-    
-      document.querySelectorAll('.datepicker').forEach((element)=>element.placeholder= "Custom");
+
+    document.querySelectorAll('.datepicker').forEach((element) => element.placeholder = "Custom");
     document.getElementById("searchInput").placeholder = "Search Station";
     document.getElementById("stationsDropdownMapSearch").placeholder = "Search Station";
     document.querySelectorAll(".windSpeedHeading").forEach((element) => {
@@ -10105,20 +10105,20 @@ else{
     });
 
     const responsiveCross = document.querySelector('.responsive-cross');
-        responsiveCross.classList.remove('responsive-cross-css');
-        responsiveCross.classList.add('responsive-cross-css-english');
+    responsiveCross.classList.remove('responsive-cross-css');
+    responsiveCross.classList.add('responsive-cross-css-english');
 
-        const modalBackgroundImg = document.querySelector('.modal-background img');
-        modalBackgroundImg.classList.remove('modal-padding');
-        modalBackgroundImg.classList.add('modal-padding-english');
-    
-        const projectModalItemContent = document.querySelector('.projectItemContent');
-        projectModalItemContent.classList.remove('modal-padding');
-        projectModalItemContent.classList.add('modal-padding-english');
-    
-        const projectModalItemDescription = document.querySelector('.projectItemDescription');
-        projectModalItemDescription.classList.remove('modal-padding');
-        projectModalItemDescription.classList.add('modal-padding-english');
+    const modalBackgroundImg = document.querySelector('.modal-background img');
+    modalBackgroundImg.classList.remove('modal-padding');
+    modalBackgroundImg.classList.add('modal-padding-english');
+
+    const projectModalItemContent = document.querySelector('.projectItemContent');
+    projectModalItemContent.classList.remove('modal-padding');
+    projectModalItemContent.classList.add('modal-padding-english');
+
+    const projectModalItemDescription = document.querySelector('.projectItemDescription');
+    projectModalItemDescription.classList.remove('modal-padding');
+    projectModalItemDescription.classList.add('modal-padding-english');
 
     // $('.modal-background img').removeClass('modal-padding');
     // $('.projectItemContent').removeClass('modal-padding');
@@ -10315,7 +10315,11 @@ else{
     document.querySelector(".dropdown-menu .dropdown-item");
     $(".footer-insights-alignment").addClass("col-xl-3");
     $(".footer-insights-alignment").removeClass("col-xl-4");
-      }
+    const event = new CustomEvent('languageChange', { detail: { language: currentLanguage } });
+    document.dispatchEvent(event);
+
+
+  }
 
   function updateAqitoArabic() {
     document
@@ -10550,4 +10554,3 @@ else{
 
 
 
-  

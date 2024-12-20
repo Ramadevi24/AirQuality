@@ -312,6 +312,6 @@ Not supports in Firefox and IE */
 .fp-viewing-slide1 #fp-nav{
     display: none;
 }
-.arabic-mode .fp-slidesContainer{
-float:right;	
+.arabic-mode .slide {
+	float:right;
 }
