@@ -2397,7 +2397,7 @@
 }
 
 
-@media screen and (min-width: 1355px) and (max-width: 1368px) and (min-height: 595px) and (max-height: 765px) {
+@media screen and (min-width: 1355px) and (max-width: 1366px) and (min-height: 595px) and (max-height: 765px) {
     .insight .Causes-img {
         gap: 12px;
     }
@@ -2439,7 +2439,6 @@
     .insight .pollutant-toggleBar .iconimg {
         width: 27px;
         height: 27px;
-        
     }
 
     .insight .resolution-ht {
@@ -4021,4 +4020,26 @@
     }
 }
 
+@media (min-width: 810px) and (max-width:820px) {
+    .insight #myTabs {
+        margin-bottom: 24px !important;
+    }
+    .insight .pollutants-legend-heading{
+        bottom: 40px !important;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 834px) {
+    .arabic-mode .slide {
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .arabic-mode .slide {
+        float: none;
+    }
+  }
+  
 
