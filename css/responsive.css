@@ -4021,4 +4021,25 @@
     }
 }
 
+@media (min-width: 810px) and (max-width:820px) {
+    .insight #myTabs {
+        margin-bottom: 24px !important;
+    }
+    .insight .pollutants-legend-heading{
+        bottom: 40px !important;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 834px) {
+    .arabic-mode .slide {
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .arabic-mode .slide {
+        float: none;
+    }
+  }
 
