@@ -584,7 +584,7 @@ const causeStationArabicData = {
     SO2: [
       { cause: "حركة المرور في المناطق الحضرية", image: "urban_traffic.png" },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "urban_traffic.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "urban_traffic.png" }],
   },
   "شارع العين": {
     PM10: [
@@ -621,22 +621,39 @@ const causeStationArabicData = {
     ],
     NO2: [{ cause: "النقل", image: "traffic.png" }],
     SO2: [{ cause: "النقل", image: "traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   مصفح: {
     PM10: [
-      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
+      {
+        cause: "حركة المرور في المناطق الصناعية",
+        image: "industrial_traffic.png",
+      },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
-      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
+      {
+        cause: "حركة المرور في المناطق الصناعية",
+        image: "industrial_traffic.png",
+      },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
-      { cause: "حركة المرور في المناطق الصناعية", image: "industrial_traffic.png" },
-      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
+      {
+        cause: "حركة المرور في المناطق الصناعية",
+        image: "industrial_traffic.png",
+      },
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
     ],
-    SO2: [{ cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" }],
+    SO2: [
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
+    ],
   },
   "مدرسة بني ياس": {
     PM10: [
@@ -649,7 +666,7 @@ const causeStationArabicData = {
     ],
     NO2: [{ cause: "النقل", image: "traffic.png" }],
     SO2: [{ cause: "النقل", image: "traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   المقطع: {
     PM10: [
@@ -678,7 +695,7 @@ const causeStationArabicData = {
         image: "highway_traffic.png",
       },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "مدينة خليفة أ": {
     PM10: [
@@ -699,7 +716,7 @@ const causeStationArabicData = {
       { cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" },
       { cause: "أنشطة البناء", image: "construction_activities.png" },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   المفرق: {
     PM10: [
@@ -707,7 +724,10 @@ const causeStationArabicData = {
         cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
@@ -715,7 +735,10 @@ const causeStationArabicData = {
         cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
@@ -723,44 +746,50 @@ const causeStationArabicData = {
         cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
     ],
     SO2: [
       {
         cause: "انبعاثات حركة المرور في الطرق السريعة",
         image: "highway_traffic.png",
       },
-      { cause: "انبعاثات من الأنشطة الصناعية", image: "industrial_emission.png" },
+      {
+        cause: "انبعاثات من الأنشطة الصناعية",
+        image: "industrial_emission.png",
+      },
     ],
   },
   "المعهد الإسلامي العين": {
     PM10: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
     ],
     SO2: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   سويحان: {
     PM10: [
@@ -774,7 +803,7 @@ const causeStationArabicData = {
     NO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     SO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     CO: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   الطوية: {
     PM10: [
@@ -817,7 +846,7 @@ const causeStationArabicData = {
     CO: [
       { cause: "لا توجد مصادر محددة في المنطقة المجاورة", image: "null.png" },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "بدع زايد": {
     PM10: [
@@ -830,49 +859,49 @@ const causeStationArabicData = {
     ],
     NO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     SO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "مدرسة غياثي": {
     PM10: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     NO2: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
     ],
     SO2: [
       {
-        cause: "حركة المرور السكنية في الضواحي",
+        cause: "حركة المرور في الضواحي السكنية",
         image: "residential_traffic.png",
       },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "واحة ليوا": {
     PM10: [
-      { cause: "حركة المرور الريفية", image: "rural_traffic.png" },
+      { cause: "حركة المرور في المناطق النائية", image: "rural_traffic.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     PM25: [
-      { cause: "حركة المرور الريفية", image: "rural_traffic.png" },
+      { cause: "حركة المرور في المناطق النائية", image: "rural_traffic.png" },
       { cause: "المصادر الطبيعية", image: "natural_sources.png" },
     ],
     SO2: [{ cause: "--", image: "null.png" }],
     NO2: [{ cause: "--", image: "null.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   الرويس: {
     PM10: [
@@ -886,7 +915,7 @@ const causeStationArabicData = {
     NO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     SO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     CO: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "جنوب حبشان": {
     PM10: [
@@ -899,11 +928,14 @@ const causeStationArabicData = {
     ],
     NO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
     SO2: [{ cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" }],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
   "شارع E11": {
     PM10: [
-      { cause: "انبعاثات حركة المرور في الطرق السريعة", image: "highway_traffic.png" },
+      {
+        cause: "انبعاثات حركة المرور في الطرق السريعة",
+        image: "highway_traffic.png",
+      },
       { cause: "Natural sources", image: "natural_sources.png" },
     ],
     PM25: [
@@ -951,7 +983,7 @@ const causeStationArabicData = {
       { cause: "حركة المرور في الضواحي", image: "suburban_traffic.png" },
       { cause: "أنشطة البناء", image: "construction_activities.png" },
     ],
-    O3: [{ cause: "الملوث الثانوي", image: "secondary_pollutant.png" }],
+    O3: [{ cause: "الملوثات الثانوية", image: "secondary_pollutant.png" }],
   },
 };
 
@@ -2238,10 +2270,10 @@ $(window).scroll(function () {
   var scroll = $(window).scrollTop();
   if (scroll >= 600) {
     $("header").addClass("fadeout");
-    $('.toggle-text').css('display', 'none');
+    $(".toggle-text").css("display", "none");
   } else {
     $("header").removeClass("fadeout");
-    $('.toggle-text').css('display', 'block');
+    $(".toggle-text").css("display", "block");
   }
 });
 
@@ -2337,7 +2369,6 @@ $(document).ready(function () {
     $(".modal-background").removeClass("project-modal");
     $("body").removeClass("project-modal-header");
   });
-
 
   var quotes = $(".quotes");
   var quoteIndex = -1;
@@ -2832,9 +2863,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-    Math.cos((lat2 * Math.PI) / 180) *
-    Math.sin(dLon / 2) *
-    Math.sin(dLon / 2);
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
@@ -3060,7 +3091,8 @@ function populateSort(sortBy) {
 
         var spanAQI = document.createElement("span");
         spanAQI.style.color = colorCode;
-        spanAQI.className = (currentLanguage === "arabic" ? "aqi-content-span" : "");
+        spanAQI.className =
+          currentLanguage === "arabic" ? "aqi-content-span" : "";
         spanAQI.textContent = "AQI " + station.aqi;
         innerListContent.appendChild(spanAQI);
 
@@ -3068,7 +3100,10 @@ function populateSort(sortBy) {
         disContent.className = "dis-content";
 
         var spanDistance = document.createElement("span");
-        spanDistance.textContent = "~ " + station.distance + (currentLanguage === "arabic" ? "كم" : "km");
+        spanDistance.textContent =
+          "~ " +
+          station.distance +
+          (currentLanguage === "arabic" ? "كم" : "km");
         disContent.appendChild(spanDistance);
 
         listContent.appendChild(innerListContent);
@@ -3106,15 +3141,15 @@ function getStationNameInSelectedLanguage(stationName) {
 
   return currentLanguage === "arabic"
     ? {
-      stationName: station.ar,
-      regionName: station.regionar,
-      aqi: station.aqi,
-    }
+        stationName: station.ar,
+        regionName: station.regionar,
+        aqi: station.aqi,
+      }
     : {
-      stationName: currentStationDetails.stationName,
-      regionName: currentStationDetails.regionName,
-      aqi: station.aqi,
-    };
+        stationName: currentStationDetails.stationName,
+        regionName: currentStationDetails.regionName,
+        aqi: station.aqi,
+      };
 }
 
 function loadStationData(initialRequest = false) {
@@ -3147,15 +3182,15 @@ function loadStationData(initialRequest = false) {
         const updateyearlyAirQualityOverview =
           currentLanguage === "arabic"
             ? stationName +
-            ", " +
-            regionName +
-            "نظرة عامة سنوية على جودة الهواء" +
-            currentYearOverview
+              ", " +
+              regionName +
+              "نظرة عامة سنوية على جودة الهواء" +
+              currentYearOverview
             : stationName +
-            ", " +
-            regionName +
-            " Yearly Air Quality Overview for " +
-            currentYearOverview;
+              ", " +
+              regionName +
+              " Yearly Air Quality Overview for " +
+              currentYearOverview;
         // Set text content safely
         $("#lineChartAqiValueStatus, #lineChartPollutantValueStatus")
           .text(aqi + " " + aqiDetailsNew.status)
@@ -3720,30 +3755,32 @@ function getHealthRecommendationContent(aqiLevel) {
     .map(
       (recommendation) => `
         <li data-bs-toggle="modal" data-bs-target="#${recommendation.title.replace(
-        /\s+/g,
-        ""
-      )}" data-backdrop="false">
+          /\s+/g,
+          ""
+        )}" data-backdrop="false">
             <div class="bg-gray">
-                <img src="./images/new-images/${recommendation.img
-        }" alt="health-icon">
+                <img src="./images/new-images/${
+                  recommendation.img
+                }" alt="health-icon">
             </div>
             <p class="mask-hoverEffect">${recommendation.title}</p>
             <span>
                 <img src="./images/new-images/Exclamation.png" alt="img">
             </span>
             <div class="modal fade" id="${recommendation.title.replace(
-          /\s+/g,
-          ""
-        )}" tabindex="-1"
+              /\s+/g,
+              ""
+            )}" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true"
                 data-mdb-backdrop="false" data-mdb-keyboard="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div>
-                            <button type="button" class="btn-close ${currentLanguage === "arabic"
-          ? "health-cross-icon"
-          : ""
-        } "
+                            <button type="button" class="btn-close ${
+                              currentLanguage === "arabic"
+                                ? "health-cross-icon"
+                                : ""
+                            } "
                                     data-bs-dismiss="modal"
                                     aria-label="Close">
                                 <img src="./images/new-images/modal_close.png"
@@ -3753,10 +3790,11 @@ function getHealthRecommendationContent(aqiLevel) {
                         <div class="modal-body mask_body">
                             <img src="./images/new-images/Exaclamation-w.png"
                                 alt="health-icon">
-                            <p class="mask-use ${currentLanguage === "arabic"
-          ? "mask_use_title"
-          : ""
-        } ">${recommendation.title}</p>
+                            <p class="mask-use ${
+                              currentLanguage === "arabic"
+                                ? "mask_use_title"
+                                : ""
+                            } ">${recommendation.title}</p>
                             <p> ${recommendation.description}  </p>
                         </div>
                     </div>
@@ -3936,11 +3974,26 @@ function handleApiError(error) {
 
 function getFormattedDate(dateValue) {
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const arabicWeekDays = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"]
+  const arabicWeekDays = [
+    "الأحد",
+    "الاثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+  ];
   var day = dateValue.getDate();
   var month = dateValue.getMonth() + 1;
   var hours = dateValue.getHours();
-  var hoursFormat = hours >= 12 ? (currentLanguage === "arabic" ? "م" : "PM") : (currentLanguage === "arabic" ? "ص" : "AM");
+  var hoursFormat =
+    hours >= 12
+      ? currentLanguage === "arabic"
+        ? "م"
+        : "PM"
+      : currentLanguage === "arabic"
+      ? "ص"
+      : "AM";
   hours = hours % 12;
   // return (
   //   (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
@@ -3957,7 +4010,8 @@ function getFormattedDate(dateValue) {
   // );
   if (currentLanguage === "arabic") {
     return (
-      arabicWeekDays[dateValue.getDay()] + " " +
+      arabicWeekDays[dateValue.getDay()] +
+      " " +
       (day >= 10 ? day : "0" + day) +
       "/" +
       (month >= 10 ? month : "0" + month) +
@@ -3973,7 +4027,9 @@ function getFormattedDate(dateValue) {
     );
   } else {
     return (
-      (currentLanguage === "arabic" ? arabicWeekDays[dateValue.getDay()] : weekDays[dateValue.getDay()]) +
+      (currentLanguage === "arabic"
+        ? arabicWeekDays[dateValue.getDay()]
+        : weekDays[dateValue.getDay()]) +
       " " +
       (day >= 10 ? day : "0" + day) +
       "/" +
@@ -3992,7 +4048,14 @@ function getFormattedDate1(dateValue) {
   var month = dateValue.getMonth() + 1;
   var hours = dateValue.getHours();
   var minutes = dateValue.getMinutes();
-  var hoursFormat = hours >= 12 ? (currentLanguage === "arabic" ? "م" : "PM") : (currentLanguage === "arabic" ? "ص" : "AM");
+  var hoursFormat =
+    hours >= 12
+      ? currentLanguage === "arabic"
+        ? "م"
+        : "PM"
+      : currentLanguage === "arabic"
+      ? "ص"
+      : "AM";
   hours = hours % 12;
   hours = hours ? hours : 12; // Convert hour '0' to '12'
   var formattedHours = hours < 10 ? "0" + hours : hours;
@@ -4128,11 +4191,11 @@ function bindLiveCityRanking() {
     var stationDetailsWithLocation =
       currentLanguage === "arabic"
         ? stationsWithLocationsArabic.find(
-          (x) => x.stationId === station.stationName
-        )
+            (x) => x.stationId === station.stationName
+          )
         : stationsWithLocations.find(
-          (x) => x.stationId === station.stationName
-        );
+            (x) => x.stationId === station.stationName
+          );
     var stationDetails = stations.find(
       (s) => s.stationId === station.stationName
     );
@@ -4173,22 +4236,27 @@ function bindLiveCityRanking() {
                               <p style="display: none;">` +
         stationDetailsWithLocation.regionName +
         `</p> 
-        <span class="${currentLanguage === "arabic"
-          ? "aqi-content-span"
-          : ""
+        <span class="${
+          currentLanguage === "arabic" ? "aqi-content-span" : ""
         }" style="color:${colorCode};">AQI ${station.aqi}</span>
                             </div>
                             <div class="dis-content">
                               <span>~ ` +
-        station.distance + (currentLanguage === "arabic" ? " كم" : " km") + `</span>
+        station.distance +
+        (currentLanguage === "arabic" ? " كم" : " km") +
+        `</span>
                             </div>
                           </div>
-                          <input type="radio" name="options" class="${currentLanguage === "arabic"
-          ? "rtl-stationsData"
-          : ""
-        }" id="${stationDetailsWithLocation.stationId
-        }" value="${stationDetailsWithLocation.stationId
-        }" autocomplete="off" class="float-end" onClick="selectedStation('${stationDetailsWithLocation.stationId
+                          <input type="radio" name="options" class="${
+                            currentLanguage === "arabic"
+                              ? "rtl-stationsData"
+                              : ""
+                          }" id="${
+          stationDetailsWithLocation.stationId
+        }" value="${
+          stationDetailsWithLocation.stationId
+        }" autocomplete="off" class="float-end" onClick="selectedStation('${
+          stationDetailsWithLocation.stationId
         }')">
                         </label>`;
 
@@ -4197,11 +4265,11 @@ function bindLiveCityRanking() {
       stationsDropdownMapEl.append(
         `<li>
                 <span class="station-name">` +
-        stationName +
-        `</span> 
+          stationName +
+          `</span> 
                 <span class="region-name" style="display: none;">` +
-        stationDetailsWithLocation.regionName +
-        `</span>
+          stationDetailsWithLocation.regionName +
+          `</span>
             </li>`
       );
     }
@@ -4249,9 +4317,9 @@ function bindStationInfo() {
     var stationDetailsWithLocation =
       currentLanguage === "arabic"
         ? stationsWithLocationsArabic &&
-        stationsWithLocationsArabic.find((x) => x.stationName === stationName)
+          stationsWithLocationsArabic.find((x) => x.stationName === stationName)
         : stationsWithLocations &&
-        stationsWithLocations.find((x) => x.stationName === stationName);
+          stationsWithLocations.find((x) => x.stationName === stationName);
     $(".pollutantbar-title").text(stationName);
     $(".pollutantbar-address").text(
       stationDetailsWithLocation?.stationLocation
@@ -4779,8 +4847,6 @@ function bindStationDataToLineChart(filter) {
       pointHoverRadius: 8,
       tension: 0.4,
       borderWidth: 3,
-
-
     },
     {
       label: "PM25",
@@ -4966,11 +5032,18 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
-          return match === "AM" ? "ص" : "م";
-        });
+        var lastArabicrefreshdate = lastrefreshdate.replace(
+          /AM|PM/g,
+          function (match) {
+            return match === "AM" ? "ص" : "م";
+          }
+        );
         var lastEnglishrefreshdate = lastrefreshdate;
-        $("#StAQIlastrefreshtime").text(currentLanguage === 'arabic' ? lastArabicrefreshdate : lastEnglishrefreshdate);
+        $("#StAQIlastrefreshtime").text(
+          currentLanguage === "arabic"
+            ? lastArabicrefreshdate
+            : lastEnglishrefreshdate
+        );
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -5075,7 +5148,12 @@ function bindStationDataToLineChart(filter) {
                     // Convert back to 12-hour format and adjust meridiem
                     let displayHour = hour % 12;
                     displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
-                    let localizedMeridiem = currentLanguage === "arabic" ? meridiem === "AM" ? "ص" : "م" : meridiem;
+                    let localizedMeridiem =
+                      currentLanguage === "arabic"
+                        ? meridiem === "AM"
+                          ? "ص"
+                          : "م"
+                        : meridiem;
                     // Return the formatted string without leading zeros
                     return `${displayHour} ${localizedMeridiem}`;
                   } else if (hourMatch) {
@@ -5085,7 +5163,12 @@ function bindStationDataToLineChart(filter) {
                     let displayMeridiem = hour >= 12 ? "PM" : "AM";
                     let displayHour = hour % 12;
                     displayHour = displayHour ? displayHour : 12; // the hour '0' should be '12'
-                    let localizedMeridiem = currentLanguage === "arabic" ? displayMeridiem === "AM" ? "ص" : "م" : displayMeridiem;
+                    let localizedMeridiem =
+                      currentLanguage === "arabic"
+                        ? displayMeridiem === "AM"
+                          ? "ص"
+                          : "م"
+                        : displayMeridiem;
                     return `${displayHour} ${localizedMeridiem}`;
                   } else {
                     // Fallback for any unexpected format
@@ -5359,11 +5442,18 @@ function bindStationDataToLineChart(filter) {
             minute: "2-digit",
           }
         );
-        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
-          return match === "AM" ? "ص" : "م";
-        });
+        var lastArabicrefreshdate = lastrefreshdate.replace(
+          /AM|PM/g,
+          function (match) {
+            return match === "AM" ? "ص" : "م";
+          }
+        );
         var lastEnglishrefreshdate = lastrefreshdate;
-        $("#StAQIlastrefreshtime").text(currentLanguage === 'arabic' ? lastArabicrefreshdate : lastEnglishrefreshdate);
+        $("#StAQIlastrefreshtime").text(
+          currentLanguage === "arabic"
+            ? lastArabicrefreshdate
+            : lastEnglishrefreshdate
+        );
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -5490,7 +5580,10 @@ function bindStationDataToLineChart(filter) {
                     strokeStyle: dataset.borderColor,
                     pointStyle: dataset.pointStyle || "circle", // Default pointStyle
                     datasetIndex: i,
-                    displayOrder: currentLanguage === "arabic" ? fianlItems.length - 1 - i : i,
+                    displayOrder:
+                      currentLanguage === "arabic"
+                        ? fianlItems.length - 1 - i
+                        : i,
                   };
                 });
                 items.sort((a, b) => a.displayOrder - b.displayOrder);
@@ -6738,13 +6831,28 @@ function bindStationDataToBarChart(filter) {
             minute: "2-digit",
           }
         );
-        var lastArabicrefreshdate = lastrefreshdate.replace(/AM|PM/g, function (match) {
-          return match === "AM" ? "ص" : "م";
-        });
+        var lastArabicrefreshdate = lastrefreshdate.replace(
+          /AM|PM/g,
+          function (match) {
+            return match === "AM" ? "ص" : "م";
+          }
+        );
         var lastEnglishrefreshdate = lastrefreshdate;
-        $("#" + lastrefreshtime).text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
-        $("#colastrefreshtime").text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
-        $("#o3lastrefreshtime").text(currentLanguage == "arabic" ? lastArabicrefreshdate : lastEnglishrefreshdate);
+        $("#" + lastrefreshtime).text(
+          currentLanguage == "arabic"
+            ? lastArabicrefreshdate
+            : lastEnglishrefreshdate
+        );
+        $("#colastrefreshtime").text(
+          currentLanguage == "arabic"
+            ? lastArabicrefreshdate
+            : lastEnglishrefreshdate
+        );
+        $("#o3lastrefreshtime").text(
+          currentLanguage == "arabic"
+            ? lastArabicrefreshdate
+            : lastEnglishrefreshdate
+        );
       }
       minDate = new Date(Math.min(...dateTimes));
       maxDate = new Date(Math.max(...dateTimes));
@@ -6839,26 +6947,26 @@ function bindStationDataToBarChart(filter) {
             annotations:
               thresholdValue !== null
                 ? {
-                  thresholdLine: {
-                    type: "line",
-                    yMin: thresholdValue,
-                    yMax: thresholdValue,
-                    borderColor: "#808080",
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    label: {
-                      content: `Threshold: ${thresholdValue} µg/m³`,
-                      enabled: true,
-                      position: "center",
-                      backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
-                      color: "#fff", // optional: label text color
-                      font: {
-                        style: "bold",
-                        size: 12, // optional: label text size
+                    thresholdLine: {
+                      type: "line",
+                      yMin: thresholdValue,
+                      yMax: thresholdValue,
+                      borderColor: "#808080",
+                      borderWidth: 2,
+                      borderDash: [5, 5],
+                      label: {
+                        content: `Threshold: ${thresholdValue} µg/m³`,
+                        enabled: true,
+                        position: "center",
+                        backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
+                        color: "#fff", // optional: label text color
+                        font: {
+                          style: "bold",
+                          size: 12, // optional: label text size
+                        },
                       },
                     },
-                  },
-                }
+                  }
                 : {},
           },
           tooltip: {
@@ -6891,13 +6999,12 @@ function bindStationDataToBarChart(filter) {
                 }
                 if (pollutantBarChartId == "ADstationAqiBarGraph") {
                   return value === 0 ? "0" : value;
-                }
-                else if (pollutantBarChartId == "ADstationCoBarGraph") {
+                } else if (pollutantBarChartId == "ADstationCoBarGraph") {
                   return value + " mg/m³";
                 } else {
                   return value + " ug/m³";
                 }
-              }
+              },
             },
             external: function (context) {
               // Tooltip Element
@@ -7024,77 +7131,77 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
-              display: false,
-              ticks: {
                 display: false,
-              },
-              grid: {
-                display: false,
-              },
-              gridLines: {
-                drawBorder: false,
-              },
-              afterFit: (ctx) => {
-                //console.log(ctx);
-                ctx.width = 0.3;
-              },
-              stacked: true,
-              //beginAtZero: true
-            }
+                ticks: {
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                gridLines: {
+                  drawBorder: false,
+                },
+                afterFit: (ctx) => {
+                  //console.log(ctx);
+                  ctx.width = 0.3;
+                },
+                stacked: true,
+                //beginAtZero: true
+              }
             : {
-              display: false,
-              min: 0,
-              max: thresholdValue,
-              ticks: {
                 display: false,
+                min: 0,
+                max: thresholdValue,
+                ticks: {
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                gridLines: {
+                  drawBorder: false,
+                },
+                afterFit: (ctx) => {
+                  //console.log(ctx);
+                  ctx.width = 0.3;
+                },
+                stacked: true,
+                //beginAtZero: true
               },
-              grid: {
-                display: false,
-              },
-              gridLines: {
-                drawBorder: false,
-              },
-              afterFit: (ctx) => {
-                //console.log(ctx);
-                ctx.width = 0.3;
-              },
-              stacked: true,
-              //beginAtZero: true
-            },
 
           y1: exceedsThreshold
             ? {
-              display: false,
-              ticks: {
-                beginAtZero: true,
-                callback: function (value) {
-                  return value;
+                display: false,
+                ticks: {
+                  beginAtZero: true,
+                  callback: function (value) {
+                    return value;
+                  },
                 },
-              },
-              grid: {
-                drawOnChartArea: false,
-              },
-              stacked: true,
-              type: "linear",
-              position: "left",
-            }
+                grid: {
+                  drawOnChartArea: false,
+                },
+                stacked: true,
+                type: "linear",
+                position: "left",
+              }
             : {
-              display: false,
-              min: 0,
-              max: thresholdValue,
-              type: "linear",
-              position: "left",
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                callback: function (value) {
-                  return value;
+                display: false,
+                min: 0,
+                max: thresholdValue,
+                type: "linear",
+                position: "left",
+                stacked: true,
+                ticks: {
+                  beginAtZero: true,
+                  callback: function (value) {
+                    return value;
+                  },
+                },
+                grid: {
+                  drawOnChartArea: false,
                 },
               },
-              grid: {
-                drawOnChartArea: false,
-              },
-            },
         },
 
         animations: {
@@ -7143,25 +7250,25 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
-              grid: {
-                display: false,
-              },
-              afterFit: (ctx) => {
-                ctx.width = 40;
-              },
-              stacked: true,
-            }
+                grid: {
+                  display: false,
+                },
+                afterFit: (ctx) => {
+                  ctx.width = 40;
+                },
+                stacked: true,
+              }
             : {
-              min: 0,
-              max: thresholdValue,
-              grid: {
-                display: false,
+                min: 0,
+                max: thresholdValue,
+                grid: {
+                  display: false,
+                },
+                afterFit: (ctx) => {
+                  ctx.width = 40;
+                },
+                stacked: true,
               },
-              afterFit: (ctx) => {
-                ctx.width = 40;
-              },
-              stacked: true,
-            },
         },
         plugins: {
           legend: {
@@ -7171,27 +7278,27 @@ function bindStationDataToBarChart(filter) {
             annotations:
               thresholdValue !== null
                 ? {
-                  thresholdLine: {
-                    type: "line",
-                    yMin: thresholdValue,
-                    yMax: thresholdValue,
-                    borderColor: "#808080",
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    label: {
-                      content: "test",
-                      enabled: true,
-                      position: "center",
-                      yAdjust: -10,
-                      backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
-                      color: "#fff", // optional: label text color
-                      font: {
-                        style: "bold",
-                        size: 12, // optional: label text size
+                    thresholdLine: {
+                      type: "line",
+                      yMin: thresholdValue,
+                      yMax: thresholdValue,
+                      borderColor: "#808080",
+                      borderWidth: 2,
+                      borderDash: [5, 5],
+                      label: {
+                        content: "test",
+                        enabled: true,
+                        position: "center",
+                        yAdjust: -10,
+                        backgroundColor: "rgba(0,0,0,0.7)", // optional: label background color
+                        color: "#fff", // optional: label text color
+                        font: {
+                          style: "bold",
+                          size: 12, // optional: label text size
+                        },
                       },
                     },
-                  },
-                }
+                  }
                 : {},
           },
         },
@@ -7283,20 +7390,20 @@ function bindStationDataToBarChart(filter) {
           annotation: {
             annotations: thresholdValue
               ? {
-                thresholdLine: {
-                  type: "line",
-                  yMin: thresholdValue,
-                  yMax: thresholdValue,
-                  borderColor: "#808080",
-                  borderWidth: 2,
-                  borderDash: [5, 5],
-                  label: {
-                    content: "Threshold: ${thresholdValue} µg/m³",
-                    enabled: true,
-                    position: "end",
+                  thresholdLine: {
+                    type: "line",
+                    yMin: thresholdValue,
+                    yMax: thresholdValue,
+                    borderColor: "#808080",
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    label: {
+                      content: "Threshold: ${thresholdValue} µg/m³",
+                      enabled: true,
+                      position: "end",
+                    },
                   },
-                },
-              }
+                }
               : {},
           },
           tooltip: {
@@ -7427,39 +7534,39 @@ function bindStationDataToBarChart(filter) {
           //},
           y: exceedsThreshold
             ? {
-              display: false,
-              ticks: {
                 display: false,
-              },
-              grid: {
-                display: false,
-              },
-              gridLines: {
-                drawBorder: false,
-              },
-              stacked: true,
-              afterFit: (ctx) => {
-                ctx.width = 0.3;
-              },
-            }
+                ticks: {
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                gridLines: {
+                  drawBorder: false,
+                },
+                stacked: true,
+                afterFit: (ctx) => {
+                  ctx.width = 0.3;
+                },
+              }
             : {
-              min: 0,
-              max: thresholdValue,
-              display: false,
-              ticks: {
+                min: 0,
+                max: thresholdValue,
                 display: false,
+                ticks: {
+                  display: false,
+                },
+                grid: {
+                  display: false,
+                },
+                gridLines: {
+                  drawBorder: false,
+                },
+                stacked: true,
+                afterFit: (ctx) => {
+                  ctx.width = 0.3;
+                },
               },
-              grid: {
-                display: false,
-              },
-              gridLines: {
-                drawBorder: false,
-              },
-              stacked: true,
-              afterFit: (ctx) => {
-                ctx.width = 0.3;
-              },
-            },
         },
         //plugins,
         animations: {
@@ -7510,25 +7617,25 @@ function bindStationDataToBarChart(filter) {
           },
           y: exceedsThreshold
             ? {
-              grid: {
-                display: false,
-              },
-              afterFit: (ctx) => {
-                ctx.width = 40;
-              },
-              stacked: true,
-            }
+                grid: {
+                  display: false,
+                },
+                afterFit: (ctx) => {
+                  ctx.width = 40;
+                },
+                stacked: true,
+              }
             : {
-              min: 0,
-              max: thresholdValue,
-              grid: {
-                display: false,
+                min: 0,
+                max: thresholdValue,
+                grid: {
+                  display: false,
+                },
+                afterFit: (ctx) => {
+                  ctx.width = 40;
+                },
+                stacked: true,
               },
-              afterFit: (ctx) => {
-                ctx.width = 40;
-              },
-              stacked: true,
-            },
         },
         plugins: {
           legend: {
@@ -7631,10 +7738,10 @@ function bindYearsToDropDown() {
       `<li>
             <a class="dropdown-item" href="javascript: void(0)"
             onclick="onClickYearOfAirAnalytics(` +
-      startYear +
-      `)">` +
-      startYear +
-      `</a>
+        startYear +
+        `)">` +
+        startYear +
+        `</a>
         </li>`
     );
     ++startYear;
@@ -7742,18 +7849,20 @@ var imageDataArabic = [
   {
     imageUrl: "./images/new-images/e_linking.jpg",
     // content: "الربط الإلكتروني لأنظمة المراقبة المستمرة لمداخن المنشآت الصناعية",
-    content: "الربط الإلكتروني لأنظمة المراقبة المستمرة لمداخن المنشآت الصناعية",
+    content:
+      "الربط الإلكتروني لأنظمة المراقبة المستمرة لمداخن المنشآت الصناعية",
     // description:"مشروع الربط الإلكتروني لأنظمة مراقبة الانبعاثات المستمرة هو مبادرة من حكومة ابوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة في الامارة. يقوم المشروع بجمع بيانات أنظمة مراقبة الانبعاثات المستمرة (CEMS)  لمداخن المنشآت الصناعية وحفظها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آلية لرفع  تقارير الانبعاثات للمنشآت التي لا تمتلك أنظمة مراقبة مستمرة بشكل يدوي. كما سيمكن مشروع الربط الإلكتروني الهيئة من تطوير قاعدة بيانات دقيقة ومتكاملة وفي الوقت الفعلي للانبعاثات الصناعية ويتضمن  بوابة إلكترونية مصممة لعرض هذه البيانات بشكل شامل ودقيق يساهم في تطوير ممارسات أفضل للمراقبة  تضمن توفير بيانات عالية الجودة من القطاع الصناعي في امارة ابوظبي. وتوفر المنصة مجموعة من الميزات الفنية المساعدة مثل نظم المعلومات الجغرافية (GIS) ونماذج تشتت الانبعاثات ونظام للتنبيهات عن تجاوز الانبعاثات الحدود الوطنية، بلاضافةالى ميزة إصدار التقارير الفنية وإدارة تدفق البيانات وغيرها. كما ستعنى المنصة بجودة البيانات المستلمة (الآلية و اليدوية) وتمكين  التواصل المستمر والمباشر مع المنشآت الصناعية حول كافة البيانات والمعلومات الفنية."
-    description: "مشروع الربط الإلكتروني لأنظمة مراقبة الانبعاثات المستمرة هو مبادرة من حكومة ابوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة في الامارة. يقوم المشروع بجمع بيانات أنظمة مراقبة الانبعاثات المستمرة (CEMS)  لمداخن المنشآت الصناعية وحفظها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آلية لرفع  تقارير الانبعاثات للمنشآت التي لا تمتلك أنظمة مراقبة مستمرة بشكل يدوي. كما سيمكن مشروع الربط الإلكتروني الهيئة من تطوير قاعدة بيانات دقيقة ومتكاملة وفي الوقت الفعلي للانبعاثات الصناعية ويتضمن  بوابة إلكترونية مصممة لعرض هذه البيانات بشكل شامل ودقيق يساهم في تطوير ممارسات أفضل للمراقبة  تضمن توفير بيانات عالية الجودة من القطاع الصناعي في امارة ابوظبي. وتوفر المنصة مجموعة من الميزات الفنية المساعدة مثل نظم المعلومات الجغرافية (GIS) ونماذج تشتت الانبعاثات ونظام للتنبيهات عن تجاوز الانبعاثات الحدود الوطنية، بلاضافةالى ميزة إصدار التقارير الفنية وإدارة تدفق البيانات وغيرها. كما ستعنى المنصة بجودة البيانات المستلمة (الآلية و اليدوية) وتمكين  التواصل المستمر والمباشر مع المنشآت الصناعية حول كافة البيانات والمعلومات الفنية.",
-  
+    description:
+      "مشروع الربط الإلكتروني لأنظمة مراقبة الانبعاثات المستمرة هو مبادرة من حكومة ابوظبي لدعم تحسين جودة البيئة وحماية الصحة العامة في الامارة. يقوم المشروع بجمع بيانات أنظمة مراقبة الانبعاثات المستمرة (CEMS)  لمداخن المنشآت الصناعية وحفظها في قاعدة بيانات مركزية في هيئة البيئة - أبوظبي، بالإضافة إلى إنشاء آلية لرفع  تقارير الانبعاثات للمنشآت التي لا تمتلك أنظمة مراقبة مستمرة بشكل يدوي. كما سيمكن مشروع الربط الإلكتروني الهيئة من تطوير قاعدة بيانات دقيقة ومتكاملة وفي الوقت الفعلي للانبعاثات الصناعية ويتضمن  بوابة إلكترونية مصممة لعرض هذه البيانات بشكل شامل ودقيق يساهم في تطوير ممارسات أفضل للمراقبة  تضمن توفير بيانات عالية الجودة من القطاع الصناعي في امارة ابوظبي. وتوفر المنصة مجموعة من الميزات الفنية المساعدة مثل نظم المعلومات الجغرافية (GIS) ونماذج تشتت الانبعاثات ونظام للتنبيهات عن تجاوز الانبعاثات الحدود الوطنية، بلاضافةالى ميزة إصدار التقارير الفنية وإدارة تدفق البيانات وغيرها. كما ستعنى المنصة بجودة البيانات المستلمة (الآلية و اليدوية) وتمكين  التواصل المستمر والمباشر مع المنشآت الصناعية حول كافة البيانات والمعلومات الفنية.",
   },
   {
     imageUrl: "./images/new-images/Monitoring_network.jpg",
     // content: "برنامج مراقبة جودة الهواء في امارة ابوظبي",
-    content:"برنامج مراقبة جودة الهواء في امارة ابوظبي",
+    content: "برنامج مراقبة جودة الهواء في امارة ابوظبي",
     // description:
     //  "بدأ برنامج مراقبة جودة الهواء في امارة أبوظبي في عام 2007 من خلال بناء شبكة مكونة من 20 محطة ثابتة ومحطتين متنقلتين لرصد تراكيز الملوثات الرئيسية مثل ثاني  أكسيد الكبريت (SO2) وثاني أكسيد النيتروجين (NO2) والأوزون الارضي (O3) وكبريتيد الهيدروجين (H2S) وأول أكسيد الكربون (CO) والمواد العالقة بنوعيها (PM10و PM2.5) والميثان (CH4) والمواد العطرية المتطايرة مثل BTEX وغيرها. كما ان جميع محطات المراقبة مزودة بأجهزة لقياس الارصاد الجوية وذلك لأهميتها في فهم الأنماط المختلفة لملوثات الهواء المحيط بالنظر الى الظروف الجوية المحيطة بها. حيث ترصد كل محطة سرعة الرياح واتجاه الرياح ودرجة الحرارة والرطوبة وإشعاع الشمس والضغط الجوي بشكل مستمر. ولتبسيط حالة جودة الهواء المحيط في الامارة للجمهور تقوم الهيئة بحساب مؤشر جودة الهواء (AQI) بشكل آلي واعطاء كل درجة للمؤشر  لون مختلف استنادًا إلى المعايير الوطنية ووفق مستوى تراكيز الملوثات الخمسة الرئيسية المرصودة  في الشبكة وهي المواد العالقة والأوزون الارضي وثاني أكسيد الكبريت وثاني أكسيد النيتروجين وأول أكسيد الكربون."
-    description: "بدأ برنامج مراقبة جودة الهواء في امارة أبوظبي في عام 2007 من خلال بناء شبكة مكونة من 20 محطة ثابتة ومحطتين متنقلتين لرصد تراكيز الملوثات الرئيسية مثل ثاني  أكسيد الكبريت (SO2) وثاني أكسيد النيتروجين (NO2) والأوزون الارضي (O3) وكبريتيد الهيدروجين (H2S) وأول أكسيد الكربون (CO) والمواد العالقة بنوعيها (PM10و PM2.5) والميثان (CH4) والمواد العطرية المتطايرة مثل BTEX وغيرها. كما ان جميع محطات المراقبة مزودة بأجهزة لقياس الارصاد الجوية وذلك لأهميتها في فهم الأنماط المختلفة لملوثات الهواء المحيط بالنظر الى الظروف الجوية المحيطة بها. حيث ترصد كل محطة سرعة الرياح واتجاه الرياح ودرجة الحرارة والرطوبة وإشعاع الشمس والضغط الجوي بشكل مستمر. ولتبسيط حالة جودة الهواء المحيط في الامارة للجمهور تقوم الهيئة بحساب مؤشر جودة الهواء (AQI) بشكل آلي واعطاء كل درجة للمؤشر  لون مختلف استنادًا إلى المعايير الوطنية ووفق مستوى تراكيز الملوثات الخمسة الرئيسية المرصودة  في الشبكة وهي المواد العالقة والأوزون الارضي وثاني أكسيد الكبريت وثاني أكسيد النيتروجين وأول أكسيد الكربون.",
+    description:
+      "بدأ برنامج مراقبة جودة الهواء في امارة أبوظبي في عام 2007 من خلال بناء شبكة مكونة من 20 محطة ثابتة ومحطتين متنقلتين لرصد تراكيز الملوثات الرئيسية مثل ثاني  أكسيد الكبريت (SO2) وثاني أكسيد النيتروجين (NO2) والأوزون الارضي (O3) وكبريتيد الهيدروجين (H2S) وأول أكسيد الكربون (CO) والمواد العالقة بنوعيها (PM10و PM2.5) والميثان (CH4) والمواد العطرية المتطايرة مثل BTEX وغيرها. كما ان جميع محطات المراقبة مزودة بأجهزة لقياس الارصاد الجوية وذلك لأهميتها في فهم الأنماط المختلفة لملوثات الهواء المحيط بالنظر الى الظروف الجوية المحيطة بها. حيث ترصد كل محطة سرعة الرياح واتجاه الرياح ودرجة الحرارة والرطوبة وإشعاع الشمس والضغط الجوي بشكل مستمر. ولتبسيط حالة جودة الهواء المحيط في الامارة للجمهور تقوم الهيئة بحساب مؤشر جودة الهواء (AQI) بشكل آلي واعطاء كل درجة للمؤشر  لون مختلف استنادًا إلى المعايير الوطنية ووفق مستوى تراكيز الملوثات الخمسة الرئيسية المرصودة  في الشبكة وهي المواد العالقة والأوزون الارضي وثاني أكسيد الكبريت وثاني أكسيد النيتروجين وأول أكسيد الكربون.",
   },
   {
     imageUrl: "./images/new-images/quality-monitoring.jpg",
@@ -7761,24 +7870,26 @@ var imageDataArabic = [
     content: "نظام أبوظبي لنمذجة جودة الهواء",
     // description:
     //   "لتعزيز نظام مراقبة جودة الهواء، قامت هيئة البيئة – أبوظبي بتطوير نظام نمذجة جودة هواء متقدم متعدد المجالات لأبوظبي. سيسهم هذا النظام في دعم التنظيم من خلال تقييم التأثيرات التراكمية لجودة الهواء المتوقعة من المنشآت الجديدة ومشاريع التنمية الحضرية، والحد من تعرض الجمهور لتلوث الهواء، ودعم تحسين جودة الهواء في جميع أنحاء إمارة أبوظبي، بالإضافة إلى المساعدة في تقييم فعالية الخطط والسياسات المستقبلية. كما سيقدم الدعم الفني المتخصص والتدريب وبناء القدرات لتمكين تحديد النقاط الساخنة للتلوث حيث تحدث تركيزات ملوثة مرتفعة، وتطوير خرائط سنوية مفصلة لجودة الهواء على مستوى الاقليمي والمحلي."
-    description:"  قامت هيئة البيئة – أبوظبي بتطوير نظام متقدم لتعزيز نظام مراقبة جودة الهواء في الإمارة. يهدف هذا النظام إلى دعم ومراقبة جودة الهواء من خلال تقييم التأثيرات البيئية التراكمية الناجمة عن المنشآت ,والمشاريع التطويرية الحالية والجديدة ، مما يسهم في تقليل تعرض السكان لتلوث الهواء وتحسين جودته في مختلف مناطق أبوظبي. كما يساعد النظام في تقييم فعالية الخطط والسياسات البيئية المستقبلية، من خلال توفير بيانات دقيقة تدعم صناع القرار في وضع استراتيجيات مستدامة. بالإضافة إلى ذلك، يوفر النظام دعمًا فنيًا متخصصًا، وبرامج تدريبية، وبناء القدرات لتعزيز الكفاءة في رصد وتحليل جودة الهواء. ومن خلال هذا النظام، سيتم تحديد المناطق ذات التلوث المرتفع وتطوير خرائط سنوية مفصلة لجودة الهواء على المستويين الإقليمي والمحلي، مما يساهم في توجيه الجهود نحو تحسين بيئة الهواء في أبوظبي بشكل أكثر كفاءة.",
+    description:
+      "  قامت هيئة البيئة – أبوظبي بتطوير نظام متقدم لتعزيز نظام مراقبة جودة الهواء في الإمارة. يهدف هذا النظام إلى دعم ومراقبة جودة الهواء من خلال تقييم التأثيرات البيئية التراكمية الناجمة عن المنشآت ,والمشاريع التطويرية الحالية والجديدة ، مما يسهم في تقليل تعرض السكان لتلوث الهواء وتحسين جودته في مختلف مناطق أبوظبي. كما يساعد النظام في تقييم فعالية الخطط والسياسات البيئية المستقبلية، من خلال توفير بيانات دقيقة تدعم صناع القرار في وضع استراتيجيات مستدامة. بالإضافة إلى ذلك، يوفر النظام دعمًا فنيًا متخصصًا، وبرامج تدريبية، وبناء القدرات لتعزيز الكفاءة في رصد وتحليل جودة الهواء. ومن خلال هذا النظام، سيتم تحديد المناطق ذات التلوث المرتفع وتطوير خرائط سنوية مفصلة لجودة الهواء على المستويين الإقليمي والمحلي، مما يساهم في توجيه الجهود نحو تحسين بيئة الهواء في أبوظبي بشكل أكثر كفاءة.",
   },
   {
     imageUrl: "./images/new-images/inventory-img.png",
     // content: "جرد انبعاثات الهواء في أبوظبي",
-    content :"جرد إنبعاثات الهواء في أبوظبي",
+    content: "جرد إنبعاثات الهواء في أبوظبي",
     // description:
     //   "تركز هيئة البيئة - أبوظبي (EAD) على إنشاء تحديث لاحصاء انبعاثات الهواء داخل أبوظبي مع التركيز على بعض الملوثات: SO، NOx، CO، PM10، PM2.5، NMVOC، NH3، CO2، وBC. يسلط المشروع الضوء على المساهمين الرئيسيين في انبعاثات الهواء في أبوظبي. تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات،، والبناء جزءًا لا يتجزأ من هذا المسعى الاستقصائي. تهدف هذه القاعدة البيانية الشاملة إلى التعرف النظامي على القطاعات الرئيسية التي تساهم بأكبر قدر من الانبعاثات الهوائية، مما يوفر وضوحًا حول مجالات التركيز. الهدف أساسي هو تعزيز الفهم العام والاهتمام بأهمية جودة الهواء، مما يشجع على المسؤولية المجتمعية والمشاركة. ستضع البيانات أساسًا لنمذجة جودة الهواء بدقة، مما يسهل كل من التدابير التنبؤية والوقائية. من خلال إنشاء خط أساس مفصل، سيصبح الجرد ضروريًا لاستراتيجيات البيئة المستقبلية، وصنع السياسات، والتخطيط. كما ستوفر إرشادات لوضع حدود انبعاثات واضحة  وتحديد أهداف للتقليل مستهدفة. علاوة على ذلك، سيمكن الجرد من رصد مستمر للأداء البيئي للقطاعات والكيانات الفردية، مما يعزز ثقافة المساءلة. بناءً على الرؤى المستخلصة، يمكن تصميم تدابير تخفيف فعالة مصممة خصيصًا للتحديات والقطاعات المحددة، مما يضمن نهجًا شاملًا للحفاظ على بيئة أبوظبي وتحسينها."
-    description: "تركز هيئة البيئة – أبوظبي (EAD) على تحديث إحصائيات انبعاثات الهواء  في أبوظبي، من خلال التركيز على الملوثات الرئيسية مثل أول أكسيد الكبريت (SO)، أكاسيد النيتروجين (NOₓ)، أول أكسيد الكربون (CO)، الجسيمات الدقيقة أصغر من 10 ميكرونات و الجسيمات الدقيقة أصغر من 2.5 ميكرونات (PM10 وPM2.5)، المركبات العضوية المتطايرة غير الميثانية (NMVOC)، الأمونيا (NH₃)، ثاني أكسيد الكربون (CO₂)، والكربون الأسود (BC). يهدف هذا المشروع إلى تحديد المصادر الرئيسية لانبعاثات الهواء في أبوظبي، والتي تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات، وقطاع البناء، مما يساهم في تقديم رؤية شاملة حول توزيع الانبعاثات وتأثيرها وكيفية التركيز عليها .يهدف المشروع بشكل أساسي إلى رفع مستوى الوعي حول أهمية جودة الهواء وتعزيز المسؤولية المجتمعية. كما ستوفر البيانات التي يتم جمعها أساسًا دقيقًا لنمذجة جودة الهواء واتخاذ تدابير استباقية للحد من التلوث. ومن خلال إنشاء قاعدة بيانات تفصيلية، ستُستخدم هذه الإحصائيات لدعم استراتيجيات البيئة المستقبلية، ووضع السياسات، والتخطيط المستدام.بالإضافة إلى ذلك، سيساعد المشروع في تحديد ووضع حدود للانبعاثات ووضع أهداف للحد منها، مما سيمكن الجهات المعنية من متابعة الأداء البيئي للقطاعات المختلفة وتعزيز الثقافة والشفافية. وبناءً على البيانات والتحليلات المستخلصة، سيتم تطوير استراتيجيات فعالة لتقليل الانبعاثات بما يتناسب مع احتياجات كل قطاع، لضمان بيئة أنظف وأكثر استدامة في أبوظبي.",
+    description:
+      "تركز هيئة البيئة – أبوظبي (EAD) على تحديث إحصائيات انبعاثات الهواء  في أبوظبي، من خلال التركيز على الملوثات الرئيسية مثل أول أكسيد الكبريت (SO)، أكاسيد النيتروجين (NOₓ)، أول أكسيد الكربون (CO)، الجسيمات الدقيقة أصغر من 10 ميكرونات و الجسيمات الدقيقة أصغر من 2.5 ميكرونات (PM10 وPM2.5)، المركبات العضوية المتطايرة غير الميثانية (NMVOC)، الأمونيا (NH₃)، ثاني أكسيد الكربون (CO₂)، والكربون الأسود (BC). يهدف هذا المشروع إلى تحديد المصادر الرئيسية لانبعاثات الهواء في أبوظبي، والتي تشمل هذه القطاعات توليد الكهرباء، وإنتاج النفط والغاز، والأنشطة الصناعية، والنقل البري، مع الأخذ في الاعتبار كل من الانبعاثات الناتجة عن العوادم والانبعاثات غير الناتجة عن العوادم. بالإضافة إلى ذلك، قطاع الشحن والطيران، والسكك الحديدية، والزراعة والمزارع الحيوانية، والنفايات، وقطاع البناء، مما يساهم في تقديم رؤية شاملة حول توزيع الانبعاثات وتأثيرها وكيفية التركيز عليها .يهدف المشروع بشكل أساسي إلى رفع مستوى الوعي حول أهمية جودة الهواء وتعزيز المسؤولية المجتمعية. كما ستوفر البيانات التي يتم جمعها أساسًا دقيقًا لنمذجة جودة الهواء واتخاذ تدابير استباقية للحد من التلوث. ومن خلال إنشاء قاعدة بيانات تفصيلية، ستُستخدم هذه الإحصائيات لدعم استراتيجيات البيئة المستقبلية، ووضع السياسات، والتخطيط المستدام.بالإضافة إلى ذلك، سيساعد المشروع في تحديد ووضع حدود للانبعاثات ووضع أهداف للحد منها، مما سيمكن الجهات المعنية من متابعة الأداء البيئي للقطاعات المختلفة وتعزيز الثقافة والشفافية. وبناءً على البيانات والتحليلات المستخلصة، سيتم تطوير استراتيجيات فعالة لتقليل الانبعاثات بما يتناسب مع احتياجات كل قطاع، لضمان بيئة أنظف وأكثر استدامة في أبوظبي.",
   },
   {
     imageUrl: "./images/new-images/GHG1.jpg",
     // content: "جرد غازات الدفيئة وتوقعاتها",
     content: "جرد انبعاثات الغازات الدفيئة وتوقعاتها",
-//     description: `تماشيًا مع أولوياتها الاستراتيجية لضمان مرونة أبوظبي من خلال التخفيف والتكيف مع تغير المناخ، وحماية الهواء والمياه البحرية، كانت هيئة البيئة - أبوظبي (EAD) نشطة في بدء جرد انبعاثات غازات الدفيئة كل عامين كجزء من خطتها الشاملة لرصد الانبعاثات الجوية في الإمارة. كانت هذه الاحصاءات فعالة في وضع أساس للمعرفة بشأن الانبعاثات الأساسية والتوقعات في الإمارة، وكذلك في تعزيز قدرة الكيانات المحلية على التتبع والإبلاغ بكفاءة عن انبعاثاتها في القطاعات.
-// يشير جرد غازات الدفيئة في أبوظبي إلى تقدير انبعاثات غازات الدفيئة وإزالتها حسب الغاز وحسب المصدر أو المصب. يستهدف الجرد جميع المصادر والمصبات البشرية المنشأ؛ وهي الطاقة، العمليات الصناعية، تغيير استخدام الأراضي والغابات، الزراعة، والنفايات. وفقًا لإرشادات الهيئة الحكومية الدولية المعنية بتغير المناخ للجرد الوطني للغازات الدفيئة، يركز مشروع الجرد على غازات الرئيسية التي تساهم بشكل مباشر في الاحتباس الحراري مثل (CO2، CH4، N2O، HFCs، PFCs، SF6).
-// كما يقيم مشروع غازات الدفيئة إمكانية تخفيض الانبعاثات المستقبلية من خلال الخطط الحالية للتنمية المستدامة واستراتيجيات التخفيف في الإمارة.`,
-description: `تماشيًا مع الأولوية الاستراتيجية لضمان مرونة أبوظبي في مواجهة تغير المناخ، وضمان حماية الهواء والمياه البحرية، تواصل هيئة البيئة - أبوظبي (EAD) جهودها  في تقليل الانبعاثات وتعزيز القدرة على  تتبعها والتحكم بها. وكانت واحدة من هذه المبادرات الأساسية في هذا المجال هي البدء في مشروع "جرد الغازات الدفيئة" كل عامين .وتعتبر هذه المبادرة جزء من خطة الهيئة الشاملة لرصد الانبعاثات في الإمارة، والتي تهدف إلى تعزيز فهمنا للانبعاثات وأثرها على البيئة. من خلال هذا الجرد، يتم تحديد انبعاثات الغازات الدفيئة وفقًا لكل نوع من الغازات والمصادر أو المصبات المختلفة. يشمل الجرد جميع الأنشطة البشرية مثل الطاقة، والصناعات، وتغيير استخدام الأراضي، والزراعة، والنفايات. كانت هذه الاحصائيات فعالة لمعرفة  الانبعاثات الأساسية والتوقعات في الإمارة، وكذلك في تعزيز قدرة الكيانات المحلية على التتبع والإبلاغ  عن الإنبعاثات في القطاعات. 
+    //     description: `تماشيًا مع أولوياتها الاستراتيجية لضمان مرونة أبوظبي من خلال التخفيف والتكيف مع تغير المناخ، وحماية الهواء والمياه البحرية، كانت هيئة البيئة - أبوظبي (EAD) نشطة في بدء جرد انبعاثات غازات الدفيئة كل عامين كجزء من خطتها الشاملة لرصد الانبعاثات الجوية في الإمارة. كانت هذه الاحصاءات فعالة في وضع أساس للمعرفة بشأن الانبعاثات الأساسية والتوقعات في الإمارة، وكذلك في تعزيز قدرة الكيانات المحلية على التتبع والإبلاغ بكفاءة عن انبعاثاتها في القطاعات.
+    // يشير جرد غازات الدفيئة في أبوظبي إلى تقدير انبعاثات غازات الدفيئة وإزالتها حسب الغاز وحسب المصدر أو المصب. يستهدف الجرد جميع المصادر والمصبات البشرية المنشأ؛ وهي الطاقة، العمليات الصناعية، تغيير استخدام الأراضي والغابات، الزراعة، والنفايات. وفقًا لإرشادات الهيئة الحكومية الدولية المعنية بتغير المناخ للجرد الوطني للغازات الدفيئة، يركز مشروع الجرد على غازات الرئيسية التي تساهم بشكل مباشر في الاحتباس الحراري مثل (CO2، CH4، N2O، HFCs، PFCs، SF6).
+    // كما يقيم مشروع غازات الدفيئة إمكانية تخفيض الانبعاثات المستقبلية من خلال الخطط الحالية للتنمية المستدامة واستراتيجيات التخفيف في الإمارة.`,
+    description: `تماشيًا مع الأولوية الاستراتيجية لضمان مرونة أبوظبي في مواجهة تغير المناخ، وضمان حماية الهواء والمياه البحرية، تواصل هيئة البيئة - أبوظبي (EAD) جهودها  في تقليل الانبعاثات وتعزيز القدرة على  تتبعها والتحكم بها. وكانت واحدة من هذه المبادرات الأساسية في هذا المجال هي البدء في مشروع "جرد الغازات الدفيئة" كل عامين .وتعتبر هذه المبادرة جزء من خطة الهيئة الشاملة لرصد الانبعاثات في الإمارة، والتي تهدف إلى تعزيز فهمنا للانبعاثات وأثرها على البيئة. من خلال هذا الجرد، يتم تحديد انبعاثات الغازات الدفيئة وفقًا لكل نوع من الغازات والمصادر أو المصبات المختلفة. يشمل الجرد جميع الأنشطة البشرية مثل الطاقة، والصناعات، وتغيير استخدام الأراضي، والزراعة، والنفايات. كانت هذه الاحصائيات فعالة لمعرفة  الانبعاثات الأساسية والتوقعات في الإمارة، وكذلك في تعزيز قدرة الكيانات المحلية على التتبع والإبلاغ  عن الإنبعاثات في القطاعات. 
 يركز جرد غازات الدفيئة على الغازات التي تساهم بشكل رئيسي في الاحتباس الحراري مثل ثاني أكسيد الكربون (CO2)، والميثان (CH4)، وأكسيد النيتروز (N2O)، بالإضافة إلى الغازات الصناعية مثل الهيدروفلوروكربونات (HFCs)، والبيروفلوروكربونات (PFCs)، وغاز سادس فلوريد الكبريت (SF6). كما يساهم هذا الجرد في تخطيط استراتيجيات مستقبلية للتخفيف من الانبعاثات، من خلال مراعاة خطط التنمية المستدامة والتوجهات البيئية في الإمارة.`,
   },
   {
@@ -7786,38 +7897,41 @@ description: `تماشيًا مع الأولوية الاستراتيجية لض
     // content: "شبكة مراقبة الروائح في إمارة أبوظبي ",
     content: "شبكة مراقبة الروائح في إمارة أبوظبي",
     // description: "شبكة مراقبة الغازات المزعجة في إمارة أبوظبي هو مشروع مدته خمس سنوات يضم مجموعة متنوعة من الأنشطة عبر جميع أنواع الصناعات التي قد تؤثر سلبًا على البيئة والمجتمع، وستكون هذه الشبكة أداة قيمة للكشف المبكر والاستجابة للغازات ذات الروائح المزعجة، والتي تسبب إزعاجًا عامًا، وذلك من خلال تشغيل 50 جهاز استشعار ثابت ومحطتين متنقلين لإنشاء إطار عمل لمراقبة وإدارة الروائح. حاليًا، تستجيب هيئة البيئة - أبوظبي  لشكاوى الروائح من خلال تركيب جهاز مراقبة الروائح المحمول للتحقق من تركيزات الغازات ذات الروائح المزعجة في الوقت الفعلي، بالإضافة إلى الإعتماد على محطات مراقبة جودة الهواء المتنقلة لقياس تركيزات ملوثات الهواء في الوقت الفعلي، وسرعة واتجاه الرياح. توفر كلا التقنيتين رؤى قيمة حول خصائص الغازات ذات الروائح، وتركيزها في الهواء المحيط، ومصادرها، وتشتتها."
-    description:"شبكة مراقبة الروائح المزعجة في إمارة أبوظبي هو مشروع مدته خمس سنوات، يهدف إلى مراقبة الأنشطة من جميع أنواع الصناعات التي قد تؤثر بشكل سلبي على البيئة والمجتمع. يركز المشروع على الكشف المبكر والإستجابة للغازات ذات الروائح المزعجة والتي تسبب ازعاجاً عاماً . وذلك عن طريق تشغيل 50 جهاز استشعار ثابت ومحطتين متنقلتين للمساعدة في رصد هذه الروائح، والقدرة على التعامل معها. حاليًا، تستجيب هيئة البيئة - أبوظبي  لشكاوى الروائح من خلال تركيب أجهزة مراقبة محمولة لقياس تركيز الغازات المزعجة بشكل مباشر. كما تعتمد الهيئة على محطات مراقبة جودة الهواء المتنقلة التي تقيس تركيزات الملوثات في الهواء وتحدد سرعة واتجاه الرياح. هذه التقنيات تقدم قيم واضحة حول تركيز الغازات ذات الروائح المزعجة في الهواء، مصادرها، وكيفية انتشارها، مما يساعد على اتخاذ إجراءات سريعة وفعالة للحفاظ على بيئة أبوظبي."
+    description:
+      "شبكة مراقبة الروائح المزعجة في إمارة أبوظبي هو مشروع مدته خمس سنوات، يهدف إلى مراقبة الأنشطة من جميع أنواع الصناعات التي قد تؤثر بشكل سلبي على البيئة والمجتمع. يركز المشروع على الكشف المبكر والإستجابة للغازات ذات الروائح المزعجة والتي تسبب ازعاجاً عاماً . وذلك عن طريق تشغيل 50 جهاز استشعار ثابت ومحطتين متنقلتين للمساعدة في رصد هذه الروائح، والقدرة على التعامل معها. حاليًا، تستجيب هيئة البيئة - أبوظبي  لشكاوى الروائح من خلال تركيب أجهزة مراقبة محمولة لقياس تركيز الغازات المزعجة بشكل مباشر. كما تعتمد الهيئة على محطات مراقبة جودة الهواء المتنقلة التي تقيس تركيزات الملوثات في الهواء وتحدد سرعة واتجاه الرياح. هذه التقنيات تقدم قيم واضحة حول تركيز الغازات ذات الروائح المزعجة في الهواء، مصادرها، وكيفية انتشارها، مما يساعد على اتخاذ إجراءات سريعة وفعالة للحفاظ على بيئة أبوظبي.",
   },
   {
     imageUrl: "./images/new-images/Freepik1.png",
     content: "رسم خريطة الضوضاء المحيطة في أبوظبي",
     // content:"الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات",
     // description: "يهدف مشروع الضوضاء إلى تحديد مصادر الضوضاء الكبيرة من خلال تحديد المناطق السكنية المتأثرة، وتقييم تأثيرها، وترجمة النتائج إلى خريطة بصرية. يتضمن المشروع جمع البيانات من الجهات الحكومية، واستخدام بيانات هيئة البيئة - أبوظبي، وإجراء مراقبة إضافية للضوضاء، واقتراح تدابير للتخفيف. الهدف من هذا المشروع هو رسم خريطة للمناطق اللأكثر  تأثرًا بمصادر الضوضاء في أبوظبي."
-    description: "يهدف مشروع الضوضاء إلى تحديد أماكن الضوضاء الرئيسية في أبوظبي ومعرفة تأثيرها على المناطق السكنية يتم عرضها من خلال خرائط . يتضمن المشروع جمع البيانات من الجهات الحكومية، واستخدام بيانات هيئة البيئة - أبوظبي، وإجراء مراقبة إضافية للضوضاء، واقتراح طرق للتخفيف منها. الهدف من هذا المشروع هو رسم خريطة للمناطق الأكثر  تأثرًا بمصادر الضوضاء في أبوظبي.",
+    description:
+      "يهدف مشروع الضوضاء إلى تحديد أماكن الضوضاء الرئيسية في أبوظبي ومعرفة تأثيرها على المناطق السكنية يتم عرضها من خلال خرائط . يتضمن المشروع جمع البيانات من الجهات الحكومية، واستخدام بيانات هيئة البيئة - أبوظبي، وإجراء مراقبة إضافية للضوضاء، واقتراح طرق للتخفيف منها. الهدف من هذا المشروع هو رسم خريطة للمناطق الأكثر  تأثرًا بمصادر الضوضاء في أبوظبي.",
   },
   {
     imageUrl: "./images/new-images/Remote_sensing.jpg",
     // content: "الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات",
     content: "الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات",
-//     description: `سيؤدي الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات إلى تحسين فهم جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. يعد تطوير حملة قياس انبعاثات النقل البري عن طريق  الاستشعار عن بعد مكونا أساسيا لبرنامج إدارة جودة الهواء في أبوظبي.
-// وستوفر مخرجات المشروع معلومات أساسية لتصميم تدابير فعالة للحد من الانبعاثات الناتجة عن النقل البري مع معلومات علمية قيمة ستدعم الأمانة العامة للمجلس التنفيذي، وهيئة البيئة - أبوظبي، ووزارة التغير المناخي والبيئة، وشرطة أبوظبي، وهيئة الصحة - أبوظبي، ودائرة النقل، وغيرهم من الجهات من القطاعين العام والخاص.`,
-description: `يساهم استخدام الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات  إلى زيادة المعرفة حول جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. ويعد تطوير حملة قياس انبعاثات النقل البري عن طريق  الاستشعار عن بعد جزء مهم لبرنامج إدارة جودة الهواء في أبوظبي.
+    //     description: `سيؤدي الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات إلى تحسين فهم جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. يعد تطوير حملة قياس انبعاثات النقل البري عن طريق  الاستشعار عن بعد مكونا أساسيا لبرنامج إدارة جودة الهواء في أبوظبي.
+    // وستوفر مخرجات المشروع معلومات أساسية لتصميم تدابير فعالة للحد من الانبعاثات الناتجة عن النقل البري مع معلومات علمية قيمة ستدعم الأمانة العامة للمجلس التنفيذي، وهيئة البيئة - أبوظبي، ووزارة التغير المناخي والبيئة، وشرطة أبوظبي، وهيئة الصحة - أبوظبي، ودائرة النقل، وغيرهم من الجهات من القطاعين العام والخاص.`,
+    description: `يساهم استخدام الاستشعار عن بعد لقياس الانبعاثات الحقيقية للمركبات  إلى زيادة المعرفة حول جودة الهواء في إمارة أبوظبي والإمارات العربية المتحدة. ويعد تطوير حملة قياس انبعاثات النقل البري عن طريق  الاستشعار عن بعد جزء مهم لبرنامج إدارة جودة الهواء في أبوظبي.
 وسيوفر هذا المشروع معلومات أساسية تساعد في وضع حلول فعّالة للحد من انبعاثات المركبات الناتجة عن النقل البري مع معلومات علمية قيمة ستدعم كلا من الأمانة العامة للمجلس التنفيذي، وهيئة البيئة - أبوظبي، ووزارة التغير المناخي والبيئة، وشرطة أبوظبي، وهيئة الصحة - أبوظبي، ودائرة النقل، وغيرهم من الجهات من القطاعين العام والخاص.`,
   },
   {
     imageUrl: "./images/new-images/EAD_Research.jpg",
     // content: "سفينة الأبحاث البحرية",
-    content:"سفينة الأبحاث البحرية",
+    content: "سفينة الأبحاث البحرية",
     // description:
     //   "كانت الهيئة الأولى في العالم إجراء أبحاثًا جوية تمتد من إسبانيا إلى أبوظبي، حيث غطت 25 دولة وثمانية بحار ومحيطات في رحلة تجاوزت 10,000 كم. وقامت البعثة الرائدة للبحث الجوي في الخليج العربي بإجراء فحص شامل لنقل وتحويل الهيدروكربونات وأكاسيد النيتروجين. كما سعت الحملة إلى تقييم كيفية تنقل التلوث من الخليج العربي إلى مناطق أخرى، وتقدير مساهمته في تكون الأوزون في دولة الإمارات العربية المتحدة.",
-    description:"كانت الهيئة الأولى في العالم التي أجرت أبحاثًا جوية تمتد من إسبانيا إلى أبوظبي، حيث شملت 25 دولة وثمانية بحار ومحيطات، وغطت مسافة تزيد عن 10,000 كم. قامت البعثة بإجراء دراسة شاملة حول كيفية انتقال الهيدروكربونات وأكاسيد النيتروجين في الهواء. كما هدفت الحملة إلى فهم كيف ينتقل التلوث من الخليج العربي إلى مناطق أخرى، ودراسة تأثيره على تكوّن الأوزون في دولة الإمارات.",
+    description:
+      "كانت الهيئة الأولى في العالم التي أجرت أبحاثًا جوية تمتد من إسبانيا إلى أبوظبي، حيث شملت 25 دولة وثمانية بحار ومحيطات، وغطت مسافة تزيد عن 10,000 كم. قامت البعثة بإجراء دراسة شاملة حول كيفية انتقال الهيدروكربونات وأكاسيد النيتروجين في الهواء. كما هدفت الحملة إلى فهم كيف ينتقل التلوث من الخليج العربي إلى مناطق أخرى، ودراسة تأثيره على تكوّن الأوزون في دولة الإمارات.",
   },
   {
     imageUrl: "./images/new-images/EAD_Smog-Free Tower_web.jpg",
     // content: "برج تنقية الهواء",
     content: "برج تنقية الهواء ",
     // description: `افتتحت هيئة البيئة - أبوظبي بالتعاون مع مجموعة مدن أول برج خالٍ من الضباب الدخاني في المنطقة في سيرف أبوظبي، وهي أحدث منشأة لركوب الأمواج الاصطناعية في العالم، وتتشكل على جزيرة الحديريات. يعد البرج الجديد لتنقية الهواء ابتكارًا حضاريًا مصممًا لتحسين جودة الهواء في المنطقة ويوفير تجربة ملهمة لمستقبل نظيف وخالٍ من التلوث. يستخدم البرج المصنوع من الألمنيوم والذي يبلغ ارتفاعه سبعة أمتار تقنية التأين الإيجابي الصديقة للبيئة لتنقية الهواء المحيط، حيث يقوم بتنظيف 30,000 متر مكعب من الهواء في الساعة. تنتج تقنية التأين هواءً خاليًا من الضباب الدخاني في الأماكن العامة، مما يسمح للناس بتنفس هواء نقي، باستخدام 1,170 واط فقط من الكهرباء، وهو ما يعادل استهلاك غلاية الماء.`,
-    description:`
+    description: `
 افتتحت هيئة البيئة - أبوظبي بالتعاون مع مجموعة مدن أول برج لتنقية الهواء في المنطقة في سيرف أبوظبي، اللذي يقع في جزيرة الحديريات. يعتبر البرج الجديد لتنقية الهواء ابتكارًا حضاريًا يهدف إلى تحسين جودة الهواء في المنطقة وتوفير تجربة ملهمة لمستقبل نظيف وخالٍ من التلوث. مصنوع البرج  من الألمنيوم، ويبلغ ارتفاعه سبعة أمتار، يعتمد على تقنية التأين الإيجابي الصديقة للبيئة لتنقية الهواء المحيط، حيث يقوم بتنظيف 30,000 متر مكعب من الهواء في الساعة. تساهم هذه التقنية في إنتاج هواء خالٍ من الضباب الدخاني في الأماكن العامة، مما يسمح للناس تنفس هواءً نقيًا، باستخدام 1,170 واط فقط من الكهرباء، وهو ما يعادل استهلاك غلاية ماء.`,
   },
 ];
@@ -8652,15 +8766,13 @@ var accordionContent = [
 
 var accordionArabicContent = [
   {
-    question: '  ماذا يعني مصطلح "جودة الهواء"؟',
-    // answer:
-    // "تشير جودة الهواء إلى حالة الهواء المحيط ونقائه. حيث تتعلق جودة الهواء بتركيز الملوثات الجوية المختلفة التي قد تكون ضارة بصحة الانسان والبيئة. ",
-    answer: " جودة الهواء يشير إلى حالة الهواء المحيط ونقائه. وبشكل خاص إلى وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة",
+    question: 'ماذا يعني مصطلح "جودة الهواء"؟',
+    answer:
+      " جودة الهواء تشير إلى حالة الهواء المحيط ونقائه. وبشكل خاص إلى وجود الملوثات التي يمكن أن تؤثر على صحة الإنسان والبيئة.",
   },
   {
     question: "ما هي ملوثات الهواء الرئيسية الموجودة في البيئة؟",
     answer:
-      // "تشمل الملوثات الهوائية الشائعة الجسيمات العالقة (PM) وثاني أكسيد النيتروجين (NO2) وثاني أكسيد الكبريت (SO2) والأوزون (O3) وأول أكسيد الكربون (CO).",
       "تشمل ملوثات الهواء الرئيسية الجسيمات العالقة (PM) وثاني أكسيد النيتروجين (NO2) وثاني أكسيد الكبريت (SO2) والأوزون (O3) وأول أكسيد الكربون (CO).",
   },
   {
@@ -8674,68 +8786,63 @@ var accordionArabicContent = [
       "تشرف هيئة البيئة – أبوظبي على شبكة تضم 20 محطة ثابتة لمراقبة جودة الهواء موزعة في جميع أنحاء إمارة أبوظبي، بالإضافة إلى محطتان متنقلتان لمراقبة جودة الهواء.",
   },
   {
-    question: "من هم الأشخاص ضمن الفئة الحساسة",
-    answer:
-      // "المجموعات الحساسة تتضمن الأفراد الأكثر عرضة للتأثيرات السلبية لجودة الهواء الرديئة، مما يستلزم اتخاذ تدابير استباقية، وتشمل الأطفال تحت 18 عامًا، وكبار السن، والأفراد المصابين بأمراض القلب أو الرئة المزمنة، والحوامل، والأشخاص المصابين بالسكري، والذين يمارسون الأنشطة الخارجية بشكل دائم. لحماية هذه المجموعات، من الضروري مراقبة جودة الهواء، وتقييد الأنشطة الخارجية خلال ساعات الذروة للتلوث، وضمان وجود مساحات داخلية جيدة التهوية، والالتزام بالنصائح الطبية، خاصة لأولئك الذين لديهم حالات صحية مسبقة. من خلال اتخاذ هذه الخطوات معًا، يمكننا تعزيز مجتمع أكثر صحة ومرونة، مع إعطاء الأولوية للأفراد الأكثر عرضة لخطر التلوث الهوائي..",
-      "الفئة الحساسة تتضمن الأفراد الأكثر عرضة للتأثيرات السلبية لجودة الهواء الغير جيدة، مما يستلزم اتخاذ تدابير استباقية، وتشمل هذه الفئات الأطفال تحت 18 عامًا، وكبار السن، والأفراد المصابين بأمراض القلب أو الرئة المزمنة، والحوامل، والأشخاص المصابين بالسكري، والذين يمارسون الأنشطة الخارجية بشكل دائم. لحماية هذه المجموعات، من الضروري مراقبة جودة الهواء، وتقييد الأنشطة الخارجية خلال ساعات الذروة للتلوث، وضمان وجود مساحات داخلية جيدة التهوية، والالتزام بالنصائح الطبية، خاصة للفئات الذين يعانون من حالات صحية مسبقة. من خلال اتخاذ هذه الخطوات معًا، يمكننا تعزيز مجتمع أكثر صحة ومرونة، من خلال  إعطاء الأولوية للأفراد الأكثر عرضة لخطر التلوث الهوائي.",
+    question: "من هم الأشخاص ضمن الفئة الحساسة؟",
+    answer: `
+الفئة الحساسة (أو فئة ذوي الحساسية)
+ تتضمن الأفراد الأكثر عرضة للتأثيرات السلبية لجودة الهواء الغير جيدة، مما يستلزم اتخاذ تدابير استباقية، وتشمل هذه الفئات الأطفال تحت 18 عامًا، وكبار السن، والأفراد المصابين بأمراض القلب أو الرئة المزمنة، والحوامل، والأشخاص المصابين بالسكري، والذين يمارسون الأنشطة الخارجية بشكل دائم. لحماية هذه المجموعات، من الضروري مراقبة جودة الهواء، وتقييد الأنشطة الخارجية خلال ساعات الذروة للتلوث، وضمان وجود مساحات داخلية جيدة التهوية، والالتزام بالنصائح الطبية، خاصة للفئات الذين يعانون من حالات صحية مسبقة. من خلال اتخاذ هذه الخطوات معًا، يمكننا تعزيز مجتمع أكثر صحة ومرونة، من خلال  إعطاء الأولوية للأفراد الأكثر عرضة لخطر التلوث الهوائي.`,
   },
   {
     question: "كيف يمكنني التحقق من جودة الهواء في منطقتي؟",
     answer:
-      "يمكنك التحقق من جودة الهواء في منطقتك من خلال اختيار أقرب محطة مراقبة أو البحث عن منطقتك من خلال قائمة البحث في الخريطة.",
+      "يمكنك التحقق جودة الهواء في منطقتك عن طريق اختيار أقرب محطة مراقبة أو البحث عن منطقتك باستخدام البحث في الخريطة.",
   },
   {
-    question: "هل تلعب جودة الهواء دورًا في تغير المناخ؟",
+    question: "هل لجودة الهواء دور في تغير المناخ؟",
     answer:
-      "نعم، تلعب جودة الهواء دورًا كبيرًا في تغير المناخ. تساهم الملوثات الهوائية المصنفة كغازات دفيئة، مثل الميثان وثاني أكسيد الكربون، في تغير المناخ من خلال زيادة تأثير الاحتباس الحراري وتغيير توازن الطاقة على الأرض.",
+      "نعم، لجودة الهواء دور في تغير المناخ. تساهم الملوثات الهوائية المصنفة كغازات دفيئة، مثل الميثان وثاني أكسيد الكربون، في تغير المناخ من خلال زيادة تأثير الاحتباس الحراري وتغيير توازن الطاقة على الأرض.",
   },
   {
     question: "كيف يؤثر تغير المناخ على جودة الهواء؟",
     answer:
-      // "يمكن أن يؤثر تغير المناخ على أنماط الطقس، مما يؤدي إلى حدوث موجات حر أكثر تكرارًا وشدة، وجفاف، وحرائق غابات. يمكن أن يؤدي ذلك إلى تقليل جودة الهواء من خلال زيادة مستويات التلوث، مثل الجسيمات العالقة والأوزون على مستوى الأرض. بالإضافة إلى ذلك، يمكن أن تسرع درجات الحرارة المرتفعة في تكوين الأوزون وتزيد من تقلب الملوثات. كما يمكن أن تؤثر التغيرات في الدوران الجوي على جودة الهواء الإقليمية، بينما يمكن أن تؤدي التحولات في الأنظمة البيئية إلى تغيير تركيبة الملوثات الجوية..",
-      "يمكن أن يؤثر تغير المناخ على أنماط الطقس، مما يؤدي إلى حدوث موجات حر أكثر تكرارًا وشدة، وجفاف، وحرائق غابات. يمكن أن يؤدي ذلك إلى تقليل جودة الهواء من خلال زيادة مستويات التلوث، مثل الجسيمات العالقة والأوزون على مستوى الأرض. بالإضافة إلى ذلك، يمكن أن تسرع درجات الحرارة المرتفعة في تكوين الأوزون وتزيد من تقلب الملوثات. كما يمكن أن تؤثر التغيرات في حركة الغلاف  الجوي على جودة الهواء الإقليمية، بينما يمكن أن تؤدي التحولات في الأنظمة البيئية إلى تغيير تركيبة الملوثات الجوية.",
+      "يمكن أن يؤثر تغير المناخ على أنماط الطقس، مما يسبب موجات حر أكثر تكرارًا وشدة، جفاف، وحرائق الغابات. ويمكن أن يؤدي ذلك إلى تقليل جودة الهواء من خلال زيادة مستويات التلوث، مثل الجسيمات الدقيقة والأوزون على سطح الأرض. كما أن درجات الحرارة المرتفعة قد تسرع من تكوين الأوزون وتزيد من تقلب الملوثات. يمكن أن تؤثر التغيرات في حركة الغلاف الجوي على جودة الهواء في المناطق المختلفة، وقد تؤدي التغيرات في الأنظمة البيئية إلى تغيير في تركيبة الملوثات الجوية.",
   },
   {
-    question: "كيف يمكن للأفراد المساهمة في تقليل تلوث الهواء؟ ?",
+    question: "كيف يمكن للأفراد المساهمة في تقليل تلوث الهواء؟",
     answer:
-      "<ul><li>اختيار وسائل النقل المستدامة.</li> <li>.استخدام الأجهزة الموفرة للطاقة وإيقاف الأجهزة الإلكترونية عند عدم الاستخدام.</li> <li> .اختيار مصادر الطاقة النظيفة مثل الطاقة الشمسية أو طاقة الرياح. </li> <li>.تجنب استخدام المركبات إلى عند الضرورة لتقليل انبعاثات  ازدحام المرور </li> <li> .استهلاك المنتجات المحلية </li> </ul>",
+      "<ul><li>استخدام وسائل النقل المستدامة.</li> <li>.استخدام الأجهزة الموفرة للطاقة وإيقاف الأجهزة الإلكترونية عند عدم الاستخدام.</li> <li> .اختيار مصادر الطاقة النظيفة مثل الطاقة الشمسية أو طاقة الرياح. </li> <li>تجنب استخدام المركبات إلا عند الضرورة، لتقليل انبعاثات الإزدحام المروري.</li> <li>استهلاك المنتجات المحلية.</li> </ul>",
   },
   {
     question: "ما هي المصادر المختلفة لتلوث الهواء؟",
     answer:
-      "يمكن تصنيف مصادر تلوث الهواء إلى نوعين رئيسيين: المصادر البشرية والمصادر الطبيعية. المصادر البشرية هي الانبعاثات الناتجة عن الأنشطة البشرية. على سبيل المثال: تعتبر الانبعاثات الصناعية، والنقل، والممارسات الزراعية، والأنشطة السكنية من أمثلة الأنشطة البشرية. أما المصادر الطبيعية، فهي العمليات التي تحدث بشكل طبيعي وتطلق ملوثات في الغلاف الجوي، مثل الثورات البركانية، وحرائق الغابات، والغبار وحبوب اللقاح الناتجة عن تآكل الرياح والنباتات، والانبعاثات البيولوجية من النباتات والأشجار..",
+      "مصادر تلوث الهواء تنقسم إلى نوعين رئيسيين: المصادر البشرية والمصادر الطبيعية. تشمل الانبعاثات الناتجة عن الأنشطة البشرية مثل المصانع، وسائل النقل، الزراعة، والأنشطة السكنية. أما المصادر الطبيعية فهي العمليات التي تحدث بشكل طبيعي وتطلق ملوثات في الهواء، مثل الثورات البركانية، حرائق الغابات، الغبار وحبوب اللقاح من الرياح والنباتات، والانبعاثات البيولوجية الناتجة من النباتات والأشجار.",
   },
   {
     question: "ما هي المخاطر الصحية المرتبطة بتلوث الهواء؟",
     answer:
-      // "يمكن أن يؤدي تلوث الهواء بمستويات مرتفعة والتعرض الطويل له في حدوث مشاكل تنفسية، وتفاقم الحالات الصحية الموجودة، والمساهمة في مشاكل القلب والأوعية الدموية.",
-      "يمكن أن يؤدي التلوث الهوائي على المستويات العالية والتعرض لفترات طويلة إلى مشاكل في الجهاز التنفسي، وتفاقم الأمراض الصحية الحالية، والمساهمة في مشاكل القلب والأوعية الدموية",
+      "يمكن أن يؤدي التعرض لمستويات عالية من التلوث الهوائي ولفترات طويلة، إلى مشاكل في الجهاز التنفسي، ويزيد من تفاقم الأمراض الصحية الحالية، ويسهم في حدوث اضرار للقلب والأوعية الدموية.",
   },
   {
-    question: "ما هي الأنواع المختلفة للجسيمات العالقة؟",
+    question: "ما هي أنواع الجسيمات الدقيقة المختلفة؟",
     answer:
-      "تشير الجسيمات العالقة (PM) إلى جزيئات أو قطرات صغيرة في الهواء يمكن استنشاقها إلى الرئتين. تختلف هذه الجزيئات في الحجم، وتصنف بناءً على قطرها. النوعان الرئيسيان من الجسيمات العالقة هما: PM10 وPM2.5.",
+      "تشير الجسيمات الدقيقة (PM) إلى جزيئات أو قطرات صغيرة في الهواء يمكن استنشاقها عبر الرئتين. وتختلف هذه الجسيمات في الحجم، وتصنف بناءً على قطرها. النوعان الرئيسيان من الجسيمات الدقيقة هما: الجسيمات الدقيقة أصغر من 2.5 ميكرونات (PM2.5) والجسيمات الدقيقة أصغر من 10 ميكرونات (PM10).",
   },
   {
-    question: "ما هو الأوزون (O3)؟ ",
-    // answer: "الأوزون (O3) هو غاز أزرق باهت له رائحة مميزة وحادة، وهو جزيء يتكون من ثلاثة ذرات أكسجين. يتواجد الأوزون في كل من الغلاف الجوي العلوي للأرض (الستراتوسفير) وعلى مستوى سطح الأرض (التروبوسفير)، حيث يشكل طبقة الأوزون ويساهم في جودة الهواء. ."
+    question: "ما هو الأوزون (O3)؟",
     answer:
-      "الأوزون (O3) هو غاز أزرق باهت له رائحة مميزة وحادة، وهو جزيء يتكون من ثلاثة ذرات أكسجين. يتواجد الأوزون في كل من الغلاف الجوي العلوي للأرض (الستراتوسفير) وعلى مستوى سطح الأرض (التروبوسفير)، حيث يشكل طبقة الأوزون ويساهم في جودة الهواء. ",
+      "الأوزون (O3) هو غاز أزرق باهت ذو رائحة مميزة وحادة، ويتكون من ثلاثة ذرات أكسجين. يوجد الأوزون في الغلاف الجوي العلوي للأرض (الستراتوسفير) وأيضًا على مستوى سطح الأرض (التروبوسفير)، حيث يشكل طبقة الأوزون ويساعد في تحسين جودة الهواء.",
   },
   {
     question: "ما هي أكاسيد النيتروجين (NOx)؟",
     answer:
-      "<p>تشير أكاسيد النيتروجين (NOx) إلى مجموعة من الغازات التفاعلية التي تتكون من جزيئات النيتروجين والأكسجين. الأكسيدان الرئيسيان من أكاسيد النيتروجين التي تثير القلق البيئي هما أكسيد النيتروجين الأحادي (NO) وأكسيد النيتروجين الثنائي (NO2). الصيغ الكيميائية لهذه الغازات هي NO وNO2. </p> <p>تنتج أكاسيد النيتروجين أثناء عمليات الاحتراق، مثل المركبات ومحطات الطاقة والمنشآت الصناعية. المصدر الرئيسي لانبعاثات أكاسيد النيتروجين (NOx) هو احتراق الوقود الأحفوري، غالباً في محركات الاحتراق الداخلي والمراجل الصناعية.</p>.",
+      "<p>أكاسيد النيتروجين (NOx) هي مجموعة من الغازات التفاعلية التي تتكون من جزيئات النيتروجين والأكسجين. الأكسيدان الرئيسيان من أكاسيد النيتروجين التي تثير القلق البيئي هما أحادي أكسيد النيتروجين (NO) وثنائي أكسيد النيتروجين (NO2).</p> <p>تنتج أكاسيد النيتروجين أثناء عمليات الاحتراق، مثل المركبات ومحطات الطاقة والمنشآت الصناعية. المصدر الرئيسي لانبعاثات أكاسيد النيتروجين (NOx) هو احتراق الوقود الأحفوري، غالباً في محركات الاحتراق الداخلي والمراجل الصناعية.</p>.",
   },
   {
-    question: "ما هو ثاني أكسيد الكبريت (SO2)؟",
-    // answer: "ثاني أكسيد الكبريت (SO2) هو غاز عديم اللون ذو رائحة لاذعة. يتكون من ذرة واحدة من الكبريت وذرتين من الأكسجين، وصيغته الكيميائية هي SO2. يُنتج ثاني أكسيد الكبريت بشكل رئيسي من حرق الوقود الأحفوري الذي يحتوي على الكبريت، مثل الفحم والنفط، في محطات الطاقة ومن خلال بعض العمليات الصناعية. كما يتم إطلاقه خلال الثورات البركانية."
+    question: "ما هو ثنائي أكسيد الكبريت (SO2)؟",
     answer:
-      "ثاني أكسيد الكبريت (SO2) هو غاز عديم اللون ذو رائحة لاذعة. يتكون من ذرة واحدة من الكبريت وذرتين من الأكسجين، وصيغته الكيميائية هي SO2. ينتج ثاني أكسيد الكبريت بشكل رئيسي من حرق الوقود الأحفوري الذي يحتوي على الكبريت، مثل الفحم والنفط، في محطات الطاقة ومن خلال بعض العمليات الصناعية. كما يتم إطلاقه خلال الثورات البركانية.",
+      "ثنائي أكسيد الكبريت (SO2) هو غاز عديم اللون ذو رائحة لاذعة. يتكون من ذرة واحدة من الكبريت وذرتين من الأكسجين، وصيغته الكيميائية هي SO2. ينتج ثاني أكسيد الكبريت بشكل رئيسي من حرق الوقود الأحفوري الذي يحتوي على الكبريت، مثل الفحم والنفط، في محطات الطاقة ومن خلال بعض العمليات الصناعية و الثورات البركانية.",
   },
   {
     question: "ما هو أول أكسيد الكربون (CO)؟",
-    // answer: "أول أكسيد الكربون (CO) هو غاز عديم اللون وبدون رائحة وطعم. يتكون من ذرة واحدة من الكربون وذرة واحدة من الأكسجين، وصيغته الكيميائية هي CO. يتم إنتاج أول أكسيد الكربون نتيجة الاحتراق غير الكامل للوقود الذي يحتوي على الكربون، مثل البنزين والغاز الطبيعي والخشب. يمكن أن يُنبعث من المركبات، والعمليات الصناعية، والأجهزة المنزلية. يُعرف أول أكسيد الكربون بخطره المحتمل، حيث إن التركيزات العالية يمكن أن تكون سامة للبشر والحيوانات. في البيئات الداخلية، من المهم ضمان التهوية الجيدة والوظيفة الصحيحة للأجهزة الاحتراقية لمنع تراكم أول أكسيد الكربون."
     answer:
       "أول أكسيد الكربون (CO) هو غاز عديم اللون وبدون رائحة وطعم. يتكون من ذرة واحدة من الكربون وذرة واحدة من الأكسجين، وصيغته الكيميائية هي CO. يتم إنتاج أول أكسيد الكربون نتيجة الاحتراق غير الكامل للوقود الذي يحتوي على الكربون، مثل البنزين والغاز الطبيعي والخشب، ويمكن أن ينبعث من المركبات، والعمليات الصناعية، والأجهزة المنزلية. يعرف أول أكسيد الكربون بخطره المحتمل، حيث إن التركيزات العالية يمكن أن تكون سامة للبشر والحيوانات. في البيئات الداخلية، من المهم ضمان التهوية الجيدة وعمل أجهزة الإحتراق بكفاءة وشكل صحيح لمنع تراكم أول أكسيد الكربون.",
   },
@@ -8851,8 +8958,6 @@ $(".select-pils").on("click", function () {
 //     }
 // }
 
-
-
 // function toggleChangeLanguage() {
 //   const button1 = document.getElementById("language-toggle");
 //   const button2 = document.getElementById("language-toggle1");
@@ -8893,9 +8998,6 @@ $(".select-pils").on("click", function () {
 //     button3.innerText = currentLanguage === "english" ? arabictext : "English";
 // }
 
-
-
-
 function initializeLanguageButton() {
   const button1 = document.getElementById("language-toggle");
   const button2 = document.getElementById("language-toggle1");
@@ -8903,7 +9005,7 @@ function initializeLanguageButton() {
   const currentLanguage = localStorage.getItem("language") || "english";
   const arabicText = "عربي";
   const arabicFontFamily = "'Cairo', sans-serif";
-  const englishFontfamily = 'Gothamlight'; // Specify the Arabic font family here
+  const englishFontfamily = "Gothamlight"; // Specify the Arabic font family here
 
   // Set button text and font based on the language
   if (currentLanguage === "english") {
@@ -8927,7 +9029,6 @@ function initializeLanguageButton() {
   }
 }
 
-
 // Function to toggle the language and update localStorage
 // function toggleChangeLanguage() {
 //     const button1 = document.getElementById("language-toggle");
@@ -8948,11 +9049,9 @@ function initializeLanguageButton() {
 //     localStorage.setItem("language", newLanguage);
 // }
 function toggleChangeLanguage() {
-
   const button1 = document.getElementById("language-toggle");
   const button2 = document.getElementById("language-toggle1");
   const button3 = document.getElementById("llanguage-toggle");
-
 
   const currentLanguage = localStorage.getItem("language") || "english";
 
@@ -8983,8 +9082,8 @@ function toggleChangeLanguage() {
 
   // Update the language in localStorage
   localStorage.setItem("language", newLanguage);
- //updateSliderDirection();
- location.reload();
+  //updateSliderDirection();
+  location.reload();
 }
 
 // Function to get current translateX value
@@ -8995,9 +9094,9 @@ function getTranslateX(transformValue) {
 
 // Function to update the slider direction
 function updateSliderDirection() {
-  const slidesContainer = document.querySelector('.fp-slidesContainer'); // Update the selector
-  const language = localStorage.getItem('language'); // Get current language
-  const isArabic = language === 'arabic';
+  const slidesContainer = document.querySelector(".fp-slidesContainer"); // Update the selector
+  const language = localStorage.getItem("language"); // Get current language
+  const isArabic = language === "arabic";
   const directionMultiplier = isArabic ? 1 : -1;
 
   const currentTransform = slidesContainer.style.transform; // Get the current transform
@@ -9008,13 +9107,10 @@ function updateSliderDirection() {
   slidesContainer.style.transform = `translate3d(${newX}px, 0px, 0px)`;
 }
 
-
-
 // Initialize button text on page load
 document.addEventListener("DOMContentLoaded", initializeLanguageButton);
 
-
-var slideIndexS = localStorage.getItem('slideIndexS') || 0;
+var slideIndexS = localStorage.getItem("slideIndexS") || 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtns = document.getElementsByClassName("toggleLanguageBtn");
@@ -9022,8 +9118,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionHeader = document.getElementById("questionHeader");
   const questionHeaderAlt = document.getElementById("questionHeaderAlt");
   const monitoringHeading = document.getElementById("monitoringHeading");
-  const initiativeHeadingContentLg = document.getElementById("initiativeHeadingContentLg");
-  const initiativeHeadingContentSm = document.getElementById("initiativeHeadingContentSm");
+  const initiativeHeadingContentLg = document.getElementById(
+    "initiativeHeadingContentLg"
+  );
+  const initiativeHeadingContentSm = document.getElementById(
+    "initiativeHeadingContentSm"
+  );
   const navLinkAirQuality = document.getElementById("navLinkAirQuality");
   const contactHead = document.getElementById("contactus");
   const heading = document.getElementById("heading");
@@ -9043,7 +9143,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const prev = document.querySelector(".previous");
   const next = document.querySelector(".next");
   const airQualityAssessments = document.querySelectorAll(".chart-f-content p");
-  const dropdownLists = document.querySelectorAll(".dropdown-menu.metero-dropdown");
+  const dropdownLists = document.querySelectorAll(
+    ".dropdown-menu.metero-dropdown"
+  );
   const iaqmElement = document.getElementById("iaqm");
   const switchingElement = document.getElementById("switching-air-purifier");
   const $inputElements = $(".insight .data-list label.list-group-item input");
@@ -9105,7 +9207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function updateToArabic() {
-    let indexdes = localStorage.getItem('destinationIndex')
+    let indexdes = localStorage.getItem("destinationIndex");
 
     renderAccordionContent(accordionArabicContent);
     loadCarousel(imageDataArabic);
@@ -9114,17 +9216,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("arabic-mode");
     //for insights animation buttons
     if (indexdes == 3) {
-
-      $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
-      $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-    }
-    else if (indexdes == 1 || indexdes == 2) {
-      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-      $('.fp-next').removeClass('disabled').removeClass('animate-blinking');
-    }
-    else {
-      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-      $('.fp-next').addClass('disabled').removeClass('animate-blinking');
+      $(".fp-prev").addClass("disabled").removeClass("animate-blinking");
+      $(".fp-next").removeClass("disabled").addClass("animate-blinking");
+    } else if (indexdes == 1 || indexdes == 2) {
+      $(".fp-prev").removeClass("disabled").addClass("animate-blinking");
+      $(".fp-next").removeClass("disabled").removeClass("animate-blinking");
+    } else {
+      $(".fp-prev").removeClass("disabled").addClass("animate-blinking");
+      $(".fp-next").addClass("disabled").removeClass("animate-blinking");
     }
     $(".accordion-button").addClass("rtl-accordion");
     $(".accordion-button").addClass("accordion-align-content");
@@ -9132,16 +9231,16 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".contact-info-content").addClass("contact-info-data");
     $inputElements.addClass("rtl-stationsData");
     $(".insight .sorttoggle button.btn-close").addClass("sort-toggle");
-    $('.insight #sidebar-btn').addClass('ipad-expand-panel')
+    $(".insight #sidebar-btn").addClass("ipad-expand-panel");
     $(".switch1 > span.on").addClass("arabic-switch1");
     $(".form-direction").css({
       "text-align": "right",
       direction: "rtl",
     });
-    $('.insight #sidebar-btn').addClass('expandpanelipad')
+    $(".insight #sidebar-btn").addClass("expandpanelipad");
     // $('.insight .coll-icon').addClass('expandpanelairpro')
-    $('.iconimg').addClass('infoiconmobile')
-    $('.equal-station-box-height ').addClass('pollutent-graph')
+    $(".iconimg").addClass("infoiconmobile");
+    $(".equal-station-box-height ").addClass("pollutent-graph");
     $(".insight .silde-dv").addClass("slide-dv-position");
     $("#fp-nav").addClass("fp-left");
     $("#fp-nav").removeClass("fp-right");
@@ -9149,8 +9248,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // $('.insight ul.dropdown-menu.sorttoggle.show').removeClass('left-minus-twelve')
     $(".footer-change-col").removeClass("col-xl-3").addClass("col-xl-2");
     // $('.open').addClass('hamberger-cross-icon');
-    $('.faq-section h4').addClass('questions-heading-ipad')
-    $('.insight ul.nav.twobar-tabs').addClass('graph-tabs-arabic')
+    $(".faq-section h4").addClass("questions-heading-ipad");
+    $(".insight ul.nav.twobar-tabs").addClass("graph-tabs-arabic");
 
     // $('.col-lg-4').removeClass('col-lg-4').addClass('col-lg-2');
     // $('.col-xl-8').removeClass('col-xl-8').addClass('col-xl-9');
@@ -9171,8 +9270,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // document.querySelectorAll('.fp-prev.animate-blinking, .fp-next.animate-blinking').forEach(element => {
     //   element.classList.add('arabic-animate-blinking')});
-    document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
-      element.classList.add('arabic-animate')
+    document.querySelectorAll(".fp-prev, .fp-next").forEach((element) => {
+      element.classList.add("arabic-animate");
     });
 
     $(".monitoring-heading").addClass("arabic-monitoring-heading");
@@ -9180,7 +9279,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".footer-social-icons").addClass("social-media-icons");
     $(".copy-right-para").addClass("copy-right-para-footer");
     $(".Newsearch-box ul").css("right", "38px");
-    $('.reset-button').css({ 'left': '10px', 'right': '' });
+    $(".reset-button").css({ left: "10px", right: "" });
     // $('.insight .date-box .cal-div input').css('padding-left', '0');
     $(".prev-btn").addClass("previous-btn");
     $(".next-btn").addClass("next-button");
@@ -9190,33 +9289,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $(".search-station-sidebar").addClass("sidebar-search-station");
     $(".insight .ug_content ").addClass("ug_content-arabic");
-    document.getElementById('mainPollutantName').style.textAlign = 'right';
+    document.getElementById("mainPollutantName").style.textAlign = "right";
     // document.querySelector('.insight .ug_content ').style.left='-130px'
-    $('.insight .chart-f-content p').addClass('aqi-content-arabic');
-    $('.station-aqi-trends-disclaimers').addClass('station-aqi-desclimer-mobile');
-    $('.exceeded-box .contact-content p ').addClass('hours-exceedance-disclaimer-mobile');
+    $(".insight .chart-f-content p").addClass("aqi-content-arabic");
+    $(".station-aqi-trends-disclaimers").addClass(
+      "station-aqi-desclimer-mobile"
+    );
+    $(".exceeded-box .contact-content p ").addClass(
+      "hours-exceedance-disclaimer-mobile"
+    );
     // $('#sidebar-btn').addClass('expand-panel-arabic');;
     //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
     //     element.classList.add('expand-panel-arabic');
     //     console.log("classsssssisaddedd")
     // });
 
-    $('.circular-width').addClass('circular-width-arabic');
+    $(".circular-width").addClass("circular-width-arabic");
 
-
-
-
-
-    questionHeader.textContent = "الأسئلة الشائعة";
-    questionHeaderAlt.innerHTML = "الأسئلة الشائعة";
+    questionHeader.textContent = "الأسئلة الشائعة! ";
+    questionHeaderAlt.innerHTML = "الأسئلة الشائعة! ";
     monitoringHeading.innerText = "مبادراتنا لمراقبة جودة الهواء";
     initiativeHeadingContentLg.innerHTML =
       "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     initiativeHeadingContentSm.innerText =
       "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     navLinkAirQuality.innerText = "جودة الهواء";
-
-
 
     //03-11
     document.addEventListener("DOMContentLoaded", function () {
@@ -9227,12 +9324,14 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".getback-msg").innerText =
         "لقد تم استلام رسالتك. سوف نعود اليكم قريبا";
     });
-    document.querySelector(".welcome-text").innerText = "مرحبًـــا بكـــم فـــي";
+    document.querySelector(".welcome-text").innerText =
+      "مرحبًـــا بكـــم فـــي";
     document.querySelector(".quotes").innerText = "مراقبـــة جـــودة الهـــواء";
     document.querySelector(".emirates-text").innerText = "فـــي أبوظبـــي";
     document.querySelector("#AQI-mb-0").innerText = "مؤشر جودة الهواء";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
-    document.querySelector(".copy-right-para").innerText = "© 2021 حكومة أبوظبي جميع الحقوق محفوظة."
+    document.querySelector(".copy-right-para").innerText =
+      "© 2021 حكومة أبوظبي جميع الحقوق محفوظة.";
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.innerText = "AQI";
     });
@@ -9280,12 +9379,15 @@ document.addEventListener("DOMContentLoaded", () => {
     Message.placeholder = "الرسالة";
     Message.style.direction = "ltr";
     document.getElementById("searchInput").placeholder = "المحطة بحث";
-    document.getElementById("stationsDropdownMapSearch").placeholder = "المحطة بحث";
+    document.getElementById("stationsDropdownMapSearch").placeholder =
+      "المحطة بحث";
     document
       .getElementById("headerSearchInput")
       .setAttribute("placeholder", "بحث");
 
-    document.querySelectorAll('.datepicker').forEach((element) => element.placeholder = " إنشاء مخصص");
+    document
+      .querySelectorAll(".datepicker")
+      .forEach((element) => (element.placeholder = " إنشاء مخصص"));
 
     document.querySelector(".search-result p").innerText = "نتائج البحث";
     document.querySelector(".newcutom-btn").innerText = "إغلاق";
@@ -9300,50 +9402,58 @@ document.addEventListener("DOMContentLoaded", () => {
       "عندما يصل مؤشر جودة الهواء (AQI) إلى اللون البرتقالي أو الأحمر أو الأرجواني أو العنابي، فمن المهم اتخاذ خطوات وقائية للحفاظ على صحتك. اتبع هذه الإرشادات لتقليل تأثير التلوث المرتفع على صحتك.";
     document.querySelector(".mask-hoverEffect").innerText = "استخدام الكمامات";
     if (window.matchMedia("(max-width: 767px)").matches) {
-      $(".insight .search-box .p-input span").css({ "right": "auto", "left": "12px" });
-    }
-    else if (window.matchMedia("(min-width: 768px)").matches) {
-      $(".insight .search-box .p-input span").css({ "right": "auto", "left": "12px" });
+      $(".insight .search-box .p-input span").css({
+        right: "auto",
+        left: "12px",
+      });
+    } else if (window.matchMedia("(min-width: 768px)").matches) {
+      $(".insight .search-box .p-input span").css({
+        right: "auto",
+        left: "12px",
+      });
     }
     $(".air-quality-pill").addClass("air-quality-btn");
     $(".dropdown-menu.sorttoggle").removeClass("showText");
-    $("#language-toggle1").addClass('btn-name-english');
+    $("#language-toggle1").addClass("btn-name-english");
 
-    $('.footer-social-icons').addClass('social-media-icons');
-    $('.copy-right-para').addClass('copy-right-para-footer');
-    $('.copy-right-contents').addClass('copy-right-contents-footer');
-    $('.contact-us-alignment').addClass('contact-us-alignment-style');
-    $('.footer-our-airquality').addClass('footer-our-airquality-alignment');
-    $('.next-btn-arb').addClass('next-btn-arb-alignment');
-    $('.main-box').addClass('main-box-arabic');
-    $('.tab_shado').addClass('main-box-arabic-box');
-    $('.responsive-align').removeClass('pad_r');
-    $('.contact-section .contact-info-item .contact-info-content a').addClass('footer-content');
-    $('.insight .main-box').addClass('insightbox-tabmini');
-    $('.equal-station-box-height').addClass('pollutant-graph-ipad');
+    $(".footer-social-icons").addClass("social-media-icons");
+    $(".copy-right-para").addClass("copy-right-para-footer");
+    $(".copy-right-contents").addClass("copy-right-contents-footer");
+    $(".contact-us-alignment").addClass("contact-us-alignment-style");
+    $(".footer-our-airquality").addClass("footer-our-airquality-alignment");
+    $(".next-btn-arb").addClass("next-btn-arb-alignment");
+    $(".main-box").addClass("main-box-arabic");
+    $(".tab_shado").addClass("main-box-arabic-box");
+    $(".responsive-align").removeClass("pad_r");
+    $(".contact-section .contact-info-item .contact-info-content a").addClass(
+      "footer-content"
+    );
+    $(".insight .main-box").addClass("insightbox-tabmini");
+    $(".equal-station-box-height").addClass("pollutant-graph-ipad");
 
     // document.querySelector('.cal-div').style.direction='rtl';
     // document.querySelectorAll('.insight .silde-dv').forEach(item => {
     //     item.style.removeProperty('margin','1rem','1rem','importent');
     // });
 
-    $('.insight .polutenat_bar .tab_shado .graph-duration-filters').removeClass('filter-arabic');
+    $(".insight .polutenat_bar .tab_shado .graph-duration-filters").removeClass(
+      "filter-arabic"
+    );
 
     if (window.matchMedia("(max-width: 767px)").matches) {
-      document.querySelectorAll('.insight .silde-dv').forEach(item => {
-        item.style.setProperty('margin', '1rem', 'important');
+      document.querySelectorAll(".insight .silde-dv").forEach((item) => {
+        item.style.setProperty("margin", "1rem", "important");
       });
     }
-
-
-
 
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
       item.style.setProperty("direction", "rtl");
     });
 
-    $('.pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1').addClass('mobileinfocnt');
+    $(
+      ".pollutant-toggleBar .info-popup, .pollutant-toggleBar:first-of-type  .info-topPosition, .pollutant-toggleBar .info-topPosition1"
+    ).addClass("mobileinfocnt");
 
     // $('#airQualitySafetyLevelStation').addClass('station-arabic');
 
@@ -9354,15 +9464,18 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.setProperty("padding", "0 14px");
     });
 
-    const searchstation = document.querySelectorAll('.insight .inner_list-content span');
-    searchstation.forEach(item => {
-      item.style.setProperty('float', 'right', 'important');
-    })
-
-    document.querySelectorAll('.date-time').forEach(element => {
-      element.innerText = 'التاريخ والوقت';
+    const searchstation = document.querySelectorAll(
+      ".insight .inner_list-content span"
+    );
+    searchstation.forEach((item) => {
+      item.style.setProperty("float", "right", "important");
     });
-    document.querySelector('.nearest-heading').innerHTML = 'أقرب محطة: مدينة خليفة';
+
+    document.querySelectorAll(".date-time").forEach((element) => {
+      element.innerText = "التاريخ والوقت";
+    });
+    document.querySelector(".nearest-heading").innerHTML =
+      "أقرب محطة: مدينة خليفة";
 
     const multivaluetab = document.querySelectorAll(".mult-value-tab");
     multivaluetab.forEach((item) => {
@@ -9371,23 +9484,27 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.setProperty("direction", "ltr");
     });
 
-    const responsiveCross = document.querySelector('.responsive-cross');
-    responsiveCross.classList.add('responsive-cross-css');
-    responsiveCross.classList.remove('responsive-cross-css-english');
+    const responsiveCross = document.querySelector(".responsive-cross");
+    responsiveCross.classList.add("responsive-cross-css");
+    responsiveCross.classList.remove("responsive-cross-css-english");
 
-    const modalBackgroundImg = document.querySelector('.modal-background img');
-    modalBackgroundImg.classList.add('modal-padding');
-    modalBackgroundImg.classList.remove('modal-padding-english');
+    const modalBackgroundImg = document.querySelector(".modal-background img");
+    modalBackgroundImg.classList.add("modal-padding");
+    modalBackgroundImg.classList.remove("modal-padding-english");
 
-    const projectModalItemContent = document.querySelector('.projectItemContent');
-    projectModalItemContent.classList.add('modal-padding');
-    projectModalItemContent.classList.remove('modal-padding-english');
+    const projectModalItemContent = document.querySelector(
+      ".projectItemContent"
+    );
+    projectModalItemContent.classList.add("modal-padding");
+    projectModalItemContent.classList.remove("modal-padding-english");
 
-    const projectModalItemDescription = document.querySelector('.projectItemDescription');
-    projectModalItemDescription.classList.add('modal-padding');
-    projectModalItemDescription.classList.remove('modal-padding-english');
+    const projectModalItemDescription = document.querySelector(
+      ".projectItemDescription"
+    );
+    projectModalItemDescription.classList.add("modal-padding");
+    projectModalItemDescription.classList.remove("modal-padding-english");
 
-    $('.sidebar button').addClass('close-modal-button');
+    $(".sidebar button").addClass("close-modal-button");
     // document.querySelector('.mask-usage').innerText = 'استخدام الكمامة';
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".mask-usage").innerText = "استخدام الكمامات";
@@ -9499,7 +9616,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ".contact-content-mobile"
     ).innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة.`;
     document.querySelector(".air-analytics-mobile").innerText =
-      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".'
+      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
     document.querySelector(".activity_heading").innerText = "الأنشطة";
     airQualityAssessments.forEach((element) => {
       element.innerText =
@@ -9566,7 +9683,6 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.setProperty("right", "auto", "important"); // Set 'right: auto !important'
       item.style.setProperty("left", "0");
     });
-
 
     $(".insight .slide-content ul .modal.fade button.btn-close").addClass(
       "health-cross-icon"
@@ -9635,8 +9751,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelector(".footer-2-sec")
       .style.setProperty("padding-left", "20px");
 
-    document.querySelector('.pollutants-legend-heading').style.setProperty('direction', 'rtl', 'important');
-    $('.nearest-section .station-details .legend-value').addClass("aqi-legend-value");
+    document
+      .querySelector(".pollutants-legend-heading")
+      .style.setProperty("direction", "rtl", "important");
+    $(".nearest-section .station-details .legend-value").addClass(
+      "aqi-legend-value"
+    );
 
     // $('.fp-next').classList.add('arabic-fp-next')
 
@@ -9706,8 +9826,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // rightsidebar.style.setProperty("padding-right", "16px", "important");
     rightsidebar.style.setProperty("padding", "10px", "important");
 
-
-
     $(".text-right").addClass("text-left-arabic");
     const dropdownItems = document.querySelectorAll(".dropdown-item");
     dropdownItems.forEach((item) => {
@@ -9752,37 +9870,33 @@ document.addEventListener("DOMContentLoaded", () => {
     prev.querySelector("svg").style.transform = "rotate(180deg)"; // Flip the previous arrow
     next.querySelector("svg").style.transform = "rotate(-180deg)";
 
-    const event = new CustomEvent('languageChange', { detail: { language: currentLanguage } });
+    const event = new CustomEvent("languageChange", {
+      detail: { language: currentLanguage },
+    });
     document.dispatchEvent(event);
-
   }
 
   function updateToEnglish() {
-
-    document.getElementById('mainPollutantName').style.textAlign = 'left';
-    $('.faq-section h4').removeClass('questions-heading-ipad')
+    document.getElementById("mainPollutantName").style.textAlign = "left";
+    $(".faq-section h4").removeClass("questions-heading-ipad");
     document.body.classList.remove("arabic-mode");
-    let indexdes = localStorage.getItem('destinationIndex')
-
+    let indexdes = localStorage.getItem("destinationIndex");
 
     if (indexdes == 3) {
-
-      $('.fp-next').addClass('disabled').removeClass('animate-blinking');
-      $('.fp-prev').removeClass('disabled').addClass('animate-blinking');
-    }
-    else if (indexdes == 1 || indexdes == 2) {
-      $('.fp-prev').removeClass('disabled').removeClass('animate-blinking');
-      $('.fp-next').removeClass('disabled').addClass('animate-blinking  ');
-    }
-    else {
-      $('.fp-next').removeClass('disabled').addClass('animate-blinking');
-      $('.fp-prev').addClass('disabled').removeClass('animate-blinking');
+      $(".fp-next").addClass("disabled").removeClass("animate-blinking");
+      $(".fp-prev").removeClass("disabled").addClass("animate-blinking");
+    } else if (indexdes == 1 || indexdes == 2) {
+      $(".fp-prev").removeClass("disabled").removeClass("animate-blinking");
+      $(".fp-next").removeClass("disabled").addClass("animate-blinking  ");
+    } else {
+      $(".fp-next").removeClass("disabled").addClass("animate-blinking");
+      $(".fp-prev").addClass("disabled").removeClass("animate-blinking");
     }
 
     renderAccordionContent(accordionContent);
     loadCarousel(imageData);
     currentStatusClass = statusClass;
-    $('.iconimg').removeClass('infoiconmobile')
+    $(".iconimg").removeClass("infoiconmobile");
     $(".icon-circle-xmark-regular").removeClass("cross-icon");
     $(".text-right").removeClass("text-left-arabic");
     $(".accordion-button").removeClass("rtl-accordion");
@@ -9792,18 +9906,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // $('.insight .date-box .cal-div input').css('padding-left', '10px');
     $(".contact-info-content").removeClass("contact-info-data");
     if (window.matchMedia("(max-width: 767px)").matches) {
-      $(".insight .search-box .p-input span").css({ "right": "15px", "left": "auto" });
-    }
-    else if (window.matchMedia("(min-width: 768px)").matches) {
-      $(".insight .search-box .p-input span").css({ "right": "15px", "left": "auto" });
+      $(".insight .search-box .p-input span").css({
+        right: "15px",
+        left: "auto",
+      });
+    } else if (window.matchMedia("(min-width: 768px)").matches) {
+      $(".insight .search-box .p-input span").css({
+        right: "15px",
+        left: "auto",
+      });
     }
     // $('#sidebar-btn').removeClass('expand-panel-arabic');
     //   document.querySelectorAll('.insight #sidebar.visible #sidebar-btn').forEach((element) => {
     //     element.classList.remove('expand-panel-arabic');
-    // }); 
+    // });
 
     $(".insight .sorttoggle button.btn-close").removeClass("sort-toggle");
-    $('.insight #sidebar-btn').removeClass('ipad-expand-panel')
+    $(".insight #sidebar-btn").removeClass("ipad-expand-panel");
     $(".insight .silde-dv").removeClass("slide-dv-position");
     $("#fp-nav").removeClass("fp-left");
     $("#fp-nav").addClass("fp-right");
@@ -9811,8 +9930,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //   document.querySelectorAll('.fp-prev').forEach(element => {
     //     element.classList.remove('arabic-animate-blinking');
     // });
-    document.querySelectorAll('.fp-prev, .fp-next').forEach(element => {
-      element.classList.remove('arabic-animate')
+    document.querySelectorAll(".fp-prev, .fp-next").forEach((element) => {
+      element.classList.remove("arabic-animate");
     });
 
     $(".insight ul.dropdown-menu.sorttoggle.show").removeClass("left-zero");
@@ -9820,7 +9939,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".footer-our-airquality").removeClass("footer-our-airquality-alignment");
     $(".footer-change-col").removeClass("col-xl-2").addClass("col-xl-3");
     $(".dropdown-menu.sorttoggle").addClass("showText");
-    $('.responsive-align').addClass('pad_r')
+    $(".responsive-align").addClass("pad_r");
     $(".fp-next").removeClass("animation-next-buttons");
     $(".switch1 > span.on").removeClass("arabic-switch1");
     $(".footer-logo").removeClass("footer-logo-arabic");
@@ -9832,7 +9951,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       $(".Newsearch-box ul").css("left", "2px");
     }
-    $('.reset-button').css({ 'left': '', 'right': '10px' });
+    $(".reset-button").css({ left: "", right: "10px" });
     $(".copy-right-contents").removeClass("copy-right-contents-footer");
     $(".contact-us-alignment").removeClass("contact-us-alignment-style");
     $(".next-btn-arb").removeClass("next-btn-arb-alignment");
@@ -9844,18 +9963,28 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".main-box").removeClass("main-box-arabic");
     $(".tab_shado").removeClass("main-box-arabic-box");
     $(".insight .ug_content ").removeClass("ug_content-arabic");
-    $('.nearest-section .station-details .legend-value').removeClass("aqi-legend-value");
-    $("#language-toggle1").removeClass('btn-name-english');
-    $('.insight ul.nav.twobar-tabs').removeClass('graph-tabs-arabic');
-    $('.contact-section .contact-info-item .contact-info-content a').removeClass('footer-content');
-    $('.insight .chart-f-content p').removeClass('aqi-content-arabic');
-    $('.station-aqi-trends-disclaimers').removeClass('station-aqi-desclimer-mobile');
-    $('.exceeded-box .contact-content p ').removeClass('hours-exceedance-disclaimer-mobile');
-    $('.insight .main-box').removeClass('insightbox-tabmini');
-    $('.equal-station-box-height').removeClass('pollutant-graph-ipad');
-    $('.insight .polutenat_bar .tab_shado .graph-duration-filters').addClass('filter-arabic');
+    $(".nearest-section .station-details .legend-value").removeClass(
+      "aqi-legend-value"
+    );
+    $("#language-toggle1").removeClass("btn-name-english");
+    $(".insight ul.nav.twobar-tabs").removeClass("graph-tabs-arabic");
+    $(
+      ".contact-section .contact-info-item .contact-info-content a"
+    ).removeClass("footer-content");
+    $(".insight .chart-f-content p").removeClass("aqi-content-arabic");
+    $(".station-aqi-trends-disclaimers").removeClass(
+      "station-aqi-desclimer-mobile"
+    );
+    $(".exceeded-box .contact-content p ").removeClass(
+      "hours-exceedance-disclaimer-mobile"
+    );
+    $(".insight .main-box").removeClass("insightbox-tabmini");
+    $(".equal-station-box-height").removeClass("pollutant-graph-ipad");
+    $(".insight .polutenat_bar .tab_shado .graph-duration-filters").addClass(
+      "filter-arabic"
+    );
 
-    $('.circular-width').removeClass('circular-width-arabic');
+    $(".circular-width").removeClass("circular-width-arabic");
     // document.querySelector('.cal-div').style.direction='ltr';
     const calenderarabic = document.querySelectorAll(".cal-div");
     calenderarabic.forEach((item) => {
@@ -9867,8 +9996,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // });
 
     if (window.matchMedia("(max-width: 767px)").matches) {
-      document.querySelectorAll('.insight .silde-dv').forEach(item => {
-        item.style.removeProperty('margin', '1rem', 'important');
+      document.querySelectorAll(".insight .silde-dv").forEach((item) => {
+        item.style.removeProperty("margin", "1rem", "important");
       });
     }
 
@@ -9924,25 +10053,29 @@ document.addEventListener("DOMContentLoaded", () => {
         "Your message has been received. We'll get back to you shortly.";
     });
 
-    document.querySelectorAll('.date-time').forEach(element => {
-      element.innerText = "Date & Time :"
+    document.querySelectorAll(".date-time").forEach((element) => {
+      element.innerText = "Date & Time :";
     });
-    document.querySelector('.nearest-heading').innerHTML = 'Nearest Station: Khalifa City';
+    document.querySelector(".nearest-heading").innerHTML =
+      "Nearest Station: Khalifa City";
     document.querySelector("#message").style.textAlign = "left";
     document.querySelector(".welcome-text").innerText = "WELCOME TO";
     document.querySelector(".quotes").innerText = "Air Quality Monitoring";
     document.querySelector(".emirates-text").innerText = "In Abu Dhabi";
-    document.querySelector(".copy-right-para").innerText = "© Abu Dhabi All Rights Reserved 2024"
+    document.querySelector(".copy-right-para").innerText =
+      "© Abu Dhabi All Rights Reserved 2024";
     document.querySelector("#AQI-mb-0").innerText = "AQI";
     document.querySelector("#AQI-mb-1").innerText = "AQI";
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.textContent = "AQI";
     });
 
-
-    document.querySelectorAll('.datepicker').forEach((element) => element.placeholder = "Custom");
+    document
+      .querySelectorAll(".datepicker")
+      .forEach((element) => (element.placeholder = "Custom"));
     document.getElementById("searchInput").placeholder = "Search Station";
-    document.getElementById("stationsDropdownMapSearch").placeholder = "Search Station";
+    document.getElementById("stationsDropdownMapSearch").placeholder =
+      "Search Station";
     document.querySelectorAll(".windSpeedHeading").forEach((element) => {
       element.textContent = "Wind Speed";
     });
@@ -10127,26 +10260,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    const responsiveCross = document.querySelector('.responsive-cross');
-    responsiveCross.classList.remove('responsive-cross-css');
-    responsiveCross.classList.add('responsive-cross-css-english');
+    const responsiveCross = document.querySelector(".responsive-cross");
+    responsiveCross.classList.remove("responsive-cross-css");
+    responsiveCross.classList.add("responsive-cross-css-english");
 
-    const modalBackgroundImg = document.querySelector('.modal-background img');
-    modalBackgroundImg.classList.remove('modal-padding');
-    modalBackgroundImg.classList.add('modal-padding-english');
+    const modalBackgroundImg = document.querySelector(".modal-background img");
+    modalBackgroundImg.classList.remove("modal-padding");
+    modalBackgroundImg.classList.add("modal-padding-english");
 
-    const projectModalItemContent = document.querySelector('.projectItemContent');
-    projectModalItemContent.classList.remove('modal-padding');
-    projectModalItemContent.classList.add('modal-padding-english');
+    const projectModalItemContent = document.querySelector(
+      ".projectItemContent"
+    );
+    projectModalItemContent.classList.remove("modal-padding");
+    projectModalItemContent.classList.add("modal-padding-english");
 
-    const projectModalItemDescription = document.querySelector('.projectItemDescription');
-    projectModalItemDescription.classList.remove('modal-padding');
-    projectModalItemDescription.classList.add('modal-padding-english');
+    const projectModalItemDescription = document.querySelector(
+      ".projectItemDescription"
+    );
+    projectModalItemDescription.classList.remove("modal-padding");
+    projectModalItemDescription.classList.add("modal-padding-english");
 
     // $('.modal-background img').removeClass('modal-padding');
     // $('.projectItemContent').removeClass('modal-padding');
     // $('.projectItemDescription').removeClass('modal-padding');
-    $('.sidebar button').removeClass('close-modal-button');
+    $(".sidebar button").removeClass("close-modal-button");
     document.querySelector(
       ".hours-exceed-heading"
     ).innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">NUMBER OF HOURS<br>EXCEEDANCE PER YEAR</h2>`;
@@ -10338,10 +10475,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".dropdown-menu .dropdown-item");
     $(".footer-insights-alignment").addClass("col-xl-3");
     $(".footer-insights-alignment").removeClass("col-xl-4");
-    const event = new CustomEvent('languageChange', { detail: { language: currentLanguage } });
+    const event = new CustomEvent("languageChange", {
+      detail: { language: currentLanguage },
+    });
     document.dispatchEvent(event);
-
-
   }
 
   function updateAqitoArabic() {
@@ -10414,7 +10551,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.textContent = "جودة هواءنا";
             break;
           case "Insights":
-            link.innerHTML = 'رؤيتنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
+            link.innerHTML =
+              'رؤيتنا <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Projects":
             link.textContent = "المشاريع";
@@ -10423,7 +10561,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.textContent = "الأسئلة الشائعة";
             break;
           case "Contact Us":
-            link.innerHTML = 'تواصل معنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
+            link.innerHTML =
+              'تواصل معنا <img src="./images/new-images/drop-arrow.png " class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "Privacy Policy":
             link.textContent = "سياسة الخصوصية";
@@ -10464,7 +10603,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.textContent = "Our Air Quality";
             break;
           case "رؤيتنا":
-            link.innerHTML = 'Insights <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
+            link.innerHTML =
+              'Insights <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "المشاريع":
             link.textContent = "Projects";
@@ -10473,7 +10613,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.textContent = "FAQ";
             break;
           case "تواصل معنا":
-            link.innerHTML = 'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
+            link.innerHTML =
+              'Contact Us <img src="./images/new-images/drop-arrow.png" class="ms-2 hide-large-img-footer" alt="Dropdown Arrow">';
             break;
           case "سياسة الخصوصية":
             link.textContent = "Privacy Policy";
@@ -10574,6 +10715,3 @@ document.addEventListener("DOMContentLoaded", () => {
 //     });
 //   });
 // }
-
-
-
