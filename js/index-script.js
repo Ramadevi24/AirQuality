@@ -3635,8 +3635,7 @@ function getHealthRecommendationContent(aqiLevel) {
     good: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description:
           "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
       },
@@ -3654,8 +3653,7 @@ function getHealthRecommendationContent(aqiLevel) {
     moderate: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description: "يوصى بارتداء الكمامة للمجموعات الحساسة.",
       },
       {
@@ -3672,8 +3670,7 @@ function getHealthRecommendationContent(aqiLevel) {
     unhealthyForSensitiveGroups: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description:
           "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية.",
       },
@@ -3692,8 +3689,7 @@ function getHealthRecommendationContent(aqiLevel) {
     unhealthy: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description: "يوصى بارتداء الكمامة، مع الحد من الأنشطة الخارجية.",
       },
       {
@@ -3711,8 +3707,7 @@ function getHealthRecommendationContent(aqiLevel) {
     veryUnhealthy: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description:
           "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
@@ -3731,8 +3726,7 @@ function getHealthRecommendationContent(aqiLevel) {
     hazardous: [
       {
         img: "mask1.png",
-        // title: "استخدام الكمامة",
-        title: "استخدام الكمامات",
+        title: "استخدام الكمامة",
         description:
           "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
