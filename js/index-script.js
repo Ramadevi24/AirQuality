@@ -3637,7 +3637,7 @@ function getHealthRecommendationContent(aqiLevel) {
         img: "mask1.png",
         title: "استخدام الكمامة",
         description:
-          "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
+          "استمتع بالهواء النقي! لا داعي لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
       },
       {
         img: "health_kit2.png",
