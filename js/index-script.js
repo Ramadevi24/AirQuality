@@ -2096,7 +2096,7 @@ const statusClassNew1 = {
 const statusClassArabic = {
   Good: "يوم جيد",
   Moderate: "يوم معتدل",
-  UnHealthlySensitiveGroups: "يوم غير صحي للفئة  الحساسة",
+  UnHealthlySensitiveGroups: "يوم غير صحي  للفئة الحساسة",
   UnHealthly: "يوم غير صحي",
   VeryUnHealthly: "يوم غير صحي للغاية",
   Hazardous: "يوم خطر",
@@ -2147,10 +2147,10 @@ const chartFilter = {
 
 const chartFilterArabic = {
   Hourly: "كل ساعة",
-  Daily: "يوميا",
-  Monthly: "شهريا",
-  Yearly: "سنويا",
-  Custom: " إنشاء مخصص",
+  Daily: "يومي",
+  Monthly: "شهري",
+  Yearly: "سنوي",
+  Custom: "تخصيص",
 };
 
 const pollutantNamesEnglish = {
@@ -3184,7 +3184,7 @@ function loadStationData(initialRequest = false) {
             ? stationName +
               ", " +
               regionName +
-              "نظرة عامة سنوية على جودة الهواء" +
+              "نظرة عامة عن جودة الهواء لسنة" +
               currentYearOverview
             : stationName +
               ", " +
@@ -3637,12 +3637,12 @@ function getHealthRecommendationContent(aqiLevel) {
         img: "mask1.png",
         title: "استخدام الكمامة",
         description:
-          "استمتع بالهواء النقي! لا داعي لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
+          "استمتع بالهواء النقي! لا حاجة لارتداء الكمامات عندما تكون جودة الهواء جيدة.",
       },
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
-        description: "وقت ممتاز لفتح النوافذ لتدوير الهواء النقي.",
+        description: "فتح النوافذ في هذا الوقت يمنحك فرصة لتمرير الهواء النقي",
       },
       {
         img: "health_kit3.png",
@@ -3654,17 +3654,17 @@ function getHealthRecommendationContent(aqiLevel) {
       {
         img: "mask1.png",
         title: "استخدام الكمامة",
-        description: "يوصى بارتداء الكمامة للمجموعات الحساسة.",
+        description: "يوصى بارتداء الكمامة للفئة الحساسة.",
       },
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
-        description: "كن حذرًا عند تدوير الهواء لضمان جودة هواء صحية في الداخل",
+        description: "كن حذرًا عند تهوية المكان لضمان جودة هواء صحية في الداخل",
       },
       {
         img: "health_kit3.png",
         title: "تشغيل جهاز تنقية الهواء",
-        description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة",
+        description: "استمر بتشغيل جهاز تنقية الهواء عند وجود الأشخاص ذوي الفئة الحساسية",
       },
     ],
     unhealthyForSensitiveGroups: [
@@ -3672,18 +3672,18 @@ function getHealthRecommendationContent(aqiLevel) {
         img: "mask1.png",
         title: "استخدام الكمامة",
         description:
-          "يوصى بارتداء الكمامة للمجموعات الحساسة، مع الحد من الأنشطة الخارجية.",
+          "يوصى بارتداء الكمامة للفئة الحساسة، مع الحد من الأنشطة الخارجية.",
       },
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
         description:
-          "توخَّ الحذر عند تدوير الهواء، خصوصًا في وجود الفئات الحساسة",
+          "كن حذرًا عند تهوية المكان، خاصةً بالقرب من الأشخاص ذوي الفيئة الحساسة.",
       },
       {
         img: "health_kit3.png",
         title: "تشغيل جهاز تنقية الهواء",
-        description: "استمر في تشغيل جهاز تنقية الهواء عند وجود الفئات الحساسة",
+        description: "استمر بتشغيل جهاز تنقية الهواء عند وجود الأشخاص ذوي الفئة الحساسية",
       },
     ],
     unhealthy: [
@@ -3695,7 +3695,7 @@ function getHealthRecommendationContent(aqiLevel) {
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
-        description: "لا ينصح بتدوير الهواء،  خصوصًا في وجود الفئات الحساسة.",
+        description: "لا يُنصح بتهوية المكان، خاصة في الأماكن التي فيها أشخاص من ذوي الفئة الحساسة.",
       },
       {
         img: "health_kit3.png",
@@ -3709,18 +3709,18 @@ function getHealthRecommendationContent(aqiLevel) {
         img: "mask1.png",
         title: "استخدام الكمامة",
         description:
-          "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
+          "يوصى بشدة ارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
-        description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة.",
+        description: "يُنصح بشدة تجنب تهوية المكان نظرًا للمخاطر المحتملة.",
       },
       {
         img: "health_kit3.png",
         title: "تشغيل جهاز تنقية الهواء",
         description:
-          "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل.",
+          "يُنصح بشدة تشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل.",
       },
     ],
     hazardous: [
@@ -3728,18 +3728,18 @@ function getHealthRecommendationContent(aqiLevel) {
         img: "mask1.png",
         title: "استخدام الكمامة",
         description:
-          "يوصى بشدة بارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
+          "يوصى بشدة ارتداء الكمامة، مع البقاء في الداخل. حافظ على سلامتك!",
       },
       {
         img: "health_kit2.png",
         title: "تحسين جودة الهواء الداخلي",
-        description: "يُنصح بشدة بعدم تدوير الهواء بسبب المخاطر المحتملة.",
+        description: "يُنصح بشدة تجنب تهوية المكان نظرًا للمخاطر المحتملة.",
       },
       {
         img: "health_kit3.png",
         title: "تشغيل جهاز تنقية الهواء",
         description:
-          "يُنصح بشدة بتشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل.",
+          "يُنصح بشدة تشغيل جهاز تنقية الهواء للحصول على جودة هواء صحية داخل المنزل.",
       },
     ],
   };
@@ -9304,9 +9304,9 @@ document.addEventListener("DOMContentLoaded", () => {
     questionHeaderAlt.innerHTML = "الأسئلة الشائعة! ";
     monitoringHeading.innerText = "مبادراتنا لمراقبة جودة الهواء";
     initiativeHeadingContentLg.innerHTML =
-      "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
+      "انضموا إلينا في مهمتنا من أجل سماء أنظف ومجتمعات أكثر صحة. وكونوا معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     initiativeHeadingContentSm.innerText =
-      "انضم إلينا من أجل سماء أنظف ومجتمعات صحية. وكن معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
+      "انضموا إلينا في مهمتنا من أجل سماء أنظف ومجتمعات أكثر صحة. وكونوا معنا في المحافظة على غلافنا الجوي وحماية مستقبلنا.";
     navLinkAirQuality.innerText = "جودة الهواء";
 
     //03-11
@@ -9329,10 +9329,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".AQI-mb-2").forEach((element) => {
       element.innerText = "AQI";
     });
-    document.querySelector(".sort-label").textContent = "فرز";
+    document.querySelector(".sort-label").textContent = "ترتيب";
     document.querySelector(".nearest-label").textContent = "الأقرب إلي";
-    document.querySelector(".aqi-label").textContent = "تصنيف مؤشر جودة الهواء";
-    document.querySelector(".order-label").textContent = "ترتيب أبجدي";
+    document.querySelector(".aqi-label").textContent = "مؤشر جودة الهواء";
+    document.querySelector(".order-label").textContent = "أبجدي";
     document.querySelectorAll(".windSpeedHeading").forEach((element) => {
       element.textContent = "سرعة الرياح";
     });
@@ -9346,35 +9346,35 @@ document.addEventListener("DOMContentLoaded", () => {
       element.textContent = "درجة الحرارة";
     });
     (document.querySelector(".map-disclaimer-content").innerText =
-      "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا."),
+      "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق الدوري، وبالتالي قد لا تكون دقيقة تمامًا."),
       (document.querySelector(".sm-map-disclaimer").innerText =
-        "تخضع بياناتنا في الوقت الفعلي، على الرغم من تحديثها باستمرار، للتحقق المستمر، وبالتالي قد لا تكون دقيقة تمامًا.");
+        "بياناتنا في الوقت الحالي، بينما يتم تحديثها باستمرار، تخضع للتحقق الدوري، وبالتالي قد لا تكون دقيقة تمامًا.");
     document.querySelector(".map-disclaimer-air").innerText =
       "مؤشر جودة الهواء";
     document.querySelector(".insight-btn").innerText = "المزيد من المعلومات";
-    document.querySelector(".insight-btn-tab").innerText = "المزيد من الرؤى";
+    document.querySelector(".insight-btn-tab").innerText = "المزيد من المعلومات";
     // document.querySelector('.fp-next').style.right='auto';
     contactHead.textContent = "تواصل معنا";
     heading.textContent = "أخبرنا برأيك";
     // cnctAddress.innerHTML = `المقر الرئيسي، المعمورة، المبنى A، المبنى 62، <br /> شارع المعمورة، ال نهيان، أبوظبي، الإمارات العربية المتحدة، <br /> الرمز البريدي: 22221، صندوق بريد: 4553`;
-    cnctAddress.innerHTML = `المقر الرئيسي مبنى المعمورة (أ) مبنى رقم (62) ،<br/> شارع المعمورة ، آل نهيان ، أبوظبي ،<br/> الإمارات العربية المتحدة، الرمز البريدي: 22221، ص.ب : 45553`;
+    cnctAddress.innerHTML = `المقر الرئيسي: المعمورة، المبنى A، المبنى 62،<br/> شارع المعمورة، آل نهيّان، أبوظبي، الإمارات العربية المتحدة،<br/> الرمز البريدي: 22221، صندوق البريد: 4553`;
     // cnctAddressmobile.innerHTML = `المقر الرئيسي، المعمورة، المبنى A، المبنى 62، شارع المعمورة، ال نهيان، أبوظبي، الإمارات العربية المتحدة، الرمز البريدي: 22221، صندوق بريد: 4553`;
-    cnctAddressmobile.innerHTML = `المقر الرئيسي مبنى المعمورة (أ) مبنى رقم (62) ،<br/> شارع المعمورة ، آل نهيان ، أبوظبي ،<br/> الإمارات العربية المتحدة، الرمز البريدي: 22221، ص.ب : 45553`;
+    cnctAddressmobile.innerHTML = `المقر الرئيسي: المعمورة، المبنى A، المبنى 62،<br/> شارع المعمورة، آل نهيّان، أبوظبي، الإمارات العربية المتحدة،<br/> الرمز البريدي: 22221، صندوق البريد: 4553`;
     // agenda.textContent = 'تأسست في عام 1996، وتلتزم هيئة البيئة – أبوظبي (EAD) بحماية وتعزيز جودة الهواء، والمياه الجوفية، بالإضافة إلى التنوع البيولوجي في نظامنا البيئي الصحراوي والبحري. من خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص، والمنظمات غير الحكومية، والوكالات البيئية العالمية، نتبنى أفضل الممارسات الدولية، والابتكار، والعمل الجاد لوضع تدابير سياسية فعالة. نسعى لزيادة الوعي البيئي، وتسهيل التنمية المستدامة، وضمان أن تظل القضايا البيئية من أولويات جدول أعمالنا الوطني.';
     agenda.textContent =
-      "تلتزم هيئة البيئة – أبوظبي، التي تأسست في عام 1996، بحماية وتعزيز جودة الهواء، والمياه الجوفية بالإضافة إلى حماية التنوع البيولوجي في النظم البيئية الصحراوية والبحرية في إمارة أبوظبي. ومن خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص والمنظمات غير الحكومية، والمنظمات البيئية العالمية، تعمل الهيئة على تبني أفضل الممارسات العالمية، وتشجيع الابتكار والعمل الجاد لاتخاذ تدابير، وسياسات فعالة. كما تسعى الهيئة لتعزيز الوعي البيئي، والتنمية المستدامة، وضمان استمرار إدراج القضايا البيئية ضمن أهم الأولويات في الأجندة الوطنية.";
+      "تقوم هيئة البيئة – أبوظبي، التي تأسست في عام 1996، بحماية وتعزيز جودة الهواء، والمياه الجوفية بالإضافة إلى حماية التنوع البيولوجي في النظم البيئية الصحراوية والبحرية في إمارة أبوظبي. ومن خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص والمنظمات غير الحكومية، والمنظمات البيئية العالمية، تعمل الهيئة على تبني أفضل الممارسات العالمية، وتشجيع الابتكار والعمل الجاد لاتخاذ تدابير، وسياسات فعالة. كما تسعى لتعزيز الوعي البيئي، والتنمية المستدامة، وضمان استمرار إدراج القضايا البيئية ضمن أهم الأولويات في الأجندة الوطنية.";
     // agendamobile.textContent = 'تأسست في عام 1996، وتلتزم هيئة البيئة – أبوظبي (EAD) بحماية وتعزيز جودة الهواء، والمياه الجوفية، بالإضافة إلى التنوع البيولوجي في نظامنا البيئي الصحراوي والبحري. من خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص، والمنظمات غير الحكومية، والوكالات البيئية العالمية، نتبنى أفضل الممارسات الدولية، والابتكار، والعمل الجاد لوضع تدابير سياسية فعالة. نسعى لزيادة الوعي البيئي، وتسهيل التنمية المستدامة، وضمان أن تظل القضايا البيئية من أولويات جدول أعمالنا الوطني.';
     agendamobile.textContent =
-      "تلتزم هيئة البيئة – أبوظبي، التي تأسست في عام 1996، بحماية وتعزيز جودة الهواء، والمياه الجوفية بالإضافة إلى حماية التنوع البيولوجي في النظم البيئية الصحراوية والبحرية في إمارة أبوظبي. ومن خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص والمنظمات غير الحكومية، والمنظمات البيئية العالمية، تعمل الهيئة على تبني أفضل الممارسات العالمية، وتشجيع الابتكار والعمل الجاد لاتخاذ تدابير، وسياسات فعالة. كما تسعى الهيئة لتعزيز الوعي البيئي، والتنمية المستدامة، وضمان استمرار إدراج القضايا البيئية ضمن أهم الأولويات في الأجندة الوطنية.";
-    nameLabel.textContent = "اسمك";
+      "تقوم هيئة البيئة – أبوظبي، التي تأسست في عام 1996، بحماية وتعزيز جودة الهواء، والمياه الجوفية بالإضافة إلى حماية التنوع البيولوجي في النظم البيئية الصحراوية والبحرية في إمارة أبوظبي. ومن خلال الشراكة مع جهات حكومية أخرى، والقطاع الخاص والمنظمات غير الحكومية، والمنظمات البيئية العالمية، تعمل الهيئة على تبني أفضل الممارسات العالمية، وتشجيع الابتكار والعمل الجاد لاتخاذ تدابير، وسياسات فعالة. كما تسعى لتعزيز الوعي البيئي، والتنمية المستدامة، وضمان استمرار إدراج القضايا البيئية ضمن أهم الأولويات في الأجندة الوطنية.";
+    nameLabel.textContent = "الاسم";
     emailLabel.textContent = "البريد الإلكتروني";
     phoneLabel.textContent = "الهاتف";
     submitBtn.textContent = "إرسال";
     Message.placeholder = "الرسالة";
     Message.style.direction = "ltr";
-    document.getElementById("searchInput").placeholder = "المحطة بحث";
+    document.getElementById("searchInput").placeholder = "البحث عن المحطة";
     document.getElementById("stationsDropdownMapSearch").placeholder =
-      "المحطة بحث";
+      "البحث عن المحطة";
     document
       .getElementById("headerSearchInput")
       .setAttribute("placeholder", "بحث");
@@ -9511,7 +9511,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "استخدام الكمامات");
 
     document.querySelector(".quality-index-wrapper-h2 .levelmb25").innerText =
-      "مستوى أمان جودة الهواء";
+      "مؤشر جودة الهواء";
     document.querySelectorAll(".pollutant-graph-title").forEach((element) => {
       element.innerText = "اتجاهات التلوث";
     });
@@ -9547,7 +9547,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // document.querySelector('.imagetext2').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     // document.querySelector('.imagetext3').innerText = 'التواجد في الأماكن المغلقة هو الخيار الأفضل';
     document.querySelector(".station-aqi-trends-disclaimers").innerText =
-      "تابع جودة الهواء في أبوظبي بشكل مستمر من خلال نظرة سريعة: الرسوم البيانية الواضحة تتابع مستويات مؤشر جودة الهواء (AQI) والملوثات مع مرور الوقت، وتعرض حالة الهواء من الجيد إلى الخطير.";
+      "تابع جودة الهواء في أبوظبي بشكل مستمر من خلال نظرة سريعة: رسوم بيانية واضحة تتبع مستويات مؤشر جودة الهواء (AQI) والملوثات مع مرور الوقت، موضحة جودة الهواء من الجيد إلى الخطير.";
     document.getElementById("air-quality-index").innerText = "مؤشر جودة الهواء";
     document.querySelector(
       ".refreshed-time-aqip"
@@ -9580,16 +9580,16 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".hours-exceedance-peryear-desclimer")
       .forEach((element) => {
         // element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وابقَ على اطلاع على اتجاهات جودة الهواء بكل سهولة.`;
-        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة`;
+        element.innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يظهر عدد الساعات التي يتجاوز فيها كل ملوث المستويات الآمنة. كن دائمًا على اطلاع بإتجاهات جودة الهواء بكل سهولة.`;
       });
     document
       .querySelectorAll(".our-air-analytics-desclimer")
       .forEach((element) => {
-        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".`;
+        element.innerText = `تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يوضح تكرار حالة جودة الهواء المختلفة، من "جيد" إلى "خطير".`;
       });
     document.querySelector(
       ".hours-exceed-heading"
-    ).innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات  <br> تجاوزت الحد المسموح به سنويًا</h2>`;
+    ).innerHTML = `<h2 class="mb-0 exceed-height tab-top-pd40 tabexceed-pb0">عدد الساعات التي تجاوزت الحد المسموح به سنوياً</h2>`;
     document.querySelector(".changeHeading-pollutant").innerText =
       "اتجاهات مؤشر جودة الهواء للمحطة";
     $(".select-pils").on("click", function () {
@@ -9608,9 +9608,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // document.querySelector('.equal-station-box-height').style.direction = 'ltr';
     document.querySelector(
       ".contact-content-mobile"
-    ).innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يُظهر عدد الساعات التي تجاوز فيها كل ملوث المستويات الآمنة. وتابع اتجاهات جودة الهواء بشكل مستمر بكل سهولة.`;
+    ).innerText = `قم بإلقاء نظرة سريعة على مخطط جودة الهواء السنوي لمدينة أبوظبي الذي يظهر عدد الساعات التي يتجاوز فيها كل ملوث المستويات الآمنة. كن دائمًا على اطلاع بإتجاهات جودة الهواء بكل سهولة.`;
     document.querySelector(".air-analytics-mobile").innerText =
-      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار. كل جزء ملون يُظهر تكرار حالة جودة الهواء المختلفة، بدءًا من "جيدة" إلى "خطرة".';
+      'تابع جودة الهواء في مدينة أبوظبي على مدار العام من خلال مخطط الرادار لدينا. كل جزء ملون يوضح تكرار حالة جودة الهواء المختلفة، من "جيد" إلى "خطير".';
     document.querySelector(".activity_heading").innerText = "الأنشطة";
     airQualityAssessments.forEach((element) => {
       element.innerText =
@@ -9627,12 +9627,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // document.querySelector('.indor-aq-maintenance').innerText='صيانة جودة الهواء الداخلية';
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".indor-aq-maintenance").innerText =
-        "صيانة جودة الهواء الداخلية";
+        "تحسين جودة الهواء الداخلي";
     });
     // document.querySelector('.switch-on-air-purifier').innerText='تشغيل جهاز تنقية الهواء الخاص بك';
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".switch-on-air-purifier").innerText =
-        "تشغيل جهاز تنقية الهواء الخاص بك";
+        "تشغيل جهاز تنقية الهواء";
     });
     document.querySelectorAll(".measure-pollut").forEach((element) => {
       element.innerText = "الملوثات التي يتم قياسها";
@@ -10034,9 +10034,9 @@ document.addEventListener("DOMContentLoaded", () => {
     questionHeaderAlt.innerHTML = "Your Questions, <br> Answered.";
     monitoringHeading.innerText = "Our Air Quality Monitoring Initiatives";
     initiativeHeadingContentLg.innerHTML =
-      "Join us in the fight for cleaner skies and healthier communities. Become a <br> guardian of our atmosphere and safeguard our future.";
+      "Join us in the our mission for cleaner skies and healthier communities. <br> Become a guardian of our atmosphere and safeguard our future.";
     initiativeHeadingContentSm.innerText =
-      "Join us in the fight for cleaner skies and healthier communities. Become a guardian of our atmosphere and safeguard our future.";
+      "Join us in the our mission for cleaner skies and healthier communities. <br> Become a guardian of our atmosphere and safeguard our future.";
     navLinkAirQuality.innerText = "Air Quality";
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".thankyou-submit-msg").innerText =
@@ -10089,7 +10089,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".map-disclaimer-content").innerText =
       " Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.";
     document.querySelector(".sm-map-disclaimer").innerText =
-      "Our real-time data, while continuously updated, is subject to ongoing validation, and thereforemay not be entirely accurate.";
+      "Our real-time data, while continuously updated, is subject to ongoing validation, and therefore may not be entirely accurate.";
     document.querySelector(".map-disclaimer-air").innerText =
       "Air Quality Index";
     document.querySelector(".insight-btn").innerText = "More Insights";
@@ -10542,7 +10542,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .forEach((link) => {
         switch (link.textContent.trim()) {
           case "Our Air Quality":
-            link.textContent = "جودة هواءنا";
+            link.textContent = "جودة الهواء";
             break;
           case "Insights":
             link.innerHTML =
@@ -10593,7 +10593,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )
       .forEach((link) => {
         switch (link.textContent.trim()) {
-          case "جودة هواءنا":
+          case "جودة الهواء":
             link.textContent = "Our Air Quality";
             break;
           case "رؤيتنا":
@@ -10645,7 +10645,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".nav-link").forEach((link) => {
       switch (link.textContent.trim()) {
         case "Our Air Quality":
-          link.textContent = "جودة هواءنا";
+          link.textContent = "جودة الهواء";
           break;
         case "Insights":
           link.textContent = "رؤيتنا";
@@ -10669,7 +10669,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateNavLinksToEnglish() {
     document.querySelectorAll(".nav-link").forEach((link) => {
       switch (link.textContent.trim()) {
-        case "جودة هواءنا":
+        case "جودة الهواء":
           link.textContent = "Our Air Quality";
           break;
         case "رؤيتنا":
