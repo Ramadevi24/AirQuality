@@ -1017,7 +1017,7 @@ const stationsWithLocations = [
     regionName: "Abu Dhabi",
     latitude: 24.4889,
     longitude: 54.3637,
-    stationLocation: "F9Q7+HFG - Al Danah - Zone 1 - Abu Dhabi, Urban Traffic",
+    stationLocation: "Hamdan Bin Zayed the First St - Abu Dhabi, Urban Traffic",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1043,7 +1043,7 @@ const stationsWithLocations = [
     latitude: 24.4816,
     longitude: 54.3693,
     stationLocation:
-      "F9J9+WJ4 - Sultan Bin Zayed The First St - Al Danah - Zone 1 - Abu Dhabi, Urban Background",
+      "Sultan Bin Zayed the First St- Al Danah - Abu Dhabi, Urban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1069,7 +1069,7 @@ const stationsWithLocations = [
     latitude: 24.4301,
     longitude: 54.4084,
     stationLocation:
-      "25-11 Ar Raʹbi St - Al Mushrif - Abu Dhabi, Suburban Background",
+      "Al Mushrif - Abu Dhabi, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1095,7 +1095,7 @@ const stationsWithLocations = [
     latitude: 24.3472,
     longitude: 54.5029,
     stationLocation:
-      "8GW3+H6J - Musaffah - Musaffah Industrial - Abu Dhabi, Suburban Industrial",
+      " Musaffah - Abu Dhabi, Suburban Industrial",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1120,7 +1120,7 @@ const stationsWithLocations = [
     regionName: "Abu Dhabi",
     latitude: 24.3213,
     longitude: 54.6359,
-    stationLocation: "Bani Yas - East 4 - Abu Dhabi, Suburban Background",
+    stationLocation: "Bani Yas - Abu Dhabi, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1175,7 +1175,7 @@ const stationsWithLocations = [
     latitude: 24.4199,
     longitude: 54.5782,
     stationLocation:
-      "5 ʻutbah Bin Ghazwan St - Khalifa City - Sector 12 - Abu Dhabi, Suburban Background",
+      "Khalifa City - Abu Dhabi, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1225,7 +1225,7 @@ const stationsWithLocations = [
     latitude: 24.2191,
     longitude: 55.7349,
     stationLocation:
-      "26-48 Al Makramah St - Al Mu'tarid - Abu Dhabi, Suburban Background",
+      "Al Makramah - Al Ain, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1250,7 +1250,7 @@ const stationsWithLocations = [
     regionName: "Al Ain",
     latitude: 24.2259,
     longitude: 55.7658,
-    stationLocation: "Central District - Abu Dhabi, Urban Traffic",
+    stationLocation: "Khalifa Bin Zayed St- Al Ain, Abu Dhabi, Urban Traffic",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1275,7 +1275,7 @@ const stationsWithLocations = [
     regionName: "Al Ain",
     latitude: 24.4667,
     longitude: 55.3429,
-    stationLocation: "44th St - Sweihan - Abu Dhabi, Suburban Background",
+    stationLocation: " Sweihan - Al Ain, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1301,7 +1301,7 @@ const stationsWithLocations = [
     regionName: "Al Ain",
     latitude: 24.2592,
     longitude: 55.7049,
-    stationLocation: "Al Tiwayya - Abu Dhabi, Suburban Background",
+    stationLocation: "Al Tiwayya - Al Ain, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1326,7 +1326,7 @@ const stationsWithLocations = [
     regionName: "Al Ain",
     latitude: 24.1635,
     longitude: 55.7021,
-    stationLocation: "Al-Zawahir St - Zakhir - Abu Dhabi, Urban Background",
+    stationLocation: "Zakhir - Al Ain, Urban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1351,7 +1351,7 @@ const stationsWithLocations = [
     regionName: "Al Ain",
     latitude: 23.5312,
     longitude: 55.486,
-    stationLocation: "Al Wiqan - Abu Dhabi, Regional Rural",
+    stationLocation: "Al Qua'a - Al Ain, Regional Rural",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1378,7 +1378,7 @@ const stationsWithLocations = [
     regionName: "Al Dhafra",
     latitude: 23.6523,
     longitude: 53.7039,
-    stationLocation: "Zayed City - Abu Dhabi, Suburban Background",
+    stationLocation: "Bida Zayed - Al Dhafra, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1403,7 +1403,7 @@ const stationsWithLocations = [
     regionName: "Al Dhafra",
     latitude: 23.8355,
     longitude: 52.8103,
-    stationLocation: "Ghiyathi - Abu Dhabi, Suburban Background",
+    stationLocation: "Ghiyathi - Al Dhafra, Suburban Background",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1428,7 +1428,7 @@ const stationsWithLocations = [
     regionName: "Al Dhafra",
     latitude: 23.0958,
     longitude: 53.6064,
-    stationLocation: "3JW4+8H7 Taraq, Abu Dhabi, Rural Background Regional",
+    stationLocation: "Liwa - Al Dhafra, Rural Background Regional",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1453,7 +1453,7 @@ const stationsWithLocations = [
     latitude: 24.0909,
     longitude: 52.7548,
     stationLocation:
-      "Al Ruways Industrial City - Abu Dhabi, Suburban Industrial",
+      "Al Ruways Industrial City - Al Dhafra, Suburban Industrial",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1481,7 +1481,7 @@ const stationsWithLocations = [
     regionName: "Al Dhafra",
     latitude: 23.7504,
     longitude: 53.7453,
-    stationLocation: "QP2W+44W - Habshan - Abu Dhabi, Rural Industrial",
+    stationLocation: "Habshan - Al Dhafra, Rural Industrial",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1507,7 +1507,7 @@ const stationsWithLocations = [
     regionName: "Al Dhafra",
     latitude: 24.0352,
     longitude: 53.8853,
-    stationLocation: "Um Laylah - Abu Dhabi, Rural Traffic",
+    stationLocation: "E11 - Al Dhafra, Rural Traffic",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1542,7 +1542,7 @@ const stationsWithLocationsArabic = [
     latitude: 24.4889,
     longitude: 54.3637,
     stationLocation:
-      "F9Q7+HFG - الدانة - المنطقة 1 - أبوظبي, حركة المرور في المناطق الحضرية",
+      "شارع سلطان بن زايد الأول - أبوظبي, حركة المرور في المناطق الحضرية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1568,7 +1568,7 @@ const stationsWithLocationsArabic = [
     latitude: 24.4816,
     longitude: 54.3693,
     stationLocation:
-      "F9J9+WJ4 - شارع سلطان بن زايد الأول - الدانة - المنطقة 1 - أبوظبي, الخلفية الحضرية",
+      "شارع سلطان بن زايد الأول - الدانة - أبوظبي, الخلفية الحضرية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1593,7 +1593,7 @@ const stationsWithLocationsArabic = [
     regionName: "أبوظبي",
     latitude: 24.4301,
     longitude: 54.4084,
-    stationLocation: "25-11 شارع الربيع - المشرف - أبوظبي, خلفية الضواحي",
+    stationLocation: "المشرف - أبوظبي, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1619,7 +1619,7 @@ const stationsWithLocationsArabic = [
     latitude: 24.3472,
     longitude: 54.5029,
     stationLocation:
-      "8GW3+H6J - مصفح - مصفح الصناعية - أبوظبي, الصناعية في الضواحي",
+      "مصفح - أبوظبي, الصناعية في الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1644,7 +1644,7 @@ const stationsWithLocationsArabic = [
     regionName: "أبوظبي",
     latitude: 24.3213,
     longitude: 54.6359,
-    stationLocation: "باني ياس - شرق 4 - أبوظبي, خلفية الضواحي",
+    stationLocation: "بني ياس - أبوظبي, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1699,7 +1699,7 @@ const stationsWithLocationsArabic = [
     latitude: 24.4199,
     longitude: 54.5782,
     stationLocation:
-      "5 شارع عتبة بن غزوان - مدينة خليفة - قطاع 12 - أبوظبي, خلفية الضواحي",
+      "مدينة خليفة - أبوظبي, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1748,7 +1748,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 24.2191,
     longitude: 55.7349,
-    stationLocation: "26-48 شارع المكرمه - المعترض - أبوظبي, خلفية الضواحي",
+    stationLocation: "شارع المكرمة - العين, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1773,7 +1773,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 24.2259,
     longitude: 55.7658,
-    stationLocation: "المنطقة الوسطى - أبوظبي, حركة المرور في المناطق الحضرية",
+    stationLocation: "المنطقة الوسطى - العين, حركة المرور في المناطق الحضرية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1798,7 +1798,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 24.4667,
     longitude: 55.3429,
-    stationLocation: "شارع 44 - سويحان - أبوظبي, خلفية الضواحي.",
+    stationLocation: "سويحان - العين, خلفية الضواحي.",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1824,7 +1824,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 24.2592,
     longitude: 55.7049,
-    stationLocation: "الطوية - أبوظبي, خلفية الضواحي",
+    stationLocation: "الطوية - العين, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1849,7 +1849,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 24.1635,
     longitude: 55.7021,
-    stationLocation: "شارع الظواهر - زاخر - أبوظبي, الخلفية الحضرية",
+    stationLocation: "شارع الظواهر - العين, الخلفية الحضرية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1874,7 +1874,7 @@ const stationsWithLocationsArabic = [
     regionName: "العين",
     latitude: 23.5312,
     longitude: 55.486,
-    stationLocation: "الوقن - أبوظبي, الريف الإقليمي",
+    stationLocation: "القوع - العين, الريف الإقليمي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1901,7 +1901,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 23.6523,
     longitude: 53.7039,
-    stationLocation: "مدينة زايد - أبوظبي, خلفية الضواحي",
+    stationLocation: "مدينة زايد - الظفرة, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1926,7 +1926,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 23.8355,
     longitude: 52.8103,
-    stationLocation: " غياثي - أبوظبي, خلفية الضواحي",
+    stationLocation: "غياثي - الظفرة, خلفية الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1951,7 +1951,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 23.0958,
     longitude: 53.6064,
-    stationLocation: "3JW4+8H7 الطرق, أبوظبي, الخلفية الريفية الإقليمية",
+    stationLocation: "ليوا - الظفرة, الخلفية الريفية الإقليمية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -1975,7 +1975,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 24.0909,
     longitude: 52.7548,
-    stationLocation: "مدينة الرويس الصناعية - أبوظبي, الصناعية في الضواحي",
+    stationLocation: "مدينة الرويس الصناعية - الظفرة, الصناعية في الضواحي",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -2003,7 +2003,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 23.7504,
     longitude: 53.7453,
-    stationLocation: "QP2W+44W - حبشان - أبوظبي, الصناعية الريفية",
+    stationLocation: "حبشان - الظفرة, الصناعية الريفية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
@@ -2029,7 +2029,7 @@ const stationsWithLocationsArabic = [
     regionName: "الظفرة",
     latitude: 24.0352,
     longitude: 53.8853,
-    stationLocation: "أم ليله - أبوظبي, حركة المرور الريفية",
+    stationLocation: "الظفرة - E11, حركة المرور الريفية",
     measuredPolluants: [
       pollutantAbbrevations.PM10,
       pollutantAbbrevations.PM25,
