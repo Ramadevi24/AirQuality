@@ -3440,39 +3440,39 @@ function getActivityContent(aqiLevel) {
   const activitiesArabic = {
     good: [
       { img: "run_green.png", text: "استمتع بوقتك في الهواء الطلق" },
-      { img: "cycle_green.png", text: "استمتع بركوب الدراجة الهوائية في الهواء الطلق" },
+      { img: "cycle_green.png", text: "استمتع بركوب الدراجات الهوائية في الخارج" },
       {
         img: "heart_green.png",
-        text: "يمكن للأطفال والأشخاص الحساسين الاستمتاع بالهواء الطلق.",
+        text: "يمكن للأطفال والأشخاص ضمن الفئة الحساسة الاستمتاع في الهواء الطلق",
       },
       { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق " },
     ],
     moderate: [
       { img: "run_green.png", text: "استمتع بوقتك في الهواء الطلق" },
-      { img: "cycle_green.png", text: "استمتع بركوب الدراجة الهوائية في الهواء الطلق" },
-      { img: "heart_orange.png", text: "يجب على الأطفال والأفراد ضمن الفئة الحساسة توخي الحذر" },
+      { img: "cycle_green.png", text: "استمتع بركوب الدراجات الهوائية في الخارج" },
+      { img: "heart_orange.png", text: "على الفئة الحساسة توخي الحذر" },
       { img: "dinner_green.png", text: "استمتع بوجبتك في الهواء الطلق " },
     ],
     unhealthyForSensitiveGroups: [
-      { img: "run_orange.png", text: "تجنب البقاء لفترات طويلة في الهواء الطلق" },
-      { img: "cycle_orange.png", text: "تجنب البقاء لفترات طويلة في الهواء الطلق" },
+      { img: "run_orange.png", text: "تجنب التعرض للملوثات لفترات طويلة" },
+      { img: "cycle_orange.png", text: "تجنب التعرض للملوثات لفترات طويلة" },
       {
         img: "heart_red.png",
-        text: "تجنب البقاء لفترات طويلة في الهواء الطلق للأطفال والأشخاص ضمن الفئة الحساسية",
+        text: "على الأشخاص ضمن الفئة الحساسة والأطفال تجنب التعرض لفترات طويلة",
       },
-      { img: "dinner_orange.png", text: "تجنب البقاء لفترات طويلة في الهواء الطلق" },
+      { img: "dinner_orange.png", text: "تجنب التعرض للملوثات لفترات طويلة" },
     ],
     unhealthy: [
       { img: "run_red.png", text: "استمتع بالأنشطة في الأماكن المغلقة" },
       {
         img: "cycle_red.png",
-        text: "جرب ركوب الدراجات الهوائية في الأماكن المغلقة",
+        text: "استمتع بركوب الدراجات الهوائية في الأماكن المغلقة",
       },
       {
         img: "heart_hazar.png",
         text: "البقاء في الداخل هو الخيار الأفضل للأطفال الرضع والأفراد الحساسين",
       },
-      { img: "dinner_red.png", text: "استمتع بوجبتك في الداخل" },
+      { img: "dinner_red.png", text: "استمتع بوجبتك في الأماكن المغلقة" },
     ],
     veryUnhealthy: [
       { img: "run_hazar.png", text: "تجنب الأنشطة الخارجية" },
@@ -3481,7 +3481,7 @@ function getActivityContent(aqiLevel) {
         img: "heart_brown.png",
         text: "تجنب الأماكن الخارجية",
       },
-      { img: "dinner_hazar.png", text: "استمتع بوجبتك في الداخل" },
+      { img: "dinner_hazar.png", text: "استمتع بوجبتك في الأماكن المغلقة" },
     ],
     hazardous: [
       { img: "run_brown.png", text: "تجنب الأنشطة الخارجية" },
@@ -3490,7 +3490,7 @@ function getActivityContent(aqiLevel) {
         img: "heart_brown.png",
         text: "تجنب الأماكن الخارجية",
       },
-      { img: "dinner_brown.png", text: "استمتع بوجبتك في الداخل" },
+      { img: "dinner_brown.png", text: "استمتع بوجبتك في الأماكن المغلقة" },
     ],
   };
 
